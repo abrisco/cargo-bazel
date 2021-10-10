@@ -1,0 +1,27 @@
+[{%- set selectable = selectable | default(value=default_select_list) %}
+        {%- for val in selectable.common %}
+        "{{ val }}",
+        {%- endfor %}
+    ]
+    {%- for cfg, values in selectable.selects %}
+    {%- if cfg in context.conditions and context.conditions[cfg] | length %}
+    + selects.with_or({
+        # {{ cfg }}
+        (
+            {%- for triple in context.conditions[cfg] %}
+            "@rules_rust//rust/platform:{{ triple }}",
+            {%- endfor %}
+        ): [
+            {%- for val in values %}
+            "{{ val }}",
+            {%- endfor %}
+        ],
+        "//conditions:default": [],
+    })
+    {%- else %}
+    + [
+        # No supported platform triples for cfg: '{{ cfg }}'
+        # Skipped dependencies: {{ values | json_encode | safe }}
+    ]
+    {%- endif %}
+    {%- endfor %}

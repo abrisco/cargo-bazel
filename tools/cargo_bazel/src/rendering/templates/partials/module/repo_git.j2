@@ -1,0 +1,20 @@
+    maybe(
+        new_git_repository,
+        name = "{{ crate_repository(name = crate.name, version = crate.version) }}",
+    {%- for type, commitish in attrs.commitish %}
+    {%- if type in ["Rev"] %}
+        commit = "{{ commitish }}",
+    {%- elif type in ["Tag"] %}
+        tag = "{{ commitish }}",
+    {%- elif type in ["Branch"] %}
+        branch = "{{ commitish }}",
+    {%- else %}
+        {{ throw(message= "Unexpected git commitish '" ~ type ~ "' for '" ~ crate.name ~ "'") }}
+    {%- endif %}
+    {%- endfor %}
+    {%- if attrs.shallow_since %}
+        shallow_since = "{{ attrs.shallow_since }}",
+    {%- endif %}
+        remote = "{{ attrs.remote }}",
+        build_file = Label("//:{{ crate_build_file(name = crate.name, version = crate.version)}}"),
+    )

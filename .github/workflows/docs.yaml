@@ -1,0 +1,43 @@
+name: Docs
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  BAZEL_STARTUP_FLAGS: --bazelrc=${{ github.workspace }}/.github/github.bazelrc
+
+jobs:
+  docs:
+    if: ${{ github.repository_owner == 'abrisco' }}
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the code
+      - uses: actions/checkout@v2
+
+      # Caches and restores the Bazel outputs.
+      - name: Retain Bazel cache
+        uses: actions/cache@v2
+        env:
+          cache-name: bazel-cache
+        with:
+          path: |
+            ~/.cache/bazelisk
+            ~/.cache/bazel
+          key: ${{ runner.os }}-${{ env.cache-name }}
+
+      # TODO: Remove after upstream change is merged and `rules_rust` is updated
+      # https://github.com/bazelbuild/rules_rust/pull/959
+      - name: Bootstrap the binary
+        run: bazel ${BAZEL_STARTUP_FLAGS[@]} sync --only=cargo_bazel_bootstrap
+
+      - name: Build docs
+        run: bazel ${BAZEL_STARTUP_FLAGS[@]} run //docs:generate
+
+      - name: Publish docs to branch
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: docs
+          publish_dir: ${{ github.workspace }}/docs/book

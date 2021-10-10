@@ -1,0 +1,89 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types:
+      - opened
+      - synchronize
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  BAZEL_STARTUP_FLAGS: --bazelrc=${{ github.workspace }}/.github/github.bazelrc
+
+jobs:
+  ci:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: macos-11
+          - os: ubuntu-20.04
+          # TODO: Windows at the time of 0.0.1 works, but not in Github CI.
+          # - os: windows-2019
+    steps:
+      # Checkout the code
+      - uses: actions/checkout@v2
+
+      # Caches and restores the Bazel outputs.
+      - name: Retain Bazel cache
+        uses: actions/cache@v2
+        env:
+          cache-name: bazel-cache
+        with:
+          path: |
+            ~/.cache/bazelisk
+            ~/.cache/bazel
+          key: ${{ runner.os }}-${{ env.cache-name }}
+      # Caches and restores the Cargo cache.
+      - name: Retain Cargo cache
+        uses: actions/cache@v2
+        env:
+          cache-name: bazel-cache
+        with:
+          path: |
+            ~/.cargo
+          key: ${{ runner.os }}-${{ env.cache-name }}
+      # Caches and restores the Bazel outputs.
+      - name: Retain examples cache
+        uses: actions/cache@v2
+        env:
+          cache-name: bazel-examples-cache
+        with:
+          path: |
+            ${{ github.workspace }}/examples/.cache
+          key: ${{ runner.os }}-${{ env.cache-name }}
+
+      # TODO: Remove after upstream change is merged and `rules_rust` is updated
+      # https://github.com/bazelbuild/rules_rust/pull/959
+      - name: Bootstrap the binary
+        run: bazel ${BAZEL_STARTUP_FLAGS[@]} sync --only=cargo_bazel_bootstrap          
+
+      # Build and Test the code
+      - name: Build
+        run: bazel ${BAZEL_STARTUP_FLAGS[@]} build //...
+
+      - name: Test
+        run: bazel ${BAZEL_STARTUP_FLAGS[@]} test //...
+
+      - name: Examples
+        run: bazel ${BAZEL_STARTUP_FLAGS[@]} run //tests:examples_test
+        env:
+          EXAMPLES_BAZEL_STARTUP_FLAGS: --output_user_root=${{ github.workspace }}/examples/.cache
+
+  ci-buildifier:
+    runs-on: ubuntu-20.04
+    steps:
+      # Checkout the code
+      - uses: actions/checkout@v2
+      - name: Download Buildifier
+        run: |
+          wget "https://github.com/bazelbuild/buildtools/releases/download/4.2.2/buildifier-linux-amd64" -O buildifier
+          chmod +x buildifier
+      - name: Buildifier
+        run: ./buildifier -lint=warn -mode=check -warnings=all -r ${{ github.workspace }}

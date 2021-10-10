@@ -1,0 +1,36 @@
+{%- include "partials/header.j2" %}
+
+package(default_visibility = ["//visibility:public"])
+
+exports_files(
+    [
+        "cargo-bazel.json",
+        "defs.bzl"
+    ] + glob([
+        "*.bazel"
+    ]),
+)
+
+# Workspace Member Dependencies
+{%- for dep in workspace_member_dependencies %}
+{%- set crate = context.crates | get(key=dep) %}
+alias(
+    name = "{{ crate.name }}",
+    actual = "{{ crate_label(name = crate.name, version = crate.version, target = crate.name) }}",
+)
+{%- endfor %}
+
+# Binaries
+{%- for id in context.binary_crates | sort %}
+{%- set crate = context.crates | get(key=id) %}
+{%- for rule in crate.targets %}
+{%- for rule_type, target in rule %}
+{%- if rule_type in ["Binary"] %}
+alias(
+    name = "{{ crate.name }}__bin",
+    actual = "{{ crate_label(name = crate.name, version = crate.version, target = target.crate_name ~ '__bin') }}",
+)
+{%- endif %}
+{%- endfor %}
+{%- endfor %}
+{%- endfor %}

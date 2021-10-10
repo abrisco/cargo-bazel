@@ -1,0 +1,110 @@
+workspace(name = "cargo_bazel")
+
+load("//:deps.bzl", "cargo_bazel_deps")
+
+cargo_bazel_deps()
+
+RUST_VERSION = "1.54.0"
+
+load("@rules_rust//rust:repositories.bzl", "rust_repositories")
+
+rust_repositories(version = RUST_VERSION)
+
+load("//:deps_bootstrap.bzl", "cargo_bazel_bootstrap")
+
+cargo_bazel_bootstrap(rust_version = RUST_VERSION)
+
+load("//:defs.bzl", "crate", "crates_repository")
+
+crates_repository(
+    name = "crate_index",
+    cargo_config = "//:config.toml",
+    extras = {
+        "cargo_toml": [crate.extras(
+            shallow_since = "1632241831 -0700",
+            version = "*",
+        )],
+        "chrono-tz": [crate.extras(
+            build_script_data_glob = [
+                "**/tz/**",
+            ],
+            version = "*",
+        )],
+        "crossbeam-utils": [crate.extras(
+            build_script_data_glob = [
+                "**/*.rs",
+            ],
+            version = "*",
+        )],
+        "deunicode": [crate.extras(
+            compile_data_glob = [
+                "**/*.txt",
+                "**/*.bin",
+            ],
+            version = "*",
+        )],
+        "tera": [crate.extras(
+            compile_data_glob = [
+                "**/*.pest",
+            ],
+            version = "*",
+        )],
+        "unic-ucd-segment": [crate.extras(
+            compile_data_glob = [
+                "**/*.rsv",
+            ],
+            version = "*",
+        )],
+        "unic-ucd-version": [crate.extras(
+            compile_data_glob = [
+                "**/*.rsv",
+            ],
+            version = "*",
+        )],
+        "unicode-linebreak": [crate.extras(
+            build_script_data_glob = [
+                "**/*.rs",
+                "**/*.txt",
+            ],
+            version = "*",
+        )],
+    },
+    generator = "@cargo_bazel_bootstrap//:cargo-bazel",
+    lockfile = "//:Cargo.Bazel.lock",
+    manifests = ["//:Cargo.toml"],
+)
+
+load("@crate_index//:defs.bzl", "crate_repositories")
+
+crate_repositories()
+
+load("//tools/cross_installer:cross_installer_deps.bzl", "cross_installer_deps")
+
+cross_installer_deps()
+
+###############################################################################
+
+# Load docs dependencies
+load("//docs:docs_deps.bzl", "docs_deps")
+
+docs_deps()
+
+load("//docs:docs_deps_transitive.bzl", "docs_deps_transitive")
+
+docs_deps_transitive()
+
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+# For distro archive
+http_archive(
+    name = "rules_pkg",
+    sha256 = "a89e203d3cf264e564fcb96b6e06dd70bc0557356eb48400ce4b5d97c2c3720d",
+    urls = [
+        "https://mirror.bazel.build/github.com/bazelbuild/rules_pkg/releases/download/0.5.1/rules_pkg-0.5.1.tar.gz",
+        "https://github.com/bazelbuild/rules_pkg/releases/download/0.5.1/rules_pkg-0.5.1.tar.gz",
+    ],
+)
+
+load("@rules_pkg//:deps.bzl", "rules_pkg_dependencies")
+
+rules_pkg_dependencies()

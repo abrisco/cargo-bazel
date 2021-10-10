@@ -1,0 +1,4 @@
+# Git Ignore patterns
+
+# GitHub CI uses this directory for it's Bazel Cache
+.cache/

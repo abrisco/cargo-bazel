@@ -1,0 +1,11 @@
+    maybe(
+        http_archive,
+        name = "{{ crate_repository(name = crate.name, version = crate.version) }}",
+    {%- if attrs.sha256 %}
+        sha256 = "{{ attrs.sha256 }}",
+    {%- endif %}
+        type = "tar.gz",
+        urls = ["{{ crate_registry_url(name = attrs.name, version = attrs.version) }}"],
+        strip_prefix = "{{ crate.name }}-{{ crate.version }}",
+        build_file = Label("//:{{ crate_build_file(name = crate.name, version = crate.version)}}"),
+    )

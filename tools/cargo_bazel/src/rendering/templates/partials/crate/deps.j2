@@ -1,0 +1,29 @@
+[{%- set selectable = deps | default(value=default_select_list) %}
+        {%- for dep in selectable.common %}
+        {%- set dep_crate = context.crates | get(key=dep.id) %}
+        "{{ crate_label(name = dep_crate.name, version = dep_crate.version, target = dep.target) }}",
+        {%- endfor %}
+    ]
+    {%- for cfg, values in selectable.selects %}
+    {%- if cfg in context.conditions and context.conditions[cfg] | length %}
+    + selects.with_or({
+        # {{ cfg }}
+        (
+            {%- for triple in context.conditions[cfg] %}
+            "@rules_rust//rust/platform:{{ triple }}",
+            {%- endfor %}
+        ): [
+            {%- for dep in values %}
+            {%- set dep_crate = context.crates | get(key=dep.id) %}
+            "{{ crate_label(name = dep_crate.name, version = dep_crate.version, target = dep.target) }}",
+            {%- endfor %}
+        ],
+        "//conditions:default": [],
+    })
+    {%- else %}
+    + [
+        # No supported platform triples for cfg: '{{ cfg }}'
+        # Skipped dependencies: {{ values | json_encode | safe }}
+    ]
+    {%- endif %}
+    {%- endfor %}

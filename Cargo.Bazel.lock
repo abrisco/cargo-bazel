@@ -1,0 +1,5888 @@
+{
+  "checksum": "c56e7696ea96603ff4f42d062f62211265f3c2fed47677e11da8f1a7087243de",
+  "crates": {
+    "aho-corasick 0.7.18": {
+      "name": "aho-corasick",
+      "version": "0.7.18",
+      "repository": {
+        "Http": {
+          "name": "aho-corasick",
+          "version": "0.7.18",
+          "sha256": "1e37cfd5e7657ada45f742d6e99ca5788580b5c529dc78faf11ece6dc702656f"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "aho-corasick",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "default",
+          "std"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "memchr 2.4.1",
+              "target": "memchr"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "0.7.18"
+      },
+      "license": "Unlicense/MIT"
+    },
+    "ansi_term 0.11.0": {
+      "name": "ansi_term",
+      "version": "0.11.0",
+      "repository": {
+        "Http": {
+          "name": "ansi_term",
+          "version": "0.11.0",
+          "sha256": "ee49baf6cb617b853aa8d93bf420db2383fab46d314482ca2803b40d5fde979b"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "ansi_term",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [],
+          "selects": {
+            "cfg(target_os = \"windows\")": [
+              {
+                "id": "winapi 0.3.9",
+                "target": "winapi"
+              }
+            ]
+          }
+        },
+        "edition": "2015",
+        "version": "0.11.0"
+      },
+      "license": "MIT"
+    },
+    "anyhow 1.0.44": {
+      "name": "anyhow",
+      "version": "1.0.44",
+      "repository": {
+        "Http": {
+          "name": "anyhow",
+          "version": "1.0.44",
+          "sha256": "61604a8f862e1d5c3229fdd78f8b02c68dcf73a4c4b05fd636d12240aaa242c1"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "anyhow",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        },
+        {
+          "BuildScript": {
+            "crate_name": "build-script-build",
+            "crate_root": "build.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "default",
+          "std"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "anyhow 1.0.44",
+              "target": "build-script-build"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "1.0.44"
+      },
+      "build_script_attrs": {},
+      "license": "MIT OR Apache-2.0"
+    },
+    "atty 0.2.14": {
+      "name": "atty",
+      "version": "0.2.14",
+      "repository": {
+        "Http": {
+          "name": "atty",
+          "version": "0.2.14",
+          "sha256": "d9b39be18770d11421cdb1b9947a45dd3f37e93092cbf377614828a319d5fee8"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "atty",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [],
+          "selects": {
+            "cfg(target_os = \"hermit\")": [
+              {
+                "id": "hermit-abi 0.1.19",
+                "target": "hermit-abi"
+              }
+            ],
+            "cfg(unix)": [
+              {
+                "id": "libc 0.2.103",
+                "target": "libc"
+              }
+            ],
+            "cfg(windows)": [
+              {
+                "id": "winapi 0.3.9",
+                "target": "winapi"
+              }
+            ]
+          }
+        },
+        "edition": "2015",
+        "version": "0.2.14"
+      },
+      "license": "MIT"
+    },
+    "autocfg 1.0.1": {
+      "name": "autocfg",
+      "version": "1.0.1",
+      "repository": {
+        "Http": {
+          "name": "autocfg",
+          "version": "1.0.1",
+          "sha256": "cdb031dd78e28731d87d56cc8ffef4a8f36ca26c38fe2de700543e627f8a464a"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "autocfg",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "edition": "2015",
+        "version": "1.0.1"
+      },
+      "license": "Apache-2.0 OR MIT"
+    },
+    "bitflags 1.3.2": {
+      "name": "bitflags",
+      "version": "1.3.2",
+      "repository": {
+        "Http": {
+          "name": "bitflags",
+          "version": "1.3.2",
+          "sha256": "bef38d45163c2f1dde094a7dfd33ccf595c92905c8f8f4fdc18d06fb1037718a"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "bitflags",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "default"
+        ],
+        "edition": "2018",
+        "version": "1.3.2"
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "block-buffer 0.7.3": {
+      "name": "block-buffer",
+      "version": "0.7.3",
+      "repository": {
+        "Http": {
+          "name": "block-buffer",
+          "version": "0.7.3",
+          "sha256": "c0940dc441f31689269e10ac70eb1002a3a1d3ad1390e030043662eb7fe4688b"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "block-buffer",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "block-padding 0.1.5",
+              "target": "block-padding"
+            },
+            {
+              "id": "byte-tools 0.3.1",
+              "target": "byte-tools"
+            },
+            {
+              "id": "byteorder 1.4.3",
+              "target": "byteorder"
+            },
+            {
+              "id": "generic-array 0.12.4",
+              "target": "generic-array"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2015",
+        "version": "0.7.3"
+      },
+      "license": "MIT OR Apache-2.0"
+    },
+    "block-buffer 0.9.0": {
+      "name": "block-buffer",
+      "version": "0.9.0",
+      "repository": {
+        "Http": {
+          "name": "block-buffer",
+          "version": "0.9.0",
+          "sha256": "4152116fd6e9dadb291ae18fc1ec3575ed6d84c29642d97890f4b4a3417297e4"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "block-buffer",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "generic-array 0.14.4",
+              "target": "generic-array"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "0.9.0"
+      },
+      "license": "MIT OR Apache-2.0"
+    },
+    "block-padding 0.1.5": {
+      "name": "block-padding",
+      "version": "0.1.5",
+      "repository": {
+        "Http": {
+          "name": "block-padding",
+          "version": "0.1.5",
+          "sha256": "fa79dedbb091f449f1f39e53edf88d5dbe95f895dae6135a8d7b881fb5af73f5"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "block-padding",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "byte-tools 0.3.1",
+              "target": "byte-tools"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2015",
+        "version": "0.1.5"
+      },
+      "license": "MIT OR Apache-2.0"
+    },
+    "bstr 0.2.17": {
+      "name": "bstr",
+      "version": "0.2.17",
+      "repository": {
+        "Http": {
+          "name": "bstr",
+          "version": "0.2.17",
+          "sha256": "ba3569f383e8f1598449f1a423e72e99569137b47740b1da11ef19af3d5c3223"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "bstr",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "std"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "memchr 2.4.1",
+              "target": "memchr"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "0.2.17"
+      },
+      "license": "MIT OR Apache-2.0"
+    },
+    "byte-tools 0.3.1": {
+      "name": "byte-tools",
+      "version": "0.3.1",
+      "repository": {
+        "Http": {
+          "name": "byte-tools",
+          "version": "0.3.1",
+          "sha256": "e3b5ca7a04898ad4bcd41c90c5285445ff5b791899bb1b0abdd2a2aa791211d7"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "byte-tools",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "edition": "2015",
+        "version": "0.3.1"
+      },
+      "license": "MIT OR Apache-2.0"
+    },
+    "byteorder 1.4.3": {
+      "name": "byteorder",
+      "version": "1.4.3",
+      "repository": {
+        "Http": {
+          "name": "byteorder",
+          "version": "1.4.3",
+          "sha256": "14c189c53d098945499cdfa7ecc63567cf3886b3332b312a5b4585d8d3a6a610"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "byteorder",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "edition": "2018",
+        "version": "1.4.3"
+      },
+      "license": "Unlicense OR MIT"
+    },
+    "camino 1.0.5": {
+      "name": "camino",
+      "version": "1.0.5",
+      "repository": {
+        "Http": {
+          "name": "camino",
+          "version": "1.0.5",
+          "sha256": "52d74260d9bf6944e2208aa46841b4b8f0d7ffc0849a06837b2f510337f86b2b"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "camino",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        },
+        {
+          "BuildScript": {
+            "crate_name": "build-script-build",
+            "crate_root": "build.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "serde",
+          "serde1"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "camino 1.0.5",
+              "target": "build-script-build"
+            },
+            {
+              "id": "serde 1.0.130",
+              "target": "serde"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "1.0.5"
+      },
+      "build_script_attrs": {},
+      "license": "MIT OR Apache-2.0"
+    },
+    "cargo-bazel 0.0.1": {
+      "name": "cargo-bazel",
+      "version": "0.0.1",
+      "repository": null,
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "cargo-bazel",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        },
+        {
+          "Binary": {
+            "crate_name": "cargo-bazel",
+            "crate_root": "src/main.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "anyhow 1.0.44",
+              "target": "anyhow"
+            },
+            {
+              "id": "cargo-lock 7.0.1",
+              "target": "cargo-lock"
+            },
+            {
+              "id": "cargo-platform 0.1.2",
+              "target": "cargo-platform"
+            },
+            {
+              "id": "cargo_metadata 0.14.0",
+              "target": "cargo_metadata"
+            },
+            {
+              "id": "cargo_toml 0.10.1",
+              "target": "cargo_toml"
+            },
+            {
+              "id": "cfg-expr 0.9.0",
+              "target": "cfg-expr"
+            },
+            {
+              "id": "pathdiff 0.2.1",
+              "target": "pathdiff"
+            },
+            {
+              "id": "regex 1.5.4",
+              "target": "regex"
+            },
+            {
+              "id": "rustc-serialize 0.3.24",
+              "target": "rustc-serialize"
+            },
+            {
+              "id": "semver 1.0.4",
+              "target": "semver"
+            },
+            {
+              "id": "serde 1.0.130",
+              "target": "serde"
+            },
+            {
+              "id": "serde_json 1.0.68",
+              "target": "serde_json"
+            },
+            {
+              "id": "sha2 0.9.8",
+              "target": "sha2"
+            },
+            {
+              "id": "structopt 0.3.23",
+              "target": "structopt"
+            },
+            {
+              "id": "tera 1.12.1",
+              "target": "tera"
+            },
+            {
+              "id": "textwrap 0.14.2",
+              "target": "textwrap"
+            },
+            {
+              "id": "toml 0.5.8",
+              "target": "toml"
+            }
+          ],
+          "selects": {}
+        },
+        "deps_dev": {
+          "common": [
+            {
+              "id": "tempfile 3.2.0",
+              "target": "tempfile"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "0.0.1"
+      },
+      "license": null
+    },
+    "cargo-lock 7.0.1": {
+      "name": "cargo-lock",
+      "version": "7.0.1",
+      "repository": {
+        "Http": {
+          "name": "cargo-lock",
+          "version": "7.0.1",
+          "sha256": "7fb04b88bd5b2036e30704f95c6ee16f3b5ca3b4ca307da2889d9006648e5c88"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "cargo-lock",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        },
+        {
+          "Binary": {
+            "crate_name": "cargo-lock",
+            "crate_root": "src/bin/cargo-lock/main.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "semver 1.0.4",
+              "target": "semver"
+            },
+            {
+              "id": "serde 1.0.130",
+              "target": "serde"
+            },
+            {
+              "id": "toml 0.5.8",
+              "target": "toml"
+            },
+            {
+              "id": "url 2.2.2",
+              "target": "url"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "7.0.1"
+      },
+      "license": "Apache-2.0 OR MIT"
+    },
+    "cargo-platform 0.1.2": {
+      "name": "cargo-platform",
+      "version": "0.1.2",
+      "repository": {
+        "Http": {
+          "name": "cargo-platform",
+          "version": "0.1.2",
+          "sha256": "cbdb825da8a5df079a43676dbe042702f1707b1109f713a01420fbb4cc71fa27"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "cargo-platform",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "serde 1.0.130",
+              "target": "serde"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "0.1.2"
+      },
+      "license": "MIT OR Apache-2.0"
+    },
+    "cargo_metadata 0.14.0": {
+      "name": "cargo_metadata",
+      "version": "0.14.0",
+      "repository": {
+        "Http": {
+          "name": "cargo_metadata",
+          "version": "0.14.0",
+          "sha256": "c297bd3135f558552f99a0daa180876984ea2c4ffa7470314540dff8c654109a"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "cargo_metadata",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "default"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "camino 1.0.5",
+              "target": "camino"
+            },
+            {
+              "id": "cargo-platform 0.1.2",
+              "target": "cargo-platform"
+            },
+            {
+              "id": "semver 1.0.4",
+              "target": "semver"
+            },
+            {
+              "id": "serde 1.0.130",
+              "target": "serde"
+            },
+            {
+              "id": "serde_json 1.0.68",
+              "target": "serde_json"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "0.14.0"
+      },
+      "license": "MIT"
+    },
+    "cargo_toml 0.10.1": {
+      "name": "cargo_toml",
+      "version": "0.10.1",
+      "repository": {
+        "Http": {
+          "name": "cargo_toml",
+          "version": "0.10.1",
+          "sha256": "c6d613611c914a7db07f28526941ce1e956d2f977b0c5e2014fbfa42230d420f"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "cargo_toml",
+            "crate_root": "src/cargo_toml.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "serde 1.0.130",
+              "target": "serde"
+            },
+            {
+              "id": "toml 0.5.8",
+              "target": "toml"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "proc_macro_deps": {
+          "common": [
+            {
+              "id": "serde_derive 1.0.130",
+              "target": "serde_derive"
+            }
+          ],
+          "selects": {}
+        },
+        "version": "0.10.1"
+      },
+      "license": "Apache-2.0 OR MIT"
+    },
+    "cfg-expr 0.9.0": {
+      "name": "cfg-expr",
+      "version": "0.9.0",
+      "repository": {
+        "Http": {
+          "name": "cfg-expr",
+          "version": "0.9.0",
+          "sha256": "edae0b9625d1fce32f7d64b71784d9b1bf8469ec1a9c417e44aaf16a9cbd7571"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "cfg-expr",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "default"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "smallvec 1.7.0",
+              "target": "smallvec"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "0.9.0"
+      },
+      "license": "MIT OR Apache-2.0"
+    },
+    "cfg-if 1.0.0": {
+      "name": "cfg-if",
+      "version": "1.0.0",
+      "repository": {
+        "Http": {
+          "name": "cfg-if",
+          "version": "1.0.0",
+          "sha256": "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "cfg-if",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "edition": "2018",
+        "version": "1.0.0"
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "chrono 0.4.19": {
+      "name": "chrono",
+      "version": "0.4.19",
+      "repository": {
+        "Http": {
+          "name": "chrono",
+          "version": "0.4.19",
+          "sha256": "670ad68c9088c2a963aaa298cb369688cf3f9465ce5e2d4ca10e6e0098a1ce73"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "chrono",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "clock",
+          "libc",
+          "std",
+          "winapi"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "libc 0.2.103",
+              "target": "libc"
+            },
+            {
+              "id": "num-integer 0.1.44",
+              "target": "num-integer"
+            },
+            {
+              "id": "num-traits 0.2.14",
+              "target": "num-traits"
+            }
+          ],
+          "selects": {
+            "cfg(windows)": [
+              {
+                "id": "winapi 0.3.9",
+                "target": "winapi"
+              }
+            ]
+          }
+        },
+        "edition": "2015",
+        "version": "0.4.19"
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "chrono-tz 0.5.3": {
+      "name": "chrono-tz",
+      "version": "0.5.3",
+      "repository": {
+        "Http": {
+          "name": "chrono-tz",
+          "version": "0.5.3",
+          "sha256": "2554a3155fec064362507487171dcc4edc3df60cb10f3a1fb10ed8094822b120"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "chrono-tz",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        },
+        {
+          "BuildScript": {
+            "crate_name": "build-script-build",
+            "crate_root": "build.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "default",
+          "std"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "chrono 0.4.19",
+              "target": "chrono"
+            },
+            {
+              "id": "chrono-tz 0.5.3",
+              "target": "build-script-build"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2015",
+        "version": "0.5.3"
+      },
+      "build_script_attrs": {
+        "data_glob": [
+          "**/tz/**"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "parse-zoneinfo 0.3.0",
+              "target": "parse-zoneinfo"
+            }
+          ],
+          "selects": {}
+        }
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "clap 2.33.3": {
+      "name": "clap",
+      "version": "2.33.3",
+      "repository": {
+        "Http": {
+          "name": "clap",
+          "version": "2.33.3",
+          "sha256": "37e58ac78573c40708d45522f0d80fa2f01cc4f9b4e2bf749807255454312002"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "clap",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "ansi_term",
+          "atty",
+          "color",
+          "default",
+          "strsim",
+          "suggestions",
+          "vec_map"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "atty 0.2.14",
+              "target": "atty"
+            },
+            {
+              "id": "bitflags 1.3.2",
+              "target": "bitflags"
+            },
+            {
+              "id": "strsim 0.8.0",
+              "target": "strsim"
+            },
+            {
+              "id": "textwrap 0.11.0",
+              "target": "textwrap"
+            },
+            {
+              "id": "unicode-width 0.1.9",
+              "target": "unicode-width"
+            },
+            {
+              "id": "vec_map 0.8.2",
+              "target": "vec_map"
+            }
+          ],
+          "selects": {
+            "cfg(not(windows))": [
+              {
+                "id": "ansi_term 0.11.0",
+                "target": "ansi_term"
+              }
+            ]
+          }
+        },
+        "edition": "2015",
+        "version": "2.33.3"
+      },
+      "license": "MIT"
+    },
+    "cpufeatures 0.2.1": {
+      "name": "cpufeatures",
+      "version": "0.2.1",
+      "repository": {
+        "Http": {
+          "name": "cpufeatures",
+          "version": "0.2.1",
+          "sha256": "95059428f66df56b63431fdb4e1947ed2190586af5c5a8a8b71122bdf5a7f469"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "cpufeatures",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [],
+          "selects": {
+            "aarch64-apple-darwin": [
+              {
+                "id": "libc 0.2.103",
+                "target": "libc"
+              }
+            ]
+          }
+        },
+        "edition": "2018",
+        "version": "0.2.1"
+      },
+      "license": "MIT OR Apache-2.0"
+    },
+    "cross_installer 0.1.0": {
+      "name": "cross_installer",
+      "version": "0.1.0",
+      "repository": null,
+      "targets": [
+        {
+          "Binary": {
+            "crate_name": "cross_installer",
+            "crate_root": "src/main.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "structopt 0.3.23",
+              "target": "structopt"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "0.1.0"
+      },
+      "license": null
+    },
+    "crossbeam-utils 0.8.5": {
+      "name": "crossbeam-utils",
+      "version": "0.8.5",
+      "repository": {
+        "Http": {
+          "name": "crossbeam-utils",
+          "version": "0.8.5",
+          "sha256": "d82cfc11ce7f2c3faef78d8a684447b40d503d9681acebed6cb728d45940c4db"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "crossbeam-utils",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        },
+        {
+          "BuildScript": {
+            "crate_name": "build-script-build",
+            "crate_root": "build.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "default",
+          "lazy_static",
+          "std"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "cfg-if 1.0.0",
+              "target": "cfg-if"
+            },
+            {
+              "id": "crossbeam-utils 0.8.5",
+              "target": "build-script-build"
+            },
+            {
+              "id": "lazy_static 1.4.0",
+              "target": "lazy_static"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "0.8.5"
+      },
+      "build_script_attrs": {
+        "data_glob": [
+          "**/*.rs"
+        ]
+      },
+      "license": "MIT OR Apache-2.0"
+    },
+    "deunicode 0.4.3": {
+      "name": "deunicode",
+      "version": "0.4.3",
+      "repository": {
+        "Http": {
+          "name": "deunicode",
+          "version": "0.4.3",
+          "sha256": "850878694b7933ca4c9569d30a34b55031b9b139ee1fc7b94a527c4ef960d690"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "deunicode",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "compile_data_glob": [
+          "**/*.bin",
+          "**/*.txt"
+        ],
+        "edition": "2015",
+        "version": "0.4.3"
+      },
+      "license": "BSD-3-Clause"
+    },
+    "digest 0.8.1": {
+      "name": "digest",
+      "version": "0.8.1",
+      "repository": {
+        "Http": {
+          "name": "digest",
+          "version": "0.8.1",
+          "sha256": "f3d0c8c8752312f9713efd397ff63acb9f85585afbf179282e720e7704954dd5"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "digest",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "generic-array 0.12.4",
+              "target": "generic-array"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2015",
+        "version": "0.8.1"
+      },
+      "license": "MIT OR Apache-2.0"
+    },
+    "digest 0.9.0": {
+      "name": "digest",
+      "version": "0.9.0",
+      "repository": {
+        "Http": {
+          "name": "digest",
+          "version": "0.9.0",
+          "sha256": "d3dd60d1080a57a05ab032377049e0591415d2b31afd7028356dbf3cc6dcb066"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "digest",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "alloc",
+          "std"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "generic-array 0.14.4",
+              "target": "generic-array"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "0.9.0"
+      },
+      "license": "MIT OR Apache-2.0"
+    },
+    "direct-cargo-bazel-deps 0.0.1": {
+      "name": "direct-cargo-bazel-deps",
+      "version": "0.0.1",
+      "repository": null,
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "direct-cargo-bazel-deps",
+            "crate_root": ".direct_cargo_bazel_deps.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "edition": "2018",
+        "version": "0.0.1"
+      },
+      "license": null
+    },
+    "fake-simd 0.1.2": {
+      "name": "fake-simd",
+      "version": "0.1.2",
+      "repository": {
+        "Http": {
+          "name": "fake-simd",
+          "version": "0.1.2",
+          "sha256": "e88a8acf291dafb59c2d96e8f59828f3838bb1a70398823ade51a84de6a6deed"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "fake-simd",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "edition": "2015",
+        "version": "0.1.2"
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "fnv 1.0.7": {
+      "name": "fnv",
+      "version": "1.0.7",
+      "repository": {
+        "Http": {
+          "name": "fnv",
+          "version": "1.0.7",
+          "sha256": "3f9eec918d3f24069decb9af1554cad7c880e2da24a9afd88aca000531ab82c1"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "fnv",
+            "crate_root": "lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "default",
+          "std"
+        ],
+        "edition": "2015",
+        "version": "1.0.7"
+      },
+      "license": "Apache-2.0 / MIT"
+    },
+    "form_urlencoded 1.0.1": {
+      "name": "form_urlencoded",
+      "version": "1.0.1",
+      "repository": {
+        "Http": {
+          "name": "form_urlencoded",
+          "version": "1.0.1",
+          "sha256": "5fc25a87fa4fd2094bffb06925852034d90a17f0d1e05197d4956d3555752191"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "form_urlencoded",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "matches 0.1.9",
+              "target": "matches"
+            },
+            {
+              "id": "percent-encoding 2.1.0",
+              "target": "percent-encoding"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "1.0.1"
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "generic-array 0.12.4": {
+      "name": "generic-array",
+      "version": "0.12.4",
+      "repository": {
+        "Http": {
+          "name": "generic-array",
+          "version": "0.12.4",
+          "sha256": "ffdf9f34f1447443d37393cc6c2b8313aebddcd96906caf34e54c68d8e57d7bd"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "generic-array",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "typenum 1.14.0",
+              "target": "typenum"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2015",
+        "version": "0.12.4"
+      },
+      "license": "MIT"
+    },
+    "generic-array 0.14.4": {
+      "name": "generic-array",
+      "version": "0.14.4",
+      "repository": {
+        "Http": {
+          "name": "generic-array",
+          "version": "0.14.4",
+          "sha256": "501466ecc8a30d1d3b7fc9229b122b2ce8ed6e9d9223f1138d4babb253e51817"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "generic-array",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        },
+        {
+          "BuildScript": {
+            "crate_name": "build-script-build",
+            "crate_root": "build.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "generic-array 0.14.4",
+              "target": "build-script-build"
+            },
+            {
+              "id": "typenum 1.14.0",
+              "target": "typenum"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2015",
+        "version": "0.14.4"
+      },
+      "build_script_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "version_check 0.9.3",
+              "target": "version_check"
+            }
+          ],
+          "selects": {}
+        }
+      },
+      "license": "MIT"
+    },
+    "getrandom 0.2.3": {
+      "name": "getrandom",
+      "version": "0.2.3",
+      "repository": {
+        "Http": {
+          "name": "getrandom",
+          "version": "0.2.3",
+          "sha256": "7fcd999463524c52659517fe2cea98493cfe485d10565e7b0fb07dbba7ad2753"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "getrandom",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "std"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "cfg-if 1.0.0",
+              "target": "cfg-if"
+            }
+          ],
+          "selects": {
+            "cfg(target_os = \"wasi\")": [
+              {
+                "id": "wasi 0.10.2+wasi-snapshot-preview1",
+                "target": "wasi"
+              }
+            ],
+            "cfg(unix)": [
+              {
+                "id": "libc 0.2.103",
+                "target": "libc"
+              }
+            ]
+          }
+        },
+        "edition": "2018",
+        "version": "0.2.3"
+      },
+      "license": "MIT OR Apache-2.0"
+    },
+    "globset 0.4.8": {
+      "name": "globset",
+      "version": "0.4.8",
+      "repository": {
+        "Http": {
+          "name": "globset",
+          "version": "0.4.8",
+          "sha256": "10463d9ff00a2a068db14231982f5132edebad0d7660cd956a1c30292dbcbfbd"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "globset",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "aho-corasick 0.7.18",
+              "target": "aho-corasick"
+            },
+            {
+              "id": "bstr 0.2.17",
+              "target": "bstr"
+            },
+            {
+              "id": "fnv 1.0.7",
+              "target": "fnv"
+            },
+            {
+              "id": "log 0.4.14",
+              "target": "log"
+            },
+            {
+              "id": "regex 1.5.4",
+              "target": "regex"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "0.4.8"
+      },
+      "license": "Unlicense/MIT"
+    },
+    "globwalk 0.8.1": {
+      "name": "globwalk",
+      "version": "0.8.1",
+      "repository": {
+        "Http": {
+          "name": "globwalk",
+          "version": "0.8.1",
+          "sha256": "93e3af942408868f6934a7b85134a3230832b9977cf66125df2f9edcfce4ddcc"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "globwalk",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "bitflags 1.3.2",
+              "target": "bitflags"
+            },
+            {
+              "id": "ignore 0.4.18",
+              "target": "ignore"
+            },
+            {
+              "id": "walkdir 2.3.2",
+              "target": "walkdir"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2015",
+        "version": "0.8.1"
+      },
+      "license": "MIT"
+    },
+    "heck 0.3.3": {
+      "name": "heck",
+      "version": "0.3.3",
+      "repository": {
+        "Http": {
+          "name": "heck",
+          "version": "0.3.3",
+          "sha256": "6d621efb26863f0e9924c6ac577e8275e5e6b77455db64ffa6c65c904e9e132c"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "heck",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "unicode-segmentation 1.8.0",
+              "target": "unicode-segmentation"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "0.3.3"
+      },
+      "license": "MIT OR Apache-2.0"
+    },
+    "hermit-abi 0.1.19": {
+      "name": "hermit-abi",
+      "version": "0.1.19",
+      "repository": {
+        "Http": {
+          "name": "hermit-abi",
+          "version": "0.1.19",
+          "sha256": "62b467343b94ba476dcb2500d242dadbb39557df889310ac77c5d99100aaac33"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "hermit-abi",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "default"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "libc 0.2.103",
+              "target": "libc"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "0.1.19"
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "humansize 1.1.1": {
+      "name": "humansize",
+      "version": "1.1.1",
+      "repository": {
+        "Http": {
+          "name": "humansize",
+          "version": "1.1.1",
+          "sha256": "02296996cb8796d7c6e3bc2d9211b7802812d36999a51bb754123ead7d37d026"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "humansize",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "edition": "2015",
+        "version": "1.1.1"
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "idna 0.2.3": {
+      "name": "idna",
+      "version": "0.2.3",
+      "repository": {
+        "Http": {
+          "name": "idna",
+          "version": "0.2.3",
+          "sha256": "418a0a6fab821475f634efe3ccc45c013f742efe03d853e8d3355d5cb850ecf8"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "idna",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "matches 0.1.9",
+              "target": "matches"
+            },
+            {
+              "id": "unicode-bidi 0.3.7",
+              "target": "unicode-bidi"
+            },
+            {
+              "id": "unicode-normalization 0.1.19",
+              "target": "unicode-normalization"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "0.2.3"
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "ignore 0.4.18": {
+      "name": "ignore",
+      "version": "0.4.18",
+      "repository": {
+        "Http": {
+          "name": "ignore",
+          "version": "0.4.18",
+          "sha256": "713f1b139373f96a2e0ce3ac931cd01ee973c3c5dd7c40c0c2efe96ad2b6751d"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "ignore",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "crossbeam-utils 0.8.5",
+              "target": "crossbeam-utils"
+            },
+            {
+              "id": "globset 0.4.8",
+              "target": "globset"
+            },
+            {
+              "id": "lazy_static 1.4.0",
+              "target": "lazy_static"
+            },
+            {
+              "id": "log 0.4.14",
+              "target": "log"
+            },
+            {
+              "id": "memchr 2.4.1",
+              "target": "memchr"
+            },
+            {
+              "id": "regex 1.5.4",
+              "target": "regex"
+            },
+            {
+              "id": "same-file 1.0.6",
+              "target": "same-file"
+            },
+            {
+              "id": "thread_local 1.1.3",
+              "target": "thread_local"
+            },
+            {
+              "id": "walkdir 2.3.2",
+              "target": "walkdir"
+            }
+          ],
+          "selects": {
+            "cfg(windows)": [
+              {
+                "id": "winapi-util 0.1.5",
+                "target": "winapi-util"
+              }
+            ]
+          }
+        },
+        "edition": "2018",
+        "version": "0.4.18"
+      },
+      "license": "Unlicense/MIT"
+    },
+    "itoa 0.4.8": {
+      "name": "itoa",
+      "version": "0.4.8",
+      "repository": {
+        "Http": {
+          "name": "itoa",
+          "version": "0.4.8",
+          "sha256": "b71991ff56294aa922b450139ee08b3bfc70982c6b2c7562771375cf73542dd4"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "itoa",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "edition": "2015",
+        "version": "0.4.8"
+      },
+      "license": "MIT OR Apache-2.0"
+    },
+    "lazy_static 1.4.0": {
+      "name": "lazy_static",
+      "version": "1.4.0",
+      "repository": {
+        "Http": {
+          "name": "lazy_static",
+          "version": "1.4.0",
+          "sha256": "e2abad23fbc42b3700f2f279844dc832adb2b2eb069b2df918f455c4e18cc646"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "lazy_static",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "edition": "2015",
+        "version": "1.4.0"
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "libc 0.2.103": {
+      "name": "libc",
+      "version": "0.2.103",
+      "repository": {
+        "Http": {
+          "name": "libc",
+          "version": "0.2.103",
+          "sha256": "dd8f7255a17a627354f321ef0055d63b898c6fb27eff628af4d1b66b7331edf6"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "libc",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        },
+        {
+          "BuildScript": {
+            "crate_name": "build-script-build",
+            "crate_root": "build.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "default",
+          "std"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "libc 0.2.103",
+              "target": "build-script-build"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2015",
+        "version": "0.2.103"
+      },
+      "build_script_attrs": {},
+      "license": "MIT OR Apache-2.0"
+    },
+    "log 0.4.14": {
+      "name": "log",
+      "version": "0.4.14",
+      "repository": {
+        "Http": {
+          "name": "log",
+          "version": "0.4.14",
+          "sha256": "51b9bbe6c47d51fc3e1a9b945965946b4c44142ab8792c50835a980d362c2710"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "log",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        },
+        {
+          "BuildScript": {
+            "crate_name": "build-script-build",
+            "crate_root": "build.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "cfg-if 1.0.0",
+              "target": "cfg-if"
+            },
+            {
+              "id": "log 0.4.14",
+              "target": "build-script-build"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2015",
+        "version": "0.4.14"
+      },
+      "build_script_attrs": {},
+      "license": "MIT OR Apache-2.0"
+    },
+    "maplit 1.0.2": {
+      "name": "maplit",
+      "version": "1.0.2",
+      "repository": {
+        "Http": {
+          "name": "maplit",
+          "version": "1.0.2",
+          "sha256": "3e2e65a1a2e43cfcb47a895c4c8b10d1f4a61097f9f254f183aee60cad9c651d"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "maplit",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "edition": "2015",
+        "version": "1.0.2"
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "matches 0.1.9": {
+      "name": "matches",
+      "version": "0.1.9",
+      "repository": {
+        "Http": {
+          "name": "matches",
+          "version": "0.1.9",
+          "sha256": "a3e378b66a060d48947b590737b30a1be76706c8dd7b8ba0f2fe3989c68a853f"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "matches",
+            "crate_root": "lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "edition": "2015",
+        "version": "0.1.9"
+      },
+      "license": "MIT"
+    },
+    "memchr 2.4.1": {
+      "name": "memchr",
+      "version": "2.4.1",
+      "repository": {
+        "Http": {
+          "name": "memchr",
+          "version": "2.4.1",
+          "sha256": "308cc39be01b73d0d18f82a0e7b2a3df85245f84af96fdddc5d202d27e47b86a"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "memchr",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        },
+        {
+          "BuildScript": {
+            "crate_name": "build-script-build",
+            "crate_root": "build.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "default",
+          "std"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "memchr 2.4.1",
+              "target": "build-script-build"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "2.4.1"
+      },
+      "build_script_attrs": {},
+      "license": "Unlicense/MIT"
+    },
+    "num-integer 0.1.44": {
+      "name": "num-integer",
+      "version": "0.1.44",
+      "repository": {
+        "Http": {
+          "name": "num-integer",
+          "version": "0.1.44",
+          "sha256": "d2cc698a63b549a70bc047073d2949cce27cd1c7b0a4a862d08a8031bc2801db"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "num-integer",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        },
+        {
+          "BuildScript": {
+            "crate_name": "build-script-build",
+            "crate_root": "build.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "num-integer 0.1.44",
+              "target": "build-script-build"
+            },
+            {
+              "id": "num-traits 0.2.14",
+              "target": "num-traits"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2015",
+        "version": "0.1.44"
+      },
+      "build_script_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "autocfg 1.0.1",
+              "target": "autocfg"
+            }
+          ],
+          "selects": {}
+        }
+      },
+      "license": "MIT OR Apache-2.0"
+    },
+    "num-traits 0.2.14": {
+      "name": "num-traits",
+      "version": "0.2.14",
+      "repository": {
+        "Http": {
+          "name": "num-traits",
+          "version": "0.2.14",
+          "sha256": "9a64b1ec5cda2586e284722486d802acf1f7dbdc623e2bfc57e65ca1cd099290"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "num-traits",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        },
+        {
+          "BuildScript": {
+            "crate_name": "build-script-build",
+            "crate_root": "build.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "num-traits 0.2.14",
+              "target": "build-script-build"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2015",
+        "version": "0.2.14"
+      },
+      "build_script_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "autocfg 1.0.1",
+              "target": "autocfg"
+            }
+          ],
+          "selects": {}
+        }
+      },
+      "license": "MIT OR Apache-2.0"
+    },
+    "once_cell 1.8.0": {
+      "name": "once_cell",
+      "version": "1.8.0",
+      "repository": {
+        "Http": {
+          "name": "once_cell",
+          "version": "1.8.0",
+          "sha256": "692fcb63b64b1758029e0a96ee63e049ce8c5948587f2f7208df04625e5f6b56"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "once_cell",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "alloc",
+          "default",
+          "race",
+          "std"
+        ],
+        "edition": "2018",
+        "version": "1.8.0"
+      },
+      "license": "MIT OR Apache-2.0"
+    },
+    "opaque-debug 0.2.3": {
+      "name": "opaque-debug",
+      "version": "0.2.3",
+      "repository": {
+        "Http": {
+          "name": "opaque-debug",
+          "version": "0.2.3",
+          "sha256": "2839e79665f131bdb5782e51f2c6c9599c133c6098982a54c794358bf432529c"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "opaque-debug",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "edition": "2015",
+        "version": "0.2.3"
+      },
+      "license": "MIT OR Apache-2.0"
+    },
+    "opaque-debug 0.3.0": {
+      "name": "opaque-debug",
+      "version": "0.3.0",
+      "repository": {
+        "Http": {
+          "name": "opaque-debug",
+          "version": "0.3.0",
+          "sha256": "624a8340c38c1b80fd549087862da4ba43e08858af025b236e509b6649fc13d5"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "opaque-debug",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "edition": "2018",
+        "version": "0.3.0"
+      },
+      "license": "MIT OR Apache-2.0"
+    },
+    "parse-zoneinfo 0.3.0": {
+      "name": "parse-zoneinfo",
+      "version": "0.3.0",
+      "repository": {
+        "Http": {
+          "name": "parse-zoneinfo",
+          "version": "0.3.0",
+          "sha256": "c705f256449c60da65e11ff6626e0c16a0a0b96aaa348de61376b249bc340f41"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "parse-zoneinfo",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "regex 1.5.4",
+              "target": "regex"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2015",
+        "version": "0.3.0"
+      },
+      "license": "MIT"
+    },
+    "pathdiff 0.2.1": {
+      "name": "pathdiff",
+      "version": "0.2.1",
+      "repository": {
+        "Http": {
+          "name": "pathdiff",
+          "version": "0.2.1",
+          "sha256": "8835116a5c179084a830efb3adc117ab007512b535bc1a21c991d3b32a6b44dd"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "pathdiff",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "edition": "2018",
+        "version": "0.2.1"
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "percent-encoding 2.1.0": {
+      "name": "percent-encoding",
+      "version": "2.1.0",
+      "repository": {
+        "Http": {
+          "name": "percent-encoding",
+          "version": "2.1.0",
+          "sha256": "d4fd5641d01c8f18a23da7b6fe29298ff4b55afcccdf78973b24cf3175fee32e"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "percent-encoding",
+            "crate_root": "lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "edition": "2015",
+        "version": "2.1.0"
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "pest 2.1.3": {
+      "name": "pest",
+      "version": "2.1.3",
+      "repository": {
+        "Http": {
+          "name": "pest",
+          "version": "2.1.3",
+          "sha256": "10f4872ae94d7b90ae48754df22fd42ad52ce740b8f370b03da4835417403e53"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "pest",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "ucd-trie 0.1.3",
+              "target": "ucd-trie"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2015",
+        "version": "2.1.3"
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "pest_derive 2.1.0": {
+      "name": "pest_derive",
+      "version": "2.1.0",
+      "repository": {
+        "Http": {
+          "name": "pest_derive",
+          "version": "2.1.0",
+          "sha256": "833d1ae558dc601e9a60366421196a8d94bc0ac980476d0b67e1d0988d72b2d0"
+        }
+      },
+      "targets": [
+        {
+          "ProcMacro": {
+            "crate_name": "pest_derive",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "pest 2.1.3",
+              "target": "pest"
+            },
+            {
+              "id": "pest_generator 2.1.3",
+              "target": "pest_generator"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2015",
+        "version": "2.1.0"
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "pest_generator 2.1.3": {
+      "name": "pest_generator",
+      "version": "2.1.3",
+      "repository": {
+        "Http": {
+          "name": "pest_generator",
+          "version": "2.1.3",
+          "sha256": "99b8db626e31e5b81787b9783425769681b347011cc59471e33ea46d2ea0cf55"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "pest_generator",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "pest 2.1.3",
+              "target": "pest"
+            },
+            {
+              "id": "pest_meta 2.1.3",
+              "target": "pest_meta"
+            },
+            {
+              "id": "proc-macro2 1.0.29",
+              "target": "proc-macro2"
+            },
+            {
+              "id": "quote 1.0.10",
+              "target": "quote"
+            },
+            {
+              "id": "syn 1.0.80",
+              "target": "syn"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2015",
+        "version": "2.1.3"
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "pest_meta 2.1.3": {
+      "name": "pest_meta",
+      "version": "2.1.3",
+      "repository": {
+        "Http": {
+          "name": "pest_meta",
+          "version": "2.1.3",
+          "sha256": "54be6e404f5317079812fc8f9f5279de376d8856929e21c184ecf6bbd692a11d"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "pest_meta",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "maplit 1.0.2",
+              "target": "maplit"
+            },
+            {
+              "id": "pest 2.1.3",
+              "target": "pest"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2015",
+        "version": "2.1.3"
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "ppv-lite86 0.2.10": {
+      "name": "ppv-lite86",
+      "version": "0.2.10",
+      "repository": {
+        "Http": {
+          "name": "ppv-lite86",
+          "version": "0.2.10",
+          "sha256": "ac74c624d6b2d21f425f752262f42188365d7b8ff1aff74c82e45136510a4857"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "ppv-lite86",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "simd",
+          "std"
+        ],
+        "edition": "2018",
+        "version": "0.2.10"
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "proc-macro-error 1.0.4": {
+      "name": "proc-macro-error",
+      "version": "1.0.4",
+      "repository": {
+        "Http": {
+          "name": "proc-macro-error",
+          "version": "1.0.4",
+          "sha256": "da25490ff9892aab3fcf7c36f08cfb902dd3e71ca0f9f9517bea02a73a5ce38c"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "proc-macro-error",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        },
+        {
+          "BuildScript": {
+            "crate_name": "build-script-build",
+            "crate_root": "build.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "default",
+          "syn",
+          "syn-error"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "proc-macro-error 1.0.4",
+              "target": "build-script-build"
+            },
+            {
+              "id": "proc-macro2 1.0.29",
+              "target": "proc-macro2"
+            },
+            {
+              "id": "quote 1.0.10",
+              "target": "quote"
+            },
+            {
+              "id": "syn 1.0.80",
+              "target": "syn"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "proc_macro_deps": {
+          "common": [
+            {
+              "id": "proc-macro-error-attr 1.0.4",
+              "target": "proc-macro-error-attr"
+            }
+          ],
+          "selects": {}
+        },
+        "version": "1.0.4"
+      },
+      "build_script_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "version_check 0.9.3",
+              "target": "version_check"
+            }
+          ],
+          "selects": {}
+        }
+      },
+      "license": "MIT OR Apache-2.0"
+    },
+    "proc-macro-error-attr 1.0.4": {
+      "name": "proc-macro-error-attr",
+      "version": "1.0.4",
+      "repository": {
+        "Http": {
+          "name": "proc-macro-error-attr",
+          "version": "1.0.4",
+          "sha256": "a1be40180e52ecc98ad80b184934baf3d0d29f979574e439af5a55274b35f869"
+        }
+      },
+      "targets": [
+        {
+          "ProcMacro": {
+            "crate_name": "proc-macro-error-attr",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        },
+        {
+          "BuildScript": {
+            "crate_name": "build-script-build",
+            "crate_root": "build.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "proc-macro-error-attr 1.0.4",
+              "target": "build-script-build"
+            },
+            {
+              "id": "proc-macro2 1.0.29",
+              "target": "proc-macro2"
+            },
+            {
+              "id": "quote 1.0.10",
+              "target": "quote"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "1.0.4"
+      },
+      "build_script_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "version_check 0.9.3",
+              "target": "version_check"
+            }
+          ],
+          "selects": {}
+        }
+      },
+      "license": "MIT OR Apache-2.0"
+    },
+    "proc-macro2 1.0.29": {
+      "name": "proc-macro2",
+      "version": "1.0.29",
+      "repository": {
+        "Http": {
+          "name": "proc-macro2",
+          "version": "1.0.29",
+          "sha256": "b9f5105d4fdaab20335ca9565e106a5d9b82b6219b5ba735731124ac6711d23d"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "proc-macro2",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        },
+        {
+          "BuildScript": {
+            "crate_name": "build-script-build",
+            "crate_root": "build.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "default",
+          "proc-macro"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "proc-macro2 1.0.29",
+              "target": "build-script-build"
+            },
+            {
+              "id": "unicode-xid 0.2.2",
+              "target": "unicode-xid"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "1.0.29"
+      },
+      "build_script_attrs": {},
+      "license": "MIT OR Apache-2.0"
+    },
+    "quote 1.0.10": {
+      "name": "quote",
+      "version": "1.0.10",
+      "repository": {
+        "Http": {
+          "name": "quote",
+          "version": "1.0.10",
+          "sha256": "38bc8cc6a5f2e3655e0899c1b848643b2562f853f114bfec7be120678e3ace05"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "quote",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "default",
+          "proc-macro"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "proc-macro2 1.0.29",
+              "target": "proc-macro2"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "1.0.10"
+      },
+      "license": "MIT OR Apache-2.0"
+    },
+    "rand 0.8.4": {
+      "name": "rand",
+      "version": "0.8.4",
+      "repository": {
+        "Http": {
+          "name": "rand",
+          "version": "0.8.4",
+          "sha256": "2e7573632e6454cf6b99d7aac4ccca54be06da05aca2ef7423d22d27d4d4bcd8"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "rand",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "alloc",
+          "default",
+          "getrandom",
+          "libc",
+          "rand_chacha",
+          "rand_hc",
+          "std",
+          "std_rng"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "rand_core 0.6.3",
+              "target": "rand_core"
+            }
+          ],
+          "selects": {
+            "cfg(not(target_os = \"emscripten\"))": [
+              {
+                "id": "rand_chacha 0.3.1",
+                "target": "rand_chacha"
+              }
+            ],
+            "cfg(target_os = \"emscripten\")": [
+              {
+                "id": "rand_hc 0.3.1",
+                "target": "rand_hc"
+              }
+            ],
+            "cfg(unix)": [
+              {
+                "id": "libc 0.2.103",
+                "target": "libc"
+              }
+            ]
+          }
+        },
+        "edition": "2018",
+        "version": "0.8.4"
+      },
+      "license": "MIT OR Apache-2.0"
+    },
+    "rand_chacha 0.3.1": {
+      "name": "rand_chacha",
+      "version": "0.3.1",
+      "repository": {
+        "Http": {
+          "name": "rand_chacha",
+          "version": "0.3.1",
+          "sha256": "e6c10a63a0fa32252be49d21e7709d4d4baf8d231c2dbce1eaa8141b9b127d88"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "rand_chacha",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "std"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "ppv-lite86 0.2.10",
+              "target": "ppv-lite86"
+            },
+            {
+              "id": "rand_core 0.6.3",
+              "target": "rand_core"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "0.3.1"
+      },
+      "license": "MIT OR Apache-2.0"
+    },
+    "rand_core 0.6.3": {
+      "name": "rand_core",
+      "version": "0.6.3",
+      "repository": {
+        "Http": {
+          "name": "rand_core",
+          "version": "0.6.3",
+          "sha256": "d34f1408f55294453790c48b2f1ebbb1c5b4b7563eb1f418bcfcfdbb06ebb4e7"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "rand_core",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "alloc",
+          "getrandom",
+          "std"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "getrandom 0.2.3",
+              "target": "getrandom"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "0.6.3"
+      },
+      "license": "MIT OR Apache-2.0"
+    },
+    "rand_hc 0.3.1": {
+      "name": "rand_hc",
+      "version": "0.3.1",
+      "repository": {
+        "Http": {
+          "name": "rand_hc",
+          "version": "0.3.1",
+          "sha256": "d51e9f596de227fda2ea6c84607f5558e196eeaf43c986b724ba4fb8fdf497e7"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "rand_hc",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "rand_core 0.6.3",
+              "target": "rand_core"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "0.3.1"
+      },
+      "license": "MIT OR Apache-2.0"
+    },
+    "redox_syscall 0.2.10": {
+      "name": "redox_syscall",
+      "version": "0.2.10",
+      "repository": {
+        "Http": {
+          "name": "redox_syscall",
+          "version": "0.2.10",
+          "sha256": "8383f39639269cde97d255a32bdb68c047337295414940c68bdd30c2e13203ff"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "syscall",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "bitflags 1.3.2",
+              "target": "bitflags"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "0.2.10"
+      },
+      "license": "MIT"
+    },
+    "regex 1.5.4": {
+      "name": "regex",
+      "version": "1.5.4",
+      "repository": {
+        "Http": {
+          "name": "regex",
+          "version": "1.5.4",
+          "sha256": "d07a8629359eb56f1e2fb1652bb04212c072a87ba68546a04065d525673ac461"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "regex",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "aho-corasick",
+          "default",
+          "memchr",
+          "perf",
+          "perf-cache",
+          "perf-dfa",
+          "perf-inline",
+          "perf-literal",
+          "std",
+          "unicode",
+          "unicode-age",
+          "unicode-bool",
+          "unicode-case",
+          "unicode-gencat",
+          "unicode-perl",
+          "unicode-script",
+          "unicode-segment"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "aho-corasick 0.7.18",
+              "target": "aho-corasick"
+            },
+            {
+              "id": "memchr 2.4.1",
+              "target": "memchr"
+            },
+            {
+              "id": "regex-syntax 0.6.25",
+              "target": "regex-syntax"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "1.5.4"
+      },
+      "license": "MIT OR Apache-2.0"
+    },
+    "regex-syntax 0.6.25": {
+      "name": "regex-syntax",
+      "version": "0.6.25",
+      "repository": {
+        "Http": {
+          "name": "regex-syntax",
+          "version": "0.6.25",
+          "sha256": "f497285884f3fcff424ffc933e56d7cbca511def0c9831a7f9b5f6153e3cc89b"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "regex-syntax",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "default",
+          "unicode",
+          "unicode-age",
+          "unicode-bool",
+          "unicode-case",
+          "unicode-gencat",
+          "unicode-perl",
+          "unicode-script",
+          "unicode-segment"
+        ],
+        "edition": "2018",
+        "version": "0.6.25"
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "remove_dir_all 0.5.3": {
+      "name": "remove_dir_all",
+      "version": "0.5.3",
+      "repository": {
+        "Http": {
+          "name": "remove_dir_all",
+          "version": "0.5.3",
+          "sha256": "3acd125665422973a33ac9d3dd2df85edad0f4ae9b00dafb1a05e43a9f5ef8e7"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "remove_dir_all",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [],
+          "selects": {
+            "cfg(windows)": [
+              {
+                "id": "winapi 0.3.9",
+                "target": "winapi"
+              }
+            ]
+          }
+        },
+        "edition": "2015",
+        "version": "0.5.3"
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "rustc-serialize 0.3.24": {
+      "name": "rustc-serialize",
+      "version": "0.3.24",
+      "repository": {
+        "Http": {
+          "name": "rustc-serialize",
+          "version": "0.3.24",
+          "sha256": "dcf128d1287d2ea9d80910b5f1120d0b8eede3fbf1abe91c40d39ea7d51e6fda"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "rustc-serialize",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "edition": "2015",
+        "version": "0.3.24"
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "ryu 1.0.5": {
+      "name": "ryu",
+      "version": "1.0.5",
+      "repository": {
+        "Http": {
+          "name": "ryu",
+          "version": "1.0.5",
+          "sha256": "71d301d4193d031abdd79ff7e3dd721168a9572ef3fe51a1517aba235bd8f86e"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "ryu",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        },
+        {
+          "BuildScript": {
+            "crate_name": "build-script-build",
+            "crate_root": "build.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "ryu 1.0.5",
+              "target": "build-script-build"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "1.0.5"
+      },
+      "build_script_attrs": {},
+      "license": "Apache-2.0 OR BSL-1.0"
+    },
+    "same-file 1.0.6": {
+      "name": "same-file",
+      "version": "1.0.6",
+      "repository": {
+        "Http": {
+          "name": "same-file",
+          "version": "1.0.6",
+          "sha256": "93fc1dc3aaa9bfed95e02e6eadabb4baf7e3078b0bd1b4d7b6b0b68378900502"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "same-file",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [],
+          "selects": {
+            "cfg(windows)": [
+              {
+                "id": "winapi-util 0.1.5",
+                "target": "winapi-util"
+              }
+            ]
+          }
+        },
+        "edition": "2018",
+        "version": "1.0.6"
+      },
+      "license": "Unlicense/MIT"
+    },
+    "semver 1.0.4": {
+      "name": "semver",
+      "version": "1.0.4",
+      "repository": {
+        "Http": {
+          "name": "semver",
+          "version": "1.0.4",
+          "sha256": "568a8e6258aa33c13358f81fd834adb854c6f7c9468520910a9b1e8fac068012"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "semver",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        },
+        {
+          "BuildScript": {
+            "crate_name": "build-script-build",
+            "crate_root": "build.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "default",
+          "serde",
+          "std"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "semver 1.0.4",
+              "target": "build-script-build"
+            },
+            {
+              "id": "serde 1.0.130",
+              "target": "serde"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "1.0.4"
+      },
+      "build_script_attrs": {},
+      "license": "MIT OR Apache-2.0"
+    },
+    "serde 1.0.130": {
+      "name": "serde",
+      "version": "1.0.130",
+      "repository": {
+        "Http": {
+          "name": "serde",
+          "version": "1.0.130",
+          "sha256": "f12d06de37cf59146fbdecab66aa99f9fe4f78722e3607577a5375d66bd0c913"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "serde",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        },
+        {
+          "BuildScript": {
+            "crate_name": "build-script-build",
+            "crate_root": "build.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "default",
+          "derive",
+          "serde_derive",
+          "std"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "serde 1.0.130",
+              "target": "build-script-build"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2015",
+        "proc_macro_deps": {
+          "common": [
+            {
+              "id": "serde_derive 1.0.130",
+              "target": "serde_derive"
+            }
+          ],
+          "selects": {}
+        },
+        "version": "1.0.130"
+      },
+      "build_script_attrs": {},
+      "license": "MIT OR Apache-2.0"
+    },
+    "serde_derive 1.0.130": {
+      "name": "serde_derive",
+      "version": "1.0.130",
+      "repository": {
+        "Http": {
+          "name": "serde_derive",
+          "version": "1.0.130",
+          "sha256": "d7bc1a1ab1961464eae040d96713baa5a724a8152c1222492465b54322ec508b"
+        }
+      },
+      "targets": [
+        {
+          "ProcMacro": {
+            "crate_name": "serde_derive",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        },
+        {
+          "BuildScript": {
+            "crate_name": "build-script-build",
+            "crate_root": "build.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "default"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "proc-macro2 1.0.29",
+              "target": "proc-macro2"
+            },
+            {
+              "id": "quote 1.0.10",
+              "target": "quote"
+            },
+            {
+              "id": "serde_derive 1.0.130",
+              "target": "build-script-build"
+            },
+            {
+              "id": "syn 1.0.80",
+              "target": "syn"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2015",
+        "version": "1.0.130"
+      },
+      "build_script_attrs": {},
+      "license": "MIT OR Apache-2.0"
+    },
+    "serde_json 1.0.68": {
+      "name": "serde_json",
+      "version": "1.0.68",
+      "repository": {
+        "Http": {
+          "name": "serde_json",
+          "version": "1.0.68",
+          "sha256": "0f690853975602e1bfe1ccbf50504d67174e3bcf340f23b5ea9992e0587a52d8"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "serde_json",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        },
+        {
+          "BuildScript": {
+            "crate_name": "build-script-build",
+            "crate_root": "build.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "default",
+          "std",
+          "unbounded_depth"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "itoa 0.4.8",
+              "target": "itoa"
+            },
+            {
+              "id": "ryu 1.0.5",
+              "target": "ryu"
+            },
+            {
+              "id": "serde 1.0.130",
+              "target": "serde"
+            },
+            {
+              "id": "serde_json 1.0.68",
+              "target": "build-script-build"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "1.0.68"
+      },
+      "build_script_attrs": {},
+      "license": "MIT OR Apache-2.0"
+    },
+    "sha-1 0.8.2": {
+      "name": "sha-1",
+      "version": "0.8.2",
+      "repository": {
+        "Http": {
+          "name": "sha-1",
+          "version": "0.8.2",
+          "sha256": "f7d94d0bede923b3cea61f3f1ff57ff8cdfd77b400fb8f9998949e0cf04163df"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "sha1",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "block-buffer 0.7.3",
+              "target": "block-buffer"
+            },
+            {
+              "id": "digest 0.8.1",
+              "target": "digest"
+            },
+            {
+              "id": "fake-simd 0.1.2",
+              "target": "fake-simd"
+            },
+            {
+              "id": "opaque-debug 0.2.3",
+              "target": "opaque-debug"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2015",
+        "version": "0.8.2"
+      },
+      "license": "MIT OR Apache-2.0"
+    },
+    "sha2 0.9.8": {
+      "name": "sha2",
+      "version": "0.9.8",
+      "repository": {
+        "Http": {
+          "name": "sha2",
+          "version": "0.9.8",
+          "sha256": "b69f9a4c9740d74c5baa3fd2e547f9525fa8088a8a958e0ca2409a514e33f5fa"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "sha2",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "default",
+          "std"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "block-buffer 0.9.0",
+              "target": "block-buffer"
+            },
+            {
+              "id": "cfg-if 1.0.0",
+              "target": "cfg-if"
+            },
+            {
+              "id": "digest 0.9.0",
+              "target": "digest"
+            },
+            {
+              "id": "opaque-debug 0.3.0",
+              "target": "opaque-debug"
+            }
+          ],
+          "selects": {
+            "cfg(any(target_arch = \"aarch64\", target_arch = \"x86_64\", target_arch = \"x86\"))": [
+              {
+                "id": "cpufeatures 0.2.1",
+                "target": "cpufeatures"
+              }
+            ]
+          }
+        },
+        "edition": "2018",
+        "version": "0.9.8"
+      },
+      "license": "MIT OR Apache-2.0"
+    },
+    "slug 0.1.4": {
+      "name": "slug",
+      "version": "0.1.4",
+      "repository": {
+        "Http": {
+          "name": "slug",
+          "version": "0.1.4",
+          "sha256": "b3bc762e6a4b6c6fcaade73e77f9ebc6991b676f88bb2358bddb56560f073373"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "slug",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "deunicode 0.4.3",
+              "target": "deunicode"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2015",
+        "version": "0.1.4"
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "smallvec 1.7.0": {
+      "name": "smallvec",
+      "version": "1.7.0",
+      "repository": {
+        "Http": {
+          "name": "smallvec",
+          "version": "1.7.0",
+          "sha256": "1ecab6c735a6bb4139c0caafd0cc3635748bbb3acf4550e8138122099251f309"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "smallvec",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "edition": "2018",
+        "version": "1.7.0"
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "smawk 0.3.1": {
+      "name": "smawk",
+      "version": "0.3.1",
+      "repository": {
+        "Http": {
+          "name": "smawk",
+          "version": "0.3.1",
+          "sha256": "f67ad224767faa3c7d8b6d91985b78e70a1324408abcb1cfcc2be4c06bc06043"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "smawk",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "edition": "2018",
+        "version": "0.3.1"
+      },
+      "license": "MIT"
+    },
+    "strsim 0.8.0": {
+      "name": "strsim",
+      "version": "0.8.0",
+      "repository": {
+        "Http": {
+          "name": "strsim",
+          "version": "0.8.0",
+          "sha256": "8ea5119cdb4c55b55d432abb513a0429384878c15dde60cc77b1c99de1a95a6a"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "strsim",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "edition": "2015",
+        "version": "0.8.0"
+      },
+      "license": "MIT"
+    },
+    "structopt 0.3.23": {
+      "name": "structopt",
+      "version": "0.3.23",
+      "repository": {
+        "Http": {
+          "name": "structopt",
+          "version": "0.3.23",
+          "sha256": "bf9d950ef167e25e0bdb073cf1d68e9ad2795ac826f2f3f59647817cf23c0bfa"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "structopt",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "default"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "clap 2.33.3",
+              "target": "clap"
+            },
+            {
+              "id": "lazy_static 1.4.0",
+              "target": "lazy_static"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "proc_macro_deps": {
+          "common": [
+            {
+              "id": "structopt-derive 0.4.16",
+              "target": "structopt-derive"
+            }
+          ],
+          "selects": {}
+        },
+        "version": "0.3.23"
+      },
+      "license": "Apache-2.0 OR MIT"
+    },
+    "structopt-derive 0.4.16": {
+      "name": "structopt-derive",
+      "version": "0.4.16",
+      "repository": {
+        "Http": {
+          "name": "structopt-derive",
+          "version": "0.4.16",
+          "sha256": "134d838a2c9943ac3125cf6df165eda53493451b719f3255b2a26b85f772d0ba"
+        }
+      },
+      "targets": [
+        {
+          "ProcMacro": {
+            "crate_name": "structopt-derive",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "heck 0.3.3",
+              "target": "heck"
+            },
+            {
+              "id": "proc-macro-error 1.0.4",
+              "target": "proc-macro-error"
+            },
+            {
+              "id": "proc-macro2 1.0.29",
+              "target": "proc-macro2"
+            },
+            {
+              "id": "quote 1.0.10",
+              "target": "quote"
+            },
+            {
+              "id": "syn 1.0.80",
+              "target": "syn"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "0.4.16"
+      },
+      "license": "Apache-2.0/MIT"
+    },
+    "syn 1.0.80": {
+      "name": "syn",
+      "version": "1.0.80",
+      "repository": {
+        "Http": {
+          "name": "syn",
+          "version": "1.0.80",
+          "sha256": "d010a1623fbd906d51d650a9916aaefc05ffa0e4053ff7fe601167f3e715d194"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "syn",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        },
+        {
+          "BuildScript": {
+            "crate_name": "build-script-build",
+            "crate_root": "build.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "clone-impls",
+          "default",
+          "derive",
+          "full",
+          "parsing",
+          "printing",
+          "proc-macro",
+          "quote"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "proc-macro2 1.0.29",
+              "target": "proc-macro2"
+            },
+            {
+              "id": "quote 1.0.10",
+              "target": "quote"
+            },
+            {
+              "id": "syn 1.0.80",
+              "target": "build-script-build"
+            },
+            {
+              "id": "unicode-xid 0.2.2",
+              "target": "unicode-xid"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "1.0.80"
+      },
+      "build_script_attrs": {},
+      "license": "MIT OR Apache-2.0"
+    },
+    "tempfile 3.2.0": {
+      "name": "tempfile",
+      "version": "3.2.0",
+      "repository": {
+        "Http": {
+          "name": "tempfile",
+          "version": "3.2.0",
+          "sha256": "dac1c663cfc93810f88aed9b8941d48cabf856a1b111c29a40439018d870eb22"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "tempfile",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "cfg-if 1.0.0",
+              "target": "cfg-if"
+            },
+            {
+              "id": "rand 0.8.4",
+              "target": "rand"
+            },
+            {
+              "id": "remove_dir_all 0.5.3",
+              "target": "remove_dir_all"
+            }
+          ],
+          "selects": {
+            "cfg(target_os = \"redox\")": [
+              {
+                "id": "redox_syscall 0.2.10",
+                "target": "syscall"
+              }
+            ],
+            "cfg(unix)": [
+              {
+                "id": "libc 0.2.103",
+                "target": "libc"
+              }
+            ],
+            "cfg(windows)": [
+              {
+                "id": "winapi 0.3.9",
+                "target": "winapi"
+              }
+            ]
+          }
+        },
+        "edition": "2018",
+        "version": "3.2.0"
+      },
+      "license": "MIT OR Apache-2.0"
+    },
+    "tera 1.12.1": {
+      "name": "tera",
+      "version": "1.12.1",
+      "repository": {
+        "Http": {
+          "name": "tera",
+          "version": "1.12.1",
+          "sha256": "bf95b0d8a46da5fe3ea119394a6c7f1e745f9de359081641c99946e2bf55d4f2"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "tera",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "compile_data_glob": [
+          "**/*.pest"
+        ],
+        "crate_features": [
+          "builtins",
+          "chrono",
+          "chrono-tz",
+          "default",
+          "humansize",
+          "percent-encoding",
+          "rand",
+          "slug"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "chrono 0.4.19",
+              "target": "chrono"
+            },
+            {
+              "id": "chrono-tz 0.5.3",
+              "target": "chrono-tz"
+            },
+            {
+              "id": "globwalk 0.8.1",
+              "target": "globwalk"
+            },
+            {
+              "id": "humansize 1.1.1",
+              "target": "humansize"
+            },
+            {
+              "id": "lazy_static 1.4.0",
+              "target": "lazy_static"
+            },
+            {
+              "id": "percent-encoding 2.1.0",
+              "target": "percent-encoding"
+            },
+            {
+              "id": "pest 2.1.3",
+              "target": "pest"
+            },
+            {
+              "id": "rand 0.8.4",
+              "target": "rand"
+            },
+            {
+              "id": "regex 1.5.4",
+              "target": "regex"
+            },
+            {
+              "id": "serde 1.0.130",
+              "target": "serde"
+            },
+            {
+              "id": "serde_json 1.0.68",
+              "target": "serde_json"
+            },
+            {
+              "id": "slug 0.1.4",
+              "target": "slug"
+            },
+            {
+              "id": "unic-segment 0.9.0",
+              "target": "unic-segment"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "proc_macro_deps": {
+          "common": [
+            {
+              "id": "pest_derive 2.1.0",
+              "target": "pest_derive"
+            }
+          ],
+          "selects": {}
+        },
+        "version": "1.12.1"
+      },
+      "license": "MIT"
+    },
+    "textwrap 0.11.0": {
+      "name": "textwrap",
+      "version": "0.11.0",
+      "repository": {
+        "Http": {
+          "name": "textwrap",
+          "version": "0.11.0",
+          "sha256": "d326610f408c7a4eb6f51c37c330e496b08506c9457c9d34287ecc38809fb060"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "textwrap",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "unicode-width 0.1.9",
+              "target": "unicode-width"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2015",
+        "version": "0.11.0"
+      },
+      "license": "MIT"
+    },
+    "textwrap 0.14.2": {
+      "name": "textwrap",
+      "version": "0.14.2",
+      "repository": {
+        "Http": {
+          "name": "textwrap",
+          "version": "0.14.2",
+          "sha256": "0066c8d12af8b5acd21e00547c3797fde4e8677254a7ee429176ccebbe93dd80"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "textwrap",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "default",
+          "smawk",
+          "unicode-linebreak",
+          "unicode-width"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "smawk 0.3.1",
+              "target": "smawk"
+            },
+            {
+              "id": "unicode-linebreak 0.1.2",
+              "target": "unicode-linebreak"
+            },
+            {
+              "id": "unicode-width 0.1.9",
+              "target": "unicode-width"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "0.14.2"
+      },
+      "license": "MIT"
+    },
+    "thread_local 1.1.3": {
+      "name": "thread_local",
+      "version": "1.1.3",
+      "repository": {
+        "Http": {
+          "name": "thread_local",
+          "version": "1.1.3",
+          "sha256": "8018d24e04c95ac8790716a5987d0fec4f8b27249ffa0f7d33f1369bdfb88cbd"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "thread_local",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "once_cell 1.8.0",
+              "target": "once_cell"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "1.1.3"
+      },
+      "license": "Apache-2.0/MIT"
+    },
+    "tinyvec 1.5.0": {
+      "name": "tinyvec",
+      "version": "1.5.0",
+      "repository": {
+        "Http": {
+          "name": "tinyvec",
+          "version": "1.5.0",
+          "sha256": "f83b2a3d4d9091d0abd7eba4dc2710b1718583bd4d8992e2190720ea38f391f7"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "tinyvec",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "alloc",
+          "default",
+          "tinyvec_macros"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "tinyvec_macros 0.1.0",
+              "target": "tinyvec_macros"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "1.5.0"
+      },
+      "license": "Zlib OR Apache-2.0 OR MIT"
+    },
+    "tinyvec_macros 0.1.0": {
+      "name": "tinyvec_macros",
+      "version": "0.1.0",
+      "repository": {
+        "Http": {
+          "name": "tinyvec_macros",
+          "version": "0.1.0",
+          "sha256": "cda74da7e1a664f795bb1f8a87ec406fb89a02522cf6e50620d016add6dbbf5c"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "tinyvec_macros",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "edition": "2018",
+        "version": "0.1.0"
+      },
+      "license": "MIT OR Apache-2.0 OR Zlib"
+    },
+    "toml 0.5.8": {
+      "name": "toml",
+      "version": "0.5.8",
+      "repository": {
+        "Http": {
+          "name": "toml",
+          "version": "0.5.8",
+          "sha256": "a31142970826733df8241ef35dc040ef98c679ab14d7c3e54d827099b3acecaa"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "toml",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "default"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "serde 1.0.130",
+              "target": "serde"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "0.5.8"
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "typenum 1.14.0": {
+      "name": "typenum",
+      "version": "1.14.0",
+      "repository": {
+        "Http": {
+          "name": "typenum",
+          "version": "1.14.0",
+          "sha256": "b63708a265f51345575b27fe43f9500ad611579e764c79edbc2037b1121959ec"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "typenum",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        },
+        {
+          "BuildScript": {
+            "crate_name": "build-script-main",
+            "crate_root": "build/main.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "typenum 1.14.0",
+              "target": "build-script-main"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "1.14.0"
+      },
+      "build_script_attrs": {},
+      "license": "MIT OR Apache-2.0"
+    },
+    "ucd-trie 0.1.3": {
+      "name": "ucd-trie",
+      "version": "0.1.3",
+      "repository": {
+        "Http": {
+          "name": "ucd-trie",
+          "version": "0.1.3",
+          "sha256": "56dee185309b50d1f11bfedef0fe6d036842e3fb77413abef29f8f8d1c5d4c1c"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "ucd-trie",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "default",
+          "std"
+        ],
+        "edition": "2018",
+        "version": "0.1.3"
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "unic-char-property 0.9.0": {
+      "name": "unic-char-property",
+      "version": "0.9.0",
+      "repository": {
+        "Http": {
+          "name": "unic-char-property",
+          "version": "0.9.0",
+          "sha256": "a8c57a407d9b6fa02b4795eb81c5b6652060a15a7903ea981f3d723e6c0be221"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "unic-char-property",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "unic-char-range 0.9.0",
+              "target": "unic-char-range"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "0.9.0"
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "unic-char-range 0.9.0": {
+      "name": "unic-char-range",
+      "version": "0.9.0",
+      "repository": {
+        "Http": {
+          "name": "unic-char-range",
+          "version": "0.9.0",
+          "sha256": "0398022d5f700414f6b899e10b8348231abf9173fa93144cbc1a43b9793c1fbc"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "unic-char-range",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "default"
+        ],
+        "edition": "2018",
+        "version": "0.9.0"
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "unic-common 0.9.0": {
+      "name": "unic-common",
+      "version": "0.9.0",
+      "repository": {
+        "Http": {
+          "name": "unic-common",
+          "version": "0.9.0",
+          "sha256": "80d7ff825a6a654ee85a63e80f92f054f904f21e7d12da4e22f9834a4aaa35bc"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "unic-common",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "default"
+        ],
+        "edition": "2018",
+        "version": "0.9.0"
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "unic-segment 0.9.0": {
+      "name": "unic-segment",
+      "version": "0.9.0",
+      "repository": {
+        "Http": {
+          "name": "unic-segment",
+          "version": "0.9.0",
+          "sha256": "e4ed5d26be57f84f176157270c112ef57b86debac9cd21daaabbe56db0f88f23"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "unic-segment",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "unic-ucd-segment 0.9.0",
+              "target": "unic-ucd-segment"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "0.9.0"
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "unic-ucd-segment 0.9.0": {
+      "name": "unic-ucd-segment",
+      "version": "0.9.0",
+      "repository": {
+        "Http": {
+          "name": "unic-ucd-segment",
+          "version": "0.9.0",
+          "sha256": "2079c122a62205b421f499da10f3ee0f7697f012f55b675e002483c73ea34700"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "unic-ucd-segment",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "compile_data_glob": [
+          "**/*.rsv"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "unic-char-property 0.9.0",
+              "target": "unic-char-property"
+            },
+            {
+              "id": "unic-char-range 0.9.0",
+              "target": "unic-char-range"
+            },
+            {
+              "id": "unic-ucd-version 0.9.0",
+              "target": "unic-ucd-version"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "0.9.0"
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "unic-ucd-version 0.9.0": {
+      "name": "unic-ucd-version",
+      "version": "0.9.0",
+      "repository": {
+        "Http": {
+          "name": "unic-ucd-version",
+          "version": "0.9.0",
+          "sha256": "96bd2f2237fe450fcd0a1d2f5f4e91711124f7857ba2e964247776ebeeb7b0c4"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "unic-ucd-version",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "compile_data_glob": [
+          "**/*.rsv"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "unic-common 0.9.0",
+              "target": "unic-common"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "0.9.0"
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "unicode-bidi 0.3.7": {
+      "name": "unicode-bidi",
+      "version": "0.3.7",
+      "repository": {
+        "Http": {
+          "name": "unicode-bidi",
+          "version": "0.3.7",
+          "sha256": "1a01404663e3db436ed2746d9fefef640d868edae3cceb81c3b8d5732fda678f"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "unicode-bidi",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "default",
+          "std"
+        ],
+        "edition": "2018",
+        "version": "0.3.7"
+      },
+      "license": "MIT / Apache-2.0"
+    },
+    "unicode-linebreak 0.1.2": {
+      "name": "unicode-linebreak",
+      "version": "0.1.2",
+      "repository": {
+        "Http": {
+          "name": "unicode-linebreak",
+          "version": "0.1.2",
+          "sha256": "3a52dcaab0c48d931f7cc8ef826fa51690a08e1ea55117ef26f89864f532383f"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "unicode-linebreak",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        },
+        {
+          "BuildScript": {
+            "crate_name": "build-script-build",
+            "crate_root": "build.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "unicode-linebreak 0.1.2",
+              "target": "build-script-build"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "0.1.2"
+      },
+      "build_script_attrs": {
+        "data_glob": [
+          "**/*.rs",
+          "**/*.txt"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "regex 1.5.4",
+              "target": "regex"
+            }
+          ],
+          "selects": {}
+        }
+      },
+      "license": "Apache-2.0"
+    },
+    "unicode-normalization 0.1.19": {
+      "name": "unicode-normalization",
+      "version": "0.1.19",
+      "repository": {
+        "Http": {
+          "name": "unicode-normalization",
+          "version": "0.1.19",
+          "sha256": "d54590932941a9e9266f0832deed84ebe1bf2e4c9e4a3554d393d18f5e854bf9"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "unicode-normalization",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "default",
+          "std"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "tinyvec 1.5.0",
+              "target": "tinyvec"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "0.1.19"
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "unicode-segmentation 1.8.0": {
+      "name": "unicode-segmentation",
+      "version": "1.8.0",
+      "repository": {
+        "Http": {
+          "name": "unicode-segmentation",
+          "version": "1.8.0",
+          "sha256": "8895849a949e7845e06bd6dc1aa51731a103c42707010a5b591c0038fb73385b"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "unicode-segmentation",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "edition": "2018",
+        "version": "1.8.0"
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "unicode-width 0.1.9": {
+      "name": "unicode-width",
+      "version": "0.1.9",
+      "repository": {
+        "Http": {
+          "name": "unicode-width",
+          "version": "0.1.9",
+          "sha256": "3ed742d4ea2bd1176e236172c8429aaf54486e7ac098db29ffe6529e0ce50973"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "unicode-width",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "default"
+        ],
+        "edition": "2015",
+        "version": "0.1.9"
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "unicode-xid 0.2.2": {
+      "name": "unicode-xid",
+      "version": "0.2.2",
+      "repository": {
+        "Http": {
+          "name": "unicode-xid",
+          "version": "0.2.2",
+          "sha256": "8ccb82d61f80a663efe1f787a51b16b5a51e3314d6ac365b08639f52387b33f3"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "unicode-xid",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "default"
+        ],
+        "edition": "2015",
+        "version": "0.2.2"
+      },
+      "license": "MIT OR Apache-2.0"
+    },
+    "url 2.2.2": {
+      "name": "url",
+      "version": "2.2.2",
+      "repository": {
+        "Http": {
+          "name": "url",
+          "version": "2.2.2",
+          "sha256": "a507c383b2d33b5fc35d1861e77e6b383d158b2da5e14fe51b83dfedf6fd578c"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "url",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "form_urlencoded 1.0.1",
+              "target": "form_urlencoded"
+            },
+            {
+              "id": "idna 0.2.3",
+              "target": "idna"
+            },
+            {
+              "id": "matches 0.1.9",
+              "target": "matches"
+            },
+            {
+              "id": "percent-encoding 2.1.0",
+              "target": "percent-encoding"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "2.2.2"
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "urls_generator 0.1.0": {
+      "name": "urls_generator",
+      "version": "0.1.0",
+      "repository": null,
+      "targets": [
+        {
+          "Binary": {
+            "crate_name": "urls_generator",
+            "crate_root": "src/main.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "rustc-serialize 0.3.24",
+              "target": "rustc-serialize"
+            },
+            {
+              "id": "serde_json 1.0.68",
+              "target": "serde_json"
+            },
+            {
+              "id": "sha2 0.9.8",
+              "target": "sha2"
+            },
+            {
+              "id": "structopt 0.3.23",
+              "target": "structopt"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "0.1.0"
+      },
+      "license": null
+    },
+    "vec_map 0.8.2": {
+      "name": "vec_map",
+      "version": "0.8.2",
+      "repository": {
+        "Http": {
+          "name": "vec_map",
+          "version": "0.8.2",
+          "sha256": "f1bddf1187be692e79c5ffeab891132dfb0f236ed36a43c7ed39f1165ee20191"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "vec_map",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "edition": "2015",
+        "version": "0.8.2"
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "version_check 0.9.3": {
+      "name": "version_check",
+      "version": "0.9.3",
+      "repository": {
+        "Http": {
+          "name": "version_check",
+          "version": "0.9.3",
+          "sha256": "5fecdca9a5291cc2b8dcf7dc02453fee791a280f3743cb0905f8822ae463b3fe"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "version_check",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "edition": "2015",
+        "version": "0.9.3"
+      },
+      "license": "MIT/Apache-2.0"
+    },
+    "walkdir 2.3.2": {
+      "name": "walkdir",
+      "version": "2.3.2",
+      "repository": {
+        "Http": {
+          "name": "walkdir",
+          "version": "2.3.2",
+          "sha256": "808cf2735cd4b6866113f648b791c6adc5714537bc222d9347bb203386ffda56"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "walkdir",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "same-file 1.0.6",
+              "target": "same-file"
+            }
+          ],
+          "selects": {
+            "cfg(windows)": [
+              {
+                "id": "winapi 0.3.9",
+                "target": "winapi"
+              },
+              {
+                "id": "winapi-util 0.1.5",
+                "target": "winapi-util"
+              }
+            ]
+          }
+        },
+        "edition": "2018",
+        "version": "2.3.2"
+      },
+      "license": "Unlicense/MIT"
+    },
+    "wasi 0.10.2+wasi-snapshot-preview1": {
+      "name": "wasi",
+      "version": "0.10.2+wasi-snapshot-preview1",
+      "repository": {
+        "Http": {
+          "name": "wasi",
+          "version": "0.10.2+wasi-snapshot-preview1",
+          "sha256": "fd6fbd9a79829dd1ad0cc20627bf1ed606756a7f77edff7b66b7064f9cb327c6"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "wasi",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "default",
+          "std"
+        ],
+        "edition": "2018",
+        "version": "0.10.2+wasi-snapshot-preview1"
+      },
+      "license": "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT"
+    },
+    "winapi 0.3.9": {
+      "name": "winapi",
+      "version": "0.3.9",
+      "repository": {
+        "Http": {
+          "name": "winapi",
+          "version": "0.3.9",
+          "sha256": "5c839a674fcd7a98952e593242ea400abe93992746761e38641405d28b00f419"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "winapi",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        },
+        {
+          "BuildScript": {
+            "crate_name": "build-script-build",
+            "crate_root": "build.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "consoleapi",
+          "errhandlingapi",
+          "fileapi",
+          "handleapi",
+          "minwinbase",
+          "minwindef",
+          "processenv",
+          "std",
+          "timezoneapi",
+          "winbase",
+          "wincon",
+          "winerror",
+          "winnt"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "winapi 0.3.9",
+              "target": "build-script-build"
+            }
+          ],
+          "selects": {
+            "i686-pc-windows-gnu": [
+              {
+                "id": "winapi-i686-pc-windows-gnu 0.4.0",
+                "target": "winapi-i686-pc-windows-gnu"
+              }
+            ],
+            "x86_64-pc-windows-gnu": [
+              {
+                "id": "winapi-x86_64-pc-windows-gnu 0.4.0",
+                "target": "winapi-x86_64-pc-windows-gnu"
+              }
+            ]
+          }
+        },
+        "edition": "2015",
+        "version": "0.3.9"
+      },
+      "build_script_attrs": {},
+      "license": "MIT/Apache-2.0"
+    },
+    "winapi-i686-pc-windows-gnu 0.4.0": {
+      "name": "winapi-i686-pc-windows-gnu",
+      "version": "0.4.0",
+      "repository": {
+        "Http": {
+          "name": "winapi-i686-pc-windows-gnu",
+          "version": "0.4.0",
+          "sha256": "ac3b87c63620426dd9b991e5ce0329eff545bccbbb34f3be09ff6fb6ab51b7b6"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "winapi-i686-pc-windows-gnu",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        },
+        {
+          "BuildScript": {
+            "crate_name": "build-script-build",
+            "crate_root": "build.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "winapi-i686-pc-windows-gnu 0.4.0",
+              "target": "build-script-build"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2015",
+        "version": "0.4.0"
+      },
+      "build_script_attrs": {},
+      "license": "MIT/Apache-2.0"
+    },
+    "winapi-util 0.1.5": {
+      "name": "winapi-util",
+      "version": "0.1.5",
+      "repository": {
+        "Http": {
+          "name": "winapi-util",
+          "version": "0.1.5",
+          "sha256": "70ec6ce85bb158151cae5e5c87f95a8e97d2c0c4b001223f33a334e3ce5de178"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "winapi-util",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [],
+          "selects": {
+            "cfg(windows)": [
+              {
+                "id": "winapi 0.3.9",
+                "target": "winapi"
+              }
+            ]
+          }
+        },
+        "edition": "2018",
+        "version": "0.1.5"
+      },
+      "license": "Unlicense/MIT"
+    },
+    "winapi-x86_64-pc-windows-gnu 0.4.0": {
+      "name": "winapi-x86_64-pc-windows-gnu",
+      "version": "0.4.0",
+      "repository": {
+        "Http": {
+          "name": "winapi-x86_64-pc-windows-gnu",
+          "version": "0.4.0",
+          "sha256": "712e227841d057c1ee1cd2fb22fa7e5a5461ae8e48fa2ca79ec42cfc1931183f"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "winapi-x86_64-pc-windows-gnu",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        },
+        {
+          "BuildScript": {
+            "crate_name": "build-script-build",
+            "crate_root": "build.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "winapi-x86_64-pc-windows-gnu 0.4.0",
+              "target": "build-script-build"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2015",
+        "version": "0.4.0"
+      },
+      "build_script_attrs": {},
+      "license": "MIT/Apache-2.0"
+    }
+  },
+  "binary_crates": [
+    "cargo-lock 7.0.1"
+  ],
+  "workspace_members": {
+    "cargo-bazel 0.0.1": "tools/cargo_bazel",
+    "cross_installer 0.1.0": "tools/cross_installer",
+    "direct-cargo-bazel-deps 0.0.1": "",
+    "urls_generator 0.1.0": "tools/urls_generator"
+  },
+  "conditions": {
+    "cfg(any(target_arch = \"aarch64\", target_arch = \"x86_64\", target_arch = \"x86\"))": [
+      "aarch64-apple-darwin",
+      "aarch64-apple-ios",
+      "aarch64-linux-android",
+      "aarch64-unknown-linux-gnu",
+      "i686-apple-darwin",
+      "i686-linux-android",
+      "i686-pc-windows-msvc",
+      "i686-unknown-freebsd",
+      "i686-unknown-linux-gnu",
+      "x86_64-apple-darwin",
+      "x86_64-apple-ios",
+      "x86_64-linux-android",
+      "x86_64-pc-windows-msvc",
+      "x86_64-unknown-freebsd",
+      "x86_64-unknown-linux-gnu"
+    ],
+    "cfg(not(target_os = \"emscripten\"))": [
+      "aarch64-apple-darwin",
+      "aarch64-apple-ios",
+      "aarch64-linux-android",
+      "aarch64-unknown-linux-gnu",
+      "arm-unknown-linux-gnueabi",
+      "i686-apple-darwin",
+      "i686-linux-android",
+      "i686-pc-windows-msvc",
+      "i686-unknown-freebsd",
+      "i686-unknown-linux-gnu",
+      "powerpc-unknown-linux-gnu",
+      "s390x-unknown-linux-gnu",
+      "wasm32-unknown-unknown",
+      "wasm32-wasi",
+      "x86_64-apple-darwin",
+      "x86_64-apple-ios",
+      "x86_64-linux-android",
+      "x86_64-pc-windows-msvc",
+      "x86_64-unknown-freebsd",
+      "x86_64-unknown-linux-gnu"
+    ],
+    "cfg(not(windows))": [
+      "aarch64-apple-darwin",
+      "aarch64-apple-ios",
+      "aarch64-linux-android",
+      "aarch64-unknown-linux-gnu",
+      "arm-unknown-linux-gnueabi",
+      "i686-apple-darwin",
+      "i686-linux-android",
+      "i686-unknown-freebsd",
+      "i686-unknown-linux-gnu",
+      "powerpc-unknown-linux-gnu",
+      "s390x-unknown-linux-gnu",
+      "wasm32-unknown-unknown",
+      "wasm32-wasi",
+      "x86_64-apple-darwin",
+      "x86_64-apple-ios",
+      "x86_64-linux-android",
+      "x86_64-unknown-freebsd",
+      "x86_64-unknown-linux-gnu"
+    ],
+    "cfg(target = \"aarch64-apple-darwin\")": [
+      "aarch64-apple-darwin"
+    ],
+    "cfg(target = \"i686-pc-windows-gnu\")": [],
+    "cfg(target = \"x86_64-pc-windows-gnu\")": [],
+    "cfg(target_os = \"emscripten\")": [],
+    "cfg(target_os = \"hermit\")": [],
+    "cfg(target_os = \"redox\")": [],
+    "cfg(target_os = \"wasi\")": [
+      "wasm32-wasi"
+    ],
+    "cfg(target_os = \"windows\")": [
+      "i686-pc-windows-msvc",
+      "x86_64-pc-windows-msvc"
+    ],
+    "cfg(unix)": [
+      "aarch64-apple-darwin",
+      "aarch64-apple-ios",
+      "aarch64-linux-android",
+      "aarch64-unknown-linux-gnu",
+      "arm-unknown-linux-gnueabi",
+      "i686-apple-darwin",
+      "i686-linux-android",
+      "i686-unknown-freebsd",
+      "i686-unknown-linux-gnu",
+      "powerpc-unknown-linux-gnu",
+      "s390x-unknown-linux-gnu",
+      "x86_64-apple-darwin",
+      "x86_64-apple-ios",
+      "x86_64-linux-android",
+      "x86_64-unknown-freebsd",
+      "x86_64-unknown-linux-gnu"
+    ],
+    "cfg(windows)": [
+      "i686-pc-windows-msvc",
+      "x86_64-pc-windows-msvc"
+    ]
+  }
+}

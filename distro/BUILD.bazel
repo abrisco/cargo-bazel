@@ -1,0 +1,39 @@
+load("@rules_pkg//:pkg.bzl", "pkg_tar")
+
+pkg_tar(
+    name = "cargo_bazel",
+    srcs = ["//:distro"],
+    extension = "tar.gz",
+    mode = "0444",
+    # Make it owned by root so it does not have the uid of the CI robot.
+    owner = "0.0",
+    package_dir = ".",
+    strip_prefix = ".",
+    # TODO: In my own test environment, python was giving me issues. Since
+    # there's no plans to distribute anything from windows, don't bother
+    # building here.
+    target_compatible_with = select({
+        "@platforms//os:linux": [],
+        "@platforms//os:macos": [],
+        "//conditions:default": ["@platforms//:incompatible"],
+    }),
+    visibility = ["//:__subpackages__"],
+)
+
+alias(
+    name = "distro",
+    actual = ":cargo_bazel",
+    visibility = ["//:__subpackages__"],
+)
+
+sh_binary(
+    name = "publish",
+    srcs = ["publisher.sh"],
+    data = [":distro"],
+    env = {"ARCHIVE": "$(rootpath :distro)"},
+    target_compatible_with = select({
+        "@platforms//os:linux": [],
+        "@platforms//os:macos": [],
+        "//conditions:default": ["@platforms//:incompatible"],
+    }),
+)

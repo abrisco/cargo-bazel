@@ -1,0 +1,15 @@
+rust_binary(
+    name = "{{ target.crate_name }}__bin",
+    deps = [
+        {%- for dep in crate.common_attrs | get_or(key="extra_deps", default=[]) %}
+        "{{ dep }}",
+        {%- endfor %}
+    ] + {% set deps = crate.common_attrs | get_or(key="deps", default=Null) %}{% include "partials/crate/deps.j2" %},
+    proc_macro_deps = [
+        {%- for dep in crate.common_attrs | get_or(key="extra_proc_macro_deps", default=[]) %}
+        "{{ dep }}",
+        {%- endfor %}
+    ] + {% set deps = crate.common_attrs | get_or(key="proc_macro_deps", default=Null) %}{% include "partials/crate/deps.j2" %},
+    aliases = {% set selectable = common_aliases %}{% include "partials/crate/aliases.j2" -%},
+{% include "partials/crate/common_attrs.j2" %}
+)

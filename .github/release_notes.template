@@ -1,0 +1,17 @@
+# {version}
+
+```python
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+http_archive(
+    name = "cargo_bazel",
+    sha256 = "{sha256}",
+    urls = ["https://github.com/abrisco/cargo-bazel/releases/download/{version}/cargo_bazel.tar.gz"],
+)
+
+load("@cargo_bazel//:deps.bzl", "cargo_bazel_deps")
+cargo_bazel_deps()
+```
+
+Additional documentation can be found at: https://abrisco.github.io/cargo-bazel/index.html#setup
+
+**Full Changelog**: https://github.com/abrisco/cargo-bazel/commits/{version}

@@ -1,0 +1,21 @@
+load("@crate_index_no_cargo//:defs.bzl", "aliases", "all_crate_deps")
+load("@rules_rust//rust:defs.bzl", "rust_binary", "rust_test")
+
+rust_binary(
+    name = "no_cargo_manifests",
+    srcs = glob(["**/*.rs"]),
+    aliases = aliases(),
+    edition = "2018",
+    proc_macro_deps = all_crate_deps(proc_macro = True),
+    deps = all_crate_deps(normal = True),
+)
+
+rust_test(
+    name = "unit_test",
+    srcs = glob(["**/*.rs"]),
+    aliases = aliases(),
+    crate = ":no_cargo_manifests",
+    edition = "2018",
+    proc_macro_deps = all_crate_deps(proc_macro_dev = True),
+    deps = all_crate_deps(normal_dev = True),
+)

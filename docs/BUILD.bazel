@@ -1,0 +1,95 @@
+load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
+load("@io_bazel_stardoc//stardoc:stardoc.bzl", "stardoc")
+load(":docs_deps.bzl", "mdbook_binary")
+
+bzl_library(
+    name = "bzl_lib",
+    srcs = [
+        "//:bzl_srcs",
+        "@bazel_tools//tools:bzl_srcs",
+        "@crate_index//:defs.bzl",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        "@bazel_skylib//lib:paths",
+        "@bazel_skylib//lib:selects",
+        "@rules_rust//rust:rules",
+    ],
+)
+
+stardoc(
+    name = "rules_docs",
+    out = "rules.md",
+    input = "@cargo_bazel//:defs.bzl",
+    # TODO: For some reason, docs do not build on windows
+    target_compatible_with = select({
+        "@platforms//os:linux": [],
+        "@platforms//os:macos": [],
+        "//conditions:default": ["@platforms//:incompatible"],
+    }),
+    deps = [":bzl_lib"],
+)
+
+stardoc(
+    name = "crates_repository_docs",
+    out = "crates_repository.md",
+    input = "@crate_index//:defs.bzl",
+    # TODO: For some reason, docs do not build on windows
+    target_compatible_with = select({
+        "@platforms//os:linux": [],
+        "@platforms//os:macos": [],
+        "//conditions:default": ["@platforms//:incompatible"],
+    }),
+    deps = [":bzl_lib"],
+)
+
+mdbook_binary(name = "mdbook")
+
+DOCS_TARGETS = [
+    ":rules_docs",
+    ":crates_repository_docs",
+    "index.md",
+]
+
+# Run this target to upate/generate docs
+genrule(
+    name = "generate_src",
+    srcs = DOCS_TARGETS + [
+        ":mdbook",
+    ],
+    outs = ["generate.sh"],
+    cmd = """\
+cat << EOF > $@
+#!/bin/bash
+set -euo pipefail
+
+mkdir -p \\$${BUILD_WORKSPACE_DIRECTORY}/docs/src
+
+# Because the outputs are not forwarded in a provider, this script relies on
+# docs having just been built before running.
+# https://github.com/bazelbuild/stardoc/issues/82
+
+cat \\$${BUILD_WORKSPACE_DIRECTORY}/$(execpath :rules_docs) > \\$${BUILD_WORKSPACE_DIRECTORY}/docs/src/rules.md
+cat \\$${BUILD_WORKSPACE_DIRECTORY}/$(execpath :crates_repository_docs) > \\$${BUILD_WORKSPACE_DIRECTORY}/docs/src/crates_repository.md
+cat \\$${BUILD_WORKSPACE_DIRECTORY}/$(execpath :index.md) > \\$${BUILD_WORKSPACE_DIRECTORY}/docs/src/index.md
+
+MDBOOK_PATH="\\$$(pwd)/$(rootpath :mdbook)"
+pushd \\$${BUILD_WORKSPACE_DIRECTORY}/docs &> /dev/null
+if [[ -n "\\$$@" ]]; then
+    "\\$${MDBOOK_PATH}" "\\$$@"
+else
+    "\\$${MDBOOK_PATH}" build
+fi
+popd &> /dev/null
+
+EOF
+""",
+)
+
+sh_binary(
+    name = "generate",
+    srcs = ["generate.sh"],
+    data = DOCS_TARGETS + [
+        ":mdbook",
+    ],
+)

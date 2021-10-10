@@ -1,0 +1,13 @@
+# Git ignore patterns
+
+# Bazel
+bazel-*
+**/user.bazelrc
+
+# Cargo
+**/target/
+./Cross.toml
+
+# Releases
+build/
+.github/release_notes.txt

@@ -1,0 +1,250 @@
+workspace(name = "cargo_bazel_examples")
+
+local_repository(
+    name = "cargo_bazel",
+    path = "../",
+)
+
+load("@cargo_bazel//:deps.bzl", "cargo_bazel_deps")
+
+cargo_bazel_deps()
+
+load("@rules_rust//rust:repositories.bzl", "rust_repositories")
+
+rust_repositories()
+
+load("@cargo_bazel//:defs.bzl", "crate", "crates_repository", "render_config")
+
+###############################################################################
+# C A R G O   A L I A S E S
+###############################################################################
+
+crates_repository(
+    name = "crate_index_cargo_aliases",
+    lockfile = "//cargo_aliases:Cargo.Bazel.lock",
+    manifests = ["//cargo_aliases:Cargo.toml"],
+)
+
+load(
+    "@crate_index_cargo_aliases//:defs.bzl",
+    cargo_aliases_crate_repositories = "crate_repositories",
+)
+
+cargo_aliases_crate_repositories()
+
+###############################################################################
+# C A R G O   L O C A L
+###############################################################################
+
+crates_repository(
+    name = "crate_index_cargo_local",
+    lockfile = "//cargo_local:Cargo.lock",
+    lockfile_kind = "cargo",
+    manifests = ["//cargo_local:Cargo.toml"],
+)
+
+load(
+    "@crate_index_cargo_local//:defs.bzl",
+    cargo_local_crate_repositories = "crate_repositories",
+)
+
+cargo_local_crate_repositories()
+
+###############################################################################
+# C A R G O   R E M O T E
+###############################################################################
+
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+http_archive(
+    name = "names",
+    build_file = "//cargo_remote:BUILD.names.bazel",
+    sha256 = "9a143ae56c0f9bc375be22a6b25c959ad042e83e7d6be2392074e77ee8257d0e",
+    strip_prefix = "names-0.12.0",
+    urls = ["https://github.com/fnichol/names/archive/refs/tags/v0.12.0.zip"],
+)
+
+crates_repository(
+    name = "crate_index_cargo_remote",
+    lockfile = "@names//:Cargo.lock",
+    lockfile_kind = "cargo",
+    manifests = ["@names//:Cargo.toml"],
+)
+
+load(
+    "@crate_index_cargo_remote//:defs.bzl",
+    cargo_remote_crate_repositories = "crate_repositories",
+)
+
+cargo_remote_crate_repositories()
+
+###############################################################################
+# C A R G O   W O R K S P A C E
+###############################################################################
+
+crates_repository(
+    name = "crate_index_cargo_workspace",
+    lockfile = "//cargo_workspace:Cargo.Bazel.lock",
+    manifests = ["//cargo_workspace:Cargo.toml"],
+)
+
+load(
+    "@crate_index_cargo_workspace//:defs.bzl",
+    cargo_workspace_crate_repositories = "crate_repositories",
+)
+
+cargo_workspace_crate_repositories()
+
+###############################################################################
+# E X T R A   W O R K S P A C E   M E M B E R S
+###############################################################################
+
+crates_repository(
+    name = "crate_index_extra_workspace_members",
+    extra_workspace_members = {
+        "texture-synthesis-cli": crate.workspace_member(
+            sha256 = "a7dbdf13f5e6f214750fce1073279b71ce3076157a8d337c9b0f0e14334e2aec",
+            version = "0.8.2",
+        ),
+    },
+    extras = {
+        "image": [crate.extras(
+            compile_data_glob = ["**/*.md"],
+            version = "*",
+        )],
+    },
+    generator = "@cargo_bazel_bootstrap//:cargo-bazel",
+    lockfile = "//extra_workspace_members:Cargo.Bazel.lock",
+    manifests = ["//extra_workspace_members:Cargo.toml"],
+)
+
+load(
+    "@crate_index_extra_workspace_members//:defs.bzl",
+    extra_workspace_members_crate_repositories = "crate_repositories",
+)
+
+extra_workspace_members_crate_repositories()
+
+###############################################################################
+# M U L T I   P A C K A G E
+###############################################################################
+
+crates_repository(
+    name = "crate_index_multi_pkg",
+    extras = {
+        "basic-cookies": [crate.extras(
+            build_script_data_glob = ["**/*.lalrpop"],
+        )],
+        "curl-sys": [crate.extras(
+            gen_build_script = False,
+            deps = [
+                "@curl",
+                "@libssh2",
+            ],
+        )],
+        "lalrpop": [crate.extras(
+            data_glob = ["**/*.lalrpop"],
+        )],
+        "libnghttp2-sys": [crate.extras(
+            build_script_data_glob = ["nghttp2/**"],
+            data_glob = ["nghttp2/**"],
+        )],
+        "libz-sys": [crate.extras(
+            build_script_data_glob = ["src/**"],
+        )],
+        "openssl-sys": [crate.extras(
+            build_script_data = [
+                "@openssl//:gen_dir",
+                "@openssl//:openssl",
+            ],
+            build_script_data_glob = ["build/**/*.c"],
+            build_script_env = {
+                "OPENSSL_DIR": "$(execpath @openssl//:gen_dir)",
+                "OPENSSL_STATIC": "1",
+            },
+            data = ["@openssl"],
+            deps = ["@openssl"],
+        )],
+    },
+    generator = "@cargo_bazel_bootstrap//:cargo-bazel",
+    lockfile = "//multi_package:Cargo.Bazel.lock",
+    manifests = [
+        "//multi_package/pkg_a:Cargo.toml",
+        "//multi_package/sub_pkgs/pkg_b:Cargo.toml",
+    ],
+)
+
+load(
+    "@crate_index_multi_pkg//:defs.bzl",
+    multi_pkg_crate_repositories = "crate_repositories",
+)
+
+multi_pkg_crate_repositories()
+
+# ForeignCc is used to build OpenSSL
+http_archive(
+    name = "rules_foreign_cc",
+    sha256 = "69023642d5781c68911beda769f91fcbc8ca48711db935a75da7f6536b65047f",
+    strip_prefix = "rules_foreign_cc-0.6.0",
+    url = "https://github.com/bazelbuild/rules_foreign_cc/archive/0.6.0.tar.gz",
+)
+
+load("@rules_foreign_cc//foreign_cc:repositories.bzl", "rules_foreign_cc_dependencies")
+
+rules_foreign_cc_dependencies()
+
+# Load OpenSSL and other 3rd party dependencies
+load("//multi_package/3rdparty:3rdparty_deps.bzl", "third_party_deps")
+
+third_party_deps()
+
+###############################################################################
+# N O   C A R G O   M A N I F E S T S
+###############################################################################
+
+crates_repository(
+    name = "crate_index_no_cargo",
+    generator = "@cargo_bazel_bootstrap//:cargo-bazel",
+    lockfile = "//no_cargo_manifests:Cargo.Bazel.lock",
+    packages = {
+        "axum": crate.spec(
+            version = "0.2.5",
+        ),
+        "hyper": crate.spec(
+            features = ["full"],
+            version = "0.14",
+        ),
+        "serde_json": crate.spec(
+            version = "1.0",
+        ),
+        "tokio": crate.spec(
+            features = ["full"],
+            version = "1.0",
+        ),
+        "tower": crate.spec(
+            features = ["util"],
+            version = "0.4",
+        ),
+        "tower-http": crate.spec(
+            features = ["trace"],
+            version = "0.1",
+        ),
+        "tracing": crate.spec(
+            version = "0.1",
+        ),
+        "tracing-subscriber": crate.spec(
+            version = "0.2",
+        ),
+    },
+    # Allows all packages to access the same set of dependencies
+    render_config = render_config(
+        default_package_name = "",
+    ),
+)
+
+load(
+    "@crate_index_no_cargo//:defs.bzl",
+    no_cargo_crate_repositories = "crate_repositories",
+)
+
+no_cargo_crate_repositories()

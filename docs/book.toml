@@ -1,0 +1,5 @@
+[book]
+title = "Cargo->Bazel"
+
+[output.html]
+git-repository-url = "https://github.com/abrisco/cargo-bazel"

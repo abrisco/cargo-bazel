@@ -1,0 +1,40 @@
+load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
+
+package(default_visibility = ["//visibility:public"])
+
+exports_files([
+    "Cargo.toml",
+    "Cargo.lock",
+    "Cargo.Bazel.lock",
+])
+
+filegroup(
+    name = "distro",
+    srcs = glob(
+        include = ["*.bzl"],
+        exclude = ["deps_bootstrap.bzl"],
+    ) + [
+        "README.md",
+        "BUILD.bazel",
+        "WORKSPACE.bazel",
+        "//private:distro",
+    ],
+)
+
+filegroup(
+    name = "bzl_srcs",
+    srcs = glob(["*.bzl"]) + [
+        "//private:bzl_srcs",
+    ],
+)
+
+bzl_library(
+    name = "bzl_lib",
+    srcs = ["//:bzl_srcs"],
+    visibility = ["//visibility:public"],
+)
+
+alias(
+    name = "cargo_bazel",
+    actual = "//tools/cargo_bazel:bin",
+)
