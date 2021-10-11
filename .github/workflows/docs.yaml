@@ -27,11 +27,6 @@ jobs:
             ~/.cache/bazel
           key: ${{ runner.os }}-${{ env.cache-name }}
 
-      # TODO: Remove after upstream change is merged and `rules_rust` is updated
-      # https://github.com/bazelbuild/rules_rust/pull/959
-      - name: Bootstrap the binary
-        run: bazel ${BAZEL_STARTUP_FLAGS[@]} sync --only=cargo_bazel_bootstrap
-
       - name: Build docs
         run: bazel ${BAZEL_STARTUP_FLAGS[@]} run //docs:generate
 

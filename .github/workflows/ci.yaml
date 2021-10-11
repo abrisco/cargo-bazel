@@ -59,11 +59,6 @@ jobs:
             ${{ github.workspace }}/examples/.cache
           key: ${{ runner.os }}-${{ env.cache-name }}
 
-      # TODO: Remove after upstream change is merged and `rules_rust` is updated
-      # https://github.com/bazelbuild/rules_rust/pull/959
-      - name: Bootstrap the binary
-        run: bazel ${BAZEL_STARTUP_FLAGS[@]} sync --only=cargo_bazel_bootstrap          
-
       # Build and Test the code
       - name: Build
         run: bazel ${BAZEL_STARTUP_FLAGS[@]} build //...
