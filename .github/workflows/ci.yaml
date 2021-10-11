@@ -24,8 +24,7 @@ jobs:
         include:
           - os: macos-11
           - os: ubuntu-20.04
-          # TODO: Windows at the time of 0.0.1 works, but not in Github CI.
-          # - os: windows-2019
+          - os: windows-2019
     steps:
       # Checkout the code
       - uses: actions/checkout@v2

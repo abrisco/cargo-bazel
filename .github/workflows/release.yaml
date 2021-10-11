@@ -35,12 +35,9 @@ jobs:
           - os: ubuntu-20.04
             env:
               TARGET: "x86_64-pc-windows-gnu"
-          # TODO: Windows works in some environments but not GitHub CI. In
-          # order to build binaries on windows, this issue will need to be
-          # resolved.
-          # - os: windows-2019
-          #   env:
-          #     TARGET: "x86_64-pc-windows-msvc"
+          - os: windows-2019
+            env:
+              TARGET: "x86_64-pc-windows-msvc"
           - os: ubuntu-20.04
             env:
               TARGET: "x86_64-unknown-linux-gnu"
@@ -166,15 +163,15 @@ jobs:
           asset_name: cargo-bazel-x86_64-pc-windows-gnu.exe
           asset_path: ${{ github.workspace }}/build/artifacts/x86_64-pc-windows-gnu/cargo-bazel.exe
           asset_content_type: application/octet-stream
-      # - name: "Upload x86_64-pc-windows-msvc"
-      #   uses: actions/upload-release-asset@v1
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     upload_url: ${{ steps.cargo_bazel_release.outputs.upload_url }}
-      #     asset_name: cargo_bazel-x86_64-pc-windows-msvc.exe
-      #     asset_path: ${{ github.workspace }}/build/artifacts/x86_64-pc-windows-msvc/cargo-bazel.exe
-      #     asset_content_type: application/octet-stream
+      - name: "Upload x86_64-pc-windows-msvc"
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.cargo_bazel_release.outputs.upload_url }}
+          asset_name: cargo_bazel-x86_64-pc-windows-msvc.exe
+          asset_path: ${{ github.workspace }}/build/artifacts/x86_64-pc-windows-msvc/cargo-bazel.exe
+          asset_content_type: application/octet-stream
       - name: "Upload x86_64-unknown-linux-gnu"
         uses: actions/upload-release-asset@v1
         env:
