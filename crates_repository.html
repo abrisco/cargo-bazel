@@ -1,0 +1,254 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>crates_repository API - Cargo-&gt;Bazel</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Cargo-&gt;Bazel</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rules.html"><strong aria-hidden="true">1.1.</strong> Rules</a></li><li class="chapter-item expanded "><a href="crates_repository.html" class="active"><strong aria-hidden="true">1.2.</strong> crates_repository API</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Cargo-&gt;Bazel</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/abrisco/cargo-bazel" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <!-- Generated with Stardoc: http://skydoc.bazel.build -->
+<h1 id="crates_repository-api"><a class="header" href="#crates_repository-api"><code>crates_repository</code> API</a></h1>
+<ul>
+<li><a href="#aliases">aliases</a></li>
+<li><a href="#crate_dep">crate_dep</a></li>
+<li><a href="#crate_deps">crate_deps</a></li>
+<li><a href="#all_crate_deps">all_crate_deps</a></li>
+<li><a href="#crate_repositories">crate_repositories</a></li>
+</ul>
+<p><a id="#aliases"></a></p>
+<h2 id="aliases"><a class="header" href="#aliases">aliases</a></h2>
+<pre>
+aliases(<a href="#aliases-normal">normal</a>, <a href="#aliases-normal_dev">normal_dev</a>, <a href="#aliases-proc_macro">proc_macro</a>, <a href="#aliases-proc_macro_dev">proc_macro_dev</a>, <a href="#aliases-build">build</a>, <a href="#aliases-build_proc_macro">build_proc_macro</a>, <a href="#aliases-package_name">package_name</a>)
+</pre>
+<p>Produces a map of Crate alias names to their original label</p>
+<p>If no dependency kinds are specified, <code>normal</code> and <code>proc_macro</code> are used by default.
+Setting any one flag will otherwise determine the contents of the returned dict.</p>
+<p><strong>PARAMETERS</strong></p>
+<table><thead><tr><th align="left">Name</th><th align="left">Description</th><th align="left">Default Value</th></tr></thead><tbody>
+<tr><td align="left"><a id="aliases-normal"></a>normal</td><td align="left">If True, normal dependencies are included in the output list.</td><td align="left"><code>False</code></td></tr>
+<tr><td align="left"><a id="aliases-normal_dev"></a>normal_dev</td><td align="left">If True, normla dev dependencies will be included in the output list..</td><td align="left"><code>False</code></td></tr>
+<tr><td align="left"><a id="aliases-proc_macro"></a>proc_macro</td><td align="left">If True, proc_macro dependencies are included in the output list.</td><td align="left"><code>False</code></td></tr>
+<tr><td align="left"><a id="aliases-proc_macro_dev"></a>proc_macro_dev</td><td align="left">If True, dev proc_macro dependencies are included in the output list.</td><td align="left"><code>False</code></td></tr>
+<tr><td align="left"><a id="aliases-build"></a>build</td><td align="left">If True, build dependencies are included in the output list.</td><td align="left"><code>False</code></td></tr>
+<tr><td align="left"><a id="aliases-build_proc_macro"></a>build_proc_macro</td><td align="left">If True, build proc_macro dependencies are included in the output list.</td><td align="left"><code>False</code></td></tr>
+<tr><td align="left"><a id="aliases-package_name"></a>package_name</td><td align="left">The package name of the set of dependencies to look up. Defaults to <code>native.package_name()</code> when unset.</td><td align="left"><code>None</code></td></tr>
+</tbody></table>
+<p><strong>RETURNS</strong></p>
+<p>dict: The aliases of all associated packages</p>
+<p><a id="#all_crate_deps"></a></p>
+<h2 id="all_crate_deps"><a class="header" href="#all_crate_deps">all_crate_deps</a></h2>
+<pre>
+all_crate_deps(<a href="#all_crate_deps-normal">normal</a>, <a href="#all_crate_deps-normal_dev">normal_dev</a>, <a href="#all_crate_deps-proc_macro">proc_macro</a>, <a href="#all_crate_deps-proc_macro_dev">proc_macro_dev</a>, <a href="#all_crate_deps-build">build</a>, <a href="#all_crate_deps-build_proc_macro">build_proc_macro</a>,
+               <a href="#all_crate_deps-package_name">package_name</a>)
+</pre>
+<p>Finds the fully qualified label of all requested direct crate dependencies     for the package where this macro is called.</p>
+<p>If no parameters are set, all normal dependencies are returned. Setting any one flag will
+otherwise impact the contents of the returned list.</p>
+<p><strong>PARAMETERS</strong></p>
+<table><thead><tr><th align="left">Name</th><th align="left">Description</th><th align="left">Default Value</th></tr></thead><tbody>
+<tr><td align="left"><a id="all_crate_deps-normal"></a>normal</td><td align="left">If True, normal dependencies are included in the output list.</td><td align="left"><code>False</code></td></tr>
+<tr><td align="left"><a id="all_crate_deps-normal_dev"></a>normal_dev</td><td align="left">If True, normla dev dependencies will be included in the output list..</td><td align="left"><code>False</code></td></tr>
+<tr><td align="left"><a id="all_crate_deps-proc_macro"></a>proc_macro</td><td align="left">If True, proc_macro dependencies are included in the output list.</td><td align="left"><code>False</code></td></tr>
+<tr><td align="left"><a id="all_crate_deps-proc_macro_dev"></a>proc_macro_dev</td><td align="left">If True, dev proc_macro dependencies are included in the output list.</td><td align="left"><code>False</code></td></tr>
+<tr><td align="left"><a id="all_crate_deps-build"></a>build</td><td align="left">If True, build dependencies are included in the output list.</td><td align="left"><code>False</code></td></tr>
+<tr><td align="left"><a id="all_crate_deps-build_proc_macro"></a>build_proc_macro</td><td align="left">If True, build proc_macro dependencies are included in the output list.</td><td align="left"><code>False</code></td></tr>
+<tr><td align="left"><a id="all_crate_deps-package_name"></a>package_name</td><td align="left">The package name of the set of dependencies to look up. Defaults to <code>native.package_name()</code> when unset.</td><td align="left"><code>None</code></td></tr>
+</tbody></table>
+<p><strong>RETURNS</strong></p>
+<p>list: A list of labels to generated rust targets (str)</p>
+<p><a id="#crate_dep"></a></p>
+<h2 id="crate_dep"><a class="header" href="#crate_dep">crate_dep</a></h2>
+<pre>
+crate_dep(<a href="#crate_dep-name">name</a>)
+</pre>
+<p>Get the label of a specific crate from listed workspace member dependnecies.</p>
+<p><strong>PARAMETERS</strong></p>
+<table><thead><tr><th align="left">Name</th><th align="left">Description</th><th align="left">Default Value</th></tr></thead><tbody>
+<tr><td align="left"><a id="crate_dep-name"></a>name</td><td align="left">The crate's name</td><td align="left">none</td></tr>
+</tbody></table>
+<p><strong>RETURNS</strong></p>
+<p>Label: The absolute label of the dependency</p>
+<p><a id="#crate_deps"></a></p>
+<h2 id="crate_deps"><a class="header" href="#crate_deps">crate_deps</a></h2>
+<pre>
+crate_deps(<a href="#crate_deps-deps">deps</a>, <a href="#crate_deps-package_name">package_name</a>)
+</pre>
+<p>Finds the fully qualified label of the requested crates for the package where this macro is called.</p>
+<p><strong>PARAMETERS</strong></p>
+<table><thead><tr><th align="left">Name</th><th align="left">Description</th><th align="left">Default Value</th></tr></thead><tbody>
+<tr><td align="left"><a id="crate_deps-deps"></a>deps</td><td align="left">The desired list of crate targets.</td><td align="left">none</td></tr>
+<tr><td align="left"><a id="crate_deps-package_name"></a>package_name</td><td align="left">The package name of the set of dependencies to look up. Defaults to <code>native.package_name()</code>.</td><td align="left"><code>None</code></td></tr>
+</tbody></table>
+<p><strong>RETURNS</strong></p>
+<p>list: A list of labels to generated rust targets (str)</p>
+<p><a id="#crate_repositories"></a></p>
+<h2 id="crate_repositories"><a class="header" href="#crate_repositories">crate_repositories</a></h2>
+<pre>
+crate_repositories()
+</pre>
+<p>A macro for defining repositories for all generated crates</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="rules.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="rules.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

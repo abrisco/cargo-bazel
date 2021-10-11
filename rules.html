@@ -1,0 +1,316 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Rules - Cargo-&gt;Bazel</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Cargo-&gt;Bazel</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rules.html" class="active"><strong aria-hidden="true">1.1.</strong> Rules</a></li><li class="chapter-item expanded "><a href="crates_repository.html"><strong aria-hidden="true">1.2.</strong> crates_repository API</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Cargo-&gt;Bazel</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/abrisco/cargo-bazel" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <!-- Generated with Stardoc: http://skydoc.bazel.build -->
+<h1 id="rules"><a class="header" href="#rules">Rules</a></h1>
+<ul>
+<li><a href="#crates_repository">crates_repository</a></li>
+<li><a href="#cratespec">crate.spec</a></li>
+<li><a href="#crateworkspace_member">crate.workspace_member</a></li>
+<li><a href="#crateextras">crate.extras</a></li>
+<li><a href="#render_config">render_config</a></li>
+</ul>
+<p><a id="#crates_repository"></a></p>
+<h2 id="crates_repository"><a class="header" href="#crates_repository">crates_repository</a></h2>
+<pre>
+crates_repository(<a href="#crates_repository-name">name</a>, <a href="#crates_repository-cargo_config">cargo_config</a>, <a href="#crates_repository-extra_workspace_members">extra_workspace_members</a>, <a href="#crates_repository-extras">extras</a>, <a href="#crates_repository-generate_build_scripts">generate_build_scripts</a>,
+                  <a href="#crates_repository-generator">generator</a>, <a href="#crates_repository-generator_sha256s">generator_sha256s</a>, <a href="#crates_repository-generator_urls">generator_urls</a>, <a href="#crates_repository-lockfile">lockfile</a>, <a href="#crates_repository-lockfile_kind">lockfile_kind</a>, <a href="#crates_repository-manifests">manifests</a>,
+                  <a href="#crates_repository-packages">packages</a>, <a href="#crates_repository-quiet">quiet</a>, <a href="#crates_repository-render_config">render_config</a>, <a href="#crates_repository-repo_mapping">repo_mapping</a>, <a href="#crates_repository-rust_toolchain_repo_template">rust_toolchain_repo_template</a>,
+                  <a href="#crates_repository-rust_version">rust_version</a>, <a href="#crates_repository-supported_platform_triples">supported_platform_triples</a>)
+</pre>
+<p>A rule for defining and downloading Rust dependencies (crates).</p>
+<p>Environment Variables:</p>
+<table><thead><tr><th>variable</th><th>usage</th></tr></thead><tbody>
+<tr><td><code>CARGO_BAZEL_GENERATOR_URL</code></td><td>The URL of a cargo-bazel binary. This variable takes precedence over attributes and can use <code>file://</code> for local paths</td></tr>
+<tr><td><code>CARGO_BAZEL_GENERATOR_SHA256</code></td><td>The sha256 checksum of the file located at <code>CARGO_BAZEL_GENERATOR_URL</code></td></tr>
+<tr><td><code>CARGO_BAZEL_REPIN</code></td><td>An indicator that the dependencies represented by the rule should be regenerated. <code>REPIN</code> may also be used.</td></tr>
+</tbody></table>
+<p><strong>ATTRIBUTES</strong></p>
+<table><thead><tr><th align="left">Name</th><th align="left">Description</th><th align="left">Type</th><th align="left">Mandatory</th><th align="left">Default</th></tr></thead><tbody>
+<tr><td align="left"><a id="crates_repository-name"></a>name</td><td align="left">A unique name for this repository.</td><td align="left"><a href="https://bazel.build/docs/build-ref.html#name">Name</a></td><td align="left">required</td><td align="left"></td></tr>
+<tr><td align="left"><a id="crates_repository-cargo_config"></a>cargo_config</td><td align="left">A <a href="https://doc.rust-lang.org/cargo/reference/config.html">Cargo configuration</a> file</td><td align="left"><a href="https://bazel.build/docs/build-ref.html#labels">Label</a></td><td align="left">optional</td><td align="left">None</td></tr>
+<tr><td align="left"><a id="crates_repository-extra_workspace_members"></a>extra_workspace_members</td><td align="left">Additional crates to download and include as a workspace member. This is unfortunately required in order to add information about &quot;binary-only&quot; crates so that a <code>rust_binary</code> may be generated for it. <a href="https://github.com/rust-lang/cargo/issues/9096">rust-lang/cargo#9096</a> tracks an RFC which may solve for this.</td><td align="left"><a href="https://bazel.build/docs/skylark/lib/dict.html">Dictionary: String -&gt; String</a></td><td align="left">optional</td><td align="left">{}</td></tr>
+<tr><td align="left"><a id="crates_repository-extras"></a>extras</td><td align="left">Extra settings to apply to crates. See <a href="#crate.extras">crate.extras</a>.</td><td align="left"><a href="https://bazel.build/docs/skylark/lib/dict.html">Dictionary: String -&gt; List of strings</a></td><td align="left">optional</td><td align="left">{}</td></tr>
+<tr><td align="left"><a id="crates_repository-generate_build_scripts"></a>generate_build_scripts</td><td align="left">Whether or not to generate <a href="https://doc.rust-lang.org/cargo/reference/build-scripts.html">cargo build scripts</a> by default.</td><td align="left">Boolean</td><td align="left">optional</td><td align="left">True</td></tr>
+<tr><td align="left"><a id="crates_repository-generator"></a>generator</td><td align="left">The absolute label of a generator. Eg. <code>@cargo_bazel_bootstrap//:cargo-bazel</code>. This is typically used when bootstrapping</td><td align="left">String</td><td align="left">optional</td><td align="left">&quot;&quot;</td></tr>
+<tr><td align="left"><a id="crates_repository-generator_sha256s"></a>generator_sha256s</td><td align="left">Dictionary of <code>host_triple</code> -&gt; <code>sha256</code> for a <code>cargo-bazel</code> binary.</td><td align="left"><a href="https://bazel.build/docs/skylark/lib/dict.html">Dictionary: String -&gt; String</a></td><td align="left">optional</td><td align="left">{}</td></tr>
+<tr><td align="left"><a id="crates_repository-generator_urls"></a>generator_urls</td><td align="left">URL template from which to download the <code>cargo-bazel</code> binary. <code>{host_triple}</code> and will be filled in according to the host platform.</td><td align="left"><a href="https://bazel.build/docs/skylark/lib/dict.html">Dictionary: String -&gt; String</a></td><td align="left">optional</td><td align="left">{}</td></tr>
+<tr><td align="left"><a id="crates_repository-lockfile"></a>lockfile</td><td align="left">The path to a file to use for reproducible renderings. Two kinds of lock files are supported, Cargo (<code>Cargo.lock</code> files) and Bazel (custom files generated by this rule, naming is irrelevant). Bazel lockfiles should be the prefered kind as they're desigend with Bazel's notions of reporducibility in mind. Cargo lockfiles can be used in cases where it's intended to be the source of truth, but more work will need to be done to generate BUILD files which are not guaranteed to be determinsitic.</td><td align="left"><a href="https://bazel.build/docs/build-ref.html#labels">Label</a></td><td align="left">required</td><td align="left"></td></tr>
+<tr><td align="left"><a id="crates_repository-lockfile_kind"></a>lockfile_kind</td><td align="left">Two different kinds of lockfiles are supported, the custom &quot;Bazel&quot; lockfile, which is generated by this rule, and Cargo lockfiles (<code>Cargo.lock</code>). This attribute allows for explicitly defining the type in cases where it may not be auto-detectable.</td><td align="left">String</td><td align="left">optional</td><td align="left">&quot;auto&quot;</td></tr>
+<tr><td align="left"><a id="crates_repository-manifests"></a>manifests</td><td align="left">A list of Cargo manifests (<code>Cargo.toml</code> files).</td><td align="left"><a href="https://bazel.build/docs/build-ref.html#labels">List of labels</a></td><td align="left">optional</td><td align="left">[]</td></tr>
+<tr><td align="left"><a id="crates_repository-packages"></a>packages</td><td align="left">A set of crates (packages) specifications to depend on. See <a href="#crate.spec">crate.spec</a>.</td><td align="left"><a href="https://bazel.build/docs/skylark/lib/dict.html">Dictionary: String -&gt; String</a></td><td align="left">optional</td><td align="left">{}</td></tr>
+<tr><td align="left"><a id="crates_repository-quiet"></a>quiet</td><td align="left">If stdout and stderr should not be printed to the terminal.</td><td align="left">Boolean</td><td align="left">optional</td><td align="left">True</td></tr>
+<tr><td align="left"><a id="crates_repository-render_config"></a>render_config</td><td align="left">The configuration flags to use for rendering. Use <code>@cargo_bazel//:defs.bzl%render_config</code> to generate the value for this field. If unset, the defaults defined there will be used.</td><td align="left">String</td><td align="left">optional</td><td align="left">&quot;&quot;</td></tr>
+<tr><td align="left"><a id="crates_repository-repo_mapping"></a>repo_mapping</td><td align="left">A dictionary from local repository name to global repository name. This allows controls over workspace dependency resolution for dependencies of this repository.&lt;p&gt;For example, an entry <code>&quot;@foo&quot;: &quot;@bar&quot;</code> declares that, for any time this repository depends on <code>@foo</code> (such as a dependency on <code>@foo//some:target</code>, it should actually resolve that dependency within globally-declared <code>@bar</code> (<code>@bar//some:target</code>).</td><td align="left"><a href="https://bazel.build/docs/skylark/lib/dict.html">Dictionary: String -&gt; String</a></td><td align="left">required</td><td align="left"></td></tr>
+<tr><td align="left"><a id="crates_repository-rust_toolchain_repo_template"></a>rust_toolchain_repo_template</td><td align="left">The template to use for finding the host <code>rust_toolchain</code> repository. <code>{version}</code> (eg. '1.53.0'), <code>{triple}</code> (eg. 'x86_64-unknown-linux-gnu'), <code>{arch}</code> (eg. 'aarch64'), <code>{vendor}</code> (eg. 'unknown'), <code>{system}</code> (eg. 'darwin'), <code>{cfg}</code> (eg. 'exec'), and <code>{tool}</code> (eg. 'rustc') will be replaced in the string if present.</td><td align="left">String</td><td align="left">optional</td><td align="left">&quot;rust_{system}_{arch}&quot;</td></tr>
+<tr><td align="left"><a id="crates_repository-rust_version"></a>rust_version</td><td align="left">The version of Rust the currently registered toolchain is using. Eg. <code>1.56.0</code>, or <code>nightly-2021-09-08</code></td><td align="left">String</td><td align="left">optional</td><td align="left">&quot;1.55.0&quot;</td></tr>
+<tr><td align="left"><a id="crates_repository-supported_platform_triples"></a>supported_platform_triples</td><td align="left">A set of all platform triples to consider when generating dependencies.</td><td align="left">List of strings</td><td align="left">optional</td><td align="left">[&quot;i686-apple-darwin&quot;, &quot;i686-pc-windows-msvc&quot;, &quot;i686-unknown-linux-gnu&quot;, &quot;x86_64-apple-darwin&quot;, &quot;x86_64-pc-windows-msvc&quot;, &quot;x86_64-unknown-linux-gnu&quot;, &quot;aarch64-apple-darwin&quot;, &quot;aarch64-apple-ios&quot;, &quot;aarch64-linux-android&quot;, &quot;aarch64-unknown-linux-gnu&quot;, &quot;arm-unknown-linux-gnueabi&quot;, &quot;i686-linux-android&quot;, &quot;i686-unknown-freebsd&quot;, &quot;powerpc-unknown-linux-gnu&quot;, &quot;s390x-unknown-linux-gnu&quot;, &quot;wasm32-unknown-unknown&quot;, &quot;wasm32-wasi&quot;, &quot;x86_64-apple-ios&quot;, &quot;x86_64-linux-android&quot;, &quot;x86_64-unknown-freebsd&quot;]</td></tr>
+</tbody></table>
+<p><a id="#crate.spec"></a></p>
+<h2 id="cratespec"><a class="header" href="#cratespec">crate.spec</a></h2>
+<pre>
+crate.spec(<a href="#crate.spec-version">version</a>, <a href="#crate.spec-default_features">default_features</a>, <a href="#crate.spec-features">features</a>, <a href="#crate.spec-git">git</a>, <a href="#crate.spec-rev">rev</a>)
+</pre>
+<p>A constructor for a crate dependency.</p>
+<p>See <a href="https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html">specifying dependencies</a> in the Cargo book for more details.</p>
+<p><strong>PARAMETERS</strong></p>
+<table><thead><tr><th align="left">Name</th><th align="left">Description</th><th align="left">Default Value</th></tr></thead><tbody>
+<tr><td align="left"><a id="crate.spec-version"></a>version</td><td align="left">The exact version of the crate. Cannot be used with <code>git</code>.</td><td align="left"><code>None</code></td></tr>
+<tr><td align="left"><a id="crate.spec-default_features"></a>default_features</td><td align="left">Maps to the <code>default-features</code> flag.</td><td align="left"><code>True</code></td></tr>
+<tr><td align="left"><a id="crate.spec-features"></a>features</td><td align="left">A list of features to use for the crate</td><td align="left"><code>[]</code></td></tr>
+<tr><td align="left"><a id="crate.spec-git"></a>git</td><td align="left">The Git url to use for the crate. Cannot be used with <code>version</code>.</td><td align="left"><code>None</code></td></tr>
+<tr><td align="left"><a id="crate.spec-rev"></a>rev</td><td align="left">The git revision of the remote crate. Tied with the <code>git</code> param.</td><td align="left"><code>None</code></td></tr>
+</tbody></table>
+<p><strong>RETURNS</strong></p>
+<p>string: A json encoded string of all inputs</p>
+<p><a id="#crate.extras"></a></p>
+<h2 id="crateextras"><a class="header" href="#crateextras">crate.extras</a></h2>
+<pre>
+crate.extras(<a href="#crate.extras-version">version</a>, <a href="#crate.extras-build_content">build_content</a>, <a href="#crate.extras-build_script_data">build_script_data</a>, <a href="#crate.extras-build_script_data_glob">build_script_data_glob</a>, <a href="#crate.extras-build_script_deps">build_script_deps</a>,
+             <a href="#crate.extras-build_script_env">build_script_env</a>, <a href="#crate.extras-build_script_proc_macro_deps">build_script_proc_macro_deps</a>, <a href="#crate.extras-build_script_rustc_env">build_script_rustc_env</a>, <a href="#crate.extras-compile_data">compile_data</a>,
+             <a href="#crate.extras-compile_data_glob">compile_data_glob</a>, <a href="#crate.extras-crate_features">crate_features</a>, <a href="#crate.extras-data">data</a>, <a href="#crate.extras-data_glob">data_glob</a>, <a href="#crate.extras-deps">deps</a>, <a href="#crate.extras-gen_build_script">gen_build_script</a>,
+             <a href="#crate.extras-proc_macro_deps">proc_macro_deps</a>, <a href="#crate.extras-rustc_env">rustc_env</a>, <a href="#crate.extras-rustc_env_files">rustc_env_files</a>, <a href="#crate.extras-rustc_flags">rustc_flags</a>, <a href="#crate.extras-shallow_since">shallow_since</a>)
+</pre>
+<p>A collection of extra attributes and settings for a particular crate</p>
+<p><strong>PARAMETERS</strong></p>
+<table><thead><tr><th align="left">Name</th><th align="left">Description</th><th align="left">Default Value</th></tr></thead><tbody>
+<tr><td align="left"><a id="crate.extras-version"></a>version</td><td align="left">The version or semver-conditions to match with a crate.</td><td align="left"><code>&quot;*&quot;</code></td></tr>
+<tr><td align="left"><a id="crate.extras-build_content"></a>build_content</td><td align="left">Extra contents to write to the bottom of generated BUILD files.</td><td align="left"><code>None</code></td></tr>
+<tr><td align="left"><a id="crate.extras-build_script_data"></a>build_script_data</td><td align="left">A list of labels to add to a crate's <code>cargo_build_script::data</code> attribute.</td><td align="left"><code>None</code></td></tr>
+<tr><td align="left"><a id="crate.extras-build_script_data_glob"></a>build_script_data_glob</td><td align="left">A list of glob patterns to add to a crate's <code>cargo_build_script::data</code> attribute.</td><td align="left"><code>None</code></td></tr>
+<tr><td align="left"><a id="crate.extras-build_script_deps"></a>build_script_deps</td><td align="left">A list of labels to add to a crate's <code>cargo_build_script::deps</code> attribute.</td><td align="left"><code>None</code></td></tr>
+<tr><td align="left"><a id="crate.extras-build_script_env"></a>build_script_env</td><td align="left">Additional environment variables to set on a crate's <code>cargo_build_script::env</code> attribute.</td><td align="left"><code>None</code></td></tr>
+<tr><td align="left"><a id="crate.extras-build_script_proc_macro_deps"></a>build_script_proc_macro_deps</td><td align="left">A list of labels to add to a crate's <code>cargo_build_script::proc_macro_deps</code> attribute.</td><td align="left"><code>None</code></td></tr>
+<tr><td align="left"><a id="crate.extras-build_script_rustc_env"></a>build_script_rustc_env</td><td align="left">Additional environment variables to set on a crate's <code>cargo_build_script::env</code> attribute.</td><td align="left"><code>None</code></td></tr>
+<tr><td align="left"><a id="crate.extras-compile_data"></a>compile_data</td><td align="left">A list of labels to add to a crate's <code>rust_library::compile_data</code> attribute.</td><td align="left"><code>None</code></td></tr>
+<tr><td align="left"><a id="crate.extras-compile_data_glob"></a>compile_data_glob</td><td align="left">A list of glob patterns to add to a crate's <code>rust_library::compile_data</code> attribute.</td><td align="left"><code>None</code></td></tr>
+<tr><td align="left"><a id="crate.extras-crate_features"></a>crate_features</td><td align="left">A list of strings to add to a crate's <code>rust_library::crate_features</code> attribute.</td><td align="left"><code>None</code></td></tr>
+<tr><td align="left"><a id="crate.extras-data"></a>data</td><td align="left">A list of labels to add to a crate's <code>rust_library::data</code> attribute.</td><td align="left"><code>None</code></td></tr>
+<tr><td align="left"><a id="crate.extras-data_glob"></a>data_glob</td><td align="left">A list of glob patterns to add to a crate's <code>rust_library::data</code> attribute.</td><td align="left"><code>None</code></td></tr>
+<tr><td align="left"><a id="crate.extras-deps"></a>deps</td><td align="left">A list of labels to add to a crate's <code>rust_library::deps</code> attribute.</td><td align="left"><code>None</code></td></tr>
+<tr><td align="left"><a id="crate.extras-gen_build_script"></a>gen_build_script</td><td align="left">An authorative flag to determine whether or not to produce <code>cargo_build_script</code> targets for the current crate.</td><td align="left"><code>None</code></td></tr>
+<tr><td align="left"><a id="crate.extras-proc_macro_deps"></a>proc_macro_deps</td><td align="left">A list of labels to add to a crate's <code>rust_library::proc_macro_deps</code> attribute.</td><td align="left"><code>None</code></td></tr>
+<tr><td align="left"><a id="crate.extras-rustc_env"></a>rustc_env</td><td align="left">Additional variables to set on a crate's <code>rust_library::rustc_env</code> attribute.</td><td align="left"><code>None</code></td></tr>
+<tr><td align="left"><a id="crate.extras-rustc_env_files"></a>rustc_env_files</td><td align="left">A list of labels to set on a crate's <code>rust_library::rustc_env_files</code> attribute.</td><td align="left"><code>None</code></td></tr>
+<tr><td align="left"><a id="crate.extras-rustc_flags"></a>rustc_flags</td><td align="left">A list of strings to set on a crate's <code>rust_library::rustc_flags</code> attribute.</td><td align="left"><code>None</code></td></tr>
+<tr><td align="left"><a id="crate.extras-shallow_since"></a>shallow_since</td><td align="left">An optional timestamp used for crates originating from a git repository instead of a crate registry. This flag optimizes fetching the source code.</td><td align="left"><code>None</code></td></tr>
+</tbody></table>
+<p><strong>RETURNS</strong></p>
+<p>string: A json encoded string containing the specified version and separately all other inputs.</p>
+<p><a id="#crate.workspace_member"></a></p>
+<h2 id="crateworkspace_member"><a class="header" href="#crateworkspace_member">crate.workspace_member</a></h2>
+<pre>
+crate.workspace_member(<a href="#crate.workspace_member-version">version</a>, <a href="#crate.workspace_member-sha256">sha256</a>)
+</pre>
+<p>Define information for extra workspace members</p>
+<p><strong>PARAMETERS</strong></p>
+<table><thead><tr><th align="left">Name</th><th align="left">Description</th><th align="left">Default Value</th></tr></thead><tbody>
+<tr><td align="left"><a id="crate.workspace_member-version"></a>version</td><td align="left">The semver of the crate to download. Must be an exact version.</td><td align="left">none</td></tr>
+<tr><td align="left"><a id="crate.workspace_member-sha256"></a>sha256</td><td align="left">The sha256 checksum of the <code>.crate</code> file.</td><td align="left"><code>None</code></td></tr>
+</tbody></table>
+<p><strong>RETURNS</strong></p>
+<p>string: A json encoded string of all inputs</p>
+<p><a id="#render_config"></a></p>
+<h2 id="render_config"><a class="header" href="#render_config">render_config</a></h2>
+<pre>
+render_config(<a href="#render_config-build_file_template">build_file_template</a>, <a href="#render_config-crate_label_template">crate_label_template</a>, <a href="#render_config-crate_repository_template">crate_repository_template</a>,
+              <a href="#render_config-default_package_name">default_package_name</a>, <a href="#render_config-platforms_template">platforms_template</a>, <a href="#render_config-registry_url_template">registry_url_template</a>)
+</pre>
+<p>Various settings used to configure rendered outputs</p>
+<p>The template parameters each support a select number of format keys. A description of each key
+can be found below where the supported keys for each template can be found in the parameter docs</p>
+<table><thead><tr><th>key</th><th>definition</th></tr></thead><tbody>
+<tr><td><code>name</code></td><td>The name of the crate. Eg <code>tokio</code></td></tr>
+<tr><td><code>registry</code></td><td>The name of the registry. Eg <code>crates.io</code></td></tr>
+<tr><td><code>repository</code></td><td>The rendered repository name for the crate. Directly relates to <code>crate_repository_template</code>.</td></tr>
+<tr><td><code>scheme</code></td><td>The url scheme used for connecting to the crate registry. Eg <code>https</code></td></tr>
+<tr><td><code>triple</code></td><td>A platform triple. Eg <code>x86_64-unknown-linux-gnu</code></td></tr>
+<tr><td><code>version</code></td><td>The crate version. Eg <code>1.2.3</code></td></tr>
+</tbody></table>
+<p><strong>PARAMETERS</strong></p>
+<table><thead><tr><th align="left">Name</th><th align="left">Description</th><th align="left">Default Value</th></tr></thead><tbody>
+<tr><td align="left"><a id="render_config-build_file_template"></a>build_file_template</td><td align="left">The base template to use for BUILD file names. The available format keys are [<code>{name}</code>, {version}<code>].</td><td align="left"><code>&quot;BUILD.{name}-{version}.bazel&quot;</code></td></tr>
+<tr><td align="left"><a id="render_config-crate_label_template"></a>crate_label_template</td><td align="left">The base template to use for crate labels. The available format keys are [<code>{repository}</code>, <code>{name}</code>, <code>{version}</code>, <code>{target}</code>].</td><td align="left"><code>&quot;@{repository}__{name}-{version}//:{target}&quot;</code></td></tr>
+<tr><td align="left"><a id="render_config-crate_repository_template"></a>crate_repository_template</td><td align="left">The base template to use for Crate label repository names. The available format keys are [<code>{repository}</code>, <code>{name}</code>, <code>{version}</code>].</td><td align="left"><code>&quot;{repository}__{name}-{version}&quot;</code></td></tr>
+<tr><td align="left"><a id="render_config-default_package_name"></a>default_package_name</td><td align="left">The default package name to in the rendered macros. This affects the auto package detection of things like <code>all_crate_deps</code>.</td><td align="left"><code>None</code></td></tr>
+<tr><td align="left"><a id="render_config-platforms_template"></a>platforms_template</td><td align="left">The base template to use for platform names. See <a href="https://docs.bazel.build/versions/main/platforms.html">platforms documentation</a>. The available format keys are [<code>{triple}</code>].</td><td align="left"><code>&quot;@rules_rust//rust/platform:{triple}&quot;</code></td></tr>
+<tr><td align="left"><a id="render_config-registry_url_template"></a>registry_url_template</td><td align="left">The base template to use for crate registry urls. The available format keys are [<code>{scheme}</code>, <code>{registry}</code>, <code>{name}</code>, <code>{version}</code>].</td><td align="left"><code>&quot;{scheme}://{registry}/api/v1/crates/{name}/{version}/download&quot;</code></td></tr>
+</tbody></table>
+<p><strong>RETURNS</strong></p>
+<p>string: A json encoded struct to match the Rust <code>config::RenderConfig</code> struct</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="crates_repository.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="crates_repository.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
