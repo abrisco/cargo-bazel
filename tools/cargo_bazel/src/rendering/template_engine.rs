@@ -237,9 +237,12 @@ impl TemplateEngine {
     pub fn render_module_build_file(&self, data: &Context) -> Result<String> {
         let mut context = self.new_tera_ctx();
         context.insert("context", data);
+
+        let (workspace_member_deps, workspace_member_dep_names) = data.flat_workspace_member_deps();
+        context.insert("workspace_member_dependencies", &workspace_member_deps);
         context.insert(
-            "workspace_member_dependencies",
-            &data.flat_workspace_member_deps(),
+            "workspace_member_dependency_renames",
+            &workspace_member_dep_names,
         );
 
         self.engine
@@ -381,10 +384,7 @@ fn crate_registry_url_fn_generator(template: String) -> impl tera::Function {
     )
 }
 
-pub fn get_or(
-    value: &tera::Value,
-    args: &HashMap<String, tera::Value>,
-) -> tera::Result<tera::Value> {
+fn get_or(value: &tera::Value, args: &HashMap<String, tera::Value>) -> tera::Result<tera::Value> {
     let default = args.get("default");
     let key = match args.get("key") {
         Some(val) => tera::try_get_value!("get", "key", String, val),
