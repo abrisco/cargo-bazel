@@ -8,7 +8,6 @@ Expected length = 6 lines
 # `crates_repository` API
 
 - [aliases](#aliases)
-- [crate_dep](#crate_dep)
 - [crate_deps](#crate_deps)
 - [all_crate_deps](#all_crate_deps)
 - [crate_repositories](#crate_repositories)
@@ -83,32 +82,6 @@ def _flatten_dependency_maps(all_dependency_maps):
                     dependencies[pkg_name][condition].update({crate_name: crate_label})
 
     return dependencies
-
-def crate_dep(name):
-    """Get the label of a specific crate from listed workspace member dependnecies.
-
-    Args:
-        name (str): The crate's name
-
-    Returns:
-        Label: The absolute label of the dependency
-    """
-
-    # Join both sets of dependencies
-    deps_map = _flatten_dependency_maps([
-        _NORMAL_DEPENDENCIES,
-        _NORMAL_DEV_DEPENDENCIES,
-        _PROC_MACRO_DEPENDENCIES,
-        _PROC_MACRO_DEV_DEPENDENCIES,
-        _BUILD_DEPENDENCIES,
-        _BUILD_PROC_MACRO_DEPENDENCIES,
-    ])
-    dependencies = dict()
-    for dep_set in deps_map.values():
-        for dep in dep_set:
-            dependencies.update({dep: dep})
-    
-    return Label(dependencies[name])
 
 def crate_deps(deps, package_name = {{ default_package_name }}):
     """Finds the fully qualified label of the requested crates for the package where this macro is called.
