@@ -27,7 +27,7 @@ alias(
 {%- for rule_type, target in rule %}
 {%- if rule_type in ["Binary"] %}
 alias(
-    name = "{{ crate.name }}__bin",
+    name = "{{ crate.name }}__{{ target.crate_name }}",
     actual = "{{ crate_label(name = crate.name, version = crate.version, target = target.crate_name ~ '__bin') }}",
 )
 {%- endif %}
