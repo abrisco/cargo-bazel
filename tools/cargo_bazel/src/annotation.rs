@@ -3,11 +3,11 @@
 pub mod dependency;
 
 use std::collections::{BTreeMap, BTreeSet};
+use std::convert::TryFrom;
 use std::path::PathBuf;
 
 use anyhow::{bail, Result};
 use cargo_metadata::{Node, Package, PackageId};
-use hex::ToHex;
 use serde::{Deserialize, Serialize};
 
 use crate::config::{Commitish, Config, CrateExtras, CrateId};
@@ -36,12 +36,7 @@ pub struct MetadataAnnotation {
 impl MetadataAnnotation {
     pub fn new(metadata: CargoMetadata) -> MetadataAnnotation {
         // UNWRAP: The workspace metadata should be written by a controlled process. This should not return a result
-        let workspace_metadata = match find_workspace_metadata(&metadata)
-            .expect("Workspace metadata was likey malformed")
-        {
-            Some(data) => data,
-            None => WorkspaceMetadata::default(),
-        };
+        let workspace_metadata = find_workspace_metadata(&metadata).unwrap_or_default();
 
         let resolve = metadata
             .resolve
@@ -102,8 +97,7 @@ pub enum SourceAnnotation {
         shallow_since: Option<String>,
     },
     Http {
-        name: String,
-        version: String,
+        url: String,
         sha256: Option<String>,
     },
 }
@@ -115,13 +109,7 @@ pub struct LockfileAnnotation {
 
 impl LockfileAnnotation {
     pub fn new(lockfile: CargoLockfile, metadata: &CargoMetadata) -> Result<Self> {
-        // UNWRAP: The workspace metadata should be written by a controlled process. This should not return a result
-        let workspace_metadata = match find_workspace_metadata(metadata)
-            .expect("Workspace metadata was likey malformed")
-        {
-            Some(data) => data,
-            None => WorkspaceMetadata::default(),
-        };
+        let workspace_metadata = find_workspace_metadata(metadata).unwrap_or_default();
 
         let nodes: Vec<&Node> = metadata
             .resolve
@@ -169,21 +157,26 @@ impl LockfileAnnotation {
             ),
         };
 
-        // If a package has no source ID or is a path ID, then it's likey a workspace member. For any
-        // workspace members, we allow for there to be annotated source info in the manifest metadata
-        if lock_pkg.source.is_none() || lock_pkg.source.as_ref().unwrap().is_path() {
-            if let Some(info) = Self::find_source_annotation(lock_pkg, workspace_metadata)? {
-                return Ok(SourceAnnotation::Http {
-                    name: pkg.name.clone(),
-                    version: pkg.version.to_string(),
-                    sha256: Some(info.sha256),
-                });
-            }
-            todo!("How should local paths be handled? Could probably be supported... Somehow.");
-        }
+        // Check for spliced information about a crate's network source.
+        let spliced_source_info = Self::find_source_annotation(lock_pkg, workspace_metadata)?;
 
         // Parse it's source info. The check above should prevent a panic
-        let source = lock_pkg.source.as_ref().unwrap();
+        let source = match lock_pkg.source.as_ref() {
+            Some(source) => source,
+            None => match spliced_source_info {
+                Some(info) => {
+                    return Ok(SourceAnnotation::Http {
+                        url: info.url,
+                        sha256: Some(info.sha256),
+                    })
+                }
+                None => bail!(
+                    "The package '{:?} {:?}' has no source info so no annotation can be made",
+                    lock_pkg.name,
+                    lock_pkg.version
+                ),
+            },
+        };
 
         // Handle any git repositories
         if let Some(git_ref) = source.git_reference() {
@@ -194,18 +187,20 @@ impl LockfileAnnotation {
             });
         }
 
-        // Assume anything remaining is an HTTP archive
-        let sha256 = lock_pkg
-            .checksum
-            .as_ref()
-            .and_then(|sum| sum.as_sha256())
-            .map(|sum| sum.encode_hex::<String>());
+        // The last thing that should be checked is the spliced source information as
+        // other sources may more accurately represent where a crate should be downloaded.
+        if let Some(info) = spliced_source_info {
+            return Ok(SourceAnnotation::Http {
+                url: info.url,
+                sha256: Some(info.sha256),
+            });
+        }
 
-        Ok(SourceAnnotation::Http {
-            name: pkg.name.clone(),
-            version: pkg.version.to_string(),
-            sha256,
-        })
+        bail!(
+            "Unable to determine source annotation for '{:?} {:?}",
+            lock_pkg.name,
+            lock_pkg.version
+        )
     }
 
     fn find_source_annotation(
@@ -278,13 +273,8 @@ impl Annotations {
     }
 }
 
-fn find_workspace_metadata(cargo_metadata: &CargoMetadata) -> Result<Option<WorkspaceMetadata>> {
-    let metadata: WorkspaceMetadata = match cargo_metadata.workspace_metadata.get("cargo-bazel") {
-        Some(value) => serde_json::from_value(value.to_owned())?,
-        None => return Ok(None),
-    };
-
-    Ok(Some(metadata))
+fn find_workspace_metadata(cargo_metadata: &CargoMetadata) -> Option<WorkspaceMetadata> {
+    WorkspaceMetadata::try_from(cargo_metadata.workspace_metadata.clone()).ok()
 }
 
 /// Determines whether or not a package is a workspace member. This follows
@@ -292,7 +282,7 @@ fn find_workspace_metadata(cargo_metadata: &CargoMetadata) -> Result<Option<Work
 /// "extra workspace members" are *not* treated as workspace members
 fn is_workspace_member(id: &PackageId, cargo_metadata: &CargoMetadata) -> bool {
     if cargo_metadata.workspace_members.contains(id) {
-        if let Ok(Some(data)) = find_workspace_metadata(cargo_metadata) {
+        if let Some(data) = find_workspace_metadata(cargo_metadata) {
             let pkg = &cargo_metadata[id];
             let crate_id = CrateId::new(pkg.name.clone(), pkg.version.to_string());
 

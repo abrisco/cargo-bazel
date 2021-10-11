@@ -37,10 +37,6 @@ pub struct RenderConfig {
     /// The pattern to use for platform constraints.
     /// Eg. `@rules_rust//rust/platform:{triple}`.
     pub platforms_template: String,
-
-    /// The pattern used for crate registry URLs
-    /// Eg. "{scheme}://{registry}/api/v1/crates/{crate}/{version}/download"
-    pub registry_url_template: String,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq, PartialOrd, Ord)]

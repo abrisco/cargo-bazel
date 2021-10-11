@@ -84,8 +84,7 @@ def render_config(
         crate_label_template = "@{repository}__{name}-{version}//:{target}",
         crate_repository_template = "{repository}__{name}-{version}",
         default_package_name = None,
-        platforms_template = "@rules_rust//rust/platform:{triple}",
-        registry_url_template = "{scheme}://{registry}/api/v1/crates/{name}/{version}/download"):
+        platforms_template = "@rules_rust//rust/platform:{triple}"):
     """Various settings used to configure rendered outputs
 
     The template parameters each support a select number of format keys. A description of each key
@@ -94,11 +93,10 @@ def render_config(
     | key | definition |
     | --- | --- |
     | `name` | The name of the crate. Eg `tokio` |
-    | `registry` | The name of the registry. Eg `crates.io` |
     | `repository` | The rendered repository name for the crate. Directly relates to `crate_repository_template`. |
-    | `scheme` | The url scheme used for connecting to the crate registry. Eg `https` |
     | `triple` | A platform triple. Eg `x86_64-unknown-linux-gnu` |
     | `version` | The crate version. Eg `1.2.3` |
+    | `target` | The library or binary target of the crate |
 
     Args:
         build_file_template (str, optional): The base template to use for BUILD file names. The available format keys
@@ -112,8 +110,6 @@ def render_config(
         platforms_template (str, optional): The base template to use for platform names.
             See [platforms documentation](https://docs.bazel.build/versions/main/platforms.html). The available format
             keys are [`{triple}`].
-        registry_url_template (str, optional): The base template to use for crate registry urls. The available format
-            keys are [`{scheme}`, `{registry}`, `{name}`, `{version}`].
 
     Returns:
         string: A json encoded struct to match the Rust `config::RenderConfig` struct
@@ -124,7 +120,6 @@ def render_config(
         crate_repository_template = crate_repository_template,
         default_package_name = default_package_name,
         platforms_template = platforms_template,
-        registry_url_template = registry_url_template,
     ))
 
 def _crate_id(name, version):

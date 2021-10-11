@@ -1,20 +1,24 @@
 //! This module is responsible for finding a Cargo workspace
 
+mod cargo_config;
 mod splicer;
 
-use std::collections::{BTreeMap, HashMap};
+use std::collections::{BTreeMap, BTreeSet, HashMap};
+use std::convert::TryFrom;
 use std::fs;
 use std::path::{Path, PathBuf};
 use std::str::FromStr;
 
 use anyhow::{bail, Context, Result};
 use cargo_toml::Manifest;
+use hex::ToHex;
 use serde::{Deserialize, Serialize};
 
 use crate::config::CrateId;
 use crate::metadata::LockGenerator;
 use crate::utils::starlark::Label;
 
+use self::cargo_config::CargoConfig;
 pub use self::splicer::*;
 
 #[derive(Debug, Default, Serialize, Deserialize)]
@@ -70,6 +74,33 @@ pub struct WorkspaceMetadata {
 
     #[serde(serialize_with = "toml::ser::tables_last")]
     pub package_prefixes: BTreeMap<String, String>,
+}
+
+impl TryFrom<toml::Value> for WorkspaceMetadata {
+    type Error = anyhow::Error;
+
+    fn try_from(value: toml::Value) -> Result<Self, Self::Error> {
+        match value.get("cargo-bazel") {
+            Some(v) => v
+                .to_owned()
+                .try_into()
+                .context("Failed to deserialize toml value"),
+            None => bail!("cargo-bazel workspace metadata not found"),
+        }
+    }
+}
+
+impl TryFrom<serde_json::Value> for WorkspaceMetadata {
+    type Error = anyhow::Error;
+
+    fn try_from(value: serde_json::Value) -> Result<Self, Self::Error> {
+        match value.get("cargo-bazel") {
+            Some(value) => {
+                serde_json::from_value(value.to_owned()).context("Faield to deserialize json value")
+            }
+            None => bail!("cargo-bazel workspace metadata not found"),
+        }
+    }
 }
 
 impl WorkspaceMetadata {
@@ -138,18 +169,129 @@ impl WorkspaceMetadata {
         })
     }
 
-    fn should_skip_serializing(&self) -> bool {
-        self.sources.is_empty()
-            && self.workspace_prefix.is_none()
-            && self.package_prefixes.is_empty()
+    pub fn write_registry_urls(
+        lockfile: &cargo_lock::Lockfile,
+        manifest_path: &SplicedManifest,
+    ) -> Result<()> {
+        let mut manifest = read_manifest(manifest_path.as_path_buf())?;
+
+        let mut workspace_metaata = WorkspaceMetadata::try_from(
+            manifest
+                .workspace
+                .as_ref()
+                .unwrap()
+                .metadata
+                .as_ref()
+                .unwrap()
+                .clone(),
+        )?;
+
+        // Locate all packages soruced from a registry
+        let pkg_sources: Vec<&cargo_lock::Package> = lockfile
+            .packages
+            .iter()
+            .filter(|pkg| pkg.source.is_some())
+            .filter(|pkg| pkg.source.as_ref().unwrap().is_registry())
+            .collect();
+
+        // Collect a unique set of index urls
+        let index_urls: BTreeSet<String> = pkg_sources
+            .iter()
+            .map(|pkg| pkg.source.as_ref().unwrap().url().to_string())
+            .collect();
+
+        // Load the cargo config
+        let cargo_config = {
+            let config_path = manifest_path
+                .as_path_buf()
+                .parent()
+                .unwrap()
+                .join("config.toml");
+            if config_path.exists() {
+                Some(CargoConfig::from_path(&config_path)?)
+            } else {
+                None
+            }
+        };
+
+        // Load each index for easy access
+        let crate_indexes = index_urls
+            .into_iter()
+            .map(|url| {
+                let index = {
+                    // Ensure the correct registry is mapped based on the give Cargo config.
+                    let index_url = if let Some(config) = &cargo_config {
+                        if let Some(source) = config.get_source_from_url(&url) {
+                            if let Some(replace_with) = &source.replace_with {
+                                &config.registries[replace_with].index
+                            } else {
+                                &url
+                            }
+                        } else {
+                            &url
+                        }
+                    } else {
+                        &url
+                    };
+
+                    // Load the index for the current url
+                    let index = crates_index::Index::from_url(index_url)
+                        .with_context(|| format!("Failed to load index for url: {}", index_url))?;
+
+                    // Ensure each index has a valid index config
+                    index.index_config().with_context(|| {
+                        format!("`config.json` not found in index: {}", index_url)
+                    })?;
+
+                    index
+                };
+
+                Ok((url, index))
+            })
+            .collect::<Result<BTreeMap<String, crates_index::Index>>>()
+            .context("Failed to locate crate indexes")?;
+
+        // Get the download URL of each package based on it's registry url.
+        let additional_sources = pkg_sources
+            .iter()
+            .filter_map(|pkg| {
+                let source_id = pkg.source.as_ref().unwrap();
+                let index = &crate_indexes[&source_id.url().to_string()];
+                let index_config = index.index_config().unwrap();
+
+                index.crate_(pkg.name.as_str()).map(|crate_idx| {
+                    crate_idx
+                        .versions()
+                        .iter()
+                        .find(|v| v.version() == pkg.version.to_string())
+                        .and_then(|v| {
+                            v.download_url(&index_config).map(|url| {
+                                let crate_id =
+                                    CrateId::new(v.name().to_owned(), v.version().to_owned());
+                                let sha256 = pkg
+                                    .checksum
+                                    .as_ref()
+                                    .and_then(|sum| {
+                                        sum.as_sha256().map(|sum| sum.encode_hex::<String>())
+                                    })
+                                    .unwrap_or_else(|| v.checksum().encode_hex::<String>());
+                                let source_info = SourceInfo { url, sha256 };
+                                (crate_id, source_info)
+                            })
+                        })
+                })
+            })
+            .flatten();
+
+        workspace_metaata.sources.extend(additional_sources);
+        workspace_metaata.inject_into(&mut manifest)?;
+
+        write_root_manifest(manifest_path.as_path_buf(), manifest)?;
+
+        Ok(())
     }
 
     fn inject_into(&self, manifest: &mut Manifest) -> Result<()> {
-        // Do not bother rendering anything if the table is empty
-        if self.should_skip_serializing() {
-            return Ok(());
-        }
-
         let metadata_value = toml::Value::try_from(self)?;
         let mut workspace = manifest.workspace.as_mut().unwrap();
 
@@ -205,7 +347,7 @@ pub fn generate_lockfile(
     existing_lock: &Option<PathBuf>,
     cargo_bin: &Path,
     rustc_bin: &Path,
-) -> Result<()> {
+) -> Result<cargo_lock::Lockfile> {
     let manifest_dir = manifest_path
         .as_path_buf()
         .parent()
@@ -213,27 +355,19 @@ pub fn generate_lockfile(
 
     let root_lockfile_path = manifest_dir.join("Cargo.lock");
 
-    // Optionally copy the given lockfile into place or install extra workspace members and
-    // splice a new one. Note that it's invalid for an existing lockfile to be used with
-    // extra workspace members.
-    if let Some(lock) = existing_lock {
-        install_file(lock, &root_lockfile_path)?;
-        return Ok(());
-    }
-
     // Remove the file so it's not overwitten if it happens to be a symlink.
     if root_lockfile_path.exists() {
         fs::remove_file(&root_lockfile_path)?;
     }
 
     // Generate the new lockfile
-    LockGenerator::new(PathBuf::from(cargo_bin), PathBuf::from(rustc_bin))
-        .generate(manifest_path.as_path_buf())?;
+    let lockfile = LockGenerator::new(PathBuf::from(cargo_bin), PathBuf::from(rustc_bin))
+        .generate(manifest_path.as_path_buf(), existing_lock)?;
 
     // Write the lockfile to disk
     if !root_lockfile_path.exists() {
         bail!("Failed to generate Cargo.lock file")
     }
 
-    Ok(())
+    Ok(lockfile)
 }

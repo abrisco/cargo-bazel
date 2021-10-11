@@ -4,6 +4,10 @@ load("//:deps.bzl", "cargo_bazel_deps")
 
 cargo_bazel_deps()
 
+load("//:deps_transitive.bzl", "cargo_bazel_deps_transitive")
+
+cargo_bazel_deps_transitive()
+
 RUST_VERSION = "1.54.0"
 
 load("@rules_rust//rust:repositories.bzl", "rust_repositories")
@@ -18,7 +22,7 @@ load("//:defs.bzl", "crate", "crates_repository")
 
 crates_repository(
     name = "crate_index",
-    cargo_config = "//:config.toml",
+    cargo_config = "//:.cargo/config.toml",
     extras = {
         "cargo_toml": [crate.extras(
             shallow_since = "1632241831 -0700",
@@ -27,7 +31,9 @@ crates_repository(
             build_script_data_glob = [
                 "**/tz/**",
             ],
-            version = "*",
+        )],
+        "crates-index": [crate.extras(
+            shallow_since = "1634514141 +0100",
         )],
         "crossbeam-utils": [crate.extras(
             build_script_data_glob = [
@@ -39,7 +45,18 @@ crates_repository(
                 "**/*.txt",
                 "**/*.bin",
             ],
-            version = "*",
+        )],
+        "libgit2-sys": [crate.extras(
+            gen_build_script = False,
+            deps = [
+                "@libgit2",
+            ],
+        )],
+        "libz-sys": [crate.extras(
+            gen_build_script = False,
+            deps = [
+                "@zlib",
+            ],
         )],
         "tera": [crate.extras(
             compile_data_glob = [

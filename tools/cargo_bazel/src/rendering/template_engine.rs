@@ -170,10 +170,6 @@ impl TemplateEngine {
             ),
         );
         tera.register_function(
-            "crate_registry_url",
-            crate_registry_url_fn_generator(render_config.registry_url_template.clone()),
-        );
-        tera.register_function(
             "platform_label",
             platform_label_fn_generator(render_config.platforms_template.clone()),
         );
@@ -352,27 +348,6 @@ fn crate_repository_fn_generator(template: String, repository_name: String) -> i
                 &name,
                 &version,
             ))) {
-                Ok(v) => Ok(v),
-                Err(_) => Err(tera::Error::msg("Failed to generate crate repository name")),
-            }
-        },
-    )
-}
-
-/// Convert a crate name into a module name by applying transforms to invalid characters.
-fn crate_registry_url_fn_generator(template: String) -> impl tera::Function {
-    Box::new(
-        move |args: &HashMap<String, Value>| -> tera::Result<Value> {
-            let name = parse_tera_param!("name", String, args);
-            let version = parse_tera_param!("version", String, args);
-
-            match to_value(&render_crate_registry_url(
-                &template,
-                "https",
-                "crates.io",
-                &name,
-                &version,
-            )) {
                 Ok(v) => Ok(v),
                 Err(_) => Err(tera::Error::msg("Failed to generate crate repository name")),
             }

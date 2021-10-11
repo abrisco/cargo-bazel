@@ -75,24 +75,58 @@ impl LockGenerator {
         }
     }
 
-    pub fn generate(&self, manifest_path: &Path) -> Result<cargo_lock::Lockfile> {
-        let output = Command::new(&self.cargo_bin)
-            .arg("generate-lockfile")
-            .arg("--manifest-path")
-            .arg(manifest_path)
-            .env("RUSTC", &self.rustc_bin)
-            .output()
-            .context(format!(
-                "Error running cargo to generate lockfile '{}'",
-                manifest_path.display()
-            ))?;
+    pub fn generate(
+        &self,
+        manifest_path: &Path,
+        existing_lock: &Option<PathBuf>,
+    ) -> Result<cargo_lock::Lockfile> {
+        let manifest_dir = manifest_path.parent().unwrap();
+        let generated_lockfile_path = manifest_dir.join("Cargo.lock");
+
+        let output = if let Some(lock) = existing_lock {
+            if !lock.exists() {
+                bail!(
+                    "An existing lockfile path was provided but a file at '{}' does not exist",
+                    lock.display()
+                )
+            }
+
+            // Install the file into the target location
+            if generated_lockfile_path.exists() {
+                fs::remove_file(&generated_lockfile_path)?;
+            }
+            fs::copy(&lock, &generated_lockfile_path)?;
+
+            // Ensure the Cargo cache is up to date to simulate the behavior
+            // of having just generated a new one
+            Command::new(&self.cargo_bin)
+                .arg("fetch")
+                .arg("--locked")
+                .arg("--manifest-path")
+                .arg(manifest_path)
+                .env("RUSTC", &self.rustc_bin)
+                .output()
+                .context(format!(
+                    "Error running cargo to fetch crates '{}'",
+                    manifest_path.display()
+                ))?
+        } else {
+            // Simply invoke `cargo generate-lockfile`
+            Command::new(&self.cargo_bin)
+                .arg("generate-lockfile")
+                .arg("--manifest-path")
+                .arg(manifest_path)
+                .env("RUSTC", &self.rustc_bin)
+                .output()
+                .context(format!(
+                    "Error running cargo to generate lockfile '{}'",
+                    manifest_path.display()
+                ))?
+        };
 
         if !output.status.success() {
             bail!(format!("Failed to generate lockfile: {:?}", output))
         }
-
-        let manifest_dir = manifest_path.parent().unwrap();
-        let generated_lockfile_path = manifest_dir.join("Cargo.lock");
 
         cargo_lock::Lockfile::load(&generated_lockfile_path).context(format!(
             "Failed to load lockfile: {}",

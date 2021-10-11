@@ -195,7 +195,7 @@ load("@rules_foreign_cc//foreign_cc:repositories.bzl", "rules_foreign_cc_depende
 rules_foreign_cc_dependencies()
 
 # Load OpenSSL and other 3rd party dependencies
-load("//multi_package/3rdparty:3rdparty_deps.bzl", "third_party_deps")
+load("//multi_package/3rdparty:third_party_deps.bzl", "third_party_deps")
 
 third_party_deps()
 

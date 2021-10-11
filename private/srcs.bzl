@@ -40,6 +40,7 @@ CARGO_BAZEL_SRCS = [
     "@cargo_bazel//:tools/cargo_bazel/src/rendering/templates/partials/starlark/selectable_dict.j2",
     "@cargo_bazel//:tools/cargo_bazel/src/rendering/templates/partials/starlark/selectable_list.j2",
     "@cargo_bazel//:tools/cargo_bazel/src/splicing.rs",
+    "@cargo_bazel//:tools/cargo_bazel/src/splicing/cargo_config.rs",
     "@cargo_bazel//:tools/cargo_bazel/src/splicing/splicer.rs",
     "@cargo_bazel//:tools/cargo_bazel/src/test.rs",
     "@cargo_bazel//:tools/cargo_bazel/src/utils.rs",
