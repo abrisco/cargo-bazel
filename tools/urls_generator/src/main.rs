@@ -6,7 +6,7 @@ use std::path::{Path, PathBuf};
 use std::process::Command;
 use std::{env, fs};
 
-use rustc_serialize::hex::ToHex;
+use hex::ToHex;
 use sha2::{Digest, Sha256};
 use structopt::StructOpt;
 
@@ -50,7 +50,7 @@ fn calculate_sha256(file_path: &Path) -> String {
     }
 
     let digest = hasher.finalize();
-    digest[..].to_hex()
+    digest.encode_hex::<String>()
 }
 
 fn locate_artifacts(artifacts_dir: &Path, url_prefix: &str) -> Vec<Artifact> {

@@ -119,9 +119,9 @@ dependencies = [
  "cargo_metadata",
  "cargo_toml",
  "cfg-expr",
+ "hex",
  "pathdiff",
  "regex",
- "rustc-serialize",
  "semver",
  "serde",
  "serde_json",
@@ -373,6 +373,12 @@ checksum = "62b467343b94ba476dcb2500d242dadbb39557df889310ac77c5d99100aaac33"
 dependencies = [
  "libc",
 ]
+
+[[package]]
+name = "hex"
+version = "0.4.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7f24254aa9a54b5c858eaee2f5bccdb46aaf0e486a595ed5fd8f86ba55232a70"
 
 [[package]]
 name = "humansize"
@@ -677,12 +683,6 @@ checksum = "3acd125665422973a33ac9d3dd2df85edad0f4ae9b00dafb1a05e43a9f5ef8e7"
 dependencies = [
  "winapi",
 ]
-
-[[package]]
-name = "rustc-serialize"
-version = "0.3.24"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "dcf128d1287d2ea9d80910b5f1120d0b8eede3fbf1abe91c40d39ea7d51e6fda"
 
 [[package]]
 name = "ryu"
@@ -1035,7 +1035,7 @@ dependencies = [
 name = "urls_generator"
 version = "0.1.0"
 dependencies = [
- "rustc-serialize",
+ "hex",
  "serde_json",
  "sha2",
  "structopt",
