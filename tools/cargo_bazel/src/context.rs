@@ -267,7 +267,7 @@ impl Context {
         set
     }
 
-    pub fn flat_workspace_member_deps(&self) -> Vec<CrateId> {
+    pub fn flat_workspace_member_deps(&self) -> (Vec<CrateId>, BTreeMap<CrateId, String>) {
         let mut workspace_member_dependencies: Vec<CrateId> = self
             .workspace_members
             .iter()
@@ -330,8 +330,34 @@ impl Context {
         // Deduplicate entries in the set
         let mut uniques = HashSet::new();
         workspace_member_dependencies.retain(|e| uniques.insert(e.clone()));
-
         workspace_member_dependencies.sort();
-        workspace_member_dependencies
+
+        // Some dependencies appear multiple times in a workspace where two different crates have
+        // pins for different versions. In order to correctly render all aliases, an additional
+        // map is returned to indicate which crates are duplicates. The UX here is kinda undesirable
+        // since the solution here writes `{crate_name}` as `{crate_name}-{crate_version}`. This means
+        // users will be writing versions in their BUILD files which they'll need to change if they
+        // update the pin __or__ remove one of the duplicates. Ideally users would use common pins
+        // but at least this allows for this use case.
+        let duplicate_deps: BTreeMap<CrateId, String> = workspace_member_dependencies
+            .iter()
+            .filter_map(|crate_id| {
+                let is_duplicate = workspace_member_dependencies
+                    .iter()
+                    .filter(|id| id.name == crate_id.name)
+                    .count()
+                    > 1;
+                if is_duplicate {
+                    Some((
+                        crate_id.clone(),
+                        format!("{}-{}", &crate_id.name, &crate_id.version),
+                    ))
+                } else {
+                    None
+                }
+            })
+            .collect();
+
+        (workspace_member_dependencies, duplicate_deps)
     }
 }
