@@ -410,7 +410,6 @@ can be found below where the supported keys for each template can be found in th
 <h1 id="crates_repository-api"><a class="header" href="#crates_repository-api"><code>crates_repository</code> API</a></h1>
 <ul>
 <li><a href="crates_repository.html#aliases">aliases</a></li>
-<li><a href="crates_repository.html#crate_dep">crate_dep</a></li>
 <li><a href="crates_repository.html#crate_deps">crate_deps</a></li>
 <li><a href="crates_repository.html#all_crate_deps">all_crate_deps</a></li>
 <li><a href="crates_repository.html#crate_repositories">crate_repositories</a></li>
@@ -456,18 +455,6 @@ otherwise impact the contents of the returned list.</p>
 </tbody></table>
 <p><strong>RETURNS</strong></p>
 <p>list: A list of labels to generated rust targets (str)</p>
-<p><a id="#crate_dep"></a></p>
-<h2 id="crate_dep"><a class="header" href="#crate_dep">crate_dep</a></h2>
-<pre>
-crate_dep(<a href="crates_repository.html#crate_dep-name">name</a>)
-</pre>
-<p>Get the label of a specific crate from listed workspace member dependnecies.</p>
-<p><strong>PARAMETERS</strong></p>
-<table><thead><tr><th align="left">Name</th><th align="left">Description</th><th align="left">Default Value</th></tr></thead><tbody>
-<tr><td align="left"><a id="crate_dep-name"></a>name</td><td align="left">The crate's name</td><td align="left">none</td></tr>
-</tbody></table>
-<p><strong>RETURNS</strong></p>
-<p>Label: The absolute label of the dependency</p>
 <p><a id="#crate_deps"></a></p>
 <h2 id="crate_deps"><a class="header" href="#crate_deps">crate_deps</a></h2>
 <pre>
