@@ -7,7 +7,7 @@ use std::path::PathBuf;
 
 use anyhow::{bail, Result};
 use cargo_metadata::{Node, Package, PackageId};
-use rustc_serialize::hex::ToHex;
+use hex::ToHex;
 use serde::{Deserialize, Serialize};
 
 use crate::config::{Commitish, Config, CrateExtras, CrateId};
@@ -219,7 +219,7 @@ impl LockfileAnnotation {
             .checksum
             .as_ref()
             .and_then(|sum| sum.as_sha256())
-            .map(|sum| sum.to_hex());
+            .map(|sum| sum.encode_hex::<String>());
 
         Ok(SourceAnnotation::Http {
             name: pkg.name.clone(),

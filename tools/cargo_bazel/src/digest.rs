@@ -4,7 +4,7 @@ use std::path::Path;
 use std::process::Command;
 
 use anyhow::{bail, Result};
-use rustc_serialize::hex::ToHex;
+use hex::ToHex;
 use serde::{Deserialize, Serialize};
 use sha2::{Digest as Sha2Digest, Sha256};
 
@@ -29,7 +29,7 @@ impl Digest {
         hasher.update(Self::bin_version(rustc_bin)?.as_bytes());
         hasher.update(b"\0");
 
-        Ok(Self(hasher.finalize()[..].to_hex()))
+        Ok(Self(hasher.finalize().encode_hex::<String>()))
     }
 
     fn bin_version(binary: &Path) -> Result<String> {

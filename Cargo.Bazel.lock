@@ -606,16 +606,16 @@
               "target": "cfg-expr"
             },
             {
+              "id": "hex 0.4.3",
+              "target": "hex"
+            },
+            {
               "id": "pathdiff 0.2.1",
               "target": "pathdiff"
             },
             {
               "id": "regex 1.5.4",
               "target": "regex"
-            },
-            {
-              "id": "rustc-serialize 0.3.24",
-              "target": "rustc-serialize"
             },
             {
               "id": "semver 1.0.4",
@@ -1890,6 +1890,41 @@
         "version": "0.1.19"
       },
       "license": "MIT/Apache-2.0"
+    },
+    "hex 0.4.3": {
+      "name": "hex",
+      "version": "0.4.3",
+      "repository": {
+        "Http": {
+          "name": "hex",
+          "version": "0.4.3",
+          "sha256": "7f24254aa9a54b5c858eaee2f5bccdb46aaf0e486a595ed5fd8f86ba55232a70"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "hex",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "common_attrs": {
+        "crate_features": [
+          "alloc",
+          "default",
+          "std"
+        ],
+        "edition": "2018",
+        "version": "0.4.3"
+      },
+      "license": "MIT OR Apache-2.0"
     },
     "humansize 1.1.1": {
       "name": "humansize",
@@ -3513,36 +3548,6 @@
         },
         "edition": "2015",
         "version": "0.5.3"
-      },
-      "license": "MIT/Apache-2.0"
-    },
-    "rustc-serialize 0.3.24": {
-      "name": "rustc-serialize",
-      "version": "0.3.24",
-      "repository": {
-        "Http": {
-          "name": "rustc-serialize",
-          "version": "0.3.24",
-          "sha256": "dcf128d1287d2ea9d80910b5f1120d0b8eede3fbf1abe91c40d39ea7d51e6fda"
-        }
-      },
-      "targets": [
-        {
-          "Library": {
-            "crate_name": "rustc-serialize",
-            "crate_root": "src/lib.rs",
-            "srcs": {
-              "include": [
-                "**/*.rs"
-              ],
-              "exclude": []
-            }
-          }
-        }
-      ],
-      "common_attrs": {
-        "edition": "2015",
-        "version": "0.3.24"
       },
       "license": "MIT/Apache-2.0"
     },
@@ -5385,8 +5390,8 @@
         "deps": {
           "common": [
             {
-              "id": "rustc-serialize 0.3.24",
-              "target": "rustc-serialize"
+              "id": "hex 0.4.3",
+              "target": "hex"
             },
             {
               "id": "serde_json 1.0.68",
