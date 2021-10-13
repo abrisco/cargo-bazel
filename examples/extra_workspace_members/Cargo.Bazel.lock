@@ -25,6 +25,7 @@
           }
         }
       ],
+      "library_target_name": "adler32",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -59,6 +60,7 @@
           }
         }
       ],
+      "library_target_name": "ansi_term",
       "common_attrs": {
         "deps": {
           "common": [],
@@ -100,6 +102,7 @@
           }
         }
       ],
+      "library_target_name": "atty",
       "common_attrs": {
         "deps": {
           "common": [],
@@ -107,7 +110,7 @@
             "cfg(target_os = \"hermit\")": [
               {
                 "id": "hermit-abi 0.1.19",
-                "target": "hermit-abi"
+                "target": "hermit_abi"
               }
             ],
             "cfg(unix)": [
@@ -153,6 +156,7 @@
           }
         }
       ],
+      "library_target_name": "autocfg",
       "common_attrs": {
         "edition": "2015",
         "version": "1.0.1"
@@ -183,6 +187,7 @@
           }
         }
       ],
+      "library_target_name": "bitflags",
       "common_attrs": {
         "crate_features": [
           "default"
@@ -216,6 +221,7 @@
           }
         }
       ],
+      "library_target_name": "bytemuck",
       "common_attrs": {
         "edition": "2018",
         "version": "1.7.2"
@@ -246,6 +252,7 @@
           }
         }
       ],
+      "library_target_name": "byteorder",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -269,7 +276,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "cfg-if",
+            "crate_name": "cfg_if",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -280,6 +287,7 @@
           }
         }
       ],
+      "library_target_name": "cfg_if",
       "common_attrs": {
         "edition": "2018",
         "version": "1.0.0"
@@ -310,6 +318,7 @@
           }
         }
       ],
+      "library_target_name": "clap",
       "common_attrs": {
         "crate_features": [
           "ansi_term",
@@ -340,7 +349,7 @@
             },
             {
               "id": "unicode-width 0.1.9",
-              "target": "unicode-width"
+              "target": "unicode_width"
             },
             {
               "id": "vec_map 0.8.2",
@@ -385,6 +394,7 @@
           }
         }
       ],
+      "library_target_name": "color_quant",
       "common_attrs": {
         "edition": "2015",
         "version": "1.1.0"
@@ -415,6 +425,7 @@
           }
         }
       ],
+      "library_target_name": "console",
       "common_attrs": {
         "crate_features": [
           "ansi-parsing",
@@ -442,7 +453,7 @@
             },
             {
               "id": "unicode-width 0.1.9",
-              "target": "unicode-width"
+              "target": "unicode_width"
             }
           ],
           "selects": {
@@ -488,7 +499,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -499,6 +510,7 @@
           }
         }
       ],
+      "library_target_name": "crc32fast",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -508,11 +520,11 @@
           "common": [
             {
               "id": "cfg-if 1.0.0",
-              "target": "cfg-if"
+              "target": "cfg_if"
             },
             {
               "id": "crc32fast 1.2.1",
-              "target": "build-script-build"
+              "target": "build_script_build"
             }
           ],
           "selects": {}
@@ -536,7 +548,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "crossbeam-utils",
+            "crate_name": "crossbeam_utils",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -548,7 +560,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -559,6 +571,7 @@
           }
         }
       ],
+      "library_target_name": "crossbeam_utils",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -569,11 +582,11 @@
           "common": [
             {
               "id": "cfg-if 1.0.0",
-              "target": "cfg-if"
+              "target": "cfg_if"
             },
             {
               "id": "crossbeam-utils 0.8.5",
-              "target": "build-script-build"
+              "target": "build_script_build"
             },
             {
               "id": "lazy_static 1.4.0",
@@ -612,6 +625,7 @@
           }
         }
       ],
+      "library_target_name": "deflate",
       "common_attrs": {
         "deps": {
           "common": [
@@ -655,6 +669,7 @@
           }
         }
       ],
+      "library_target_name": "encode_unicode",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -683,12 +698,13 @@
           }
         }
       ],
+      "library_target_name": null,
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "ferris-says 0.2.1",
-              "target": "ferris-says"
+              "target": "ferris_says"
             }
           ],
           "selects": {}
@@ -711,7 +727,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "ferris-says",
+            "crate_name": "ferris_says",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -722,6 +738,7 @@
           }
         }
       ],
+      "library_target_name": "ferris_says",
       "common_attrs": {
         "deps": {
           "common": [
@@ -735,7 +752,7 @@
             },
             {
               "id": "unicode-width 0.1.9",
-              "target": "unicode-width"
+              "target": "unicode_width"
             }
           ],
           "selects": {}
@@ -769,12 +786,13 @@
           }
         }
       ],
+      "library_target_name": "heck",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "unicode-segmentation 1.8.0",
-              "target": "unicode-segmentation"
+              "target": "unicode_segmentation"
             }
           ],
           "selects": {}
@@ -797,7 +815,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "hermit-abi",
+            "crate_name": "hermit_abi",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -808,6 +826,7 @@
           }
         }
       ],
+      "library_target_name": "hermit_abi",
       "common_attrs": {
         "crate_features": [
           "default"
@@ -850,6 +869,7 @@
           }
         }
       ],
+      "library_target_name": "image",
       "common_attrs": {
         "compile_data_glob": [
           "**/*.md"
@@ -875,20 +895,20 @@
             },
             {
               "id": "jpeg-decoder 0.1.22",
-              "target": "jpeg-decoder",
+              "target": "jpeg_decoder",
               "alias": "jpeg"
             },
             {
               "id": "num-iter 0.1.42",
-              "target": "num-iter"
+              "target": "num_iter"
             },
             {
               "id": "num-rational 0.3.2",
-              "target": "num-rational"
+              "target": "num_rational"
             },
             {
               "id": "num-traits 0.2.14",
-              "target": "num-traits"
+              "target": "num_traits"
             },
             {
               "id": "png 0.16.8",
@@ -926,6 +946,7 @@
           }
         }
       ],
+      "library_target_name": "indicatif",
       "common_attrs": {
         "crate_features": [
           "default"
@@ -969,7 +990,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "jpeg-decoder",
+            "crate_name": "jpeg_decoder",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -980,6 +1001,7 @@
           }
         }
       ],
+      "library_target_name": "jpeg_decoder",
       "common_attrs": {
         "edition": "2015",
         "version": "0.1.22"
@@ -1010,6 +1032,7 @@
           }
         }
       ],
+      "library_target_name": "lazy_static",
       "common_attrs": {
         "edition": "2015",
         "version": "1.4.0"
@@ -1041,7 +1064,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -1052,6 +1075,7 @@
           }
         }
       ],
+      "library_target_name": "libc",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -1061,7 +1085,7 @@
           "common": [
             {
               "id": "libc 0.2.103",
-              "target": "build-script-build"
+              "target": "build_script_build"
             }
           ],
           "selects": {}
@@ -1096,6 +1120,7 @@
           }
         }
       ],
+      "library_target_name": "miniz_oxide",
       "common_attrs": {
         "deps": {
           "common": [
@@ -1124,7 +1149,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "num-integer",
+            "crate_name": "num_integer",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -1136,7 +1161,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -1147,6 +1172,7 @@
           }
         }
       ],
+      "library_target_name": "num_integer",
       "common_attrs": {
         "crate_features": [
           "i128",
@@ -1156,11 +1182,11 @@
           "common": [
             {
               "id": "num-integer 0.1.44",
-              "target": "build-script-build"
+              "target": "build_script_build"
             },
             {
               "id": "num-traits 0.2.14",
-              "target": "num-traits"
+              "target": "num_traits"
             }
           ],
           "selects": {}
@@ -1194,7 +1220,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "num-iter",
+            "crate_name": "num_iter",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -1206,7 +1232,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -1217,6 +1243,7 @@
           }
         }
       ],
+      "library_target_name": "num_iter",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -1226,15 +1253,15 @@
           "common": [
             {
               "id": "num-integer 0.1.44",
-              "target": "num-integer"
+              "target": "num_integer"
             },
             {
               "id": "num-iter 0.1.42",
-              "target": "build-script-build"
+              "target": "build_script_build"
             },
             {
               "id": "num-traits 0.2.14",
-              "target": "num-traits"
+              "target": "num_traits"
             }
           ],
           "selects": {}
@@ -1268,7 +1295,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "num-rational",
+            "crate_name": "num_rational",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -1280,7 +1307,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -1291,20 +1318,21 @@
           }
         }
       ],
+      "library_target_name": "num_rational",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "num-integer 0.1.44",
-              "target": "num-integer"
+              "target": "num_integer"
             },
             {
               "id": "num-rational 0.3.2",
-              "target": "build-script-build"
+              "target": "build_script_build"
             },
             {
               "id": "num-traits 0.2.14",
-              "target": "num-traits"
+              "target": "num_traits"
             }
           ],
           "selects": {}
@@ -1338,7 +1366,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "num-traits",
+            "crate_name": "num_traits",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -1350,7 +1378,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -1361,6 +1389,7 @@
           }
         }
       ],
+      "library_target_name": "num_traits",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -1371,7 +1400,7 @@
           "common": [
             {
               "id": "num-traits 0.2.14",
-              "target": "build-script-build"
+              "target": "build_script_build"
             }
           ],
           "selects": {}
@@ -1416,6 +1445,7 @@
           }
         }
       ],
+      "library_target_name": "num_cpus",
       "common_attrs": {
         "deps": {
           "common": [
@@ -1428,7 +1458,7 @@
             "cfg(all(any(target_arch = \"x86_64\", target_arch = \"aarch64\"), target_os = \"hermit\"))": [
               {
                 "id": "hermit-abi 0.1.19",
-                "target": "hermit-abi"
+                "target": "hermit_abi"
               }
             ]
           }
@@ -1462,6 +1492,7 @@
           }
         }
       ],
+      "library_target_name": "number_prefix",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -1496,6 +1527,7 @@
           }
         }
       ],
+      "library_target_name": "pdqselect",
       "common_attrs": {
         "edition": "2015",
         "version": "0.1.0"
@@ -1526,6 +1558,7 @@
           }
         }
       ],
+      "library_target_name": "png",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -1571,7 +1604,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "proc-macro-error",
+            "crate_name": "proc_macro_error",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -1583,7 +1616,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -1594,6 +1627,7 @@
           }
         }
       ],
+      "library_target_name": "proc_macro_error",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -1604,11 +1638,11 @@
           "common": [
             {
               "id": "proc-macro-error 1.0.4",
-              "target": "build-script-build"
+              "target": "build_script_build"
             },
             {
-              "id": "proc-macro2 1.0.29",
-              "target": "proc-macro2"
+              "id": "proc-macro2 1.0.30",
+              "target": "proc_macro2"
             },
             {
               "id": "quote 1.0.10",
@@ -1626,7 +1660,7 @@
           "common": [
             {
               "id": "proc-macro-error-attr 1.0.4",
-              "target": "proc-macro-error-attr"
+              "target": "proc_macro_error_attr"
             }
           ],
           "selects": {}
@@ -1659,7 +1693,7 @@
       "targets": [
         {
           "ProcMacro": {
-            "crate_name": "proc-macro-error-attr",
+            "crate_name": "proc_macro_error_attr",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -1671,7 +1705,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -1682,16 +1716,17 @@
           }
         }
       ],
+      "library_target_name": "proc_macro_error_attr",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "proc-macro-error-attr 1.0.4",
-              "target": "build-script-build"
+              "target": "build_script_build"
             },
             {
-              "id": "proc-macro2 1.0.29",
-              "target": "proc-macro2"
+              "id": "proc-macro2 1.0.30",
+              "target": "proc_macro2"
             },
             {
               "id": "quote 1.0.10",
@@ -1716,20 +1751,20 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "proc-macro2 1.0.29": {
+    "proc-macro2 1.0.30": {
       "name": "proc-macro2",
-      "version": "1.0.29",
+      "version": "1.0.30",
       "repository": {
         "Http": {
           "name": "proc-macro2",
-          "version": "1.0.29",
-          "sha256": "b9f5105d4fdaab20335ca9565e106a5d9b82b6219b5ba735731124ac6711d23d"
+          "version": "1.0.30",
+          "sha256": "edc3358ebc67bc8b7fa0c007f945b0b18226f78437d61bec735a9eb96b61ee70"
         }
       },
       "targets": [
         {
           "Library": {
-            "crate_name": "proc-macro2",
+            "crate_name": "proc_macro2",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -1741,7 +1776,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -1752,6 +1787,7 @@
           }
         }
       ],
+      "library_target_name": "proc_macro2",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -1760,18 +1796,18 @@
         "deps": {
           "common": [
             {
-              "id": "proc-macro2 1.0.29",
-              "target": "build-script-build"
+              "id": "proc-macro2 1.0.30",
+              "target": "build_script_build"
             },
             {
               "id": "unicode-xid 0.2.2",
-              "target": "unicode-xid"
+              "target": "unicode_xid"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.0.29"
+        "version": "1.0.30"
       },
       "build_script_attrs": {},
       "license": "MIT OR Apache-2.0"
@@ -1800,6 +1836,7 @@
           }
         }
       ],
+      "library_target_name": "quote",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -1808,8 +1845,8 @@
         "deps": {
           "common": [
             {
-              "id": "proc-macro2 1.0.29",
-              "target": "proc-macro2"
+              "id": "proc-macro2 1.0.30",
+              "target": "proc_macro2"
             }
           ],
           "selects": {}
@@ -1843,6 +1880,7 @@
           }
         }
       ],
+      "library_target_name": "rand",
       "common_attrs": {
         "deps": {
           "common": [
@@ -1882,6 +1920,7 @@
           }
         }
       ],
+      "library_target_name": "rand_core",
       "common_attrs": {
         "edition": "2018",
         "version": "0.6.3"
@@ -1912,6 +1951,7 @@
           }
         }
       ],
+      "library_target_name": "rand_pcg",
       "common_attrs": {
         "deps": {
           "common": [
@@ -1951,6 +1991,7 @@
           }
         }
       ],
+      "library_target_name": "regex",
       "common_attrs": {
         "crate_features": [
           "std"
@@ -1959,7 +2000,7 @@
           "common": [
             {
               "id": "regex-syntax 0.6.25",
-              "target": "regex-syntax"
+              "target": "regex_syntax"
             }
           ],
           "selects": {}
@@ -1982,7 +2023,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "regex-syntax",
+            "crate_name": "regex_syntax",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -1993,6 +2034,7 @@
           }
         }
       ],
+      "library_target_name": "regex_syntax",
       "common_attrs": {
         "edition": "2018",
         "version": "0.6.25"
@@ -2023,6 +2065,7 @@
           }
         }
       ],
+      "library_target_name": "rstar",
       "common_attrs": {
         "crate_features": [
           "default"
@@ -2031,7 +2074,7 @@
           "common": [
             {
               "id": "num-traits 0.2.14",
-              "target": "num-traits"
+              "target": "num_traits"
             },
             {
               "id": "pdqselect 0.1.0",
@@ -2069,6 +2112,7 @@
           }
         }
       ],
+      "library_target_name": "smallvec",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -2103,6 +2147,7 @@
           }
         }
       ],
+      "library_target_name": "smawk",
       "common_attrs": {
         "edition": "2018",
         "version": "0.3.1"
@@ -2133,6 +2178,7 @@
           }
         }
       ],
+      "library_target_name": "strsim",
       "common_attrs": {
         "edition": "2015",
         "version": "0.8.0"
@@ -2163,6 +2209,7 @@
           }
         }
       ],
+      "library_target_name": "structopt",
       "common_attrs": {
         "crate_features": [
           "default"
@@ -2185,7 +2232,7 @@
           "common": [
             {
               "id": "structopt-derive 0.4.16",
-              "target": "structopt-derive"
+              "target": "structopt_derive"
             }
           ],
           "selects": {}
@@ -2207,7 +2254,7 @@
       "targets": [
         {
           "ProcMacro": {
-            "crate_name": "structopt-derive",
+            "crate_name": "structopt_derive",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -2218,6 +2265,7 @@
           }
         }
       ],
+      "library_target_name": "structopt_derive",
       "common_attrs": {
         "deps": {
           "common": [
@@ -2227,11 +2275,11 @@
             },
             {
               "id": "proc-macro-error 1.0.4",
-              "target": "proc-macro-error"
+              "target": "proc_macro_error"
             },
             {
-              "id": "proc-macro2 1.0.29",
-              "target": "proc-macro2"
+              "id": "proc-macro2 1.0.30",
+              "target": "proc_macro2"
             },
             {
               "id": "quote 1.0.10",
@@ -2274,7 +2322,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -2285,6 +2333,7 @@
           }
         }
       ],
+      "library_target_name": "syn",
       "common_attrs": {
         "crate_features": [
           "clone-impls",
@@ -2299,8 +2348,8 @@
         "deps": {
           "common": [
             {
-              "id": "proc-macro2 1.0.29",
-              "target": "proc-macro2"
+              "id": "proc-macro2 1.0.30",
+              "target": "proc_macro2"
             },
             {
               "id": "quote 1.0.10",
@@ -2308,11 +2357,11 @@
             },
             {
               "id": "syn 1.0.80",
-              "target": "build-script-build"
+              "target": "build_script_build"
             },
             {
               "id": "unicode-xid 0.2.2",
-              "target": "unicode-xid"
+              "target": "unicode_xid"
             }
           ],
           "selects": {}
@@ -2347,6 +2396,7 @@
           }
         }
       ],
+      "library_target_name": "terminal_size",
       "common_attrs": {
         "deps": {
           "common": [],
@@ -2383,7 +2433,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "texture-synthesis",
+            "crate_name": "texture_synthesis",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -2394,6 +2444,7 @@
           }
         }
       ],
+      "library_target_name": "texture_synthesis",
       "common_attrs": {
         "deps": {
           "common": [
@@ -2422,7 +2473,7 @@
             "cfg(not(target_arch = \"wasm32\"))": [
               {
                 "id": "crossbeam-utils 0.8.5",
-                "target": "crossbeam-utils"
+                "target": "crossbeam_utils"
               }
             ]
           }
@@ -2456,6 +2507,7 @@
           }
         }
       ],
+      "library_target_name": null,
       "common_attrs": {
         "crate_features": [
           "default"
@@ -2468,7 +2520,7 @@
             },
             {
               "id": "texture-synthesis 0.8.1",
-              "target": "texture-synthesis"
+              "target": "texture_synthesis"
             }
           ],
           "selects": {
@@ -2513,12 +2565,13 @@
           }
         }
       ],
+      "library_target_name": "textwrap",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "unicode-width 0.1.9",
-              "target": "unicode-width"
+              "target": "unicode_width"
             }
           ],
           "selects": {}
@@ -2552,6 +2605,7 @@
           }
         }
       ],
+      "library_target_name": "textwrap",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -2566,7 +2620,7 @@
             },
             {
               "id": "unicode-width 0.1.9",
-              "target": "unicode-width"
+              "target": "unicode_width"
             }
           ],
           "selects": {}
@@ -2589,7 +2643,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "unicode-segmentation",
+            "crate_name": "unicode_segmentation",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -2600,6 +2654,7 @@
           }
         }
       ],
+      "library_target_name": "unicode_segmentation",
       "common_attrs": {
         "edition": "2018",
         "version": "1.8.0"
@@ -2619,7 +2674,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "unicode-width",
+            "crate_name": "unicode_width",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -2630,6 +2685,7 @@
           }
         }
       ],
+      "library_target_name": "unicode_width",
       "common_attrs": {
         "crate_features": [
           "default"
@@ -2652,7 +2708,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "unicode-xid",
+            "crate_name": "unicode_xid",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -2663,6 +2719,7 @@
           }
         }
       ],
+      "library_target_name": "unicode_xid",
       "common_attrs": {
         "crate_features": [
           "default"
@@ -2696,6 +2753,7 @@
           }
         }
       ],
+      "library_target_name": "vec_map",
       "common_attrs": {
         "edition": "2015",
         "version": "0.8.2"
@@ -2726,6 +2784,7 @@
           }
         }
       ],
+      "library_target_name": "version_check",
       "common_attrs": {
         "edition": "2015",
         "version": "0.9.3"
@@ -2757,7 +2816,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -2768,6 +2827,7 @@
           }
         }
       ],
+      "library_target_name": "winapi",
       "common_attrs": {
         "crate_features": [
           "consoleapi",
@@ -2785,20 +2845,20 @@
           "common": [
             {
               "id": "winapi 0.3.9",
-              "target": "build-script-build"
+              "target": "build_script_build"
             }
           ],
           "selects": {
             "i686-pc-windows-gnu": [
               {
                 "id": "winapi-i686-pc-windows-gnu 0.4.0",
-                "target": "winapi-i686-pc-windows-gnu"
+                "target": "winapi_i686_pc_windows_gnu"
               }
             ],
             "x86_64-pc-windows-gnu": [
               {
                 "id": "winapi-x86_64-pc-windows-gnu 0.4.0",
-                "target": "winapi-x86_64-pc-windows-gnu"
+                "target": "winapi_x86_64_pc_windows_gnu"
               }
             ]
           }
@@ -2822,7 +2882,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "winapi-i686-pc-windows-gnu",
+            "crate_name": "winapi_i686_pc_windows_gnu",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -2834,7 +2894,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -2845,12 +2905,13 @@
           }
         }
       ],
+      "library_target_name": "winapi_i686_pc_windows_gnu",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "winapi-i686-pc-windows-gnu 0.4.0",
-              "target": "build-script-build"
+              "target": "build_script_build"
             }
           ],
           "selects": {}
@@ -2874,7 +2935,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "winapi-x86_64-pc-windows-gnu",
+            "crate_name": "winapi_x86_64_pc_windows_gnu",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -2886,7 +2947,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -2897,12 +2958,13 @@
           }
         }
       ],
+      "library_target_name": "winapi_x86_64_pc_windows_gnu",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "winapi-x86_64-pc-windows-gnu 0.4.0",
-              "target": "build-script-build"
+              "target": "build_script_build"
             }
           ],
           "selects": {}

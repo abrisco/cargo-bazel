@@ -14,7 +14,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "aho-corasick",
+            "crate_name": "aho_corasick",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -25,6 +25,7 @@
           }
         }
       ],
+      "library_target_name": "aho_corasick",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -69,7 +70,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -80,6 +81,7 @@
           }
         }
       ],
+      "library_target_name": "anyhow",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -89,7 +91,7 @@
           "common": [
             {
               "id": "anyhow 1.0.44",
-              "target": "build-script-build"
+              "target": "build_script_build"
             }
           ],
           "selects": {}
@@ -113,7 +115,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "ascii-canvas",
+            "crate_name": "ascii_canvas",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -124,6 +126,7 @@
           }
         }
       ],
+      "library_target_name": "ascii_canvas",
       "common_attrs": {
         "deps": {
           "common": [
@@ -152,7 +155,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "assert-json-diff",
+            "crate_name": "assert_json_diff",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -163,6 +166,7 @@
           }
         }
       ],
+      "library_target_name": "assert_json_diff",
       "common_attrs": {
         "deps": {
           "common": [
@@ -195,7 +199,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "async-channel",
+            "crate_name": "async_channel",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -206,20 +210,21 @@
           }
         }
       ],
+      "library_target_name": "async_channel",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "concurrent-queue 1.2.2",
-              "target": "concurrent-queue"
+              "target": "concurrent_queue"
             },
             {
               "id": "event-listener 2.5.1",
-              "target": "event-listener"
+              "target": "event_listener"
             },
             {
               "id": "futures-core 0.3.17",
-              "target": "futures-core"
+              "target": "futures_core"
             }
           ],
           "selects": {}
@@ -242,7 +247,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "async-executor",
+            "crate_name": "async_executor",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -253,16 +258,17 @@
           }
         }
       ],
+      "library_target_name": "async_executor",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "async-task 4.0.3",
-              "target": "async-task"
+              "target": "async_task"
             },
             {
               "id": "concurrent-queue 1.2.2",
-              "target": "concurrent-queue"
+              "target": "concurrent_queue"
             },
             {
               "id": "fastrand 1.5.0",
@@ -270,14 +276,14 @@
             },
             {
               "id": "futures-lite 1.12.0",
-              "target": "futures-lite"
+              "target": "futures_lite"
             },
             {
               "id": "once_cell 1.8.0",
               "target": "once_cell"
             },
             {
-              "id": "slab 0.4.4",
+              "id": "slab 0.4.5",
               "target": "slab"
             }
           ],
@@ -301,7 +307,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "async-global-executor",
+            "crate_name": "async_global_executor",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -312,6 +318,7 @@
           }
         }
       ],
+      "library_target_name": "async_global_executor",
       "common_attrs": {
         "crate_features": [
           "async-io",
@@ -321,19 +328,19 @@
           "common": [
             {
               "id": "async-channel 1.6.1",
-              "target": "async-channel"
+              "target": "async_channel"
             },
             {
               "id": "async-executor 1.4.1",
-              "target": "async-executor"
+              "target": "async_executor"
             },
             {
               "id": "async-io 1.6.0",
-              "target": "async-io"
+              "target": "async_io"
             },
             {
               "id": "async-mutex 1.4.0",
-              "target": "async-mutex"
+              "target": "async_mutex"
             },
             {
               "id": "blocking 1.0.2",
@@ -341,7 +348,7 @@
             },
             {
               "id": "futures-lite 1.12.0",
-              "target": "futures-lite"
+              "target": "futures_lite"
             },
             {
               "id": "num_cpus 1.13.0",
@@ -372,7 +379,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "async-io",
+            "crate_name": "async_io",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -383,16 +390,17 @@
           }
         }
       ],
+      "library_target_name": "async_io",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "concurrent-queue 1.2.2",
-              "target": "concurrent-queue"
+              "target": "concurrent_queue"
             },
             {
               "id": "futures-lite 1.12.0",
-              "target": "futures-lite"
+              "target": "futures_lite"
             },
             {
               "id": "log 0.4.14",
@@ -411,7 +419,7 @@
               "target": "polling"
             },
             {
-              "id": "slab 0.4.4",
+              "id": "slab 0.4.5",
               "target": "slab"
             },
             {
@@ -420,7 +428,7 @@
             },
             {
               "id": "waker-fn 1.1.0",
-              "target": "waker-fn"
+              "target": "waker_fn"
             }
           ],
           "selects": {
@@ -456,7 +464,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "async-lock",
+            "crate_name": "async_lock",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -467,12 +475,13 @@
           }
         }
       ],
+      "library_target_name": "async_lock",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "event-listener 2.5.1",
-              "target": "event-listener"
+              "target": "event_listener"
             }
           ],
           "selects": {}
@@ -495,7 +504,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "async-mutex",
+            "crate_name": "async_mutex",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -506,12 +515,13 @@
           }
         }
       ],
+      "library_target_name": "async_mutex",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "event-listener 2.5.1",
-              "target": "event-listener"
+              "target": "event_listener"
             }
           ],
           "selects": {}
@@ -534,7 +544,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "async-object-pool",
+            "crate_name": "async_object_pool",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -545,12 +555,13 @@
           }
         }
       ],
+      "library_target_name": "async_object_pool",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "async-std 1.10.0",
-              "target": "async-std"
+              "target": "async_std"
             }
           ],
           "selects": {}
@@ -573,7 +584,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "async-process",
+            "crate_name": "async_process",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -584,20 +595,21 @@
           }
         }
       ],
+      "library_target_name": "async_process",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "cfg-if 1.0.0",
-              "target": "cfg-if"
+              "target": "cfg_if"
             },
             {
               "id": "event-listener 2.5.1",
-              "target": "event-listener"
+              "target": "event_listener"
             },
             {
               "id": "futures-lite 1.12.0",
-              "target": "futures-lite"
+              "target": "futures_lite"
             },
             {
               "id": "once_cell 1.8.0",
@@ -608,7 +620,7 @@
             "cfg(unix)": [
               {
                 "id": "async-io 1.6.0",
-                "target": "async-io"
+                "target": "async_io"
               },
               {
                 "id": "libc 0.2.103",
@@ -616,7 +628,7 @@
               },
               {
                 "id": "signal-hook 0.3.10",
-                "target": "signal-hook"
+                "target": "signal_hook"
               }
             ],
             "cfg(windows)": [
@@ -649,7 +661,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "async-std",
+            "crate_name": "async_std",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -660,6 +672,7 @@
           }
         }
       ],
+      "library_target_name": "async_std",
       "common_attrs": {
         "crate_features": [
           "alloc",
@@ -691,27 +704,27 @@
           "common": [
             {
               "id": "async-channel 1.6.1",
-              "target": "async-channel"
+              "target": "async_channel"
             },
             {
               "id": "async-lock 2.4.0",
-              "target": "async-lock"
+              "target": "async_lock"
             },
             {
               "id": "crossbeam-utils 0.8.5",
-              "target": "crossbeam-utils"
+              "target": "crossbeam_utils"
             },
             {
               "id": "futures-core 0.3.17",
-              "target": "futures-core"
+              "target": "futures_core"
             },
             {
               "id": "futures-io 0.3.17",
-              "target": "futures-io"
+              "target": "futures_io"
             },
             {
               "id": "kv-log-macro 1.0.7",
-              "target": "kv-log-macro"
+              "target": "kv_log_macro"
             },
             {
               "id": "log 0.4.14",
@@ -731,14 +744,14 @@
             },
             {
               "id": "pin-project-lite 0.2.7",
-              "target": "pin-project-lite"
+              "target": "pin_project_lite"
             },
             {
               "id": "pin-utils 0.1.0",
-              "target": "pin-utils"
+              "target": "pin_utils"
             },
             {
-              "id": "slab 0.4.4",
+              "id": "slab 0.4.5",
               "target": "slab"
             }
           ],
@@ -746,33 +759,33 @@
             "cfg(not(target_os = \"unknown\"))": [
               {
                 "id": "async-global-executor 2.0.2",
-                "target": "async-global-executor"
+                "target": "async_global_executor"
               },
               {
                 "id": "async-io 1.6.0",
-                "target": "async-io"
+                "target": "async_io"
               },
               {
                 "id": "async-process 1.2.0",
-                "target": "async-process"
+                "target": "async_process"
               },
               {
                 "id": "futures-lite 1.12.0",
-                "target": "futures-lite"
+                "target": "futures_lite"
               }
             ],
             "cfg(target_arch = \"wasm32\")": [
               {
                 "id": "futures-channel 0.3.17",
-                "target": "futures-channel"
+                "target": "futures_channel"
               },
               {
                 "id": "gloo-timers 0.2.1",
-                "target": "gloo-timers"
+                "target": "gloo_timers"
               },
               {
                 "id": "wasm-bindgen-futures 0.4.28",
-                "target": "wasm-bindgen-futures"
+                "target": "wasm_bindgen_futures"
               }
             ]
           }
@@ -795,7 +808,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "async-task",
+            "crate_name": "async_task",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -806,6 +819,7 @@
           }
         }
       ],
+      "library_target_name": "async_task",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -829,7 +843,7 @@
       "targets": [
         {
           "ProcMacro": {
-            "crate_name": "async-trait",
+            "crate_name": "async_trait",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -841,7 +855,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -852,16 +866,17 @@
           }
         }
       ],
+      "library_target_name": "async_trait",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "async-trait 0.1.51",
-              "target": "build-script-build"
+              "target": "build_script_build"
             },
             {
-              "id": "proc-macro2 1.0.29",
-              "target": "proc-macro2"
+              "id": "proc-macro2 1.0.30",
+              "target": "proc_macro2"
             },
             {
               "id": "quote 1.0.10",
@@ -893,7 +908,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "atomic-waker",
+            "crate_name": "atomic_waker",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -904,6 +919,7 @@
           }
         }
       ],
+      "library_target_name": "atomic_waker",
       "common_attrs": {
         "edition": "2018",
         "version": "1.0.0"
@@ -934,6 +950,7 @@
           }
         }
       ],
+      "library_target_name": "atty",
       "common_attrs": {
         "deps": {
           "common": [],
@@ -941,7 +958,7 @@
             "cfg(target_os = \"hermit\")": [
               {
                 "id": "hermit-abi 0.1.19",
-                "target": "hermit-abi"
+                "target": "hermit_abi"
               }
             ],
             "cfg(unix)": [
@@ -987,6 +1004,7 @@
           }
         }
       ],
+      "library_target_name": "autocfg",
       "common_attrs": {
         "edition": "2015",
         "version": "1.0.1"
@@ -1017,6 +1035,7 @@
           }
         }
       ],
+      "library_target_name": "base64",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -1040,7 +1059,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "basic-cookies",
+            "crate_name": "basic_cookies",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -1052,7 +1071,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -1063,16 +1082,17 @@
           }
         }
       ],
+      "library_target_name": "basic_cookies",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "basic-cookies 0.1.4",
-              "target": "build-script-build"
+              "target": "build_script_build"
             },
             {
               "id": "lalrpop-util 0.19.6",
-              "target": "lalrpop-util"
+              "target": "lalrpop_util"
             },
             {
               "id": "regex 1.5.4",
@@ -1113,7 +1133,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "bit-set",
+            "crate_name": "bit_set",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -1124,12 +1144,13 @@
           }
         }
       ],
+      "library_target_name": "bit_set",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "bit-vec 0.6.3",
-              "target": "bit-vec"
+              "target": "bit_vec"
             }
           ],
           "selects": {}
@@ -1152,7 +1173,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "bit-vec",
+            "crate_name": "bit_vec",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -1163,6 +1184,7 @@
           }
         }
       ],
+      "library_target_name": "bit_vec",
       "common_attrs": {
         "edition": "2015",
         "version": "0.6.3"
@@ -1193,6 +1215,7 @@
           }
         }
       ],
+      "library_target_name": "bitflags",
       "common_attrs": {
         "crate_features": [
           "default"
@@ -1201,6 +1224,46 @@
         "version": "1.3.2"
       },
       "license": "MIT/Apache-2.0"
+    },
+    "block-buffer 0.9.0": {
+      "name": "block-buffer",
+      "version": "0.9.0",
+      "repository": {
+        "Http": {
+          "name": "block-buffer",
+          "version": "0.9.0",
+          "sha256": "4152116fd6e9dadb291ae18fc1ec3575ed6d84c29642d97890f4b4a3417297e4"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "block_buffer",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "library_target_name": "block_buffer",
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "generic-array 0.14.4",
+              "target": "generic_array"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "0.9.0"
+      },
+      "license": "MIT OR Apache-2.0"
     },
     "blocking 1.0.2": {
       "name": "blocking",
@@ -1226,20 +1289,21 @@
           }
         }
       ],
+      "library_target_name": "blocking",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "async-channel 1.6.1",
-              "target": "async-channel"
+              "target": "async_channel"
             },
             {
               "id": "async-task 4.0.3",
-              "target": "async-task"
+              "target": "async_task"
             },
             {
               "id": "atomic-waker 1.0.0",
-              "target": "atomic-waker"
+              "target": "atomic_waker"
             },
             {
               "id": "fastrand 1.5.0",
@@ -1247,7 +1311,7 @@
             },
             {
               "id": "futures-lite 1.12.0",
-              "target": "futures-lite"
+              "target": "futures_lite"
             },
             {
               "id": "once_cell 1.8.0",
@@ -1285,6 +1349,7 @@
           }
         }
       ],
+      "library_target_name": "bumpalo",
       "common_attrs": {
         "crate_features": [
           "default"
@@ -1318,6 +1383,7 @@
           }
         }
       ],
+      "library_target_name": "bytes",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -1341,7 +1407,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "cache-padded",
+            "crate_name": "cache_padded",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -1352,11 +1418,43 @@
           }
         }
       ],
+      "library_target_name": "cache_padded",
       "common_attrs": {
         "edition": "2018",
         "version": "1.1.1"
       },
       "license": "Apache-2.0 OR MIT"
+    },
+    "castaway 0.1.1": {
+      "name": "castaway",
+      "version": "0.1.1",
+      "repository": {
+        "Http": {
+          "name": "castaway",
+          "version": "0.1.1",
+          "sha256": "ed247d1586918e46f2bbe0f13b06498db8dab5a8c1093f156652e9f2e0a73fc3"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "castaway",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "library_target_name": "castaway",
+      "common_attrs": {
+        "edition": "2018",
+        "version": "0.1.1"
+      },
+      "license": "MIT"
     },
     "cc 1.0.71": {
       "name": "cc",
@@ -1394,6 +1492,7 @@
           }
         }
       ],
+      "library_target_name": "cc",
       "common_attrs": {
         "edition": "2018",
         "version": "1.0.71"
@@ -1413,7 +1512,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "cfg-if",
+            "crate_name": "cfg_if",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -1424,6 +1523,7 @@
           }
         }
       ],
+      "library_target_name": "cfg_if",
       "common_attrs": {
         "edition": "2018",
         "version": "1.0.0"
@@ -1443,7 +1543,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "concurrent-queue",
+            "crate_name": "concurrent_queue",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -1454,12 +1554,13 @@
           }
         }
       ],
+      "library_target_name": "concurrent_queue",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "cache-padded 1.1.1",
-              "target": "cache-padded"
+              "target": "cache_padded"
             }
           ],
           "selects": {}
@@ -1469,20 +1570,20 @@
       },
       "license": "Apache-2.0 OR MIT"
     },
-    "core-foundation 0.9.1": {
+    "core-foundation 0.9.2": {
       "name": "core-foundation",
-      "version": "0.9.1",
+      "version": "0.9.2",
       "repository": {
         "Http": {
           "name": "core-foundation",
-          "version": "0.9.1",
-          "sha256": "0a89e2ae426ea83155dccf10c0fa6b1463ef6d5fcb44cee0b224a408fa640a62"
+          "version": "0.9.2",
+          "sha256": "6888e10551bb93e424d8df1d07f1a8b4fceb0001a3a4b048bfc47554946f47b3"
         }
       },
       "targets": [
         {
           "Library": {
-            "crate_name": "core-foundation",
+            "crate_name": "core_foundation",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -1493,12 +1594,13 @@
           }
         }
       ],
+      "library_target_name": "core_foundation",
       "common_attrs": {
         "deps": {
           "common": [
             {
-              "id": "core-foundation-sys 0.8.2",
-              "target": "core-foundation-sys"
+              "id": "core-foundation-sys 0.8.3",
+              "target": "core_foundation_sys"
             },
             {
               "id": "libc 0.2.103",
@@ -1508,24 +1610,24 @@
           "selects": {}
         },
         "edition": "2015",
-        "version": "0.9.1"
+        "version": "0.9.2"
       },
       "license": "MIT / Apache-2.0"
     },
-    "core-foundation-sys 0.8.2": {
+    "core-foundation-sys 0.8.3": {
       "name": "core-foundation-sys",
-      "version": "0.8.2",
+      "version": "0.8.3",
       "repository": {
         "Http": {
           "name": "core-foundation-sys",
-          "version": "0.8.2",
-          "sha256": "ea221b5284a47e40033bf9b66f35f984ec0ea2931eb03505246cd27a963f981b"
+          "version": "0.8.3",
+          "sha256": "5827cebf4670468b8772dd191856768aedcb1b0278a04f989f7766351917b9dc"
         }
       },
       "targets": [
         {
           "Library": {
-            "crate_name": "core-foundation-sys",
+            "crate_name": "core_foundation_sys",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -1537,7 +1639,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -1548,18 +1650,19 @@
           }
         }
       ],
+      "library_target_name": "core_foundation_sys",
       "common_attrs": {
         "deps": {
           "common": [
             {
-              "id": "core-foundation-sys 0.8.2",
-              "target": "build-script-build"
+              "id": "core-foundation-sys 0.8.3",
+              "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2015",
-        "version": "0.8.2"
+        "version": "0.8.3"
       },
       "build_script_attrs": {},
       "license": "MIT / Apache-2.0"
@@ -1577,7 +1680,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "crossbeam-utils",
+            "crate_name": "crossbeam_utils",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -1589,7 +1692,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -1600,6 +1703,7 @@
           }
         }
       ],
+      "library_target_name": "crossbeam_utils",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -1610,11 +1714,11 @@
           "common": [
             {
               "id": "cfg-if 1.0.0",
-              "target": "cfg-if"
+              "target": "cfg_if"
             },
             {
               "id": "crossbeam-utils 0.8.5",
-              "target": "build-script-build"
+              "target": "build_script_build"
             },
             {
               "id": "lazy_static 1.4.0",
@@ -1654,7 +1758,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -1665,6 +1769,7 @@
           }
         }
       ],
+      "library_target_name": "crunchy",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -1674,7 +1779,7 @@
           "common": [
             {
               "id": "crunchy 0.2.2",
-              "target": "build-script-build"
+              "target": "build_script_build"
             }
           ],
           "selects": {}
@@ -1709,6 +1814,7 @@
           }
         }
       ],
+      "library_target_name": "ctor",
       "common_attrs": {
         "deps": {
           "common": [
@@ -1753,7 +1859,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -1764,6 +1870,7 @@
           }
         }
       ],
+      "library_target_name": "curl",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -1777,11 +1884,11 @@
           "common": [
             {
               "id": "curl 0.4.39",
-              "target": "build-script-build"
+              "target": "build_script_build"
             },
             {
               "id": "curl-sys 0.4.49+curl-7.79.1",
-              "target": "curl-sys"
+              "target": "curl_sys"
             },
             {
               "id": "libc 0.2.103",
@@ -1796,11 +1903,11 @@
             "cfg(all(unix, not(target_os = \"macos\")))": [
               {
                 "id": "openssl-probe 0.1.4",
-                "target": "openssl-probe"
+                "target": "openssl_probe"
               },
               {
                 "id": "openssl-sys 0.9.67",
-                "target": "openssl-sys"
+                "target": "openssl_sys"
               }
             ],
             "cfg(target_env = \"msvc\")": [
@@ -1823,7 +1930,7 @@
           "common": [
             {
               "id": "curl-sys 0.4.49+curl-7.79.1",
-              "target": "curl-sys"
+              "target": "curl_sys"
             }
           ],
           "selects": {}
@@ -1844,7 +1951,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "curl-sys",
+            "crate_name": "curl_sys",
             "crate_root": "lib.rs",
             "srcs": {
               "include": [
@@ -1855,6 +1962,7 @@
           }
         }
       ],
+      "library_target_name": "curl_sys",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -1872,18 +1980,18 @@
             },
             {
               "id": "libnghttp2-sys 0.1.7+1.45.0",
-              "target": "libnghttp2-sys"
+              "target": "libnghttp2_sys"
             },
             {
               "id": "libz-sys 1.1.3",
-              "target": "libz-sys"
+              "target": "libz_sys"
             }
           ],
           "selects": {
             "cfg(all(unix, not(target_os = \"macos\")))": [
               {
                 "id": "openssl-sys 0.9.67",
-                "target": "openssl-sys"
+                "target": "openssl_sys"
               }
             ],
             "cfg(windows)": [
@@ -1927,6 +2035,7 @@
           }
         }
       ],
+      "library_target_name": "diff",
       "common_attrs": {
         "edition": "2015",
         "version": "0.1.12"
@@ -1969,6 +2078,7 @@
           }
         }
       ],
+      "library_target_name": "difference",
       "common_attrs": {
         "crate_features": [
           "default"
@@ -1978,6 +2088,50 @@
       },
       "license": "MIT"
     },
+    "digest 0.9.0": {
+      "name": "digest",
+      "version": "0.9.0",
+      "repository": {
+        "Http": {
+          "name": "digest",
+          "version": "0.9.0",
+          "sha256": "d3dd60d1080a57a05ab032377049e0591415d2b31afd7028356dbf3cc6dcb066"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "digest",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "library_target_name": "digest",
+      "common_attrs": {
+        "crate_features": [
+          "alloc",
+          "std"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "generic-array 0.14.4",
+              "target": "generic_array"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "0.9.0"
+      },
+      "license": "MIT OR Apache-2.0"
+    },
     "direct-cargo-bazel-deps 0.0.1": {
       "name": "direct-cargo-bazel-deps",
       "version": "0.0.1",
@@ -1985,7 +2139,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "direct-cargo-bazel-deps",
+            "crate_name": "direct_cargo_bazel_deps",
             "crate_root": ".direct_cargo_bazel_deps.rs",
             "srcs": {
               "include": [
@@ -1996,6 +2150,7 @@
           }
         }
       ],
+      "library_target_name": "direct_cargo_bazel_deps",
       "common_attrs": {
         "edition": "2018",
         "version": "0.0.1"
@@ -2015,7 +2170,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "dirs-next",
+            "crate_name": "dirs_next",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -2026,16 +2181,17 @@
           }
         }
       ],
+      "library_target_name": "dirs_next",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "cfg-if 1.0.0",
-              "target": "cfg-if"
+              "target": "cfg_if"
             },
             {
               "id": "dirs-sys-next 0.1.2",
-              "target": "dirs-sys-next"
+              "target": "dirs_sys_next"
             }
           ],
           "selects": {}
@@ -2058,7 +2214,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "dirs-sys-next",
+            "crate_name": "dirs_sys_next",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -2069,6 +2225,7 @@
           }
         }
       ],
+      "library_target_name": "dirs_sys_next",
       "common_attrs": {
         "deps": {
           "common": [],
@@ -2122,6 +2279,7 @@
           }
         }
       ],
+      "library_target_name": "either",
       "common_attrs": {
         "edition": "2015",
         "version": "1.6.1"
@@ -2152,6 +2310,7 @@
           }
         }
       ],
+      "library_target_name": "ena",
       "common_attrs": {
         "deps": {
           "common": [
@@ -2192,7 +2351,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -2203,16 +2362,17 @@
           }
         }
       ],
+      "library_target_name": "encoding_rs",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "cfg-if 1.0.0",
-              "target": "cfg-if"
+              "target": "cfg_if"
             },
             {
               "id": "encoding_rs 0.8.28",
-              "target": "build-script-build"
+              "target": "build_script_build"
             }
           ],
           "selects": {}
@@ -2236,7 +2396,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "event-listener",
+            "crate_name": "event_listener",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -2247,6 +2407,7 @@
           }
         }
       ],
+      "library_target_name": "event_listener",
       "common_attrs": {
         "edition": "2018",
         "version": "2.5.1"
@@ -2277,6 +2438,7 @@
           }
         }
       ],
+      "library_target_name": "fastrand",
       "common_attrs": {
         "deps": {
           "common": [],
@@ -2318,6 +2480,7 @@
           }
         }
       ],
+      "library_target_name": "fixedbitset",
       "common_attrs": {
         "edition": "2015",
         "version": "0.2.0"
@@ -2348,6 +2511,7 @@
           }
         }
       ],
+      "library_target_name": "fnv",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -2371,7 +2535,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "foreign-types",
+            "crate_name": "foreign_types",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -2382,12 +2546,13 @@
           }
         }
       ],
+      "library_target_name": "foreign_types",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "foreign-types-shared 0.1.1",
-              "target": "foreign-types-shared"
+              "target": "foreign_types_shared"
             }
           ],
           "selects": {}
@@ -2410,7 +2575,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "foreign-types-shared",
+            "crate_name": "foreign_types_shared",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -2421,6 +2586,7 @@
           }
         }
       ],
+      "library_target_name": "foreign_types_shared",
       "common_attrs": {
         "edition": "2015",
         "version": "0.1.1"
@@ -2451,6 +2617,7 @@
           }
         }
       ],
+      "library_target_name": "form_urlencoded",
       "common_attrs": {
         "deps": {
           "common": [
@@ -2460,7 +2627,7 @@
             },
             {
               "id": "percent-encoding 2.1.0",
-              "target": "percent-encoding"
+              "target": "percent_encoding"
             }
           ],
           "selects": {}
@@ -2483,7 +2650,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "futures-channel",
+            "crate_name": "futures_channel",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -2495,7 +2662,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -2506,6 +2673,7 @@
           }
         }
       ],
+      "library_target_name": "futures_channel",
       "common_attrs": {
         "crate_features": [
           "alloc",
@@ -2516,11 +2684,11 @@
           "common": [
             {
               "id": "futures-channel 0.3.17",
-              "target": "build-script-build"
+              "target": "build_script_build"
             },
             {
               "id": "futures-core 0.3.17",
-              "target": "futures-core"
+              "target": "futures_core"
             }
           ],
           "selects": {}
@@ -2544,7 +2712,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "futures-core",
+            "crate_name": "futures_core",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -2556,7 +2724,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -2567,6 +2735,7 @@
           }
         }
       ],
+      "library_target_name": "futures_core",
       "common_attrs": {
         "crate_features": [
           "alloc",
@@ -2577,7 +2746,7 @@
           "common": [
             {
               "id": "futures-core 0.3.17",
-              "target": "build-script-build"
+              "target": "build_script_build"
             }
           ],
           "selects": {}
@@ -2601,7 +2770,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "futures-io",
+            "crate_name": "futures_io",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -2612,6 +2781,7 @@
           }
         }
       ],
+      "library_target_name": "futures_io",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -2635,7 +2805,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "futures-lite",
+            "crate_name": "futures_lite",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -2646,6 +2816,7 @@
           }
         }
       ],
+      "library_target_name": "futures_lite",
       "common_attrs": {
         "crate_features": [
           "alloc",
@@ -2665,11 +2836,11 @@
             },
             {
               "id": "futures-core 0.3.17",
-              "target": "futures-core"
+              "target": "futures_core"
             },
             {
               "id": "futures-io 0.3.17",
-              "target": "futures-io"
+              "target": "futures_io"
             },
             {
               "id": "memchr 2.4.1",
@@ -2681,11 +2852,11 @@
             },
             {
               "id": "pin-project-lite 0.2.7",
-              "target": "pin-project-lite"
+              "target": "pin_project_lite"
             },
             {
               "id": "waker-fn 1.1.0",
-              "target": "waker-fn"
+              "target": "waker_fn"
             }
           ],
           "selects": {}
@@ -2708,7 +2879,7 @@
       "targets": [
         {
           "ProcMacro": {
-            "crate_name": "futures-macro",
+            "crate_name": "futures_macro",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -2720,7 +2891,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -2731,16 +2902,17 @@
           }
         }
       ],
+      "library_target_name": "futures_macro",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "futures-macro 0.3.17",
-              "target": "build-script-build"
+              "target": "build_script_build"
             },
             {
-              "id": "proc-macro2 1.0.29",
-              "target": "proc-macro2"
+              "id": "proc-macro2 1.0.30",
+              "target": "proc_macro2"
             },
             {
               "id": "quote 1.0.10",
@@ -2758,7 +2930,7 @@
           "common": [
             {
               "id": "proc-macro-hack 0.5.19",
-              "target": "proc-macro-hack"
+              "target": "proc_macro_hack"
             }
           ],
           "selects": {}
@@ -2791,7 +2963,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "futures-sink",
+            "crate_name": "futures_sink",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -2802,6 +2974,7 @@
           }
         }
       ],
+      "library_target_name": "futures_sink",
       "common_attrs": {
         "crate_features": [
           "alloc",
@@ -2826,7 +2999,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "futures-task",
+            "crate_name": "futures_task",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -2838,7 +3011,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -2849,6 +3022,7 @@
           }
         }
       ],
+      "library_target_name": "futures_task",
       "common_attrs": {
         "crate_features": [
           "alloc",
@@ -2858,7 +3032,7 @@
           "common": [
             {
               "id": "futures-task 0.3.17",
-              "target": "build-script-build"
+              "target": "build_script_build"
             }
           ],
           "selects": {}
@@ -2882,7 +3056,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "futures-util",
+            "crate_name": "futures_util",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -2894,7 +3068,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -2905,6 +3079,7 @@
           }
         }
       ],
+      "library_target_name": "futures_util",
       "common_attrs": {
         "crate_features": [
           "alloc",
@@ -2924,19 +3099,19 @@
           "common": [
             {
               "id": "futures-core 0.3.17",
-              "target": "futures-core"
+              "target": "futures_core"
             },
             {
               "id": "futures-io 0.3.17",
-              "target": "futures-io"
+              "target": "futures_io"
             },
             {
               "id": "futures-task 0.3.17",
-              "target": "futures-task"
+              "target": "futures_task"
             },
             {
               "id": "futures-util 0.3.17",
-              "target": "build-script-build"
+              "target": "build_script_build"
             },
             {
               "id": "memchr 2.4.1",
@@ -2944,18 +3119,18 @@
             },
             {
               "id": "pin-project-lite 0.2.7",
-              "target": "pin-project-lite"
+              "target": "pin_project_lite"
             },
             {
               "id": "pin-utils 0.1.0",
-              "target": "pin-utils"
+              "target": "pin_utils"
             },
             {
               "id": "proc-macro-nested 0.1.7",
-              "target": "proc-macro-nested"
+              "target": "proc_macro_nested"
             },
             {
-              "id": "slab 0.4.4",
+              "id": "slab 0.4.5",
               "target": "slab"
             }
           ],
@@ -2966,11 +3141,11 @@
           "common": [
             {
               "id": "futures-macro 0.3.17",
-              "target": "futures-macro"
+              "target": "futures_macro"
             },
             {
               "id": "proc-macro-hack 0.5.19",
-              "target": "proc-macro-hack"
+              "target": "proc_macro_hack"
             }
           ],
           "selects": {}
@@ -2989,6 +3164,73 @@
         }
       },
       "license": "MIT OR Apache-2.0"
+    },
+    "generic-array 0.14.4": {
+      "name": "generic-array",
+      "version": "0.14.4",
+      "repository": {
+        "Http": {
+          "name": "generic-array",
+          "version": "0.14.4",
+          "sha256": "501466ecc8a30d1d3b7fc9229b122b2ce8ed6e9d9223f1138d4babb253e51817"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "generic_array",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        },
+        {
+          "BuildScript": {
+            "crate_name": "build_script_build",
+            "crate_root": "build.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "library_target_name": "generic_array",
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "generic-array 0.14.4",
+              "target": "build_script_build"
+            },
+            {
+              "id": "typenum 1.14.0",
+              "target": "typenum"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2015",
+        "version": "0.14.4"
+      },
+      "build_script_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "version_check 0.9.3",
+              "target": "version_check"
+            }
+          ],
+          "selects": {}
+        }
+      },
+      "license": "MIT"
     },
     "getrandom 0.2.3": {
       "name": "getrandom",
@@ -3014,6 +3256,7 @@
           }
         }
       ],
+      "library_target_name": "getrandom",
       "common_attrs": {
         "crate_features": [
           "std"
@@ -3022,7 +3265,7 @@
           "common": [
             {
               "id": "cfg-if 1.0.0",
-              "target": "cfg-if"
+              "target": "cfg_if"
             }
           ],
           "selects": {
@@ -3058,7 +3301,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "gloo-timers",
+            "crate_name": "gloo_timers",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -3069,6 +3312,7 @@
           }
         }
       ],
+      "library_target_name": "gloo_timers",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -3080,23 +3324,23 @@
           "common": [
             {
               "id": "futures-channel 0.3.17",
-              "target": "futures-channel"
+              "target": "futures_channel"
             },
             {
               "id": "futures-core 0.3.17",
-              "target": "futures-core"
+              "target": "futures_core"
             },
             {
               "id": "js-sys 0.3.55",
-              "target": "js-sys"
+              "target": "js_sys"
             },
             {
               "id": "wasm-bindgen 0.2.78",
-              "target": "wasm-bindgen"
+              "target": "wasm_bindgen"
             },
             {
               "id": "web-sys 0.3.55",
-              "target": "web-sys"
+              "target": "web_sys"
             }
           ],
           "selects": {}
@@ -3130,6 +3374,7 @@
           }
         }
       ],
+      "library_target_name": "h2",
       "common_attrs": {
         "deps": {
           "common": [
@@ -3143,15 +3388,15 @@
             },
             {
               "id": "futures-core 0.3.17",
-              "target": "futures-core"
+              "target": "futures_core"
             },
             {
               "id": "futures-sink 0.3.17",
-              "target": "futures-sink"
+              "target": "futures_sink"
             },
             {
               "id": "futures-util 0.3.17",
-              "target": "futures-util"
+              "target": "futures_util"
             },
             {
               "id": "http 0.2.5",
@@ -3162,7 +3407,7 @@
               "target": "indexmap"
             },
             {
-              "id": "slab 0.4.4",
+              "id": "slab 0.4.5",
               "target": "slab"
             },
             {
@@ -3171,7 +3416,7 @@
             },
             {
               "id": "tokio-util 0.6.8",
-              "target": "tokio-util"
+              "target": "tokio_util"
             },
             {
               "id": "tracing 0.1.29",
@@ -3209,6 +3454,7 @@
           }
         }
       ],
+      "library_target_name": "hashbrown",
       "common_attrs": {
         "crate_features": [
           "raw"
@@ -3231,7 +3477,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "hermit-abi",
+            "crate_name": "hermit_abi",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -3242,6 +3488,7 @@
           }
         }
       ],
+      "library_target_name": "hermit_abi",
       "common_attrs": {
         "crate_features": [
           "default"
@@ -3259,6 +3506,37 @@
         "version": "0.1.19"
       },
       "license": "MIT/Apache-2.0"
+    },
+    "hex-literal 0.3.3": {
+      "name": "hex-literal",
+      "version": "0.3.3",
+      "repository": {
+        "Http": {
+          "name": "hex-literal",
+          "version": "0.3.3",
+          "sha256": "21e4590e13640f19f249fe3e4eca5113bc4289f2497710378190e7f4bd96f45b"
+        }
+      },
+      "targets": [
+        {
+          "ProcMacro": {
+            "crate_name": "hex_literal",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "library_target_name": "hex_literal",
+      "common_attrs": {
+        "edition": "2018",
+        "version": "0.3.3"
+      },
+      "license": "MIT OR Apache-2.0"
     },
     "http 0.2.5": {
       "name": "http",
@@ -3284,6 +3562,7 @@
           }
         }
       ],
+      "library_target_name": "http",
       "common_attrs": {
         "deps": {
           "common": [
@@ -3320,7 +3599,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "http-body",
+            "crate_name": "http_body",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -3331,6 +3610,7 @@
           }
         }
       ],
+      "library_target_name": "http_body",
       "common_attrs": {
         "deps": {
           "common": [
@@ -3344,7 +3624,7 @@
             },
             {
               "id": "pin-project-lite 0.2.7",
-              "target": "pin-project-lite"
+              "target": "pin_project_lite"
             }
           ],
           "selects": {}
@@ -3379,7 +3659,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -3390,6 +3670,7 @@
           }
         }
       ],
+      "library_target_name": "httparse",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -3399,7 +3680,7 @@
           "common": [
             {
               "id": "httparse 1.5.1",
-              "target": "build-script-build"
+              "target": "build_script_build"
             }
           ],
           "selects": {}
@@ -3434,6 +3715,7 @@
           }
         }
       ],
+      "library_target_name": "httpdate",
       "common_attrs": {
         "edition": "2018",
         "version": "1.0.1"
@@ -3476,16 +3758,17 @@
           }
         }
       ],
+      "library_target_name": "httpmock",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "assert-json-diff 2.0.1",
-              "target": "assert-json-diff"
+              "target": "assert_json_diff"
             },
             {
               "id": "async-object-pool 0.1.4",
-              "target": "async-object-pool"
+              "target": "async_object_pool"
             },
             {
               "id": "base64 0.13.0",
@@ -3493,11 +3776,11 @@
             },
             {
               "id": "basic-cookies 0.1.4",
-              "target": "basic-cookies"
+              "target": "basic_cookies"
             },
             {
               "id": "crossbeam-utils 0.8.5",
-              "target": "crossbeam-utils"
+              "target": "crossbeam_utils"
             },
             {
               "id": "difference 2.0.0",
@@ -3509,14 +3792,14 @@
             },
             {
               "id": "futures-util 0.3.17",
-              "target": "futures-util"
+              "target": "futures_util"
             },
             {
               "id": "hyper 0.14.13",
               "target": "hyper"
             },
             {
-              "id": "isahc 1.5.0",
+              "id": "isahc 1.5.1",
               "target": "isahc"
             },
             {
@@ -3563,7 +3846,7 @@
           "common": [
             {
               "id": "async-trait 0.1.51",
-              "target": "async-trait"
+              "target": "async_trait"
             }
           ],
           "selects": {}
@@ -3596,6 +3879,7 @@
           }
         }
       ],
+      "library_target_name": "hyper",
       "common_attrs": {
         "crate_features": [
           "client",
@@ -3616,15 +3900,15 @@
             },
             {
               "id": "futures-channel 0.3.17",
-              "target": "futures-channel"
+              "target": "futures_channel"
             },
             {
               "id": "futures-core 0.3.17",
-              "target": "futures-core"
+              "target": "futures_core"
             },
             {
               "id": "futures-util 0.3.17",
-              "target": "futures-util"
+              "target": "futures_util"
             },
             {
               "id": "h2 0.3.6",
@@ -3636,7 +3920,7 @@
             },
             {
               "id": "http-body 0.4.3",
-              "target": "http-body"
+              "target": "http_body"
             },
             {
               "id": "httparse 1.5.1",
@@ -3652,7 +3936,7 @@
             },
             {
               "id": "pin-project-lite 0.2.7",
-              "target": "pin-project-lite"
+              "target": "pin_project_lite"
             },
             {
               "id": "socket2 0.4.2",
@@ -3664,7 +3948,7 @@
             },
             {
               "id": "tower-service 0.3.1",
-              "target": "tower-service"
+              "target": "tower_service"
             },
             {
               "id": "tracing 0.1.29",
@@ -3695,7 +3979,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "hyper-tls",
+            "crate_name": "hyper_tls",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -3706,6 +3990,7 @@
           }
         }
       ],
+      "library_target_name": "hyper_tls",
       "common_attrs": {
         "deps": {
           "common": [
@@ -3719,7 +4004,7 @@
             },
             {
               "id": "native-tls 0.2.8",
-              "target": "native-tls"
+              "target": "native_tls"
             },
             {
               "id": "tokio 1.12.0",
@@ -3727,7 +4012,7 @@
             },
             {
               "id": "tokio-native-tls 0.3.0",
-              "target": "tokio-native-tls"
+              "target": "tokio_native_tls"
             }
           ],
           "selects": {}
@@ -3761,6 +4046,7 @@
           }
         }
       ],
+      "library_target_name": "idna",
       "common_attrs": {
         "deps": {
           "common": [
@@ -3770,11 +4056,11 @@
             },
             {
               "id": "unicode-bidi 0.3.7",
-              "target": "unicode-bidi"
+              "target": "unicode_bidi"
             },
             {
               "id": "unicode-normalization 0.1.19",
-              "target": "unicode-normalization"
+              "target": "unicode_normalization"
             }
           ],
           "selects": {}
@@ -3809,7 +4095,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -3820,6 +4106,7 @@
           }
         }
       ],
+      "library_target_name": "indexmap",
       "common_attrs": {
         "crate_features": [
           "std"
@@ -3832,7 +4119,7 @@
             },
             {
               "id": "indexmap 1.7.0",
-              "target": "build-script-build"
+              "target": "build_script_build"
             }
           ],
           "selects": {}
@@ -3877,12 +4164,13 @@
           }
         }
       ],
+      "library_target_name": "instant",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "cfg-if 1.0.0",
-              "target": "cfg-if"
+              "target": "cfg_if"
             }
           ],
           "selects": {}
@@ -3916,20 +4204,21 @@
           }
         }
       ],
+      "library_target_name": "ipnet",
       "common_attrs": {
         "edition": "2015",
         "version": "2.3.1"
       },
       "license": "MIT OR Apache-2.0"
     },
-    "isahc 1.5.0": {
+    "isahc 1.5.1": {
       "name": "isahc",
-      "version": "1.5.0",
+      "version": "1.5.1",
       "repository": {
         "Http": {
           "name": "isahc",
-          "version": "1.5.0",
-          "sha256": "431445cb4ba85a80cb1438a9ae8042dadb78ae4046ecee89ad027b614aa0ddb7"
+          "version": "1.5.1",
+          "sha256": "40ef5402b1791c9fc479ef9871601a2f10e4cc0f14414a5c9c6e043fb51e5a56"
         }
       },
       "targets": [
@@ -3947,7 +4236,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -3958,6 +4247,7 @@
           }
         }
       ],
+      "library_target_name": "isahc",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -3971,11 +4261,15 @@
           "common": [
             {
               "id": "async-channel 1.6.1",
-              "target": "async-channel"
+              "target": "async_channel"
+            },
+            {
+              "id": "castaway 0.1.1",
+              "target": "castaway"
             },
             {
               "id": "crossbeam-utils 0.8.5",
-              "target": "crossbeam-utils"
+              "target": "crossbeam_utils"
             },
             {
               "id": "curl 0.4.39",
@@ -3983,7 +4277,7 @@
             },
             {
               "id": "curl-sys 0.4.49+curl-7.79.1",
-              "target": "curl-sys"
+              "target": "curl_sys"
             },
             {
               "id": "encoding_rs 0.8.28",
@@ -3991,19 +4285,19 @@
             },
             {
               "id": "event-listener 2.5.1",
-              "target": "event-listener"
+              "target": "event_listener"
             },
             {
               "id": "futures-lite 1.12.0",
-              "target": "futures-lite"
+              "target": "futures_lite"
             },
             {
               "id": "http 0.2.5",
               "target": "http"
             },
             {
-              "id": "isahc 1.5.0",
-              "target": "build-script-build"
+              "id": "isahc 1.5.1",
+              "target": "build_script_build"
             },
             {
               "id": "log 0.4.14",
@@ -4022,7 +4316,7 @@
               "target": "polling"
             },
             {
-              "id": "slab 0.4.4",
+              "id": "slab 0.4.5",
               "target": "slab"
             },
             {
@@ -4035,7 +4329,7 @@
             },
             {
               "id": "tracing-futures 0.2.5",
-              "target": "tracing-futures"
+              "target": "tracing_futures"
             },
             {
               "id": "url 2.2.2",
@@ -4043,13 +4337,13 @@
             },
             {
               "id": "waker-fn 1.1.0",
-              "target": "waker-fn"
+              "target": "waker_fn"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.5.0"
+        "version": "1.5.1"
       },
       "build_script_attrs": {},
       "license": "MIT"
@@ -4078,6 +4372,7 @@
           }
         }
       ],
+      "library_target_name": "itertools",
       "common_attrs": {
         "crate_features": [
           "use_alloc",
@@ -4121,6 +4416,7 @@
           }
         }
       ],
+      "library_target_name": "itoa",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -4144,7 +4440,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "js-sys",
+            "crate_name": "js_sys",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -4155,12 +4451,13 @@
           }
         }
       ],
+      "library_target_name": "js_sys",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "wasm-bindgen 0.2.78",
-              "target": "wasm-bindgen"
+              "target": "wasm_bindgen"
             }
           ],
           "selects": {}
@@ -4183,7 +4480,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "kv-log-macro",
+            "crate_name": "kv_log_macro",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -4194,6 +4491,7 @@
           }
         }
       ],
+      "library_target_name": "kv_log_macro",
       "common_attrs": {
         "deps": {
           "common": [
@@ -4245,6 +4543,7 @@
           }
         }
       ],
+      "library_target_name": "lalrpop",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -4258,7 +4557,7 @@
           "common": [
             {
               "id": "ascii-canvas 3.0.0",
-              "target": "ascii-canvas"
+              "target": "ascii_canvas"
             },
             {
               "id": "atty 0.2.14",
@@ -4266,7 +4565,7 @@
             },
             {
               "id": "bit-set 0.5.2",
-              "target": "bit-set"
+              "target": "bit_set"
             },
             {
               "id": "diff 0.1.12",
@@ -4282,7 +4581,7 @@
             },
             {
               "id": "lalrpop-util 0.19.6",
-              "target": "lalrpop-util"
+              "target": "lalrpop_util"
             },
             {
               "id": "petgraph 0.5.1",
@@ -4290,7 +4589,7 @@
             },
             {
               "id": "pico-args 0.4.2",
-              "target": "pico-args"
+              "target": "pico_args"
             },
             {
               "id": "regex 1.5.4",
@@ -4298,10 +4597,10 @@
             },
             {
               "id": "regex-syntax 0.6.25",
-              "target": "regex-syntax"
+              "target": "regex_syntax"
             },
             {
-              "id": "string_cache 0.8.1",
+              "id": "string_cache 0.8.2",
               "target": "string_cache"
             },
             {
@@ -4310,11 +4609,11 @@
             },
             {
               "id": "tiny-keccak 2.0.2",
-              "target": "tiny-keccak"
+              "target": "tiny_keccak"
             },
             {
               "id": "unicode-xid 0.2.2",
-              "target": "unicode-xid"
+              "target": "unicode_xid"
             }
           ],
           "selects": {}
@@ -4337,7 +4636,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "lalrpop-util",
+            "crate_name": "lalrpop_util",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -4348,6 +4647,7 @@
           }
         }
       ],
+      "library_target_name": "lalrpop_util",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -4393,6 +4693,7 @@
           }
         }
       ],
+      "library_target_name": "lazy_static",
       "common_attrs": {
         "edition": "2015",
         "version": "1.4.0"
@@ -4423,6 +4724,7 @@
           }
         }
       ],
+      "library_target_name": "levenshtein",
       "common_attrs": {
         "edition": "2015",
         "version": "1.0.5"
@@ -4454,7 +4756,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -4465,6 +4767,7 @@
           }
         }
       ],
+      "library_target_name": "libc",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -4474,7 +4777,7 @@
           "common": [
             {
               "id": "libc 0.2.103",
-              "target": "build-script-build"
+              "target": "build_script_build"
             }
           ],
           "selects": {}
@@ -4498,7 +4801,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "libnghttp2-sys",
+            "crate_name": "libnghttp2_sys",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -4510,7 +4813,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -4521,6 +4824,7 @@
           }
         }
       ],
+      "library_target_name": "libnghttp2_sys",
       "common_attrs": {
         "data_glob": [
           "nghttp2/**"
@@ -4533,7 +4837,7 @@
             },
             {
               "id": "libnghttp2-sys 0.1.7+1.45.0",
-              "target": "build-script-build"
+              "target": "build_script_build"
             }
           ],
           "selects": {}
@@ -4571,7 +4875,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "libz-sys",
+            "crate_name": "libz_sys",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -4583,7 +4887,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -4594,6 +4898,7 @@
           }
         }
       ],
+      "library_target_name": "libz_sys",
       "common_attrs": {
         "crate_features": [
           "libc"
@@ -4606,7 +4911,7 @@
             },
             {
               "id": "libz-sys 1.1.3",
-              "target": "build-script-build"
+              "target": "build_script_build"
             }
           ],
           "selects": {}
@@ -4626,7 +4931,7 @@
             },
             {
               "id": "pkg-config 0.3.20",
-              "target": "pkg-config"
+              "target": "pkg_config"
             }
           ],
           "selects": {
@@ -4641,6 +4946,46 @@
         "links": "z"
       },
       "license": "MIT OR Apache-2.0"
+    },
+    "lock_api 0.4.5": {
+      "name": "lock_api",
+      "version": "0.4.5",
+      "repository": {
+        "Http": {
+          "name": "lock_api",
+          "version": "0.4.5",
+          "sha256": "712a4d093c9976e24e7dbca41db895dabcbac38eb5f4045393d17a95bdfb1109"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "lock_api",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "library_target_name": "lock_api",
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "scopeguard 1.1.0",
+              "target": "scopeguard"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "0.4.5"
+      },
+      "license": "Apache-2.0/MIT"
     },
     "log 0.4.14": {
       "name": "log",
@@ -4667,7 +5012,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -4678,6 +5023,7 @@
           }
         }
       ],
+      "library_target_name": "log",
       "common_attrs": {
         "crate_features": [
           "kv_unstable",
@@ -4687,15 +5033,15 @@
           "common": [
             {
               "id": "cfg-if 1.0.0",
-              "target": "cfg-if"
+              "target": "cfg_if"
             },
             {
               "id": "log 0.4.14",
-              "target": "build-script-build"
+              "target": "build_script_build"
             },
             {
               "id": "value-bag 1.0.0-alpha.7",
-              "target": "value-bag"
+              "target": "value_bag"
             }
           ],
           "selects": {}
@@ -4730,11 +5076,64 @@
           }
         }
       ],
+      "library_target_name": "matches",
       "common_attrs": {
         "edition": "2015",
         "version": "0.1.9"
       },
       "license": "MIT"
+    },
+    "md-5 0.9.1": {
+      "name": "md-5",
+      "version": "0.9.1",
+      "repository": {
+        "Http": {
+          "name": "md-5",
+          "version": "0.9.1",
+          "sha256": "7b5a279bb9607f9f53c22d496eade00d138d1bdcccd07d74650387cf94942a15"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "md5",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "library_target_name": "md5",
+      "common_attrs": {
+        "crate_features": [
+          "default",
+          "std"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "block-buffer 0.9.0",
+              "target": "block_buffer"
+            },
+            {
+              "id": "digest 0.9.0",
+              "target": "digest"
+            },
+            {
+              "id": "opaque-debug 0.3.0",
+              "target": "opaque_debug"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "0.9.1"
+      },
+      "license": "MIT OR Apache-2.0"
     },
     "memchr 2.4.1": {
       "name": "memchr",
@@ -4761,7 +5160,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -4772,6 +5171,7 @@
           }
         }
       ],
+      "library_target_name": "memchr",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -4781,7 +5181,7 @@
           "common": [
             {
               "id": "memchr 2.4.1",
-              "target": "build-script-build"
+              "target": "build_script_build"
             }
           ],
           "selects": {}
@@ -4816,6 +5216,7 @@
           }
         }
       ],
+      "library_target_name": "mime",
       "common_attrs": {
         "edition": "2015",
         "version": "0.3.16"
@@ -4846,6 +5247,7 @@
           }
         }
       ],
+      "library_target_name": "mio",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -4916,6 +5318,7 @@
           }
         }
       ],
+      "library_target_name": "miow",
       "common_attrs": {
         "deps": {
           "common": [
@@ -4944,7 +5347,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "native-tls",
+            "crate_name": "native_tls",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -4956,7 +5359,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -4967,12 +5370,13 @@
           }
         }
       ],
+      "library_target_name": "native_tls",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "native-tls 0.2.8",
-              "target": "build-script-build"
+              "target": "build_script_build"
             }
           ],
           "selects": {
@@ -4987,11 +5391,11 @@
               },
               {
                 "id": "security-framework 2.4.2",
-                "target": "security-framework"
+                "target": "security_framework"
               },
               {
                 "id": "security-framework-sys 2.4.2",
-                "target": "security-framework-sys"
+                "target": "security_framework_sys"
               },
               {
                 "id": "tempfile 3.2.0",
@@ -5009,11 +5413,11 @@
               },
               {
                 "id": "openssl-probe 0.1.4",
-                "target": "openssl-probe"
+                "target": "openssl_probe"
               },
               {
                 "id": "openssl-sys 0.9.67",
-                "target": "openssl-sys"
+                "target": "openssl_sys"
               }
             ],
             "cfg(target_os = \"windows\")": [
@@ -5054,6 +5458,7 @@
           }
         }
       ],
+      "library_target_name": "debug_unreachable",
       "common_attrs": {
         "edition": "2018",
         "version": "1.0.4"
@@ -5085,7 +5490,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -5096,6 +5501,7 @@
           }
         }
       ],
+      "library_target_name": "ntapi",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -5105,7 +5511,7 @@
           "common": [
             {
               "id": "ntapi 0.3.6",
-              "target": "build-script-build"
+              "target": "build_script_build"
             },
             {
               "id": "winapi 0.3.9",
@@ -5144,6 +5550,7 @@
           }
         }
       ],
+      "library_target_name": "num_cpus",
       "common_attrs": {
         "deps": {
           "common": [
@@ -5156,7 +5563,7 @@
             "cfg(all(any(target_arch = \"x86_64\", target_arch = \"aarch64\"), target_os = \"hermit\"))": [
               {
                 "id": "hermit-abi 0.1.19",
-                "target": "hermit-abi"
+                "target": "hermit_abi"
               }
             ]
           }
@@ -5190,6 +5597,7 @@
           }
         }
       ],
+      "library_target_name": "once_cell",
       "common_attrs": {
         "crate_features": [
           "alloc",
@@ -5199,6 +5607,37 @@
         ],
         "edition": "2018",
         "version": "1.8.0"
+      },
+      "license": "MIT OR Apache-2.0"
+    },
+    "opaque-debug 0.3.0": {
+      "name": "opaque-debug",
+      "version": "0.3.0",
+      "repository": {
+        "Http": {
+          "name": "opaque-debug",
+          "version": "0.3.0",
+          "sha256": "624a8340c38c1b80fd549087862da4ba43e08858af025b236e509b6649fc13d5"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "opaque_debug",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "library_target_name": "opaque_debug",
+      "common_attrs": {
+        "edition": "2018",
+        "version": "0.3.0"
       },
       "license": "MIT OR Apache-2.0"
     },
@@ -5227,7 +5666,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -5238,6 +5677,7 @@
           }
         }
       ],
+      "library_target_name": "openssl",
       "common_attrs": {
         "deps": {
           "common": [
@@ -5247,11 +5687,11 @@
             },
             {
               "id": "cfg-if 1.0.0",
-              "target": "cfg-if"
+              "target": "cfg_if"
             },
             {
               "id": "foreign-types 0.3.2",
-              "target": "foreign-types"
+              "target": "foreign_types"
             },
             {
               "id": "libc 0.2.103",
@@ -5263,11 +5703,11 @@
             },
             {
               "id": "openssl 0.10.36",
-              "target": "build-script-build"
+              "target": "build_script_build"
             },
             {
               "id": "openssl-sys 0.9.67",
-              "target": "openssl-sys",
+              "target": "openssl_sys",
               "alias": "ffi"
             }
           ],
@@ -5281,7 +5721,8 @@
           "common": [
             {
               "id": "openssl-sys 0.9.67",
-              "target": "openssl-sys"
+              "target": "openssl_sys",
+              "alias": "ffi"
             }
           ],
           "selects": {}
@@ -5302,7 +5743,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "openssl-probe",
+            "crate_name": "openssl_probe",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -5313,6 +5754,7 @@
           }
         }
       ],
+      "library_target_name": "openssl_probe",
       "common_attrs": {
         "edition": "2015",
         "version": "0.1.4"
@@ -5332,7 +5774,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "openssl-sys",
+            "crate_name": "openssl_sys",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -5344,7 +5786,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-main",
+            "crate_name": "build_script_main",
             "crate_root": "build/main.rs",
             "srcs": {
               "include": [
@@ -5355,6 +5797,7 @@
           }
         }
       ],
+      "library_target_name": "openssl_sys",
       "common_attrs": {
         "data": {
           "common": [
@@ -5370,7 +5813,7 @@
             },
             {
               "id": "openssl-sys 0.9.67",
-              "target": "build-script-main"
+              "target": "build_script_main"
             }
           ],
           "selects": {}
@@ -5404,7 +5847,7 @@
             },
             {
               "id": "pkg-config 0.3.20",
-              "target": "pkg-config"
+              "target": "pkg_config"
             }
           ],
           "selects": {
@@ -5451,11 +5894,147 @@
           }
         }
       ],
+      "library_target_name": "parking",
       "common_attrs": {
         "edition": "2018",
         "version": "2.0.0"
       },
       "license": "Apache-2.0 OR MIT"
+    },
+    "parking_lot 0.11.2": {
+      "name": "parking_lot",
+      "version": "0.11.2",
+      "repository": {
+        "Http": {
+          "name": "parking_lot",
+          "version": "0.11.2",
+          "sha256": "7d17b78036a60663b797adeaee46f5c9dfebb86948d1255007a1d6be0271ff99"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "parking_lot",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "library_target_name": "parking_lot",
+      "common_attrs": {
+        "crate_features": [
+          "default"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "instant 0.1.11",
+              "target": "instant"
+            },
+            {
+              "id": "lock_api 0.4.5",
+              "target": "lock_api"
+            },
+            {
+              "id": "parking_lot_core 0.8.5",
+              "target": "parking_lot_core"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "0.11.2"
+      },
+      "license": "Apache-2.0/MIT"
+    },
+    "parking_lot_core 0.8.5": {
+      "name": "parking_lot_core",
+      "version": "0.8.5",
+      "repository": {
+        "Http": {
+          "name": "parking_lot_core",
+          "version": "0.8.5",
+          "sha256": "d76e8e1493bcac0d2766c42737f34458f1c8c50c0d23bcb24ea953affb273216"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "parking_lot_core",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        },
+        {
+          "BuildScript": {
+            "crate_name": "build_script_build",
+            "crate_root": "build.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "library_target_name": "parking_lot_core",
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "cfg-if 1.0.0",
+              "target": "cfg_if"
+            },
+            {
+              "id": "instant 0.1.11",
+              "target": "instant"
+            },
+            {
+              "id": "parking_lot_core 0.8.5",
+              "target": "build_script_build"
+            },
+            {
+              "id": "smallvec 1.7.0",
+              "target": "smallvec"
+            }
+          ],
+          "selects": {
+            "cfg(target_os = \"redox\")": [
+              {
+                "id": "redox_syscall 0.2.10",
+                "target": "syscall"
+              }
+            ],
+            "cfg(unix)": [
+              {
+                "id": "libc 0.2.103",
+                "target": "libc"
+              }
+            ],
+            "cfg(windows)": [
+              {
+                "id": "winapi 0.3.9",
+                "target": "winapi"
+              }
+            ]
+          }
+        },
+        "edition": "2018",
+        "version": "0.8.5"
+      },
+      "build_script_attrs": {},
+      "license": "Apache-2.0/MIT"
     },
     "percent-encoding 2.1.0": {
       "name": "percent-encoding",
@@ -5470,7 +6049,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "percent-encoding",
+            "crate_name": "percent_encoding",
             "crate_root": "lib.rs",
             "srcs": {
               "include": [
@@ -5481,6 +6060,7 @@
           }
         }
       ],
+      "library_target_name": "percent_encoding",
       "common_attrs": {
         "edition": "2015",
         "version": "2.1.0"
@@ -5511,6 +6091,7 @@
           }
         }
       ],
+      "library_target_name": "petgraph",
       "common_attrs": {
         "deps": {
           "common": [
@@ -5554,6 +6135,7 @@
           }
         }
       ],
+      "library_target_name": "phf_shared",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -5586,7 +6168,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "pico-args",
+            "crate_name": "pico_args",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -5597,6 +6179,7 @@
           }
         }
       ],
+      "library_target_name": "pico_args",
       "common_attrs": {
         "edition": "2018",
         "version": "0.4.2"
@@ -5616,7 +6199,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "pin-project",
+            "crate_name": "pin_project",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -5627,13 +6210,14 @@
           }
         }
       ],
+      "library_target_name": "pin_project",
       "common_attrs": {
         "edition": "2018",
         "proc_macro_deps": {
           "common": [
             {
               "id": "pin-project-internal 1.0.8",
-              "target": "pin-project-internal"
+              "target": "pin_project_internal"
             }
           ],
           "selects": {}
@@ -5655,7 +6239,7 @@
       "targets": [
         {
           "ProcMacro": {
-            "crate_name": "pin-project-internal",
+            "crate_name": "pin_project_internal",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -5666,12 +6250,13 @@
           }
         }
       ],
+      "library_target_name": "pin_project_internal",
       "common_attrs": {
         "deps": {
           "common": [
             {
-              "id": "proc-macro2 1.0.29",
-              "target": "proc-macro2"
+              "id": "proc-macro2 1.0.30",
+              "target": "proc_macro2"
             },
             {
               "id": "quote 1.0.10",
@@ -5702,7 +6287,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "pin-project-lite",
+            "crate_name": "pin_project_lite",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -5713,6 +6298,7 @@
           }
         }
       ],
+      "library_target_name": "pin_project_lite",
       "common_attrs": {
         "edition": "2018",
         "version": "0.2.7"
@@ -5732,7 +6318,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "pin-utils",
+            "crate_name": "pin_utils",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -5743,6 +6329,7 @@
           }
         }
       ],
+      "library_target_name": "pin_utils",
       "common_attrs": {
         "edition": "2018",
         "version": "0.1.0"
@@ -5762,7 +6349,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "pkg-config",
+            "crate_name": "pkg_config",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -5773,6 +6360,7 @@
           }
         }
       ],
+      "library_target_name": "pkg_config",
       "common_attrs": {
         "edition": "2015",
         "version": "0.3.20"
@@ -5797,6 +6385,7 @@
           }
         }
       ],
+      "library_target_name": "pkg_a",
       "common_attrs": {
         "deps": {
           "common": [
@@ -5843,6 +6432,7 @@
           }
         }
       ],
+      "library_target_name": "pkg_b",
       "common_attrs": {
         "deps": {
           "common": [
@@ -5854,6 +6444,49 @@
           "selects": {}
         },
         "edition": "2018",
+        "version": "0.1.0"
+      },
+      "license": null
+    },
+    "pkg_c 0.1.0": {
+      "name": "pkg_c",
+      "version": "0.1.0",
+      "repository": null,
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "pkg_c",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "library_target_name": "pkg_c",
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "md-5 0.9.1",
+              "target": "md5"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "proc_macro_deps_dev": {
+          "common": [
+            {
+              "id": "hex-literal 0.3.3",
+              "target": "hex_literal"
+            }
+          ],
+          "selects": {}
+        },
         "version": "0.1.0"
       },
       "license": null
@@ -5882,6 +6515,7 @@
           }
         }
       ],
+      "library_target_name": "polling",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -5891,7 +6525,7 @@
           "common": [
             {
               "id": "cfg-if 1.0.0",
-              "target": "cfg-if"
+              "target": "cfg_if"
             },
             {
               "id": "log 0.4.14",
@@ -5908,7 +6542,7 @@
             "cfg(windows)": [
               {
                 "id": "wepoll-ffi 0.1.2",
-                "target": "wepoll-ffi"
+                "target": "wepoll_ffi"
               },
               {
                 "id": "winapi 0.3.9",
@@ -5935,7 +6569,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "ppv-lite86",
+            "crate_name": "ppv_lite86",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -5946,6 +6580,7 @@
           }
         }
       ],
+      "library_target_name": "ppv_lite86",
       "common_attrs": {
         "crate_features": [
           "simd",
@@ -5969,7 +6604,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "precomputed-hash",
+            "crate_name": "precomputed_hash",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -5980,6 +6615,7 @@
           }
         }
       ],
+      "library_target_name": "precomputed_hash",
       "common_attrs": {
         "edition": "2015",
         "version": "0.1.1"
@@ -5999,7 +6635,7 @@
       "targets": [
         {
           "ProcMacro": {
-            "crate_name": "proc-macro-hack",
+            "crate_name": "proc_macro_hack",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -6011,7 +6647,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -6022,12 +6658,13 @@
           }
         }
       ],
+      "library_target_name": "proc_macro_hack",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "proc-macro-hack 0.5.19",
-              "target": "build-script-build"
+              "target": "build_script_build"
             }
           ],
           "selects": {}
@@ -6051,7 +6688,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "proc-macro-nested",
+            "crate_name": "proc_macro_nested",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -6063,7 +6700,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -6074,12 +6711,13 @@
           }
         }
       ],
+      "library_target_name": "proc_macro_nested",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "proc-macro-nested 0.1.7",
-              "target": "build-script-build"
+              "target": "build_script_build"
             }
           ],
           "selects": {}
@@ -6090,20 +6728,20 @@
       "build_script_attrs": {},
       "license": "MIT OR Apache-2.0"
     },
-    "proc-macro2 1.0.29": {
+    "proc-macro2 1.0.30": {
       "name": "proc-macro2",
-      "version": "1.0.29",
+      "version": "1.0.30",
       "repository": {
         "Http": {
           "name": "proc-macro2",
-          "version": "1.0.29",
-          "sha256": "b9f5105d4fdaab20335ca9565e106a5d9b82b6219b5ba735731124ac6711d23d"
+          "version": "1.0.30",
+          "sha256": "edc3358ebc67bc8b7fa0c007f945b0b18226f78437d61bec735a9eb96b61ee70"
         }
       },
       "targets": [
         {
           "Library": {
-            "crate_name": "proc-macro2",
+            "crate_name": "proc_macro2",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -6115,7 +6753,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -6126,6 +6764,7 @@
           }
         }
       ],
+      "library_target_name": "proc_macro2",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -6134,18 +6773,18 @@
         "deps": {
           "common": [
             {
-              "id": "proc-macro2 1.0.29",
-              "target": "build-script-build"
+              "id": "proc-macro2 1.0.30",
+              "target": "build_script_build"
             },
             {
               "id": "unicode-xid 0.2.2",
-              "target": "unicode-xid"
+              "target": "unicode_xid"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.0.29"
+        "version": "1.0.30"
       },
       "build_script_attrs": {},
       "license": "MIT OR Apache-2.0"
@@ -6174,12 +6813,13 @@
           }
         }
       ],
+      "library_target_name": "qstring",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "percent-encoding 2.1.0",
-              "target": "percent-encoding"
+              "target": "percent_encoding"
             }
           ],
           "selects": {}
@@ -6213,6 +6853,7 @@
           }
         }
       ],
+      "library_target_name": "quote",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -6221,8 +6862,8 @@
         "deps": {
           "common": [
             {
-              "id": "proc-macro2 1.0.29",
-              "target": "proc-macro2"
+              "id": "proc-macro2 1.0.30",
+              "target": "proc_macro2"
             }
           ],
           "selects": {}
@@ -6256,6 +6897,7 @@
           }
         }
       ],
+      "library_target_name": "rand",
       "common_attrs": {
         "crate_features": [
           "alloc",
@@ -6324,6 +6966,7 @@
           }
         }
       ],
+      "library_target_name": "rand_chacha",
       "common_attrs": {
         "crate_features": [
           "std"
@@ -6332,7 +6975,7 @@
           "common": [
             {
               "id": "ppv-lite86 0.2.10",
-              "target": "ppv-lite86"
+              "target": "ppv_lite86"
             },
             {
               "id": "rand_core 0.6.3",
@@ -6370,6 +7013,7 @@
           }
         }
       ],
+      "library_target_name": "rand_core",
       "common_attrs": {
         "crate_features": [
           "alloc",
@@ -6414,6 +7058,7 @@
           }
         }
       ],
+      "library_target_name": "rand_hc",
       "common_attrs": {
         "deps": {
           "common": [
@@ -6453,6 +7098,7 @@
           }
         }
       ],
+      "library_target_name": "syscall",
       "common_attrs": {
         "deps": {
           "common": [
@@ -6492,6 +7138,7 @@
           }
         }
       ],
+      "library_target_name": "redox_users",
       "common_attrs": {
         "deps": {
           "common": [
@@ -6535,6 +7182,7 @@
           }
         }
       ],
+      "library_target_name": "regex",
       "common_attrs": {
         "crate_features": [
           "aho-corasick",
@@ -6559,7 +7207,7 @@
           "common": [
             {
               "id": "aho-corasick 0.7.18",
-              "target": "aho-corasick"
+              "target": "aho_corasick"
             },
             {
               "id": "memchr 2.4.1",
@@ -6567,7 +7215,7 @@
             },
             {
               "id": "regex-syntax 0.6.25",
-              "target": "regex-syntax"
+              "target": "regex_syntax"
             }
           ],
           "selects": {}
@@ -6590,7 +7238,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "regex-syntax",
+            "crate_name": "regex_syntax",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -6601,6 +7249,7 @@
           }
         }
       ],
+      "library_target_name": "regex_syntax",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -6642,6 +7291,7 @@
           }
         }
       ],
+      "library_target_name": "remove_dir_all",
       "common_attrs": {
         "deps": {
           "common": [],
@@ -6683,6 +7333,7 @@
           }
         }
       ],
+      "library_target_name": "reqwest",
       "common_attrs": {
         "crate_features": [
           "__tls",
@@ -6734,15 +7385,15 @@
               },
               {
                 "id": "futures-core 0.3.17",
-                "target": "futures-core"
+                "target": "futures_core"
               },
               {
                 "id": "futures-util 0.3.17",
-                "target": "futures-util"
+                "target": "futures_util"
               },
               {
                 "id": "http-body 0.4.3",
-                "target": "http-body"
+                "target": "http_body"
               },
               {
                 "id": "hyper 0.14.13",
@@ -6750,7 +7401,7 @@
               },
               {
                 "id": "hyper-tls 0.5.0",
-                "target": "hyper-tls"
+                "target": "hyper_tls"
               },
               {
                 "id": "ipnet 2.3.1",
@@ -6770,16 +7421,16 @@
               },
               {
                 "id": "native-tls 0.2.8",
-                "target": "native-tls",
+                "target": "native_tls",
                 "alias": "native_tls_crate"
               },
               {
                 "id": "percent-encoding 2.1.0",
-                "target": "percent-encoding"
+                "target": "percent_encoding"
               },
               {
                 "id": "pin-project-lite 0.2.7",
-                "target": "pin-project-lite"
+                "target": "pin_project_lite"
               },
               {
                 "id": "tokio 1.12.0",
@@ -6787,25 +7438,25 @@
               },
               {
                 "id": "tokio-native-tls 0.3.0",
-                "target": "tokio-native-tls"
+                "target": "tokio_native_tls"
               }
             ],
             "cfg(target_arch = \"wasm32\")": [
               {
                 "id": "js-sys 0.3.55",
-                "target": "js-sys"
+                "target": "js_sys"
               },
               {
                 "id": "wasm-bindgen 0.2.78",
-                "target": "wasm-bindgen"
+                "target": "wasm_bindgen"
               },
               {
                 "id": "wasm-bindgen-futures 0.4.28",
-                "target": "wasm-bindgen-futures"
+                "target": "wasm_bindgen_futures"
               },
               {
                 "id": "web-sys 0.3.55",
-                "target": "web-sys"
+                "target": "web_sys"
               }
             ],
             "cfg(windows)": [
@@ -6846,7 +7497,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build/build.rs",
             "srcs": {
               "include": [
@@ -6857,12 +7508,13 @@
           }
         }
       ],
+      "library_target_name": "rustversion",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "rustversion 1.0.5",
-              "target": "build-script-build"
+              "target": "build_script_build"
             }
           ],
           "selects": {}
@@ -6898,7 +7550,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -6909,12 +7561,13 @@
           }
         }
       ],
+      "library_target_name": "ryu",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "ryu 1.0.5",
-              "target": "build-script-build"
+              "target": "build_script_build"
             }
           ],
           "selects": {}
@@ -6949,6 +7602,7 @@
           }
         }
       ],
+      "library_target_name": "schannel",
       "common_attrs": {
         "deps": {
           "common": [
@@ -6968,6 +7622,37 @@
       },
       "license": "MIT"
     },
+    "scopeguard 1.1.0": {
+      "name": "scopeguard",
+      "version": "1.1.0",
+      "repository": {
+        "Http": {
+          "name": "scopeguard",
+          "version": "1.1.0",
+          "sha256": "d29ab0c6d3fc0ee92fe66e2d99f700eab17a8d57d1c1d3b748380fb20baa78cd"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "scopeguard",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "library_target_name": "scopeguard",
+      "common_attrs": {
+        "edition": "2015",
+        "version": "1.1.0"
+      },
+      "license": "MIT/Apache-2.0"
+    },
     "security-framework 2.4.2": {
       "name": "security-framework",
       "version": "2.4.2",
@@ -6981,7 +7666,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "security-framework",
+            "crate_name": "security_framework",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -6992,6 +7677,7 @@
           }
         }
       ],
+      "library_target_name": "security_framework",
       "common_attrs": {
         "crate_features": [
           "OSX_10_9",
@@ -7004,12 +7690,12 @@
               "target": "bitflags"
             },
             {
-              "id": "core-foundation 0.9.1",
-              "target": "core-foundation"
+              "id": "core-foundation 0.9.2",
+              "target": "core_foundation"
             },
             {
-              "id": "core-foundation-sys 0.8.2",
-              "target": "core-foundation-sys"
+              "id": "core-foundation-sys 0.8.3",
+              "target": "core_foundation_sys"
             },
             {
               "id": "libc 0.2.103",
@@ -7017,7 +7703,7 @@
             },
             {
               "id": "security-framework-sys 2.4.2",
-              "target": "security-framework-sys"
+              "target": "security_framework_sys"
             }
           ],
           "selects": {}
@@ -7040,7 +7726,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "security-framework-sys",
+            "crate_name": "security_framework_sys",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -7051,6 +7737,7 @@
           }
         }
       ],
+      "library_target_name": "security_framework_sys",
       "common_attrs": {
         "crate_features": [
           "OSX_10_9",
@@ -7059,8 +7746,8 @@
         "deps": {
           "common": [
             {
-              "id": "core-foundation-sys 0.8.2",
-              "target": "core-foundation-sys"
+              "id": "core-foundation-sys 0.8.3",
+              "target": "core_foundation_sys"
             },
             {
               "id": "libc 0.2.103",
@@ -7099,7 +7786,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -7110,6 +7797,7 @@
           }
         }
       ],
+      "library_target_name": "serde",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -7121,7 +7809,7 @@
           "common": [
             {
               "id": "serde 1.0.130",
-              "target": "build-script-build"
+              "target": "build_script_build"
             }
           ],
           "selects": {}
@@ -7166,7 +7854,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -7177,6 +7865,7 @@
           }
         }
       ],
+      "library_target_name": "serde_derive",
       "common_attrs": {
         "crate_features": [
           "default"
@@ -7184,8 +7873,8 @@
         "deps": {
           "common": [
             {
-              "id": "proc-macro2 1.0.29",
-              "target": "proc-macro2"
+              "id": "proc-macro2 1.0.30",
+              "target": "proc_macro2"
             },
             {
               "id": "quote 1.0.10",
@@ -7193,7 +7882,7 @@
             },
             {
               "id": "serde_derive 1.0.130",
-              "target": "build-script-build"
+              "target": "build_script_build"
             },
             {
               "id": "syn 1.0.80",
@@ -7233,7 +7922,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -7244,6 +7933,7 @@
           }
         }
       ],
+      "library_target_name": "serde_json",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -7265,7 +7955,7 @@
             },
             {
               "id": "serde_json 1.0.68",
-              "target": "build-script-build"
+              "target": "build_script_build"
             }
           ],
           "selects": {}
@@ -7300,6 +7990,7 @@
           }
         }
       ],
+      "library_target_name": "serde_regex",
       "common_attrs": {
         "deps": {
           "common": [
@@ -7343,6 +8034,7 @@
           }
         }
       ],
+      "library_target_name": "serde_urlencoded",
       "common_attrs": {
         "deps": {
           "common": [
@@ -7383,7 +8075,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "signal-hook",
+            "crate_name": "signal_hook",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -7395,7 +8087,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -7406,6 +8098,7 @@
           }
         }
       ],
+      "library_target_name": "signal_hook",
       "common_attrs": {
         "crate_features": [
           "channel",
@@ -7419,11 +8112,11 @@
             },
             {
               "id": "signal-hook 0.3.10",
-              "target": "build-script-build"
+              "target": "build_script_build"
             },
             {
               "id": "signal-hook-registry 1.4.0",
-              "target": "signal-hook-registry"
+              "target": "signal_hook_registry"
             }
           ],
           "selects": {}
@@ -7447,7 +8140,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "signal-hook-registry",
+            "crate_name": "signal_hook_registry",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -7458,6 +8151,7 @@
           }
         }
       ],
+      "library_target_name": "signal_hook_registry",
       "common_attrs": {
         "deps": {
           "common": [
@@ -7497,6 +8191,7 @@
           }
         }
       ],
+      "library_target_name": "siphasher",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -7507,14 +8202,14 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "slab 0.4.4": {
+    "slab 0.4.5": {
       "name": "slab",
-      "version": "0.4.4",
+      "version": "0.4.5",
       "repository": {
         "Http": {
           "name": "slab",
-          "version": "0.4.4",
-          "sha256": "c307a32c1c5c437f38c7fd45d753050587732ba8628319fbdf12a7e289ccc590"
+          "version": "0.4.5",
+          "sha256": "9def91fd1e018fe007022791f865d0ccc9b3a0d5001e01aabb8b40e46000afb5"
         }
       },
       "targets": [
@@ -7531,13 +8226,14 @@
           }
         }
       ],
+      "library_target_name": "slab",
       "common_attrs": {
         "crate_features": [
           "default",
           "std"
         ],
         "edition": "2018",
-        "version": "0.4.4"
+        "version": "0.4.5"
       },
       "license": "MIT"
     },
@@ -7565,20 +8261,21 @@
           }
         }
       ],
+      "library_target_name": "sluice",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "async-channel 1.6.1",
-              "target": "async-channel"
+              "target": "async_channel"
             },
             {
               "id": "futures-core 0.3.17",
-              "target": "futures-core"
+              "target": "futures_core"
             },
             {
               "id": "futures-io 0.3.17",
-              "target": "futures-io"
+              "target": "futures_io"
             }
           ],
           "selects": {}
@@ -7587,6 +8284,37 @@
         "version": "0.5.5"
       },
       "license": "MIT"
+    },
+    "smallvec 1.7.0": {
+      "name": "smallvec",
+      "version": "1.7.0",
+      "repository": {
+        "Http": {
+          "name": "smallvec",
+          "version": "1.7.0",
+          "sha256": "1ecab6c735a6bb4139c0caafd0cc3635748bbb3acf4550e8138122099251f309"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "smallvec",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "library_target_name": "smallvec",
+      "common_attrs": {
+        "edition": "2018",
+        "version": "1.7.0"
+      },
+      "license": "MIT/Apache-2.0"
     },
     "socket2 0.4.2": {
       "name": "socket2",
@@ -7612,6 +8340,7 @@
           }
         }
       ],
+      "library_target_name": "socket2",
       "common_attrs": {
         "crate_features": [
           "all"
@@ -7638,14 +8367,14 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "string_cache 0.8.1": {
+    "string_cache 0.8.2": {
       "name": "string_cache",
-      "version": "0.8.1",
+      "version": "0.8.2",
       "repository": {
         "Http": {
           "name": "string_cache",
-          "version": "0.8.1",
-          "sha256": "8ddb1139b5353f96e429e1a5e19fbaf663bddedaa06d1dbd49f82e352601209a"
+          "version": "0.8.2",
+          "sha256": "923f0f39b6267d37d23ce71ae7235602134b250ace715dd2c90421998ddac0c6"
         }
       },
       "targets": [
@@ -7662,6 +8391,7 @@
           }
         }
       ],
+      "library_target_name": "string_cache",
       "common_attrs": {
         "deps": {
           "common": [
@@ -7674,18 +8404,22 @@
               "target": "debug_unreachable"
             },
             {
+              "id": "parking_lot 0.11.2",
+              "target": "parking_lot"
+            },
+            {
               "id": "phf_shared 0.8.0",
               "target": "phf_shared"
             },
             {
               "id": "precomputed-hash 0.1.1",
-              "target": "precomputed-hash"
+              "target": "precomputed_hash"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.8.1"
+        "version": "0.8.2"
       },
       "license": "MIT / Apache-2.0"
     },
@@ -7714,7 +8448,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -7725,6 +8459,7 @@
           }
         }
       ],
+      "library_target_name": "syn",
       "common_attrs": {
         "crate_features": [
           "clone-impls",
@@ -7742,8 +8477,8 @@
         "deps": {
           "common": [
             {
-              "id": "proc-macro2 1.0.29",
-              "target": "proc-macro2"
+              "id": "proc-macro2 1.0.30",
+              "target": "proc_macro2"
             },
             {
               "id": "quote 1.0.10",
@@ -7751,11 +8486,11 @@
             },
             {
               "id": "syn 1.0.80",
-              "target": "build-script-build"
+              "target": "build_script_build"
             },
             {
               "id": "unicode-xid 0.2.2",
-              "target": "unicode-xid"
+              "target": "unicode_xid"
             }
           ],
           "selects": {}
@@ -7790,12 +8525,13 @@
           }
         }
       ],
+      "library_target_name": "tempfile",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "cfg-if 1.0.0",
-              "target": "cfg-if"
+              "target": "cfg_if"
             },
             {
               "id": "rand 0.8.4",
@@ -7856,6 +8592,7 @@
           }
         }
       ],
+      "library_target_name": "term",
       "common_attrs": {
         "crate_features": [
           "default"
@@ -7864,7 +8601,7 @@
           "common": [
             {
               "id": "dirs-next 2.0.0",
-              "target": "dirs-next"
+              "target": "dirs_next"
             }
           ],
           "selects": {
@@ -7905,7 +8642,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "tiny-keccak",
+            "crate_name": "tiny_keccak",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -7917,7 +8654,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -7928,6 +8665,7 @@
           }
         }
       ],
+      "library_target_name": "tiny_keccak",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -7941,7 +8679,7 @@
             },
             {
               "id": "tiny-keccak 2.0.2",
-              "target": "build-script-build"
+              "target": "build_script_build"
             }
           ],
           "selects": {}
@@ -7976,6 +8714,7 @@
           }
         }
       ],
+      "library_target_name": "tinyvec",
       "common_attrs": {
         "crate_features": [
           "alloc",
@@ -8020,6 +8759,7 @@
           }
         }
       ],
+      "library_target_name": "tinyvec_macros",
       "common_attrs": {
         "edition": "2018",
         "version": "0.1.0"
@@ -8051,7 +8791,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -8062,6 +8802,7 @@
           }
         }
       ],
+      "library_target_name": "tokio",
       "common_attrs": {
         "crate_features": [
           "bytes",
@@ -8107,11 +8848,11 @@
             },
             {
               "id": "pin-project-lite 0.2.7",
-              "target": "pin-project-lite"
+              "target": "pin_project_lite"
             },
             {
               "id": "tokio 1.12.0",
-              "target": "build-script-build"
+              "target": "build_script_build"
             }
           ],
           "selects": {
@@ -8122,7 +8863,7 @@
               },
               {
                 "id": "signal-hook-registry 1.4.0",
-                "target": "signal-hook-registry"
+                "target": "signal_hook_registry"
               }
             ],
             "cfg(windows)": [
@@ -8137,8 +8878,8 @@
         "proc_macro_deps": {
           "common": [
             {
-              "id": "tokio-macros 1.4.1",
-              "target": "tokio-macros"
+              "id": "tokio-macros 1.5.0",
+              "target": "tokio_macros"
             }
           ],
           "selects": {}
@@ -8158,20 +8899,20 @@
       },
       "license": "MIT"
     },
-    "tokio-macros 1.4.1": {
+    "tokio-macros 1.5.0": {
       "name": "tokio-macros",
-      "version": "1.4.1",
+      "version": "1.5.0",
       "repository": {
         "Http": {
           "name": "tokio-macros",
-          "version": "1.4.1",
-          "sha256": "154794c8f499c2619acd19e839294703e9e32e7630ef5f46ea80d4ef0fbee5eb"
+          "version": "1.5.0",
+          "sha256": "b2dd85aeaba7b68df939bd357c6afb36c87951be9e80bf9c859f2fc3e9fca0fd"
         }
       },
       "targets": [
         {
           "ProcMacro": {
-            "crate_name": "tokio-macros",
+            "crate_name": "tokio_macros",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -8182,12 +8923,13 @@
           }
         }
       ],
+      "library_target_name": "tokio_macros",
       "common_attrs": {
         "deps": {
           "common": [
             {
-              "id": "proc-macro2 1.0.29",
-              "target": "proc-macro2"
+              "id": "proc-macro2 1.0.30",
+              "target": "proc_macro2"
             },
             {
               "id": "quote 1.0.10",
@@ -8201,7 +8943,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.4.1"
+        "version": "1.5.0"
       },
       "license": "MIT"
     },
@@ -8218,7 +8960,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "tokio-native-tls",
+            "crate_name": "tokio_native_tls",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -8229,12 +8971,13 @@
           }
         }
       ],
+      "library_target_name": "tokio_native_tls",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "native-tls 0.2.8",
-              "target": "native-tls"
+              "target": "native_tls"
             },
             {
               "id": "tokio 1.12.0",
@@ -8261,7 +9004,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "tokio-util",
+            "crate_name": "tokio_util",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -8272,6 +9015,7 @@
           }
         }
       ],
+      "library_target_name": "tokio_util",
       "common_attrs": {
         "crate_features": [
           "codec",
@@ -8285,11 +9029,11 @@
             },
             {
               "id": "futures-core 0.3.17",
-              "target": "futures-core"
+              "target": "futures_core"
             },
             {
               "id": "futures-sink 0.3.17",
-              "target": "futures-sink"
+              "target": "futures_sink"
             },
             {
               "id": "log 0.4.14",
@@ -8297,7 +9041,7 @@
             },
             {
               "id": "pin-project-lite 0.2.7",
-              "target": "pin-project-lite"
+              "target": "pin_project_lite"
             },
             {
               "id": "tokio 1.12.0",
@@ -8324,7 +9068,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "tower-service",
+            "crate_name": "tower_service",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -8335,6 +9079,7 @@
           }
         }
       ],
+      "library_target_name": "tower_service",
       "common_attrs": {
         "edition": "2018",
         "version": "0.3.1"
@@ -8365,6 +9110,7 @@
           }
         }
       ],
+      "library_target_name": "tracing",
       "common_attrs": {
         "crate_features": [
           "attributes",
@@ -8377,7 +9123,7 @@
           "common": [
             {
               "id": "cfg-if 1.0.0",
-              "target": "cfg-if"
+              "target": "cfg_if"
             },
             {
               "id": "log 0.4.14",
@@ -8385,11 +9131,11 @@
             },
             {
               "id": "pin-project-lite 0.2.7",
-              "target": "pin-project-lite"
+              "target": "pin_project_lite"
             },
             {
               "id": "tracing-core 0.1.21",
-              "target": "tracing-core"
+              "target": "tracing_core"
             }
           ],
           "selects": {}
@@ -8399,7 +9145,7 @@
           "common": [
             {
               "id": "tracing-attributes 0.1.18",
-              "target": "tracing-attributes"
+              "target": "tracing_attributes"
             }
           ],
           "selects": {}
@@ -8421,7 +9167,7 @@
       "targets": [
         {
           "ProcMacro": {
-            "crate_name": "tracing-attributes",
+            "crate_name": "tracing_attributes",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -8432,12 +9178,13 @@
           }
         }
       ],
+      "library_target_name": "tracing_attributes",
       "common_attrs": {
         "deps": {
           "common": [
             {
-              "id": "proc-macro2 1.0.29",
-              "target": "proc-macro2"
+              "id": "proc-macro2 1.0.30",
+              "target": "proc_macro2"
             },
             {
               "id": "quote 1.0.10",
@@ -8468,7 +9215,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "tracing-core",
+            "crate_name": "tracing_core",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -8479,6 +9226,7 @@
           }
         }
       ],
+      "library_target_name": "tracing_core",
       "common_attrs": {
         "crate_features": [
           "lazy_static",
@@ -8511,7 +9259,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "tracing-futures",
+            "crate_name": "tracing_futures",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -8522,6 +9270,7 @@
           }
         }
       ],
+      "library_target_name": "tracing_futures",
       "common_attrs": {
         "crate_features": [
           "pin-project",
@@ -8532,7 +9281,7 @@
           "common": [
             {
               "id": "pin-project 1.0.8",
-              "target": "pin-project"
+              "target": "pin_project"
             },
             {
               "id": "tracing 0.1.29",
@@ -8559,7 +9308,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "try-lock",
+            "crate_name": "try_lock",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -8570,11 +9319,65 @@
           }
         }
       ],
+      "library_target_name": "try_lock",
       "common_attrs": {
         "edition": "2015",
         "version": "0.2.3"
       },
       "license": "MIT"
+    },
+    "typenum 1.14.0": {
+      "name": "typenum",
+      "version": "1.14.0",
+      "repository": {
+        "Http": {
+          "name": "typenum",
+          "version": "1.14.0",
+          "sha256": "b63708a265f51345575b27fe43f9500ad611579e764c79edbc2037b1121959ec"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "typenum",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        },
+        {
+          "BuildScript": {
+            "crate_name": "build_script_main",
+            "crate_root": "build/main.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "library_target_name": "typenum",
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "typenum 1.14.0",
+              "target": "build_script_main"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "1.14.0"
+      },
+      "build_script_attrs": {},
+      "license": "MIT OR Apache-2.0"
     },
     "unicode-bidi 0.3.7": {
       "name": "unicode-bidi",
@@ -8589,7 +9392,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "unicode-bidi",
+            "crate_name": "unicode_bidi",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -8600,6 +9403,7 @@
           }
         }
       ],
+      "library_target_name": "unicode_bidi",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -8623,7 +9427,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "unicode-normalization",
+            "crate_name": "unicode_normalization",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -8634,6 +9438,7 @@
           }
         }
       ],
+      "library_target_name": "unicode_normalization",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -8666,7 +9471,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "unicode-xid",
+            "crate_name": "unicode_xid",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -8677,6 +9482,7 @@
           }
         }
       ],
+      "library_target_name": "unicode_xid",
       "common_attrs": {
         "crate_features": [
           "default"
@@ -8710,6 +9516,7 @@
           }
         }
       ],
+      "library_target_name": "url",
       "common_attrs": {
         "deps": {
           "common": [
@@ -8727,7 +9534,7 @@
             },
             {
               "id": "percent-encoding 2.1.0",
-              "target": "percent-encoding"
+              "target": "percent_encoding"
             }
           ],
           "selects": {}
@@ -8750,7 +9557,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "value-bag",
+            "crate_name": "value_bag",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -8762,7 +9569,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -8773,12 +9580,13 @@
           }
         }
       ],
+      "library_target_name": "value_bag",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "value-bag 1.0.0-alpha.7",
-              "target": "build-script-build"
+              "target": "build_script_build"
             }
           ],
           "selects": {}
@@ -8833,6 +9641,7 @@
           }
         }
       ],
+      "library_target_name": "vcpkg",
       "common_attrs": {
         "edition": "2015",
         "version": "0.2.15"
@@ -8863,6 +9672,7 @@
           }
         }
       ],
+      "library_target_name": "version_check",
       "common_attrs": {
         "edition": "2015",
         "version": "0.9.3"
@@ -8882,7 +9692,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "waker-fn",
+            "crate_name": "waker_fn",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -8893,6 +9703,7 @@
           }
         }
       ],
+      "library_target_name": "waker_fn",
       "common_attrs": {
         "edition": "2018",
         "version": "1.1.0"
@@ -8923,6 +9734,7 @@
           }
         }
       ],
+      "library_target_name": "want",
       "common_attrs": {
         "deps": {
           "common": [
@@ -8932,7 +9744,7 @@
             },
             {
               "id": "try-lock 0.2.3",
-              "target": "try-lock"
+              "target": "try_lock"
             }
           ],
           "selects": {}
@@ -8966,6 +9778,7 @@
           }
         }
       ],
+      "library_target_name": "wasi",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -8989,7 +9802,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "wasm-bindgen",
+            "crate_name": "wasm_bindgen",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -9001,7 +9814,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -9012,6 +9825,7 @@
           }
         }
       ],
+      "library_target_name": "wasm_bindgen",
       "common_attrs": {
         "crate_features": [
           "default",
@@ -9022,11 +9836,11 @@
           "common": [
             {
               "id": "cfg-if 1.0.0",
-              "target": "cfg-if"
+              "target": "cfg_if"
             },
             {
               "id": "wasm-bindgen 0.2.78",
-              "target": "build-script-build"
+              "target": "build_script_build"
             }
           ],
           "selects": {}
@@ -9036,7 +9850,7 @@
           "common": [
             {
               "id": "wasm-bindgen-macro 0.2.78",
-              "target": "wasm-bindgen-macro"
+              "target": "wasm_bindgen_macro"
             }
           ],
           "selects": {}
@@ -9059,7 +9873,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "wasm-bindgen-backend",
+            "crate_name": "wasm_bindgen_backend",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -9070,6 +9884,7 @@
           }
         }
       ],
+      "library_target_name": "wasm_bindgen_backend",
       "common_attrs": {
         "crate_features": [
           "spans"
@@ -9089,8 +9904,8 @@
               "target": "log"
             },
             {
-              "id": "proc-macro2 1.0.29",
-              "target": "proc-macro2"
+              "id": "proc-macro2 1.0.30",
+              "target": "proc_macro2"
             },
             {
               "id": "quote 1.0.10",
@@ -9102,7 +9917,7 @@
             },
             {
               "id": "wasm-bindgen-shared 0.2.78",
-              "target": "wasm-bindgen-shared"
+              "target": "wasm_bindgen_shared"
             }
           ],
           "selects": {}
@@ -9125,7 +9940,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "wasm-bindgen-futures",
+            "crate_name": "wasm_bindgen_futures",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -9136,27 +9951,28 @@
           }
         }
       ],
+      "library_target_name": "wasm_bindgen_futures",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "cfg-if 1.0.0",
-              "target": "cfg-if"
+              "target": "cfg_if"
             },
             {
               "id": "js-sys 0.3.55",
-              "target": "js-sys"
+              "target": "js_sys"
             },
             {
               "id": "wasm-bindgen 0.2.78",
-              "target": "wasm-bindgen"
+              "target": "wasm_bindgen"
             }
           ],
           "selects": {
             "cfg(target_feature = \"atomics\")": [
               {
                 "id": "web-sys 0.3.55",
-                "target": "web-sys"
+                "target": "web_sys"
               }
             ]
           }
@@ -9179,7 +9995,7 @@
       "targets": [
         {
           "ProcMacro": {
-            "crate_name": "wasm-bindgen-macro",
+            "crate_name": "wasm_bindgen_macro",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -9190,6 +10006,7 @@
           }
         }
       ],
+      "library_target_name": "wasm_bindgen_macro",
       "common_attrs": {
         "crate_features": [
           "spans"
@@ -9202,7 +10019,7 @@
             },
             {
               "id": "wasm-bindgen-macro-support 0.2.78",
-              "target": "wasm-bindgen-macro-support"
+              "target": "wasm_bindgen_macro_support"
             }
           ],
           "selects": {}
@@ -9225,7 +10042,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "wasm-bindgen-macro-support",
+            "crate_name": "wasm_bindgen_macro_support",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -9236,6 +10053,7 @@
           }
         }
       ],
+      "library_target_name": "wasm_bindgen_macro_support",
       "common_attrs": {
         "crate_features": [
           "spans"
@@ -9243,8 +10061,8 @@
         "deps": {
           "common": [
             {
-              "id": "proc-macro2 1.0.29",
-              "target": "proc-macro2"
+              "id": "proc-macro2 1.0.30",
+              "target": "proc_macro2"
             },
             {
               "id": "quote 1.0.10",
@@ -9256,11 +10074,11 @@
             },
             {
               "id": "wasm-bindgen-backend 0.2.78",
-              "target": "wasm-bindgen-backend"
+              "target": "wasm_bindgen_backend"
             },
             {
               "id": "wasm-bindgen-shared 0.2.78",
-              "target": "wasm-bindgen-shared"
+              "target": "wasm_bindgen_shared"
             }
           ],
           "selects": {}
@@ -9283,7 +10101,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "wasm-bindgen-shared",
+            "crate_name": "wasm_bindgen_shared",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -9295,7 +10113,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -9306,12 +10124,13 @@
           }
         }
       ],
+      "library_target_name": "wasm_bindgen_shared",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "wasm-bindgen-shared 0.2.78",
-              "target": "build-script-build"
+              "target": "build_script_build"
             }
           ],
           "selects": {}
@@ -9337,7 +10156,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "web-sys",
+            "crate_name": "web_sys",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -9348,6 +10167,7 @@
           }
         }
       ],
+      "library_target_name": "web_sys",
       "common_attrs": {
         "crate_features": [
           "Blob",
@@ -9371,11 +10191,11 @@
           "common": [
             {
               "id": "js-sys 0.3.55",
-              "target": "js-sys"
+              "target": "js_sys"
             },
             {
               "id": "wasm-bindgen 0.2.78",
-              "target": "wasm-bindgen"
+              "target": "wasm_bindgen"
             }
           ],
           "selects": {}
@@ -9398,7 +10218,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "wepoll-ffi",
+            "crate_name": "wepoll_ffi",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -9410,7 +10230,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -9421,6 +10241,7 @@
           }
         }
       ],
+      "library_target_name": "wepoll_ffi",
       "common_attrs": {
         "crate_features": [
           "null-overlapped-wakeups-patch"
@@ -9429,7 +10250,7 @@
           "common": [
             {
               "id": "wepoll-ffi 0.1.2",
-              "target": "build-script-build"
+              "target": "build_script_build"
             }
           ],
           "selects": {}
@@ -9475,7 +10296,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -9486,6 +10307,7 @@
           }
         }
       ],
+      "library_target_name": "winapi",
       "common_attrs": {
         "crate_features": [
           "cfg",
@@ -9510,6 +10332,7 @@
           "namedpipeapi",
           "ntdef",
           "ntsecapi",
+          "ntstatus",
           "objbase",
           "processenv",
           "schannel",
@@ -9537,20 +10360,20 @@
           "common": [
             {
               "id": "winapi 0.3.9",
-              "target": "build-script-build"
+              "target": "build_script_build"
             }
           ],
           "selects": {
             "i686-pc-windows-gnu": [
               {
                 "id": "winapi-i686-pc-windows-gnu 0.4.0",
-                "target": "winapi-i686-pc-windows-gnu"
+                "target": "winapi_i686_pc_windows_gnu"
               }
             ],
             "x86_64-pc-windows-gnu": [
               {
                 "id": "winapi-x86_64-pc-windows-gnu 0.4.0",
-                "target": "winapi-x86_64-pc-windows-gnu"
+                "target": "winapi_x86_64_pc_windows_gnu"
               }
             ]
           }
@@ -9574,7 +10397,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "winapi-i686-pc-windows-gnu",
+            "crate_name": "winapi_i686_pc_windows_gnu",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -9586,7 +10409,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -9597,12 +10420,13 @@
           }
         }
       ],
+      "library_target_name": "winapi_i686_pc_windows_gnu",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "winapi-i686-pc-windows-gnu 0.4.0",
-              "target": "build-script-build"
+              "target": "build_script_build"
             }
           ],
           "selects": {}
@@ -9626,7 +10450,7 @@
       "targets": [
         {
           "Library": {
-            "crate_name": "winapi-x86_64-pc-windows-gnu",
+            "crate_name": "winapi_x86_64_pc_windows_gnu",
             "crate_root": "src/lib.rs",
             "srcs": {
               "include": [
@@ -9638,7 +10462,7 @@
         },
         {
           "BuildScript": {
-            "crate_name": "build-script-build",
+            "crate_name": "build_script_build",
             "crate_root": "build.rs",
             "srcs": {
               "include": [
@@ -9649,12 +10473,13 @@
           }
         }
       ],
+      "library_target_name": "winapi_x86_64_pc_windows_gnu",
       "common_attrs": {
         "deps": {
           "common": [
             {
               "id": "winapi-x86_64-pc-windows-gnu 0.4.0",
-              "target": "build-script-build"
+              "target": "build_script_build"
             }
           ],
           "selects": {}
@@ -9689,6 +10514,7 @@
           }
         }
       ],
+      "library_target_name": "winreg",
       "common_attrs": {
         "deps": {
           "common": [
@@ -9714,7 +10540,8 @@
   "workspace_members": {
     "direct-cargo-bazel-deps 0.0.1": "",
     "pkg_a 0.1.0": "multi_package/pkg_a",
-    "pkg_b 0.1.0": "multi_package/sub_pkgs/pkg_b"
+    "pkg_b 0.1.0": "multi_package/sub_pkgs/pkg_b",
+    "pkg_c 0.1.0": "multi_package/sub_pkgs/pkg_c"
   },
   "conditions": {
     "cfg(all(any(target_arch = \"x86_64\", target_arch = \"aarch64\"), target_os = \"hermit\"))": [],
