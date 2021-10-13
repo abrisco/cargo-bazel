@@ -12,7 +12,6 @@ use serde::{Deserialize, Serialize};
 
 use crate::config::{Commitish, Config, CrateExtras, CrateId};
 use crate::splicing::{SourceInfo, WorkspaceMetadata};
-use crate::utils::sanitize_module_name;
 
 use self::dependency::DependencySet;
 
@@ -22,7 +21,6 @@ pub type CargoLockfile = cargo_lock::Lockfile;
 #[derive(Debug, Serialize, Deserialize)]
 pub struct CrateAnnotation {
     pub node: Node,
-    pub aliases: BTreeMap<String, PackageId>,
     pub deps: DependencySet,
 }
 
@@ -92,25 +90,7 @@ impl MetadataAnnotation {
         // Gather all dependencies
         let deps = DependencySet::new_for_node(&node, metadata);
 
-        // Gather all crate aliases
-        let aliases = node
-            .deps
-            .iter()
-            .filter(|node_dep| {
-                let dep_pkg = &metadata[&node_dep.pkg];
-                // For a NodeDep, it's name will be the renamed name. So
-                // to check for renames, the package name is converted
-                // to a module name and compared with the NodeDep's name.
-                sanitize_module_name(&dep_pkg.name) != node_dep.name
-            })
-            .map(|node_dep| (node_dep.name.clone(), node_dep.pkg.clone()))
-            .collect();
-
-        CrateAnnotation {
-            node,
-            aliases,
-            deps,
-        }
+        CrateAnnotation { node, deps }
     }
 }
 

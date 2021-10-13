@@ -2,7 +2,7 @@
 
 use std::collections::{BTreeMap, BTreeSet};
 
-use cargo_metadata::{Node, Package, PackageId, Target};
+use cargo_metadata::{Node, Package, PackageId};
 use serde::{Deserialize, Serialize};
 
 use crate::annotation::dependency::Dependency;
@@ -173,6 +173,10 @@ pub struct CrateContext {
     /// A list of all targets (lib, proc-macro, bin) associated with this package
     pub targets: Vec<Rule>,
 
+    /// The name of the crate's root library target. This is the target that a dependent
+    /// would get if they were to depend on `{crate_name}`.
+    pub library_target_name: Option<String>,
+
     /// A set of attributes common to most [Rule] types or target types.
     pub common_attrs: CommonAttributes,
 
@@ -202,23 +206,16 @@ impl CrateContext {
 
         let new_crate_dep = |dep: Dependency| -> CrateDependency {
             let pkg = &packages[&dep.package_id];
-            let alias = get_target_alias(&dep.target_name, pkg);
 
-            // Use the package name over the target name and avoid using an alias. In cases where an
-            // alias is set, use the pacakge name
-            let target = match sanitize_module_name(&pkg.name) == dep.target_name {
-                true => &pkg.name,
-                false => match alias.is_some() {
-                    true => &pkg.name,
-                    false => &dep.target_name,
-                },
-            }
-            .clone();
+            // Unfortunately, The package graph and resolve graph of cargo metadata have different representations
+            // for the crate names (resolve graph sanitizes names to match module names) so to get the rest of this
+            // content to align when rendering, the dependency target needs to be explicitly sanitized.
+            let target = sanitize_module_name(&dep.target_name);
 
             CrateDependency {
                 id: CrateId::new(pkg.name.clone(), pkg.version.to_string()),
                 target,
-                alias,
+                alias: dep.alias,
             }
         };
 
@@ -250,6 +247,26 @@ impl CrateContext {
             packages,
             Self::crate_includes_build_script(package, extras, include_build_scripts),
         );
+
+        // Parse the library crate name from the set of included targets
+        let library_target_name = {
+            let lib_targets: Vec<&TargetAttributes> = targets
+                .iter()
+                .filter_map(|t| match t {
+                    Rule::ProcMacro(attrs) => Some(attrs),
+                    Rule::Library(attrs) => Some(attrs),
+                    _ => None,
+                })
+                .collect();
+
+            // TODO: There should only be at most 1 library target. This case
+            // should be handled in a more intelligent way.
+            assert!(lib_targets.len() <= 1);
+            lib_targets
+                .iter()
+                .last()
+                .map(|attr| attr.crate_name.clone())
+        };
 
         // Gather any build-script related attributes
         let build_script_target = targets.iter().find_map(|r| match r {
@@ -297,6 +314,7 @@ impl CrateContext {
             version: package.version.to_string(),
             repository,
             targets,
+            library_target_name,
             common_attrs,
             build_script_attrs,
             license,
@@ -459,14 +477,6 @@ impl CrateContext {
             .parent()
             .expect("Every manifest should have a parent directory");
 
-        // Because [cargo_metadata::NodeDep]s of a [cargo_metadata::Node] in the resolve
-        // graph have santized crate names, it's not easy to directly map a [cargo_metadata::Target]
-        // to a node. For now, it's assumed that `NodeDep` who's name matches a sanatized package name
-        // is the "package root" target for the package.
-        let is_package_root_target = |package: &Package, target: &Target| -> bool {
-            sanitize_module_name(&package.name) == target.name
-        };
-
         package
             .targets
             .iter()
@@ -475,10 +485,10 @@ impl CrateContext {
                     .kind
                     .iter()
                     .filter_map(|kind| {
-                        let crate_name = match is_package_root_target(package, target) {
-                            true => package.name.clone(),
-                            false => target.name.clone(),
-                        };
+                        // Unfortunately, The package graph and resolve graph of cargo metadata have different representations
+                        // for the crate names (resolve graph sanitizes names to match module names) so to get the rest of this
+                        // content to align when rendering, the package target names are always sanitized.
+                        let crate_name = sanitize_module_name(&target.name);
 
                         // Locate the crate's root source file relative to the package root normalized for unix
                         let crate_root =
@@ -528,21 +538,5 @@ impl CrateContext {
                     .collect::<Vec<Rule>>()
             })
             .collect()
-    }
-}
-
-/// The resolve graph (resolve.nodes[#].deps[#].name) of Cargo metadata uses module names
-/// for targets where packages (packages[#].targets[#].name) uses crate names. In order to
-/// determine whether or not a dependency is aliased, we compare it with all available targets
-/// on it's package. Note that target names are not guaranteed to be module names where Node
-/// dependnecies are, so we need to do a conversion to check for this
-fn get_target_alias(target_name: &str, package: &Package) -> Option<String> {
-    match package
-        .targets
-        .iter()
-        .all(|t| sanitize_module_name(&t.name) != target_name)
-    {
-        true => Some(target_name.to_string()),
-        false => None,
     }
 }
