@@ -1,14 +1,61 @@
 //! TODO
 
+use std::path::PathBuf;
+
 use anyhow::{bail, Result};
+use structopt::StructOpt;
 
 use crate::annotation::Annotations;
-use crate::cli::opt::GenerateOptions;
 use crate::config::Config;
 use crate::context::Context;
 use crate::lockfile::{is_cargo_lockfile, write_lockfile, LockfileKind};
 use crate::metadata::{Generator, MetadataGenerator};
 use crate::rendering::{write_outputs, Renderer};
+
+/// Command line options for the `generate` subcommand
+#[derive(StructOpt, Debug)]
+pub struct GenerateOptions {
+    /// The path to a Cargo binary to use for gathering metadata
+    #[structopt(long, env = "CARGO")]
+    pub cargo: Option<PathBuf>,
+
+    /// The path to a rustc binary for use with Cargo
+    #[structopt(long, env = "RUSTC")]
+    pub rustc: Option<PathBuf>,
+
+    /// The config file with information about the Bazel and Cargo workspace
+    #[structopt(long)]
+    pub config: PathBuf,
+
+    /// The path to either a Cargo or Bazel lockfile
+    #[structopt(long)]
+    pub lockfile: PathBuf,
+
+    /// The type of lockfile
+    #[structopt(long)]
+    pub lockfile_kind: LockfileKind,
+
+    /// The directory of the current repository rule
+    #[structopt(long)]
+    pub repository_dir: PathBuf,
+
+    /// A [Cargo config](https://doc.rust-lang.org/cargo/reference/config.html#configuration)
+    /// file to use when gathering metadata
+    #[structopt(long)]
+    pub cargo_config: Option<PathBuf>,
+
+    /// Whether or not to ignore the provided lockfile and re-generate one
+    #[structopt(long)]
+    pub repin: bool,
+
+    /// The root manifest used to generate metadata
+    #[structopt(long)]
+    pub manifest: Option<PathBuf>,
+
+    /// If true, outputs will be printed instead of written to disk.
+    #[structopt(long)]
+    pub dry_run: bool,
+}
 
 pub fn generate(opt: GenerateOptions) -> Result<()> {
     // Load the config
