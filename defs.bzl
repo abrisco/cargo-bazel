@@ -59,7 +59,7 @@ def _crates_repository_impl(repository_ctx):
     kwargs = dict()
     if repin or lockfile.kind == "cargo":
         # Generate a top level Cargo workspace and manifest for use in generation
-        root_manifest = splice_workspace_manifest(
+        metadata_path = splice_workspace_manifest(
             repository_ctx = repository_ctx,
             generator = generator,
             lockfile = lockfile,
@@ -69,7 +69,7 @@ def _crates_repository_impl(repository_ctx):
         )
 
         kwargs.update({
-            "manifest": root_manifest,
+            "metadata": metadata_path,
             "repin": True,
         })
 

@@ -1,6 +1,6 @@
 //! This module is responsible for finding a Cargo workspace
 
-mod splicing_utils;
+pub mod splicing_utils;
 
 use std::collections::{BTreeMap, HashMap};
 use std::fs;
@@ -8,7 +8,6 @@ use std::path::{Path, PathBuf};
 use std::str::FromStr;
 
 use anyhow::{bail, Context, Result};
-use cargo_metadata::MetadataCommand;
 use cargo_toml::Manifest;
 use serde::{Deserialize, Serialize};
 
@@ -171,6 +170,22 @@ impl WorkspaceMetadata {
     }
 }
 
+pub enum SplicedManifest {
+    Workspace(PathBuf),
+    Package(PathBuf),
+    MultiPackage(PathBuf),
+}
+
+impl SplicedManifest {
+    pub fn as_path_buf(&self) -> &PathBuf {
+        match self {
+            SplicedManifest::Workspace(p) => p,
+            SplicedManifest::Package(p) => p,
+            SplicedManifest::MultiPackage(p) => p,
+        }
+    }
+}
+
 /// The core splicer implementation. Each style of Bazel workspace should be represented
 /// here and a splicing implementation defined.
 pub enum SplicerKind<'a> {
@@ -178,7 +193,6 @@ pub enum SplicerKind<'a> {
     Workspace {
         path: &'a PathBuf,
         manifest: &'a Manifest,
-        lockfile: &'a Option<PathBuf>,
         splicing_manifest: &'a SplicingManifest,
     },
     /// Splice a manifest for a single package. This includes cases where
@@ -186,7 +200,6 @@ pub enum SplicerKind<'a> {
     Package {
         path: &'a PathBuf,
         manifest: &'a Manifest,
-        lockfile: &'a Option<PathBuf>,
         splicing_manifest: &'a SplicingManifest,
     },
     /// Splice a manifest from multiple disjoint Cargo manifests.
@@ -199,7 +212,6 @@ pub enum SplicerKind<'a> {
 impl<'a> SplicerKind<'a> {
     pub fn new(
         manifests: &'a HashMap<PathBuf, Manifest>,
-        lockfile: &'a Option<PathBuf>,
         splicing_manifest: &'a SplicingManifest,
     ) -> Result<Self> {
         // First check for any workspaces in the provided manifests
@@ -215,9 +227,6 @@ impl<'a> SplicerKind<'a> {
         if !workspaces.is_empty() && manifests.len() > 1 {
             bail!("Workspace manifests can not be used with any other manifests")
         }
-        if lockfile.is_some() && !splicing_manifest.extra_manifest_infos.is_empty() {
-            bail!("It is invalid to provide a Cargo lockfile with extra manifests")
-        }
 
         if workspaces.len() == 1 {
             let (path, manifest) = workspaces.drain().last().unwrap();
@@ -225,7 +234,6 @@ impl<'a> SplicerKind<'a> {
             Ok(Self::Workspace {
                 path,
                 manifest,
-                lockfile,
                 splicing_manifest,
             })
         } else if manifests.len() == 1 {
@@ -233,7 +241,6 @@ impl<'a> SplicerKind<'a> {
             Ok(Self::Package {
                 path,
                 manifest,
-                lockfile,
                 splicing_manifest,
             })
         } else {
@@ -245,49 +252,31 @@ impl<'a> SplicerKind<'a> {
     }
 
     /// Performs splicing based on the current variant.
-    pub fn splice(&self, workspace_dir: &Path, generator: &LockGenerator) -> Result<PathBuf> {
+    pub fn splice(&self, workspace_dir: &Path) -> Result<SplicedManifest> {
         match self {
             SplicerKind::Workspace {
                 path,
                 manifest,
-                lockfile,
                 splicing_manifest,
-            } => Self::splice_workspace(
-                workspace_dir,
-                generator,
-                path,
-                manifest,
-                lockfile,
-                splicing_manifest,
-            ),
+            } => Self::splice_workspace(workspace_dir, path, manifest, splicing_manifest),
             SplicerKind::Package {
                 path,
                 manifest,
-                lockfile,
                 splicing_manifest,
-            } => Self::splice_package(
-                workspace_dir,
-                generator,
-                path,
-                manifest,
-                lockfile,
-                splicing_manifest,
-            ),
+            } => Self::splice_package(workspace_dir, path, manifest, splicing_manifest),
             SplicerKind::MultiPackage {
                 manifests,
                 splicing_manifest,
-            } => Self::splice_multi_package(workspace_dir, generator, manifests, splicing_manifest),
+            } => Self::splice_multi_package(workspace_dir, manifests, splicing_manifest),
         }
     }
 
     fn splice_workspace(
         workspace_dir: &Path,
-        generator: &LockGenerator,
         path: &&PathBuf,
         manifest: &&Manifest,
-        lockfile: &&Option<PathBuf>,
         splicing_manifest: &&SplicingManifest,
-    ) -> Result<PathBuf> {
+    ) -> Result<SplicedManifest> {
         let mut manifest = (*manifest).clone();
         let manifest_dir = path
             .parent()
@@ -319,20 +308,15 @@ impl<'a> SplicerKind<'a> {
         // Write the root manifest
         write_root_manifest(&root_manifest_path, manifest)?;
 
-        // Ensure a lockfile has been populated for the workspace
-        Self::generate_lockfile(generator, workspace_dir, lockfile)?;
-
-        Ok(root_manifest_path)
+        Ok(SplicedManifest::Workspace(root_manifest_path))
     }
 
     fn splice_package(
         workspace_dir: &Path,
-        generator: &LockGenerator,
         path: &&PathBuf,
         manifest: &&Manifest,
-        lockfile: &&Option<PathBuf>,
         splicing_manifest: &&SplicingManifest,
-    ) -> Result<PathBuf> {
+    ) -> Result<SplicedManifest> {
         let manifest_dir = path
             .parent()
             .expect("Every manifest should havee a parent directory");
@@ -369,18 +353,14 @@ impl<'a> SplicerKind<'a> {
         // Write the root manifest
         write_root_manifest(&root_manifest_path, manifest)?;
 
-        // Ensure a lockfile has been populated for the workspace
-        Self::generate_lockfile(generator, workspace_dir, lockfile)?;
-
-        Ok(root_manifest_path)
+        Ok(SplicedManifest::Package(root_manifest_path))
     }
 
     fn splice_multi_package(
         workspace_dir: &Path,
-        generator: &LockGenerator,
         manifests: &&HashMap<PathBuf, Manifest>,
         splicing_manifest: &&SplicingManifest,
-    ) -> Result<PathBuf> {
+    ) -> Result<SplicedManifest> {
         let mut manifest = default_cargo_workspace_manifest();
 
         let extra_workspace_manifests =
@@ -411,10 +391,7 @@ impl<'a> SplicerKind<'a> {
         let root_manifest_path = workspace_dir.join("Cargo.toml");
         write_root_manifest(&root_manifest_path, manifest)?;
 
-        // Ensure a lockfile has been populated for the workspace
-        Self::generate_lockfile(generator, workspace_dir, &None)?;
-
-        Ok(root_manifest_path)
+        Ok(SplicedManifest::MultiPackage(root_manifest_path))
     }
 
     /// Extract the set of extra workspace member manifests such that it matches
@@ -504,55 +481,16 @@ impl<'a> SplicerKind<'a> {
 
         Ok(())
     }
-
-    fn generate_lockfile(
-        generator: &LockGenerator,
-        manifest_dir: &Path,
-        existing_lock: &Option<PathBuf>,
-    ) -> Result<()> {
-        let root_lockfile_path = manifest_dir.join("Cargo.lock");
-
-        // Optionally copy the given lockfile into place or install extra workspace members and
-        // splice a new one. Note that it's invalid for an existing lockfile to be used with
-        // extra workspace members.
-        if let Some(lock) = existing_lock {
-            install_file(lock, &root_lockfile_path)?;
-            return Ok(());
-        }
-
-        // Remove the file so it's not overwitten if it happens to be a symlink.
-        if root_lockfile_path.exists() {
-            fs::remove_file(&root_lockfile_path)?;
-        }
-
-        // Generate and write the new lockfile
-        let manifest_path = manifest_dir.join("Cargo.toml");
-        let lockfile = generator.generate(&manifest_path)?;
-        fs::write(root_lockfile_path, lockfile.to_string())?;
-
-        Ok(())
-    }
 }
 
 pub struct Splicer {
     workspace_dir: PathBuf,
     manifests: HashMap<PathBuf, Manifest>,
     splicing_manifest: SplicingManifest,
-    cargo_lockfile: Option<PathBuf>,
-    generator: LockGenerator,
-    cargo_bin: PathBuf,
 }
 
 impl Splicer {
-    pub fn new(
-        workspace_dir: PathBuf,
-        splicing_manifest: SplicingManifest,
-        cargo_lockfile: Option<PathBuf>,
-        cargo_bin: PathBuf,
-        rustc_bin: PathBuf,
-    ) -> Result<Self> {
-        let generator = LockGenerator::new(cargo_bin.clone(), rustc_bin);
-
+    pub fn new(workspace_dir: PathBuf, splicing_manifest: SplicingManifest) -> Result<Self> {
         // Load all manifests
         let manifests = splicing_manifest
             .manifests
@@ -567,39 +505,56 @@ impl Splicer {
             workspace_dir,
             manifests,
             splicing_manifest,
-            cargo_lockfile,
-            generator,
-            cargo_bin,
         })
     }
 
     /// Build a new workspace root
-    pub fn splice_workspace(&self) -> Result<PathBuf> {
-        let workspace_manifest = SplicerKind::new(
-            &self.manifests,
-            &self.cargo_lockfile,
-            &self.splicing_manifest,
-        )?
-        .splice(&self.workspace_dir, &self.generator)?;
-
-        // Ensure the workspace is loadable and up to date.
-        // TODO: Perhaps splicing should return the generated metadata instead
-        // of or in addition to the workspace manifest since it's what's actually
-        // used for generation. For now, the metadata is not important to us.
-        let _ = MetadataCommand::new()
-            .cargo_path(&self.cargo_bin)
-            .manifest_path(&workspace_manifest)
-            .other_options(["--locked".to_owned()])
-            .exec()
-            .context("The lockfile appears to be out of date. Please regenerate it and try again");
-
-        Ok(workspace_manifest)
+    pub fn splice_workspace(&self) -> Result<SplicedManifest> {
+        SplicerKind::new(&self.manifests, &self.splicing_manifest)?.splice(&self.workspace_dir)
     }
 }
 
 pub fn read_manifest(manifest: &Path) -> Result<Manifest> {
     let content = fs::read_to_string(manifest)?;
     cargo_toml::Manifest::from_str(content.as_str()).context("Failed to deserialize manifest")
+}
+
+pub fn generate_lockfile(
+    manifest_path: &SplicedManifest,
+    existing_lock: &Option<PathBuf>,
+    cargo_bin: &Path,
+    rustc_bin: &Path,
+) -> Result<()> {
+    let manifest_dir = manifest_path
+        .as_path_buf()
+        .parent()
+        .expect("Every manifest should be contained in a parent directory");
+
+    let root_lockfile_path = manifest_dir.join("Cargo.lock");
+
+    // Optionally copy the given lockfile into place or install extra workspace members and
+    // splice a new one. Note that it's invalid for an existing lockfile to be used with
+    // extra workspace members.
+    if let Some(lock) = existing_lock {
+        install_file(lock, &root_lockfile_path)?;
+        return Ok(());
+    }
+
+    // Remove the file so it's not overwitten if it happens to be a symlink.
+    if root_lockfile_path.exists() {
+        fs::remove_file(&root_lockfile_path)?;
+    }
+
+    // Generate the new lockfile
+    LockGenerator::new(PathBuf::from(cargo_bin), PathBuf::from(rustc_bin))
+        .generate(manifest_path.as_path_buf())?;
+
+    // Write the lockfile to disk
+    if !root_lockfile_path.exists() {
+        bail!("Failed to generate Cargo.lock file")
+    }
+
+    Ok(())
 }
 
 #[cfg(test)]
@@ -613,7 +568,7 @@ mod test {
     fn generate_metadata(manifest_path: &Path) -> cargo_metadata::Metadata {
         MetadataCommand::new()
             .manifest_path(manifest_path)
-            .other_options(["--offline".to_owned(), "--frozen".to_owned()])
+            .other_options(["--offline".to_owned()])
             .exec()
             .unwrap()
     }
@@ -762,19 +717,14 @@ mod test {
 
         // Splice the workspace
         let workspace_root = tempfile::tempdir().unwrap();
-        let workspace_manifest = Splicer::new(
-            workspace_root.as_ref().to_path_buf(),
-            splicing_manifest,
-            None,
-            PathBuf::from(env!("CARGO")),
-            PathBuf::from("rustc"),
-        )
-        .unwrap()
-        .splice_workspace()
-        .unwrap();
+        let workspace_manifest =
+            Splicer::new(workspace_root.as_ref().to_path_buf(), splicing_manifest)
+                .unwrap()
+                .splice_workspace()
+                .unwrap();
 
         // Ensure metadata is valid
-        let metadata = generate_metadata(&workspace_manifest);
+        let metadata = generate_metadata(workspace_manifest.as_path_buf());
         assert_sort_eq!(
             metadata.workspace_members,
             vec![
@@ -797,19 +747,14 @@ mod test {
 
         // Splice the workspace
         let workspace_root = tempfile::tempdir().unwrap();
-        let workspace_manifest = Splicer::new(
-            workspace_root.as_ref().to_path_buf(),
-            splicing_manifest,
-            None,
-            PathBuf::from(env!("CARGO")),
-            PathBuf::from("rustc"),
-        )
-        .unwrap()
-        .splice_workspace()
-        .unwrap();
+        let workspace_manifest =
+            Splicer::new(workspace_root.as_ref().to_path_buf(), splicing_manifest)
+                .unwrap()
+                .splice_workspace()
+                .unwrap();
 
         // Ensure metadata is valid
-        let metadata = generate_metadata(&workspace_manifest);
+        let metadata = generate_metadata(workspace_manifest.as_path_buf());
         assert_sort_eq!(
             metadata.workspace_members,
             vec![new_package_id("root_pkg", workspace_root.as_ref(), true)]
@@ -828,19 +773,14 @@ mod test {
 
         // Splice the workspace
         let workspace_root = tempfile::tempdir().unwrap();
-        let workspace_manifest = Splicer::new(
-            workspace_root.as_ref().to_path_buf(),
-            splicing_manifest,
-            None,
-            PathBuf::from(env!("CARGO")),
-            PathBuf::from("rustc"),
-        )
-        .unwrap()
-        .splice_workspace()
-        .unwrap();
+        let workspace_manifest =
+            Splicer::new(workspace_root.as_ref().to_path_buf(), splicing_manifest)
+                .unwrap()
+                .splice_workspace()
+                .unwrap();
 
         // Ensure metadata is valid
-        let metadata = generate_metadata(&workspace_manifest);
+        let metadata = generate_metadata(workspace_manifest.as_path_buf());
         assert_sort_eq!(
             metadata.workspace_members,
             vec![
@@ -868,19 +808,14 @@ mod test {
 
         // Splice the workspace
         let workspace_root = tempfile::tempdir().unwrap();
-        let workspace_manifest = Splicer::new(
-            workspace_root.as_ref().to_path_buf(),
-            splicing_manifest,
-            None,
-            PathBuf::from(env!("CARGO")),
-            PathBuf::from("rustc"),
-        )
-        .unwrap()
-        .splice_workspace()
-        .unwrap();
+        let workspace_manifest =
+            Splicer::new(workspace_root.as_ref().to_path_buf(), splicing_manifest)
+                .unwrap()
+                .splice_workspace()
+                .unwrap();
 
         // Ensure metadata is valid
-        let metadata = generate_metadata(&workspace_manifest);
+        let metadata = generate_metadata(workspace_manifest.as_path_buf());
         assert_sort_eq!(
             metadata.workspace_members,
             vec![
@@ -905,19 +840,14 @@ mod test {
 
         // Splice the workspace
         let workspace_root = tempfile::tempdir().unwrap();
-        let workspace_manifest = Splicer::new(
-            workspace_root.as_ref().to_path_buf(),
-            splicing_manifest,
-            None,
-            PathBuf::from(env!("CARGO")),
-            PathBuf::from("rustc"),
-        )
-        .unwrap()
-        .splice_workspace()
-        .unwrap();
+        let workspace_manifest =
+            Splicer::new(workspace_root.as_ref().to_path_buf(), splicing_manifest)
+                .unwrap()
+                .splice_workspace()
+                .unwrap();
 
         // Ensure metadata is valid
-        let metadata = generate_metadata(&workspace_manifest);
+        let metadata = generate_metadata(workspace_manifest.as_path_buf());
         assert_sort_eq!(
             metadata.workspace_members,
             vec![
@@ -944,19 +874,14 @@ mod test {
 
         // Splice the workspace
         let workspace_root = tempfile::tempdir().unwrap();
-        let workspace_manifest = Splicer::new(
-            workspace_root.as_ref().to_path_buf(),
-            splicing_manifest,
-            None,
-            PathBuf::from(env!("CARGO")),
-            PathBuf::from("rustc"),
-        )
-        .unwrap()
-        .splice_workspace()
-        .unwrap();
+        let workspace_manifest =
+            Splicer::new(workspace_root.as_ref().to_path_buf(), splicing_manifest)
+                .unwrap()
+                .splice_workspace()
+                .unwrap();
 
         // Ensure metadata is valid
-        let metadata = generate_metadata(&workspace_manifest);
+        let metadata = generate_metadata(workspace_manifest.as_path_buf());
         assert_sort_eq!(
             metadata.workspace_members,
             vec![

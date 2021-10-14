@@ -294,7 +294,7 @@ def execute_generator(
         cargo,
         rustc,
         repin = False,
-        manifest = None):
+        metadata = None):
     """Execute the `cargo-bazel` binary to produce `BUILD` and `.bzl` files.
 
     Args:
@@ -307,7 +307,7 @@ def execute_generator(
         cargo (path): The path of a Cargo binary.
         rustc (path): The path of a Rustc binary.
         repin (bool, optional): Whether or not to repin dependencies
-        manifest (path, optional): The root Cargo manifest to use for genertion.
+        metadata (path, optional): The path to a Cargo metadata json file.
 
     Returns:
         struct: The results of `repository_ctx.execute`.
@@ -339,8 +339,8 @@ def execute_generator(
     if repin:
         args.extend([
             "--repin",
-            "--manifest",
-            manifest,
+            "--metadata",
+            metadata,
         ])
         env.update({
             "CARGO": str(cargo),
