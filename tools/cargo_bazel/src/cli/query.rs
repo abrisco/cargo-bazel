@@ -1,13 +1,34 @@
 //!
 
 use std::fs;
+use std::path::PathBuf;
 
 use anyhow::Result;
 use serde::Deserialize;
+use structopt::StructOpt;
 
-use crate::cli::opt::QueryOptions;
 use crate::config::Config;
 use crate::digest::Digest;
+
+/// Command line options for the `query` subcommand
+#[derive(StructOpt, Debug)]
+pub struct QueryOptions {
+    /// The lockfile path for reproducible Cargo->Bazel renderings
+    #[structopt(long)]
+    pub lockfile: PathBuf,
+
+    /// The config file with information about the Bazel and Cargo workspace
+    #[structopt(long)]
+    pub config: PathBuf,
+
+    /// The path to a Cargo binary to use for gathering metadata
+    #[structopt(long, env = "CARGO")]
+    pub cargo: PathBuf,
+
+    /// The path to a rustc binary for use with Cargo
+    #[structopt(long, env = "RUSTC")]
+    pub rustc: PathBuf,
+}
 
 #[derive(Debug, Deserialize)]
 struct Lockfile {

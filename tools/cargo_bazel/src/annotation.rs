@@ -310,17 +310,9 @@ fn cargo_meta_pkg_to_locked_pkg<'a>(
     pkg: &Package,
     lock_packages: &'a [cargo_lock::Package],
 ) -> Option<&'a cargo_lock::Package> {
-    match lock_packages
+    lock_packages
         .iter()
         .find(|lock_pkg| lock_pkg.name.as_str() == pkg.name && lock_pkg.version == pkg.version)
-    {
-        Some(s) => Some(s),
-        None => {
-            println!("{:?}", pkg);
-            println!("{:#?}", lock_packages);
-            None
-        }
-    }
 }
 
 #[cfg(test)]
