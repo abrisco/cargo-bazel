@@ -1,6 +1,6 @@
 //! This module is responsible for finding a Cargo workspace
 
-mod splicing_utils;
+pub mod splicing_utils;
 
 use std::collections::{BTreeMap, HashMap};
 use std::fs;
@@ -568,7 +568,7 @@ mod test {
     fn generate_metadata(manifest_path: &Path) -> cargo_metadata::Metadata {
         MetadataCommand::new()
             .manifest_path(manifest_path)
-            .other_options(["--offline".to_owned(), "--frozen".to_owned()])
+            .other_options(["--offline".to_owned()])
             .exec()
             .unwrap()
     }

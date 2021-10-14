@@ -73,7 +73,7 @@ def splice_workspace_manifest(repository_ctx, generator, lockfile, config_info, 
         rustc (path): The Path to a Rustc binary.
 
     Returns:
-        path: The root Cargo manifest of the spliced workspace.
+        path: The path to a Cargo metadata json file found in the spliced workspace root.
     """
     repository_ctx.report_progress("Splicing Cargo workspace.")
     repo_dir = repository_ctx.path(".")
@@ -105,7 +105,7 @@ def splice_workspace_manifest(repository_ctx, generator, lockfile, config_info, 
         ), indent = " " * 4),
     )
 
-    cargo_workspace = "{}/cargo-bazel-splicing".format(repo_dir)
+    cargo_workspace = repository_ctx.path("{}/cargo-bazel-splicing".format(repo_dir))
 
     # Generate a workspace root which contains all workspace members
     arguments = [
@@ -139,18 +139,13 @@ def splice_workspace_manifest(repository_ctx, generator, lockfile, config_info, 
         },
     )
 
-    root_manifest = repository_ctx.path(cargo_workspace + "/Cargo.toml")
+    root_manifest = repository_ctx.path("{}/Cargo.toml".format(cargo_workspace))
     if not root_manifest.exists:
         fail("Root manifest does not exist: {}".format(root_manifest))
 
-    # Install the cargo config
-    if repository_ctx.attr.cargo_config:
-        cargo_config = repository_ctx.path("{}/config.toml".format(cargo_workspace))
-        if cargo_config.exists:
-            repository_ctx.delete(cargo_config)
-        repository_ctx.symlink(
-            repository_ctx.path(repository_ctx.attr.cargo_config),
-            repository_ctx.path("{}/config.toml".format(cargo_workspace)),
-        )
+    # This file must match the one generated in splicing
+    metadata_path = repository_ctx.path("{}/cargo-bazel-spliced-metadata.json".format(cargo_workspace))
+    if not metadata_path.exists:
+        fail("Root metadata file does not exist: {}".format(metadata_path))
 
-    return root_manifest
+    return metadata_path

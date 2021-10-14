@@ -17,7 +17,6 @@ pub trait MetadataGenerator {
 pub struct Generator {
     cargo_bin: PathBuf,
     rustc_bin: PathBuf,
-    existing_lockfile: Option<CargoLockfile>,
 }
 
 impl Generator {
@@ -25,7 +24,6 @@ impl Generator {
         Generator {
             cargo_bin: PathBuf::from(env::var("CARGO").unwrap_or_else(|_| "cargo".to_string())),
             rustc_bin: PathBuf::from(env::var("RUSTC").unwrap_or_else(|_| "rustc".to_string())),
-            existing_lockfile: None,
         }
     }
 
@@ -38,28 +36,20 @@ impl Generator {
         self.rustc_bin = rustc_bin;
         self
     }
-
-    pub fn with_cargo_lockfile<T: AsRef<Path>>(mut self, lockfile: &T) -> Result<Self> {
-        self.existing_lockfile = Some(CargoLockfile::load(lockfile.as_ref())?);
-        Ok(self)
-    }
 }
 
 impl MetadataGenerator for Generator {
     fn generate<T: AsRef<Path>>(&self, manifest_path: T) -> Result<(CargoMetadata, CargoLockfile)> {
-        let lockfile = match &self.existing_lockfile {
-            Some(lock) => lock.clone(),
-            None => {
-                let manifest_dir = manifest_path
-                    .as_ref()
-                    .parent()
-                    .expect("The manifest should have a parent directory");
-                let lock_path = manifest_dir.join("Cargo.lock");
-                if !lock_path.exists() {
-                    bail!("No `Cargo.lock` file was found with the given manifest")
-                }
-                cargo_lock::Lockfile::load(lock_path)?
+        let lockfile = {
+            let manifest_dir = manifest_path
+                .as_ref()
+                .parent()
+                .expect("The manifest should have a parent directory");
+            let lock_path = manifest_dir.join("Cargo.lock");
+            if !lock_path.exists() {
+                bail!("No `Cargo.lock` file was found with the given manifest")
             }
+            cargo_lock::Lockfile::load(lock_path)?
         };
 
         let metadata = MetadataCommand::new()
@@ -116,4 +106,24 @@ pub fn write_metadata(path: &Path, metadata: &cargo_metadata::Metadata) -> Resul
         serde_json::to_string_pretty(metadata).context("Failed to serialize Cargo Metadata")?;
 
     fs::write(path, content).context("Failed to write metadata to disk")
+}
+
+pub fn load_metadata(
+    metadata_path: &Path,
+    lockfile_path: Option<&Path>,
+) -> Result<(cargo_metadata::Metadata, cargo_lock::Lockfile)> {
+    let content = fs::read_to_string(metadata_path)
+        .with_context(|| format!("Failed to load Cargo Metadata: {}", metadata_path.display()))?;
+
+    let metadata =
+        serde_json::from_str(&content).context("Unable to deserialize Cargo metadata")?;
+
+    let lockfile_path = lockfile_path
+        .map(PathBuf::from)
+        .unwrap_or_else(|| metadata_path.parent().unwrap().join("Cargo.lock"));
+
+    let lockfile = cargo_lock::Lockfile::load(&lockfile_path)
+        .with_context(|| format!("Failed to load lockfile: {}", lockfile_path.display()))?;
+
+    Ok((metadata, lockfile))
 }

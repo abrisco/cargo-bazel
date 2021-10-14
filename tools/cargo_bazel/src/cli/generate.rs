@@ -9,7 +9,7 @@ use crate::annotation::Annotations;
 use crate::config::Config;
 use crate::context::Context;
 use crate::lockfile::{is_cargo_lockfile, write_lockfile, LockfileKind};
-use crate::metadata::{Generator, MetadataGenerator};
+use crate::metadata::load_metadata;
 use crate::rendering::{write_outputs, Renderer};
 
 /// Command line options for the `generate` subcommand
@@ -48,9 +48,9 @@ pub struct GenerateOptions {
     #[structopt(long)]
     pub repin: bool,
 
-    /// The root manifest used to generate metadata
+    /// The path to a Cargo metadata `json` file.
     #[structopt(long)]
-    pub manifest: Option<PathBuf>,
+    pub metadata: Option<PathBuf>,
 
     /// If true, outputs will be printed instead of written to disk.
     #[structopt(long)]
@@ -92,20 +92,21 @@ pub fn generate(opt: GenerateOptions) -> Result<()> {
         None => bail!("The `--rustc` argument is required when generating unpinned content"),
     };
 
-    // Generate Metadata
-    let mut metadata_generator = Generator::new()
-        .with_cargo(cargo_bin.clone())
-        .with_rustc(rustc_bin.clone());
-
-    // Optionally use the Cargo lockfile if one was provided
-    if is_cargo_lockfile(&opt.lockfile, &opt.lockfile_kind) {
-        metadata_generator = metadata_generator.with_cargo_lockfile(&opt.lockfile)?;
-    }
-
-    let (cargo_metadata, cargo_lockfile) = metadata_generator.generate(match &opt.manifest {
+    // Ensure a path to a metadata file was provided
+    let metadata_path = match &opt.metadata {
         Some(path) => path,
-        None => bail!("The `--manifest` argument is required when repinning dependencies"),
-    })?;
+        None => bail!("The `--metadata` argument is required when generating unpinned content"),
+    };
+
+    // Load Metadata and Lockfile
+    let (cargo_metadata, cargo_lockfile) = load_metadata(
+        metadata_path,
+        if is_cargo_lockfile(&opt.lockfile, &opt.lockfile_kind) {
+            Some(&opt.lockfile)
+        } else {
+            None
+        },
+    )?;
 
     // Copy the rendering config for later use
     let render_config = config.rendering.clone();

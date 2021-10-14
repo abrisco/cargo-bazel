@@ -30,6 +30,10 @@ pub struct SpliceOptions {
     #[structopt(long)]
     pub dry_run: bool,
 
+    /// The path to a Cargo configuration file.
+    #[structopt(long)]
+    pub cargo_config: Option<PathBuf>,
+
     /// The path to a Cargo binary to use for gathering metadata
     #[structopt(long, env = "CARGO")]
     pub cargo: PathBuf,
@@ -53,9 +57,18 @@ pub fn splice(opt: SpliceOptions) -> Result<()> {
     // Splice together the manifest
     let manifest_path = splicer.splice_workspace()?;
 
+    // Ensure the cargo config is installed for generating metadata and lock data
+    if let Some(cargo_config) = &opt.cargo_config {
+        let target_path = manifest_path
+            .as_path_buf()
+            .parent()
+            .unwrap()
+            .join("config.toml");
+        crate::splicing::splicing_utils::install_file(cargo_config, &target_path)?;
+    }
+
     // Generate a lockfile
     generate_lockfile(&manifest_path, &opt.cargo_lockfile, &opt.cargo, &opt.rustc)?;
-    println!("HERE {:?}", manifest_path.as_path_buf());
 
     // Write metadata to the workspace for future reuse
     let (cargo_metadata, _cargo_lockfile) = Generator::new()
