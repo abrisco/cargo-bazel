@@ -1,5 +1,5 @@
 {
-  "checksum": "dab1cbbcbf7e274e87412e294108b218272e8abf9852cefbd710eb5fda199664",
+  "checksum": "7b60245d50be741f6b660862684e4a5f7cfa40c2af3910910fb2e7c04774e806",
   "crates": {
     "aho-corasick 0.7.18": {
       "name": "aho-corasick",
@@ -6556,14 +6556,14 @@
       },
       "license": "Apache-2.0 OR MIT"
     },
-    "ppv-lite86 0.2.10": {
+    "ppv-lite86 0.2.14": {
       "name": "ppv-lite86",
-      "version": "0.2.10",
+      "version": "0.2.14",
       "repository": {
         "Http": {
           "name": "ppv-lite86",
-          "version": "0.2.10",
-          "sha256": "ac74c624d6b2d21f425f752262f42188365d7b8ff1aff74c82e45136510a4857"
+          "version": "0.2.14",
+          "sha256": "c3ca011bd0129ff4ae15cd04c4eef202cadf6c51c21e47aba319b4e0501db741"
         }
       },
       "targets": [
@@ -6587,7 +6587,7 @@
           "std"
         ],
         "edition": "2018",
-        "version": "0.2.10"
+        "version": "0.2.14"
       },
       "license": "MIT/Apache-2.0"
     },
@@ -6974,7 +6974,7 @@
         "deps": {
           "common": [
             {
-              "id": "ppv-lite86 0.2.10",
+              "id": "ppv-lite86 0.2.14",
               "target": "ppv_lite86"
             },
             {

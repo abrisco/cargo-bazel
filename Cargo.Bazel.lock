@@ -1,5 +1,5 @@
 {
-  "checksum": "72c9d50b7540d940cc4ca56bd40f047e8e482cdb8889e7efec34968308d37f5d",
+  "checksum": "7390baae185e029e1a15025cb3b7191c3d24030f592ac9b3fb714076174cb2c0",
   "crates": {
     "aho-corasick 0.7.18": {
       "name": "aho-corasick",
@@ -561,9 +561,9 @@
       "build_script_attrs": {},
       "license": "MIT OR Apache-2.0"
     },
-    "cargo-bazel 0.0.2": {
+    "cargo-bazel 0.0.3": {
       "name": "cargo-bazel",
-      "version": "0.0.2",
+      "version": "0.0.3",
       "repository": null,
       "targets": [
         {
@@ -676,7 +676,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.0.2"
+        "version": "0.0.3"
       },
       "license": null
     },
@@ -5910,7 +5910,7 @@
     "cargo-lock 7.0.1"
   ],
   "workspace_members": {
-    "cargo-bazel 0.0.2": "tools/cargo_bazel",
+    "cargo-bazel 0.0.3": "tools/cargo_bazel",
     "cross_installer 0.1.0": "tools/cross_installer",
     "direct-cargo-bazel-deps 0.0.1": "",
     "urls_generator 0.1.0": "tools/urls_generator"
