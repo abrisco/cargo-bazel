@@ -14,10 +14,12 @@ exports_files(
 # Workspace Member Dependencies
 {%- for dep in workspace_member_dependencies %}
 {%- set crate = context.crates | get(key=dep) %}
+{%- if crate | get_or(key="library_target_name", default=Null) %}
 alias(
     name = "{{ workspace_member_dependency_renames | get_or(key=dep, default=crate.name) }}",
-    actual = "{{ crate_label(name = crate.name, version = crate.version, target = crate.name) }}",
+    actual = "{{ crate_label(name = crate.name, version = crate.version, target = crate.library_target_name) }}",
 )
+{%- endif %}
 {%- endfor %}
 
 # Binaries

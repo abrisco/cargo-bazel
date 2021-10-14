@@ -171,6 +171,7 @@ crates_repository(
     manifests = [
         "//multi_package/pkg_a:Cargo.toml",
         "//multi_package/sub_pkgs/pkg_b:Cargo.toml",
+        "//multi_package/sub_pkgs/pkg_c:Cargo.toml",
     ],
 )
 

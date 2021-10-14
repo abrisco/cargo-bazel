@@ -10,8 +10,11 @@ pub struct Dependency {
     /// The PackageId of the target
     pub package_id: PackageId,
 
-    /// The name of the dependncy as seen in [cargo_metadata::NodeDep].
+    /// The library target name of the dependency.
     pub target_name: String,
+
+    /// The alias for the dependency from the perspective of the current package
+    pub alias: Option<String>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -38,8 +41,8 @@ impl DependencySet {
                 .partition(|dep| is_dev_dependency(dep));
 
             (
-                collect_deps_selectable(dev),
-                collect_deps_selectable(normal),
+                collect_deps_selectable(dev, metadata),
+                collect_deps_selectable(normal, metadata),
             )
         };
 
@@ -54,8 +57,8 @@ impl DependencySet {
                 .partition(|dep| is_dev_dependency(dep));
 
             (
-                collect_deps_selectable(dev),
-                collect_deps_selectable(normal),
+                collect_deps_selectable(dev, metadata),
+                collect_deps_selectable(normal, metadata),
             )
         };
 
@@ -70,8 +73,8 @@ impl DependencySet {
                 .partition(|dep| is_proc_macro_package(&metadata[&dep.pkg]));
 
             (
-                collect_deps_selectable(proc_macro),
-                collect_deps_selectable(normal),
+                collect_deps_selectable(proc_macro, metadata),
+                collect_deps_selectable(normal, metadata),
             )
         };
 
@@ -91,9 +94,7 @@ impl DependencySet {
                 .for_each(|dep| {
                     let dep_pkg_name = &metadata[&dep.package_id].name;
                     if *dep_pkg_name == sys_name {
-                        let mut dep = dep.clone();
-                        dep.target_name = sanitize_module_name(dep_pkg_name);
-                        build_deps.insert(dep, config.cloned())
+                        build_deps.insert(dep.clone(), config.cloned())
                     }
                 });
         });
@@ -109,7 +110,10 @@ impl DependencySet {
     }
 }
 
-fn collect_deps_selectable(deps: Vec<&NodeDep>) -> SelectList<Dependency> {
+fn collect_deps_selectable(
+    deps: Vec<&NodeDep>,
+    metadata: &cargo_metadata::Metadata,
+) -> SelectList<Dependency> {
     let mut selectable = SelectList::default();
 
     for dep in deps.into_iter() {
@@ -118,10 +122,15 @@ fn collect_deps_selectable(deps: Vec<&NodeDep>) -> SelectList<Dependency> {
             .first()
             .expect("Each dependency should have at least 1 kind");
 
+        let dep_pkg = &metadata[&dep.pkg];
+        let target_name = get_library_target_name(dep_pkg, &dep.name);
+        let alias = get_target_alias(&dep.name, dep_pkg);
+
         selectable.insert(
             Dependency {
                 package_id: dep.pkg.clone(),
-                target_name: dep.name.clone(),
+                target_name,
+                alias,
             },
             kind_info
                 .target
@@ -166,4 +175,41 @@ fn is_workspace_member(node_dep: &NodeDep, metadata: &CargoMetadata) -> bool {
         .workspace_members
         .iter()
         .any(|id| id == &node_dep.pkg)
+}
+
+fn get_library_target_name(package: &Package, potential_name: &str) -> String {
+    // If the potential name is not an alias in a dependent's package, a target's name
+    // should match which means we already know what the target library name is.
+    if package.targets.iter().any(|t| t.name == potential_name) {
+        return potential_name.to_string();
+    }
+
+    // Locate any library type targets
+    let lib_targets: Vec<&cargo_metadata::Target> = package
+        .targets
+        .iter()
+        .filter(|t| t.kind.iter().any(|k| k == "lib" || k == "proc-macro"))
+        .collect();
+
+    // Only one target should be found
+    assert_eq!(lib_targets.len(), 1);
+
+    let target = lib_targets.into_iter().last().unwrap();
+    target.name.clone()
+}
+
+/// The resolve graph (resolve.nodes[#].deps[#].name) of Cargo metadata uses module names
+/// for targets where packages (packages[#].targets[#].name) uses crate names. In order to
+/// determine whether or not a dependency is aliased, we compare it with all available targets
+/// on it's package. Note that target names are not guaranteed to be module names where Node
+/// dependnecies are, so we need to do a conversion to check for this
+fn get_target_alias(target_name: &str, package: &Package) -> Option<String> {
+    match package
+        .targets
+        .iter()
+        .all(|t| sanitize_module_name(&t.name) != target_name)
+    {
+        true => Some(target_name.to_string()),
+        false => None,
+    }
 }
