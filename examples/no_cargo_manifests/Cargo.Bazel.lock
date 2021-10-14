@@ -1,5 +1,5 @@
 {
-  "checksum": "81830a5c7ebe286b913409ab318b86863b4d5070afcfc573e29fc5d585888f46",
+  "checksum": "e475c17accfab76a83641fcaa69fa277b4aed35d8b78f1b0cd22f13017ea3dbc",
   "crates": {
     "aho-corasick 0.7.18": {
       "name": "aho-corasick",
@@ -272,7 +272,7 @@
               "target": "tokio_util"
             },
             {
-              "id": "tower 0.4.8",
+              "id": "tower 0.4.9",
               "target": "tower"
             },
             {
@@ -504,7 +504,7 @@
               "target": "tokio"
             },
             {
-              "id": "tower 0.4.8",
+              "id": "tower 0.4.9",
               "target": "tower"
             },
             {
@@ -3675,14 +3675,14 @@
       },
       "license": "MIT"
     },
-    "tower 0.4.8": {
+    "tower 0.4.9": {
       "name": "tower",
-      "version": "0.4.8",
+      "version": "0.4.9",
       "repository": {
         "Http": {
           "name": "tower",
-          "version": "0.4.8",
-          "sha256": "f60422bc7fefa2f3ec70359b8ff1caff59d785877eb70595904605bcc412470f"
+          "version": "0.4.9",
+          "sha256": "d15a6b60cdff0cb039d81d3b37f8bc3d7e53dca09069aae3ef2502ca4834fe30"
         }
       },
       "targets": [
@@ -3727,6 +3727,10 @@
               "target": "pin_project"
             },
             {
+              "id": "pin-project-lite 0.2.7",
+              "target": "pin_project_lite"
+            },
+            {
               "id": "tokio 1.12.0",
               "target": "tokio"
             },
@@ -3750,7 +3754,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.4.8"
+        "version": "0.4.9"
       },
       "license": "MIT"
     },

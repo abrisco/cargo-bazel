@@ -1,5 +1,5 @@
 {
-  "checksum": "782d8eaca4efc0f2050a322d35dcfff096094198e01113c6c719916b579a7aae",
+  "checksum": "9d7433337e54081caf688a9fcb9ec92de2affe0df62ae2f6b097b315760bfac7",
   "crates": {
     "ansi_term 0.11.0": {
       "name": "ansi_term",
@@ -514,14 +514,14 @@
       },
       "license": null
     },
-    "ppv-lite86 0.2.10": {
+    "ppv-lite86 0.2.14": {
       "name": "ppv-lite86",
-      "version": "0.2.10",
+      "version": "0.2.14",
       "repository": {
         "Http": {
           "name": "ppv-lite86",
-          "version": "0.2.10",
-          "sha256": "ac74c624d6b2d21f425f752262f42188365d7b8ff1aff74c82e45136510a4857"
+          "version": "0.2.14",
+          "sha256": "c3ca011bd0129ff4ae15cd04c4eef202cadf6c51c21e47aba319b4e0501db741"
         }
       },
       "targets": [
@@ -545,7 +545,7 @@
           "std"
         ],
         "edition": "2018",
-        "version": "0.2.10"
+        "version": "0.2.14"
       },
       "license": "MIT/Apache-2.0"
     },
@@ -687,7 +687,7 @@
         "deps": {
           "common": [
             {
-              "id": "ppv-lite86 0.2.10",
+              "id": "ppv-lite86 0.2.14",
               "target": "ppv_lite86"
             },
             {
