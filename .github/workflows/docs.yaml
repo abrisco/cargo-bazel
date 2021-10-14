@@ -20,14 +20,15 @@ jobs:
       - uses: actions/checkout@v2
 
       # Caches and restores the Bazel outputs.
-      - name: Retain Bazel cache
+      - name: Retain Bazel docs cache
         uses: actions/cache@v2
         env:
-          cache-name: bazel-cache
+          cache-name: bazel-docs-cache
         with:
           path: |
             ~/.cache/bazelisk
             ~/.cache/bazel
+            ~/.cargo
           key: ${{ runner.os }}-${{ env.cache-name }}
 
       - name: Build docs
