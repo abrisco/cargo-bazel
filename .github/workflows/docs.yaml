@@ -4,13 +4,16 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    types:
+      - opened
+      - synchronize
 
 env:
   BAZEL_STARTUP_FLAGS: --bazelrc=${{ github.workspace }}/.github/github.bazelrc
 
 jobs:
   docs:
-    if: ${{ github.repository_owner == 'abrisco' }}
     runs-on: ubuntu-latest
     steps:
       # Checkout the code
@@ -36,3 +39,5 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: docs
           publish_dir: ${{ github.workspace }}/docs/book
+        # This will otherwise only run against the `main` branch
+        if: ${{ github.event_name != 'pull_request' }}
