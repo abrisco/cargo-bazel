@@ -13,5 +13,3 @@ cargo_bazel_deps()
 ```
 
 Additional documentation can be found at: https://abrisco.github.io/cargo-bazel/index.html#setup
-
-**Full Changelog**: https://github.com/abrisco/cargo-bazel/commits/{version}
