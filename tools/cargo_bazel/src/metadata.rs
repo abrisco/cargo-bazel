@@ -1,6 +1,7 @@
 //! Tools for gathering various kinds of metadata (Cargo.lock, Cargo metadata, Crate Index info).
 
 use std::env;
+use std::fs;
 use std::path::{Path, PathBuf};
 use std::process::Command;
 
@@ -64,7 +65,7 @@ impl MetadataGenerator for Generator {
         let metadata = MetadataCommand::new()
             .cargo_path(&self.cargo_bin)
             .manifest_path(manifest_path.as_ref())
-            .other_options(["--offline".to_owned(), "--locked".to_owned()])
+            .other_options(["--locked".to_owned()])
             .exec()?;
 
         Ok((metadata, lockfile))
@@ -108,4 +109,11 @@ impl LockGenerator {
             generated_lockfile_path.display()
         ))
     }
+}
+
+pub fn write_metadata(path: &Path, metadata: &cargo_metadata::Metadata) -> Result<()> {
+    let content =
+        serde_json::to_string_pretty(metadata).context("Failed to serialize Cargo Metadata")?;
+
+    fs::write(path, content).context("Failed to write metadata to disk")
 }
