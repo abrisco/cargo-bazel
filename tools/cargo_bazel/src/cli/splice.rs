@@ -64,7 +64,7 @@ pub fn splice(opt: SpliceOptions) -> Result<()> {
             .parent()
             .unwrap()
             .join("config.toml");
-        crate::splicing::splicing_utils::install_file(cargo_config, &target_path)?;
+        crate::splicing::install_file(cargo_config, &target_path)?;
     }
 
     // Generate a lockfile
