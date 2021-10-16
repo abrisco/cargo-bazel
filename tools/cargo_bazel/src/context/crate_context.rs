@@ -241,12 +241,11 @@ impl CrateContext {
             ..Default::default()
         };
 
+        let include_build_scripts =
+            Self::crate_includes_build_script(package, extras, include_build_scripts);
+
         // Iterate over each target and produce a Bazel target for all supported "kinds"
-        let targets = Self::collect_targets(
-            &annotation.node,
-            packages,
-            Self::crate_includes_build_script(package, extras, include_build_scripts),
-        );
+        let targets = Self::collect_targets(&annotation.node, packages, include_build_scripts);
 
         // Parse the library crate name from the set of included targets
         let library_target_name = {
@@ -449,18 +448,16 @@ impl CrateContext {
         overrides: &BTreeMap<CrateId, PairredExtras>,
         default_generate_build_script: bool,
     ) -> bool {
-        match overrides
+        // Locate extra settings for the current package.
+        let settings = overrides
             .iter()
-            .find(|(_, settings)| settings.package_id == package.id)
-            .map(|(_, settings)| settings)
-        {
-            // The settings will awlays take precedence if provided
-            Some(settings) => match settings.crate_extra.gen_build_script {
-                Some(gen_build_script) => gen_build_script,
-                None => default_generate_build_script,
-            },
-            None => default_generate_build_script,
-        }
+            .find(|(_, settings)| settings.package_id == package.id);
+
+        // If the crate has extra settings, which explicitly set `gen_build_script`, always use
+        // this value, otherwise, fallback to the provided default.
+        settings
+            .and_then(|(_, settings)| settings.crate_extra.gen_build_script)
+            .unwrap_or(default_generate_build_script)
     }
 
     /// Collect all Bazel targets that should be generated for a particular Package
