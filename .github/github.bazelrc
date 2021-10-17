@@ -10,6 +10,9 @@ build --enable_runfiles
 # Enable all strict flags
 build --config=strict
 
+# Show errors in CI
+test --test_output=errors
+
 # UI for cleaner CI output
 common --color=no
 common --curses=no
