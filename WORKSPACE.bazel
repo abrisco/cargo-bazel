@@ -22,7 +22,6 @@ crates_repository(
     extras = {
         "cargo_toml": [crate.extras(
             shallow_since = "1632241831 -0700",
-            version = "*",
         )],
         "chrono-tz": [crate.extras(
             build_script_data_glob = [
@@ -34,7 +33,6 @@ crates_repository(
             build_script_data_glob = [
                 "**/*.rs",
             ],
-            version = "*",
         )],
         "deunicode": [crate.extras(
             compile_data_glob = [
@@ -47,26 +45,22 @@ crates_repository(
             compile_data_glob = [
                 "**/*.pest",
             ],
-            version = "*",
         )],
         "unic-ucd-segment": [crate.extras(
             compile_data_glob = [
                 "**/*.rsv",
             ],
-            version = "*",
         )],
         "unic-ucd-version": [crate.extras(
             compile_data_glob = [
                 "**/*.rsv",
             ],
-            version = "*",
         )],
         "unicode-linebreak": [crate.extras(
             build_script_data_glob = [
                 "**/*.rs",
                 "**/*.txt",
             ],
-            version = "*",
         )],
     },
     generator = "@cargo_bazel_bootstrap//:cargo-bazel",
