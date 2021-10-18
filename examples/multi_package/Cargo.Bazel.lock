@@ -434,7 +434,7 @@
           "selects": {
             "cfg(unix)": [
               {
-                "id": "libc 0.2.103",
+                "id": "libc 0.2.104",
                 "target": "libc"
               }
             ],
@@ -623,7 +623,7 @@
                 "target": "async_io"
               },
               {
-                "id": "libc 0.2.103",
+                "id": "libc 0.2.104",
                 "target": "libc"
               },
               {
@@ -963,7 +963,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.103",
+                "id": "libc 0.2.104",
                 "target": "libc"
               }
             ],
@@ -1603,7 +1603,7 @@
               "target": "core_foundation_sys"
             },
             {
-              "id": "libc 0.2.103",
+              "id": "libc 0.2.104",
               "target": "libc"
             }
           ],
@@ -1891,7 +1891,7 @@
               "target": "curl_sys"
             },
             {
-              "id": "libc 0.2.103",
+              "id": "libc 0.2.104",
               "target": "libc"
             },
             {
@@ -1975,7 +1975,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.103",
+              "id": "libc 0.2.104",
               "target": "libc"
             },
             {
@@ -2238,7 +2238,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.103",
+                "id": "libc 0.2.104",
                 "target": "libc"
               }
             ],
@@ -2326,14 +2326,14 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "encoding_rs 0.8.28": {
+    "encoding_rs 0.8.29": {
       "name": "encoding_rs",
-      "version": "0.8.28",
+      "version": "0.8.29",
       "repository": {
         "Http": {
           "name": "encoding_rs",
-          "version": "0.8.28",
-          "sha256": "80df024fbc5ac80f87dfef0d9f5209a252f2a497f7f42944cff24d8253cac065"
+          "version": "0.8.29",
+          "sha256": "a74ea89a0a1b98f6332de42c95baff457ada66d1cb4030f9ff151b2041a1c746"
         }
       },
       "targets": [
@@ -2364,6 +2364,10 @@
       ],
       "library_target_name": "encoding_rs",
       "common_attrs": {
+        "crate_features": [
+          "alloc",
+          "default"
+        ],
         "deps": {
           "common": [
             {
@@ -2371,14 +2375,14 @@
               "target": "cfg_if"
             },
             {
-              "id": "encoding_rs 0.8.28",
+              "id": "encoding_rs 0.8.29",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.8.28"
+        "version": "0.8.29"
       },
       "build_script_attrs": {},
       "license": "Apache-2.0 OR MIT"
@@ -2445,7 +2449,7 @@
           "selects": {
             "cfg(target_arch = \"wasm32\")": [
               {
-                "id": "instant 0.1.11",
+                "id": "instant 0.1.12",
                 "target": "instant"
               }
             ]
@@ -3277,7 +3281,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.103",
+                "id": "libc 0.2.104",
                 "target": "libc"
               }
             ]
@@ -3496,7 +3500,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.103",
+              "id": "libc 0.2.104",
               "target": "libc"
             }
           ],
@@ -4140,14 +4144,14 @@
       },
       "license": "Apache-2.0/MIT"
     },
-    "instant 0.1.11": {
+    "instant 0.1.12": {
       "name": "instant",
-      "version": "0.1.11",
+      "version": "0.1.12",
       "repository": {
         "Http": {
           "name": "instant",
-          "version": "0.1.11",
-          "sha256": "716d3d89f35ac6a34fd0eed635395f4c3b76fa889338a4632e5231a8684216bd"
+          "version": "0.1.12",
+          "sha256": "7a5bbe824c507c5da5956355e86a746d82e0e1464f65d862cc5e71da70e94b2c"
         }
       },
       "targets": [
@@ -4176,7 +4180,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.1.11"
+        "version": "0.1.12"
       },
       "license": "BSD-3-Clause"
     },
@@ -4280,7 +4284,7 @@
               "target": "curl_sys"
             },
             {
-              "id": "encoding_rs 0.8.28",
+              "id": "encoding_rs 0.8.29",
               "target": "encoding_rs"
             },
             {
@@ -4731,14 +4735,14 @@
       },
       "license": "MIT"
     },
-    "libc 0.2.103": {
+    "libc 0.2.104": {
       "name": "libc",
-      "version": "0.2.103",
+      "version": "0.2.104",
       "repository": {
         "Http": {
           "name": "libc",
-          "version": "0.2.103",
-          "sha256": "dd8f7255a17a627354f321ef0055d63b898c6fb27eff628af4d1b66b7331edf6"
+          "version": "0.2.104",
+          "sha256": "7b2f96d100e1cf1929e7719b7edb3b90ab5298072638fccd77be9ce942ecdfce"
         }
       },
       "targets": [
@@ -4776,14 +4780,14 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.103",
+              "id": "libc 0.2.104",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2015",
-        "version": "0.2.103"
+        "version": "0.2.104"
       },
       "build_script_attrs": {},
       "license": "MIT OR Apache-2.0"
@@ -4832,7 +4836,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.103",
+              "id": "libc 0.2.104",
               "target": "libc"
             },
             {
@@ -4906,7 +4910,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.103",
+              "id": "libc 0.2.104",
               "target": "libc"
             },
             {
@@ -5223,14 +5227,14 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "mio 0.7.13": {
+    "mio 0.7.14": {
       "name": "mio",
-      "version": "0.7.13",
+      "version": "0.7.14",
       "repository": {
         "Http": {
           "name": "mio",
-          "version": "0.7.13",
-          "sha256": "8c2bdb6314ec10835cd3293dd268473a835c02b7b352e788be788b3c6ca6bb16"
+          "version": "0.7.14",
+          "sha256": "8067b404fe97c70829f082dec8bcf4f71225d7eaea1d8645349cb76fa06205cc"
         }
       },
       "targets": [
@@ -5269,7 +5273,7 @@
           "selects": {
             "cfg(unix)": [
               {
-                "id": "libc 0.2.103",
+                "id": "libc 0.2.104",
                 "target": "libc"
               }
             ],
@@ -5290,7 +5294,7 @@
           }
         },
         "edition": "2018",
-        "version": "0.7.13"
+        "version": "0.7.14"
       },
       "license": "MIT"
     },
@@ -5386,7 +5390,7 @@
                 "target": "lazy_static"
               },
               {
-                "id": "libc 0.2.103",
+                "id": "libc 0.2.104",
                 "target": "libc"
               },
               {
@@ -5555,7 +5559,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.103",
+              "id": "libc 0.2.104",
               "target": "libc"
             }
           ],
@@ -5694,7 +5698,7 @@
               "target": "foreign_types"
             },
             {
-              "id": "libc 0.2.103",
+              "id": "libc 0.2.104",
               "target": "libc"
             },
             {
@@ -5808,7 +5812,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.103",
+              "id": "libc 0.2.104",
               "target": "libc"
             },
             {
@@ -5933,7 +5937,7 @@
         "deps": {
           "common": [
             {
-              "id": "instant 0.1.11",
+              "id": "instant 0.1.12",
               "target": "instant"
             },
             {
@@ -5997,7 +6001,7 @@
               "target": "cfg_if"
             },
             {
-              "id": "instant 0.1.11",
+              "id": "instant 0.1.12",
               "target": "instant"
             },
             {
@@ -6018,7 +6022,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.103",
+                "id": "libc 0.2.104",
                 "target": "libc"
               }
             ],
@@ -6535,7 +6539,7 @@
           "selects": {
             "cfg(unix)": [
               {
-                "id": "libc 0.2.103",
+                "id": "libc 0.2.104",
                 "target": "libc"
               }
             ],
@@ -6931,7 +6935,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.103",
+                "id": "libc 0.2.104",
                 "target": "libc"
               }
             ]
@@ -7380,7 +7384,7 @@
                 "target": "base64"
               },
               {
-                "id": "encoding_rs 0.8.28",
+                "id": "encoding_rs 0.8.29",
                 "target": "encoding_rs"
               },
               {
@@ -7698,7 +7702,7 @@
               "target": "core_foundation_sys"
             },
             {
-              "id": "libc 0.2.103",
+              "id": "libc 0.2.104",
               "target": "libc"
             },
             {
@@ -7750,7 +7754,7 @@
               "target": "core_foundation_sys"
             },
             {
-              "id": "libc 0.2.103",
+              "id": "libc 0.2.104",
               "target": "libc"
             }
           ],
@@ -8107,7 +8111,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.103",
+              "id": "libc 0.2.104",
               "target": "libc"
             },
             {
@@ -8156,7 +8160,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.103",
+              "id": "libc 0.2.104",
               "target": "libc"
             }
           ],
@@ -8350,7 +8354,7 @@
           "selects": {
             "cfg(unix)": [
               {
-                "id": "libc 0.2.103",
+                "id": "libc 0.2.104",
                 "target": "libc"
               }
             ],
@@ -8551,7 +8555,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.103",
+                "id": "libc 0.2.104",
                 "target": "libc"
               }
             ],
@@ -8835,7 +8839,7 @@
               "target": "memchr"
             },
             {
-              "id": "mio 0.7.13",
+              "id": "mio 0.7.14",
               "target": "mio"
             },
             {
@@ -8858,7 +8862,7 @@
           "selects": {
             "cfg(unix)": [
               {
-                "id": "libc 0.2.103",
+                "id": "libc 0.2.104",
                 "target": "libc"
               },
               {

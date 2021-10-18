@@ -179,10 +179,6 @@ impl TemplateEngine {
         );
         tera.register_function("sanitize_module_name", sanitize_module_name_fn);
 
-        // TODO: Remove after upstream change is merged
-        // https://github.com/Keats/tera/pull/671
-        tera.register_filter("get_or", get_or);
-
         let mut context = tera::Context::new();
         context.insert("default_select_list", &SelectStringList::default());
         context.insert("default_select_dict", &SelectStringDict::default());
@@ -382,33 +378,4 @@ fn crate_registry_url_fn_generator(template: String) -> impl tera::Function {
             }
         },
     )
-}
-
-fn get_or(value: &tera::Value, args: &HashMap<String, tera::Value>) -> tera::Result<tera::Value> {
-    let default = args.get("default");
-    let key = match args.get("key") {
-        Some(val) => tera::try_get_value!("get", "key", String, val),
-        None => {
-            return Err(tera::Error::msg(
-                "The `get` filter has to have an `key` argument",
-            ))
-        }
-    };
-
-    match value.as_object() {
-        Some(o) => match o.get(&key) {
-            Some(val) => Ok(val.clone()),
-            // If the value is not present, allow for an optional default value
-            None => match default {
-                Some(def) => Ok(def.clone()),
-                None => Err(tera::Error::msg(format!(
-                    "Filter `get` tried to get key `{}` but it wasn't found",
-                    &key
-                ))),
-            },
-        },
-        None => Err(tera::Error::msg(
-            "Filter `get` was used on a value that isn't an object",
-        )),
-    }
 }
