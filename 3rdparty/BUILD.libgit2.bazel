@@ -94,6 +94,12 @@ cc_library(
     name = "http-parser",
     srcs = glob(["deps/http-parser/*.c"]),
     hdrs = glob(["deps/http-parser/*.h"]),
+    copts = select({
+        # Required in `opt` builds to solve the following error
+        # libpcre.a(pcre_compile.o): requires unsupported dynamic reloc 11; recompile with -fPIC
+        "@platforms//os:linux": ["-fPIC"],
+        "//conditions:default": [],
+    }),
     includes = ["deps/http-parser"],
     linkstatic = True,
 )
@@ -102,6 +108,12 @@ cc_library(
     name = "pcre",
     srcs = glob(["deps/pcre/**/*.c"]),
     hdrs = glob(["deps/pcre/**/*.h"]),
+    copts = select({
+        # Required in `opt` builds to solve the following error
+        # libhttp-parser.a(http_parser.o): requires unsupported dynamic reloc 11; recompile with -fPIC
+        "@platforms//os:linux": ["-fPIC"],
+        "//conditions:default": [],
+    }),
     defines = [
         "HAVE_STDINT_H=1",
         "HAVE_MEMMOVE=1",
@@ -167,7 +179,7 @@ write_file(
 )
 
 cc_library(
-    name = "libgit2",
+    name = "git2",
     srcs = glob(
         include = [
             "src/*.c",
@@ -213,11 +225,24 @@ cc_library(
         ":configure_features",
     ],
     copts = select({
+        "@platforms//os:linux": [
+            "-fvisibility=hidden",
+            "-fPIC",
+            "-Wall",
+            "-std=gnu90",
+            # On linux, optimization is required to avoid issues with missing (and unused) symbols:
+            # `liblibgit2.a(pack.pic.o):pack.c:function packfile_open_locked: error: undefined reference to 'fstat'`
+            #
+            # Always enabling optimization helps us avoid this though, it does seem unnecessary and this should
+            # probably be fixed.
+            "-O3",
+        ],
         "@platforms//os:windows": [],
         "//conditions:default": [
             "-fvisibility=hidden",
             "-fPIC",
             "-Wall",
+            "-std=gnu90",
         ],
     }),
     defines = [
@@ -243,4 +268,10 @@ cc_library(
         ":pcre",
         "@zlib",
     ],
+)
+
+alias(
+    name = "libgit2",
+    actual = ":git2",
+    visibility = ["//visibility:public"],
 )

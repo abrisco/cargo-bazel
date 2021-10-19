@@ -6,10 +6,19 @@ cc_library(
     hdrs = glob(["*.h"]),
     # Use -Dverbose=-1 to turn off zlib's trace logging.
     # https://github.com/bazelbuild/bazel/issues/3280
-    copts = [
-        "-w",
-        "-Dverbose=-1",
-    ],
+    copts = select({
+        "@platforms//os:linux": [
+            "-w",
+            "-Dverbose=-1",
+            # Required for opt builds to avoid
+            # `libzlib.a(crc32.o): requires unsupported dynamic reloc 11; recompile with -fPIC`
+            "-fPIC",
+        ],
+        "//conditions:default": [
+            "-w",
+            "-Dverbose=-1",
+        ],
+    }),
     includes = ["."],
     linkstatic = True,
     visibility = ["//visibility:public"],
