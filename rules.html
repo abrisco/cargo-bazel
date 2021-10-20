@@ -149,10 +149,10 @@
 <p><a id="#crates_repository"></a></p>
 <h2 id="crates_repository"><a class="header" href="#crates_repository">crates_repository</a></h2>
 <pre>
-crates_repository(<a href="#crates_repository-name">name</a>, <a href="#crates_repository-cargo_config">cargo_config</a>, <a href="#crates_repository-extra_workspace_members">extra_workspace_members</a>, <a href="#crates_repository-extras">extras</a>, <a href="#crates_repository-generate_build_scripts">generate_build_scripts</a>,
-                  <a href="#crates_repository-generator">generator</a>, <a href="#crates_repository-generator_sha256s">generator_sha256s</a>, <a href="#crates_repository-generator_urls">generator_urls</a>, <a href="#crates_repository-lockfile">lockfile</a>, <a href="#crates_repository-lockfile_kind">lockfile_kind</a>, <a href="#crates_repository-manifests">manifests</a>,
-                  <a href="#crates_repository-packages">packages</a>, <a href="#crates_repository-quiet">quiet</a>, <a href="#crates_repository-render_config">render_config</a>, <a href="#crates_repository-repo_mapping">repo_mapping</a>, <a href="#crates_repository-rust_toolchain_repo_template">rust_toolchain_repo_template</a>,
-                  <a href="#crates_repository-rust_version">rust_version</a>, <a href="#crates_repository-supported_platform_triples">supported_platform_triples</a>)
+crates_repository(<a href="#crates_repository-name">name</a>, <a href="#crates_repository-cargo_config">cargo_config</a>, <a href="#crates_repository-extra_workspace_member_url_template">extra_workspace_member_url_template</a>, <a href="#crates_repository-extra_workspace_members">extra_workspace_members</a>,
+                  <a href="#crates_repository-extras">extras</a>, <a href="#crates_repository-generate_build_scripts">generate_build_scripts</a>, <a href="#crates_repository-generator">generator</a>, <a href="#crates_repository-generator_sha256s">generator_sha256s</a>, <a href="#crates_repository-generator_urls">generator_urls</a>,
+                  <a href="#crates_repository-lockfile">lockfile</a>, <a href="#crates_repository-lockfile_kind">lockfile_kind</a>, <a href="#crates_repository-manifests">manifests</a>, <a href="#crates_repository-packages">packages</a>, <a href="#crates_repository-quiet">quiet</a>, <a href="#crates_repository-render_config">render_config</a>, <a href="#crates_repository-repo_mapping">repo_mapping</a>,
+                  <a href="#crates_repository-rust_toolchain_repo_template">rust_toolchain_repo_template</a>, <a href="#crates_repository-rust_version">rust_version</a>, <a href="#crates_repository-supported_platform_triples">supported_platform_triples</a>)
 </pre>
 <p>A rule for defining and downloading Rust dependencies (crates).</p>
 <p>Environment Variables:</p>
@@ -165,6 +165,7 @@ crates_repository(<a href="#crates_repository-name">name</a>, <a href="#crates_r
 <table><thead><tr><th align="left">Name</th><th align="left">Description</th><th align="left">Type</th><th align="left">Mandatory</th><th align="left">Default</th></tr></thead><tbody>
 <tr><td align="left"><a id="crates_repository-name"></a>name</td><td align="left">A unique name for this repository.</td><td align="left"><a href="https://bazel.build/docs/build-ref.html#name">Name</a></td><td align="left">required</td><td align="left"></td></tr>
 <tr><td align="left"><a id="crates_repository-cargo_config"></a>cargo_config</td><td align="left">A <a href="https://doc.rust-lang.org/cargo/reference/config.html">Cargo configuration</a> file</td><td align="left"><a href="https://bazel.build/docs/build-ref.html#labels">Label</a></td><td align="left">optional</td><td align="left">None</td></tr>
+<tr><td align="left"><a id="crates_repository-extra_workspace_member_url_template"></a>extra_workspace_member_url_template</td><td align="left">The registry url to use when fetching extra workspace members</td><td align="left">String</td><td align="left">optional</td><td align="left">&quot;https://crates.io/api/v1/crates/{name}/{version}/download&quot;</td></tr>
 <tr><td align="left"><a id="crates_repository-extra_workspace_members"></a>extra_workspace_members</td><td align="left">Additional crates to download and include as a workspace member. This is unfortunately required in order to add information about &quot;binary-only&quot; crates so that a <code>rust_binary</code> may be generated for it. <a href="https://github.com/rust-lang/cargo/issues/9096">rust-lang/cargo#9096</a> tracks an RFC which may solve for this.</td><td align="left"><a href="https://bazel.build/docs/skylark/lib/dict.html">Dictionary: String -&gt; String</a></td><td align="left">optional</td><td align="left">{}</td></tr>
 <tr><td align="left"><a id="crates_repository-extras"></a>extras</td><td align="left">Extra settings to apply to crates. See <a href="#crate.extras">crate.extras</a>.</td><td align="left"><a href="https://bazel.build/docs/skylark/lib/dict.html">Dictionary: String -&gt; List of strings</a></td><td align="left">optional</td><td align="left">{}</td></tr>
 <tr><td align="left"><a id="crates_repository-generate_build_scripts"></a>generate_build_scripts</td><td align="left">Whether or not to generate <a href="https://doc.rust-lang.org/cargo/reference/build-scripts.html">cargo build scripts</a> by default.</td><td align="left">Boolean</td><td align="left">optional</td><td align="left">True</td></tr>
@@ -250,18 +251,17 @@ crate.workspace_member(<a href="#crate.workspace_member-version">version</a>, <a
 <h2 id="render_config"><a class="header" href="#render_config">render_config</a></h2>
 <pre>
 render_config(<a href="#render_config-build_file_template">build_file_template</a>, <a href="#render_config-crate_label_template">crate_label_template</a>, <a href="#render_config-crate_repository_template">crate_repository_template</a>,
-              <a href="#render_config-default_package_name">default_package_name</a>, <a href="#render_config-platforms_template">platforms_template</a>, <a href="#render_config-registry_url_template">registry_url_template</a>)
+              <a href="#render_config-default_package_name">default_package_name</a>, <a href="#render_config-platforms_template">platforms_template</a>)
 </pre>
 <p>Various settings used to configure rendered outputs</p>
 <p>The template parameters each support a select number of format keys. A description of each key
 can be found below where the supported keys for each template can be found in the parameter docs</p>
 <table><thead><tr><th>key</th><th>definition</th></tr></thead><tbody>
 <tr><td><code>name</code></td><td>The name of the crate. Eg <code>tokio</code></td></tr>
-<tr><td><code>registry</code></td><td>The name of the registry. Eg <code>crates.io</code></td></tr>
 <tr><td><code>repository</code></td><td>The rendered repository name for the crate. Directly relates to <code>crate_repository_template</code>.</td></tr>
-<tr><td><code>scheme</code></td><td>The url scheme used for connecting to the crate registry. Eg <code>https</code></td></tr>
 <tr><td><code>triple</code></td><td>A platform triple. Eg <code>x86_64-unknown-linux-gnu</code></td></tr>
 <tr><td><code>version</code></td><td>The crate version. Eg <code>1.2.3</code></td></tr>
+<tr><td><code>target</code></td><td>The library or binary target of the crate</td></tr>
 </tbody></table>
 <p><strong>PARAMETERS</strong></p>
 <table><thead><tr><th align="left">Name</th><th align="left">Description</th><th align="left">Default Value</th></tr></thead><tbody>
@@ -270,7 +270,6 @@ can be found below where the supported keys for each template can be found in th
 <tr><td align="left"><a id="render_config-crate_repository_template"></a>crate_repository_template</td><td align="left">The base template to use for Crate label repository names. The available format keys are [<code>{repository}</code>, <code>{name}</code>, <code>{version}</code>].</td><td align="left"><code>&quot;{repository}__{name}-{version}&quot;</code></td></tr>
 <tr><td align="left"><a id="render_config-default_package_name"></a>default_package_name</td><td align="left">The default package name to in the rendered macros. This affects the auto package detection of things like <code>all_crate_deps</code>.</td><td align="left"><code>None</code></td></tr>
 <tr><td align="left"><a id="render_config-platforms_template"></a>platforms_template</td><td align="left">The base template to use for platform names. See <a href="https://docs.bazel.build/versions/main/platforms.html">platforms documentation</a>. The available format keys are [<code>{triple}</code>].</td><td align="left"><code>&quot;@rules_rust//rust/platform:{triple}&quot;</code></td></tr>
-<tr><td align="left"><a id="render_config-registry_url_template"></a>registry_url_template</td><td align="left">The base template to use for crate registry urls. The available format keys are [<code>{scheme}</code>, <code>{registry}</code>, <code>{name}</code>, <code>{version}</code>].</td><td align="left"><code>&quot;{scheme}://{registry}/api/v1/crates/{name}/{version}/download&quot;</code></td></tr>
 </tbody></table>
 <p><strong>RETURNS</strong></p>
 <p>string: A json encoded struct to match the Rust <code>config::RenderConfig</code> struct</p>
