@@ -91,6 +91,11 @@ def splice_workspace_manifest(repository_ctx, generator, lockfile, cargo, rustc)
 
     manifests = {str(repository_ctx.path(m)): str(m) for m in repository_ctx.attr.manifests}
 
+    if repository_ctx.attr.cargo_config:
+        cargo_config = str(repository_ctx.path(repository_ctx.attr.cargo_config))
+    else:
+        cargo_config = None
+
     # Serialize information required for splicing
     splicing_manifest = repository_ctx.path("{}/splicing_manifest.json".format(repo_dir))
     repository_ctx.file(
@@ -99,6 +104,7 @@ def splice_workspace_manifest(repository_ctx, generator, lockfile, cargo, rustc)
             direct_packages = direct_packages_info,
             extra_manifest_infos = extra_manifest_info,
             manifests = manifests,
+            cargo_config = cargo_config,
         ), indent = " " * 4),
     )
 

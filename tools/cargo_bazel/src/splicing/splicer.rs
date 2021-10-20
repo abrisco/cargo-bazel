@@ -32,6 +32,9 @@ pub enum SplicerKind<'a> {
     },
 }
 
+/// A list of files or directories to ignore when when symlinking
+const IGNORE_LIST: &[&str] = &[".git", "bazel-bin", "bazel-out", ".svn"];
+
 impl<'a> SplicerKind<'a> {
     pub fn new(
         manifests: &'a HashMap<PathBuf, Manifest>,
@@ -109,7 +112,10 @@ impl<'a> SplicerKind<'a> {
             Self::get_extra_workspace_manifests(&splicing_manifest.extra_manifest_infos)?;
 
         // Link the sources of the root manifest into the new workspace
-        symlink_roots(manifest_dir, workspace_dir)?;
+        symlink_roots(manifest_dir, workspace_dir, Some(IGNORE_LIST))?;
+
+        // Optionally install the cargo config after contents have been symlinked
+        Self::setup_cargo_config(&splicing_manifest.cargo_config, workspace_dir)?;
 
         // Add additional workspace members to the new manifest
         let mut installations = Self::inject_workspace_members(
@@ -148,7 +154,10 @@ impl<'a> SplicerKind<'a> {
             Self::get_extra_workspace_manifests(&splicing_manifest.extra_manifest_infos)?;
 
         // Link the sources of the root manifest into the new workspace
-        symlink_roots(manifest_dir, workspace_dir)?;
+        symlink_roots(manifest_dir, workspace_dir, Some(IGNORE_LIST))?;
+
+        // Optionally install the cargo config after contents have been symlinked
+        Self::setup_cargo_config(&splicing_manifest.cargo_config, workspace_dir)?;
 
         // Ensure the root package manifest has a populated `workspace` member
         let mut manifest = (*manifest).clone();
@@ -185,6 +194,9 @@ impl<'a> SplicerKind<'a> {
         splicing_manifest: &&SplicingManifest,
     ) -> Result<SplicedManifest> {
         let mut manifest = default_cargo_workspace_manifest();
+
+        // Optionally install a cargo config file into the workspace root.
+        Self::setup_cargo_config(&splicing_manifest.cargo_config, workspace_dir)?;
 
         let extra_workspace_manifests =
             Self::get_extra_workspace_manifests(&splicing_manifest.extra_manifest_infos)?;
@@ -231,6 +243,57 @@ impl<'a> SplicerKind<'a> {
             .collect()
     }
 
+    /// A helper for installing Cargo config files into the spliced workspace while also
+    /// ensuring no other linked config file is available
+    fn setup_cargo_config(cargo_config_path: &Option<PathBuf>, workspace_dir: &Path) -> Result<()> {
+        // Make sure no other config files exist
+        for config in vec![
+            workspace_dir.join("config"),
+            workspace_dir.join("config.toml"),
+        ] {
+            if config.exists() {
+                fs::remove_file(&config)?;
+            }
+        }
+
+        // If the `.cargo` dir is a symlink, we'll need to relink it and ensure
+        // a Cargo config file is omitted
+        let dot_cargo_dir = workspace_dir.join(".cargo");
+        if dot_cargo_dir.exists() {
+            let is_symlink = dot_cargo_dir
+                .symlink_metadata()
+                .map(|m| m.file_type().is_symlink())
+                .unwrap_or(false);
+            if is_symlink {
+                let real_path = dot_cargo_dir.canonicalize()?;
+                fs::remove_file(&dot_cargo_dir)?;
+                fs::create_dir(&dot_cargo_dir)?;
+                symlink_roots(&real_path, &dot_cargo_dir, Some(&["config", "config.toml"]))?;
+            } else {
+                for config in vec![
+                    dot_cargo_dir.join("config"),
+                    dot_cargo_dir.join("config.toml"),
+                ] {
+                    if config.exists() {
+                        fs::remove_file(&config)?;
+                    }
+                }
+            }
+        }
+
+        // Install the new config file after having removed all others
+        if let Some(cargo_config_path) = cargo_config_path {
+            let install_path = workspace_dir.join(".cargo").join("config.toml");
+            if !install_path.parent().unwrap().exists() {
+                fs::create_dir_all(&install_path.parent().unwrap())?;
+            }
+
+            fs::copy(cargo_config_path, &install_path)?;
+        }
+
+        Ok(())
+    }
+
     /// Update the newly generated manifest to include additional packages as
     /// Cargo workspace members.
     fn inject_workspace_members<'b>(
@@ -260,7 +323,7 @@ impl<'a> SplicerKind<'a> {
 
                 let dest_package_dir = workspace_dir.join(package_name);
 
-                match symlink_roots(manifest_dir, &dest_package_dir) {
+                match symlink_roots(manifest_dir, &dest_package_dir, Some(IGNORE_LIST)) {
                     Ok(_) => Ok((path, package_name.clone())),
                     Err(e) => Err(e),
                 }
@@ -426,11 +489,8 @@ fn symlink(src: &Path, dest: &Path) -> Result<(), std::io::Error> {
     }
 }
 
-/// A list of files or directories to ignore when when symlinking
-const IGNORE_LIST: &[&str] = &[".git", "bazel-bin", "bazel-out", ".svn"];
-
 /// Symlinks the root contents of a source directory into a destination directory
-pub fn symlink_roots(source: &Path, dest: &Path) -> Result<()> {
+pub fn symlink_roots(source: &Path, dest: &Path, ignore_list: Option<&[&str]>) -> Result<()> {
     // Ensure the source exists and is a directory
     if !source.is_dir() {
         bail!("Source path is not a directory: {}", source.display());
@@ -449,8 +509,10 @@ pub fn symlink_roots(source: &Path, dest: &Path) -> Result<()> {
 
         // Ignore certain directories that may lead to confusion
         if let Some(base_str) = basename.to_str() {
-            if IGNORE_LIST.contains(&base_str) {
-                continue;
+            if let Some(list) = ignore_list {
+                if list.contains(&base_str) {
+                    continue;
+                }
             }
         }
 

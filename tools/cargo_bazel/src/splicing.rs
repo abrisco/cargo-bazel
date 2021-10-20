@@ -46,6 +46,9 @@ pub struct SplicingManifest {
 
     /// A mapping of manifest paths to the labels representing them
     pub manifests: BTreeMap<PathBuf, Label>,
+
+    /// The path of a Cargo config file
+    pub cargo_config: Option<PathBuf>,
 }
 
 impl FromStr for SplicingManifest {
@@ -202,11 +205,14 @@ impl WorkspaceMetadata {
 
         // Load the cargo config
         let cargo_config = {
+            // Note that this path must match the one defined in `splicing::setup_cargo_config`
             let config_path = manifest_path
                 .as_path_buf()
                 .parent()
                 .unwrap()
+                .join(".cargo")
                 .join("config.toml");
+
             if config_path.exists() {
                 Some(CargoConfig::from_path(&config_path)?)
             } else {
