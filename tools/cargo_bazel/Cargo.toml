@@ -1,6 +1,6 @@
 [package]
 name = "cargo-bazel"
-version = "0.0.4"
+version = "0.0.5"
 authors = [
     "UebelAndre - github@uebelandre.com",
 ]
