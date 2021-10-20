@@ -17,6 +17,7 @@ filegroup(
         "README.md",
         "BUILD.bazel",
         "WORKSPACE.bazel",
+        "//3rdparty:distro",
         "//private:distro",
     ],
 )
