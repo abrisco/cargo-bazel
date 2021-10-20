@@ -25,8 +25,6 @@ def download_extra_workspace_members(repository_ctx, cache_dir, render_template_
         spec = struct(**json.decode(spec))
 
         url = render_template_registry_url
-        url = url.replace("{scheme}", "https")
-        url = url.replace("{registry}", "crates.io")
         url = url.replace("{name}", name)
         url = url.replace("{version}", spec.version)
 
@@ -61,14 +59,13 @@ def download_extra_workspace_members(repository_ctx, cache_dir, render_template_
 
     return manifests
 
-def splice_workspace_manifest(repository_ctx, generator, lockfile, config_info, cargo, rustc):
+def splice_workspace_manifest(repository_ctx, generator, lockfile, cargo, rustc):
     """Splice together a Cargo workspace from various other manifests and package definitions
 
     Args:
         repository_ctx (repository_ctx): The rule's context object.
         generator (path): The `cargo-bazel` binary.
         lockfile (path): The path to a "lock" file for reproducible `cargo-bazel` renderings.
-        config_info (struct): A starlark representation of the Rust `config::Config` struct.
         cargo (path): The path to a Cargo binary.
         rustc (path): The Path to a Rustc binary.
 
@@ -83,7 +80,7 @@ def splice_workspace_manifest(repository_ctx, generator, lockfile, config_info, 
     extra_manifest_info = download_extra_workspace_members(
         repository_ctx = repository_ctx,
         cache_dir = crates_cache_dir,
-        render_template_registry_url = config_info.rendering.registry_url_template,
+        render_template_registry_url = repository_ctx.attr.extra_workspace_member_url_template,
     )
 
     # Deserialize information about direct packges

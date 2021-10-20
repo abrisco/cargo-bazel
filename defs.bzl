@@ -63,7 +63,6 @@ def _crates_repository_impl(repository_ctx):
             repository_ctx = repository_ctx,
             generator = generator,
             lockfile = lockfile,
-            config_info = config.info,
             cargo = tools.cargo,
             rustc = tools.rustc,
         )
@@ -104,6 +103,10 @@ Environment Variables:
     attrs = {
         "cargo_config": attr.label(
             doc = "A [Cargo configuration](https://doc.rust-lang.org/cargo/reference/config.html) file",
+        ),
+        "extra_workspace_member_url_template": attr.string(
+            doc = "The registry url to use when fetching extra workspace members",
+            default = "https://crates.io/api/v1/crates/{name}/{version}/download",
         ),
         "extra_workspace_members": attr.string_dict(
             doc = (

@@ -2,6 +2,7 @@
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
+load("//3rdparty:third_party_deps.bzl", "third_party_deps")
 
 def cargo_bazel_deps():
     maybe(
@@ -24,3 +25,5 @@ def cargo_bazel_deps():
         ],
         sha256 = "c6966ec828da198c5d9adbaa94c05e3a1c7f21bd012a0b29ba8ddbccb2c93b0d",
     )
+
+    third_party_deps()

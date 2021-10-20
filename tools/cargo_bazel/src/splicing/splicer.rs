@@ -522,18 +522,27 @@ mod test {
     }
 
     /// This json object is tightly coupled to [mock_extra_manifest_digest]
-    fn mock_extra_workspace_metadata() -> serde_json::Value {
-        serde_json::json!({
-            "cargo-bazel": {
-                "package_prefixes": {},
-                "sources": {
-                    "extra_pkg 0.0.1": {
-                        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-                        "url": "https://crates.io/"
+    fn mock_workspace_metadata(include_extra_member: bool) -> serde_json::Value {
+        if include_extra_member {
+            serde_json::json!({
+                "cargo-bazel": {
+                    "package_prefixes": {},
+                    "sources": {
+                        "extra_pkg 0.0.1": {
+                            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                            "url": "https://crates.io/"
+                        }
                     }
                 }
-            }
-        })
+            })
+        } else {
+            serde_json::json!({
+                "cargo-bazel": {
+                    "package_prefixes": {},
+                    "sources": {}
+                }
+            })
+        }
     }
 
     fn mock_splicing_manifest_with_workspace() -> (SplicingManifest, tempfile::TempDir) {
@@ -649,7 +658,7 @@ mod test {
         );
 
         // Ensure the workspace metadata annotations are populated
-        assert_eq!(metadata.workspace_metadata, serde_json::Value::Null,);
+        assert_eq!(metadata.workspace_metadata, mock_workspace_metadata(false));
 
         // Ensure lockfile was successfully spliced
         cargo_lock::Lockfile::load(workspace_root.as_ref().join("Cargo.lock")).unwrap();
@@ -675,7 +684,7 @@ mod test {
         );
 
         // Ensure the workspace metadata annotations are not populated
-        assert_eq!(metadata.workspace_metadata, serde_json::Value::Null);
+        assert_eq!(metadata.workspace_metadata, mock_workspace_metadata(false));
 
         // Ensure lockfile was successfully spliced
         cargo_lock::Lockfile::load(workspace_root.as_ref().join("Cargo.lock")).unwrap();
@@ -707,7 +716,7 @@ mod test {
         );
 
         // Ensure the workspace metadata annotations are populated
-        assert_eq!(metadata.workspace_metadata, serde_json::Value::Null);
+        assert_eq!(metadata.workspace_metadata, mock_workspace_metadata(false));
 
         // Ensure lockfile was successfully spliced
         cargo_lock::Lockfile::load(workspace_root.as_ref().join("Cargo.lock")).unwrap();
@@ -739,7 +748,7 @@ mod test {
         );
 
         // Ensure the workspace metadata annotations are populated
-        assert_eq!(metadata.workspace_metadata, mock_extra_workspace_metadata());
+        assert_eq!(metadata.workspace_metadata, mock_workspace_metadata(true));
 
         // Ensure lockfile was successfully spliced
         cargo_lock::Lockfile::load(workspace_root.as_ref().join("Cargo.lock")).unwrap();
@@ -773,7 +782,7 @@ mod test {
         );
 
         // Ensure the workspace metadata annotations are populated
-        assert_eq!(metadata.workspace_metadata, mock_extra_workspace_metadata());
+        assert_eq!(metadata.workspace_metadata, mock_workspace_metadata(true));
 
         // Ensure lockfile was successfully spliced
         cargo_lock::Lockfile::load(workspace_root.as_ref().join("Cargo.lock")).unwrap();
@@ -809,7 +818,7 @@ mod test {
         );
 
         // Ensure the workspace metadata annotations are populated
-        assert_eq!(metadata.workspace_metadata, mock_extra_workspace_metadata());
+        assert_eq!(metadata.workspace_metadata, mock_workspace_metadata(true));
 
         // Ensure lockfile was successfully spliced
         cargo_lock::Lockfile::load(workspace_root.as_ref().join("Cargo.lock")).unwrap();

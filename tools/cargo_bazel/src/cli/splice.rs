@@ -8,7 +8,7 @@ use structopt::StructOpt;
 
 use crate::cli::Result;
 use crate::metadata::{write_metadata, Generator, MetadataGenerator};
-use crate::splicing::{generate_lockfile, Splicer, SplicingManifest};
+use crate::splicing::{generate_lockfile, Splicer, SplicingManifest, WorkspaceMetadata};
 
 /// Command line options for the `splice` subcommand
 #[derive(StructOpt, Debug)]
@@ -68,10 +68,14 @@ pub fn splice(opt: SpliceOptions) -> Result<()> {
     }
 
     // Generate a lockfile
-    generate_lockfile(&manifest_path, &opt.cargo_lockfile, &opt.cargo, &opt.rustc)?;
+    let cargo_lockfile =
+        generate_lockfile(&manifest_path, &opt.cargo_lockfile, &opt.cargo, &opt.rustc)?;
+
+    // Write the registry url info to the manifest now that a lockfile has been generated
+    WorkspaceMetadata::write_registry_urls(&cargo_lockfile, &manifest_path)?;
 
     // Write metadata to the workspace for future reuse
-    let (cargo_metadata, _cargo_lockfile) = Generator::new()
+    let (cargo_metadata, _) = Generator::new()
         .with_cargo(opt.cargo)
         .with_rustc(opt.rustc)
         .generate(&manifest_path.as_path_buf())?;

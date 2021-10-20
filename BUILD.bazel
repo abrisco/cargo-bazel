@@ -25,6 +25,7 @@ filegroup(
     name = "bzl_srcs",
     srcs = glob(["*.bzl"]) + [
         "//private:bzl_srcs",
+        "//3rdparty:bzl_srcs",
     ],
 )
 

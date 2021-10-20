@@ -47,17 +47,3 @@ pub fn render_build_file_template(template: &str, name: &str, version: &str) -> 
             .replace("{version}", version),
     )
 }
-
-pub fn render_crate_registry_url(
-    template: &str,
-    schema: &str,
-    registry: &str,
-    name: &str,
-    version: &str,
-) -> String {
-    template
-        .replace("{scheme}", schema)
-        .replace("{registry}", registry)
-        .replace("{name}", name)
-        .replace("{version}", version)
-}

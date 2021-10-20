@@ -13,6 +13,9 @@ build --config=strict
 # Show errors in CI
 test --test_output=errors
 
+# Show more information about failures
+build --verbose_failures
+
 # UI for cleaner CI output
 common --color=no
 common --curses=no

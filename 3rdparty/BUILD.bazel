@@ -1,0 +1,14 @@
+package(default_visibility = ["//visibility:public"])
+
+filegroup(
+    name = "distro",
+    srcs = glob([
+        "*.bzl",
+        "*.bazel",
+    ]),
+)
+
+filegroup(
+    name = "bzl_srcs",
+    srcs = glob(["*.bzl"]),
+)
