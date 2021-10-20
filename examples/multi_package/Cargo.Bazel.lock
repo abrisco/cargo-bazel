@@ -1,5 +1,5 @@
 {
-  "checksum": "32ca6ffa372c83f2eec7a3ca50d6a5846df48f9f44375b7275f8b9517b26022a",
+  "checksum": "ad6ead1100b13bee555aa821f6813e31a78ad24e444f298b61eda6eea0660f38",
   "crates": {
     "aho-corasick 0.7.18": {
       "name": "aho-corasick",
@@ -1300,13 +1300,13 @@
       },
       "license": "Apache-2.0 OR MIT"
     },
-    "bumpalo 3.7.1": {
+    "bumpalo 3.8.0": {
       "name": "bumpalo",
-      "version": "3.7.1",
+      "version": "3.8.0",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/bumpalo/3.7.1/download",
-          "sha256": "d9df67f7bf9ef8498769f994239c45613ef0c5899415fb58e9add412d2c1a538"
+          "url": "https://crates.io/api/v1/crates/bumpalo/3.8.0/download",
+          "sha256": "8f1e260c3a9040a7c19a12468758f4c16f31a81a1fe087482be9570ec864bb6c"
         }
       },
       "targets": [
@@ -1329,7 +1329,7 @@
           "default"
         ],
         "edition": "2018",
-        "version": "3.7.1"
+        "version": "3.8.0"
       },
       "license": "MIT/Apache-2.0"
     },
@@ -6277,7 +6277,7 @@
               "target": "anyhow"
             },
             {
-              "id": "reqwest 0.11.5",
+              "id": "reqwest 0.11.6",
               "target": "reqwest"
             }
           ],
@@ -7175,13 +7175,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "reqwest 0.11.5": {
+    "reqwest 0.11.6": {
       "name": "reqwest",
-      "version": "0.11.5",
+      "version": "0.11.6",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/reqwest/0.11.5/download",
-          "sha256": "51c732d463dd300362ffb44b7b125f299c23d2990411a4253824630ebc7467fb"
+          "url": "https://crates.io/api/v1/crates/reqwest/0.11.6/download",
+          "sha256": "66d2927ca2f685faf0fc620ac4834690d29e7abb153add10f5812eef20b5e280"
         }
       },
       "targets": [
@@ -7333,7 +7333,7 @@
           }
         },
         "edition": "2018",
-        "version": "0.11.5"
+        "version": "0.11.6"
       },
       "license": "MIT/Apache-2.0"
     },
@@ -9709,7 +9709,7 @@
         "deps": {
           "common": [
             {
-              "id": "bumpalo 3.7.1",
+              "id": "bumpalo 3.8.0",
               "target": "bumpalo"
             },
             {
