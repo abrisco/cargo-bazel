@@ -1,5 +1,15 @@
-cargo_build_script(
+alias(
+    # Because `cargo_build_script` does some invisible target name mutating to
+    # determine the package and crate name for a build script, the Bazel
+    # target namename of any build script cannot be the Cargo canonical name
+    # of `build_script_build` without losing out on having certain Cargo
+    # environment variables set.
     name = "{{ target.crate_name }}",
+    actual = "{{ crate.name }}_build_script",
+)
+cargo_build_script(
+    # See comment associated with alias. Do not change this name
+    name = "{{ crate.name }}_build_script",
     aliases = {% set selectable = build_aliases %}{% include "partials/crate/aliases.j2" -%},
     build_script_env = {% set selectable = crate.build_script_attrs | get(key="build_script_env", default=Null) %}{% include "partials/starlark/selectable_dict.j2" -%},
     compile_data = {% if crate.build_script_attrs | get(key="compile_data_glob") %}glob({{ crate.build_script_attrs.compile_data_glob | json_encode | safe }}) + {% endif %}{% set selectable = crate.build_script_attrs | get(key="compile_data", default=Null) %}{% include "partials/starlark/selectable_list.j2" %},
