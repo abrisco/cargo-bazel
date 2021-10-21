@@ -28,17 +28,13 @@ crates_repository(
             shallow_since = "1632241831 -0700",
         )],
         "chrono-tz": [crate.extras(
-            build_script_data_glob = [
-                "**/tz/**",
-            ],
+            build_script_data_glob = ["**/tz/**"],
         )],
         "crates-index": [crate.extras(
             shallow_since = "1634514141 +0100",
         )],
         "crossbeam-utils": [crate.extras(
-            build_script_data_glob = [
-                "**/*.rs",
-            ],
+            build_script_data_glob = ["**/*.rs"],
         )],
         "deunicode": [crate.extras(
             compile_data_glob = [
@@ -48,30 +44,20 @@ crates_repository(
         )],
         "libgit2-sys": [crate.extras(
             gen_build_script = False,
-            deps = [
-                "@libgit2",
-            ],
+            deps = ["@libgit2"],
         )],
         "libz-sys": [crate.extras(
             gen_build_script = False,
-            deps = [
-                "@zlib",
-            ],
+            deps = ["@zlib"],
         )],
         "tera": [crate.extras(
-            compile_data_glob = [
-                "**/*.pest",
-            ],
+            compile_data_glob = ["**/*.pest"],
         )],
         "unic-ucd-segment": [crate.extras(
-            compile_data_glob = [
-                "**/*.rsv",
-            ],
+            compile_data_glob = ["**/*.rsv"],
         )],
         "unic-ucd-version": [crate.extras(
-            compile_data_glob = [
-                "**/*.rsv",
-            ],
+            compile_data_glob = ["**/*.rsv"],
         )],
         "unicode-linebreak": [crate.extras(
             build_script_data_glob = [
