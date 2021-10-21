@@ -37,7 +37,7 @@ impl DependencySet {
                 // Do not track workspace members as dependencies. Users are expected to maintain those connections
                 .filter(|dep| !is_workspace_member(dep, metadata))
                 .filter(|dep| is_lib_package(&metadata[&dep.pkg]))
-                .filter(|dep| !is_build_dependency(dep))
+                .filter(|dep| is_normal_dependency(dep) || is_dev_dependency(dep))
                 .partition(|dep| is_dev_dependency(dep));
 
             (
@@ -168,6 +168,13 @@ fn is_build_dependency(node_dep: &NodeDep) -> bool {
         .dep_kinds
         .iter()
         .any(|k| matches!(k.kind, cargo_metadata::DependencyKind::Build))
+}
+
+fn is_normal_dependency(node_dep: &NodeDep) -> bool {
+    node_dep
+        .dep_kinds
+        .iter()
+        .any(|k| matches!(k.kind, cargo_metadata::DependencyKind::Normal))
 }
 
 fn is_workspace_member(node_dep: &NodeDep, metadata: &CargoMetadata) -> bool {
