@@ -1,6 +1,9 @@
 rust_binary(
     name = "{{ target.crate_name }}__bin",
     deps = [
+        {%- if crate.library_target_name %}
+        ":{{ crate.library_target_name }}",
+        {%- endif %}
         {%- for dep in crate.common_attrs | get(key="extra_deps", default=[]) %}
         "{{ dep }}",
         {%- endfor %}
