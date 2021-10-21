@@ -157,10 +157,15 @@ fn is_proc_macro_package(package: &Package) -> bool {
 }
 
 fn is_dev_dependency(node_dep: &NodeDep) -> bool {
-    node_dep
+    let is_normal_dep = is_normal_dependency(node_dep);
+    let is_dev_dep = node_dep
         .dep_kinds
         .iter()
-        .any(|k| matches!(k.kind, cargo_metadata::DependencyKind::Development))
+        .any(|k| matches!(k.kind, cargo_metadata::DependencyKind::Development));
+
+    // In the event that a dependency is listed as both a dev and normal dependency,
+    // it's only considered a dev dependency if it's __not__ a normal dependency.
+    !is_normal_dep && is_dev_dep
 }
 
 fn is_build_dependency(node_dep: &NodeDep) -> bool {
