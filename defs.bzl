@@ -140,6 +140,14 @@ Environment Variables:
             doc = "URL template from which to download the `cargo-bazel` binary. `{host_triple}` and will be filled in according to the host platform.",
             default = CARGO_BAZEL_URLS,
         ),
+        "isolated": attr.bool(
+            doc = (
+                "If true, `CARGO_HOME` will be set to a directory within the generated repository to prevent " +
+                "other uses of Cargo from impacting having any effect on the generated targets produced by " +
+                "this rule."
+            ),
+            default = False,
+        ),
         "lockfile": attr.label(
             doc = (
                 "The path to a file to use for reproducible renderings. Two kinds of lock files are supported, " +

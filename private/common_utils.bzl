@@ -59,3 +59,14 @@ def get_rust_tools(repository_ctx, host_triple):
         host_triple = host_triple,
         version = repository_ctx.attr.rust_version,
     )
+
+def cargo_home_path(repository_ctx):
+    """Define a path within the repository to use in place of `CARGO_HOME`
+
+    Args:
+        repository_ctx (repository_ctx): The rules context object
+
+    Returns:
+        path: The path to a directory to use as `CARGO_HOME`
+    """
+    return repository_ctx.path(".cargo_home")
