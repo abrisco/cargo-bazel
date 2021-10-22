@@ -1,6 +1,6 @@
 """Utilities directly related to the `generate` step of `cargo-bazel`."""
 
-load(":common_utils.bzl", "execute")
+load(":common_utils.bzl", "cargo_home_path", "execute")
 
 CARGO_BAZEL_GENERATOR_URL = "CARGO_BAZEL_GENERATOR_URL"
 CARGO_BAZEL_GENERATOR_SHA256 = "CARGO_BAZEL_GENERATOR_SHA256"
@@ -255,14 +255,23 @@ def determine_repin(repository_ctx, generator, lockfile_path, lockfile_kind, con
         rustc_path,
     ]
 
+    env = {
+        "CARGO": str(cargo_path),
+        "RUSTC": str(rustc_path),
+        "RUST_BACKTRACE": "full",
+    }
+
+    # If isolated builds are enabled, restrict `CARGO_HOME` to a path
+    # within the generated repository rule.
+    if repository_ctx.attr.isolated:
+        env.update({
+            "CARGO_HOME": str(cargo_home_path(repository_ctx)),
+        })
+
     result = execute(
         repository_ctx = repository_ctx,
         args = args,
-        env = {
-            "CARGO": str(cargo_path),
-            "RUSTC": str(rustc_path),
-            "RUST_BACKTRACE": "full",
-        },
+        env = env,
     )
 
     # If it was determined repinning should occur but there was no
@@ -340,6 +349,13 @@ def execute_generator(
         env.update({
             "CARGO": str(cargo),
             "RUSTC": str(rustc),
+        })
+
+    # If isolated builds are enabled, restrict `CARGO_HOME` to a path
+    # within the generated repository rule.
+    if repository_ctx.attr.isolated:
+        env.update({
+            "CARGO_HOME": str(cargo_home_path(repository_ctx)),
         })
 
     result = execute(
