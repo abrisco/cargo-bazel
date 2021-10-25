@@ -41,15 +41,3 @@ pub fn mock_cargo_lock_package() -> cargo_lock::Package {
     ))
     .unwrap()
 }
-
-/// Clone and compare two items after calling `.sort()` on them.
-macro_rules! assert_sort_eq {
-    ($left:expr, $right:expr $(,)?) => {
-        let mut left = $left.clone();
-        left.sort();
-        let mut right = $right.clone();
-        right.sort();
-        assert_eq!(left, right);
-    };
-}
-pub(crate) use assert_sort_eq;

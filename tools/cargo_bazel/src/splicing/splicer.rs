@@ -554,6 +554,7 @@ pub fn symlink_roots(source: &Path, dest: &Path, ignore_list: Option<&[&str]>) -
     Ok(())
 }
 
+#[cfg(not(target_os = "windows"))]
 #[cfg(test)]
 mod test {
     use super::*;
@@ -564,8 +565,18 @@ mod test {
     use cargo_metadata::{MetadataCommand, PackageId};
 
     use crate::splicing::ExtraManifestInfo;
-    use crate::test::*;
     use crate::utils::starlark::Label;
+
+    /// Clone and compare two items after calling `.sort()` on them.
+    macro_rules! assert_sort_eq {
+        ($left:expr, $right:expr $(,)?) => {
+            let mut left = $left.clone();
+            left.sort();
+            let mut right = $right.clone();
+            right.sort();
+            assert_eq!(left, right);
+        };
+    }
 
     fn generate_metadata(manifest_path: &Path) -> cargo_metadata::Metadata {
         MetadataCommand::new()
