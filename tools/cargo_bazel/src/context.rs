@@ -7,7 +7,7 @@ use std::collections::{BTreeMap, BTreeSet, HashSet};
 use std::fs;
 use std::path::{Path, PathBuf};
 
-use anyhow::Result;
+use anyhow::{Context as AnyhowContext, Result};
 use serde::{Deserialize, Serialize};
 
 use crate::annotation::Annotations;
@@ -101,7 +101,10 @@ impl Context {
             })
             .collect::<Result<BTreeMap<CrateId, String>>>()?;
 
-        let checksum = Some(Digest::new(&annotations.config, cargo_bin, rustc_bin)?);
+        let checksum = Some(
+            Digest::new(&annotations.config, cargo_bin, rustc_bin)
+                .context("Failed to generate digest")?,
+        );
 
         Ok(Self {
             checksum,

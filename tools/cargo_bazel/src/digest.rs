@@ -1,9 +1,10 @@
 //! TODO
 
+use std::ffi::OsStr;
 use std::path::Path;
 use std::process::Command;
 
-use anyhow::{bail, Result};
+use anyhow::{bail, Context as AnyhowContext, Result};
 use hex::ToHex;
 use serde::{Deserialize, Serialize};
 use sha2::{Digest as Sha2Digest, Sha256};
@@ -23,17 +24,32 @@ impl Digest {
         hasher.update(serde_json::to_string(config)?.as_bytes());
         hasher.update(b"\0");
 
-        hasher.update(Self::bin_version(cargo_bin)?.as_bytes());
+        hasher.update(
+            Self::bin_version(cargo_bin)
+                .context("Failed to get Cargo version")?
+                .as_bytes(),
+        );
         hasher.update(b"\0");
 
-        hasher.update(Self::bin_version(rustc_bin)?.as_bytes());
+        hasher.update(
+            Self::bin_version(rustc_bin)
+                .context("Failed to get Rustc version")?
+                .as_bytes(),
+        );
         hasher.update(b"\0");
 
         Ok(Self(hasher.finalize().encode_hex::<String>()))
     }
 
     fn bin_version(binary: &Path) -> Result<String> {
-        let output = Command::new(binary).arg("--version").env_clear().output()?;
+        let safe_vars = [OsStr::new("HOMEDRIVE"), OsStr::new("PATHEXT")];
+        let env = std::env::vars_os().filter(|(var, _)| safe_vars.contains(&var.as_os_str()));
+
+        let output = Command::new(binary)
+            .arg("--version")
+            .env_clear()
+            .envs(env)
+            .output()?;
 
         if !output.status.success() {
             bail!("Failed to query cargo version")
