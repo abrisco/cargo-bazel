@@ -252,7 +252,12 @@ impl<'a> SplicerKind<'a> {
             workspace_dir.join("config.toml"),
         ] {
             if config.exists() {
-                fs::remove_file(&config)?;
+                fs::remove_file(&config).with_context(|| {
+                    format!(
+                        "Failed to delete existing cargo config: {}",
+                        config.display()
+                    )
+                })?;
             }
         }
 
@@ -266,7 +271,12 @@ impl<'a> SplicerKind<'a> {
                 .unwrap_or(false);
             if is_symlink {
                 let real_path = dot_cargo_dir.canonicalize()?;
-                fs::remove_file(&dot_cargo_dir)?;
+                remove_symlink(&dot_cargo_dir).with_context(|| {
+                    format!(
+                        "Failed to remove existing symlink {}",
+                        dot_cargo_dir.display()
+                    )
+                })?;
                 fs::create_dir(&dot_cargo_dir)?;
                 symlink_roots(&real_path, &dot_cargo_dir, Some(&["config", "config.toml"]))?;
             } else {
@@ -486,6 +496,22 @@ fn symlink(src: &Path, dest: &Path) -> Result<(), std::io::Error> {
         std::os::windows::fs::symlink_dir(src, dest)
     } else {
         std::os::windows::fs::symlink_file(src, dest)
+    }
+}
+
+/// Create a symlink file on unix systems
+#[cfg(target_family = "unix")]
+fn remove_symlink(path: &Path) -> Result<(), std::io::Error> {
+    fs::remove_file(path)
+}
+
+/// Create a symlink file on windows systems
+#[cfg(target_family = "windows")]
+fn remove_symlink(path: &Path) -> Result<(), std::io::Error> {
+    if path.is_dir() {
+        fs::remove_dir(path)
+    } else {
+        fs::remove_file(path)
     }
 }
 
