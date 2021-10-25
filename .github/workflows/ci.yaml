@@ -60,13 +60,28 @@ jobs:
 
       # Build and Test the code
       - name: Build
-        run: bazel ${BAZEL_STARTUP_FLAGS[@]} build //...
+        run: |
+          if [[ "${RUNNER_OS}" == "Windows" ]]; then
+            bazel ${BAZEL_STARTUP_FLAGS[@]} build ///...
+          else
+            bazel ${BAZEL_STARTUP_FLAGS[@]} build //...
+          fi
 
       - name: Test
-        run: bazel ${BAZEL_STARTUP_FLAGS[@]} test //...
+        run: |
+          if [[ "${RUNNER_OS}" == "Windows" ]]; then
+            bazel ${BAZEL_STARTUP_FLAGS[@]} test ///...
+          else
+            bazel ${BAZEL_STARTUP_FLAGS[@]} test //...
+          fi
 
       - name: Examples
-        run: bazel ${BAZEL_STARTUP_FLAGS[@]} run //tests:examples_test
+        run: |
+          if [[ "${RUNNER_OS}" == "Windows" ]]; then
+            bazel ${BAZEL_STARTUP_FLAGS[@]} run ///tests:examples_test
+          else
+            bazel ${BAZEL_STARTUP_FLAGS[@]} run //tests:examples_test
+          fi
         env:
           EXAMPLES_BAZEL_STARTUP_FLAGS: --output_user_root=${{ github.workspace }}/examples/.cache
 
