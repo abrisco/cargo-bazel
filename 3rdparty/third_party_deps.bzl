@@ -29,6 +29,17 @@ def third_party_deps():
 
     maybe(
         http_archive,
+        name = "libgit2.foreign_cc",
+        build_file = Label("//3rdparty:BUILD.libgit2.foreign_cc.bazel"),
+        sha256 = "192eeff84596ff09efb6b01835a066f2df7cd7985e0991c79595688e6b36444e",
+        # The version here should match the version used with the Rust crate `libgit2-sys`
+        # https://github.com/rust-lang/git2-rs/tree/libgit2-sys-v0.12.22+1.1.0/libgit2-sys
+        strip_prefix = "libgit2-1.3.0",
+        urls = ["https://github.com/libgit2/libgit2/archive/refs/tags/v1.3.0.tar.gz"],
+    )
+
+    maybe(
+        http_archive,
         name = "rules_foreign_cc",
         sha256 = "69023642d5781c68911beda769f91fcbc8ca48711db935a75da7f6536b65047f",
         strip_prefix = "rules_foreign_cc-0.6.0",
