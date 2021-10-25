@@ -58,6 +58,11 @@ jobs:
             ${{ github.workspace }}/examples/.cache
           key: ${{ runner.os }}-${{ env.cache-name }}
 
+      - name: Setup Windows Bazelrc
+        run: |
+          echo "startup --output_user_root=C:/tmp" > ./user.bazelrc
+        if: startswith(matrix.os, 'Windows')
+        
       # Build and Test the code
       - name: Build
         run: |
