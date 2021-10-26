@@ -89,6 +89,8 @@ jobs:
           fi
         env:
           EXAMPLES_BAZEL_STARTUP_FLAGS: --output_user_root=${{ github.workspace }}/examples/.cache
+        # TODO: This should obviously be made to work on windows
+        if: startswith(matrix.os, 'Windows') == false
 
   ci-buildifier:
     runs-on: ubuntu-20.04
