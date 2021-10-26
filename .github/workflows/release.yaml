@@ -1,6 +1,7 @@
 ---
 name: Release
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -61,6 +62,10 @@ jobs:
           echo "SDKROOT=$(xcrun -sdk macosx11.1 --show-sdk-path)" >> $GITHUB_ENV
           echo "MACOSX_DEPLOYMENT_TARGET=$(xcrun -sdk macosx11.1 --show-sdk-platform-version)" >> $GITHUB_ENV
         if: startswith(matrix.os, 'macos')
+      - name: Setup Windows Bazelrc
+        run: |
+          echo "startup --output_user_root=C:/tmp" > ./user.bazelrc
+        if: startswith(matrix.os, 'Windows')
       - name: Build cargo-bazel binaries
         run: |
           # Build binaries
