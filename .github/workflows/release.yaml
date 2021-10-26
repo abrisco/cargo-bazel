@@ -1,6 +1,7 @@
 ---
 name: Release
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -61,10 +62,19 @@ jobs:
           echo "SDKROOT=$(xcrun -sdk macosx11.1 --show-sdk-path)" >> $GITHUB_ENV
           echo "MACOSX_DEPLOYMENT_TARGET=$(xcrun -sdk macosx11.1 --show-sdk-platform-version)" >> $GITHUB_ENV
         if: startswith(matrix.os, 'macos')
+      - name: Setup Windows Bazelrc
+        run: |
+          echo "startup --output_user_root=C:/tmp" > ./user.bazelrc
+        if: startswith(matrix.os, 'Windows')
       - name: Build cargo-bazel binaries
         run: |
           # Build binaries
-          bazel ${BAZEL_STARTUP_FLAGS[@]} run //tools/cross_installer -- --target=${TARGET} --output=${{ github.workspace }}/build/artifacts
+          if [[ "${RUNNER_OS}" == "Windows" ]]; then
+            OUTPUT_PATH="$(cygpath "${{ github.workspace }}/build/artifacts" -m)"
+          else
+            OUTPUT_PATH="${{ github.workspace }}/build/artifacts"
+          fi
+            bazel ${BAZEL_STARTUP_FLAGS[@]} run //tools/cross_installer -- --target=${TARGET} --output="${OUTPUT_PATH}"
         env:
           TARGET: "${{ matrix.env.TARGET }}"
       - uses: actions/upload-artifact@v2
