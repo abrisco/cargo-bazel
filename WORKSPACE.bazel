@@ -44,7 +44,7 @@ crates_repository(
         )],
         "libgit2-sys": [crate.extras(
             gen_build_script = False,
-            deps = ["@libgit2"],
+            deps = ["@cargo_bazel//3rdparty:libgit2"],
         )],
         "libz-sys": [crate.extras(
             gen_build_script = False,

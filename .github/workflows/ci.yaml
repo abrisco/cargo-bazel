@@ -24,8 +24,7 @@ jobs:
         include:
           - os: macos-11
           - os: ubuntu-20.04
-          # TODO: Windows at the time of 0.0.1 works, but not in Github CI.
-          # - os: windows-2019
+          - os: windows-2019
     steps:
       # Checkout the code
       - uses: actions/checkout@v2
@@ -59,17 +58,39 @@ jobs:
             ${{ github.workspace }}/examples/.cache
           key: ${{ runner.os }}-${{ env.cache-name }}
 
+      - name: Setup Windows Bazelrc
+        run: |
+          echo "startup --output_user_root=C:/tmp" > ./user.bazelrc
+        if: startswith(matrix.os, 'Windows')
+        
       # Build and Test the code
       - name: Build
-        run: bazel ${BAZEL_STARTUP_FLAGS[@]} build //...
+        run: |
+          if [[ "${RUNNER_OS}" == "Windows" ]]; then
+            bazel ${BAZEL_STARTUP_FLAGS[@]} build ///...
+          else
+            bazel ${BAZEL_STARTUP_FLAGS[@]} build //...
+          fi
 
       - name: Test
-        run: bazel ${BAZEL_STARTUP_FLAGS[@]} test //...
+        run: |
+          if [[ "${RUNNER_OS}" == "Windows" ]]; then
+            bazel ${BAZEL_STARTUP_FLAGS[@]} test ///...
+          else
+            bazel ${BAZEL_STARTUP_FLAGS[@]} test //...
+          fi
 
       - name: Examples
-        run: bazel ${BAZEL_STARTUP_FLAGS[@]} run //tests:examples_test
+        run: |
+          if [[ "${RUNNER_OS}" == "Windows" ]]; then
+            bazel ${BAZEL_STARTUP_FLAGS[@]} run ///tests:examples_test
+          else
+            bazel ${BAZEL_STARTUP_FLAGS[@]} run //tests:examples_test
+          fi
         env:
           EXAMPLES_BAZEL_STARTUP_FLAGS: --output_user_root=${{ github.workspace }}/examples/.cache
+        # TODO: This should obviously be made to work on windows
+        if: startswith(matrix.os, 'Windows') == false
 
   ci-buildifier:
     runs-on: ubuntu-20.04

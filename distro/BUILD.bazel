@@ -9,14 +9,6 @@ pkg_tar(
     owner = "0.0",
     package_dir = ".",
     strip_prefix = ".",
-    # TODO: In my own test environment, python was giving me issues. Since
-    # there's no plans to distribute anything from windows, don't bother
-    # building here.
-    target_compatible_with = select({
-        "@platforms//os:linux": [],
-        "@platforms//os:macos": [],
-        "//conditions:default": ["@platforms//:incompatible"],
-    }),
     visibility = ["//:__subpackages__"],
 )
 
