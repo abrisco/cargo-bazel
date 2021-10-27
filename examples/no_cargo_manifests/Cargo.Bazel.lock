@@ -1,5 +1,5 @@
 {
-  "checksum": "a45f8a00f3c31285edb97a703b4b09a536dc5f78d16140876b69ac5a454bac59",
+  "checksum": "8e89e87797ec2f808d422182446421a23ab1834fa5cc6ff1135532c66fbe41ea",
   "crates": {
     "aho-corasick 0.7.18": {
       "name": "aho-corasick",
@@ -129,7 +129,7 @@
               "target": "build_script_build"
             },
             {
-              "id": "proc-macro2 1.0.30",
+              "id": "proc-macro2 1.0.32",
               "target": "proc_macro2"
             },
             {
@@ -137,7 +137,7 @@
               "target": "quote"
             },
             {
-              "id": "syn 1.0.80",
+              "id": "syn 1.0.81",
               "target": "syn"
             }
           ],
@@ -2390,7 +2390,7 @@
         "deps": {
           "common": [
             {
-              "id": "proc-macro2 1.0.30",
+              "id": "proc-macro2 1.0.32",
               "target": "proc_macro2"
             },
             {
@@ -2398,7 +2398,7 @@
               "target": "quote"
             },
             {
-              "id": "syn 1.0.80",
+              "id": "syn 1.0.81",
               "target": "syn"
             }
           ],
@@ -2469,13 +2469,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "proc-macro2 1.0.30": {
+    "proc-macro2 1.0.32": {
       "name": "proc-macro2",
-      "version": "1.0.30",
+      "version": "1.0.32",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/proc-macro2/1.0.30/download",
-          "sha256": "edc3358ebc67bc8b7fa0c007f945b0b18226f78437d61bec735a9eb96b61ee70"
+          "url": "https://crates.io/api/v1/crates/proc-macro2/1.0.32/download",
+          "sha256": "ba508cc11742c0dc5c1659771673afbab7a0efab23aa17e854cbab0837ed0b43"
         }
       },
       "targets": [
@@ -2513,7 +2513,7 @@
         "deps": {
           "common": [
             {
-              "id": "proc-macro2 1.0.30",
+              "id": "proc-macro2 1.0.32",
               "target": "build_script_build"
             },
             {
@@ -2524,7 +2524,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.0.30"
+        "version": "1.0.32"
       },
       "build_script_attrs": {},
       "license": "MIT OR Apache-2.0"
@@ -2561,7 +2561,7 @@
         "deps": {
           "common": [
             {
-              "id": "proc-macro2 1.0.30",
+              "id": "proc-macro2 1.0.32",
               "target": "proc_macro2"
             }
           ],
@@ -3208,13 +3208,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "syn 1.0.80": {
+    "syn 1.0.81": {
       "name": "syn",
-      "version": "1.0.80",
+      "version": "1.0.81",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/syn/1.0.80/download",
-          "sha256": "d010a1623fbd906d51d650a9916aaefc05ffa0e4053ff7fe601167f3e715d194"
+          "url": "https://crates.io/api/v1/crates/syn/1.0.81/download",
+          "sha256": "f2afee18b8beb5a596ecb4a2dce128c719b4ba399d34126b9e4396e3f9860966"
         }
       },
       "targets": [
@@ -3261,7 +3261,7 @@
         "deps": {
           "common": [
             {
-              "id": "proc-macro2 1.0.30",
+              "id": "proc-macro2 1.0.32",
               "target": "proc_macro2"
             },
             {
@@ -3269,7 +3269,7 @@
               "target": "quote"
             },
             {
-              "id": "syn 1.0.80",
+              "id": "syn 1.0.81",
               "target": "build_script_build"
             },
             {
@@ -3280,7 +3280,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.0.80"
+        "version": "1.0.81"
       },
       "build_script_attrs": {},
       "license": "MIT OR Apache-2.0"
@@ -3523,7 +3523,7 @@
         "deps": {
           "common": [
             {
-              "id": "proc-macro2 1.0.30",
+              "id": "proc-macro2 1.0.32",
               "target": "proc_macro2"
             },
             {
@@ -3531,7 +3531,7 @@
               "target": "quote"
             },
             {
-              "id": "syn 1.0.80",
+              "id": "syn 1.0.81",
               "target": "syn"
             }
           ],
@@ -3920,7 +3920,7 @@
         "deps": {
           "common": [
             {
-              "id": "proc-macro2 1.0.30",
+              "id": "proc-macro2 1.0.32",
               "target": "proc_macro2"
             },
             {
@@ -3928,7 +3928,7 @@
               "target": "quote"
             },
             {
-              "id": "syn 1.0.80",
+              "id": "syn 1.0.81",
               "target": "syn"
             }
           ],

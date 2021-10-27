@@ -8,7 +8,7 @@ load("//:deps_transitive.bzl", "cargo_bazel_deps_transitive")
 
 cargo_bazel_deps_transitive()
 
-RUST_VERSION = "1.54.0"
+RUST_VERSION = "1.56.0"
 
 load("@rules_rust//rust:repositories.bzl", "rust_repositories")
 
