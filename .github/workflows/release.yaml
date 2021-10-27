@@ -69,7 +69,12 @@ jobs:
       - name: Build cargo-bazel binaries
         run: |
           # Build binaries
-          bazel ${BAZEL_STARTUP_FLAGS[@]} run //tools/cross_installer -- --target=${TARGET} --output=${{ github.workspace }}/build/artifacts
+          if [[ "${RUNNER_OS}" == "Windows" ]]; then
+            OUTPUT_PATH="$(cygpath "${{ github.workspace }}/build/artifacts" -m)"
+          else
+            OUTPUT_PATH="${{ github.workspace }}/build/artifacts"
+          fi
+            bazel ${BAZEL_STARTUP_FLAGS[@]} run //tools/cross_installer -- --target=${TARGET} --output="${OUTPUT_PATH}"
         env:
           TARGET: "${{ matrix.env.TARGET }}"
       - uses: actions/upload-artifact@v2

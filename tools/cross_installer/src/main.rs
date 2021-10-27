@@ -75,7 +75,8 @@ fn install_outputs(working_dir: &Path, triple: &str, output_dir: &Path) {
 
     let dest = output_dir.join(triple).join(binary_name);
     fs::create_dir_all(dest.parent().unwrap()).unwrap();
-    fs::rename(artifact, dest).unwrap();
+    fs::rename(artifact, &dest).unwrap();
+    println!("Installed: {}", dest.display());
 }
 
 fn main() {
