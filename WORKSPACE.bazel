@@ -4,10 +4,6 @@ load("//:deps.bzl", "cargo_bazel_deps")
 
 cargo_bazel_deps()
 
-load("//:deps_transitive.bzl", "cargo_bazel_deps_transitive")
-
-cargo_bazel_deps_transitive()
-
 RUST_VERSION = "1.56.0"
 
 load("@rules_rust//rust:repositories.bzl", "rust_repositories")
@@ -44,7 +40,7 @@ crates_repository(
         )],
         "libgit2-sys": [crate.extras(
             gen_build_script = False,
-            deps = ["@cargo_bazel//3rdparty:libgit2"],
+            deps = ["@libgit2"],
         )],
         "libz-sys": [crate.extras(
             gen_build_script = False,
