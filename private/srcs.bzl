@@ -44,7 +44,6 @@ CARGO_BAZEL_SRCS = [
     "@cargo_bazel//:tools/cargo_bazel/src/splicing/splicer.rs",
     "@cargo_bazel//:tools/cargo_bazel/src/test.rs",
     "@cargo_bazel//:tools/cargo_bazel/src/utils.rs",
-    "@cargo_bazel//:tools/cargo_bazel/src/utils/render_utils.rs",
     "@cargo_bazel//:tools/cargo_bazel/src/utils/starlark.rs",
     "@cargo_bazel//:tools/cargo_bazel/src/utils/starlark/glob.rs",
     "@cargo_bazel//:tools/cargo_bazel/src/utils/starlark/label.rs",

@@ -1,4 +1,4 @@
-//!
+//! A template engine backed by [Tera] for rendering Files.
 
 use std::collections::HashMap;
 
@@ -8,7 +8,10 @@ use tera::{self, Tera};
 
 use crate::config::{CrateId, RenderConfig};
 use crate::context::Context;
-use crate::utils::render_utils::*;
+use crate::rendering::{
+    render_crate_bazel_label, render_crate_bazel_repository, render_crate_build_file,
+    render_platform_constraint_label,
+};
 use crate::utils::sanitize_module_name;
 use crate::utils::sanitize_repository_name;
 use crate::utils::starlark::{SelectStringDict, SelectStringList};
