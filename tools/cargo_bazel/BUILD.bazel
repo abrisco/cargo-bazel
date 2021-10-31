@@ -46,7 +46,7 @@ rust_test(
     name = "unit_test",
     aliases = aliases(),
     crate = ":cargo_bazel",
-    data = [
+    data = glob(["test_data/**"]) + [
         "@rules_rust//rust/toolchain:current_exec_cargo_files",
     ],
     proc_macro_deps = all_crate_deps(

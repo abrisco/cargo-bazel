@@ -41,3 +41,29 @@ pub fn mock_cargo_lock_package() -> cargo_lock::Package {
     ))
     .unwrap()
 }
+
+pub mod metadata {
+    pub fn alias() -> cargo_metadata::Metadata {
+        serde_json::from_str(include_str!(concat!(
+            env!("CARGO_MANIFEST_DIR"),
+            "/test_data/metadata/aliases/metadata.json"
+        )))
+        .unwrap()
+    }
+
+    pub fn build_scripts() -> cargo_metadata::Metadata {
+        serde_json::from_str(include_str!(concat!(
+            env!("CARGO_MANIFEST_DIR"),
+            "/test_data/metadata/build_scripts/metadata.json"
+        )))
+        .unwrap()
+    }
+
+    pub fn no_deps() -> cargo_metadata::Metadata {
+        serde_json::from_str(include_str!(concat!(
+            env!("CARGO_MANIFEST_DIR"),
+            "/test_data/metadata/no_deps/metadata.json"
+        )))
+        .unwrap()
+    }
+}

@@ -225,3 +225,69 @@ fn get_target_alias(target_name: &str, package: &Package) -> Option<String> {
         false => None,
     }
 }
+
+#[cfg(test)]
+mod test {
+    use super::*;
+
+    use crate::test::*;
+
+    fn find_metadata_node<'a>(
+        name: &str,
+        metadata: &'a cargo_metadata::Metadata,
+    ) -> &'a cargo_metadata::Node {
+        metadata
+            .resolve
+            .as_ref()
+            .unwrap()
+            .nodes
+            .iter()
+            .find(|node| {
+                let pkg = &metadata[&node.id];
+                pkg.name == name
+            })
+            .unwrap()
+    }
+
+    #[test]
+    fn sys_dependencies() {
+        let metadata = metadata::build_scripts();
+
+        let openssl_node = find_metadata_node("openssl", &metadata);
+
+        let dependencies = DependencySet::new_for_node(openssl_node, &metadata);
+
+        let sys_crate = dependencies
+            .normal_deps
+            .get_iter(None)
+            .unwrap()
+            .find(|dep| {
+                let pkg = &metadata[&dep.package_id];
+                pkg.name == "openssl-sys"
+            });
+
+        // sys crates like `openssl-sys` should always be dependencies of any
+        // crate which matches it's name minus the `-sys` suffix
+        assert!(sys_crate.is_some());
+    }
+
+    #[test]
+    fn tracked_aliases() {
+        let metadata = metadata::alias();
+
+        let aliases_node = find_metadata_node("aliases", &metadata);
+        let dependencies = DependencySet::new_for_node(aliases_node, &metadata);
+
+        let aliases: Vec<&Dependency> = dependencies
+            .normal_deps
+            .get_iter(None)
+            .unwrap()
+            .filter(|dep| dep.alias.is_some())
+            .collect();
+
+        assert_eq!(aliases.len(), 1);
+
+        let log_alias = aliases.iter().last().unwrap();
+        assert_eq!(log_alias.alias.as_ref().unwrap(), "old_log");
+    }
+}

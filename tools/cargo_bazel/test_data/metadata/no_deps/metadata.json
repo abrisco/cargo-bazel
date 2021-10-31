@@ -1,0 +1,62 @@
+{
+    "packages": [
+        {
+            "name": "no-deps",
+            "version": "0.1.0",
+            "id": "no-deps 0.1.0 (path+file:///var/folders/hf/phjl9q7501gb5wt_qr4ltn3m0000gn/T/tmp8qgdujfb/NoDeps)",
+            "license": null,
+            "license_file": null,
+            "description": null,
+            "source": null,
+            "dependencies": [],
+            "targets": [
+                {
+                    "kind": [
+                        "lib"
+                    ],
+                    "crate_types": [
+                        "lib"
+                    ],
+                    "name": "no-deps",
+                    "src_path": "/var/folders/hf/phjl9q7501gb5wt_qr4ltn3m0000gn/T/tmp8qgdujfb/NoDeps/lib.rs",
+                    "edition": "2018",
+                    "doc": true,
+                    "doctest": true,
+                    "test": true
+                }
+            ],
+            "features": {},
+            "manifest_path": "/var/folders/hf/phjl9q7501gb5wt_qr4ltn3m0000gn/T/tmp8qgdujfb/NoDeps/Cargo.toml",
+            "metadata": null,
+            "publish": null,
+            "authors": [],
+            "categories": [],
+            "keywords": [],
+            "readme": null,
+            "repository": null,
+            "homepage": null,
+            "documentation": null,
+            "edition": "2018",
+            "links": null,
+            "default_run": null
+        }
+    ],
+    "workspace_members": [
+        "no-deps 0.1.0 (path+file:///var/folders/hf/phjl9q7501gb5wt_qr4ltn3m0000gn/T/tmp8qgdujfb/NoDeps)"
+    ],
+    "resolve": {
+        "nodes": [
+            {
+                "id": "no-deps 0.1.0 (path+file:///var/folders/hf/phjl9q7501gb5wt_qr4ltn3m0000gn/T/tmp8qgdujfb/NoDeps)",
+                "dependencies": [],
+                "deps": [],
+                "features": []
+            }
+        ],
+        "root": "no-deps 0.1.0 (path+file:///var/folders/hf/phjl9q7501gb5wt_qr4ltn3m0000gn/T/tmp8qgdujfb/NoDeps)"
+    },
+    "target_directory": "/var/folders/hf/phjl9q7501gb5wt_qr4ltn3m0000gn/T/tmp8qgdujfb/NoDeps/target",
+    "version": 1,
+    "workspace_root": "/var/folders/hf/phjl9q7501gb5wt_qr4ltn3m0000gn/T/tmp8qgdujfb/NoDeps",
+    "metadata": null
+}
