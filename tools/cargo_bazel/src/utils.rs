@@ -1,6 +1,5 @@
 //! Common utilities
 
-pub mod render_utils;
 pub mod starlark;
 
 /// Convert a string into a valid crate module name by applying transforms to invalid characters

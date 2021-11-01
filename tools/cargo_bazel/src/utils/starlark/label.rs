@@ -156,4 +156,20 @@ mod test {
         assert_eq!(label.package, None);
         assert_eq!(label.target, "target");
     }
+
+    #[test]
+    fn invalid_double_colon() {
+        assert!(Label::from_str("::target").is_err());
+    }
+
+    #[test]
+    fn invalid_double_at() {
+        assert!(Label::from_str("@@repo//pkg:target").is_err());
+    }
+
+    #[test]
+    #[ignore = "This currently fails. The Label parsing logic needs to be updated"]
+    fn invalid_no_double_slash() {
+        assert!(Label::from_str("@repo:target").is_err());
+    }
 }

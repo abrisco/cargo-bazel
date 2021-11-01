@@ -1,5 +1,5 @@
 {
-  "checksum": "f96c68bee1c74876d91bfc504f952bf23a3c9d4b5b59d724e15bc1f1511f8c1d",
+  "checksum": "bb57f9bcc09ac65ea9b08316d0079ba5c2bfddc2951f0b07a5d870dc4fa9cf8c",
   "crates": {
     "aho-corasick 0.7.18": {
       "name": "aho-corasick",
@@ -2572,7 +2572,7 @@
           "selects": {}
         },
         "extra_deps": [
-          "@cargo_bazel//3rdparty:libgit2"
+          "@libgit2"
         ],
         "edition": "2018",
         "version": "0.12.24+1.3.0"

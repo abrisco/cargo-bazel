@@ -17,11 +17,3 @@ config_setting(
     name = "linux",
     constraint_values = ["@platforms//os:linux"],
 )
-
-alias(
-    name = "libgit2",
-    actual = select({
-        ":linux": "@libgit2.foreign_cc//:libgit2",
-        "//conditions:default": "@libgit2//:libgit2",
-    }),
-)

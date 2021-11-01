@@ -1,4 +1,5 @@
-///! Utility module for interracting with different kinds of lock files
+//! Utility module for interracting with different kinds of lock files
+
 use std::fs;
 use std::path::Path;
 use std::str::FromStr;
