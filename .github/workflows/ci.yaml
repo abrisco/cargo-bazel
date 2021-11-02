@@ -30,7 +30,7 @@ jobs:
       - uses: actions/checkout@v2
 
       # Caches and restores the Bazel outputs.
-      - name: Retain Bazel cache
+      - name: Retain Bazel cache (linux)
         uses: actions/cache@v2
         env:
           cache-name: bazel-cache
@@ -39,6 +39,27 @@ jobs:
             ~/.cache/bazelisk
             ~/.cache/bazel
           key: ${{ runner.os }}-${{ env.cache-name }}
+        if: startswith(runner.os, 'Linux')
+      - name: Retain Bazel cache (MacOS)
+        uses: actions/cache@v2
+        env:
+          cache-name: bazel-cache
+        with:
+          path: |
+            ~/.cache/bazelisk
+            /private/var/tmp/_bazel_runner
+          key: ${{ runner.os }}-${{ env.cache-name }}
+        if: startswith(runner.os, 'MacOS')
+      - name: Retain Bazel cache (Windows)
+        uses: actions/cache@v2
+        env:
+          cache-name: bazel-cache
+        with:
+          path: |
+            ~/.cache/bazelisk
+            C:/bzl
+          key: ${{ runner.os }}-${{ env.cache-name }}
+        if: startswith(runner.os, 'Windows')
       # Caches and restores the Cargo cache.
       - name: Retain Cargo cache
         uses: actions/cache@v2
@@ -60,9 +81,9 @@ jobs:
 
       - name: Setup Windows Bazelrc
         run: |
-          echo "startup --output_user_root=C:/tmp" > ./user.bazelrc
+          echo "startup --output_user_root=C:/bzl" > ./user.bazelrc
         if: startswith(matrix.os, 'Windows')
-        
+
       # Build and Test the code
       - name: Build
         run: |
