@@ -48,6 +48,7 @@ crates_repository(
         )],
         "tera": [crate.extras(
             compile_data_glob = ["**/*.pest"],
+            shallow_since = "1635772231 +0100",
         )],
         "unic-ucd-segment": [crate.extras(
             compile_data_glob = ["**/*.rsv"],
