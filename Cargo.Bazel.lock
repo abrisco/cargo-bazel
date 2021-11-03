@@ -1,5 +1,5 @@
 {
-  "checksum": "9359ff2a0eab390c256baa39abc736bcb0071628ec8e80ff79ada93fbb70fc58",
+  "checksum": "75318dc57e1ad39a6cc7ded7027e455bac3794de0547f84953788016804f9f37",
   "crates": {
     "aho-corasick 0.7.18": {
       "name": "aho-corasick",
@@ -548,9 +548,9 @@
       "build_script_attrs": {},
       "license": "MIT OR Apache-2.0"
     },
-    "cargo-bazel 0.0.8": {
+    "cargo-bazel 0.0.9": {
       "name": "cargo-bazel",
-      "version": "0.0.8",
+      "version": "0.0.9",
       "repository": null,
       "targets": [
         {
@@ -643,7 +643,7 @@
               "target": "structopt"
             },
             {
-              "id": "tera 1.14.0",
+              "id": "tera 1.15.0",
               "target": "tera"
             },
             {
@@ -667,7 +667,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.0.8"
+        "version": "0.0.9"
       },
       "license": null
     },
@@ -5159,16 +5159,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "tera 1.14.0": {
+    "tera 1.15.0": {
       "name": "tera",
-      "version": "1.14.0",
+      "version": "1.15.0",
       "repository": {
-        "Git": {
-          "remote": "https://github.com/Keats/tera.git",
-          "commitish": {
-            "Rev": "a6bcf2d358cd41ec9245e9287f3d216007c23239"
-          },
-          "shallow_since": "1635772231 +0100"
+        "Http": {
+          "url": "https://crates.io/api/v1/crates/tera/1.15.0/download",
+          "sha256": "d3cac831b615c25bcef632d1cabf864fa05813baad3d526829db18eb70e8b58d"
         }
       },
       "targets": [
@@ -5267,7 +5264,7 @@
           ],
           "selects": {}
         },
-        "version": "1.14.0"
+        "version": "1.15.0"
       },
       "license": "MIT"
     },
@@ -6645,7 +6642,7 @@
     "phf_generator 0.10.0"
   ],
   "workspace_members": {
-    "cargo-bazel 0.0.8": "tools/cargo_bazel",
+    "cargo-bazel 0.0.9": "tools/cargo_bazel",
     "cross_installer 0.1.0": "tools/cross_installer",
     "direct-cargo-bazel-deps 0.0.1": "",
     "urls_generator 0.1.0": "tools/urls_generator"

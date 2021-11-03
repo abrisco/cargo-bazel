@@ -1,6 +1,6 @@
 [package]
 name = "cargo-bazel"
-version = "0.0.8"
+version = "0.0.9"
 authors = [
     "UebelAndre - github@uebelandre.com",
 ]
@@ -24,8 +24,7 @@ serde = "1.0.130"
 serde_json = "1.0.68"
 sha2 = "0.9.8"
 structopt = "0.3.25"
-# https://github.com/Keats/tera/issues/689
-tera = { git = "https://github.com/Keats/tera.git", rev = "a6bcf2d358cd41ec9245e9287f3d216007c23239" }
+tera = "1.15.0"
 textwrap = "0.14.2"
 toml = "0.5.8"
 
