@@ -3,7 +3,6 @@ pub mod cli;
 mod annotation;
 mod config;
 mod context;
-mod digest;
 mod lockfile;
 mod metadata;
 mod rendering;
