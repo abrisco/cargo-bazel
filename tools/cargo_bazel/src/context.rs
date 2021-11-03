@@ -14,12 +14,12 @@ use crate::annotation::Annotations;
 use crate::config::CrateId;
 use crate::context::crate_context::{CrateContext, CrateDependency, Rule};
 use crate::context::platforms::resolve_cfg_platforms;
-use crate::digest::Digest;
+use crate::lockfile::Digest;
 use crate::utils::starlark::{Select, SelectList};
 
 pub use self::crate_context::*;
 
-#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub struct Context {
     /// The collective checksum of all inputs to the context
     pub checksum: Option<Digest>,

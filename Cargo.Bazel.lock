@@ -1,5 +1,5 @@
 {
-  "checksum": "bb57f9bcc09ac65ea9b08316d0079ba5c2bfddc2951f0b07a5d870dc4fa9cf8c",
+  "checksum": "75318dc57e1ad39a6cc7ded7027e455bac3794de0547f84953788016804f9f37",
   "crates": {
     "aho-corasick 0.7.18": {
       "name": "aho-corasick",
@@ -85,13 +85,13 @@
       },
       "license": "MIT"
     },
-    "anyhow 1.0.44": {
+    "anyhow 1.0.45": {
       "name": "anyhow",
-      "version": "1.0.44",
+      "version": "1.0.45",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/anyhow/1.0.44/download",
-          "sha256": "61604a8f862e1d5c3229fdd78f8b02c68dcf73a4c4b05fd636d12240aaa242c1"
+          "url": "https://crates.io/api/v1/crates/anyhow/1.0.45/download",
+          "sha256": "ee10e43ae4a853c0a3591d4e2ada1719e553be18199d9da9d4a83f5927c2f5c7"
         }
       },
       "targets": [
@@ -129,14 +129,14 @@
         "deps": {
           "common": [
             {
-              "id": "anyhow 1.0.44",
+              "id": "anyhow 1.0.45",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.0.44"
+        "version": "1.0.45"
       },
       "build_script_attrs": {},
       "license": "MIT OR Apache-2.0"
@@ -548,9 +548,9 @@
       "build_script_attrs": {},
       "license": "MIT OR Apache-2.0"
     },
-    "cargo-bazel 0.0.8": {
+    "cargo-bazel 0.0.9": {
       "name": "cargo-bazel",
-      "version": "0.0.8",
+      "version": "0.0.9",
       "repository": null,
       "targets": [
         {
@@ -583,7 +583,7 @@
         "deps": {
           "common": [
             {
-              "id": "anyhow 1.0.44",
+              "id": "anyhow 1.0.45",
               "target": "anyhow"
             },
             {
@@ -643,7 +643,7 @@
               "target": "structopt"
             },
             {
-              "id": "tera 1.14.0",
+              "id": "tera 1.15.0",
               "target": "tera"
             },
             {
@@ -667,7 +667,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.0.8"
+        "version": "0.0.9"
       },
       "license": null
     },
@@ -5159,13 +5159,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "tera 1.14.0": {
+    "tera 1.15.0": {
       "name": "tera",
-      "version": "1.14.0",
+      "version": "1.15.0",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/tera/1.14.0/download",
-          "sha256": "3e7f3fd1bd7e48ef73d9e9124caedee3e1c645657ec876a50a278c8d0555d9da"
+          "url": "https://crates.io/api/v1/crates/tera/1.15.0/download",
+          "sha256": "d3cac831b615c25bcef632d1cabf864fa05813baad3d526829db18eb70e8b58d"
         }
       },
       "targets": [
@@ -5264,7 +5264,7 @@
           ],
           "selects": {}
         },
-        "version": "1.14.0"
+        "version": "1.15.0"
       },
       "license": "MIT"
     },
@@ -6642,7 +6642,7 @@
     "phf_generator 0.10.0"
   ],
   "workspace_members": {
-    "cargo-bazel 0.0.8": "tools/cargo_bazel",
+    "cargo-bazel 0.0.9": "tools/cargo_bazel",
     "cross_installer 0.1.0": "tools/cross_installer",
     "direct-cargo-bazel-deps 0.0.1": "",
     "urls_generator 0.1.0": "tools/urls_generator"

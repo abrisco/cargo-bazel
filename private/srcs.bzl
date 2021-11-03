@@ -13,7 +13,6 @@ CARGO_BAZEL_SRCS = [
     "@cargo_bazel//:tools/cargo_bazel/src/context.rs",
     "@cargo_bazel//:tools/cargo_bazel/src/context/crate_context.rs",
     "@cargo_bazel//:tools/cargo_bazel/src/context/platforms.rs",
-    "@cargo_bazel//:tools/cargo_bazel/src/digest.rs",
     "@cargo_bazel//:tools/cargo_bazel/src/lib.rs",
     "@cargo_bazel//:tools/cargo_bazel/src/lockfile.rs",
     "@cargo_bazel//:tools/cargo_bazel/src/main.rs",

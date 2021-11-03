@@ -556,7 +556,6 @@ pub fn symlink_roots(source: &Path, dest: &Path, ignore_list: Option<&[&str]>) -
     Ok(())
 }
 
-#[cfg(not(target_os = "windows"))]
 #[cfg(test)]
 mod test {
     use super::*;
@@ -719,18 +718,21 @@ mod test {
     }
 
     fn new_package_id(name: &str, workspace_root: &Path, is_root: bool) -> PackageId {
+        let mut workspace_root = workspace_root.display().to_string();
+
+        // On windows, make sure we normalize the path to match what Cargo would
+        // otherwise use to populate metadata.
+        if cfg!(target_os = "windows") {
+            workspace_root = format!("/{}", workspace_root.replace("\\", "/"))
+        };
+
         if is_root {
             PackageId {
-                repr: format!("{} 0.0.1 (path+file://{})", name, workspace_root.display()),
+                repr: format!("{} 0.0.1 (path+file://{})", name, workspace_root),
             }
         } else {
             PackageId {
-                repr: format!(
-                    "{} 0.0.1 (path+file://{}/{})",
-                    name,
-                    workspace_root.display(),
-                    name,
-                ),
+                repr: format!("{} 0.0.1 (path+file://{}/{})", name, workspace_root, name,),
             }
         }
     }

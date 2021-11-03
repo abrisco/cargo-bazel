@@ -182,7 +182,7 @@ impl LockfileAnnotation {
         if let Some(git_ref) = source.git_reference() {
             return Ok(SourceAnnotation::Git {
                 remote: source.url().to_string(),
-                commitish: Commitish::from(git_ref),
+                commitish: Commitish::from(git_ref.clone()),
                 shallow_since: None,
             });
         }
@@ -317,5 +317,30 @@ mod test {
         let lock_pkg = mock_cargo_lock_package();
 
         assert!(cargo_meta_pkg_to_locked_pkg(&pkg, &vec![lock_pkg]).is_some())
+    }
+
+    #[test]
+    fn annotate_metadata_with_aliases() {
+        let annotations = MetadataAnnotation::new(test::metadata::alias());
+        let log_crates: BTreeMap<&PackageId, &CrateAnnotation> = annotations
+            .crates
+            .iter()
+            .filter(|(id, _)| {
+                let pkg = &annotations.packages[*id];
+                pkg.name == "log"
+            })
+            .collect();
+
+        assert_eq!(log_crates.len(), 2);
+    }
+
+    #[test]
+    fn annotate_metadata_with_build_scripts() {
+        MetadataAnnotation::new(test::metadata::build_scripts());
+    }
+
+    #[test]
+    fn annotate_metadata_with_no_deps() {
+        MetadataAnnotation::new(test::metadata::no_deps());
     }
 }

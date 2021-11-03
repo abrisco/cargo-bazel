@@ -8,7 +8,7 @@ use serde::Deserialize;
 use structopt::StructOpt;
 
 use crate::config::Config;
-use crate::digest::Digest;
+use crate::lockfile::Digest;
 
 /// Command line options for the `query` subcommand
 #[derive(StructOpt, Debug)]
