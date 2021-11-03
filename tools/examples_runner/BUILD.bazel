@@ -1,0 +1,5 @@
+filegroup(
+    name = "srcs",
+    srcs = glob(["src/**/*.rs"]),
+    visibility = ["//:__subpackages__"],
+)

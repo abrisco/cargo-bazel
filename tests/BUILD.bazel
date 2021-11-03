@@ -1,18 +1,13 @@
 load("@rules_rust//rust:defs.bzl", "rust_test")
+load("//tools/examples_runner:examples_runner.bzl", "examples_runner")
 
 # Unfortunately there aren't really options for Bazel-in-Bazel testing.
 # This has to be a run target for now...
-sh_binary(
-    name = "examples_test",
-    srcs = ["examples_test.sh"],
-    data = [
-        "//distro",
-        "@cargo_bazel//tools/cargo_bazel:bin",
-    ],
-    env = {
-        "CARGO_BAZEL_BIN": "$(rootpath @cargo_bazel//tools/cargo_bazel:bin)",
-        "DISTRO_ARCHIVE": "$(rootpath //distro)",
-    },
+examples_runner(
+    name = "examples",
+    cargo_bazel_bin = "//tools/cargo_bazel:bin",
+    distro_archive = "//distro",
+    examples_package = "examples",
 )
 
 rust_test(

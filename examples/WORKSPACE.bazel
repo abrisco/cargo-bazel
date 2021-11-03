@@ -20,13 +20,13 @@ load("@cargo_bazel//:defs.bzl", "crate", "crates_repository", "render_config")
 ###############################################################################
 
 crates_repository(
-    name = "crate_index_cargo_aliases",
+    name = "cargo_aliases",
     lockfile = "//cargo_aliases:Cargo.Bazel.lock",
     manifests = ["//cargo_aliases:Cargo.toml"],
 )
 
 load(
-    "@crate_index_cargo_aliases//:defs.bzl",
+    "@cargo_aliases//:defs.bzl",
     cargo_aliases_crate_repositories = "crate_repositories",
 )
 
@@ -100,7 +100,7 @@ cargo_workspace_crate_repositories()
 ###############################################################################
 
 crates_repository(
-    name = "crate_index_extra_workspace_members",
+    name = "crate_index_extra_members",
     extra_workspace_members = {
         "texture-synthesis-cli": crate.workspace_member(
             sha256 = "a7dbdf13f5e6f214750fce1073279b71ce3076157a8d337c9b0f0e14334e2aec",
@@ -119,7 +119,7 @@ crates_repository(
 )
 
 load(
-    "@crate_index_extra_workspace_members//:defs.bzl",
+    "@crate_index_extra_members//:defs.bzl",
     extra_workspace_members_crate_repositories = "crate_repositories",
 )
 
@@ -130,7 +130,9 @@ extra_workspace_members_crate_repositories()
 ###############################################################################
 
 crates_repository(
-    name = "crate_index_multi_pkg",
+    # The name here needs to be short to avoid long path issues on windows
+    # when running the `libnghttp2-sys` build script.
+    name = "m_pkgs",
     extras = {
         "basic-cookies": [crate.extras(
             build_script_data_glob = ["**/*.lalrpop"],
@@ -165,6 +167,9 @@ crates_repository(
             data = ["@openssl"],
             deps = ["@openssl"],
         )],
+        "wepoll-ffi": [crate.extras(
+            build_script_data_glob = ["vendor/**"],
+        )],
     },
     generator = "@cargo_bazel_bootstrap//:cargo-bazel",
     lockfile = "//multi_package:Cargo.Bazel.lock",
@@ -176,7 +181,7 @@ crates_repository(
 )
 
 load(
-    "@crate_index_multi_pkg//:defs.bzl",
+    "@m_pkgs//:defs.bzl",
     multi_pkg_crate_repositories = "crate_repositories",
 )
 
@@ -204,7 +209,7 @@ third_party_deps()
 ###############################################################################
 
 crates_repository(
-    name = "crate_index_no_cargo",
+    name = "no_cargo",
     generator = "@cargo_bazel_bootstrap//:cargo-bazel",
     lockfile = "//no_cargo_manifests:Cargo.Bazel.lock",
     packages = {
@@ -244,7 +249,7 @@ crates_repository(
 )
 
 load(
-    "@crate_index_no_cargo//:defs.bzl",
+    "@no_cargo//:defs.bzl",
     no_cargo_crate_repositories = "crate_repositories",
 )
 
