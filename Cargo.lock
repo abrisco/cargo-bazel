@@ -111,7 +111,7 @@ dependencies = [
 
 [[package]]
 name = "cargo-bazel"
-version = "0.0.8"
+version = "0.0.9"
 dependencies = [
  "anyhow",
  "cargo-lock",
@@ -1006,8 +1006,9 @@ dependencies = [
 
 [[package]]
 name = "tera"
-version = "1.14.0"
-source = "git+https://github.com/Keats/tera.git?rev=a6bcf2d358cd41ec9245e9287f3d216007c23239#a6bcf2d358cd41ec9245e9287f3d216007c23239"
+version = "1.15.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d3cac831b615c25bcef632d1cabf864fa05813baad3d526829db18eb70e8b58d"
 dependencies = [
  "chrono",
  "chrono-tz",

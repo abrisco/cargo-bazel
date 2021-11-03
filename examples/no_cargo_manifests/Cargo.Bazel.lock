@@ -1,5 +1,5 @@
 {
-  "checksum": "8e89e87797ec2f808d422182446421a23ab1834fa5cc6ff1135532c66fbe41ea",
+  "checksum": "0992eccc7069fa87f56c1c863320f51897a0590dc3e6b5d078368f495770d73a",
   "crates": {
     "aho-corasick 0.7.18": {
       "name": "aho-corasick",
@@ -259,11 +259,11 @@
               "target": "sync_wrapper"
             },
             {
-              "id": "tokio 1.12.0",
+              "id": "tokio 1.13.0",
               "target": "tokio"
             },
             {
-              "id": "tokio-util 0.6.8",
+              "id": "tokio-util 0.6.9",
               "target": "tokio_util"
             },
             {
@@ -430,7 +430,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.105",
+              "id": "libc 0.2.106",
               "target": "libc"
             },
             {
@@ -491,7 +491,7 @@
               "target": "serde_json"
             },
             {
-              "id": "tokio 1.12.0",
+              "id": "tokio 1.13.0",
               "target": "tokio"
             },
             {
@@ -944,11 +944,11 @@
               "target": "slab"
             },
             {
-              "id": "tokio 1.12.0",
+              "id": "tokio 1.13.0",
               "target": "tokio"
             },
             {
-              "id": "tokio-util 0.6.8",
+              "id": "tokio-util 0.6.9",
               "target": "tokio_util"
             },
             {
@@ -1027,7 +1027,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.105",
+              "id": "libc 0.2.106",
               "target": "libc"
             }
           ],
@@ -1307,7 +1307,7 @@
               "target": "socket2"
             },
             {
-              "id": "tokio 1.12.0",
+              "id": "tokio 1.13.0",
               "target": "tokio"
             },
             {
@@ -1502,13 +1502,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "libc 0.2.105": {
+    "libc 0.2.106": {
       "name": "libc",
-      "version": "0.2.105",
+      "version": "0.2.106",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/libc/0.2.105/download",
-          "sha256": "869d572136620d55835903746bcb5cdc54cb2851fd0aeec53220b4bb65ef3013"
+          "url": "https://crates.io/api/v1/crates/libc/0.2.106/download",
+          "sha256": "a60553f9a9e039a333b4e9b20573b9e9b9c0bb3a11e201ccc48ef4283456d673"
         }
       },
       "targets": [
@@ -1546,14 +1546,14 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.105",
+              "id": "libc 0.2.106",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2015",
-        "version": "0.2.105"
+        "version": "0.2.106"
       },
       "build_script_attrs": {},
       "license": "MIT OR Apache-2.0"
@@ -1826,7 +1826,7 @@
           "selects": {
             "cfg(unix)": [
               {
-                "id": "libc 0.2.105",
+                "id": "libc 0.2.106",
                 "target": "libc"
               }
             ],
@@ -2106,7 +2106,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.105",
+              "id": "libc 0.2.106",
               "target": "libc"
             }
           ],
@@ -2275,7 +2275,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.105",
+                "id": "libc 0.2.106",
                 "target": "libc"
               }
             ],
@@ -3086,7 +3086,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.105",
+              "id": "libc 0.2.106",
               "target": "libc"
             }
           ],
@@ -3191,7 +3191,7 @@
           "selects": {
             "cfg(unix)": [
               {
-                "id": "libc 0.2.105",
+                "id": "libc 0.2.106",
                 "target": "libc"
               }
             ],
@@ -3354,13 +3354,13 @@
       },
       "license": "Apache-2.0/MIT"
     },
-    "tokio 1.12.0": {
+    "tokio 1.13.0": {
       "name": "tokio",
-      "version": "1.12.0",
+      "version": "1.13.0",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/tokio/1.12.0/download",
-          "sha256": "c2c2416fdedca8443ae44b4527de1ea633af61d8f7169ffa6e72c5b53d24efcc"
+          "url": "https://crates.io/api/v1/crates/tokio/1.13.0/download",
+          "sha256": "588b2d10a336da58d877567cd8fb8a14b463e2104910f8132cd054b4b96e29ee"
         }
       },
       "targets": [
@@ -3447,14 +3447,14 @@
               "target": "pin_project_lite"
             },
             {
-              "id": "tokio 1.12.0",
+              "id": "tokio 1.13.0",
               "target": "build_script_build"
             }
           ],
           "selects": {
             "cfg(unix)": [
               {
-                "id": "libc 0.2.105",
+                "id": "libc 0.2.106",
                 "target": "libc"
               },
               {
@@ -3474,13 +3474,13 @@
         "proc_macro_deps": {
           "common": [
             {
-              "id": "tokio-macros 1.5.0",
+              "id": "tokio-macros 1.5.1",
               "target": "tokio_macros"
             }
           ],
           "selects": {}
         },
-        "version": "1.12.0"
+        "version": "1.13.0"
       },
       "build_script_attrs": {
         "deps": {
@@ -3495,13 +3495,13 @@
       },
       "license": "MIT"
     },
-    "tokio-macros 1.5.0": {
+    "tokio-macros 1.5.1": {
       "name": "tokio-macros",
-      "version": "1.5.0",
+      "version": "1.5.1",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/tokio-macros/1.5.0/download",
-          "sha256": "b2dd85aeaba7b68df939bd357c6afb36c87951be9e80bf9c859f2fc3e9fca0fd"
+          "url": "https://crates.io/api/v1/crates/tokio-macros/1.5.1/download",
+          "sha256": "114383b041aa6212c579467afa0075fbbdd0718de036100bc0ba7961d8cb9095"
         }
       },
       "targets": [
@@ -3538,17 +3538,17 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.5.0"
+        "version": "1.5.1"
       },
       "license": "MIT"
     },
-    "tokio-util 0.6.8": {
+    "tokio-util 0.6.9": {
       "name": "tokio-util",
-      "version": "0.6.8",
+      "version": "0.6.9",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/tokio-util/0.6.8/download",
-          "sha256": "08d3725d3efa29485e87311c5b699de63cde14b00ed4d256b8318aa30ca452cd"
+          "url": "https://crates.io/api/v1/crates/tokio-util/0.6.9/download",
+          "sha256": "9e99e1983e5d376cd8eb4b66604d2e99e79f5bd988c3055891dcd8c9e2604cc0"
         }
       },
       "targets": [
@@ -3594,14 +3594,14 @@
               "target": "pin_project_lite"
             },
             {
-              "id": "tokio 1.12.0",
+              "id": "tokio 1.13.0",
               "target": "tokio"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.6.8"
+        "version": "0.6.9"
       },
       "license": "MIT"
     },
@@ -3660,11 +3660,11 @@
               "target": "pin_project_lite"
             },
             {
-              "id": "tokio 1.12.0",
+              "id": "tokio 1.13.0",
               "target": "tokio"
             },
             {
-              "id": "tokio-util 0.6.8",
+              "id": "tokio-util 0.6.9",
               "target": "tokio_util"
             },
             {

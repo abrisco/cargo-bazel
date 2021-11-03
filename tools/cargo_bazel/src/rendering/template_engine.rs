@@ -4,7 +4,7 @@ use std::collections::HashMap;
 
 use anyhow::{Context as AnyhowContext, Result};
 use serde_json::{from_value, to_value, Value};
-use tera::{self, CtxThreadSafe, Tera};
+use tera::{self, Tera};
 
 use crate::config::{CrateId, RenderConfig};
 use crate::context::Context;
@@ -18,7 +18,7 @@ use crate::utils::starlark::{SelectStringDict, SelectStringList};
 
 pub struct TemplateEngine {
     engine: Tera,
-    context: tera::Context<CtxThreadSafe>,
+    context: tera::Context,
 }
 
 impl TemplateEngine {
@@ -196,7 +196,7 @@ impl TemplateEngine {
         }
     }
 
-    fn new_tera_ctx(&self) -> tera::Context<CtxThreadSafe> {
+    fn new_tera_ctx(&self) -> tera::Context {
         self.context.clone()
     }
 
