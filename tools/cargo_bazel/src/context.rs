@@ -19,7 +19,7 @@ use crate::utils::starlark::{Select, SelectList};
 
 pub use self::crate_context::*;
 
-#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub struct Context {
     /// The collective checksum of all inputs to the context
     pub checksum: Option<Digest>,

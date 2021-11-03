@@ -182,7 +182,7 @@ impl LockfileAnnotation {
         if let Some(git_ref) = source.git_reference() {
             return Ok(SourceAnnotation::Git {
                 remote: source.url().to_string(),
-                commitish: Commitish::from(git_ref),
+                commitish: Commitish::from(git_ref.clone()),
                 shallow_since: None,
             });
         }

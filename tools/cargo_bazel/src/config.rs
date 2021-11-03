@@ -20,14 +20,17 @@ pub struct RenderConfig {
 
     /// The pattern to use for BUILD file names.
     /// Eg. `BUILD.{name}-{version}.bazel`
+    #[serde(default = "default_build_file_template")]
     pub build_file_template: String,
 
     /// The pattern to use for a crate target.
     /// Eg. `@{repository}__{name}-{version}//:{target}`
+    #[serde(default = "default_crate_label_template")]
     pub crate_label_template: String,
 
     /// The pattern used for a crate's repository name.
     /// Eg. `{repository}__{name}-{version}`
+    #[serde(default = "default_crate_repository_template")]
     pub crate_repository_template: String,
 
     /// The default of the `package_name` parameter to use for the module macros like `all_crate_deps`.
@@ -36,7 +39,24 @@ pub struct RenderConfig {
 
     /// The pattern to use for platform constraints.
     /// Eg. `@rules_rust//rust/platform:{triple}`.
+    #[serde(default = "default_platforms_template")]
     pub platforms_template: String,
+}
+
+fn default_build_file_template() -> String {
+    "BUILD.{name}-{version}.bazel".to_owned()
+}
+
+fn default_crate_label_template() -> String {
+    "@{repository}__{name}-{version}//:{target}".to_owned()
+}
+
+fn default_crate_repository_template() -> String {
+    "{repository}__{name}-{version}".to_owned()
+}
+
+fn default_platforms_template() -> String {
+    "@rules_rust//rust/platform:{triple}".to_owned()
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq, PartialOrd, Ord)]
@@ -51,12 +71,12 @@ pub enum Commitish {
     Rev(String),
 }
 
-impl From<&GitReference> for Commitish {
-    fn from(git_ref: &GitReference) -> Self {
+impl From<GitReference> for Commitish {
+    fn from(git_ref: GitReference) -> Self {
         match git_ref {
-            GitReference::Tag(v) => Self::Tag(v.clone()),
-            GitReference::Branch(v) => Self::Branch(v.clone()),
-            GitReference::Rev(v) => Self::Rev(v.clone()),
+            GitReference::Tag(v) => Self::Tag(v),
+            GitReference::Branch(v) => Self::Branch(v),
+            GitReference::Rev(v) => Self::Rev(v),
         }
     }
 }
