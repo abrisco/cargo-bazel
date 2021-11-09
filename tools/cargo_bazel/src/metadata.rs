@@ -100,6 +100,10 @@ impl LockGenerator {
             // Ensure the Cargo cache is up to date to simulate the behavior
             // of having just generated a new one
             Command::new(&self.cargo_bin)
+                // Cargo detects config files based on `pwd` when running so
+                // to ensure user provided Cargo config files are used, it's
+                // critical to set the working directory to the manifest dir.
+                .current_dir(manifest_dir)
                 .arg("fetch")
                 .arg("--locked")
                 .arg("--manifest-path")
@@ -113,6 +117,10 @@ impl LockGenerator {
         } else {
             // Simply invoke `cargo generate-lockfile`
             Command::new(&self.cargo_bin)
+                // Cargo detects config files based on `pwd` when running so
+                // to ensure user provided Cargo config files are used, it's
+                // critical to set the working directory to the manifest dir.
+                .current_dir(manifest_dir)
                 .arg("generate-lockfile")
                 .arg("--manifest-path")
                 .arg(manifest_path)

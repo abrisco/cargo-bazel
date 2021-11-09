@@ -57,16 +57,6 @@ pub fn splice(opt: SpliceOptions) -> Result<()> {
     // Splice together the manifest
     let manifest_path = splicer.splice_workspace()?;
 
-    // Ensure the cargo config is installed for generating metadata and lock data
-    if let Some(cargo_config) = &opt.cargo_config {
-        let target_path = manifest_path
-            .as_path_buf()
-            .parent()
-            .unwrap()
-            .join("config.toml");
-        crate::splicing::install_file(cargo_config, &target_path)?;
-    }
-
     // Generate a lockfile
     let cargo_lockfile =
         generate_lockfile(&manifest_path, &opt.cargo_lockfile, &opt.cargo, &opt.rustc)?;

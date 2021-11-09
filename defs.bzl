@@ -142,11 +142,11 @@ Environment Variables:
         ),
         "isolated": attr.bool(
             doc = (
-                "If true, `CARGO_HOME` will be set to a directory within the generated repository to prevent " +
-                "other uses of Cargo from impacting having any effect on the generated targets produced by " +
-                "this rule."
+                "If true, `CARGO_HOME` will be overwritten to a directory within the generated repository in " +
+                "order to prevent other uses of Cargo from impacting having any effect on the generated targets " +
+                "produced by this rule."
             ),
-            default = False,
+            default = True,
         ),
         "lockfile": attr.label(
             doc = (

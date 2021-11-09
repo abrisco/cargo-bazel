@@ -295,12 +295,11 @@ impl<'a> SplicerKind<'a> {
 
         // Install the new config file after having removed all others
         if let Some(cargo_config_path) = cargo_config_path {
-            let install_path = workspace_dir.join(".cargo").join("config.toml");
-            if !install_path.parent().unwrap().exists() {
-                fs::create_dir_all(&install_path.parent().unwrap())?;
+            if !dot_cargo_dir.exists() {
+                fs::create_dir_all(&dot_cargo_dir)?;
             }
 
-            fs::copy(cargo_config_path, &install_path)?;
+            fs::copy(cargo_config_path, &dot_cargo_dir.join("config.toml"))?;
         }
 
         Ok(())
@@ -580,7 +579,18 @@ mod test {
     }
 
     fn generate_metadata(manifest_path: &Path) -> cargo_metadata::Metadata {
+        let manifest_dir = manifest_path.parent().unwrap_or_else(|| {
+            panic!(
+                "The given manifest has no parent directory: {}",
+                manifest_path.display()
+            )
+        });
+
         MetadataCommand::new()
+            // Cargo detects config files based on `pwd` when running so
+            // to ensure user provided Cargo config files are used, it's
+            // critical to set the working directory to the manifest dir.
+            .current_dir(manifest_dir)
             .manifest_path(manifest_path)
             .other_options(["--offline".to_owned()])
             .exec()
