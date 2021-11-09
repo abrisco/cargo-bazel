@@ -13,7 +13,7 @@ load("@rules_rust//rust:repositories.bzl", "rust_repositories")
 
 rust_repositories()
 
-load("@cargo_bazel//:defs.bzl", "crate", "crates_repository", "render_config")
+load("@cargo_bazel//:defs.bzl", "crate", "crates_repository")
 
 ###############################################################################
 # C A R G O   A L I A S E S
@@ -242,10 +242,6 @@ crates_repository(
             version = "0.2",
         ),
     },
-    # Allows all packages to access the same set of dependencies
-    render_config = render_config(
-        default_package_name = "",
-    ),
 )
 
 load(
