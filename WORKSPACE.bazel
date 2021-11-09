@@ -4,7 +4,7 @@ load("//:deps.bzl", "cargo_bazel_deps")
 
 cargo_bazel_deps()
 
-RUST_VERSION = "1.56.0"
+RUST_VERSION = "1.56.1"
 
 load("@rules_rust//rust:repositories.bzl", "rust_repositories")
 
