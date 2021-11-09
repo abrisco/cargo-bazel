@@ -335,14 +335,6 @@ impl SplicedManifest {
     }
 }
 
-// Copies a file into place ensuring no symlink was present in it's place
-pub fn install_file(src: &Path, dest: &Path) -> Result<()> {
-    fs::remove_file(dest)?;
-    fs::copy(src, dest)?;
-
-    Ok(())
-}
-
 pub fn read_manifest(manifest: &Path) -> Result<Manifest> {
     let content = fs::read_to_string(manifest)?;
     cargo_toml::Manifest::from_str(content.as_str()).context("Failed to deserialize manifest")
