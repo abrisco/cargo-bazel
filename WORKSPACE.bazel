@@ -62,6 +62,7 @@ crates_repository(
         )],
     },
     generator = "@cargo_bazel_bootstrap//:cargo-bazel",
+    isolated = False,
     lockfile = "//:Cargo.Bazel.lock",
     manifests = ["//:Cargo.toml"],
 )
