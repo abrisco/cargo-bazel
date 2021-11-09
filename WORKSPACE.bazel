@@ -18,7 +18,6 @@ load("//:defs.bzl", "crate", "crates_repository")
 
 crates_repository(
     name = "crate_index",
-    cargo_config = "//:.cargo/config.toml",
     extras = {
         "cargo_toml": [crate.extras(
             shallow_since = "1632241831 -0700",
