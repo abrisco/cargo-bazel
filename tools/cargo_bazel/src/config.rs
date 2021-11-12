@@ -2,6 +2,8 @@
 
 use std::collections::{BTreeMap, BTreeSet};
 use std::convert::AsRef;
+use std::iter::Sum;
+use std::ops::Add;
 use std::path::Path;
 use std::{fmt, fs};
 
@@ -12,7 +14,7 @@ use semver::VersionReq;
 use serde::de::Visitor;
 use serde::{Deserialize, Serialize, Serializer};
 
-#[derive(Debug, Hash, Serialize, Deserialize, Clone)]
+#[derive(Debug, Default, Hash, Serialize, Deserialize, Clone)]
 #[serde(deny_unknown_fields)]
 pub struct RenderConfig {
     /// The name of the repository being rendered
@@ -92,7 +94,7 @@ pub enum Checksumish {
     },
 }
 
-#[derive(Debug, Hash, Deserialize, Serialize, Clone)]
+#[derive(Debug, Default, Hash, Deserialize, Serialize, Clone)]
 pub struct CrateExtras {
     /// Determins whether or not Cargo build scripts should be generated for the current package
     pub gen_build_script: Option<bool>,
@@ -173,6 +175,83 @@ pub struct CrateExtras {
     pub shallow_since: Option<String>,
 }
 
+macro_rules! joined_extra_member {
+    ($lhs:expr, $rhs:expr, $fn_new:expr, $fn_extend:expr) => {
+        if let Some(lhs) = $lhs {
+            if let Some(rhs) = $rhs {
+                let mut new = $fn_new();
+                $fn_extend(&mut new, lhs);
+                $fn_extend(&mut new, rhs);
+                Some(new)
+            } else {
+                Some(lhs)
+            }
+        } else if $rhs.is_some() {
+            $rhs
+        } else {
+            None
+        }
+    };
+}
+
+impl Add for CrateExtras {
+    type Output = CrateExtras;
+
+    fn add(self, rhs: Self) -> Self::Output {
+        let shallow_since = if self.shallow_since.is_some() {
+            self.shallow_since
+        } else if rhs.shallow_since.is_some() {
+            rhs.shallow_since
+        } else {
+            None
+        };
+
+        let gen_build_script = if self.gen_build_script.is_some() {
+            self.gen_build_script
+        } else if rhs.gen_build_script.is_some() {
+            rhs.gen_build_script
+        } else {
+            None
+        };
+
+        let concat_string = |lhs: &mut String, rhs: String| {
+            *lhs = format!("{}{}", lhs, rhs);
+        };
+
+        #[rustfmt::skip]
+        let output = CrateExtras {
+            gen_build_script,
+            deps: joined_extra_member!(self.deps, rhs.deps, BTreeSet::new, BTreeSet::extend),
+            proc_macro_deps: joined_extra_member!(self.proc_macro_deps, rhs.proc_macro_deps, BTreeSet::new, BTreeSet::extend),
+            crate_features: joined_extra_member!(self.crate_features, rhs.crate_features, BTreeSet::new, BTreeSet::extend),
+            data: joined_extra_member!(self.data, rhs.data, BTreeSet::new, BTreeSet::extend),
+            data_glob: joined_extra_member!(self.data_glob, rhs.data_glob, BTreeSet::new, BTreeSet::extend),
+            compile_data: joined_extra_member!(self.compile_data, rhs.compile_data, BTreeSet::new, BTreeSet::extend),
+            compile_data_glob: joined_extra_member!(self.compile_data_glob, rhs.compile_data_glob, BTreeSet::new, BTreeSet::extend),
+            rustc_env: joined_extra_member!(self.rustc_env, rhs.rustc_env, BTreeMap::new, BTreeMap::extend),
+            rustc_env_files: joined_extra_member!(self.rustc_env_files, rhs.rustc_env_files, BTreeSet::new, BTreeSet::extend),
+            rustc_flags: joined_extra_member!(self.rustc_flags, rhs.rustc_flags, Vec::new, Vec::extend),
+            build_script_deps: joined_extra_member!(self.build_script_deps, rhs.build_script_deps, BTreeSet::new, BTreeSet::extend),
+            build_script_proc_macro_deps: joined_extra_member!(self.build_script_proc_macro_deps, rhs.build_script_proc_macro_deps, BTreeSet::new, BTreeSet::extend),
+            build_script_data: joined_extra_member!(self.build_script_data, rhs.build_script_data, BTreeSet::new, BTreeSet::extend),
+            build_script_tools: joined_extra_member!(self.build_script_tools, rhs.build_script_tools, BTreeSet::new, BTreeSet::extend),
+            build_script_data_glob: joined_extra_member!(self.build_script_data_glob, rhs.build_script_data_glob, BTreeSet::new, BTreeSet::extend),
+            build_script_env: joined_extra_member!(self.build_script_env, rhs.build_script_env, BTreeMap::new, BTreeMap::extend),
+            build_script_rustc_env: joined_extra_member!(self.build_script_rustc_env, rhs.build_script_rustc_env, BTreeMap::new, BTreeMap::extend),
+            build_content: joined_extra_member!(self.build_content, rhs.build_content, String::new, concat_string),
+            shallow_since,
+        };
+
+        output
+    }
+}
+
+impl Sum for CrateExtras {
+    fn sum<I: Iterator<Item = Self>>(iter: I) -> Self {
+        iter.fold(CrateExtras::default(), |a, b| a + b)
+    }
+}
+
 #[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Hash, Clone)]
 pub struct CrateId {
     pub name: String,
@@ -187,7 +266,7 @@ impl CrateId {
     pub fn matches(&self, package: &Package) -> bool {
         // If the package name does not match, it's obviously
         // not the right package
-        if self.name != package.name {
+        if self.name != "*" && self.name != package.name {
             return false;
         }
 
@@ -267,7 +346,7 @@ impl std::fmt::Display for CrateId {
     }
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Default, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
 pub struct Config {
     /// Whether or not to generate Cargo build scripts by default

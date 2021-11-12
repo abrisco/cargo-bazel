@@ -1,4 +1,4 @@
-//! TODO
+//! Crate specific information embedded into [crate::context::Context] objects.
 
 use std::collections::{BTreeMap, BTreeSet};
 
