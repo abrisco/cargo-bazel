@@ -1,5 +1,5 @@
 load("@crate_index//:defs.bzl", "aliases", "all_crate_deps")
-load("@rules_rust//rust:defs.bzl", "rust_binary", "rust_library", "rust_test")
+load("@rules_rust//rust:defs.bzl", "rust_binary", "rust_doc", "rust_library", "rust_test")
 load("//:version.bzl", "VERSION")
 
 package(default_visibility = ["//visibility:public"])
@@ -60,8 +60,7 @@ rust_test(
     ),
 )
 
-# TODO: https://github.com/bazelbuild/rules_rust/issues/947
-# rust_doc(
-#     name = "rustdoc",
-#     crate = ":cargo_bazel",
-# )
+rust_doc(
+    name = "rustdoc",
+    crate = ":cargo_bazel",
+)

@@ -93,3 +93,8 @@ sh_binary(
         ":mdbook",
     ],
 )
+
+alias(
+    name = "cargo_bazel_rustdoc",
+    actual = "//tools/cargo_bazel:rustdoc",
+)
