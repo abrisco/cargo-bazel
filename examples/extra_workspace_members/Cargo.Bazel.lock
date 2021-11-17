@@ -1509,13 +1509,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "pdqselect 0.1.0": {
+    "pdqselect 0.1.1": {
       "name": "pdqselect",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/pdqselect/0.1.0/download",
-          "sha256": "4ec91767ecc0a0bbe558ce8c9da33c068066c57ecc8bb8477ef8c1ad3ef77c27"
+          "url": "https://crates.io/api/v1/crates/pdqselect/0.1.1/download",
+          "sha256": "7778906d9321dd56cde1d1ffa69a73e59dcf5fda6d366f62727adf2bd4193aee"
         }
       },
       "targets": [
@@ -1534,8 +1534,8 @@
       ],
       "library_target_name": "pdqselect",
       "common_attrs": {
-        "edition": "2015",
-        "version": "0.1.0"
+        "edition": "2021",
+        "version": "0.1.1"
       },
       "license": "Apache-2.0/MIT"
     },
@@ -2071,7 +2071,7 @@
               "target": "num_traits"
             },
             {
-              "id": "pdqselect 0.1.0",
+              "id": "pdqselect 0.1.1",
               "target": "pdqselect"
             }
           ],
