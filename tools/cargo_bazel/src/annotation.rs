@@ -24,7 +24,7 @@ pub struct CrateAnnotation {
     pub deps: DependencySet,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Default, Serialize, Deserialize)]
 pub struct MetadataAnnotation {
     pub packages: BTreeMap<PackageId, Package>,
     pub crates: BTreeMap<PackageId, CrateAnnotation>,
@@ -102,7 +102,7 @@ pub enum SourceAnnotation {
     },
 }
 
-#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Deserialize, Serialize)]
+#[derive(Debug, Default, PartialEq, Eq, PartialOrd, Ord, Deserialize, Serialize)]
 pub struct LockfileAnnotation {
     pub crates: BTreeMap<PackageId, SourceAnnotation>,
 }
@@ -221,7 +221,7 @@ pub struct PairredExtras {
     pub crate_extra: CrateExtras,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Default, Serialize, Deserialize)]
 pub struct Annotations {
     pub metadata: MetadataAnnotation,
     pub lockfile: LockfileAnnotation,
@@ -247,19 +247,25 @@ impl Annotations {
             .packages
             .iter()
             .filter_map(|(pkg_id, pkg)| {
-                config
+                let extras: Vec<CrateExtras> = config
                     .extras
                     .iter()
-                    .find(|(id, _)| id.matches(pkg))
-                    .map(|(_, crate_extra)| {
-                        (
-                            CrateId::new(pkg.name.clone(), pkg.version.to_string()),
-                            PairredExtras {
-                                package_id: pkg_id.clone(),
-                                crate_extra: crate_extra.clone(),
-                            },
-                        )
-                    })
+                    .filter(|(id, _)| id.matches(pkg))
+                    .map(|(_, extra)| extra)
+                    .cloned()
+                    .collect();
+
+                if !extras.is_empty() {
+                    Some((
+                        CrateId::new(pkg.name.clone(), pkg.version.to_string()),
+                        PairredExtras {
+                            package_id: pkg_id.clone(),
+                            crate_extra: extras.into_iter().sum(),
+                        },
+                    ))
+                } else {
+                    None
+                }
             })
             .collect();
 

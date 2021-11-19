@@ -17,7 +17,7 @@ pub struct Dependency {
     pub alias: Option<String>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Default, Serialize, Deserialize)]
 pub struct DependencySet {
     pub normal_deps: SelectList<Dependency>,
     pub normal_dev_deps: SelectList<Dependency>,

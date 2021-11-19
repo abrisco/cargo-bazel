@@ -125,11 +125,18 @@ def render_config(
 def _crate_id(name, version):
     return "{} {}".format(name, version)
 
-def _collect_crate_extras(extras):
+def _collect_crate_extras(extras, repository_name):
     extras = {name: [json.decode(e) for e in extra] for name, extra in extras.items()}
     crate_extras = {}
     for name, extra in extras.items():
         for (version, data) in extra:
+            if name == "*" and version != "*":
+                fail(
+                    "Wildcard crate names must have wildcard crate versions. " +
+                    "Please update the `extras` attribute of the {} crates_repository".format(
+                        repository_name,
+                    ),
+                )
             id = _crate_id(name, version)
             if id in crate_extras:
                 fail("Found duplicate entries for {}".format(id))
@@ -174,7 +181,7 @@ def generate_config(repository_ctx):
     """
     config = struct(
         generate_build_scripts = repository_ctx.attr.generate_build_scripts,
-        extras = _collect_crate_extras(repository_ctx.attr.extras),
+        extras = _collect_crate_extras(repository_ctx.attr.extras, repository_ctx.name),
         cargo_config = _read_cargo_config(repository_ctx),
         rendering = _get_render_config(repository_ctx),
         supported_platform_triples = repository_ctx.attr.supported_platform_triples,
