@@ -1,5 +1,5 @@
 {
-  "checksum": "744629351d957af040f0d745104f9bd05b9220325bea5f959c32ab59043fba3a",
+  "checksum": "84a608ee664ce0c4e46d80df927868dc47cedb290ab654ebed8413ef2f047a62",
   "crates": {
     "adler 1.0.2": {
       "name": "adler",
@@ -115,13 +115,13 @@
       },
       "license": "MIT"
     },
-    "anyhow 1.0.45": {
+    "anyhow 1.0.47": {
       "name": "anyhow",
-      "version": "1.0.45",
+      "version": "1.0.47",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/anyhow/1.0.45/download",
-          "sha256": "ee10e43ae4a853c0a3591d4e2ada1719e553be18199d9da9d4a83f5927c2f5c7"
+          "url": "https://crates.io/api/v1/crates/anyhow/1.0.47/download",
+          "sha256": "38d9ff5d688f1c13395289f67db01d4826b46dd694e7580accdc3e8430f2d98e"
         }
       },
       "targets": [
@@ -159,14 +159,14 @@
         "deps": {
           "common": [
             {
-              "id": "anyhow 1.0.45",
+              "id": "anyhow 1.0.47",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.0.45"
+        "version": "1.0.47"
       },
       "build_script_attrs": {},
       "license": "MIT OR Apache-2.0"
@@ -578,9 +578,9 @@
       "build_script_attrs": {},
       "license": "MIT OR Apache-2.0"
     },
-    "cargo-bazel 0.0.11": {
+    "cargo-bazel 0.0.12": {
       "name": "cargo-bazel",
-      "version": "0.0.11",
+      "version": "0.0.12",
       "repository": null,
       "targets": [
         {
@@ -613,7 +613,7 @@
         "deps": {
           "common": [
             {
-              "id": "anyhow 1.0.45",
+              "id": "anyhow 1.0.47",
               "target": "anyhow"
             },
             {
@@ -697,7 +697,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.0.11"
+        "version": "0.0.12"
       },
       "license": null
     },
@@ -7063,7 +7063,7 @@
     "phf_generator 0.10.0"
   ],
   "workspace_members": {
-    "cargo-bazel 0.0.11": "tools/cargo_bazel",
+    "cargo-bazel 0.0.12": "tools/cargo_bazel",
     "cross_installer 0.1.0": "tools/cross_installer",
     "direct-cargo-bazel-deps 0.0.1": "",
     "examples-runner 0.0.1": "tools/examples_runner",
