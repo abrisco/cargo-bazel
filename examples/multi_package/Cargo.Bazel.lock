@@ -1,5 +1,5 @@
 {
-  "checksum": "ae0ffa44dd0be1333c2087752f00318908154b05bd37c2ca2504a470919995e3",
+  "checksum": "2d01e3e6c07037bdf8c311cbccdaf50fad440c18fd6b5461f0006321b54eca4e",
   "crates": {
     "aho-corasick 0.7.18": {
       "name": "aho-corasick",
@@ -44,13 +44,13 @@
       },
       "license": "Unlicense/MIT"
     },
-    "anyhow 1.0.45": {
+    "anyhow 1.0.47": {
       "name": "anyhow",
-      "version": "1.0.45",
+      "version": "1.0.47",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/anyhow/1.0.45/download",
-          "sha256": "ee10e43ae4a853c0a3591d4e2ada1719e553be18199d9da9d4a83f5927c2f5c7"
+          "url": "https://crates.io/api/v1/crates/anyhow/1.0.47/download",
+          "sha256": "38d9ff5d688f1c13395289f67db01d4826b46dd694e7580accdc3e8430f2d98e"
         }
       },
       "targets": [
@@ -88,14 +88,14 @@
         "deps": {
           "common": [
             {
-              "id": "anyhow 1.0.45",
+              "id": "anyhow 1.0.47",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.0.45"
+        "version": "1.0.47"
       },
       "build_script_attrs": {},
       "license": "MIT OR Apache-2.0"
@@ -6273,7 +6273,7 @@
         "deps": {
           "common": [
             {
-              "id": "anyhow 1.0.45",
+              "id": "anyhow 1.0.47",
               "target": "anyhow"
             },
             {

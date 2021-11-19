@@ -1,5 +1,5 @@
 {
-  "checksum": "f785a2cb0b32a54afc78c9beb5fc3f083860162568ef095deb318bf184aeab18",
+  "checksum": "dd47d2748d700ff1663b82c1afbb2f07abf74e1214c3f171921972a6dc076b68",
   "crates": {
     "aho-corasick 0.7.18": {
       "name": "aho-corasick",
@@ -267,7 +267,7 @@
               "target": "tokio_util"
             },
             {
-              "id": "tower 0.4.10",
+              "id": "tower 0.4.11",
               "target": "tower"
             },
             {
@@ -495,7 +495,7 @@
               "target": "tokio"
             },
             {
-              "id": "tower 0.4.10",
+              "id": "tower 0.4.11",
               "target": "tower"
             },
             {
@@ -3605,13 +3605,13 @@
       },
       "license": "MIT"
     },
-    "tower 0.4.10": {
+    "tower 0.4.11": {
       "name": "tower",
-      "version": "0.4.10",
+      "version": "0.4.11",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/tower/0.4.10/download",
-          "sha256": "c00e500fff5fa1131c866b246041a6bf96da9c965f8fe4128cb1421f23e93c00"
+          "url": "https://crates.io/api/v1/crates/tower/0.4.11/download",
+          "sha256": "5651b5f6860a99bd1adb59dbfe1db8beb433e73709d9032b413a77e2fb7c066a"
         }
       },
       "targets": [
@@ -3683,7 +3683,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.4.10"
+        "version": "0.4.11"
       },
       "license": "MIT"
     },
