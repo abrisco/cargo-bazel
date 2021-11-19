@@ -19,14 +19,8 @@ load("//:defs.bzl", "crate", "crates_repository")
 crates_repository(
     name = "crate_index",
     extras = {
-        "cargo_toml": [crate.extras(
-            shallow_since = "1632241831 -0700",
-        )],
         "chrono-tz": [crate.extras(
             build_script_data_glob = ["**/tz/**"],
-        )],
-        "crates-index": [crate.extras(
-            shallow_since = "1634514141 +0100",
         )],
         "crossbeam-utils": [crate.extras(
             build_script_data_glob = ["**/*.rs"],
