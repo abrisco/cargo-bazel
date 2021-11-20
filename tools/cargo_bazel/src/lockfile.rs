@@ -29,7 +29,7 @@ impl LockfileKind {
             return Ok(Self::Bazel);
         }
 
-        if serde_json::from_str::<Context>(&content).is_ok() {
+        if cargo_lock::Lockfile::from_str(&content).is_ok() {
             return Ok(Self::Cargo);
         }
 
@@ -60,17 +60,13 @@ impl FromStr for LockfileKind {
 
 pub fn is_cargo_lockfile(path: &Path, kind: &LockfileKind) -> bool {
     match kind {
-        LockfileKind::Auto => {}
-        LockfileKind::Bazel => return false,
-        LockfileKind::Cargo => return true,
-    };
-
-    let kind = match LockfileKind::detect(path) {
-        Ok(kind) => kind,
-        Err(_) => return false,
-    };
-
-    matches!(kind, LockfileKind::Cargo)
+        LockfileKind::Auto => match LockfileKind::detect(path) {
+            Ok(kind) => matches!(kind, LockfileKind::Cargo),
+            Err(_) => false,
+        },
+        LockfileKind::Bazel => false,
+        LockfileKind::Cargo => true,
+    }
 }
 
 /// Write a [crate::planning::PlannedContext] to disk
@@ -149,5 +145,64 @@ impl PartialEq<str> for Digest {
 impl PartialEq<String> for Digest {
     fn eq(&self, other: &String) -> bool {
         &self.0 == other
+    }
+}
+
+#[cfg(test)]
+mod test {
+    use super::*;
+
+    use std::fs;
+
+    #[test]
+    fn detect_bazel_lockfile() {
+        let temp_dir = tempfile::tempdir().unwrap();
+        let lockfile = temp_dir.as_ref().join("lockfile");
+        fs::write(
+            &lockfile,
+            serde_json::to_string(&crate::context::Context::default()).unwrap(),
+        )
+        .unwrap();
+
+        let kind = LockfileKind::detect(&lockfile).unwrap();
+        assert!(matches!(kind, LockfileKind::Bazel));
+    }
+
+    #[test]
+    fn detect_cargo_lockfile() {
+        let temp_dir = tempfile::tempdir().unwrap();
+        let lockfile = temp_dir.as_ref().join("lockfile");
+        fs::write(
+            &lockfile,
+            textwrap::dedent(
+                r#"
+                version = 3
+
+                [[package]]
+                name = "detect"
+                version = "0.1.0"
+                "#,
+            ),
+        )
+        .unwrap();
+
+        let kind = LockfileKind::detect(&lockfile).unwrap();
+        assert!(matches!(kind, LockfileKind::Cargo));
+    }
+
+    #[test]
+    fn detect_invalid_lockfile() {
+        let temp_dir = tempfile::tempdir().unwrap();
+        let lockfile = temp_dir.as_ref().join("lockfile");
+        fs::write(&lockfile, "]} invalid {[").unwrap();
+
+        assert!(LockfileKind::detect(&lockfile).is_err());
+    }
+
+    #[test]
+    fn detect_missing_lockfile() {
+        let temp_dir = tempfile::tempdir().unwrap();
+        let lockfile = temp_dir.as_ref().join("lockfile");
+        assert!(LockfileKind::detect(&lockfile).is_err());
     }
 }
