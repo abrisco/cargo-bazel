@@ -310,7 +310,7 @@
         {
             "name": "build-scripts",
             "version": "0.1.0",
-            "id": "build-scripts 0.1.0 (path+file:///var/folders/hf/phjl9q7501gb5wt_qr4ltn3m0000gn/T/tmp8qgdujfb/BuildScripts)",
+            "id": "build-scripts 0.1.0 (path+file://{TEMP_DIR}/build_scripts)",
             "license": null,
             "license_file": null,
             "description": null,
@@ -319,7 +319,7 @@
                 {
                     "name": "openssl",
                     "source": "registry+https://github.com/rust-lang/crates.io-index",
-                    "req": "^0.10.36",
+                    "req": "=0.10.36",
                     "kind": null,
                     "rename": null,
                     "optional": false,
@@ -338,7 +338,7 @@
                         "lib"
                     ],
                     "name": "build-scripts",
-                    "src_path": "/var/folders/hf/phjl9q7501gb5wt_qr4ltn3m0000gn/T/tmp8qgdujfb/BuildScripts/lib.rs",
+                    "src_path": "{TEMP_DIR}/build_scripts/lib.rs",
                     "edition": "2018",
                     "doc": true,
                     "doctest": true,
@@ -346,7 +346,7 @@
                 }
             ],
             "features": {},
-            "manifest_path": "/var/folders/hf/phjl9q7501gb5wt_qr4ltn3m0000gn/T/tmp8qgdujfb/BuildScripts/Cargo.toml",
+            "manifest_path": "{TEMP_DIR}/build_scripts/Cargo.toml",
             "metadata": null,
             "publish": null,
             "authors": [],
@@ -362,8 +362,8 @@
         },
         {
             "name": "cc",
-            "version": "1.0.71",
-            "id": "cc 1.0.71 (registry+https://github.com/rust-lang/crates.io-index)",
+            "version": "1.0.72",
+            "id": "cc 1.0.72 (registry+https://github.com/rust-lang/crates.io-index)",
             "license": "MIT/Apache-2.0",
             "license_file": null,
             "description": "A build-time dependency for Cargo build scripts to assist in invoking the native\nC compiler to compile native C code into a static archive to be linked into Rust\ncode.\n",
@@ -403,7 +403,7 @@
                         "lib"
                     ],
                     "name": "cc",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/cc-1.0.71/src/lib.rs",
+                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/cc-1.0.72/src/lib.rs",
                     "edition": "2018",
                     "doc": true,
                     "doctest": true,
@@ -417,7 +417,7 @@
                         "bin"
                     ],
                     "name": "gcc-shim",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/cc-1.0.71/src/bin/gcc-shim.rs",
+                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/cc-1.0.72/src/bin/gcc-shim.rs",
                     "edition": "2018",
                     "doc": true,
                     "doctest": false,
@@ -431,7 +431,7 @@
                         "bin"
                     ],
                     "name": "test",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/cc-1.0.71/tests/test.rs",
+                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/cc-1.0.72/tests/test.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -445,7 +445,7 @@
                         "bin"
                     ],
                     "name": "cxxflags",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/cc-1.0.71/tests/cxxflags.rs",
+                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/cc-1.0.72/tests/cxxflags.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -459,7 +459,7 @@
                         "bin"
                     ],
                     "name": "cflags",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/cc-1.0.71/tests/cflags.rs",
+                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/cc-1.0.72/tests/cflags.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -473,7 +473,7 @@
                         "bin"
                     ],
                     "name": "cc_env",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/cc-1.0.71/tests/cc_env.rs",
+                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/cc-1.0.72/tests/cc_env.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -485,7 +485,7 @@
                     "jobserver"
                 ]
             },
-            "manifest_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/cc-1.0.71/Cargo.toml",
+            "manifest_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/cc-1.0.72/Cargo.toml",
             "metadata": null,
             "publish": null,
             "authors": [
@@ -690,8 +690,8 @@
         },
         {
             "name": "libc",
-            "version": "0.2.106",
-            "id": "libc 0.2.106 (registry+https://github.com/rust-lang/crates.io-index)",
+            "version": "0.2.108",
+            "id": "libc 0.2.108 (registry+https://github.com/rust-lang/crates.io-index)",
             "license": "MIT OR Apache-2.0",
             "license_file": null,
             "description": "Raw FFI bindings to platform libraries like libc.\n",
@@ -719,7 +719,7 @@
                         "lib"
                     ],
                     "name": "libc",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.106/src/lib.rs",
+                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.108/src/lib.rs",
                     "edition": "2015",
                     "doc": true,
                     "doctest": true,
@@ -733,7 +733,7 @@
                         "bin"
                     ],
                     "name": "const_fn",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.106/tests/const_fn.rs",
+                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.108/tests/const_fn.rs",
                     "edition": "2015",
                     "doc": false,
                     "doctest": false,
@@ -747,7 +747,7 @@
                         "bin"
                     ],
                     "name": "build-script-build",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.106/build.rs",
+                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.108/build.rs",
                     "edition": "2015",
                     "doc": false,
                     "doctest": false,
@@ -770,7 +770,7 @@
                     "std"
                 ]
             },
-            "manifest_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.106/Cargo.toml",
+            "manifest_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.108/Cargo.toml",
             "metadata": {
                 "docs": {
                     "rs": {
@@ -1055,8 +1055,8 @@
         },
         {
             "name": "openssl",
-            "version": "0.10.38",
-            "id": "openssl 0.10.38 (registry+https://github.com/rust-lang/crates.io-index)",
+            "version": "0.10.36",
+            "id": "openssl 0.10.36 (registry+https://github.com/rust-lang/crates.io-index)",
             "license": "Apache-2.0",
             "license_file": null,
             "description": "OpenSSL bindings",
@@ -1089,7 +1089,7 @@
                 {
                     "name": "openssl-sys",
                     "source": "registry+https://github.com/rust-lang/crates.io-index",
-                    "req": "^0.9.69",
+                    "req": "^0.9.66",
                     "kind": null,
                     "rename": "ffi",
                     "optional": false,
@@ -1168,7 +1168,7 @@
                         "lib"
                     ],
                     "name": "openssl",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/openssl-0.10.38/src/lib.rs",
+                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/openssl-0.10.36/src/lib.rs",
                     "edition": "2018",
                     "doc": true,
                     "doctest": true,
@@ -1182,7 +1182,7 @@
                         "bin"
                     ],
                     "name": "mk_certs",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/openssl-0.10.38/examples/mk_certs.rs",
+                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/openssl-0.10.36/examples/mk_certs.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1196,7 +1196,7 @@
                         "bin"
                     ],
                     "name": "build-script-build",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/openssl-0.10.38/build.rs",
+                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/openssl-0.10.36/build.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1212,7 +1212,7 @@
                     "ffi/vendored"
                 ]
             },
-            "manifest_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/openssl-0.10.38/Cargo.toml",
+            "manifest_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/openssl-0.10.36/Cargo.toml",
             "metadata": null,
             "publish": null,
             "authors": [
@@ -1238,8 +1238,8 @@
         },
         {
             "name": "openssl-sys",
-            "version": "0.9.70",
-            "id": "openssl-sys 0.9.70 (registry+https://github.com/rust-lang/crates.io-index)",
+            "version": "0.9.71",
+            "id": "openssl-sys 0.9.71 (registry+https://github.com/rust-lang/crates.io-index)",
             "license": "MIT",
             "license_file": null,
             "description": "FFI bindings to OpenSSL",
@@ -1327,7 +1327,7 @@
                         "lib"
                     ],
                     "name": "openssl-sys",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/openssl-sys-0.9.70/src/lib.rs",
+                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/openssl-sys-0.9.71/src/lib.rs",
                     "edition": "2015",
                     "doc": true,
                     "doctest": true,
@@ -1341,7 +1341,7 @@
                         "bin"
                     ],
                     "name": "build-script-main",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/openssl-sys-0.9.70/build/main.rs",
+                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/openssl-sys-0.9.71/build/main.rs",
                     "edition": "2015",
                     "doc": false,
                     "doctest": false,
@@ -1353,7 +1353,7 @@
                     "openssl-src"
                 ]
             },
-            "manifest_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/openssl-sys-0.9.70/Cargo.toml",
+            "manifest_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/openssl-sys-0.9.71/Cargo.toml",
             "metadata": {
                 "pkg-config": {
                     "openssl": "1.0.1"
@@ -1524,7 +1524,7 @@
         }
     ],
     "workspace_members": [
-        "build-scripts 0.1.0 (path+file:///var/folders/hf/phjl9q7501gb5wt_qr4ltn3m0000gn/T/tmp8qgdujfb/BuildScripts)"
+        "build-scripts 0.1.0 (path+file://{TEMP_DIR}/build_scripts)"
     ],
     "resolve": {
         "nodes": [
@@ -1543,14 +1543,14 @@
                 ]
             },
             {
-                "id": "build-scripts 0.1.0 (path+file:///var/folders/hf/phjl9q7501gb5wt_qr4ltn3m0000gn/T/tmp8qgdujfb/BuildScripts)",
+                "id": "build-scripts 0.1.0 (path+file://{TEMP_DIR}/build_scripts)",
                 "dependencies": [
-                    "openssl 0.10.38 (registry+https://github.com/rust-lang/crates.io-index)"
+                    "openssl 0.10.36 (registry+https://github.com/rust-lang/crates.io-index)"
                 ],
                 "deps": [
                     {
                         "name": "openssl",
-                        "pkg": "openssl 0.10.38 (registry+https://github.com/rust-lang/crates.io-index)",
+                        "pkg": "openssl 0.10.36 (registry+https://github.com/rust-lang/crates.io-index)",
                         "dep_kinds": [
                             {
                                 "kind": null,
@@ -1562,7 +1562,7 @@
                 "features": []
             },
             {
-                "id": "cc 1.0.71 (registry+https://github.com/rust-lang/crates.io-index)",
+                "id": "cc 1.0.72 (registry+https://github.com/rust-lang/crates.io-index)",
                 "dependencies": [],
                 "deps": [],
                 "features": []
@@ -1599,7 +1599,7 @@
                 "features": []
             },
             {
-                "id": "libc 0.2.106 (registry+https://github.com/rust-lang/crates.io-index)",
+                "id": "libc 0.2.108 (registry+https://github.com/rust-lang/crates.io-index)",
                 "dependencies": [],
                 "deps": [],
                 "features": [
@@ -1619,14 +1619,14 @@
                 ]
             },
             {
-                "id": "openssl 0.10.38 (registry+https://github.com/rust-lang/crates.io-index)",
+                "id": "openssl 0.10.36 (registry+https://github.com/rust-lang/crates.io-index)",
                 "dependencies": [
                     "bitflags 1.3.2 (registry+https://github.com/rust-lang/crates.io-index)",
                     "cfg-if 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
                     "foreign-types 0.3.2 (registry+https://github.com/rust-lang/crates.io-index)",
-                    "libc 0.2.106 (registry+https://github.com/rust-lang/crates.io-index)",
+                    "libc 0.2.108 (registry+https://github.com/rust-lang/crates.io-index)",
                     "once_cell 1.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
-                    "openssl-sys 0.9.70 (registry+https://github.com/rust-lang/crates.io-index)"
+                    "openssl-sys 0.9.71 (registry+https://github.com/rust-lang/crates.io-index)"
                 ],
                 "deps": [
                     {
@@ -1661,7 +1661,7 @@
                     },
                     {
                         "name": "libc",
-                        "pkg": "libc 0.2.106 (registry+https://github.com/rust-lang/crates.io-index)",
+                        "pkg": "libc 0.2.108 (registry+https://github.com/rust-lang/crates.io-index)",
                         "dep_kinds": [
                             {
                                 "kind": null,
@@ -1681,7 +1681,7 @@
                     },
                     {
                         "name": "ffi",
-                        "pkg": "openssl-sys 0.9.70 (registry+https://github.com/rust-lang/crates.io-index)",
+                        "pkg": "openssl-sys 0.9.71 (registry+https://github.com/rust-lang/crates.io-index)",
                         "dep_kinds": [
                             {
                                 "kind": null,
@@ -1693,11 +1693,11 @@
                 "features": []
             },
             {
-                "id": "openssl-sys 0.9.70 (registry+https://github.com/rust-lang/crates.io-index)",
+                "id": "openssl-sys 0.9.71 (registry+https://github.com/rust-lang/crates.io-index)",
                 "dependencies": [
                     "autocfg 1.0.1 (registry+https://github.com/rust-lang/crates.io-index)",
-                    "cc 1.0.71 (registry+https://github.com/rust-lang/crates.io-index)",
-                    "libc 0.2.106 (registry+https://github.com/rust-lang/crates.io-index)",
+                    "cc 1.0.72 (registry+https://github.com/rust-lang/crates.io-index)",
+                    "libc 0.2.108 (registry+https://github.com/rust-lang/crates.io-index)",
                     "pkg-config 0.3.22 (registry+https://github.com/rust-lang/crates.io-index)",
                     "vcpkg 0.2.15 (registry+https://github.com/rust-lang/crates.io-index)"
                 ],
@@ -1714,7 +1714,7 @@
                     },
                     {
                         "name": "cc",
-                        "pkg": "cc 1.0.71 (registry+https://github.com/rust-lang/crates.io-index)",
+                        "pkg": "cc 1.0.72 (registry+https://github.com/rust-lang/crates.io-index)",
                         "dep_kinds": [
                             {
                                 "kind": "build",
@@ -1724,7 +1724,7 @@
                     },
                     {
                         "name": "libc",
-                        "pkg": "libc 0.2.106 (registry+https://github.com/rust-lang/crates.io-index)",
+                        "pkg": "libc 0.2.108 (registry+https://github.com/rust-lang/crates.io-index)",
                         "dep_kinds": [
                             {
                                 "kind": null,
@@ -1768,10 +1768,10 @@
                 "features": []
             }
         ],
-        "root": "build-scripts 0.1.0 (path+file:///var/folders/hf/phjl9q7501gb5wt_qr4ltn3m0000gn/T/tmp8qgdujfb/BuildScripts)"
+        "root": "build-scripts 0.1.0 (path+file://{TEMP_DIR}/build_scripts)"
     },
-    "target_directory": "/var/folders/hf/phjl9q7501gb5wt_qr4ltn3m0000gn/T/tmp8qgdujfb/BuildScripts/target",
+    "target_directory": "{TEMP_DIR}/build_scripts/target",
     "version": 1,
-    "workspace_root": "/var/folders/hf/phjl9q7501gb5wt_qr4ltn3m0000gn/T/tmp8qgdujfb/BuildScripts",
+    "workspace_root": "{TEMP_DIR}/build_scripts",
     "metadata": null
 }

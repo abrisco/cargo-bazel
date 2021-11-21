@@ -66,4 +66,32 @@ pub mod metadata {
         )))
         .unwrap()
     }
+
+    pub fn common() -> cargo_metadata::Metadata {
+        serde_json::from_str(include_str!(concat!(
+            env!("CARGO_MANIFEST_DIR"),
+            "/test_data/metadata/common/metadata.json"
+        )))
+        .unwrap()
+    }
+}
+
+pub mod lockfile {
+    use std::str::FromStr;
+
+    pub fn build_scripts() -> cargo_lock::Lockfile {
+        cargo_lock::Lockfile::from_str(include_str!(concat!(
+            env!("CARGO_MANIFEST_DIR"),
+            "/test_data/metadata/build_scripts/Cargo.lock"
+        )))
+        .unwrap()
+    }
+
+    pub fn common() -> cargo_lock::Lockfile {
+        cargo_lock::Lockfile::from_str(include_str!(concat!(
+            env!("CARGO_MANIFEST_DIR"),
+            "/test_data/metadata/common/Cargo.lock"
+        )))
+        .unwrap()
+    }
 }
