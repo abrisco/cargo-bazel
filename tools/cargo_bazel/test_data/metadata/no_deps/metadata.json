@@ -3,7 +3,7 @@
         {
             "name": "no-deps",
             "version": "0.1.0",
-            "id": "no-deps 0.1.0 (path+file:///var/folders/hf/phjl9q7501gb5wt_qr4ltn3m0000gn/T/tmp8qgdujfb/NoDeps)",
+            "id": "no-deps 0.1.0 (path+file://{TEMP_DIR}/no_deps)",
             "license": null,
             "license_file": null,
             "description": null,
@@ -18,7 +18,7 @@
                         "lib"
                     ],
                     "name": "no-deps",
-                    "src_path": "/var/folders/hf/phjl9q7501gb5wt_qr4ltn3m0000gn/T/tmp8qgdujfb/NoDeps/lib.rs",
+                    "src_path": "{TEMP_DIR}/no_deps/lib.rs",
                     "edition": "2018",
                     "doc": true,
                     "doctest": true,
@@ -26,7 +26,7 @@
                 }
             ],
             "features": {},
-            "manifest_path": "/var/folders/hf/phjl9q7501gb5wt_qr4ltn3m0000gn/T/tmp8qgdujfb/NoDeps/Cargo.toml",
+            "manifest_path": "{TEMP_DIR}/no_deps/Cargo.toml",
             "metadata": null,
             "publish": null,
             "authors": [],
@@ -42,21 +42,21 @@
         }
     ],
     "workspace_members": [
-        "no-deps 0.1.0 (path+file:///var/folders/hf/phjl9q7501gb5wt_qr4ltn3m0000gn/T/tmp8qgdujfb/NoDeps)"
+        "no-deps 0.1.0 (path+file://{TEMP_DIR}/no_deps)"
     ],
     "resolve": {
         "nodes": [
             {
-                "id": "no-deps 0.1.0 (path+file:///var/folders/hf/phjl9q7501gb5wt_qr4ltn3m0000gn/T/tmp8qgdujfb/NoDeps)",
+                "id": "no-deps 0.1.0 (path+file://{TEMP_DIR}/no_deps)",
                 "dependencies": [],
                 "deps": [],
                 "features": []
             }
         ],
-        "root": "no-deps 0.1.0 (path+file:///var/folders/hf/phjl9q7501gb5wt_qr4ltn3m0000gn/T/tmp8qgdujfb/NoDeps)"
+        "root": "no-deps 0.1.0 (path+file://{TEMP_DIR}/no_deps)"
     },
-    "target_directory": "/var/folders/hf/phjl9q7501gb5wt_qr4ltn3m0000gn/T/tmp8qgdujfb/NoDeps/target",
+    "target_directory": "{TEMP_DIR}/no_deps/target",
     "version": 1,
-    "workspace_root": "/var/folders/hf/phjl9q7501gb5wt_qr4ltn3m0000gn/T/tmp8qgdujfb/NoDeps",
+    "workspace_root": "{TEMP_DIR}/no_deps",
     "metadata": null
 }

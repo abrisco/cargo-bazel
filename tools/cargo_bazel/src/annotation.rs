@@ -8,6 +8,7 @@ use std::path::PathBuf;
 
 use anyhow::{bail, Result};
 use cargo_metadata::{Node, Package, PackageId};
+use hex::ToHex;
 use serde::{Deserialize, Serialize};
 
 use crate::config::{Commitish, Config, CrateExtras, CrateId};
@@ -158,7 +159,7 @@ impl LockfileAnnotation {
         };
 
         // Check for spliced information about a crate's network source.
-        let spliced_source_info = Self::find_source_annotation(lock_pkg, workspace_metadata)?;
+        let spliced_source_info = Self::find_source_annotation(lock_pkg, workspace_metadata);
 
         // Parse it's source info. The check above should prevent a panic
         let source = match lock_pkg.source.as_ref() {
@@ -187,12 +188,36 @@ impl LockfileAnnotation {
             });
         }
 
-        // The last thing that should be checked is the spliced source information as
+        // One of the last things that should be checked is the spliced source information as
         // other sources may more accurately represent where a crate should be downloaded.
         if let Some(info) = spliced_source_info {
             return Ok(SourceAnnotation::Http {
                 url: info.url,
                 sha256: Some(info.sha256),
+            });
+        }
+
+        // Finally, In the event that no spliced source information was included in the
+        // metadata the raw source info is used for registry crates and `crates.io` is
+        // assumed to be the source.
+        if source.is_registry() {
+            return Ok(SourceAnnotation::Http {
+                url: format!(
+                    "https://crates.io/api/v1/crates/{}/{}/download",
+                    lock_pkg.name.to_string(),
+                    lock_pkg.version.to_string()
+                ),
+                sha256: lock_pkg
+                    .checksum
+                    .as_ref()
+                    .and_then(|sum| {
+                        if sum.is_sha256() {
+                            sum.as_sha256()
+                        } else {
+                            None
+                        }
+                    })
+                    .map(|sum| sum.encode_hex::<String>()),
             });
         }
 
@@ -206,12 +231,9 @@ impl LockfileAnnotation {
     fn find_source_annotation(
         package: &cargo_lock::Package,
         metadata: &WorkspaceMetadata,
-    ) -> Result<Option<SourceInfo>> {
+    ) -> Option<SourceInfo> {
         let crate_id = CrateId::new(package.name.to_string(), package.version.to_string());
-        match metadata.sources.get(&crate_id) {
-            Some(info) => Ok(Some(info.clone())),
-            None => Ok(None),
-        }
+        metadata.sources.get(&crate_id).cloned()
     }
 }
 

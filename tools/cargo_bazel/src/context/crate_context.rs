@@ -537,3 +537,184 @@ impl CrateContext {
             .collect()
     }
 }
+
+#[cfg(test)]
+mod test {
+    use super::*;
+
+    use crate::annotation::Annotations;
+    use crate::config::CrateExtras;
+
+    fn common_annotations() -> Annotations {
+        Annotations::new(
+            crate::test::metadata::common(),
+            crate::test::lockfile::common(),
+            crate::config::Config::default(),
+        )
+        .unwrap()
+    }
+
+    #[test]
+    fn new_context() {
+        let annotations = common_annotations();
+
+        let crate_annotation = &annotations.metadata.crates[&PackageId {
+            repr: "common 0.1.0 (path+file://{TEMP_DIR}/common)".to_owned(),
+        }];
+
+        let context = CrateContext::new(
+            crate_annotation,
+            &annotations.metadata.packages,
+            &annotations.lockfile.crates,
+            &annotations.pairred_extras,
+            false,
+        );
+
+        assert_eq!(context.name, "common");
+        assert_eq!(
+            context.targets,
+            vec![
+                Rule::Library(TargetAttributes {
+                    crate_name: "common".to_owned(),
+                    crate_root: Some("lib.rs".to_owned()),
+                    srcs: Glob::new_rust_srcs(),
+                }),
+                Rule::Binary(TargetAttributes {
+                    crate_name: "common-bin".to_owned(),
+                    crate_root: Some("main.rs".to_owned()),
+                    srcs: Glob::new_rust_srcs(),
+                }),
+            ]
+        );
+    }
+
+    #[test]
+    fn context_with_overrides() {
+        let annotations = common_annotations();
+
+        let package_id = PackageId {
+            repr: "common 0.1.0 (path+file://{TEMP_DIR}/common)".to_owned(),
+        };
+
+        let crate_annotation = &annotations.metadata.crates[&package_id];
+
+        let mut pairred_extras = BTreeMap::new();
+        pairred_extras.insert(
+            CrateId::new("common".to_owned(), "0.1.0".to_owned()),
+            PairredExtras {
+                package_id,
+                crate_extra: CrateExtras {
+                    data_glob: Some(BTreeSet::from(["**/data_glob/**".to_owned()])),
+                    ..CrateExtras::default()
+                },
+            },
+        );
+
+        let context = CrateContext::new(
+            crate_annotation,
+            &annotations.metadata.packages,
+            &annotations.lockfile.crates,
+            &pairred_extras,
+            false,
+        );
+
+        assert_eq!(context.name, "common");
+        assert_eq!(
+            context.targets,
+            vec![
+                Rule::Library(TargetAttributes {
+                    crate_name: "common".to_owned(),
+                    crate_root: Some("lib.rs".to_owned()),
+                    srcs: Glob::new_rust_srcs(),
+                }),
+                Rule::Binary(TargetAttributes {
+                    crate_name: "common-bin".to_owned(),
+                    crate_root: Some("main.rs".to_owned()),
+                    srcs: Glob::new_rust_srcs(),
+                }),
+            ]
+        );
+        assert_eq!(
+            context.common_attrs.data_glob,
+            BTreeSet::from(["**/data_glob/**".to_owned()])
+        );
+    }
+
+    fn build_script_annotations() -> Annotations {
+        Annotations::new(
+            crate::test::metadata::build_scripts(),
+            crate::test::lockfile::build_scripts(),
+            crate::config::Config::default(),
+        )
+        .unwrap()
+    }
+
+    #[test]
+    fn context_with_build_script() {
+        let annotations = build_script_annotations();
+
+        let package_id = PackageId {
+            repr: "openssl-sys 0.9.71 (registry+https://github.com/rust-lang/crates.io-index)"
+                .to_owned(),
+        };
+
+        let crate_annotation = &annotations.metadata.crates[&package_id];
+
+        let context = CrateContext::new(
+            crate_annotation,
+            &annotations.metadata.packages,
+            &annotations.lockfile.crates,
+            &annotations.pairred_extras,
+            true,
+        );
+
+        assert_eq!(context.name, "openssl-sys");
+        assert!(context.build_script_attrs.is_some());
+        assert_eq!(
+            context.targets,
+            vec![
+                Rule::Library(TargetAttributes {
+                    crate_name: "openssl_sys".to_owned(),
+                    crate_root: Some("src/lib.rs".to_owned()),
+                    srcs: Glob::new_rust_srcs(),
+                }),
+                Rule::BuildScript(TargetAttributes {
+                    crate_name: "build_script_main".to_owned(),
+                    crate_root: Some("build/main.rs".to_owned()),
+                    srcs: Glob::new_rust_srcs(),
+                })
+            ]
+        );
+    }
+
+    #[test]
+    fn context_disabled_build_script() {
+        let annotations = build_script_annotations();
+
+        let package_id = PackageId {
+            repr: "openssl-sys 0.9.71 (registry+https://github.com/rust-lang/crates.io-index)"
+                .to_owned(),
+        };
+
+        let crate_annotation = &annotations.metadata.crates[&package_id];
+
+        let context = CrateContext::new(
+            crate_annotation,
+            &annotations.metadata.packages,
+            &annotations.lockfile.crates,
+            &annotations.pairred_extras,
+            false,
+        );
+
+        assert_eq!(context.name, "openssl-sys");
+        assert!(context.build_script_attrs.is_none());
+        assert_eq!(
+            context.targets,
+            vec![Rule::Library(TargetAttributes {
+                crate_name: "openssl_sys".to_owned(),
+                crate_root: Some("src/lib.rs".to_owned()),
+                srcs: Glob::new_rust_srcs(),
+            })],
+        );
+    }
+}

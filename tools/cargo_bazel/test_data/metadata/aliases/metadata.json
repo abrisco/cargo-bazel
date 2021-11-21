@@ -3,7 +3,7 @@
         {
             "name": "aliases",
             "version": "0.1.0",
-            "id": "aliases 0.1.0 (path+file:///var/folders/hf/phjl9q7501gb5wt_qr4ltn3m0000gn/T/tmp8qgdujfb/Aliases)",
+            "id": "aliases 0.1.0 (path+file://{TEMP_DIR}/aliases)",
             "license": null,
             "license_file": null,
             "description": null,
@@ -12,7 +12,7 @@
                 {
                     "name": "log",
                     "source": "registry+https://github.com/rust-lang/crates.io-index",
-                    "req": "^0.4.14",
+                    "req": "=0.4.14",
                     "kind": null,
                     "rename": null,
                     "optional": false,
@@ -24,7 +24,7 @@
                 {
                     "name": "log",
                     "source": "registry+https://github.com/rust-lang/crates.io-index",
-                    "req": "^0.3.9",
+                    "req": "=0.3.9",
                     "kind": null,
                     "rename": "old_log",
                     "optional": false,
@@ -55,7 +55,7 @@
                         "lib"
                     ],
                     "name": "aliases",
-                    "src_path": "/var/folders/hf/phjl9q7501gb5wt_qr4ltn3m0000gn/T/tmp8qgdujfb/Aliases/lib.rs",
+                    "src_path": "{TEMP_DIR}/aliases/lib.rs",
                     "edition": "2018",
                     "doc": true,
                     "doctest": true,
@@ -63,7 +63,7 @@
                 }
             ],
             "features": {},
-            "manifest_path": "/var/folders/hf/phjl9q7501gb5wt_qr4ltn3m0000gn/T/tmp8qgdujfb/Aliases/Cargo.toml",
+            "manifest_path": "{TEMP_DIR}/aliases/Cargo.toml",
             "metadata": null,
             "publish": null,
             "authors": [],
@@ -2008,12 +2008,12 @@
         }
     ],
     "workspace_members": [
-        "aliases 0.1.0 (path+file:///var/folders/hf/phjl9q7501gb5wt_qr4ltn3m0000gn/T/tmp8qgdujfb/Aliases)"
+        "aliases 0.1.0 (path+file://{TEMP_DIR}/aliases)"
     ],
     "resolve": {
         "nodes": [
             {
-                "id": "aliases 0.1.0 (path+file:///var/folders/hf/phjl9q7501gb5wt_qr4ltn3m0000gn/T/tmp8qgdujfb/Aliases)",
+                "id": "aliases 0.1.0 (path+file://{TEMP_DIR}/aliases)",
                 "dependencies": [
                     "log 0.3.9 (registry+https://github.com/rust-lang/crates.io-index)",
                     "log 0.4.14 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -2267,10 +2267,10 @@
                 "features": []
             }
         ],
-        "root": "aliases 0.1.0 (path+file:///var/folders/hf/phjl9q7501gb5wt_qr4ltn3m0000gn/T/tmp8qgdujfb/Aliases)"
+        "root": "aliases 0.1.0 (path+file://{TEMP_DIR}/aliases)"
     },
-    "target_directory": "/var/folders/hf/phjl9q7501gb5wt_qr4ltn3m0000gn/T/tmp8qgdujfb/Aliases/target",
+    "target_directory": "{TEMP_DIR}/aliases/target",
     "version": 1,
-    "workspace_root": "/var/folders/hf/phjl9q7501gb5wt_qr4ltn3m0000gn/T/tmp8qgdujfb/Aliases",
+    "workspace_root": "{TEMP_DIR}/aliases",
     "metadata": null
 }
