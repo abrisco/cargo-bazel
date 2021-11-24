@@ -3,7 +3,7 @@
 pub mod crate_context;
 mod platforms;
 
-use std::collections::{BTreeMap, BTreeSet, HashSet};
+use std::collections::{BTreeMap, BTreeSet};
 use std::fs;
 use std::path::{Path, PathBuf};
 
@@ -19,17 +19,24 @@ use crate::utils::starlark::{Select, SelectList};
 
 pub use self::crate_context::*;
 
+/// A struct containing information about a Cargo dependency graph in an easily to consume
+/// format for rendering reproducible Bazel targets.
 #[derive(Debug, Default, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub struct Context {
     /// The collective checksum of all inputs to the context
     pub checksum: Option<Digest>,
 
+    /// The collection of all crates that make up the dependency graph
     pub crates: BTreeMap<CrateId, CrateContext>,
 
+    /// A subset of only crates with binary targets
     pub binary_crates: BTreeSet<CrateId>,
 
+    /// A subset of workspace members mapping to their workspace
+    /// path relative to the workspace root
     pub workspace_members: BTreeMap<CrateId, String>,
 
+    /// A mapping of `cfg` flags to platform triples supporting the configuration
     pub conditions: BTreeMap<String, BTreeSet<String>>,
 }
 
@@ -270,8 +277,13 @@ impl Context {
         set
     }
 
-    pub fn flat_workspace_member_deps(&self) -> (Vec<CrateId>, BTreeMap<CrateId, String>) {
-        let mut workspace_member_dependencies: Vec<CrateId> = self
+    /// Create a set of all direct dependencies of workspace member crates and map them to
+    /// optional alternative names that allow them to be uniquely identified. This typically
+    /// results in a mapping of ([CrateId], [None]) where [None] defaults to using the crate
+    /// name. The next most common would be using ([CrateId], `Some(alias)`) as some projects
+    /// may use aliases in Cargo as a way to differentiate different versions of the same dep.
+    pub fn flat_workspace_member_deps(&self) -> BTreeMap<CrateId, Option<String>> {
+        let workspace_member_dependencies: BTreeSet<CrateDependency> = self
             .workspace_members
             .iter()
             .map(|(id, _)| &self.crates[id])
@@ -326,41 +338,138 @@ impl Context {
                             }),
                     )
             })
-            .map(|dep_set| &dep_set.id)
             .cloned()
             .collect();
 
-        // Deduplicate entries in the set
-        let mut uniques = HashSet::new();
-        workspace_member_dependencies.retain(|e| uniques.insert(e.clone()));
-        workspace_member_dependencies.sort();
-
-        // Some dependencies appear multiple times in a workspace where two different crates have
-        // pins for different versions. In order to correctly render all aliases, an additional
-        // map is returned to indicate which crates are duplicates. The UX here is kinda undesirable
-        // since the solution here writes `{crate_name}` as `{crate_name}-{crate_version}`. This means
-        // users will be writing versions in their BUILD files which they'll need to change if they
-        // update the pin __or__ remove one of the duplicates. Ideally users would use common pins
-        // but at least this allows for this use case.
-        let duplicate_deps: BTreeMap<CrateId, String> = workspace_member_dependencies
+        let duplicate_deps: Vec<CrateDependency> = workspace_member_dependencies
             .iter()
-            .filter_map(|crate_id| {
-                let is_duplicate = workspace_member_dependencies
+            .filter(|dep| {
+                workspace_member_dependencies
                     .iter()
-                    .filter(|id| id.name == crate_id.name)
+                    .filter(|check| dep.id.name == check.id.name)
                     .count()
-                    > 1;
-                if is_duplicate {
-                    Some((
-                        crate_id.clone(),
-                        format!("{}-{}", &crate_id.name, &crate_id.version),
-                    ))
-                } else {
-                    None
-                }
+                    > 1
             })
+            .cloned()
             .collect();
 
-        (workspace_member_dependencies, duplicate_deps)
+        workspace_member_dependencies
+            .into_iter()
+            .map(|dep| {
+                if duplicate_deps.contains(&dep) {
+                    if let Some(alias) = &dep.alias {
+                        // Check for any duplicate aliases
+                        let aliases = duplicate_deps
+                            .iter()
+                            .filter(|dupe| dupe.id.name == dep.id.name)
+                            .filter(|dupe| dupe.alias.is_some())
+                            .filter(|dupe| dupe.alias == dep.alias);
+
+                        // If there are multiple aliased crates with the same name, the name is updated to
+                        // be `{alias}-{version}` to differentiate them.
+                        if aliases.count() >= 2 {
+                            let rename = format!("{}-{}", &alias, &dep.id.version);
+                            (dep.id, Some(rename))
+                        } else {
+                            (dep.id, Some(alias.clone()))
+                        }
+                    } else {
+                        // Check for all duplicates that match the current dependency and have no alias
+                        let unaliased = duplicate_deps
+                            .iter()
+                            .filter(|dupe| dupe.id.name == dep.id.name)
+                            .filter(|dupe| dupe.alias.is_none());
+
+                        // If there are multiple unaliased crates with the same name, the name is updated to
+                        // be `{name}-{version}` to differentiate them.
+                        if unaliased.count() >= 2 {
+                            let rename = format!("{}-{}", &dep.id.name, &dep.id.version);
+                            (dep.id, Some(rename))
+                        } else {
+                            (dep.id, None)
+                        }
+                    }
+                } else {
+                    (dep.id, dep.alias)
+                }
+            })
+            .collect()
+    }
+}
+
+#[cfg(test)]
+mod test {
+    use super::*;
+
+    use crate::config::Config;
+
+    fn mock_context_common() -> Context {
+        let annotations = Annotations::new(
+            crate::test::metadata::common(),
+            crate::test::lockfile::common(),
+            Config::default(),
+        )
+        .unwrap();
+
+        Context::new(
+            annotations,
+            &crate::test::cargo_bin(),
+            &crate::test::rustc_bin(),
+        )
+        .unwrap()
+    }
+
+    fn mock_context_aliases() -> Context {
+        let annotations = Annotations::new(
+            crate::test::metadata::alias(),
+            crate::test::lockfile::alias(),
+            Config::default(),
+        )
+        .unwrap();
+
+        Context::new(
+            annotations,
+            &crate::test::cargo_bin(),
+            &crate::test::rustc_bin(),
+        )
+        .unwrap()
+    }
+
+    #[test]
+    fn flat_workspace_member_deps() {
+        let context = mock_context_common();
+        let workspace_member_deps = context.flat_workspace_member_deps();
+
+        assert_eq!(
+            workspace_member_deps,
+            BTreeMap::from([
+                (
+                    CrateId::new("bitflags".to_owned(), "1.3.2".to_owned()),
+                    None
+                ),
+                (CrateId::new("cfg-if".to_owned(), "1.0.0".to_owned()), None),
+            ])
+        );
+    }
+
+    #[test]
+    fn flat_workspace_member_deps_with_alises() {
+        let context = mock_context_aliases();
+        let workspace_member_deps = context.flat_workspace_member_deps();
+
+        assert_eq!(
+            workspace_member_deps,
+            BTreeMap::from([
+                (
+                    CrateId::new("log".to_owned(), "0.3.9".to_owned()),
+                    Some("pinned_log".to_owned())
+                ),
+                (CrateId::new("log".to_owned(), "0.4.14".to_owned()), None),
+                (
+                    CrateId::new("value-bag".to_owned(), "1.0.0-alpha.7".to_owned()),
+                    None
+                ),
+            ])
+        );
     }
 }
