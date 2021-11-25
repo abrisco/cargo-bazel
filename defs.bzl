@@ -137,7 +137,10 @@ Environment Variables:
             default = CARGO_BAZEL_SHA256S,
         ),
         "generator_urls": attr.string_dict(
-            doc = "URL template from which to download the `cargo-bazel` binary. `{host_triple}` and will be filled in according to the host platform.",
+            doc = (
+                "URL template from which to download the `cargo-bazel` binary. `{host_triple}` and will be " +
+                "filled in according to the host platform."
+            ),
             default = CARGO_BAZEL_URLS,
         ),
         "isolated": attr.bool(
@@ -226,6 +229,7 @@ def _workspace_member(version, sha256 = None):
     ))
 
 def _spec(
+        package = None,
         version = None,
         default_features = True,
         features = [],
@@ -238,6 +242,7 @@ def _spec(
     [sd]: https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html
 
     Args:
+        package (str, optional): The explicit name of the package (used when attempting to alias a crate).
         version (str, optional): The exact version of the crate. Cannot be used with `git`.
         default_features (bool, optional): Maps to the `default-features` flag.
         features (list, optional): A list of features to use for the crate
@@ -248,6 +253,7 @@ def _spec(
         string: A json encoded string of all inputs
     """
     return json.encode(struct(
+        package = package,
         default_features = default_features,
         features = features,
         version = version,

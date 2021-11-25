@@ -48,12 +48,14 @@ rust_test(
     crate = ":cargo_bazel",
     data = glob(["test_data/**"]) + [
         "@rules_rust//rust/toolchain:current_exec_cargo_files",
+        "@rules_rust//rust/toolchain:current_exec_rustc_files",
     ],
     proc_macro_deps = all_crate_deps(
         proc_macro_dev = True,
     ),
     rustc_env = {
         "CARGO": "$(rootpath @rules_rust//rust/toolchain:current_exec_cargo_files)",
+        "RUSTC": "$(rootpath @rules_rust//rust/toolchain:current_exec_rustc_files)",
     },
     deps = all_crate_deps(
         normal_dev = True,

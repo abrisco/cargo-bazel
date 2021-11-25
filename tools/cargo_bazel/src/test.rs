@@ -1,5 +1,7 @@
 //! A module containing common test helpers
 
+use std::path::PathBuf;
+
 pub fn mock_cargo_metadata_package() -> cargo_metadata::Package {
     serde_json::from_value(serde_json::json!({
         "name": "mock-pkg",
@@ -42,6 +44,14 @@ pub fn mock_cargo_lock_package() -> cargo_lock::Package {
     .unwrap()
 }
 
+pub fn cargo_bin() -> PathBuf {
+    PathBuf::from(env!("CARGO"))
+}
+
+pub fn rustc_bin() -> PathBuf {
+    PathBuf::from(env!("RUSTC"))
+}
+
 pub mod metadata {
     pub fn alias() -> cargo_metadata::Metadata {
         serde_json::from_str(include_str!(concat!(
@@ -78,6 +88,14 @@ pub mod metadata {
 
 pub mod lockfile {
     use std::str::FromStr;
+
+    pub fn alias() -> cargo_lock::Lockfile {
+        cargo_lock::Lockfile::from_str(include_str!(concat!(
+            env!("CARGO_MANIFEST_DIR"),
+            "/test_data/metadata/aliases/Cargo.lock"
+        )))
+        .unwrap()
+    }
 
     pub fn build_scripts() -> cargo_lock::Lockfile {
         cargo_lock::Lockfile::from_str(include_str!(concat!(

@@ -233,12 +233,8 @@ impl TemplateEngine {
         let mut context = self.new_tera_ctx();
         context.insert("context", data);
 
-        let (workspace_member_deps, workspace_member_dep_names) = data.flat_workspace_member_deps();
+        let workspace_member_deps = data.flat_workspace_member_deps();
         context.insert("workspace_member_dependencies", &workspace_member_deps);
-        context.insert(
-            "workspace_member_dependency_renames",
-            &workspace_member_dep_names,
-        );
 
         self.engine
             .render("module_build_file.j2", &context)
