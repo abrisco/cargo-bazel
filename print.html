@@ -320,12 +320,13 @@ crates_repository(<a href="rules.html#crates_repository-name">name</a>, <a href=
 <p><a id="#crate.spec"></a></p>
 <h2 id="cratespec"><a class="header" href="#cratespec">crate.spec</a></h2>
 <pre>
-crate.spec(<a href="rules.html#crate.spec-version">version</a>, <a href="rules.html#crate.spec-default_features">default_features</a>, <a href="rules.html#crate.spec-features">features</a>, <a href="rules.html#crate.spec-git">git</a>, <a href="rules.html#crate.spec-rev">rev</a>)
+crate.spec(<a href="rules.html#crate.spec-package">package</a>, <a href="rules.html#crate.spec-version">version</a>, <a href="rules.html#crate.spec-default_features">default_features</a>, <a href="rules.html#crate.spec-features">features</a>, <a href="rules.html#crate.spec-git">git</a>, <a href="rules.html#crate.spec-rev">rev</a>)
 </pre>
 <p>A constructor for a crate dependency.</p>
 <p>See <a href="https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html">specifying dependencies</a> in the Cargo book for more details.</p>
 <p><strong>PARAMETERS</strong></p>
 <table><thead><tr><th align="left">Name</th><th align="left">Description</th><th align="left">Default Value</th></tr></thead><tbody>
+<tr><td align="left"><a id="crate.spec-package"></a>package</td><td align="left">The explicit name of the package (used when attempting to alias a crate).</td><td align="left"><code>None</code></td></tr>
 <tr><td align="left"><a id="crate.spec-version"></a>version</td><td align="left">The exact version of the crate. Cannot be used with <code>git</code>.</td><td align="left"><code>None</code></td></tr>
 <tr><td align="left"><a id="crate.spec-default_features"></a>default_features</td><td align="left">Maps to the <code>default-features</code> flag.</td><td align="left"><code>True</code></td></tr>
 <tr><td align="left"><a id="crate.spec-features"></a>features</td><td align="left">A list of features to use for the crate</td><td align="left"><code>[]</code></td></tr>
