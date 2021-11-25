@@ -69,7 +69,7 @@
             {
               "id": "log 0.3.9",
               "target": "log",
-              "alias": "old_log"
+              "alias": "pinned_log"
             },
             {
               "id": "log 0.4.14",
@@ -132,7 +132,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.107",
+                "id": "libc 0.2.108",
                 "target": "libc"
               }
             ],
@@ -211,7 +211,7 @@
               "target": "quote"
             },
             {
-              "id": "syn 1.0.81",
+              "id": "syn 1.0.82",
               "target": "syn"
             }
           ],
@@ -315,7 +315,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.107",
+              "id": "libc 0.2.108",
               "target": "libc"
             }
           ],
@@ -356,13 +356,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "libc 0.2.107": {
+    "libc 0.2.108": {
       "name": "libc",
-      "version": "0.2.107",
+      "version": "0.2.108",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/libc/0.2.107/download",
-          "sha256": "fbe5e23404da5b4f555ef85ebed98fb4083e55a00c317800bc2a50ede9f3d219"
+          "url": "https://crates.io/api/v1/crates/libc/0.2.108/download",
+          "sha256": "8521a1b57e76b1ec69af7599e75e38e7b7fad6610f037db8c79b127201b5d119"
         }
       },
       "targets": [
@@ -396,14 +396,14 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.107",
+              "id": "libc 0.2.108",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2015",
-        "version": "0.2.107"
+        "version": "0.2.108"
       },
       "build_script_attrs": {},
       "license": "MIT OR Apache-2.0"
@@ -755,13 +755,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "syn 1.0.81": {
+    "syn 1.0.82": {
       "name": "syn",
-      "version": "1.0.81",
+      "version": "1.0.82",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/syn/1.0.81/download",
-          "sha256": "f2afee18b8beb5a596ecb4a2dce128c719b4ba399d34126b9e4396e3f9860966"
+          "url": "https://crates.io/api/v1/crates/syn/1.0.82/download",
+          "sha256": "8daf5dd0bb60cbd4137b1b587d2fc0ae729bc07cf01cd70b36a1ed5ade3b9d59"
         }
       },
       "targets": [
@@ -810,7 +810,7 @@
               "target": "quote"
             },
             {
-              "id": "syn 1.0.81",
+              "id": "syn 1.0.82",
               "target": "build_script_build"
             },
             {
@@ -821,7 +821,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.0.81"
+        "version": "1.0.82"
       },
       "build_script_attrs": {},
       "license": "MIT OR Apache-2.0"

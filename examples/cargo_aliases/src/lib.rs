@@ -1,5 +1,5 @@
 #[macro_use]
-extern crate old_log;
+extern crate pinned_log;
 
 use value_bag::ValueBag;
 
@@ -7,8 +7,8 @@ pub fn new_log(text: &str) {
     log::info!("new: {}", text);
 }
 
-pub fn old_log(text: &str) {
-    old_log::info!("old: {}", text);
+pub fn pinned_log(text: &str) {
+    pinned_log::info!("old: {}", text);
 }
 
 pub fn value_bag() -> ValueBag<'static> {
@@ -24,7 +24,7 @@ mod test {
         let _ = env_logger::builder().is_test(true).try_init();
 
         new_log("text");
-        old_log("text");
+        pinned_log("text");
     }
 
     #[test]

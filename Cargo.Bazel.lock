@@ -115,13 +115,13 @@
       },
       "license": "MIT"
     },
-    "anyhow 1.0.47": {
+    "anyhow 1.0.48": {
       "name": "anyhow",
-      "version": "1.0.47",
+      "version": "1.0.48",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/anyhow/1.0.47/download",
-          "sha256": "38d9ff5d688f1c13395289f67db01d4826b46dd694e7580accdc3e8430f2d98e"
+          "url": "https://crates.io/api/v1/crates/anyhow/1.0.48/download",
+          "sha256": "62e1f47f7dc0422027a4e370dd4548d4d66b26782e513e98dca1e689e058a80e"
         }
       },
       "targets": [
@@ -159,14 +159,14 @@
         "deps": {
           "common": [
             {
-              "id": "anyhow 1.0.47",
+              "id": "anyhow 1.0.48",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.0.47"
+        "version": "1.0.48"
       },
       "build_script_attrs": {},
       "license": "MIT OR Apache-2.0"
@@ -207,7 +207,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.107",
+                "id": "libc 0.2.108",
                 "target": "libc"
               }
             ],
@@ -613,7 +613,7 @@
         "deps": {
           "common": [
             {
-              "id": "anyhow 1.0.47",
+              "id": "anyhow 1.0.48",
               "target": "anyhow"
             },
             {
@@ -661,7 +661,7 @@
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.71",
+              "id": "serde_json 1.0.72",
               "target": "serde_json"
             },
             {
@@ -850,7 +850,7 @@
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.71",
+              "id": "serde_json 1.0.72",
               "target": "serde_json"
             }
           ],
@@ -1074,7 +1074,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.107",
+              "id": "libc 0.2.108",
               "target": "libc"
             },
             {
@@ -1329,7 +1329,7 @@
           "selects": {
             "aarch64-apple-darwin": [
               {
-                "id": "libc 0.2.107",
+                "id": "libc 0.2.108",
                 "target": "libc"
               }
             ]
@@ -1392,7 +1392,7 @@
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.71",
+              "id": "serde_json 1.0.72",
               "target": "serde_json"
             },
             {
@@ -1416,13 +1416,13 @@
       },
       "license": "Apache-2.0"
     },
-    "crc32fast 1.2.1": {
+    "crc32fast 1.2.2": {
       "name": "crc32fast",
-      "version": "1.2.1",
+      "version": "1.2.2",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/crc32fast/1.2.1/download",
-          "sha256": "81156fece84ab6a9f2afdb109ce3ae577e42b1228441eded99bd77f627953b1a"
+          "url": "https://crates.io/api/v1/crates/crc32fast/1.2.2/download",
+          "sha256": "3825b1e8580894917dc4468cb634a1b4e9745fddc854edad72d9c04644c0319f"
         }
       },
       "targets": [
@@ -1464,14 +1464,14 @@
               "target": "cfg_if"
             },
             {
-              "id": "crc32fast 1.2.1",
+              "id": "crc32fast 1.2.2",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2015",
-        "version": "1.2.1"
+        "version": "1.2.2"
       },
       "build_script_attrs": {},
       "license": "MIT OR Apache-2.0"
@@ -1845,7 +1845,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.107",
+                "id": "libc 0.2.108",
                 "target": "libc"
               }
             ],
@@ -1899,11 +1899,11 @@
               "target": "cfg_if"
             },
             {
-              "id": "crc32fast 1.2.1",
+              "id": "crc32fast 1.2.2",
               "target": "crc32fast"
             },
             {
-              "id": "libc 0.2.107",
+              "id": "libc 0.2.108",
               "target": "libc"
             },
             {
@@ -2144,7 +2144,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.107",
+                "id": "libc 0.2.108",
                 "target": "libc"
               }
             ]
@@ -2187,7 +2187,7 @@
               "target": "bitflags"
             },
             {
-              "id": "libc 0.2.107",
+              "id": "libc 0.2.108",
               "target": "libc"
             },
             {
@@ -2382,7 +2382,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.107",
+              "id": "libc 0.2.108",
               "target": "libc"
             }
           ],
@@ -2694,7 +2694,7 @@
           "selects": {
             "cfg(unix)": [
               {
-                "id": "libc 0.2.107",
+                "id": "libc 0.2.108",
                 "target": "libc"
               }
             ]
@@ -2735,13 +2735,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "libc 0.2.107": {
+    "libc 0.2.108": {
       "name": "libc",
-      "version": "0.2.107",
+      "version": "0.2.108",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/libc/0.2.107/download",
-          "sha256": "fbe5e23404da5b4f555ef85ebed98fb4083e55a00c317800bc2a50ede9f3d219"
+          "url": "https://crates.io/api/v1/crates/libc/0.2.108/download",
+          "sha256": "8521a1b57e76b1ec69af7599e75e38e7b7fad6610f037db8c79b127201b5d119"
         }
       },
       "targets": [
@@ -2779,14 +2779,14 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.107",
+              "id": "libc 0.2.108",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2015",
-        "version": "0.2.107"
+        "version": "0.2.108"
       },
       "build_script_attrs": {},
       "license": "MIT OR Apache-2.0"
@@ -2819,7 +2819,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.107",
+              "id": "libc 0.2.108",
               "target": "libc"
             },
             {
@@ -2868,7 +2868,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.107",
+              "id": "libc 0.2.108",
               "target": "libc"
             }
           ],
@@ -3569,7 +3569,7 @@
               "target": "quote"
             },
             {
-              "id": "syn 1.0.81",
+              "id": "syn 1.0.82",
               "target": "syn"
             }
           ],
@@ -3932,7 +3932,7 @@
               "target": "quote"
             },
             {
-              "id": "syn 1.0.81",
+              "id": "syn 1.0.82",
               "target": "syn"
             }
           ],
@@ -4194,7 +4194,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.107",
+                "id": "libc 0.2.108",
                 "target": "libc"
               }
             ]
@@ -4798,7 +4798,7 @@
               "target": "build_script_build"
             },
             {
-              "id": "syn 1.0.81",
+              "id": "syn 1.0.82",
               "target": "syn"
             }
           ],
@@ -4810,13 +4810,13 @@
       "build_script_attrs": {},
       "license": "MIT OR Apache-2.0"
     },
-    "serde_json 1.0.71": {
+    "serde_json 1.0.72": {
       "name": "serde_json",
-      "version": "1.0.71",
+      "version": "1.0.72",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/serde_json/1.0.71/download",
-          "sha256": "063bf466a64011ac24040a49009724ee60a57da1b437617ceb32e53ad61bfb19"
+          "url": "https://crates.io/api/v1/crates/serde_json/1.0.72/download",
+          "sha256": "d0ffa0837f2dfa6fb90868c2b5468cad482e175f7dad97e7421951e663f2b527"
         }
       },
       "targets": [
@@ -4867,14 +4867,14 @@
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.71",
+              "id": "serde_json 1.0.72",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.0.71"
+        "version": "1.0.72"
       },
       "build_script_attrs": {},
       "license": "MIT OR Apache-2.0"
@@ -5332,7 +5332,7 @@
               "target": "quote"
             },
             {
-              "id": "syn 1.0.81",
+              "id": "syn 1.0.82",
               "target": "syn"
             }
           ],
@@ -5343,13 +5343,13 @@
       },
       "license": "Apache-2.0/MIT"
     },
-    "syn 1.0.81": {
+    "syn 1.0.82": {
       "name": "syn",
-      "version": "1.0.81",
+      "version": "1.0.82",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/syn/1.0.81/download",
-          "sha256": "f2afee18b8beb5a596ecb4a2dce128c719b4ba399d34126b9e4396e3f9860966"
+          "url": "https://crates.io/api/v1/crates/syn/1.0.82/download",
+          "sha256": "8daf5dd0bb60cbd4137b1b587d2fc0ae729bc07cf01cd70b36a1ed5ade3b9d59"
         }
       },
       "targets": [
@@ -5401,7 +5401,7 @@
               "target": "quote"
             },
             {
-              "id": "syn 1.0.81",
+              "id": "syn 1.0.82",
               "target": "build_script_build"
             },
             {
@@ -5412,7 +5412,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.0.81"
+        "version": "1.0.82"
       },
       "build_script_attrs": {},
       "license": "MIT OR Apache-2.0"
@@ -5456,7 +5456,7 @@
           "selects": {
             "cfg(unix)": [
               {
-                "id": "libc 0.2.107",
+                "id": "libc 0.2.108",
                 "target": "libc"
               },
               {
@@ -5520,7 +5520,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.107",
+                "id": "libc 0.2.108",
                 "target": "libc"
               }
             ],
@@ -5618,7 +5618,7 @@
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.71",
+              "id": "serde_json 1.0.72",
               "target": "serde_json"
             },
             {
@@ -6594,7 +6594,7 @@
               "target": "hex"
             },
             {
-              "id": "serde_json 1.0.71",
+              "id": "serde_json 1.0.72",
               "target": "serde_json"
             },
             {
@@ -7045,7 +7045,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.107",
+              "id": "libc 0.2.108",
               "target": "libc"
             }
           ],
