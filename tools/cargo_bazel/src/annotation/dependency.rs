@@ -288,6 +288,6 @@ mod test {
         assert_eq!(aliases.len(), 1);
 
         let log_alias = aliases.iter().last().unwrap();
-        assert_eq!(log_alias.alias.as_ref().unwrap(), "old_log");
+        assert_eq!(log_alias.alias.as_ref().unwrap(), "pinned_log");
     }
 }
