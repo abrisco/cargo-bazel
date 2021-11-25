@@ -1,5 +1,5 @@
 {
-  "checksum": "c7cee2bcf8a43c59da9f75dfb081a218f0883528b673609ed86b8c295a208add",
+  "checksum": "482a21d9891527c7c57d8de2f72d9360a5aa9711388778bdcbe85a4c6d02c8cd",
   "crates": {
     "adler32 1.2.0": {
       "name": "adler32",
