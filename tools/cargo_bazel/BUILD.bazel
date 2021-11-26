@@ -66,3 +66,11 @@ rust_doc(
     name = "rustdoc",
     crate = ":cargo_bazel",
 )
+
+# `rust_doc_test` does not currently work. See:
+# https://github.com/bazelbuild/rules_rust/issues/980
+#
+# rust_doc_test(
+#     name = "rustdoc_test",
+#     crate = ":cargo_bazel",
+# )
