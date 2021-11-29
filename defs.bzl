@@ -192,14 +192,23 @@ Environment Variables:
                 "generate the value for this field. If unset, the defaults defined there will be used."
             ),
         ),
-        "rust_toolchain_repo_template": attr.string(
+        "rust_toolchain_cargo_template": attr.string(
             doc = (
-                "The template to use for finding the host `rust_toolchain` repository. `{version}` (eg. '1.53.0'), " +
+                "The template to use for finding the host `cargo` binary. `{version}` (eg. '1.53.0'), " +
                 "`{triple}` (eg. 'x86_64-unknown-linux-gnu'), `{arch}` (eg. 'aarch64'), `{vendor}` (eg. 'unknown'), " +
-                "`{system}` (eg. 'darwin'), `{cfg}` (eg. 'exec'), and `{tool}` (eg. 'rustc') will be replaced in the " +
-                "string if present."
+                "`{system}` (eg. 'darwin'), `{cfg}` (eg. 'exec'), and `{tool}` (eg. 'rustc.exe') will be replaced in " +
+                "the string if present."
             ),
-            default = "rust_{system}_{arch}",
+            default = "@rust_{system}_{arch}//:bin/{tool}",
+        ),
+        "rust_toolchain_rustc_template": attr.string(
+            doc = (
+                "The template to use for finding the host `rustc` binary. `{version}` (eg. '1.53.0'), " +
+                "`{triple}` (eg. 'x86_64-unknown-linux-gnu'), `{arch}` (eg. 'aarch64'), `{vendor}` (eg. 'unknown'), " +
+                "`{system}` (eg. 'darwin'), `{cfg}` (eg. 'exec'), and `{tool}` (eg. 'cargo.exe') will be replaced in " +
+                "the string if present."
+            ),
+            default = "@rust_{system}_{arch}//:bin/{tool}",
         ),
         "rust_version": attr.string(
             doc = "The version of Rust the currently registered toolchain is using. Eg. `1.56.0`, or `nightly-2021-09-08`",

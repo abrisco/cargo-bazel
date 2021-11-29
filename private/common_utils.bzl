@@ -66,7 +66,8 @@ def get_rust_tools(repository_ctx, host_triple):
 
     return _rust_get_rust_tools(
         repository_ctx = repository_ctx,
-        toolchain_repository_template = repository_ctx.attr.rust_toolchain_repo_template,
+        cargo_template = repository_ctx.attr.rust_toolchain_cargo_template,
+        rustc_template = repository_ctx.attr.rust_toolchain_rustc_template,
         host_triple = host_triple,
         version = repository_ctx.attr.rust_version,
     )

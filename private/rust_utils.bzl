@@ -157,12 +157,18 @@ def resolve_repository_template(
 
     return template
 
-def get_rust_tools(repository_ctx, toolchain_repository_template, host_triple, version):
+def get_rust_tools(
+        repository_ctx,
+        cargo_template,
+        rustc_template,
+        host_triple,
+        version):
     """Retrieve a cargo and rustc binary based on the host triple.
 
     Args:
         repository_ctx (repository_ctx): The rule's context object
-        toolchain_repository_template (str): A template used to identify the host `rust_toolchain_repository`.
+        cargo_template (str): A template used to identify the host `cargo` binary.
+        rustc_template (str): A template used to identify the host `cargo` binary.
         host_triple (struct): The host's triple. See `@rules_rust//rust/platform:triple.bzl`.
         version (str): The version of Cargo+Rustc to use.
 
@@ -170,28 +176,36 @@ def get_rust_tools(repository_ctx, toolchain_repository_template, host_triple, v
         struct: A struct containing the expected tools
     """
 
-    rust_toolchain_repository = resolve_repository_template(
-        template = toolchain_repository_template,
+    extension = system_to_binary_ext(host_triple.system)
+
+    cargo_label = Label(resolve_repository_template(
+        template = cargo_template,
         version = version,
         triple = host_triple.triple,
         arch = host_triple.arch,
         vendor = host_triple.vendor,
         system = host_triple.system,
         abi = host_triple.abi,
-    )
+        tool = "cargo" + extension,
+        cfg = "exec",
+    ))
 
-    cargo_repository = resolve_repository_template(template = rust_toolchain_repository, tool = "cargo", cfg = "exec")
-    rustc_repository = resolve_repository_template(template = rust_toolchain_repository, tool = "rustc", cfg = "exec")
-    stdlib_repository = resolve_repository_template(template = rust_toolchain_repository, tool = "stdlib", cfg = "target")
+    rustc_label = Label(resolve_repository_template(
+        template = rustc_template,
+        version = version,
+        triple = host_triple.triple,
+        arch = host_triple.arch,
+        vendor = host_triple.vendor,
+        system = host_triple.system,
+        abi = host_triple.abi,
+        tool = "rustc" + extension,
+        cfg = "exec",
+    ))
 
-    extension = system_to_binary_ext(host_triple.system)
-
-    cargo_path = repository_ctx.path(Label("@{}{}".format(cargo_repository, "//:bin/cargo" + extension)))
-    rustc_path = repository_ctx.path(Label("@{}{}".format(rustc_repository, "//:bin/rustc" + extension)))
-    stdlib_path = repository_ctx.path(Label("@{}{}".format(stdlib_repository, "//:BUILD.bazel"))).dirname
+    cargo_path = repository_ctx.path(cargo_label)
+    rustc_path = repository_ctx.path(rustc_label)
 
     return struct(
         cargo = cargo_path,
         rustc = rustc_path,
-        rust_stdlib = stdlib_path,
     )

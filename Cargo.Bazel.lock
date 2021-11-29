@@ -115,13 +115,13 @@
       },
       "license": "MIT"
     },
-    "anyhow 1.0.48": {
+    "anyhow 1.0.51": {
       "name": "anyhow",
-      "version": "1.0.48",
+      "version": "1.0.51",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/anyhow/1.0.48/download",
-          "sha256": "62e1f47f7dc0422027a4e370dd4548d4d66b26782e513e98dca1e689e058a80e"
+          "url": "https://crates.io/api/v1/crates/anyhow/1.0.51/download",
+          "sha256": "8b26702f315f53b6071259e15dd9d64528213b44d61de1ec926eca7715d62203"
         }
       },
       "targets": [
@@ -159,14 +159,14 @@
         "deps": {
           "common": [
             {
-              "id": "anyhow 1.0.48",
+              "id": "anyhow 1.0.51",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.0.48"
+        "version": "1.0.51"
       },
       "build_script_attrs": {},
       "license": "MIT OR Apache-2.0"
@@ -613,7 +613,7 @@
         "deps": {
           "common": [
             {
-              "id": "anyhow 1.0.48",
+              "id": "anyhow 1.0.51",
               "target": "anyhow"
             },
             {
@@ -4521,13 +4521,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "ryu 1.0.5": {
+    "ryu 1.0.6": {
       "name": "ryu",
-      "version": "1.0.5",
+      "version": "1.0.6",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/ryu/1.0.5/download",
-          "sha256": "71d301d4193d031abdd79ff7e3dd721168a9572ef3fe51a1517aba235bd8f86e"
+          "url": "https://crates.io/api/v1/crates/ryu/1.0.6/download",
+          "sha256": "3c9613b5a66ab9ba26415184cfc41156594925a9cf3a2057e57f31ff145f6568"
         }
       },
       "targets": [
@@ -4561,14 +4561,14 @@
         "deps": {
           "common": [
             {
-              "id": "ryu 1.0.5",
+              "id": "ryu 1.0.6",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.0.5"
+        "version": "1.0.6"
       },
       "build_script_attrs": {},
       "license": "Apache-2.0 OR BSL-1.0"
@@ -4859,7 +4859,7 @@
               "target": "itoa"
             },
             {
-              "id": "ryu 1.0.5",
+              "id": "ryu 1.0.6",
               "target": "ryu"
             },
             {
