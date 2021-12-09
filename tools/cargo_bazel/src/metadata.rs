@@ -40,11 +40,11 @@ impl Generator {
 
 impl MetadataGenerator for Generator {
     fn generate<T: AsRef<Path>>(&self, manifest_path: T) -> Result<(CargoMetadata, CargoLockfile)> {
+        let manifest_dir = manifest_path
+            .as_ref()
+            .parent()
+            .expect("The manifest should have a parent directory");
         let lockfile = {
-            let manifest_dir = manifest_path
-                .as_ref()
-                .parent()
-                .expect("The manifest should have a parent directory");
             let lock_path = manifest_dir.join("Cargo.lock");
             if !lock_path.exists() {
                 bail!("No `Cargo.lock` file was found with the given manifest")
@@ -54,6 +54,7 @@ impl MetadataGenerator for Generator {
 
         let metadata = MetadataCommand::new()
             .cargo_path(&self.cargo_bin)
+            .current_dir(manifest_dir)
             .manifest_path(manifest_path.as_ref())
             .other_options(["--locked".to_owned()])
             .exec()?;
