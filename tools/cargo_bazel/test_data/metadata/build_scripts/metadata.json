@@ -18,7 +18,7 @@
                         "lib"
                     ],
                     "name": "autocfg",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/autocfg-1.0.1/src/lib.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/autocfg-1.0.1/src/lib.rs",
                     "edition": "2015",
                     "doc": true,
                     "doctest": true,
@@ -32,7 +32,7 @@
                         "bin"
                     ],
                     "name": "integers",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/autocfg-1.0.1/examples/integers.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/autocfg-1.0.1/examples/integers.rs",
                     "edition": "2015",
                     "doc": false,
                     "doctest": false,
@@ -46,7 +46,7 @@
                         "bin"
                     ],
                     "name": "paths",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/autocfg-1.0.1/examples/paths.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/autocfg-1.0.1/examples/paths.rs",
                     "edition": "2015",
                     "doc": false,
                     "doctest": false,
@@ -60,7 +60,7 @@
                         "bin"
                     ],
                     "name": "versions",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/autocfg-1.0.1/examples/versions.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/autocfg-1.0.1/examples/versions.rs",
                     "edition": "2015",
                     "doc": false,
                     "doctest": false,
@@ -74,7 +74,7 @@
                         "bin"
                     ],
                     "name": "traits",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/autocfg-1.0.1/examples/traits.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/autocfg-1.0.1/examples/traits.rs",
                     "edition": "2015",
                     "doc": false,
                     "doctest": false,
@@ -88,7 +88,7 @@
                         "bin"
                     ],
                     "name": "rustflags",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/autocfg-1.0.1/tests/rustflags.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/autocfg-1.0.1/tests/rustflags.rs",
                     "edition": "2015",
                     "doc": false,
                     "doctest": false,
@@ -96,7 +96,7 @@
                 }
             ],
             "features": {},
-            "manifest_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/autocfg-1.0.1/Cargo.toml",
+            "manifest_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/autocfg-1.0.1/Cargo.toml",
             "metadata": null,
             "publish": null,
             "authors": [
@@ -233,7 +233,7 @@
                         "lib"
                     ],
                     "name": "bitflags",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/bitflags-1.3.2/src/lib.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/bitflags-1.3.2/src/lib.rs",
                     "edition": "2018",
                     "doc": true,
                     "doctest": true,
@@ -247,7 +247,7 @@
                         "bin"
                     ],
                     "name": "compile",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/bitflags-1.3.2/tests/compile.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/bitflags-1.3.2/tests/compile.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -261,7 +261,7 @@
                         "bin"
                     ],
                     "name": "basic",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/bitflags-1.3.2/tests/basic.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/bitflags-1.3.2/tests/basic.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -276,7 +276,7 @@
                     "compiler_builtins"
                 ]
             },
-            "manifest_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/bitflags-1.3.2/Cargo.toml",
+            "manifest_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/bitflags-1.3.2/Cargo.toml",
             "metadata": {
                 "docs": {
                     "rs": {
@@ -403,7 +403,7 @@
                         "lib"
                     ],
                     "name": "cc",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/cc-1.0.72/src/lib.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/cc-1.0.72/src/lib.rs",
                     "edition": "2018",
                     "doc": true,
                     "doctest": true,
@@ -417,7 +417,7 @@
                         "bin"
                     ],
                     "name": "gcc-shim",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/cc-1.0.72/src/bin/gcc-shim.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/cc-1.0.72/src/bin/gcc-shim.rs",
                     "edition": "2018",
                     "doc": true,
                     "doctest": false,
@@ -431,7 +431,7 @@
                         "bin"
                     ],
                     "name": "test",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/cc-1.0.72/tests/test.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/cc-1.0.72/tests/test.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -445,7 +445,7 @@
                         "bin"
                     ],
                     "name": "cxxflags",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/cc-1.0.72/tests/cxxflags.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/cc-1.0.72/tests/cxxflags.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -459,7 +459,7 @@
                         "bin"
                     ],
                     "name": "cflags",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/cc-1.0.72/tests/cflags.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/cc-1.0.72/tests/cflags.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -473,7 +473,7 @@
                         "bin"
                     ],
                     "name": "cc_env",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/cc-1.0.72/tests/cc_env.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/cc-1.0.72/tests/cc_env.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -485,7 +485,7 @@
                     "jobserver"
                 ]
             },
-            "manifest_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/cc-1.0.72/Cargo.toml",
+            "manifest_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/cc-1.0.72/Cargo.toml",
             "metadata": null,
             "publish": null,
             "authors": [
@@ -548,7 +548,7 @@
                         "lib"
                     ],
                     "name": "cfg-if",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/cfg-if-1.0.0/src/lib.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/cfg-if-1.0.0/src/lib.rs",
                     "edition": "2018",
                     "doc": true,
                     "doctest": true,
@@ -562,7 +562,7 @@
                         "bin"
                     ],
                     "name": "xcrate",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/cfg-if-1.0.0/tests/xcrate.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/cfg-if-1.0.0/tests/xcrate.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -575,7 +575,7 @@
                     "compiler_builtins"
                 ]
             },
-            "manifest_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/cfg-if-1.0.0/Cargo.toml",
+            "manifest_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/cfg-if-1.0.0/Cargo.toml",
             "metadata": null,
             "publish": null,
             "authors": [
@@ -622,7 +622,7 @@
                         "lib"
                     ],
                     "name": "foreign-types",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/foreign-types-0.3.2/src/lib.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/foreign-types-0.3.2/src/lib.rs",
                     "edition": "2015",
                     "doc": true,
                     "doctest": true,
@@ -630,7 +630,7 @@
                 }
             ],
             "features": {},
-            "manifest_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/foreign-types-0.3.2/Cargo.toml",
+            "manifest_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/foreign-types-0.3.2/Cargo.toml",
             "metadata": null,
             "publish": null,
             "authors": [
@@ -664,7 +664,7 @@
                         "lib"
                     ],
                     "name": "foreign-types-shared",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/foreign-types-shared-0.1.1/src/lib.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/foreign-types-shared-0.1.1/src/lib.rs",
                     "edition": "2015",
                     "doc": true,
                     "doctest": true,
@@ -672,7 +672,7 @@
                 }
             ],
             "features": {},
-            "manifest_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/foreign-types-shared-0.1.1/Cargo.toml",
+            "manifest_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/foreign-types-shared-0.1.1/Cargo.toml",
             "metadata": null,
             "publish": null,
             "authors": [
@@ -690,8 +690,8 @@
         },
         {
             "name": "libc",
-            "version": "0.2.108",
-            "id": "libc 0.2.108 (registry+https://github.com/rust-lang/crates.io-index)",
+            "version": "0.2.109",
+            "id": "libc 0.2.109 (registry+https://github.com/rust-lang/crates.io-index)",
             "license": "MIT OR Apache-2.0",
             "license_file": null,
             "description": "Raw FFI bindings to platform libraries like libc.\n",
@@ -719,7 +719,7 @@
                         "lib"
                     ],
                     "name": "libc",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.108/src/lib.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/libc-0.2.109/src/lib.rs",
                     "edition": "2015",
                     "doc": true,
                     "doctest": true,
@@ -733,7 +733,7 @@
                         "bin"
                     ],
                     "name": "const_fn",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.108/tests/const_fn.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/libc-0.2.109/tests/const_fn.rs",
                     "edition": "2015",
                     "doc": false,
                     "doctest": false,
@@ -747,7 +747,7 @@
                         "bin"
                     ],
                     "name": "build-script-build",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.108/build.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/libc-0.2.109/build.rs",
                     "edition": "2015",
                     "doc": false,
                     "doctest": false,
@@ -770,7 +770,7 @@
                     "std"
                 ]
             },
-            "manifest_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/libc-0.2.108/Cargo.toml",
+            "manifest_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/libc-0.2.109/Cargo.toml",
             "metadata": {
                 "docs": {
                     "rs": {
@@ -872,7 +872,7 @@
                         "lib"
                     ],
                     "name": "once_cell",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/once_cell-1.8.0/src/lib.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/once_cell-1.8.0/src/lib.rs",
                     "edition": "2018",
                     "doc": true,
                     "doctest": true,
@@ -886,7 +886,7 @@
                         "bin"
                     ],
                     "name": "bench",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/once_cell-1.8.0/examples/bench.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/once_cell-1.8.0/examples/bench.rs",
                     "edition": "2018",
                     "required-features": [
                         "std"
@@ -903,7 +903,7 @@
                         "bin"
                     ],
                     "name": "bench_acquire",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/once_cell-1.8.0/examples/bench_acquire.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/once_cell-1.8.0/examples/bench_acquire.rs",
                     "edition": "2018",
                     "required-features": [
                         "std"
@@ -920,7 +920,7 @@
                         "bin"
                     ],
                     "name": "bench_vs_lazy_static",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/once_cell-1.8.0/examples/bench_vs_lazy_static.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/once_cell-1.8.0/examples/bench_vs_lazy_static.rs",
                     "edition": "2018",
                     "required-features": [
                         "std"
@@ -937,7 +937,7 @@
                         "bin"
                     ],
                     "name": "lazy_static",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/once_cell-1.8.0/examples/lazy_static.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/once_cell-1.8.0/examples/lazy_static.rs",
                     "edition": "2018",
                     "required-features": [
                         "std"
@@ -954,7 +954,7 @@
                         "bin"
                     ],
                     "name": "reentrant_init_deadlocks",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/once_cell-1.8.0/examples/reentrant_init_deadlocks.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/once_cell-1.8.0/examples/reentrant_init_deadlocks.rs",
                     "edition": "2018",
                     "required-features": [
                         "std"
@@ -971,7 +971,7 @@
                         "bin"
                     ],
                     "name": "regex",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/once_cell-1.8.0/examples/regex.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/once_cell-1.8.0/examples/regex.rs",
                     "edition": "2018",
                     "required-features": [
                         "std"
@@ -988,7 +988,7 @@
                         "bin"
                     ],
                     "name": "test_synchronization",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/once_cell-1.8.0/examples/test_synchronization.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/once_cell-1.8.0/examples/test_synchronization.rs",
                     "edition": "2018",
                     "required-features": [
                         "std"
@@ -1005,7 +1005,7 @@
                         "bin"
                     ],
                     "name": "it",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/once_cell-1.8.0/tests/it.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/once_cell-1.8.0/tests/it.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1025,7 +1025,7 @@
                 ],
                 "unstable": []
             },
-            "manifest_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/once_cell-1.8.0/Cargo.toml",
+            "manifest_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/once_cell-1.8.0/Cargo.toml",
             "metadata": {
                 "docs": {
                     "rs": {
@@ -1168,7 +1168,7 @@
                         "lib"
                     ],
                     "name": "openssl",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/openssl-0.10.36/src/lib.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/openssl-0.10.36/src/lib.rs",
                     "edition": "2018",
                     "doc": true,
                     "doctest": true,
@@ -1182,7 +1182,7 @@
                         "bin"
                     ],
                     "name": "mk_certs",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/openssl-0.10.36/examples/mk_certs.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/openssl-0.10.36/examples/mk_certs.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1196,7 +1196,7 @@
                         "bin"
                     ],
                     "name": "build-script-build",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/openssl-0.10.36/build.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/openssl-0.10.36/build.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1212,7 +1212,7 @@
                     "ffi/vendored"
                 ]
             },
-            "manifest_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/openssl-0.10.36/Cargo.toml",
+            "manifest_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/openssl-0.10.36/Cargo.toml",
             "metadata": null,
             "publish": null,
             "authors": [
@@ -1327,7 +1327,7 @@
                         "lib"
                     ],
                     "name": "openssl-sys",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/openssl-sys-0.9.71/src/lib.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/openssl-sys-0.9.71/src/lib.rs",
                     "edition": "2015",
                     "doc": true,
                     "doctest": true,
@@ -1341,7 +1341,7 @@
                         "bin"
                     ],
                     "name": "build-script-main",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/openssl-sys-0.9.71/build/main.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/openssl-sys-0.9.71/build/main.rs",
                     "edition": "2015",
                     "doc": false,
                     "doctest": false,
@@ -1353,7 +1353,7 @@
                     "openssl-src"
                 ]
             },
-            "manifest_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/openssl-sys-0.9.71/Cargo.toml",
+            "manifest_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/openssl-sys-0.9.71/Cargo.toml",
             "metadata": {
                 "pkg-config": {
                     "openssl": "1.0.1"
@@ -1379,8 +1379,8 @@
         },
         {
             "name": "pkg-config",
-            "version": "0.3.22",
-            "id": "pkg-config 0.3.22 (registry+https://github.com/rust-lang/crates.io-index)",
+            "version": "0.3.23",
+            "id": "pkg-config 0.3.23 (registry+https://github.com/rust-lang/crates.io-index)",
             "license": "MIT/Apache-2.0",
             "license_file": null,
             "description": "A library to run the pkg-config system tool at build time in order to be used in\nCargo build scripts.\n",
@@ -1408,7 +1408,7 @@
                         "lib"
                     ],
                     "name": "pkg-config",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/pkg-config-0.3.22/src/lib.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/pkg-config-0.3.23/src/lib.rs",
                     "edition": "2015",
                     "doc": true,
                     "doctest": true,
@@ -1422,7 +1422,7 @@
                         "bin"
                     ],
                     "name": "test",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/pkg-config-0.3.22/tests/test.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/pkg-config-0.3.23/tests/test.rs",
                     "edition": "2015",
                     "doc": false,
                     "doctest": false,
@@ -1430,7 +1430,7 @@
                 }
             ],
             "features": {},
-            "manifest_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/pkg-config-0.3.22/Cargo.toml",
+            "manifest_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/pkg-config-0.3.23/Cargo.toml",
             "metadata": null,
             "publish": null,
             "authors": [
@@ -1491,7 +1491,7 @@
                         "lib"
                     ],
                     "name": "vcpkg",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/vcpkg-0.2.15/src/lib.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/vcpkg-0.2.15/src/lib.rs",
                     "edition": "2015",
                     "doc": true,
                     "doctest": true,
@@ -1499,7 +1499,7 @@
                 }
             ],
             "features": {},
-            "manifest_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/vcpkg-0.2.15/Cargo.toml",
+            "manifest_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/vcpkg-0.2.15/Cargo.toml",
             "metadata": null,
             "publish": null,
             "authors": [
@@ -1599,7 +1599,7 @@
                 "features": []
             },
             {
-                "id": "libc 0.2.108 (registry+https://github.com/rust-lang/crates.io-index)",
+                "id": "libc 0.2.109 (registry+https://github.com/rust-lang/crates.io-index)",
                 "dependencies": [],
                 "deps": [],
                 "features": [
@@ -1624,7 +1624,7 @@
                     "bitflags 1.3.2 (registry+https://github.com/rust-lang/crates.io-index)",
                     "cfg-if 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
                     "foreign-types 0.3.2 (registry+https://github.com/rust-lang/crates.io-index)",
-                    "libc 0.2.108 (registry+https://github.com/rust-lang/crates.io-index)",
+                    "libc 0.2.109 (registry+https://github.com/rust-lang/crates.io-index)",
                     "once_cell 1.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
                     "openssl-sys 0.9.71 (registry+https://github.com/rust-lang/crates.io-index)"
                 ],
@@ -1661,7 +1661,7 @@
                     },
                     {
                         "name": "libc",
-                        "pkg": "libc 0.2.108 (registry+https://github.com/rust-lang/crates.io-index)",
+                        "pkg": "libc 0.2.109 (registry+https://github.com/rust-lang/crates.io-index)",
                         "dep_kinds": [
                             {
                                 "kind": null,
@@ -1697,8 +1697,8 @@
                 "dependencies": [
                     "autocfg 1.0.1 (registry+https://github.com/rust-lang/crates.io-index)",
                     "cc 1.0.72 (registry+https://github.com/rust-lang/crates.io-index)",
-                    "libc 0.2.108 (registry+https://github.com/rust-lang/crates.io-index)",
-                    "pkg-config 0.3.22 (registry+https://github.com/rust-lang/crates.io-index)",
+                    "libc 0.2.109 (registry+https://github.com/rust-lang/crates.io-index)",
+                    "pkg-config 0.3.23 (registry+https://github.com/rust-lang/crates.io-index)",
                     "vcpkg 0.2.15 (registry+https://github.com/rust-lang/crates.io-index)"
                 ],
                 "deps": [
@@ -1724,7 +1724,7 @@
                     },
                     {
                         "name": "libc",
-                        "pkg": "libc 0.2.108 (registry+https://github.com/rust-lang/crates.io-index)",
+                        "pkg": "libc 0.2.109 (registry+https://github.com/rust-lang/crates.io-index)",
                         "dep_kinds": [
                             {
                                 "kind": null,
@@ -1734,7 +1734,7 @@
                     },
                     {
                         "name": "pkg_config",
-                        "pkg": "pkg-config 0.3.22 (registry+https://github.com/rust-lang/crates.io-index)",
+                        "pkg": "pkg-config 0.3.23 (registry+https://github.com/rust-lang/crates.io-index)",
                         "dep_kinds": [
                             {
                                 "kind": "build",
@@ -1756,7 +1756,7 @@
                 "features": []
             },
             {
-                "id": "pkg-config 0.3.22 (registry+https://github.com/rust-lang/crates.io-index)",
+                "id": "pkg-config 0.3.23 (registry+https://github.com/rust-lang/crates.io-index)",
                 "dependencies": [],
                 "deps": [],
                 "features": []

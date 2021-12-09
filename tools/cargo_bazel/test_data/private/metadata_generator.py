@@ -74,8 +74,12 @@ if __name__ == "__main__":
                 print("stdout:", proc.stdout.decode("utf-8"), file=sys.stderr)
                 exit(proc.returncode)
 
+            cargo_home = os.environ.get("CARGO_HOME", str(Path.home() / ".cargo"))
+
             # Replace the temporary directory so package IDs are predictable
-            metadata_text = proc.stdout.decode("utf-8").replace(temp_dir, "{TEMP_DIR}")
+            metadata_text = proc.stdout.decode("utf-8")
+            metadata_text = metadata_text.replace(temp_dir, "{TEMP_DIR}")
+            metadata_text = metadata_text.replace(cargo_home, "{CARGO_HOME}")
 
             # Write metadata to disk
             metadata = json.loads(metadata_text)

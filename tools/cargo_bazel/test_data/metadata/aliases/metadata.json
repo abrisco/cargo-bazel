@@ -120,7 +120,7 @@
                         "lib"
                     ],
                     "name": "cfg-if",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/cfg-if-1.0.0/src/lib.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/cfg-if-1.0.0/src/lib.rs",
                     "edition": "2018",
                     "doc": true,
                     "doctest": true,
@@ -134,7 +134,7 @@
                         "bin"
                     ],
                     "name": "xcrate",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/cfg-if-1.0.0/tests/xcrate.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/cfg-if-1.0.0/tests/xcrate.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -147,7 +147,7 @@
                     "compiler_builtins"
                 ]
             },
-            "manifest_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/cfg-if-1.0.0/Cargo.toml",
+            "manifest_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/cfg-if-1.0.0/Cargo.toml",
             "metadata": null,
             "publish": null,
             "authors": [
@@ -223,7 +223,7 @@
                         "proc-macro"
                     ],
                     "name": "ctor",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/ctor-0.1.21/src/lib.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/ctor-0.1.21/src/lib.rs",
                     "edition": "2018",
                     "doc": true,
                     "doctest": true,
@@ -237,7 +237,7 @@
                         "bin"
                     ],
                     "name": "example",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/ctor-0.1.21/src/example.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/ctor-0.1.21/src/example.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -245,7 +245,7 @@
                 }
             ],
             "features": {},
-            "manifest_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/ctor-0.1.21/Cargo.toml",
+            "manifest_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/ctor-0.1.21/Cargo.toml",
             "metadata": null,
             "publish": null,
             "authors": [
@@ -292,7 +292,7 @@
                         "lib"
                     ],
                     "name": "log",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.3.9/src/lib.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/log-0.3.9/src/lib.rs",
                     "edition": "2015",
                     "doc": true,
                     "doctest": false,
@@ -344,7 +344,7 @@
                     "log/std"
                 ]
             },
-            "manifest_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.3.9/Cargo.toml",
+            "manifest_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/log-0.3.9/Cargo.toml",
             "metadata": null,
             "publish": null,
             "authors": [
@@ -483,7 +483,7 @@
                         "lib"
                     ],
                     "name": "log",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/lib.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/src/lib.rs",
                     "edition": "2015",
                     "doc": true,
                     "doctest": true,
@@ -497,7 +497,7 @@
                         "bin"
                     ],
                     "name": "filters",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/tests/filters.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/tests/filters.rs",
                     "edition": "2015",
                     "doc": false,
                     "doctest": false,
@@ -511,7 +511,7 @@
                         "bin"
                     ],
                     "name": "macros",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/tests/macros.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/tests/macros.rs",
                     "edition": "2015",
                     "doc": false,
                     "doctest": false,
@@ -525,7 +525,7 @@
                         "bin"
                     ],
                     "name": "value",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/benches/value.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/benches/value.rs",
                     "edition": "2015",
                     "doc": false,
                     "doctest": false,
@@ -539,7 +539,7 @@
                         "bin"
                     ],
                     "name": "build-script-build",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/build.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/build.rs",
                     "edition": "2015",
                     "doc": false,
                     "doctest": false,
@@ -579,7 +579,7 @@
                 "release_max_level_warn": [],
                 "std": []
             },
-            "manifest_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/Cargo.toml",
+            "manifest_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/log-0.4.14/Cargo.toml",
             "metadata": {
                 "docs": {
                     "rs": {
@@ -613,8 +613,8 @@
         },
         {
             "name": "proc-macro2",
-            "version": "1.0.32",
-            "id": "proc-macro2 1.0.32 (registry+https://github.com/rust-lang/crates.io-index)",
+            "version": "1.0.33",
+            "id": "proc-macro2 1.0.33 (registry+https://github.com/rust-lang/crates.io-index)",
             "license": "MIT OR Apache-2.0",
             "license_file": null,
             "description": "A substitute implementation of the compiler's `proc_macro` API to decouple\ntoken-based libraries from the procedural macro use case.\n",
@@ -654,7 +654,7 @@
                         "lib"
                     ],
                     "name": "proc-macro2",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.32/src/lib.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.33/src/lib.rs",
                     "edition": "2018",
                     "doc": true,
                     "doctest": true,
@@ -668,7 +668,7 @@
                         "bin"
                     ],
                     "name": "features",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.32/tests/features.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.33/tests/features.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -682,7 +682,7 @@
                         "bin"
                     ],
                     "name": "test",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.32/tests/test.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.33/tests/test.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -696,7 +696,7 @@
                         "bin"
                     ],
                     "name": "test_fmt",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.32/tests/test_fmt.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.33/tests/test_fmt.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -710,7 +710,7 @@
                         "bin"
                     ],
                     "name": "comments",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.32/tests/comments.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.33/tests/comments.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -724,7 +724,7 @@
                         "bin"
                     ],
                     "name": "marker",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.32/tests/marker.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.33/tests/marker.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -738,7 +738,7 @@
                         "bin"
                     ],
                     "name": "build-script-build",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.32/build.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.33/build.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -753,7 +753,7 @@
                 "proc-macro": [],
                 "span-locations": []
             },
-            "manifest_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.32/Cargo.toml",
+            "manifest_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.33/Cargo.toml",
             "metadata": {
                 "docs": {
                     "rs": {
@@ -854,7 +854,7 @@
                         "lib"
                     ],
                     "name": "quote",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.10/src/lib.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/quote-1.0.10/src/lib.rs",
                     "edition": "2018",
                     "doc": true,
                     "doctest": true,
@@ -868,7 +868,7 @@
                         "bin"
                     ],
                     "name": "test",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.10/tests/test.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/quote-1.0.10/tests/test.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -882,7 +882,7 @@
                         "bin"
                     ],
                     "name": "compiletest",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.10/tests/compiletest.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/quote-1.0.10/tests/compiletest.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -896,7 +896,7 @@
                         "bin"
                     ],
                     "name": "bench",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.10/benches/bench.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/quote-1.0.10/benches/bench.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -911,7 +911,7 @@
                     "proc-macro2/proc-macro"
                 ]
             },
-            "manifest_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.10/Cargo.toml",
+            "manifest_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/quote-1.0.10/Cargo.toml",
             "metadata": {
                 "docs": {
                     "rs": {
@@ -1128,7 +1128,7 @@
                         "lib"
                     ],
                     "name": "syn",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/src/lib.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/src/lib.rs",
                     "edition": "2018",
                     "doc": true,
                     "doctest": true,
@@ -1142,7 +1142,7 @@
                         "bin"
                     ],
                     "name": "test_should_parse",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_should_parse.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_should_parse.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1156,7 +1156,7 @@
                         "bin"
                     ],
                     "name": "test_visibility",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_visibility.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_visibility.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1170,7 +1170,7 @@
                         "bin"
                     ],
                     "name": "test_stmt",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_stmt.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_stmt.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1184,7 +1184,7 @@
                         "bin"
                     ],
                     "name": "test_round_trip",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_round_trip.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_round_trip.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1198,7 +1198,7 @@
                         "bin"
                     ],
                     "name": "test_size",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_size.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_size.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1212,7 +1212,7 @@
                         "bin"
                     ],
                     "name": "test_shebang",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_shebang.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_shebang.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1226,7 +1226,7 @@
                         "bin"
                     ],
                     "name": "test_pat",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_pat.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_pat.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1240,7 +1240,7 @@
                         "bin"
                     ],
                     "name": "test_receiver",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_receiver.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_receiver.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1254,7 +1254,7 @@
                         "bin"
                     ],
                     "name": "test_precedence",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_precedence.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_precedence.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1268,7 +1268,7 @@
                         "bin"
                     ],
                     "name": "test_lit",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_lit.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_lit.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1282,7 +1282,7 @@
                         "bin"
                     ],
                     "name": "test_parse_stream",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_parse_stream.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_parse_stream.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1296,7 +1296,7 @@
                         "bin"
                     ],
                     "name": "test_grouping",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_grouping.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_grouping.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1310,7 +1310,7 @@
                         "bin"
                     ],
                     "name": "test_ident",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_ident.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_ident.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1324,7 +1324,7 @@
                         "bin"
                     ],
                     "name": "test_iterators",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_iterators.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_iterators.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1338,7 +1338,7 @@
                         "bin"
                     ],
                     "name": "test_parse_buffer",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_parse_buffer.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_parse_buffer.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1352,7 +1352,7 @@
                         "bin"
                     ],
                     "name": "test_asyncness",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_asyncness.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_asyncness.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1366,7 +1366,7 @@
                         "bin"
                     ],
                     "name": "test_token_trees",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_token_trees.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_token_trees.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1380,7 +1380,7 @@
                         "bin"
                     ],
                     "name": "test_ty",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_ty.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_ty.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1394,7 +1394,7 @@
                         "bin"
                     ],
                     "name": "zzz_stable",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/zzz_stable.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/zzz_stable.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1408,7 +1408,7 @@
                         "bin"
                     ],
                     "name": "test_meta",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_meta.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_meta.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1422,7 +1422,7 @@
                         "bin"
                     ],
                     "name": "test_expr",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_expr.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_expr.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1436,7 +1436,7 @@
                         "bin"
                     ],
                     "name": "test_item",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_item.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_item.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1450,7 +1450,7 @@
                         "bin"
                     ],
                     "name": "test_path",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_path.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_path.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1464,7 +1464,7 @@
                         "bin"
                     ],
                     "name": "test_derive_input",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_derive_input.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_derive_input.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1478,7 +1478,7 @@
                         "bin"
                     ],
                     "name": "test_generics",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_generics.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_generics.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1492,7 +1492,7 @@
                         "bin"
                     ],
                     "name": "test_attribute",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_attribute.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_attribute.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1506,7 +1506,7 @@
                         "bin"
                     ],
                     "name": "rust",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/benches/rust.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/benches/rust.rs",
                     "edition": "2018",
                     "required-features": [
                         "full",
@@ -1524,7 +1524,7 @@
                         "bin"
                     ],
                     "name": "file",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/benches/file.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/benches/file.rs",
                     "edition": "2018",
                     "required-features": [
                         "full",
@@ -1542,7 +1542,7 @@
                         "bin"
                     ],
                     "name": "build-script-build",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/build.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/build.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1576,7 +1576,7 @@
                 "visit": [],
                 "visit-mut": []
             },
-            "manifest_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/Cargo.toml",
+            "manifest_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/Cargo.toml",
             "metadata": {
                 "docs": {
                     "rs": {
@@ -1647,7 +1647,7 @@
                         "lib"
                     ],
                     "name": "unicode-xid",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-xid-0.2.2/src/lib.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/unicode-xid-0.2.2/src/lib.rs",
                     "edition": "2015",
                     "doc": true,
                     "doctest": true,
@@ -1661,7 +1661,7 @@
                         "bin"
                     ],
                     "name": "exhaustive_tests",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-xid-0.2.2/tests/exhaustive_tests.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/unicode-xid-0.2.2/tests/exhaustive_tests.rs",
                     "edition": "2015",
                     "doc": false,
                     "doctest": false,
@@ -1675,7 +1675,7 @@
                         "bin"
                     ],
                     "name": "xid",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-xid-0.2.2/benches/xid.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/unicode-xid-0.2.2/benches/xid.rs",
                     "edition": "2015",
                     "doc": false,
                     "doctest": false,
@@ -1687,7 +1687,7 @@
                 "default": [],
                 "no_std": []
             },
-            "manifest_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-xid-0.2.2/Cargo.toml",
+            "manifest_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/unicode-xid-0.2.2/Cargo.toml",
             "metadata": null,
             "publish": null,
             "authors": [
@@ -1878,7 +1878,7 @@
                         "lib"
                     ],
                     "name": "value-bag",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/value-bag-1.0.0-alpha.7/src/lib.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/value-bag-1.0.0-alpha.7/src/lib.rs",
                     "edition": "2018",
                     "doc": true,
                     "doctest": true,
@@ -1892,7 +1892,7 @@
                         "bin"
                     ],
                     "name": "build-script-build",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/value-bag-1.0.0-alpha.7/build.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/value-bag-1.0.0-alpha.7/build.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1925,7 +1925,7 @@
                     "std"
                 ]
             },
-            "manifest_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/value-bag-1.0.0-alpha.7/Cargo.toml",
+            "manifest_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/value-bag-1.0.0-alpha.7/Cargo.toml",
             "metadata": {
                 "docs": {
                     "rs": {
@@ -1977,7 +1977,7 @@
                         "lib"
                     ],
                     "name": "version_check",
-                    "src_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/version_check-0.9.3/src/lib.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/version_check-0.9.3/src/lib.rs",
                     "edition": "2015",
                     "doc": true,
                     "doctest": true,
@@ -1985,7 +1985,7 @@
                 }
             ],
             "features": {},
-            "manifest_path": "/Users/andrebrisco/.cargo/registry/src/github.com-1ecc6299db9ec823/version_check-0.9.3/Cargo.toml",
+            "manifest_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/version_check-0.9.3/Cargo.toml",
             "metadata": null,
             "publish": null,
             "authors": [
@@ -2133,7 +2133,7 @@
                 ]
             },
             {
-                "id": "proc-macro2 1.0.32 (registry+https://github.com/rust-lang/crates.io-index)",
+                "id": "proc-macro2 1.0.33 (registry+https://github.com/rust-lang/crates.io-index)",
                 "dependencies": [
                     "unicode-xid 0.2.2 (registry+https://github.com/rust-lang/crates.io-index)"
                 ],
@@ -2156,12 +2156,12 @@
             {
                 "id": "quote 1.0.10 (registry+https://github.com/rust-lang/crates.io-index)",
                 "dependencies": [
-                    "proc-macro2 1.0.32 (registry+https://github.com/rust-lang/crates.io-index)"
+                    "proc-macro2 1.0.33 (registry+https://github.com/rust-lang/crates.io-index)"
                 ],
                 "deps": [
                     {
                         "name": "proc_macro2",
-                        "pkg": "proc-macro2 1.0.32 (registry+https://github.com/rust-lang/crates.io-index)",
+                        "pkg": "proc-macro2 1.0.33 (registry+https://github.com/rust-lang/crates.io-index)",
                         "dep_kinds": [
                             {
                                 "kind": null,
@@ -2178,14 +2178,14 @@
             {
                 "id": "syn 1.0.82 (registry+https://github.com/rust-lang/crates.io-index)",
                 "dependencies": [
-                    "proc-macro2 1.0.32 (registry+https://github.com/rust-lang/crates.io-index)",
+                    "proc-macro2 1.0.33 (registry+https://github.com/rust-lang/crates.io-index)",
                     "quote 1.0.10 (registry+https://github.com/rust-lang/crates.io-index)",
                     "unicode-xid 0.2.2 (registry+https://github.com/rust-lang/crates.io-index)"
                 ],
                 "deps": [
                     {
                         "name": "proc_macro2",
-                        "pkg": "proc-macro2 1.0.32 (registry+https://github.com/rust-lang/crates.io-index)",
+                        "pkg": "proc-macro2 1.0.33 (registry+https://github.com/rust-lang/crates.io-index)",
                         "dep_kinds": [
                             {
                                 "kind": null,

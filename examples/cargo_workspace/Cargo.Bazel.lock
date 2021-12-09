@@ -1,13 +1,13 @@
 {
-  "checksum": "de06793652b08438329c732b7bf435f92c40a11d88c4362b5586128cc15bad26",
+  "checksum": "013cf9a39f5da4709d74f9c01504a5da9a1d9bfd48f3bafb8075bc02d4172f6c",
   "crates": {
-    "ansi_term 0.11.0": {
+    "ansi_term 0.12.1": {
       "name": "ansi_term",
-      "version": "0.11.0",
+      "version": "0.12.1",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/ansi_term/0.11.0/download",
-          "sha256": "ee49baf6cb617b853aa8d93bf420db2383fab46d314482ca2803b40d5fde979b"
+          "url": "https://crates.io/api/v1/crates/ansi_term/0.12.1/download",
+          "sha256": "d52a9bb7ec0cf484c551830a7ce27bd20d67eac647e1befb56b0be4ee39a55d2"
         }
       },
       "targets": [
@@ -38,7 +38,7 @@
           }
         },
         "edition": "2015",
-        "version": "0.11.0"
+        "version": "0.12.1"
       },
       "license": "MIT"
     },
@@ -78,7 +78,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.108",
+                "id": "libc 0.2.109",
                 "target": "libc"
               }
             ],
@@ -158,13 +158,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "clap 2.33.3": {
+    "clap 2.34.0": {
       "name": "clap",
-      "version": "2.33.3",
+      "version": "2.34.0",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/clap/2.33.3/download",
-          "sha256": "37e58ac78573c40708d45522f0d80fa2f01cc4f9b4e2bf749807255454312002"
+          "url": "https://crates.io/api/v1/crates/clap/2.34.0/download",
+          "sha256": "a0610544180c38b88101fecf2dd634b174a62eef6946f84dfc6a7127512b381c"
         }
       },
       "targets": [
@@ -222,14 +222,14 @@
           "selects": {
             "cfg(not(windows))": [
               {
-                "id": "ansi_term 0.11.0",
+                "id": "ansi_term 0.12.1",
                 "target": "ansi_term"
               }
             ]
           }
         },
-        "edition": "2015",
-        "version": "2.33.3"
+        "edition": "2018",
+        "version": "2.34.0"
       },
       "license": "MIT"
     },
@@ -365,7 +365,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.108",
+                "id": "libc 0.2.109",
                 "target": "libc"
               }
             ]
@@ -408,7 +408,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.108",
+              "id": "libc 0.2.109",
               "target": "libc"
             }
           ],
@@ -419,13 +419,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "libc 0.2.108": {
+    "libc 0.2.109": {
       "name": "libc",
-      "version": "0.2.108",
+      "version": "0.2.109",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/libc/0.2.108/download",
-          "sha256": "8521a1b57e76b1ec69af7599e75e38e7b7fad6610f037db8c79b127201b5d119"
+          "url": "https://crates.io/api/v1/crates/libc/0.2.109/download",
+          "sha256": "f98a04dce437184842841303488f70d0188c5f51437d2a834dc097eafa909a01"
         }
       },
       "targets": [
@@ -459,14 +459,14 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.108",
+              "id": "libc 0.2.109",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2015",
-        "version": "0.2.108"
+        "version": "0.2.109"
       },
       "build_script_attrs": {},
       "license": "MIT OR Apache-2.0"
@@ -494,7 +494,7 @@
         "deps": {
           "common": [
             {
-              "id": "clap 2.33.3",
+              "id": "clap 2.34.0",
               "target": "clap"
             }
           ],
@@ -633,7 +633,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.108",
+                "id": "libc 0.2.109",
                 "target": "libc"
               }
             ]
@@ -1125,6 +1125,8 @@
         "crate_features": [
           "consoleapi",
           "errhandlingapi",
+          "fileapi",
+          "handleapi",
           "minwinbase",
           "minwindef",
           "processenv",
