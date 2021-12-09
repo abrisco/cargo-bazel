@@ -113,7 +113,7 @@ pub struct CommonAttributes {
 
 // Build script attributes. See
 // https://bazelbuild.github.io/rules_rust/cargo.html#cargo_build_script
-#[derive(Debug, Default, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 #[serde(default)]
 pub struct BuildScriptAttributes {
     #[serde(skip_serializing_if = "SelectStringList::should_skip_serializing")]
@@ -154,6 +154,27 @@ pub struct BuildScriptAttributes {
 
     #[serde(skip_serializing_if = "Option::is_none")]
     pub links: Option<String>,
+}
+
+impl Default for BuildScriptAttributes {
+    fn default() -> Self {
+        Self {
+            compile_data: Default::default(),
+            data: Default::default(),
+            // Build scripts include all sources by default
+            data_glob: BTreeSet::from(["**".to_owned()]),
+            deps: Default::default(),
+            extra_deps: Default::default(),
+            build_script_env: Default::default(),
+            extra_proc_macro_deps: Default::default(),
+            proc_macro_deps: Default::default(),
+            rustc_env: Default::default(),
+            rustc_flags: Default::default(),
+            rustc_env_files: Default::default(),
+            tools: Default::default(),
+            links: Default::default(),
+        }
+    }
 }
 
 #[derive(Debug, Default, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
@@ -685,6 +706,9 @@ mod test {
                 })
             ]
         );
+
+        // Cargo build scripts should include all sources
+        assert!(context.build_script_attrs.unwrap().data_glob.contains("**"));
     }
 
     #[test]
