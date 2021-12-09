@@ -84,6 +84,14 @@ pub mod metadata {
         )))
         .unwrap()
     }
+
+    pub fn git_repos() -> cargo_metadata::Metadata {
+        serde_json::from_str(include_str!(concat!(
+            env!("CARGO_MANIFEST_DIR"),
+            "/test_data/metadata/git_repos/metadata.json"
+        )))
+        .unwrap()
+    }
 }
 
 pub mod lockfile {
@@ -109,6 +117,14 @@ pub mod lockfile {
         cargo_lock::Lockfile::from_str(include_str!(concat!(
             env!("CARGO_MANIFEST_DIR"),
             "/test_data/metadata/common/Cargo.lock"
+        )))
+        .unwrap()
+    }
+
+    pub fn git_repos() -> cargo_lock::Lockfile {
+        cargo_lock::Lockfile::from_str(include_str!(concat!(
+            env!("CARGO_MANIFEST_DIR"),
+            "/test_data/metadata/git_repos/Cargo.lock"
         )))
         .unwrap()
     }
