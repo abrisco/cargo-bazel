@@ -422,7 +422,7 @@ mod test {
     fn annotate_lockfile_with_no_deps() {
         LockfileAnnotation::new(test::lockfile::no_deps(), &test::metadata::no_deps()).unwrap();
     }
-  
+
     #[test]
     fn detects_strip_prefix_for_git_repo() {
         let crates =
