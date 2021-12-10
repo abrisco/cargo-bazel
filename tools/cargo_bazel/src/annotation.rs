@@ -419,7 +419,7 @@ mod test {
     }
 
     #[test]
-      fn annotate_lockfile_with_no_deps() {
+    fn annotate_lockfile_with_no_deps() {
         LockfileAnnotation::new(test::lockfile::no_deps(), &test::metadata::no_deps()).unwrap();
     }
   
