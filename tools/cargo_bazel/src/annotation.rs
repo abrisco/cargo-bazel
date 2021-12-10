@@ -395,8 +395,22 @@ mod test {
     }
 
     #[test]
+    fn annotate_lockfile_with_aliases() {
+        LockfileAnnotation::new(test::lockfile::alias(), &test::metadata::alias()).unwrap();
+    }
+
+    #[test]
     fn annotate_metadata_with_build_scripts() {
         MetadataAnnotation::new(test::metadata::build_scripts());
+    }
+
+    #[test]
+    fn annotate_lockfile_with_build_scripts() {
+        LockfileAnnotation::new(
+            test::lockfile::build_scripts(),
+            &test::metadata::build_scripts(),
+        )
+        .unwrap();
     }
 
     #[test]
@@ -404,6 +418,11 @@ mod test {
         MetadataAnnotation::new(test::metadata::no_deps());
     }
 
+    #[test]
+      fn annotate_lockfile_with_no_deps() {
+        LockfileAnnotation::new(test::lockfile::no_deps(), &test::metadata::no_deps()).unwrap();
+    }
+  
     #[test]
     fn detects_strip_prefix_for_git_repo() {
         let crates =

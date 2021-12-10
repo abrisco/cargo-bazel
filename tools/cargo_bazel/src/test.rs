@@ -113,6 +113,14 @@ pub mod lockfile {
         .unwrap()
     }
 
+    pub fn no_deps() -> cargo_lock::Lockfile {
+        cargo_lock::Lockfile::from_str(include_str!(concat!(
+            env!("CARGO_MANIFEST_DIR"),
+            "/test_data/metadata/no_deps/Cargo.lock"
+        )))
+        .unwrap()
+    }
+
     pub fn common() -> cargo_lock::Lockfile {
         cargo_lock::Lockfile::from_str(include_str!(concat!(
             env!("CARGO_MANIFEST_DIR"),
