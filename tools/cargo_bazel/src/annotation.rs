@@ -96,6 +96,7 @@ pub enum SourceAnnotation {
         remote: String,
         commitish: Commitish,
         shallow_since: Option<String>,
+        strip_prefix: Option<String>,
     },
     Http {
         url: String,
@@ -181,10 +182,13 @@ impl LockfileAnnotation {
 
         // Handle any git repositories
         if let Some(git_ref) = source.git_reference() {
+            let strip_prefix = Self::extract_git_strip_prefix(pkg)?;
+
             return Ok(SourceAnnotation::Git {
                 remote: source.url().to_string(),
                 commitish: Commitish::from(git_ref.clone()),
                 shallow_since: None,
+                strip_prefix,
             });
         }
 
@@ -234,6 +238,34 @@ impl LockfileAnnotation {
     ) -> Option<SourceInfo> {
         let crate_id = CrateId::new(package.name.to_string(), package.version.to_string());
         metadata.sources.get(&crate_id).cloned()
+    }
+
+    fn extract_git_strip_prefix(pkg: &Package) -> Result<Option<String>> {
+        // {CARGO_HOME}/git/checkouts/name-hash/short-sha/[strip_prefix...]/Cargo.toml
+        let components = pkg
+            .manifest_path
+            .components()
+            .map(|v| v.to_string())
+            .collect::<Vec<_>>();
+        for (i, _) in components.iter().enumerate() {
+            let possible_components = &components[i..];
+            if possible_components.len() < 5 {
+                continue;
+            }
+            if possible_components[0] != "git"
+                || possible_components[1] != "checkouts"
+                || possible_components[possible_components.len() - 1] != "Cargo.toml"
+            {
+                continue;
+            }
+            if possible_components.len() == 5 {
+                return Ok(None);
+            }
+            return Ok(Some(
+                possible_components[4..(possible_components.len() - 1)].join("/"),
+            ));
+        }
+        bail!("Expected git package to have a manifest path of pattern {{CARGO_HOME}}/git/checkouts/[name]-[hash]/[short-sha]/.../Cargo.toml but {:?} had manifest path {}", pkg.id, pkg.manifest_path);
     }
 }
 
@@ -389,5 +421,29 @@ mod test {
     #[test]
     fn annotate_lockfile_with_no_deps() {
         LockfileAnnotation::new(test::lockfile::no_deps(), &test::metadata::no_deps()).unwrap();
+    }
+
+    #[test]
+    fn detects_strip_prefix_for_git_repo() {
+        let crates =
+            LockfileAnnotation::new(test::lockfile::git_repos(), &test::metadata::git_repos())
+                .unwrap()
+                .crates;
+        let tracing_core = crates
+            .iter()
+            .find(|(k, _)| k.repr.starts_with("tracing-core "))
+            .map(|(_, v)| v)
+            .unwrap();
+        match tracing_core {
+            SourceAnnotation::Git {
+                strip_prefix: Some(strip_prefix),
+                ..
+            } if strip_prefix == "tracing-core" => {
+                // Matched correctly.
+            }
+            other => {
+                panic!("Wanted SourceAnnotation::Git with strip_prefix == Some(\"tracing-core\"), got: {:?}", other);
+            }
+        }
     }
 }
