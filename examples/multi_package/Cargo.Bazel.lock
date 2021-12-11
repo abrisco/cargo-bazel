@@ -97,7 +97,11 @@
         "edition": "2018",
         "version": "1.0.51"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT OR Apache-2.0"
     },
     "ascii-canvas 3.0.0": {
@@ -877,7 +881,11 @@
         "edition": "2018",
         "version": "0.1.52"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT OR Apache-2.0"
     },
     "atomic-waker 1.0.0": {
@@ -1086,6 +1094,7 @@
       },
       "build_script_attrs": {
         "data_glob": [
+          "**",
           "**/*.lalrpop"
         ],
         "deps": {
@@ -1630,7 +1639,11 @@
         "edition": "2015",
         "version": "0.8.3"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT / Apache-2.0"
     },
     "crossbeam-utils 0.8.5": {
@@ -1695,7 +1708,11 @@
         "edition": "2018",
         "version": "0.8.5"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT OR Apache-2.0"
     },
     "crunchy 0.2.2": {
@@ -1751,7 +1768,11 @@
         "edition": "2015",
         "version": "0.2.2"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT"
     },
     "ctor 0.1.21": {
@@ -1888,6 +1909,9 @@
         "version": "0.4.41"
       },
       "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -2337,7 +2361,11 @@
         "edition": "2018",
         "version": "0.8.30"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": null
     },
     "event-listener 2.5.1": {
@@ -2645,7 +2673,11 @@
         "edition": "2018",
         "version": "0.3.18"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT OR Apache-2.0"
     },
     "futures-core 0.3.18": {
@@ -2702,7 +2734,11 @@
         "edition": "2018",
         "version": "0.3.18"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT OR Apache-2.0"
     },
     "futures-io 0.3.18": {
@@ -2947,7 +2983,11 @@
         "edition": "2018",
         "version": "0.3.18"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT OR Apache-2.0"
     },
     "futures-util 0.3.18": {
@@ -3048,7 +3088,11 @@
         },
         "version": "0.3.18"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT OR Apache-2.0"
     },
     "generic-array 0.14.4": {
@@ -3105,6 +3149,9 @@
         "version": "0.14.4"
       },
       "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -3233,13 +3280,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "h2 0.3.8": {
+    "h2 0.3.9": {
       "name": "h2",
-      "version": "0.3.8",
+      "version": "0.3.9",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/h2/0.3.8/download",
-          "sha256": "8d09bbc040ce3758a0d32a8a910562104a853aea429dbe1a998beb065c2eacb2"
+          "url": "https://crates.io/api/v1/crates/h2/0.3.9/download",
+          "sha256": "8f072413d126e57991455e0a922b31e4c8ba7c2ffbebf6b78b4f8521397d65cd"
         }
       },
       "targets": [
@@ -3308,7 +3355,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.3.8"
+        "version": "0.3.9"
       },
       "license": "MIT"
     },
@@ -3564,7 +3611,11 @@
         "edition": "2015",
         "version": "1.5.1"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT/Apache-2.0"
     },
     "httpdate 1.0.2": {
@@ -3669,7 +3720,7 @@
               "target": "futures_util"
             },
             {
-              "id": "hyper 0.14.15",
+              "id": "hyper 0.14.16",
               "target": "hyper"
             },
             {
@@ -3729,13 +3780,13 @@
       },
       "license": "MIT"
     },
-    "hyper 0.14.15": {
+    "hyper 0.14.16": {
       "name": "hyper",
-      "version": "0.14.15",
+      "version": "0.14.16",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/hyper/0.14.15/download",
-          "sha256": "436ec0091e4f20e655156a30a0df3770fe2900aa301e548e08446ec794b6953c"
+          "url": "https://crates.io/api/v1/crates/hyper/0.14.16/download",
+          "sha256": "b7ec3e62bdc98a2f0393a5048e4c30ef659440ea6e0e572965103e72bd836f55"
         }
       },
       "targets": [
@@ -3784,7 +3835,7 @@
               "target": "futures_util"
             },
             {
-              "id": "h2 0.3.8",
+              "id": "h2 0.3.9",
               "target": "h2"
             },
             {
@@ -3835,7 +3886,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.14.15"
+        "version": "0.14.16"
       },
       "license": "MIT"
     },
@@ -3871,7 +3922,7 @@
               "target": "bytes"
             },
             {
-              "id": "hyper 0.14.15",
+              "id": "hyper 0.14.16",
               "target": "hyper"
             },
             {
@@ -3998,6 +4049,9 @@
         "version": "1.7.0"
       },
       "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -4212,7 +4266,11 @@
         "edition": "2018",
         "version": "1.6.0"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT"
     },
     "itertools 0.10.3": {
@@ -4643,7 +4701,11 @@
         "edition": "2015",
         "version": "0.2.109"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT OR Apache-2.0"
     },
     "libnghttp2-sys 0.1.7+1.45.0": {
@@ -4704,6 +4766,7 @@
       },
       "build_script_attrs": {
         "data_glob": [
+          "**",
           "nghttp2/**"
         ],
         "deps": {
@@ -4777,6 +4840,7 @@
       },
       "build_script_attrs": {
         "data_glob": [
+          "**",
           "src/**"
         ],
         "deps": {
@@ -4903,7 +4967,11 @@
         "edition": "2015",
         "version": "0.4.14"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT OR Apache-2.0"
     },
     "matches 0.1.9": {
@@ -5040,7 +5108,11 @@
         "edition": "2018",
         "version": "2.4.1"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "Unlicense/MIT"
     },
     "mime 0.3.16": {
@@ -5278,7 +5350,11 @@
         "edition": "2015",
         "version": "0.2.8"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT/Apache-2.0"
     },
     "new_debug_unreachable 1.0.4": {
@@ -5368,7 +5444,11 @@
         "edition": "2018",
         "version": "0.3.6"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "Apache-2.0 OR MIT"
     },
     "num_cpus 1.13.0": {
@@ -5558,6 +5638,9 @@
         "version": "0.10.38"
       },
       "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -5672,6 +5755,7 @@
           "selects": {}
         },
         "data_glob": [
+          "**",
           "build/**/*.c"
         ],
         "deps": {
@@ -5869,7 +5953,11 @@
         "edition": "2018",
         "version": "0.8.5"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "Apache-2.0/MIT"
     },
     "percent-encoding 2.1.0": {
@@ -6503,7 +6591,11 @@
         "edition": "2018",
         "version": "1.0.33"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT OR Apache-2.0"
     },
     "qstring 0.7.2": {
@@ -7101,7 +7193,7 @@
                 "target": "http_body"
               },
               {
-                "id": "hyper 0.14.15",
+                "id": "hyper 0.14.16",
                 "target": "hyper"
               },
               {
@@ -7226,7 +7318,11 @@
         "edition": "2018",
         "version": "1.0.6"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT OR Apache-2.0"
     },
     "ryu 1.0.6": {
@@ -7278,7 +7374,11 @@
         "edition": "2018",
         "version": "1.0.6"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "Apache-2.0 OR BSL-1.0"
     },
     "schannel 0.1.19": {
@@ -7524,7 +7624,11 @@
         },
         "version": "1.0.131"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT OR Apache-2.0"
     },
     "serde_derive 1.0.131": {
@@ -7591,7 +7695,11 @@
         "edition": "2015",
         "version": "1.0.131"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT OR Apache-2.0"
     },
     "serde_json 1.0.72": {
@@ -7659,7 +7767,11 @@
         "edition": "2018",
         "version": "1.0.72"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT OR Apache-2.0"
     },
     "serde_regex 1.1.0": {
@@ -7817,7 +7929,11 @@
         "edition": "2018",
         "version": "0.3.12"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "Apache-2.0/MIT"
     },
     "signal-hook-registry 1.4.0": {
@@ -8183,7 +8299,11 @@
         "edition": "2018",
         "version": "1.0.82"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT OR Apache-2.0"
     },
     "tempfile 3.2.0": {
@@ -8369,7 +8489,11 @@
         "edition": "2018",
         "version": "2.0.2"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "CC0-1.0"
     },
     "tinyvec 1.5.1": {
@@ -8566,6 +8690,9 @@
         "version": "1.14.0"
       },
       "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -9045,7 +9172,11 @@
         "edition": "2018",
         "version": "1.14.0"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT OR Apache-2.0"
     },
     "unicode-bidi 0.3.7": {
@@ -9268,6 +9399,9 @@
         "version": "1.0.0-alpha.8"
       },
       "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -9515,7 +9649,11 @@
         },
         "version": "0.2.78"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT/Apache-2.0"
     },
     "wasm-bindgen-backend 0.2.78": {
@@ -9792,6 +9930,9 @@
         "version": "0.2.78"
       },
       "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ],
         "links": "wasm_bindgen"
       },
       "license": "MIT/Apache-2.0"
@@ -9912,6 +10053,7 @@
       },
       "build_script_attrs": {
         "data_glob": [
+          "**",
           "vendor/**"
         ],
         "deps": {
@@ -10035,7 +10177,11 @@
         "edition": "2015",
         "version": "0.3.9"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT/Apache-2.0"
     },
     "winapi-i686-pc-windows-gnu 0.4.0": {
@@ -10087,7 +10233,11 @@
         "edition": "2015",
         "version": "0.4.0"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT/Apache-2.0"
     },
     "winapi-x86_64-pc-windows-gnu 0.4.0": {
@@ -10139,7 +10289,11 @@
         "edition": "2015",
         "version": "0.4.0"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT/Apache-2.0"
     },
     "winreg 0.7.0": {
