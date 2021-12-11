@@ -381,45 +381,6 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "block-buffer 0.9.0": {
-      "name": "block-buffer",
-      "version": "0.9.0",
-      "repository": {
-        "Http": {
-          "url": "https://crates.io/api/v1/crates/block-buffer/0.9.0/download",
-          "sha256": "4152116fd6e9dadb291ae18fc1ec3575ed6d84c29642d97890f4b4a3417297e4"
-        }
-      },
-      "targets": [
-        {
-          "Library": {
-            "crate_name": "block_buffer",
-            "crate_root": "src/lib.rs",
-            "srcs": {
-              "include": [
-                "**/*.rs"
-              ],
-              "exclude": []
-            }
-          }
-        }
-      ],
-      "library_target_name": "block_buffer",
-      "common_attrs": {
-        "deps": {
-          "common": [
-            {
-              "id": "generic-array 0.14.4",
-              "target": "generic_array"
-            }
-          ],
-          "selects": {}
-        },
-        "edition": "2018",
-        "version": "0.9.0"
-      },
-      "license": "MIT OR Apache-2.0"
-    },
     "block-padding 0.1.5": {
       "name": "block-padding",
       "version": "0.1.5",
@@ -1798,49 +1759,6 @@
         },
         "edition": "2015",
         "version": "0.8.1"
-      },
-      "license": "MIT OR Apache-2.0"
-    },
-    "digest 0.9.0": {
-      "name": "digest",
-      "version": "0.9.0",
-      "repository": {
-        "Http": {
-          "url": "https://crates.io/api/v1/crates/digest/0.9.0/download",
-          "sha256": "d3dd60d1080a57a05ab032377049e0591415d2b31afd7028356dbf3cc6dcb066"
-        }
-      },
-      "targets": [
-        {
-          "Library": {
-            "crate_name": "digest",
-            "crate_root": "src/lib.rs",
-            "srcs": {
-              "include": [
-                "**/*.rs"
-              ],
-              "exclude": []
-            }
-          }
-        }
-      ],
-      "library_target_name": "digest",
-      "common_attrs": {
-        "crate_features": [
-          "alloc",
-          "std"
-        ],
-        "deps": {
-          "common": [
-            {
-              "id": "generic-array 0.14.4",
-              "target": "generic_array"
-            }
-          ],
-          "selects": {}
-        },
-        "edition": "2018",
-        "version": "0.9.0"
       },
       "license": "MIT OR Apache-2.0"
     },
@@ -3484,36 +3402,6 @@
       "common_attrs": {
         "edition": "2015",
         "version": "0.2.3"
-      },
-      "license": "MIT OR Apache-2.0"
-    },
-    "opaque-debug 0.3.0": {
-      "name": "opaque-debug",
-      "version": "0.3.0",
-      "repository": {
-        "Http": {
-          "url": "https://crates.io/api/v1/crates/opaque-debug/0.3.0/download",
-          "sha256": "624a8340c38c1b80fd549087862da4ba43e08858af025b236e509b6649fc13d5"
-        }
-      },
-      "targets": [
-        {
-          "Library": {
-            "crate_name": "opaque_debug",
-            "crate_root": "src/lib.rs",
-            "srcs": {
-              "include": [
-                "**/*.rs"
-              ],
-              "exclude": []
-            }
-          }
-        }
-      ],
-      "library_target_name": "opaque_debug",
-      "common_attrs": {
-        "edition": "2018",
-        "version": "0.3.0"
       },
       "license": "MIT OR Apache-2.0"
     },
@@ -5187,68 +5075,6 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "sha2 0.9.8": {
-      "name": "sha2",
-      "version": "0.9.8",
-      "repository": {
-        "Http": {
-          "url": "https://crates.io/api/v1/crates/sha2/0.9.8/download",
-          "sha256": "b69f9a4c9740d74c5baa3fd2e547f9525fa8088a8a958e0ca2409a514e33f5fa"
-        }
-      },
-      "targets": [
-        {
-          "Library": {
-            "crate_name": "sha2",
-            "crate_root": "src/lib.rs",
-            "srcs": {
-              "include": [
-                "**/*.rs"
-              ],
-              "exclude": []
-            }
-          }
-        }
-      ],
-      "library_target_name": "sha2",
-      "common_attrs": {
-        "crate_features": [
-          "default",
-          "std"
-        ],
-        "deps": {
-          "common": [
-            {
-              "id": "block-buffer 0.9.0",
-              "target": "block_buffer"
-            },
-            {
-              "id": "cfg-if 1.0.0",
-              "target": "cfg_if"
-            },
-            {
-              "id": "digest 0.9.0",
-              "target": "digest"
-            },
-            {
-              "id": "opaque-debug 0.3.0",
-              "target": "opaque_debug"
-            }
-          ],
-          "selects": {
-            "cfg(any(target_arch = \"aarch64\", target_arch = \"x86_64\", target_arch = \"x86\"))": [
-              {
-                "id": "cpufeatures 0.2.1",
-                "target": "cpufeatures"
-              }
-            ]
-          }
-        },
-        "edition": "2018",
-        "version": "0.9.8"
-      },
-      "license": "MIT OR Apache-2.0"
-    },
     "siphasher 0.3.7": {
       "name": "siphasher",
       "version": "0.3.7",
@@ -6867,7 +6693,7 @@
               "target": "serde_json"
             },
             {
-              "id": "sha2 0.9.8",
+              "id": "sha2 0.10.0",
               "target": "sha2"
             },
             {
