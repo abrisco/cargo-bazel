@@ -1,0 +1,13 @@
+# Cargo configurations
+
+# The environment variables here are largly to allow Cargo builds
+# to compile. The targets built are expected to run under Bazel so
+# they many not function as expected based on the values here.
+[env]
+CARGO_BAZEL_BIN = "bazel-bin/tools/cargo_bazel/cargo_bazel"
+CROSS_BIN = "cross"
+CROSS_CONFIG = "tools/cross_installer/Cross.toml"
+DISTRO_ARCHIVE = "bazel-bin/distro/distro.tar.gz"
+EXAMPLES_PACKAGE = "examples"
+MODULE_ROOT_PATH = "private/urls.bzl"
+RUSTC = "rustc"

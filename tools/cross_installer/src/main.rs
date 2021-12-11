@@ -28,7 +28,7 @@ fn prepare_workspace(workspace_root: &Path) {
 
     // Unfortunately, cross runs into issues when cross compiling incramentally.
     // To avoid this, the workspace must be cleaned
-    let cargo = env::current_dir().unwrap().join(env!("CARGO_BIN"));
+    let cargo = env::current_dir().unwrap().join(env!("CARGO"));
     Command::new(cargo)
         .current_dir(workspace_root)
         .arg("clean")
