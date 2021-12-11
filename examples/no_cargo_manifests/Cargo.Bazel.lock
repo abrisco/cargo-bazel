@@ -146,7 +146,11 @@
         "edition": "2018",
         "version": "0.1.52"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT OR Apache-2.0"
     },
     "autocfg 1.0.1": {
@@ -231,7 +235,7 @@
               "target": "http_body"
             },
             {
-              "id": "hyper 0.14.15",
+              "id": "hyper 0.14.16",
               "target": "hyper"
             },
             {
@@ -483,7 +487,7 @@
               "target": "axum"
             },
             {
-              "id": "hyper 0.14.15",
+              "id": "hyper 0.14.16",
               "target": "hyper"
             },
             {
@@ -653,7 +657,11 @@
         "edition": "2018",
         "version": "0.3.18"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT OR Apache-2.0"
     },
     "futures-core 0.3.18": {
@@ -710,7 +718,11 @@
         "edition": "2018",
         "version": "0.3.18"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT OR Apache-2.0"
     },
     "futures-sink 0.3.18": {
@@ -800,7 +812,11 @@
         "edition": "2018",
         "version": "0.3.18"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT OR Apache-2.0"
     },
     "futures-util 0.3.18": {
@@ -871,16 +887,20 @@
         "edition": "2018",
         "version": "0.3.18"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT OR Apache-2.0"
     },
-    "h2 0.3.8": {
+    "h2 0.3.9": {
       "name": "h2",
-      "version": "0.3.8",
+      "version": "0.3.9",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/h2/0.3.8/download",
-          "sha256": "8d09bbc040ce3758a0d32a8a910562104a853aea429dbe1a998beb065c2eacb2"
+          "url": "https://crates.io/api/v1/crates/h2/0.3.9/download",
+          "sha256": "8f072413d126e57991455e0a922b31e4c8ba7c2ffbebf6b78b4f8521397d65cd"
         }
       },
       "targets": [
@@ -949,7 +969,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.3.8"
+        "version": "0.3.9"
       },
       "license": "MIT"
     },
@@ -1175,7 +1195,11 @@
         "edition": "2015",
         "version": "1.5.1"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT/Apache-2.0"
     },
     "httpdate 1.0.2": {
@@ -1208,13 +1232,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "hyper 0.14.15": {
+    "hyper 0.14.16": {
       "name": "hyper",
-      "version": "0.14.15",
+      "version": "0.14.16",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/hyper/0.14.15/download",
-          "sha256": "436ec0091e4f20e655156a30a0df3770fe2900aa301e548e08446ec794b6953c"
+          "url": "https://crates.io/api/v1/crates/hyper/0.14.16/download",
+          "sha256": "b7ec3e62bdc98a2f0393a5048e4c30ef659440ea6e0e572965103e72bd836f55"
         }
       },
       "targets": [
@@ -1265,7 +1289,7 @@
               "target": "futures_util"
             },
             {
-              "id": "h2 0.3.8",
+              "id": "h2 0.3.9",
               "target": "h2"
             },
             {
@@ -1316,7 +1340,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.14.15"
+        "version": "0.14.16"
       },
       "license": "MIT"
     },
@@ -1377,6 +1401,9 @@
         "version": "1.7.0"
       },
       "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -1545,7 +1572,11 @@
         "edition": "2015",
         "version": "0.2.109"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT OR Apache-2.0"
     },
     "lock_api 0.4.5": {
@@ -1643,7 +1674,11 @@
         "edition": "2015",
         "version": "0.4.14"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT OR Apache-2.0"
     },
     "matchers 0.0.1": {
@@ -1768,7 +1803,11 @@
         "edition": "2018",
         "version": "2.4.1"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "Unlicense/MIT"
     },
     "mio 0.7.14": {
@@ -1937,7 +1976,11 @@
         "edition": "2018",
         "version": "0.3.6"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "Apache-2.0 OR MIT"
     },
     "num-integer 0.1.44": {
@@ -1994,6 +2037,9 @@
         "version": "0.1.44"
       },
       "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -2056,6 +2102,9 @@
         "version": "0.2.14"
       },
       "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -2280,7 +2329,11 @@
         "edition": "2018",
         "version": "0.8.5"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "Apache-2.0/MIT"
     },
     "percent-encoding 2.1.0": {
@@ -2516,7 +2569,11 @@
         "edition": "2018",
         "version": "1.0.33"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT OR Apache-2.0"
     },
     "quote 1.0.10": {
@@ -2801,7 +2858,11 @@
         "edition": "2018",
         "version": "1.0.6"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "Apache-2.0 OR BSL-1.0"
     },
     "scopeguard 1.1.0": {
@@ -2887,7 +2948,11 @@
         "edition": "2015",
         "version": "1.0.131"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT OR Apache-2.0"
     },
     "serde_json 1.0.72": {
@@ -2955,7 +3020,11 @@
         "edition": "2018",
         "version": "1.0.72"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT OR Apache-2.0"
     },
     "serde_urlencoded 0.7.0": {
@@ -3272,7 +3341,11 @@
         "edition": "2018",
         "version": "1.0.82"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT OR Apache-2.0"
     },
     "sync_wrapper 0.1.1": {
@@ -3473,6 +3546,9 @@
         "version": "1.14.0"
       },
       "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -4380,7 +4456,11 @@
         "edition": "2015",
         "version": "0.3.9"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT/Apache-2.0"
     },
     "winapi-i686-pc-windows-gnu 0.4.0": {
@@ -4432,7 +4512,11 @@
         "edition": "2015",
         "version": "0.4.0"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT/Apache-2.0"
     },
     "winapi-x86_64-pc-windows-gnu 0.4.0": {
@@ -4484,7 +4568,11 @@
         "edition": "2015",
         "version": "0.4.0"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT/Apache-2.0"
     }
   },

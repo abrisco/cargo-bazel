@@ -405,7 +405,11 @@
         "edition": "2015",
         "version": "0.2.109"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT OR Apache-2.0"
     },
     "log 0.3.9": {
@@ -507,7 +511,11 @@
         "edition": "2015",
         "version": "0.4.14"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT OR Apache-2.0"
     },
     "memchr 2.4.1": {
@@ -563,7 +571,11 @@
         "edition": "2018",
         "version": "2.4.1"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "Unlicense/MIT"
     },
     "proc-macro2 1.0.33": {
@@ -622,7 +634,11 @@
         "edition": "2018",
         "version": "1.0.33"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT OR Apache-2.0"
     },
     "quote 1.0.10": {
@@ -823,7 +839,11 @@
         "edition": "2018",
         "version": "1.0.82"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT OR Apache-2.0"
     },
     "termcolor 1.1.2": {
@@ -959,6 +979,9 @@
         "version": "1.0.0-alpha.7"
       },
       "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -1077,7 +1100,11 @@
         "edition": "2015",
         "version": "0.3.9"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT/Apache-2.0"
     },
     "winapi-i686-pc-windows-gnu 0.4.0": {
@@ -1129,7 +1156,11 @@
         "edition": "2015",
         "version": "0.4.0"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT/Apache-2.0"
     },
     "winapi-util 0.1.5": {
@@ -1222,7 +1253,11 @@
         "edition": "2015",
         "version": "0.4.0"
       },
-      "build_script_attrs": {},
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
       "license": "MIT/Apache-2.0"
     }
   },
