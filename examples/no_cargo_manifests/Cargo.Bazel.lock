@@ -251,7 +251,7 @@
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.72",
+              "id": "serde_json 1.0.73",
               "target": "serde_json"
             },
             {
@@ -434,7 +434,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.109",
+              "id": "libc 0.2.112",
               "target": "libc"
             },
             {
@@ -491,7 +491,7 @@
               "target": "hyper"
             },
             {
-              "id": "serde_json 1.0.72",
+              "id": "serde_json 1.0.73",
               "target": "serde_json"
             },
             {
@@ -1037,7 +1037,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.109",
+              "id": "libc 0.2.112",
               "target": "libc"
             }
           ],
@@ -1489,6 +1489,36 @@
       },
       "license": "MIT OR Apache-2.0"
     },
+    "itoa 1.0.1": {
+      "name": "itoa",
+      "version": "1.0.1",
+      "repository": {
+        "Http": {
+          "url": "https://crates.io/api/v1/crates/itoa/1.0.1/download",
+          "sha256": "1aab8fc367588b89dcee83ab0fd66b72b50b72fa1904d7095045ace2b0c81c35"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "itoa",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "library_target_name": "itoa",
+      "common_attrs": {
+        "edition": "2018",
+        "version": "1.0.1"
+      },
+      "license": "MIT OR Apache-2.0"
+    },
     "lazy_static 1.4.0": {
       "name": "lazy_static",
       "version": "1.4.0",
@@ -1519,13 +1549,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "libc 0.2.109": {
+    "libc 0.2.112": {
       "name": "libc",
-      "version": "0.2.109",
+      "version": "0.2.112",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/libc/0.2.109/download",
-          "sha256": "f98a04dce437184842841303488f70d0188c5f51437d2a834dc097eafa909a01"
+          "url": "https://crates.io/api/v1/crates/libc/0.2.112/download",
+          "sha256": "1b03d17f364a3a042d5e5d46b053bbbf82c92c9430c592dd4c064dc6ee997125"
         }
       },
       "targets": [
@@ -1563,14 +1593,14 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.109",
+              "id": "libc 0.2.112",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2015",
-        "version": "0.2.109"
+        "version": "0.2.112"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -1855,7 +1885,7 @@
           "selects": {
             "cfg(unix)": [
               {
-                "id": "libc 0.2.109",
+                "id": "libc 0.2.112",
                 "target": "libc"
               }
             ],
@@ -2145,7 +2175,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.109",
+              "id": "libc 0.2.112",
               "target": "libc"
             }
           ],
@@ -2314,7 +2344,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.109",
+                "id": "libc 0.2.112",
                 "target": "libc"
               }
             ],
@@ -2809,13 +2839,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "ryu 1.0.6": {
+    "ryu 1.0.9": {
       "name": "ryu",
-      "version": "1.0.6",
+      "version": "1.0.9",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/ryu/1.0.6/download",
-          "sha256": "3c9613b5a66ab9ba26415184cfc41156594925a9cf3a2057e57f31ff145f6568"
+          "url": "https://crates.io/api/v1/crates/ryu/1.0.9/download",
+          "sha256": "73b4b750c782965c211b42f022f59af1fbceabdd026623714f104152f1ec149f"
         }
       },
       "targets": [
@@ -2830,38 +2860,12 @@
               "exclude": []
             }
           }
-        },
-        {
-          "BuildScript": {
-            "crate_name": "build_script_build",
-            "crate_root": "build.rs",
-            "srcs": {
-              "include": [
-                "**/*.rs"
-              ],
-              "exclude": []
-            }
-          }
         }
       ],
       "library_target_name": "ryu",
       "common_attrs": {
-        "deps": {
-          "common": [
-            {
-              "id": "ryu 1.0.6",
-              "target": "build_script_build"
-            }
-          ],
-          "selects": {}
-        },
         "edition": "2018",
-        "version": "1.0.6"
-      },
-      "build_script_attrs": {
-        "data_glob": [
-          "**"
-        ]
+        "version": "1.0.9"
       },
       "license": "Apache-2.0 OR BSL-1.0"
     },
@@ -2955,13 +2959,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "serde_json 1.0.72": {
+    "serde_json 1.0.73": {
       "name": "serde_json",
-      "version": "1.0.72",
+      "version": "1.0.73",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/serde_json/1.0.72/download",
-          "sha256": "d0ffa0837f2dfa6fb90868c2b5468cad482e175f7dad97e7421951e663f2b527"
+          "url": "https://crates.io/api/v1/crates/serde_json/1.0.73/download",
+          "sha256": "bcbd0344bc6533bc7ec56df11d42fb70f1b912351c0825ccb7211b59d8af7cf5"
         }
       },
       "targets": [
@@ -2999,11 +3003,11 @@
         "deps": {
           "common": [
             {
-              "id": "itoa 0.4.8",
+              "id": "itoa 1.0.1",
               "target": "itoa"
             },
             {
-              "id": "ryu 1.0.6",
+              "id": "ryu 1.0.9",
               "target": "ryu"
             },
             {
@@ -3011,14 +3015,14 @@
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.72",
+              "id": "serde_json 1.0.73",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.0.72"
+        "version": "1.0.73"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -3063,7 +3067,7 @@
               "target": "itoa"
             },
             {
-              "id": "ryu 1.0.6",
+              "id": "ryu 1.0.9",
               "target": "ryu"
             },
             {
@@ -3145,7 +3149,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.109",
+              "id": "libc 0.2.112",
               "target": "libc"
             }
           ],
@@ -3250,7 +3254,7 @@
           "selects": {
             "cfg(unix)": [
               {
-                "id": "libc 0.2.109",
+                "id": "libc 0.2.112",
                 "target": "libc"
               }
             ],
@@ -3517,7 +3521,7 @@
           "selects": {
             "cfg(unix)": [
               {
-                "id": "libc 0.2.109",
+                "id": "libc 0.2.112",
                 "target": "libc"
               },
               {
@@ -4216,7 +4220,7 @@
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.72",
+              "id": "serde_json 1.0.73",
               "target": "serde_json"
             },
             {
