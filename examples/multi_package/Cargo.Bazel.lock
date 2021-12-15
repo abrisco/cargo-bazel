@@ -175,7 +175,7 @@
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.72",
+              "id": "serde_json 1.0.73",
               "target": "serde_json"
             }
           ],
@@ -430,7 +430,7 @@
           "selects": {
             "cfg(unix)": [
               {
-                "id": "libc 0.2.109",
+                "id": "libc 0.2.112",
                 "target": "libc"
               }
             ],
@@ -615,7 +615,7 @@
                 "target": "async_io"
               },
               {
-                "id": "libc 0.2.109",
+                "id": "libc 0.2.112",
                 "target": "libc"
               },
               {
@@ -954,7 +954,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.109",
+                "id": "libc 0.2.112",
                 "target": "libc"
               }
             ],
@@ -1579,7 +1579,7 @@
               "target": "core_foundation_sys"
             },
             {
-              "id": "libc 0.2.109",
+              "id": "libc 0.2.112",
               "target": "libc"
             }
           ],
@@ -1874,7 +1874,7 @@
               "target": "curl_sys"
             },
             {
-              "id": "libc 0.2.109",
+              "id": "libc 0.2.112",
               "target": "libc"
             },
             {
@@ -1889,7 +1889,7 @@
                 "target": "openssl_probe"
               },
               {
-                "id": "openssl-sys 0.9.71",
+                "id": "openssl-sys 0.9.72",
                 "target": "openssl_sys"
               }
             ],
@@ -1960,7 +1960,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.109",
+              "id": "libc 0.2.112",
               "target": "libc"
             },
             {
@@ -1975,7 +1975,7 @@
           "selects": {
             "cfg(all(unix, not(target_os = \"macos\")))": [
               {
-                "id": "openssl-sys 0.9.71",
+                "id": "openssl-sys 0.9.72",
                 "target": "openssl_sys"
               }
             ],
@@ -2218,7 +2218,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.109",
+                "id": "libc 0.2.112",
                 "target": "libc"
               }
             ],
@@ -3208,7 +3208,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.109",
+                "id": "libc 0.2.112",
                 "target": "libc"
               }
             ]
@@ -3423,7 +3423,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.109",
+              "id": "libc 0.2.112",
               "target": "libc"
             }
           ],
@@ -3752,7 +3752,7 @@
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.72",
+              "id": "serde_json 1.0.73",
               "target": "serde_json"
             },
             {
@@ -4350,6 +4350,36 @@
       },
       "license": "MIT OR Apache-2.0"
     },
+    "itoa 1.0.1": {
+      "name": "itoa",
+      "version": "1.0.1",
+      "repository": {
+        "Http": {
+          "url": "https://crates.io/api/v1/crates/itoa/1.0.1/download",
+          "sha256": "1aab8fc367588b89dcee83ab0fd66b72b50b72fa1904d7095045ace2b0c81c35"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "itoa",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "library_target_name": "itoa",
+      "common_attrs": {
+        "edition": "2018",
+        "version": "1.0.1"
+      },
+      "license": "MIT OR Apache-2.0"
+    },
     "js-sys 0.3.55": {
       "name": "js-sys",
       "version": "0.3.55",
@@ -4648,13 +4678,13 @@
       },
       "license": "MIT"
     },
-    "libc 0.2.109": {
+    "libc 0.2.112": {
       "name": "libc",
-      "version": "0.2.109",
+      "version": "0.2.112",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/libc/0.2.109/download",
-          "sha256": "f98a04dce437184842841303488f70d0188c5f51437d2a834dc097eafa909a01"
+          "url": "https://crates.io/api/v1/crates/libc/0.2.112/download",
+          "sha256": "1b03d17f364a3a042d5e5d46b053bbbf82c92c9430c592dd4c064dc6ee997125"
         }
       },
       "targets": [
@@ -4692,14 +4722,14 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.109",
+              "id": "libc 0.2.112",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2015",
-        "version": "0.2.109"
+        "version": "0.2.112"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -4751,7 +4781,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.109",
+              "id": "libc 0.2.112",
               "target": "libc"
             },
             {
@@ -4825,7 +4855,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.109",
+              "id": "libc 0.2.112",
               "target": "libc"
             },
             {
@@ -4850,7 +4880,7 @@
               "target": "cc"
             },
             {
-              "id": "pkg-config 0.3.23",
+              "id": "pkg-config 0.3.24",
               "target": "pkg_config"
             }
           ],
@@ -5190,7 +5220,7 @@
           "selects": {
             "cfg(unix)": [
               {
-                "id": "libc 0.2.109",
+                "id": "libc 0.2.112",
                 "target": "libc"
               }
             ],
@@ -5305,7 +5335,7 @@
                 "target": "lazy_static"
               },
               {
-                "id": "libc 0.2.109",
+                "id": "libc 0.2.112",
                 "target": "libc"
               },
               {
@@ -5335,7 +5365,7 @@
                 "target": "openssl_probe"
               },
               {
-                "id": "openssl-sys 0.9.71",
+                "id": "openssl-sys 0.9.72",
                 "target": "openssl_sys"
               }
             ],
@@ -5479,7 +5509,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.109",
+              "id": "libc 0.2.112",
               "target": "libc"
             }
           ],
@@ -5615,7 +5645,7 @@
               "target": "foreign_types"
             },
             {
-              "id": "libc 0.2.109",
+              "id": "libc 0.2.112",
               "target": "libc"
             },
             {
@@ -5627,7 +5657,7 @@
               "target": "build_script_build"
             },
             {
-              "id": "openssl-sys 0.9.71",
+              "id": "openssl-sys 0.9.72",
               "target": "openssl_sys",
               "alias": "ffi"
             }
@@ -5644,7 +5674,7 @@
         "deps": {
           "common": [
             {
-              "id": "openssl-sys 0.9.71",
+              "id": "openssl-sys 0.9.72",
               "target": "openssl_sys",
               "alias": "ffi"
             }
@@ -5684,13 +5714,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "openssl-sys 0.9.71": {
+    "openssl-sys 0.9.72": {
       "name": "openssl-sys",
-      "version": "0.9.71",
+      "version": "0.9.72",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/openssl-sys/0.9.71/download",
-          "sha256": "7df13d165e607909b363a4757a6f133f8a818a74e9d3a98d09c6128e15fa4c73"
+          "url": "https://crates.io/api/v1/crates/openssl-sys/0.9.72/download",
+          "sha256": "7e46109c383602735fa0a2e48dd2b7c892b048e1bf69e5c3b1d804b7d9c203cb"
         }
       },
       "targets": [
@@ -5730,11 +5760,11 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.109",
+              "id": "libc 0.2.112",
               "target": "libc"
             },
             {
-              "id": "openssl-sys 0.9.71",
+              "id": "openssl-sys 0.9.72",
               "target": "build_script_main"
             }
           ],
@@ -5744,7 +5774,7 @@
           "@openssl"
         ],
         "edition": "2015",
-        "version": "0.9.71"
+        "version": "0.9.72"
       },
       "build_script_attrs": {
         "data": {
@@ -5769,7 +5799,7 @@
               "target": "cc"
             },
             {
-              "id": "pkg-config 0.3.23",
+              "id": "pkg-config 0.3.24",
               "target": "pkg_config"
             }
           ],
@@ -5938,7 +5968,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.109",
+                "id": "libc 0.2.112",
                 "target": "libc"
               }
             ],
@@ -6252,13 +6282,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "pkg-config 0.3.23": {
+    "pkg-config 0.3.24": {
       "name": "pkg-config",
-      "version": "0.3.23",
+      "version": "0.3.24",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/pkg-config/0.3.23/download",
-          "sha256": "d1a3ea4f0dd7f1f3e512cf97bf100819aa547f36a6eccac8dbaae839eb92363e"
+          "url": "https://crates.io/api/v1/crates/pkg-config/0.3.24/download",
+          "sha256": "58893f751c9b0412871a09abd62ecd2a00298c6c83befa223ef98c52aef40cbe"
         }
       },
       "targets": [
@@ -6278,7 +6308,7 @@
       "library_target_name": "pkg_config",
       "common_attrs": {
         "edition": "2015",
-        "version": "0.3.23"
+        "version": "0.3.24"
       },
       "license": "MIT/Apache-2.0"
     },
@@ -6449,7 +6479,7 @@
           "selects": {
             "cfg(any(unix, target_os = \"fuchsia\", target_os = \"vxworks\"))": [
               {
-                "id": "libc 0.2.109",
+                "id": "libc 0.2.112",
                 "target": "libc"
               }
             ],
@@ -6737,7 +6767,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.109",
+                "id": "libc 0.2.112",
                 "target": "libc"
               }
             ]
@@ -7158,7 +7188,7 @@
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.72",
+              "id": "serde_json 1.0.73",
               "target": "serde_json"
             },
             {
@@ -7325,13 +7355,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "ryu 1.0.6": {
+    "ryu 1.0.9": {
       "name": "ryu",
-      "version": "1.0.6",
+      "version": "1.0.9",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/ryu/1.0.6/download",
-          "sha256": "3c9613b5a66ab9ba26415184cfc41156594925a9cf3a2057e57f31ff145f6568"
+          "url": "https://crates.io/api/v1/crates/ryu/1.0.9/download",
+          "sha256": "73b4b750c782965c211b42f022f59af1fbceabdd026623714f104152f1ec149f"
         }
       },
       "targets": [
@@ -7346,38 +7376,12 @@
               "exclude": []
             }
           }
-        },
-        {
-          "BuildScript": {
-            "crate_name": "build_script_build",
-            "crate_root": "build.rs",
-            "srcs": {
-              "include": [
-                "**/*.rs"
-              ],
-              "exclude": []
-            }
-          }
         }
       ],
       "library_target_name": "ryu",
       "common_attrs": {
-        "deps": {
-          "common": [
-            {
-              "id": "ryu 1.0.6",
-              "target": "build_script_build"
-            }
-          ],
-          "selects": {}
-        },
         "edition": "2018",
-        "version": "1.0.6"
-      },
-      "build_script_attrs": {
-        "data_glob": [
-          "**"
-        ]
+        "version": "1.0.9"
       },
       "license": "Apache-2.0 OR BSL-1.0"
     },
@@ -7498,7 +7502,7 @@
               "target": "core_foundation_sys"
             },
             {
-              "id": "libc 0.2.109",
+              "id": "libc 0.2.112",
               "target": "libc"
             },
             {
@@ -7549,7 +7553,7 @@
               "target": "core_foundation_sys"
             },
             {
-              "id": "libc 0.2.109",
+              "id": "libc 0.2.112",
               "target": "libc"
             }
           ],
@@ -7702,13 +7706,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "serde_json 1.0.72": {
+    "serde_json 1.0.73": {
       "name": "serde_json",
-      "version": "1.0.72",
+      "version": "1.0.73",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/serde_json/1.0.72/download",
-          "sha256": "d0ffa0837f2dfa6fb90868c2b5468cad482e175f7dad97e7421951e663f2b527"
+          "url": "https://crates.io/api/v1/crates/serde_json/1.0.73/download",
+          "sha256": "bcbd0344bc6533bc7ec56df11d42fb70f1b912351c0825ccb7211b59d8af7cf5"
         }
       },
       "targets": [
@@ -7746,11 +7750,11 @@
         "deps": {
           "common": [
             {
-              "id": "itoa 0.4.8",
+              "id": "itoa 1.0.1",
               "target": "itoa"
             },
             {
-              "id": "ryu 1.0.6",
+              "id": "ryu 1.0.9",
               "target": "ryu"
             },
             {
@@ -7758,14 +7762,14 @@
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.72",
+              "id": "serde_json 1.0.73",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.0.72"
+        "version": "1.0.73"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -7853,7 +7857,7 @@
               "target": "itoa"
             },
             {
-              "id": "ryu 1.0.6",
+              "id": "ryu 1.0.9",
               "target": "ryu"
             },
             {
@@ -7912,7 +7916,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.109",
+              "id": "libc 0.2.112",
               "target": "libc"
             },
             {
@@ -7964,7 +7968,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.109",
+              "id": "libc 0.2.112",
               "target": "libc"
             }
           ],
@@ -8153,7 +8157,7 @@
           "selects": {
             "cfg(unix)": [
               {
-                "id": "libc 0.2.109",
+                "id": "libc 0.2.112",
                 "target": "libc"
               }
             ],
@@ -8355,7 +8359,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.109",
+                "id": "libc 0.2.112",
                 "target": "libc"
               }
             ],
@@ -8661,7 +8665,7 @@
           "selects": {
             "cfg(unix)": [
               {
-                "id": "libc 0.2.109",
+                "id": "libc 0.2.112",
                 "target": "libc"
               },
               {
