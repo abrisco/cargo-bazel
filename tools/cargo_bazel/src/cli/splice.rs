@@ -1,14 +1,14 @@
 //! TODO
 
-use std::fs;
 use std::path::PathBuf;
-use std::str::FromStr;
 
 use structopt::StructOpt;
 
 use crate::cli::Result;
 use crate::metadata::{write_metadata, Generator, MetadataGenerator};
-use crate::splicing::{generate_lockfile, Splicer, SplicingManifest, WorkspaceMetadata};
+use crate::splicing::{
+    generate_lockfile, ExtraManifestsManifest, Splicer, SplicingManifest, WorkspaceMetadata,
+};
 
 /// Command line options for the `splice` subcommand
 #[derive(StructOpt, Debug)]
@@ -16,6 +16,10 @@ pub struct SpliceOptions {
     /// A generated manifest of splicing inputs
     #[structopt(long)]
     pub splicing_manifest: PathBuf,
+
+    /// A generated manifest of "extra workspace members"
+    #[structopt(long)]
+    pub extra_manifests_manifest: PathBuf,
 
     /// A Cargo lockfile (Cargo.lock).
     #[structopt(long)]
@@ -45,14 +49,17 @@ pub struct SpliceOptions {
 
 /// Combine a set of disjoint manifests into a single workspace.
 pub fn splice(opt: SpliceOptions) -> Result<()> {
-    // Load the "Splicing manifest"
-    let splicing_manifest = {
-        let content = fs::read_to_string(opt.splicing_manifest)?;
-        SplicingManifest::from_str(&content)?
-    };
+    // Load the all config files required for splicing a workspace
+    let splicing_manifest = SplicingManifest::try_from_path(&opt.splicing_manifest)?;
+    let extra_manifests_manifest =
+        ExtraManifestsManifest::try_from_path(opt.extra_manifests_manifest)?;
 
     // Generate a splicer for creating a Cargo workspace manifest
-    let splicer = Splicer::new(opt.workspace_dir, splicing_manifest)?;
+    let splicer = Splicer::new(
+        opt.workspace_dir,
+        splicing_manifest,
+        extra_manifests_manifest,
+    )?;
 
     // Splice together the manifest
     let manifest_path = splicer.splice_workspace()?;

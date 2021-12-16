@@ -1,5 +1,6 @@
 //! Utility module for interracting with different kinds of lock files
 
+use std::convert::TryFrom;
 use std::ffi::OsStr;
 use std::fs;
 use std::path::Path;
@@ -13,6 +14,7 @@ use sha2::{Digest as Sha2Digest, Sha256};
 
 use crate::config::Config;
 use crate::context::Context;
+use crate::splicing::{SplicingManifest, SplicingMetadata};
 
 #[derive(Debug)]
 pub enum LockfileKind {
@@ -69,9 +71,25 @@ pub fn is_cargo_lockfile(path: &Path, kind: &LockfileKind) -> bool {
     }
 }
 
+pub fn lock_context(
+    context: Context,
+    config: &Config,
+    splicing_manifest: &SplicingManifest,
+    cargo_bin: &Path,
+    rustc_bin: &Path,
+) -> Result<Context> {
+    let checksum = Digest::new(config, splicing_manifest, cargo_bin, rustc_bin)
+        .context("Failed to generate context digest")?;
+
+    Ok(Context {
+        checksum: Some(checksum),
+        ..context
+    })
+}
+
 /// Write a [crate::planning::PlannedContext] to disk
-pub fn write_lockfile(context: Context, path: &Path, dry_run: bool) -> Result<()> {
-    let content = serde_json::to_string_pretty(&context)?;
+pub fn write_lockfile(lockfile: Context, path: &Path, dry_run: bool) -> Result<()> {
+    let content = serde_json::to_string_pretty(&lockfile)?;
 
     if dry_run {
         println!("{:#?}", content);
@@ -91,30 +109,48 @@ pub fn write_lockfile(context: Context, path: &Path, dry_run: bool) -> Result<()
 pub struct Digest(String);
 
 impl Digest {
-    pub fn new(config: &Config, cargo_bin: &Path, rustc_bin: &Path) -> Result<Self> {
+    pub fn new(
+        config: &Config,
+        splicing_manifest: &SplicingManifest,
+        cargo_bin: &Path,
+        rustc_bin: &Path,
+    ) -> Result<Self> {
+        let splicing_metadata = SplicingMetadata::try_from((*splicing_manifest).clone())?;
+        let cargo_version = Self::bin_version(cargo_bin)?;
+        let rustc_version = Self::bin_version(rustc_bin)?;
+
+        Ok(Self::compute(
+            config,
+            &splicing_metadata,
+            &cargo_version,
+            &rustc_version,
+        ))
+    }
+
+    fn compute(
+        config: &Config,
+        splicing_metadata: &SplicingMetadata,
+        cargo_version: &str,
+        rustc_version: &str,
+    ) -> Self {
         let mut hasher = Sha256::new();
 
         hasher.update(env!("CARGO_PKG_VERSION").as_bytes());
         hasher.update(b"\0");
 
-        hasher.update(serde_json::to_string(config)?.as_bytes());
+        hasher.update(serde_json::to_string(config).unwrap().as_bytes());
         hasher.update(b"\0");
 
-        hasher.update(
-            Self::bin_version(cargo_bin)
-                .context("Failed to get Cargo version")?
-                .as_bytes(),
-        );
+        hasher.update(cargo_version.as_bytes());
         hasher.update(b"\0");
 
-        hasher.update(
-            Self::bin_version(rustc_bin)
-                .context("Failed to get Rustc version")?
-                .as_bytes(),
-        );
+        hasher.update(rustc_version.as_bytes());
         hasher.update(b"\0");
 
-        Ok(Self(hasher.finalize().encode_hex::<String>()))
+        hasher.update(serde_json::to_string(splicing_metadata).unwrap().as_bytes());
+        hasher.update(b"\0");
+
+        Self(hasher.finalize().encode_hex::<String>())
     }
 
     fn bin_version(binary: &Path) -> Result<String> {
@@ -150,9 +186,135 @@ impl PartialEq<String> for Digest {
 
 #[cfg(test)]
 mod test {
+    use crate::config::{CrateExtras, CrateId};
+    use crate::splicing::cargo_config::{AdditionalRegistry, CargoConfig, Registry};
+
     use super::*;
 
+    use std::collections::{BTreeMap, BTreeSet};
     use std::fs;
+
+    #[test]
+    fn simple_digest() {
+        let config = Config::default();
+        let splicing_metadata = SplicingMetadata::default();
+
+        let digest = Digest::compute(
+            &config,
+            &splicing_metadata,
+            "cargo 1.57.0 (b2e52d7ca 2021-10-21)",
+            "rustc 1.57.0 (f1edd0429 2021-11-29)",
+        );
+
+        assert_eq!(
+            digest,
+            Digest("62b0d47b160165389ae5b989842d38c0b1d1b322da9a9e5e8b64a7a44133dd40".to_owned())
+        );
+    }
+
+    #[test]
+    fn digest_with_config() {
+        let config = Config {
+            generate_build_scripts: false,
+            extras: BTreeMap::from([(
+                CrateId::new("rustonomicon".to_owned(), "1.0.0".to_owned()),
+                CrateExtras {
+                    compile_data_glob: Some(BTreeSet::from(["arts/**".to_owned()])),
+                    ..CrateExtras::default()
+                },
+            )]),
+            cargo_config: None,
+            supported_platform_triples: BTreeSet::from([
+                "aarch64-apple-darwin".to_owned(),
+                "aarch64-unknown-linux-gnu".to_owned(),
+                "wasm32-unknown-unknown".to_owned(),
+                "wasm32-wasi".to_owned(),
+                "x86_64-apple-darwin".to_owned(),
+                "x86_64-pc-windows-msvc".to_owned(),
+                "x86_64-unknown-freebsd".to_owned(),
+                "x86_64-unknown-linux-gnu".to_owned(),
+            ]),
+            ..Config::default()
+        };
+
+        let splicing_metadata = SplicingMetadata::default();
+
+        let digest = Digest::compute(
+            &config,
+            &splicing_metadata,
+            "cargo 1.57.0 (b2e52d7ca 2021-10-21)",
+            "rustc 1.57.0 (f1edd0429 2021-11-29)",
+        );
+
+        assert_eq!(
+            digest,
+            Digest("142316b13c9ab67e4fb3244769deb87975c6515857806d0b70f0519ae5d8ab62".to_owned())
+        );
+    }
+
+    #[test]
+    fn digest_with_splicing_metadata() {
+        let config = Config::default();
+        let splicing_metadata = SplicingMetadata::default();
+
+        let digest = Digest::compute(
+            &config,
+            &splicing_metadata,
+            "cargo 1.57.0 (b2e52d7ca 2021-10-21)",
+            "rustc 1.57.0 (f1edd0429 2021-11-29)",
+        );
+
+        assert_eq!(
+            digest,
+            Digest("62b0d47b160165389ae5b989842d38c0b1d1b322da9a9e5e8b64a7a44133dd40".to_owned())
+        );
+    }
+
+    #[test]
+    fn digest_with_cargo_config() {
+        let config = Config::default();
+        let cargo_config = CargoConfig {
+            registries: BTreeMap::from([
+                (
+                    "art-crates-remote".to_owned(),
+                    AdditionalRegistry {
+                        index: "https://artprod.mycompany/artifactory/git/cargo-remote.git"
+                            .to_owned(),
+                        token: None,
+                    },
+                ),
+                (
+                    "crates-io".to_owned(),
+                    AdditionalRegistry {
+                        index: "https://github.com/rust-lang/crates.io-index".to_owned(),
+                        token: None,
+                    },
+                ),
+            ]),
+            registry: Registry {
+                default: "art-crates-remote".to_owned(),
+                token: None,
+            },
+            source: BTreeMap::new(),
+        };
+
+        let splicing_metadata = SplicingMetadata {
+            cargo_config: Some(cargo_config),
+            ..SplicingMetadata::default()
+        };
+
+        let digest = Digest::compute(
+            &config,
+            &splicing_metadata,
+            "cargo 1.57.0 (b2e52d7ca 2021-10-21)",
+            "rustc 1.57.0 (f1edd0429 2021-11-29)",
+        );
+
+        assert_eq!(
+            digest,
+            Digest("6d22dd412e6d0fdf0dd463d6e3f94254c59c1abd21e376eeec99c38ee6e5061c".to_owned())
+        );
+    }
 
     #[test]
     fn detect_bazel_lockfile() {

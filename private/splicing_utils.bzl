@@ -59,29 +59,16 @@ def download_extra_workspace_members(repository_ctx, cache_dir, render_template_
 
     return manifests
 
-def splice_workspace_manifest(repository_ctx, generator, lockfile, cargo, rustc):
-    """Splice together a Cargo workspace from various other manifests and package definitions
+def create_splicing_manifest(repository_ctx):
+    """Produce a manifest containing required components for splciing a new Cargo workspace
 
     Args:
         repository_ctx (repository_ctx): The rule's context object.
-        generator (path): The `cargo-bazel` binary.
-        lockfile (path): The path to a "lock" file for reproducible `cargo-bazel` renderings.
-        cargo (path): The path to a Cargo binary.
-        rustc (path): The Path to a Rustc binary.
 
     Returns:
-        path: The path to a Cargo metadata json file found in the spliced workspace root.
+        path: The path to a json encoded manifest
     """
-    repository_ctx.report_progress("Splicing Cargo workspace.")
     repo_dir = repository_ctx.path(".")
-
-    # Download extra workspace members
-    crates_cache_dir = repository_ctx.path("{}/.crates_cache".format(repo_dir))
-    extra_manifest_info = download_extra_workspace_members(
-        repository_ctx = repository_ctx,
-        cache_dir = crates_cache_dir,
-        render_template_registry_url = repository_ctx.attr.extra_workspace_member_url_template,
-    )
 
     # Deserialize information about direct packges
     direct_packages_info = {
@@ -102,9 +89,43 @@ def splice_workspace_manifest(repository_ctx, generator, lockfile, cargo, rustc)
         splicing_manifest,
         json.encode_indent(struct(
             direct_packages = direct_packages_info,
-            extra_manifest_infos = extra_manifest_info,
             manifests = manifests,
             cargo_config = cargo_config,
+        ), indent = " " * 4),
+    )
+
+    return splicing_manifest
+
+def splice_workspace_manifest(repository_ctx, generator, lockfile, splicing_manifest, cargo, rustc):
+    """Splice together a Cargo workspace from various other manifests and package definitions
+
+    Args:
+        repository_ctx (repository_ctx): The rule's context object.
+        generator (path): The `cargo-bazel` binary.
+        lockfile (path): The path to a "lock" file for reproducible `cargo-bazel` renderings.
+        splicing_manifest (path): The path to a splicing manifest.
+        cargo (path): The path to a Cargo binary.
+        rustc (path): The Path to a Rustc binary.
+
+    Returns:
+        path: The path to a Cargo metadata json file found in the spliced workspace root.
+    """
+    repository_ctx.report_progress("Splicing Cargo workspace.")
+    repo_dir = repository_ctx.path(".")
+
+    # Download extra workspace members
+    crates_cache_dir = repository_ctx.path("{}/.crates_cache".format(repo_dir))
+    extra_manifest_info = download_extra_workspace_members(
+        repository_ctx = repository_ctx,
+        cache_dir = crates_cache_dir,
+        render_template_registry_url = repository_ctx.attr.extra_workspace_member_url_template,
+    )
+
+    extra_manifests_manifest = repository_ctx.path("{}/extra_manifests_manifest.json".format(repo_dir))
+    repository_ctx.file(
+        extra_manifests_manifest,
+        json.encode_indent(struct(
+            manifests = extra_manifest_info,
         ), indent = " " * 4),
     )
 
@@ -118,6 +139,8 @@ def splice_workspace_manifest(repository_ctx, generator, lockfile, cargo, rustc)
         cargo_workspace,
         "--splicing-manifest",
         splicing_manifest,
+        "--extra-manifests-manifest",
+        extra_manifests_manifest,
         "--cargo",
         cargo,
         "--rustc",

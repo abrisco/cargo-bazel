@@ -7,7 +7,7 @@ use std::collections::{BTreeMap, BTreeSet};
 use std::fs;
 use std::path::{Path, PathBuf};
 
-use anyhow::{Context as AnyhowContext, Result};
+use anyhow::Result;
 use serde::{Deserialize, Serialize};
 
 use crate::annotation::Annotations;
@@ -46,7 +46,7 @@ impl Context {
         Ok(serde_json::from_str(&data)?)
     }
 
-    pub fn new(annotations: Annotations, cargo_bin: &Path, rustc_bin: &Path) -> Result<Self> {
+    pub fn new(annotations: Annotations) -> Result<Self> {
         // Build a map of crate contexts
         let crates: BTreeMap<CrateId, CrateContext> = annotations
             .metadata
@@ -108,13 +108,8 @@ impl Context {
             })
             .collect::<Result<BTreeMap<CrateId, String>>>()?;
 
-        let checksum = Some(
-            Digest::new(&annotations.config, cargo_bin, rustc_bin)
-                .context("Failed to generate digest")?,
-        );
-
         Ok(Self {
-            checksum,
+            checksum: None,
             crates,
             binary_crates,
             workspace_members,
@@ -411,12 +406,7 @@ mod test {
         )
         .unwrap();
 
-        Context::new(
-            annotations,
-            &crate::test::cargo_bin(),
-            &crate::test::rustc_bin(),
-        )
-        .unwrap()
+        Context::new(annotations).unwrap()
     }
 
     fn mock_context_aliases() -> Context {
@@ -427,12 +417,7 @@ mod test {
         )
         .unwrap();
 
-        Context::new(
-            annotations,
-            &crate::test::cargo_bin(),
-            &crate::test::rustc_bin(),
-        )
-        .unwrap()
+        Context::new(annotations).unwrap()
     }
 
     #[test]

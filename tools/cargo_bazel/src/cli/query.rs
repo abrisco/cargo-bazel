@@ -9,6 +9,7 @@ use structopt::StructOpt;
 
 use crate::config::Config;
 use crate::lockfile::Digest;
+use crate::splicing::SplicingManifest;
 
 /// Command line options for the `query` subcommand
 #[derive(StructOpt, Debug)]
@@ -20,6 +21,10 @@ pub struct QueryOptions {
     /// The config file with information about the Bazel and Cargo workspace
     #[structopt(long)]
     pub config: PathBuf,
+
+    /// A generated manifest of splicing inputs
+    #[structopt(long)]
+    pub splicing_manifest: PathBuf,
 
     /// The path to a Cargo binary to use for gathering metadata
     #[structopt(long, env = "CARGO")]
@@ -58,8 +63,10 @@ pub fn query(opt: QueryOptions) -> Result<()> {
     // Load the config file
     let config = Config::try_from_path(&opt.config)?;
 
+    let splicing_manifest = SplicingManifest::try_from_path(&opt.splicing_manifest)?;
+
     // Generate a new digest so we can compare it with the one in the lockfile
-    let expected = Digest::new(&config, &opt.cargo, &opt.rustc)?;
+    let expected = Digest::new(&config, &splicing_manifest, &opt.cargo, &opt.rustc)?;
     if digest != expected {
         return announce_repin(&format!(
             "Digests do not match: {:?} != {:?}",
