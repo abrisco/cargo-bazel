@@ -12,6 +12,7 @@
         {{ throw(message= "Unexpected git commitish '" ~ type ~ "' for '" ~ crate.name ~ "'") }}
     {%- endif %}
     {%- endfor %}
+        init_submodules = True,
     {%- if attrs.shallow_since %}
         shallow_since = "{{ attrs.shallow_since }}",
     {%- endif %}
