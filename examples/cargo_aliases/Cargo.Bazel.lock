@@ -578,13 +578,13 @@
       },
       "license": "Unlicense/MIT"
     },
-    "proc-macro2 1.0.33": {
+    "proc-macro2 1.0.34": {
       "name": "proc-macro2",
-      "version": "1.0.33",
+      "version": "1.0.34",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/proc-macro2/1.0.33/download",
-          "sha256": "fb37d2df5df740e582f28f8560cf425f52bb267d872fe58358eadb554909f07a"
+          "url": "https://crates.io/api/v1/crates/proc-macro2/1.0.34/download",
+          "sha256": "2f84e92c0f7c9d58328b85a78557813e4bd845130db68d7184635344399423b1"
         }
       },
       "targets": [
@@ -621,7 +621,7 @@
         "deps": {
           "common": [
             {
-              "id": "proc-macro2 1.0.33",
+              "id": "proc-macro2 1.0.34",
               "target": "build_script_build"
             },
             {
@@ -632,7 +632,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.0.33"
+        "version": "1.0.34"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -673,7 +673,7 @@
         "deps": {
           "common": [
             {
-              "id": "proc-macro2 1.0.33",
+              "id": "proc-macro2 1.0.34",
               "target": "proc_macro2"
             }
           ],
@@ -818,7 +818,7 @@
         "deps": {
           "common": [
             {
-              "id": "proc-macro2 1.0.33",
+              "id": "proc-macro2 1.0.34",
               "target": "proc_macro2"
             },
             {
