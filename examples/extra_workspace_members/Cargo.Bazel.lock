@@ -192,13 +192,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "bytemuck 1.7.2": {
+    "bytemuck 1.7.3": {
       "name": "bytemuck",
-      "version": "1.7.2",
+      "version": "1.7.3",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/bytemuck/1.7.2/download",
-          "sha256": "72957246c41db82b8ef88a5486143830adeb8227ef9837740bdec67724cf2c5b"
+          "url": "https://crates.io/api/v1/crates/bytemuck/1.7.3/download",
+          "sha256": "439989e6b8c38d1b6570a384ef1e49c8848128f5a97f3914baef02920842712f"
         }
       },
       "targets": [
@@ -218,7 +218,7 @@
       "library_target_name": "bytemuck",
       "common_attrs": {
         "edition": "2018",
-        "version": "1.7.2"
+        "version": "1.7.3"
       },
       "license": "Zlib OR Apache-2.0 OR MIT"
     },
@@ -429,7 +429,7 @@
               "target": "libc"
             },
             {
-              "id": "once_cell 1.8.0",
+              "id": "once_cell 1.9.0",
               "target": "once_cell"
             },
             {
@@ -871,7 +871,7 @@
         "deps": {
           "common": [
             {
-              "id": "bytemuck 1.7.2",
+              "id": "bytemuck 1.7.3",
               "target": "bytemuck"
             },
             {
@@ -1497,13 +1497,13 @@
       },
       "license": "MIT"
     },
-    "once_cell 1.8.0": {
+    "once_cell 1.9.0": {
       "name": "once_cell",
-      "version": "1.8.0",
+      "version": "1.9.0",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/once_cell/1.8.0/download",
-          "sha256": "692fcb63b64b1758029e0a96ee63e049ce8c5948587f2f7208df04625e5f6b56"
+          "url": "https://crates.io/api/v1/crates/once_cell/1.9.0/download",
+          "sha256": "da32515d9f6e6e489d7bc9d84c71b060db7247dc035bbe44eac88cf87486d8d5"
         }
       },
       "targets": [
@@ -1529,7 +1529,7 @@
           "std"
         ],
         "edition": "2018",
-        "version": "1.8.0"
+        "version": "1.9.0"
       },
       "license": "MIT OR Apache-2.0"
     },
@@ -1668,7 +1668,7 @@
               "target": "build_script_build"
             },
             {
-              "id": "proc-macro2 1.0.33",
+              "id": "proc-macro2 1.0.34",
               "target": "proc_macro2"
             },
             {
@@ -1754,7 +1754,7 @@
               "target": "build_script_build"
             },
             {
-              "id": "proc-macro2 1.0.33",
+              "id": "proc-macro2 1.0.34",
               "target": "proc_macro2"
             },
             {
@@ -1783,13 +1783,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "proc-macro2 1.0.33": {
+    "proc-macro2 1.0.34": {
       "name": "proc-macro2",
-      "version": "1.0.33",
+      "version": "1.0.34",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/proc-macro2/1.0.33/download",
-          "sha256": "fb37d2df5df740e582f28f8560cf425f52bb267d872fe58358eadb554909f07a"
+          "url": "https://crates.io/api/v1/crates/proc-macro2/1.0.34/download",
+          "sha256": "2f84e92c0f7c9d58328b85a78557813e4bd845130db68d7184635344399423b1"
         }
       },
       "targets": [
@@ -1827,7 +1827,7 @@
         "deps": {
           "common": [
             {
-              "id": "proc-macro2 1.0.33",
+              "id": "proc-macro2 1.0.34",
               "target": "build_script_build"
             },
             {
@@ -1838,7 +1838,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.0.33"
+        "version": "1.0.34"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -1879,7 +1879,7 @@
         "deps": {
           "common": [
             {
-              "id": "proc-macro2 1.0.33",
+              "id": "proc-macro2 1.0.34",
               "target": "proc_macro2"
             }
           ],
@@ -2301,7 +2301,7 @@
               "target": "proc_macro_error"
             },
             {
-              "id": "proc-macro2 1.0.33",
+              "id": "proc-macro2 1.0.34",
               "target": "proc_macro2"
             },
             {
@@ -2370,7 +2370,7 @@
         "deps": {
           "common": [
             {
-              "id": "proc-macro2 1.0.33",
+              "id": "proc-macro2 1.0.34",
               "target": "proc_macro2"
             },
             {
