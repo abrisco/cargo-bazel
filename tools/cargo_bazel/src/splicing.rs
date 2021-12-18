@@ -214,7 +214,7 @@ impl WorkspaceMetadata {
                 .join("config.toml");
 
             if config_path.exists() {
-                Some(CargoConfig::from_path(&config_path)?)
+                Some(CargoConfig::try_from_path(&config_path)?)
             } else {
                 None
             }

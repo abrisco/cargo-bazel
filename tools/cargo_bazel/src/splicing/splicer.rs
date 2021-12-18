@@ -478,7 +478,7 @@ pub fn write_root_manifest(path: &Path, manifest: cargo_toml::Manifest) -> Resul
         fs::create_dir_all(parent)?;
     }
 
-    // https://gitlab.com/crates.rs/cargo_toml/-/issues/3
+    // TODO(https://gitlab.com/crates.rs/cargo_toml/-/issues/3)
     let value = toml::Value::try_from(&manifest)?;
     fs::write(path, toml::to_string(&value)?)
         .context(format!("Failed to write manifest to {}", path.display()))
