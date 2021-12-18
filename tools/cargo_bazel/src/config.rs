@@ -346,7 +346,7 @@ impl std::fmt::Display for CrateId {
     }
 }
 
-#[derive(Debug, Default, Serialize, Deserialize)]
+#[derive(Debug, Default, Serialize, Deserialize, Clone)]
 #[serde(deny_unknown_fields)]
 pub struct Config {
     /// Whether or not to generate Cargo build scripts by default

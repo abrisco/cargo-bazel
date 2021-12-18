@@ -1,6 +1,6 @@
 //! This module is responsible for finding a Cargo workspace
 
-mod cargo_config;
+pub(crate) mod cargo_config;
 mod splicer;
 
 use std::collections::{BTreeMap, BTreeSet, HashMap};
@@ -35,14 +35,11 @@ pub struct ExtraManifestInfo {
 
 type DirectPackageManifest = BTreeMap<String, cargo_toml::DependencyDetail>;
 
-#[derive(Debug, Default, Serialize, Deserialize)]
+#[derive(Debug, Default, Serialize, Deserialize, Clone)]
 #[serde(deny_unknown_fields)]
 pub struct SplicingManifest {
     /// A set of all packages directly written to the rule
     pub direct_packages: DirectPackageManifest,
-
-    /// A collection of information required for reproducible "extra worksspace members".
-    pub extra_manifest_infos: Vec<ExtraManifestInfo>,
 
     /// A mapping of manifest paths to the labels representing them
     pub manifests: BTreeMap<PathBuf, Label>,
@@ -56,6 +53,80 @@ impl FromStr for SplicingManifest {
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         serde_json::from_str(s)
+    }
+}
+
+impl SplicingManifest {
+    pub fn try_from_path<T: AsRef<Path>>(path: T) -> Result<Self> {
+        let content = fs::read_to_string(path.as_ref())?;
+        Self::from_str(&content).context("Failed to load SplicingManifest")
+    }
+}
+
+#[derive(Debug, Serialize, Default)]
+pub struct SplicingMetadata {
+    /// A set of all packages directly written to the rule
+    pub direct_packages: DirectPackageManifest,
+
+    /// A mapping of manifest paths to the labels representing them
+    pub manifests: BTreeMap<Label, cargo_toml::Manifest>,
+
+    /// The path of a Cargo config file
+    pub cargo_config: Option<CargoConfig>,
+}
+
+impl TryFrom<SplicingManifest> for SplicingMetadata {
+    type Error = anyhow::Error;
+
+    fn try_from(value: SplicingManifest) -> Result<Self, Self::Error> {
+        let direct_packages = value.direct_packages;
+
+        let manifests = value
+            .manifests
+            .into_iter()
+            .map(|(path, label)| {
+                let manifest = cargo_toml::Manifest::from_path(&path)
+                    .with_context(|| format!("Failed to load manifest '{}'", path.display()))?;
+
+                Ok((label, manifest))
+            })
+            .collect::<Result<BTreeMap<Label, Manifest>>>()?;
+
+        let cargo_config = match value.cargo_config {
+            Some(path) => Some(
+                CargoConfig::try_from_path(&path)
+                    .with_context(|| format!("Failed to load cargo config '{}'", path.display()))?,
+            ),
+            None => None,
+        };
+
+        Ok(Self {
+            direct_packages,
+            manifests,
+            cargo_config,
+        })
+    }
+}
+
+/// A collection of information required for reproducible "extra worksspace members".
+#[derive(Debug, Default, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct ExtraManifestsManifest {
+    pub manifests: Vec<ExtraManifestInfo>,
+}
+
+impl FromStr for ExtraManifestsManifest {
+    type Err = serde_json::Error;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        serde_json::from_str(s)
+    }
+}
+
+impl ExtraManifestsManifest {
+    pub fn try_from_path<T: AsRef<Path>>(path: T) -> Result<Self> {
+        let content = fs::read_to_string(path.as_ref())?;
+        Self::from_str(&content).context("Failed to load ExtraManifestsManifest")
     }
 }
 
@@ -109,11 +180,12 @@ impl TryFrom<serde_json::Value> for WorkspaceMetadata {
 impl WorkspaceMetadata {
     fn new(
         splicing_manifest: &SplicingManifest,
+        extra_manifests_manifest: &ExtraManifestsManifest,
         injected_manifests: HashMap<&PathBuf, String>,
     ) -> Result<Self> {
         let mut sources = BTreeMap::new();
 
-        for config in splicing_manifest.extra_manifest_infos.iter() {
+        for config in extra_manifests_manifest.manifests.iter() {
             let package = match read_manifest(&config.manifest) {
                 Ok(manifest) => match manifest.package {
                     Some(pkg) => pkg,

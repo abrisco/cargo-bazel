@@ -8,9 +8,10 @@ use structopt::StructOpt;
 use crate::annotation::Annotations;
 use crate::config::Config;
 use crate::context::Context;
-use crate::lockfile::{is_cargo_lockfile, write_lockfile, LockfileKind};
+use crate::lockfile::{is_cargo_lockfile, lock_context, write_lockfile, LockfileKind};
 use crate::metadata::load_metadata;
 use crate::rendering::{write_outputs, Renderer};
+use crate::splicing::SplicingManifest;
 
 /// Command line options for the `generate` subcommand
 #[derive(StructOpt, Debug)]
@@ -26,6 +27,10 @@ pub struct GenerateOptions {
     /// The config file with information about the Bazel and Cargo workspace
     #[structopt(long)]
     pub config: PathBuf,
+
+    /// A generated manifest of splicing inputs
+    #[structopt(long)]
+    pub splicing_manifest: PathBuf,
 
     /// The path to either a Cargo or Bazel lockfile
     #[structopt(long)]
@@ -112,10 +117,10 @@ pub fn generate(opt: GenerateOptions) -> Result<()> {
     let render_config = config.rendering.clone();
 
     // Annotate metadata
-    let annotations = Annotations::new(cargo_metadata, cargo_lockfile, config)?;
+    let annotations = Annotations::new(cargo_metadata, cargo_lockfile, config.clone())?;
 
     // Generate renderable contexts for earch package
-    let context = Context::new(annotations, cargo_bin, rustc_bin)?;
+    let context = Context::new(annotations)?;
 
     // Render build files
     let outputs = Renderer::new(render_config).render(&context)?;
@@ -125,7 +130,11 @@ pub fn generate(opt: GenerateOptions) -> Result<()> {
 
     // Ensure Bazel lockfiles are written to disk so future generations can be short-circuted.
     if matches!(opt.lockfile_kind, LockfileKind::Bazel) {
-        write_lockfile(context, &opt.lockfile, opt.dry_run)?;
+        let splicing_manifest = SplicingManifest::try_from_path(&opt.splicing_manifest)?;
+
+        let lockfile = lock_context(context, &config, &splicing_manifest, cargo_bin, rustc_bin)?;
+
+        write_lockfile(lockfile, &opt.lockfile, opt.dry_run)?;
     }
 
     Ok(())

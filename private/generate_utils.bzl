@@ -223,13 +223,14 @@ def get_lockfile(repository_ctx):
         kind = kind,
     )
 
-def determine_repin(repository_ctx, generator, lockfile_path, lockfile_kind, config, cargo_path, rustc_path):
+def determine_repin(repository_ctx, generator, lockfile_path, lockfile_kind, config, splicing_manifest, cargo_path, rustc_path):
     """Use the `cargo-bazel` binary to determine whether or not dpeendencies need to be re-pinned
 
     Args:
         repository_ctx (repository_ctx): The rule's context object.
         generator (path): The path to a `cargo-bazel` binary.
         config (path): The path to a `cargo-bazel` config file. See `generate_config`.
+        splicing_manifest (path): The path to a `cargo-bazel` splicing manifest. See `create_splicing_manifest`
         lockfile_path (path): The path to a "lock" file for reproducible outputs.
         lockfile_kind (str): The type of lock file represented by `lockfile_path`
         cargo_path (path): The path to a Cargo binary.
@@ -256,6 +257,8 @@ def determine_repin(repository_ctx, generator, lockfile_path, lockfile_kind, con
         lockfile_path,
         "--config",
         config,
+        "--splicing-manifest",
+        splicing_manifest,
         "--cargo",
         cargo_path,
         "--rustc",
@@ -301,6 +304,7 @@ def execute_generator(
         lockfile_kind,
         generator,
         config,
+        splicing_manifest,
         repository_dir,
         cargo,
         rustc,
@@ -314,6 +318,7 @@ def execute_generator(
         lockfile_kind (str): The type of lockfile given (Cargo or Bazel).
         generator (path): The path to a `cargo-bazel` binary.
         config (path): The path to a `cargo-bazel` config file.
+        splicing_manifest (path): The path to a `cargo-bazel` splicing manifest. See `create_splicing_manifest`
         repository_dir (path): The output path for the Bazel module and BUILD files.
         cargo (path): The path of a Cargo binary.
         rustc (path): The path of a Rustc binary.
@@ -334,6 +339,8 @@ def execute_generator(
         lockfile_kind,
         "--config",
         config,
+        "--splicing-manifest",
+        splicing_manifest,
         "--repository-dir",
         repository_dir,
         "--cargo",

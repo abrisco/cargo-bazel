@@ -9,7 +9,10 @@ use cargo_toml::{Dependency, Manifest};
 
 use crate::splicing::{SplicedManifest, SplicingManifest};
 
-use super::{read_manifest, DirectPackageManifest, ExtraManifestInfo, WorkspaceMetadata};
+use super::{
+    read_manifest, DirectPackageManifest, ExtraManifestInfo, ExtraManifestsManifest,
+    WorkspaceMetadata,
+};
 
 /// The core splicer implementation. Each style of Bazel workspace should be represented
 /// here and a splicing implementation defined.
@@ -19,6 +22,7 @@ pub enum SplicerKind<'a> {
         path: &'a PathBuf,
         manifest: &'a Manifest,
         splicing_manifest: &'a SplicingManifest,
+        extra_manifests_manifest: &'a ExtraManifestsManifest,
     },
     /// Splice a manifest for a single package. This includes cases where
     /// were defined directly in Bazel.
@@ -26,11 +30,13 @@ pub enum SplicerKind<'a> {
         path: &'a PathBuf,
         manifest: &'a Manifest,
         splicing_manifest: &'a SplicingManifest,
+        extra_manifests_manifest: &'a ExtraManifestsManifest,
     },
     /// Splice a manifest from multiple disjoint Cargo manifests.
     MultiPackage {
         manifests: &'a HashMap<PathBuf, Manifest>,
         splicing_manifest: &'a SplicingManifest,
+        extra_manifests_manifest: &'a ExtraManifestsManifest,
     },
 }
 
@@ -41,6 +47,7 @@ impl<'a> SplicerKind<'a> {
     pub fn new(
         manifests: &'a HashMap<PathBuf, Manifest>,
         splicing_manifest: &'a SplicingManifest,
+        extra_manifests_manifest: &'a ExtraManifestsManifest,
     ) -> Result<Self> {
         // First check for any workspaces in the provided manifests
         let mut workspaces: HashMap<&PathBuf, &Manifest> = manifests
@@ -63,6 +70,7 @@ impl<'a> SplicerKind<'a> {
                 path,
                 manifest,
                 splicing_manifest,
+                extra_manifests_manifest,
             })
         } else if manifests.len() == 1 {
             let (path, manifest) = manifests.iter().last().unwrap();
@@ -70,11 +78,13 @@ impl<'a> SplicerKind<'a> {
                 path,
                 manifest,
                 splicing_manifest,
+                extra_manifests_manifest,
             })
         } else {
             Ok(Self::MultiPackage {
                 manifests,
                 splicing_manifest,
+                extra_manifests_manifest,
             })
         }
     }
@@ -86,16 +96,36 @@ impl<'a> SplicerKind<'a> {
                 path,
                 manifest,
                 splicing_manifest,
-            } => Self::splice_workspace(workspace_dir, path, manifest, splicing_manifest),
+                extra_manifests_manifest,
+            } => Self::splice_workspace(
+                workspace_dir,
+                path,
+                manifest,
+                splicing_manifest,
+                extra_manifests_manifest,
+            ),
             SplicerKind::Package {
                 path,
                 manifest,
                 splicing_manifest,
-            } => Self::splice_package(workspace_dir, path, manifest, splicing_manifest),
+                extra_manifests_manifest,
+            } => Self::splice_package(
+                workspace_dir,
+                path,
+                manifest,
+                splicing_manifest,
+                extra_manifests_manifest,
+            ),
             SplicerKind::MultiPackage {
                 manifests,
                 splicing_manifest,
-            } => Self::splice_multi_package(workspace_dir, manifests, splicing_manifest),
+                extra_manifests_manifest,
+            } => Self::splice_multi_package(
+                workspace_dir,
+                manifests,
+                splicing_manifest,
+                extra_manifests_manifest,
+            ),
         }
     }
 
@@ -104,6 +134,7 @@ impl<'a> SplicerKind<'a> {
         path: &&PathBuf,
         manifest: &&Manifest,
         splicing_manifest: &&SplicingManifest,
+        extra_manifests_manifest: &&ExtraManifestsManifest,
     ) -> Result<SplicedManifest> {
         let mut manifest = (*manifest).clone();
         let manifest_dir = path
@@ -111,7 +142,7 @@ impl<'a> SplicerKind<'a> {
             .expect("Every manifest should havee a parent directory");
 
         let extra_workspace_manifests =
-            Self::get_extra_workspace_manifests(&splicing_manifest.extra_manifest_infos)?;
+            Self::get_extra_workspace_manifests(&extra_manifests_manifest.manifests)?;
 
         // Link the sources of the root manifest into the new workspace
         symlink_roots(manifest_dir, workspace_dir, Some(IGNORE_LIST))?;
@@ -133,7 +164,8 @@ impl<'a> SplicerKind<'a> {
         installations.insert(path, String::new());
 
         // Write the generated metadata to the manifest
-        let workspace_metadata = WorkspaceMetadata::new(splicing_manifest, installations)?;
+        let workspace_metadata =
+            WorkspaceMetadata::new(splicing_manifest, extra_manifests_manifest, installations)?;
         workspace_metadata.inject_into(&mut manifest)?;
 
         // Write the root manifest
@@ -147,13 +179,14 @@ impl<'a> SplicerKind<'a> {
         path: &&PathBuf,
         manifest: &&Manifest,
         splicing_manifest: &&SplicingManifest,
+        extra_manifests_manifest: &&ExtraManifestsManifest,
     ) -> Result<SplicedManifest> {
         let manifest_dir = path
             .parent()
             .expect("Every manifest should havee a parent directory");
 
         let extra_workspace_manifests =
-            Self::get_extra_workspace_manifests(&splicing_manifest.extra_manifest_infos)?;
+            Self::get_extra_workspace_manifests(&extra_manifests_manifest.manifests)?;
 
         // Link the sources of the root manifest into the new workspace
         symlink_roots(manifest_dir, workspace_dir, Some(IGNORE_LIST))?;
@@ -181,7 +214,8 @@ impl<'a> SplicerKind<'a> {
         installations.insert(path, String::new());
 
         // Write the generated metadata to the manifest
-        let workspace_metadata = WorkspaceMetadata::new(splicing_manifest, installations)?;
+        let workspace_metadata =
+            WorkspaceMetadata::new(splicing_manifest, extra_manifests_manifest, installations)?;
         workspace_metadata.inject_into(&mut manifest)?;
 
         // Write the root manifest
@@ -194,6 +228,7 @@ impl<'a> SplicerKind<'a> {
         workspace_dir: &Path,
         manifests: &&HashMap<PathBuf, Manifest>,
         splicing_manifest: &&SplicingManifest,
+        extra_manifests_manifest: &&ExtraManifestsManifest,
     ) -> Result<SplicedManifest> {
         let mut manifest = default_cargo_workspace_manifest();
 
@@ -201,7 +236,7 @@ impl<'a> SplicerKind<'a> {
         Self::setup_cargo_config(&splicing_manifest.cargo_config, workspace_dir)?;
 
         let extra_workspace_manifests =
-            Self::get_extra_workspace_manifests(&splicing_manifest.extra_manifest_infos)?;
+            Self::get_extra_workspace_manifests(&extra_manifests_manifest.manifests)?;
 
         let manifests: HashMap<PathBuf, Manifest> = manifests
             .iter()
@@ -218,7 +253,8 @@ impl<'a> SplicerKind<'a> {
             Self::inject_workspace_members(&mut manifest, &all_manifests, workspace_dir)?;
 
         // Write the generated metadata to the manifest
-        let workspace_metadata = WorkspaceMetadata::new(splicing_manifest, installations)?;
+        let workspace_metadata =
+            WorkspaceMetadata::new(splicing_manifest, extra_manifests_manifest, installations)?;
         workspace_metadata.inject_into(&mut manifest)?;
 
         // Add any additional depeendencies to the root package
@@ -384,10 +420,15 @@ pub struct Splicer {
     workspace_dir: PathBuf,
     manifests: HashMap<PathBuf, Manifest>,
     splicing_manifest: SplicingManifest,
+    extra_manifests_manifest: ExtraManifestsManifest,
 }
 
 impl Splicer {
-    pub fn new(workspace_dir: PathBuf, splicing_manifest: SplicingManifest) -> Result<Self> {
+    pub fn new(
+        workspace_dir: PathBuf,
+        splicing_manifest: SplicingManifest,
+        extra_manifests_manifest: ExtraManifestsManifest,
+    ) -> Result<Self> {
         // Load all manifests
         let manifests = splicing_manifest
             .manifests
@@ -402,12 +443,18 @@ impl Splicer {
             workspace_dir,
             manifests,
             splicing_manifest,
+            extra_manifests_manifest,
         })
     }
 
     /// Build a new workspace root
     pub fn splice_workspace(&self) -> Result<SplicedManifest> {
-        SplicerKind::new(&self.manifests, &self.splicing_manifest)?.splice(&self.workspace_dir)
+        SplicerKind::new(
+            &self.manifests,
+            &self.splicing_manifest,
+            &self.extra_manifests_manifest,
+        )?
+        .splice(&self.workspace_dir)
     }
 }
 
@@ -617,18 +664,20 @@ mod test {
         manifest
     }
 
-    fn mock_extra_manifest_digest(cache_dir: &Path) -> Vec<ExtraManifestInfo> {
-        vec![{
-            let manifest_path = cache_dir.join("extra_pkg").join("Cargo.toml");
-            mock_cargo_toml(&manifest_path, "extra_pkg");
+    fn mock_extra_manifest_digest(cache_dir: &Path) -> ExtraManifestsManifest {
+        ExtraManifestsManifest {
+            manifests: vec![{
+                let manifest_path = cache_dir.join("extra_pkg").join("Cargo.toml");
+                mock_cargo_toml(&manifest_path, "extra_pkg");
 
-            ExtraManifestInfo {
-                manifest: manifest_path,
-                url: "https://crates.io/".to_owned(),
-                sha256: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-                    .to_owned(),
-            }
-        }]
+                ExtraManifestInfo {
+                    manifest: manifest_path,
+                    url: "https://crates.io/".to_owned(),
+                    sha256: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                        .to_owned(),
+                }
+            }],
+        }
     }
 
     /// This json object is tightly coupled to [mock_extra_manifest_digest]
@@ -753,11 +802,14 @@ mod test {
 
         // Splice the workspace
         let workspace_root = tempfile::tempdir().unwrap();
-        let workspace_manifest =
-            Splicer::new(workspace_root.as_ref().to_path_buf(), splicing_manifest)
-                .unwrap()
-                .splice_workspace()
-                .unwrap();
+        let workspace_manifest = Splicer::new(
+            workspace_root.as_ref().to_path_buf(),
+            splicing_manifest,
+            ExtraManifestsManifest::default(),
+        )
+        .unwrap()
+        .splice_workspace()
+        .unwrap();
 
         // Ensure metadata is valid
         let metadata = generate_metadata(workspace_manifest.as_path_buf());
@@ -783,11 +835,14 @@ mod test {
 
         // Splice the workspace
         let workspace_root = tempfile::tempdir().unwrap();
-        let workspace_manifest =
-            Splicer::new(workspace_root.as_ref().to_path_buf(), splicing_manifest)
-                .unwrap()
-                .splice_workspace()
-                .unwrap();
+        let workspace_manifest = Splicer::new(
+            workspace_root.as_ref().to_path_buf(),
+            splicing_manifest,
+            ExtraManifestsManifest::default(),
+        )
+        .unwrap()
+        .splice_workspace()
+        .unwrap();
 
         // Ensure metadata is valid
         let metadata = generate_metadata(workspace_manifest.as_path_buf());
@@ -809,11 +864,14 @@ mod test {
 
         // Splice the workspace
         let workspace_root = tempfile::tempdir().unwrap();
-        let workspace_manifest =
-            Splicer::new(workspace_root.as_ref().to_path_buf(), splicing_manifest)
-                .unwrap()
-                .splice_workspace()
-                .unwrap();
+        let workspace_manifest = Splicer::new(
+            workspace_root.as_ref().to_path_buf(),
+            splicing_manifest,
+            ExtraManifestsManifest::default(),
+        )
+        .unwrap()
+        .splice_workspace()
+        .unwrap();
 
         // Ensure metadata is valid
         let metadata = generate_metadata(workspace_manifest.as_path_buf());
@@ -837,18 +895,21 @@ mod test {
 
     #[test]
     fn extra_workspace_member_with_package() {
-        let (mut splicing_manifest, cache_dir) = mock_splicing_manifest_with_package();
+        let (splicing_manifest, cache_dir) = mock_splicing_manifest_with_package();
 
         // Add the extra workspace member
-        splicing_manifest.extra_manifest_infos = mock_extra_manifest_digest(cache_dir.as_ref());
+        let extra_manifests_manifest = mock_extra_manifest_digest(cache_dir.as_ref());
 
         // Splice the workspace
         let workspace_root = tempfile::tempdir().unwrap();
-        let workspace_manifest =
-            Splicer::new(workspace_root.as_ref().to_path_buf(), splicing_manifest)
-                .unwrap()
-                .splice_workspace()
-                .unwrap();
+        let workspace_manifest = Splicer::new(
+            workspace_root.as_ref().to_path_buf(),
+            splicing_manifest,
+            extra_manifests_manifest,
+        )
+        .unwrap()
+        .splice_workspace()
+        .unwrap();
 
         // Ensure metadata is valid
         let metadata = generate_metadata(workspace_manifest.as_path_buf());
@@ -869,18 +930,21 @@ mod test {
 
     #[test]
     fn extra_workspace_member_with_workspace() {
-        let (mut splicing_manifest, cache_dir) = mock_splicing_manifest_with_workspace();
+        let (splicing_manifest, cache_dir) = mock_splicing_manifest_with_workspace();
 
         // Add the extra workspace member
-        splicing_manifest.extra_manifest_infos = mock_extra_manifest_digest(cache_dir.as_ref());
+        let extra_manifests_manifest = mock_extra_manifest_digest(cache_dir.as_ref());
 
         // Splice the workspace
         let workspace_root = tempfile::tempdir().unwrap();
-        let workspace_manifest =
-            Splicer::new(workspace_root.as_ref().to_path_buf(), splicing_manifest)
-                .unwrap()
-                .splice_workspace()
-                .unwrap();
+        let workspace_manifest = Splicer::new(
+            workspace_root.as_ref().to_path_buf(),
+            splicing_manifest,
+            extra_manifests_manifest,
+        )
+        .unwrap()
+        .splice_workspace()
+        .unwrap();
 
         // Ensure metadata is valid
         let metadata = generate_metadata(workspace_manifest.as_path_buf());
@@ -903,18 +967,21 @@ mod test {
 
     #[test]
     fn extra_workspace_member_with_multi_package() {
-        let (mut splicing_manifest, cache_dir) = mock_splicing_manifest_with_multi_package();
+        let (splicing_manifest, cache_dir) = mock_splicing_manifest_with_multi_package();
 
         // Add the extra workspace member
-        splicing_manifest.extra_manifest_infos = mock_extra_manifest_digest(cache_dir.as_ref());
+        let extra_manifests_manifest = mock_extra_manifest_digest(cache_dir.as_ref());
 
         // Splice the workspace
         let workspace_root = tempfile::tempdir().unwrap();
-        let workspace_manifest =
-            Splicer::new(workspace_root.as_ref().to_path_buf(), splicing_manifest)
-                .unwrap()
-                .splice_workspace()
-                .unwrap();
+        let workspace_manifest = Splicer::new(
+            workspace_root.as_ref().to_path_buf(),
+            splicing_manifest,
+            extra_manifests_manifest,
+        )
+        .unwrap()
+        .splice_workspace()
+        .unwrap();
 
         // Ensure metadata is valid
         let metadata = generate_metadata(workspace_manifest.as_path_buf());

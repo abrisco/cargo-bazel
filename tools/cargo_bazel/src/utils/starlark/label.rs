@@ -6,7 +6,7 @@ use regex::Regex;
 use serde::de::Visitor;
 use serde::{Deserialize, Serialize, Serializer};
 
-#[derive(Debug, Default, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Debug, Default, PartialEq, Eq, PartialOrd, Ord, Clone)]
 pub struct Label {
     pub repository: Option<String>,
     pub package: Option<String>,

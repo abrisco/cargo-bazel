@@ -1,7 +1,5 @@
 //! A module containing common test helpers
 
-use std::path::PathBuf;
-
 pub fn mock_cargo_metadata_package() -> cargo_metadata::Package {
     serde_json::from_value(serde_json::json!({
         "name": "mock-pkg",
@@ -42,14 +40,6 @@ pub fn mock_cargo_lock_package() -> cargo_lock::Package {
         "#,
     ))
     .unwrap()
-}
-
-pub fn cargo_bin() -> PathBuf {
-    PathBuf::from(env!("CARGO"))
-}
-
-pub fn rustc_bin() -> PathBuf {
-    PathBuf::from(env!("RUSTC"))
 }
 
 pub mod metadata {
