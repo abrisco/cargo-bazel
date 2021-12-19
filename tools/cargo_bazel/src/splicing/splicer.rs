@@ -41,7 +41,7 @@ pub enum SplicerKind<'a> {
 }
 
 /// A list of files or directories to ignore when when symlinking
-const IGNORE_LIST: &[&str] = &[".git", "bazel-bin", "bazel-out", ".svn"];
+const IGNORE_LIST: &[&str] = &[".git", "bazel-*", ".svn"];
 
 impl<'a> SplicerKind<'a> {
     pub fn new(
@@ -584,8 +584,16 @@ pub fn symlink_roots(source: &Path, dest: &Path, ignore_list: Option<&[&str]>) -
         // Ignore certain directories that may lead to confusion
         if let Some(base_str) = basename.to_str() {
             if let Some(list) = ignore_list {
-                if list.contains(&base_str) {
-                    continue;
+                for item in list.iter() {
+                    // Handle optional glob patterns here. This allows us to ignore `bazel-*` patterns.
+                    if item.ends_with('*') && base_str.starts_with(item.trim_end_matches('*')) {
+                        continue;
+                    }
+
+                    // Finally, simply compare the string
+                    if *item == base_str {
+                        continue;
+                    }
                 }
             }
         }
