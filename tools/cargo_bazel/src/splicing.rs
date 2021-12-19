@@ -391,6 +391,7 @@ impl WorkspaceMetadata {
     }
 }
 
+#[derive(Debug)]
 pub enum SplicedManifest {
     Workspace(PathBuf),
     Package(PathBuf),
