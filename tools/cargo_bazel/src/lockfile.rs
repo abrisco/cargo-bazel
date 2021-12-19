@@ -255,7 +255,17 @@ mod test {
     #[test]
     fn digest_with_splicing_metadata() {
         let config = Config::default();
-        let splicing_metadata = SplicingMetadata::default();
+        let splicing_metadata = SplicingMetadata {
+            direct_packages: BTreeMap::from([(
+                "rustonomicon".to_owned(),
+                cargo_toml::DependencyDetail {
+                    version: Some("1.0.0".to_owned()),
+                    ..cargo_toml::DependencyDetail::default()
+                },
+            )]),
+            manifests: BTreeMap::new(),
+            cargo_config: None,
+        };
 
         let digest = Digest::compute(
             &config,
@@ -266,7 +276,7 @@ mod test {
 
         assert_eq!(
             digest,
-            Digest("62b0d47b160165389ae5b989842d38c0b1d1b322da9a9e5e8b64a7a44133dd40".to_owned())
+            Digest("be5fbcd4d972c15c02a036e81f94a2772c63d30cfa4b780633c75cdac2c45252".to_owned())
         );
     }
 
