@@ -1,5 +1,5 @@
 {
-  "checksum": "503494367f47b6bc06cd3e5515a53a0c71034c27f13db894ac3f1fc86e1ebbc9",
+  "checksum": "adfb241228476ee815b3337a5cdcf67eaefbb3fad3c1644ca98077149d357e1e",
   "crates": {
     "aho-corasick 0.7.18": {
       "name": "aho-corasick",
@@ -619,7 +619,7 @@
                 "target": "libc"
               },
               {
-                "id": "signal-hook 0.3.12",
+                "id": "signal-hook 0.3.13",
                 "target": "signal_hook"
               }
             ],
@@ -7872,13 +7872,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "signal-hook 0.3.12": {
+    "signal-hook 0.3.13": {
       "name": "signal-hook",
-      "version": "0.3.12",
+      "version": "0.3.13",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/signal-hook/0.3.12/download",
-          "sha256": "c35dfd12afb7828318348b8c408383cf5071a086c1d4ab1c0f9840ec92dbb922"
+          "url": "https://crates.io/api/v1/crates/signal-hook/0.3.13/download",
+          "sha256": "647c97df271007dcea485bb74ffdb57f2e683f1306c854f468a0c244badabf2d"
         }
       },
       "targets": [
@@ -7920,7 +7920,7 @@
               "target": "libc"
             },
             {
-              "id": "signal-hook 0.3.12",
+              "id": "signal-hook 0.3.13",
               "target": "build_script_build"
             },
             {
@@ -7931,7 +7931,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.3.12"
+        "version": "0.3.13"
       },
       "build_script_attrs": {
         "data_glob": [

@@ -4,10 +4,10 @@ use std::fs;
 use std::path::PathBuf;
 
 use anyhow::Result;
-use serde::Deserialize;
 use structopt::StructOpt;
 
 use crate::config::Config;
+use crate::context::Context;
 use crate::lockfile::Digest;
 use crate::splicing::SplicingManifest;
 
@@ -35,11 +35,6 @@ pub struct QueryOptions {
     pub rustc: PathBuf,
 }
 
-#[derive(Debug, Deserialize)]
-struct Lockfile {
-    pub checksum: Option<Digest>,
-}
-
 /// Determine if the current lockfile needs to be re-pinned
 pub fn query(opt: QueryOptions) -> Result<()> {
     // Read the lockfile
@@ -49,14 +44,14 @@ pub fn query(opt: QueryOptions) -> Result<()> {
     };
 
     // Deserialize it so we can easily compare it with
-    let lockfile: Lockfile = match serde_json::from_str(&content) {
+    let lockfile: Context = match serde_json::from_str(&content) {
         Ok(ctx) => ctx,
         Err(_) => return announce_repin("Could not load lockfile"),
     };
 
     // Check to see if a digest has been set
-    let digest = match lockfile.checksum {
-        Some(d) => d,
+    let digest = match &lockfile.checksum {
+        Some(d) => d.clone(),
         None => return announce_repin("No digest provided in lockfile"),
     };
 
@@ -66,7 +61,13 @@ pub fn query(opt: QueryOptions) -> Result<()> {
     let splicing_manifest = SplicingManifest::try_from_path(&opt.splicing_manifest)?;
 
     // Generate a new digest so we can compare it with the one in the lockfile
-    let expected = Digest::new(&config, &splicing_manifest, &opt.cargo, &opt.rustc)?;
+    let expected = Digest::new(
+        &lockfile,
+        &config,
+        &splicing_manifest,
+        &opt.cargo,
+        &opt.rustc,
+    )?;
     if digest != expected {
         return announce_repin(&format!(
             "Digests do not match: {:?} != {:?}",

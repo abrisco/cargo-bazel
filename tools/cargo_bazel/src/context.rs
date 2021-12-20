@@ -21,7 +21,7 @@ pub use self::crate_context::*;
 
 /// A struct containing information about a Cargo dependency graph in an easily to consume
 /// format for rendering reproducible Bazel targets.
-#[derive(Debug, Default, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize, Clone)]
 pub struct Context {
     /// The collective checksum of all inputs to the context
     pub checksum: Option<Digest>,

@@ -72,13 +72,16 @@ pub fn is_cargo_lockfile(path: &Path, kind: &LockfileKind) -> bool {
 }
 
 pub fn lock_context(
-    context: Context,
+    mut context: Context,
     config: &Config,
     splicing_manifest: &SplicingManifest,
     cargo_bin: &Path,
     rustc_bin: &Path,
 ) -> Result<Context> {
-    let checksum = Digest::new(config, splicing_manifest, cargo_bin, rustc_bin)
+    // Ensure there is no existing checksum which could impact the lockfile results
+    context.checksum = None;
+
+    let checksum = Digest::new(&context, config, splicing_manifest, cargo_bin, rustc_bin)
         .context("Failed to generate context digest")?;
 
     Ok(Context {
@@ -98,18 +101,19 @@ pub fn write_lockfile(lockfile: Context, path: &Path, dry_run: bool) -> Result<(
         if let Some(parent) = path.parent() {
             fs::create_dir_all(parent)?;
         }
-        fs::write(path, content)
+        fs::write(path, content + "\n")
             .context(format!("Failed to write file to disk: {}", path.display()))?;
     }
 
     Ok(())
 }
 
-#[derive(Debug, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Debug, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord, Clone)]
 pub struct Digest(String);
 
 impl Digest {
     pub fn new(
+        context: &Context,
         config: &Config,
         splicing_manifest: &SplicingManifest,
         cargo_bin: &Path,
@@ -119,35 +123,58 @@ impl Digest {
         let cargo_version = Self::bin_version(cargo_bin)?;
         let rustc_version = Self::bin_version(rustc_bin)?;
 
-        Ok(Self::compute(
-            config,
-            &splicing_metadata,
-            &cargo_version,
-            &rustc_version,
-        ))
+        // Ensure the checksum of a digest is not present before computing one
+        Ok(match context.checksum {
+            Some(_) => Self::compute(
+                &Context {
+                    checksum: None,
+                    ..context.clone()
+                },
+                config,
+                &splicing_metadata,
+                &cargo_version,
+                &rustc_version,
+            ),
+            None => Self::compute(
+                context,
+                config,
+                &splicing_metadata,
+                &cargo_version,
+                &rustc_version,
+            ),
+        })
     }
 
     fn compute(
+        context: &Context,
         config: &Config,
         splicing_metadata: &SplicingMetadata,
         cargo_version: &str,
         rustc_version: &str,
     ) -> Self {
+        // Since this method is private, it should be expected that context is
+        // always None. This then allows us to have this method not return a
+        // Result.
+        debug_assert!(context.checksum.is_none());
+
         let mut hasher = Sha256::new();
 
         hasher.update(env!("CARGO_PKG_VERSION").as_bytes());
         hasher.update(b"\0");
 
+        hasher.update(serde_json::to_string(context).unwrap().as_bytes());
+        hasher.update(b"\0");
+
         hasher.update(serde_json::to_string(config).unwrap().as_bytes());
+        hasher.update(b"\0");
+
+        hasher.update(serde_json::to_string(splicing_metadata).unwrap().as_bytes());
         hasher.update(b"\0");
 
         hasher.update(cargo_version.as_bytes());
         hasher.update(b"\0");
 
         hasher.update(rustc_version.as_bytes());
-        hasher.update(b"\0");
-
-        hasher.update(serde_json::to_string(splicing_metadata).unwrap().as_bytes());
         hasher.update(b"\0");
 
         Self(hasher.finalize().encode_hex::<String>())
@@ -196,10 +223,12 @@ mod test {
 
     #[test]
     fn simple_digest() {
+        let context = Context::default();
         let config = Config::default();
         let splicing_metadata = SplicingMetadata::default();
 
         let digest = Digest::compute(
+            &context,
             &config,
             &splicing_metadata,
             "cargo 1.57.0 (b2e52d7ca 2021-10-21)",
@@ -208,12 +237,13 @@ mod test {
 
         assert_eq!(
             digest,
-            Digest("62b0d47b160165389ae5b989842d38c0b1d1b322da9a9e5e8b64a7a44133dd40".to_owned())
+            Digest("13349c2b271570dfbd84085fe540e6ede18be4ffc39011c87139e6fcf77036dd".to_owned())
         );
     }
 
     #[test]
     fn digest_with_config() {
+        let context = Context::default();
         let config = Config {
             generate_build_scripts: false,
             extras: BTreeMap::from([(
@@ -240,6 +270,7 @@ mod test {
         let splicing_metadata = SplicingMetadata::default();
 
         let digest = Digest::compute(
+            &context,
             &config,
             &splicing_metadata,
             "cargo 1.57.0 (b2e52d7ca 2021-10-21)",
@@ -248,12 +279,13 @@ mod test {
 
         assert_eq!(
             digest,
-            Digest("142316b13c9ab67e4fb3244769deb87975c6515857806d0b70f0519ae5d8ab62".to_owned())
+            Digest("97bdba06aebe43d3771bc5982b986a0c039aeb4b56ec9ef09c6e372942747e2a".to_owned())
         );
     }
 
     #[test]
     fn digest_with_splicing_metadata() {
+        let context = Context::default();
         let config = Config::default();
         let splicing_metadata = SplicingMetadata {
             direct_packages: BTreeMap::from([(
@@ -268,6 +300,7 @@ mod test {
         };
 
         let digest = Digest::compute(
+            &context,
             &config,
             &splicing_metadata,
             "cargo 1.57.0 (b2e52d7ca 2021-10-21)",
@@ -276,12 +309,13 @@ mod test {
 
         assert_eq!(
             digest,
-            Digest("be5fbcd4d972c15c02a036e81f94a2772c63d30cfa4b780633c75cdac2c45252".to_owned())
+            Digest("950c2270cfa2dd16cc0cf6b0950a3562ca889d64bc1b2311f4ad6a78d31de4c2".to_owned())
         );
     }
 
     #[test]
     fn digest_with_cargo_config() {
+        let context = Context::default();
         let config = Config::default();
         let cargo_config = CargoConfig {
             registries: BTreeMap::from([
@@ -314,6 +348,7 @@ mod test {
         };
 
         let digest = Digest::compute(
+            &context,
             &config,
             &splicing_metadata,
             "cargo 1.57.0 (b2e52d7ca 2021-10-21)",
@@ -322,7 +357,7 @@ mod test {
 
         assert_eq!(
             digest,
-            Digest("6d22dd412e6d0fdf0dd463d6e3f94254c59c1abd21e376eeec99c38ee6e5061c".to_owned())
+            Digest("4afa9e04a7964de2219e4900b32dbd65580b0caaa6710b79123423007b7579ac".to_owned())
         );
     }
 
