@@ -93,7 +93,7 @@ impl<T: Ord, U: Ord> SelectMap<T, U> for SelectList<T> {
     }
 }
 
-#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Deserialize, Serialize)]
+#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Deserialize, Serialize, Clone)]
 pub struct SelectDict<T: Ord> {
     common: BTreeMap<String, T>,
     selects: BTreeMap<String, BTreeMap<String, T>>,

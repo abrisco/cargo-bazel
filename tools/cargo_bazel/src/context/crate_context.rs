@@ -25,7 +25,7 @@ pub struct CrateDependency {
     pub alias: Option<String>,
 }
 
-#[derive(Debug, Default, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize, Clone)]
 #[serde(default)]
 pub struct TargetAttributes {
     /// The module name of the crate (notably, not the package name).
@@ -38,7 +38,7 @@ pub struct TargetAttributes {
     pub srcs: Glob,
 }
 
-#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize, Clone)]
 pub enum Rule {
     /// `cargo_build_script`
     BuildScript(TargetAttributes),
@@ -55,7 +55,7 @@ pub enum Rule {
 
 /// A set of attributes common to most `rust_library`, `rust_proc_macro`, and other
 /// [core rules of `rules_rust`](https://bazelbuild.github.io/rules_rust/defs.html).
-#[derive(Debug, Default, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize, Clone)]
 #[serde(default)]
 pub struct CommonAttributes {
     #[serde(skip_serializing_if = "SelectStringList::should_skip_serializing")]
@@ -113,7 +113,7 @@ pub struct CommonAttributes {
 
 // Build script attributes. See
 // https://bazelbuild.github.io/rules_rust/cargo.html#cargo_build_script
-#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize, Clone)]
 #[serde(default)]
 pub struct BuildScriptAttributes {
     #[serde(skip_serializing_if = "SelectStringList::should_skip_serializing")]
@@ -177,7 +177,7 @@ impl Default for BuildScriptAttributes {
     }
 }
 
-#[derive(Debug, Default, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize, Clone)]
 #[serde(default)]
 pub struct CrateContext {
     /// The package name of the current crate
