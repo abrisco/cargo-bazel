@@ -101,7 +101,12 @@ crates_repository(
     # `CARGO_HOME`. This is also generally good for users rapidly re-pinning.
     isolated = False,
     lockfile = "//cargo_workspace:Cargo.Bazel.lock",
-    manifests = ["//cargo_workspace:Cargo.toml"],
+    manifests = [
+        "//cargo_workspace:Cargo.toml",
+        "//cargo_workspace/num_printer:Cargo.toml",
+        "//cargo_workspace/printer:Cargo.toml",
+        "//cargo_workspace/rng:Cargo.toml",
+    ],
 )
 
 load(

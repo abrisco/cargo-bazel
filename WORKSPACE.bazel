@@ -58,7 +58,13 @@ crates_repository(
     generator = "@cargo_bazel_bootstrap//:cargo-bazel",
     isolated = False,
     lockfile = "//:Cargo.Bazel.lock",
-    manifests = ["//:Cargo.toml"],
+    manifests = [
+        "//:Cargo.toml",
+        "//tools/cargo_bazel:Cargo.toml",
+        "//tools/cross_installer:Cargo.toml",
+        "//tools/examples_runner:Cargo.toml",
+        "//tools/urls_generator:Cargo.toml",
+    ],
 )
 
 load("@crate_index//:defs.bzl", "crate_repositories")

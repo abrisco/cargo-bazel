@@ -1,6 +1,6 @@
 //! Utility for creating valid Cargo workspaces
 
-use std::collections::HashMap;
+use std::collections::{BTreeSet, HashMap};
 use std::fs;
 use std::path::{Path, PathBuf};
 
@@ -50,22 +50,69 @@ impl<'a> SplicerKind<'a> {
         extra_manifests_manifest: &'a ExtraManifestsManifest,
     ) -> Result<Self> {
         // First check for any workspaces in the provided manifests
-        let mut workspaces: HashMap<&PathBuf, &Manifest> = manifests
+        let workspace_owned: HashMap<&PathBuf, &Manifest> = manifests
             .iter()
-            .filter(|(_, manifest)| is_workspace(manifest))
+            .filter(|(_, manifest)| is_workspace_owned(manifest))
             .collect();
 
-        // Filter out any invalid manifest combinations
-        if workspaces.len() > 1 {
-            bail!("When splicing manifests, there can only be 1 workspace manifest");
-        }
-        if !workspaces.is_empty() && manifests.len() > 1 {
-            bail!("Workspace manifests can not be used with any other manifests")
+        let mut root_workspace_pair: Option<(&PathBuf, &Manifest)> = None;
+
+        if !workspace_owned.is_empty() {
+            // Filter for the root workspace manifest info
+            let (mut workspace_roots, workspace_packages): (
+                HashMap<&PathBuf, &Manifest>,
+                HashMap<&PathBuf, &Manifest>,
+            ) = workspace_owned
+                .clone()
+                .into_iter()
+                .partition(|(_, manifest)| is_workspace_root(manifest));
+
+            if workspace_roots.len() > 1 {
+                bail!("When splicing manifests, there can only be 1 root workspace manifest");
+            }
+
+            // Ensure all workspace owned manifests are members of the one workspace root
+            let (root_manifest_path, root_manifest) = workspace_roots.drain().last().unwrap();
+            let external_workspace_members: BTreeSet<String> = workspace_packages
+                .into_iter()
+                .filter(|(manifest_path, _)| {
+                    !is_workspace_member(root_manifest, root_manifest_path, manifest_path)
+                })
+                .map(|(path, _)| path.to_string_lossy().to_string())
+                .collect();
+
+            if !external_workspace_members.is_empty() {
+                bail!("A package was provided that appears to be a part of another workspace.\nworkspace root: '{}'\nexternal packages: {:#?}", root_manifest_path.display(), external_workspace_members)
+            }
+
+            // Ensure all workspace members are present for the given workspace
+            let workspace_members = root_manifest.workspace.as_ref().unwrap().members.clone();
+            let missing_manifests: BTreeSet<String> = workspace_members
+                .into_iter()
+                .filter(|member| {
+                    // Check for any members that are missing from the list of manifests
+                    !manifests.keys().any(|path| {
+                        let path_str = path.to_string_lossy().to_string();
+                        // Account for windows paths.
+                        let path_str = path_str.replace("\\", "/");
+                        // Workspace members are represented as directories.
+                        path_str.trim_end_matches("/Cargo.toml").ends_with(member)
+                    })
+                })
+                .map(|member| {
+                    // Covert the path to a label
+                    format!("//{}:Cargo.toml", member)
+                })
+                .collect();
+
+            if !missing_manifests.is_empty() {
+                bail!("Some manifests are not being tracked. Please add the following labels to the `manifests` key: {:#?}", missing_manifests)
+            }
+
+            root_workspace_pair = Some((root_manifest_path, root_manifest));
         }
 
-        if workspaces.len() == 1 {
-            let (path, manifest) = workspaces.drain().last().unwrap();
-
+        if let Some((path, manifest)) = root_workspace_pair {
             Ok(Self::Workspace {
                 path,
                 manifest,
@@ -498,11 +545,16 @@ pub fn default_cargo_workspace_manifest() -> cargo_toml::Manifest {
     manifest
 }
 
+/// Determine whtether or not the manifest is a workspace root
+pub fn is_workspace_root(manifest: &Manifest) -> bool {
+    // Anything with any workspace data is considered a workspace
+    manifest.workspace.is_some()
+}
+
 /// Evaluates whether or not a manifest is considered a "workspace" manifest.
 /// See [Cargo workspaces](https://doc.rust-lang.org/cargo/reference/workspaces.html).
-pub fn is_workspace(manifest: &Manifest) -> bool {
-    // Anything with any workspace data is considered a workspace
-    if manifest.workspace.is_some() {
+pub fn is_workspace_owned(manifest: &Manifest) -> bool {
+    if is_workspace_root(manifest) {
         return true;
     }
 
@@ -510,6 +562,28 @@ pub fn is_workspace(manifest: &Manifest) -> bool {
     manifest.dependencies.iter().any(|(_, dep)| match dep {
         Dependency::Detailed(dep) => dep.path.is_some(),
         _ => false,
+    })
+}
+
+/// Determines whether or not a particular manifest is a workspace member to a given root manifest
+pub fn is_workspace_member(
+    root_manifest: &Manifest,
+    root_manifest_path: &Path,
+    manifest_path: &Path,
+) -> bool {
+    let members = match root_manifest.workspace.as_ref() {
+        Some(workspace) => &workspace.members,
+        None => return false,
+    };
+
+    let root_parent = root_manifest_path
+        .parent()
+        .expect("All manifest paths should have a parent");
+    let manifest_abs_path = root_parent.join(manifest_path);
+
+    members.iter().any(|member| {
+        let member_manifest_path = root_parent.join(member).join("Cargo.toml");
+        member_manifest_path == manifest_abs_path
     })
 }
 
@@ -724,6 +798,11 @@ mod test {
                 .join(pkg)
                 .join("Cargo.toml");
             mock_cargo_toml(&manifest_path, pkg);
+
+            splicing_manifest.manifests.insert(
+                manifest_path,
+                Label::from_str(&format!("//{}:Cargo.toml", pkg)).unwrap(),
+            );
         }
 
         // Create the root package with a workspace definition
@@ -835,6 +914,93 @@ mod test {
 
         // Ensure lockfile was successfully spliced
         cargo_lock::Lockfile::load(workspace_root.as_ref().join("Cargo.lock")).unwrap();
+    }
+
+    #[test]
+    fn splice_workspace_report_missing_members() {
+        let (mut splicing_manifest, _cache_dir) = mock_splicing_manifest_with_workspace();
+
+        // Remove everything but the root manifest
+        splicing_manifest
+            .manifests
+            .retain(|_, label| *label == Label::from_str("//:Cargo.toml").unwrap());
+        assert_eq!(splicing_manifest.manifests.len(), 1);
+
+        // Splice the workspace
+        let workspace_root = tempfile::tempdir().unwrap();
+        let workspace_manifest = Splicer::new(
+            workspace_root.as_ref().to_path_buf(),
+            splicing_manifest,
+            ExtraManifestsManifest::default(),
+        )
+        .unwrap()
+        .splice_workspace();
+
+        assert!(workspace_manifest.is_err());
+
+        // Ensure both the missing manifests are mentioned in the error string
+        let err_str = format!("{:?}", &workspace_manifest);
+        assert!(
+            err_str.contains("Some manifests are not being tracked")
+                && err_str.contains("//sub_pkg_a:Cargo.toml")
+                && err_str.contains("//sub_pkg_b:Cargo.toml")
+        );
+    }
+
+    #[test]
+    fn splice_workspace_report_external_workspace_members() {
+        let (mut splicing_manifest, _cache_dir) = mock_splicing_manifest_with_workspace();
+
+        // Add a new package from an existing external workspace
+        let external_workspace_root = tempfile::tempdir().unwrap();
+        let external_manifest = external_workspace_root
+            .as_ref()
+            .join("external_workspace_member")
+            .join("Cargo.toml");
+        fs::create_dir_all(external_manifest.parent().unwrap()).unwrap();
+        fs::write(
+            &external_manifest,
+            &textwrap::dedent(
+                r#"
+                [package]
+                name = "external_workspace_member"
+                version = "0.0.1"
+
+                [lib]
+                path = "lib.rs"
+
+                [dependencies]
+                neighbor = { path = "../neighbor" }
+                "#,
+            ),
+        )
+        .unwrap();
+
+        splicing_manifest.manifests.insert(
+            external_manifest.clone(),
+            Label::from_str("@remote_dep//external_workspace_member:Cargo.toml").unwrap(),
+        );
+
+        // Splice the workspace
+        let workspace_root = tempfile::tempdir().unwrap();
+        let workspace_manifest = Splicer::new(
+            workspace_root.as_ref().to_path_buf(),
+            splicing_manifest,
+            ExtraManifestsManifest::default(),
+        )
+        .unwrap()
+        .splice_workspace();
+
+        assert!(workspace_manifest.is_err());
+
+        // Ensure both the external workspace member
+        let err_str = format!("{:?}", &workspace_manifest);
+        let bytes_str = format!("{:?}", external_manifest.to_string_lossy());
+        assert!(
+            err_str
+                .contains("A package was provided that appears to be a part of another workspace.")
+                && err_str.contains(&bytes_str)
+        );
     }
 
     #[test]
