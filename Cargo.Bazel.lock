@@ -1,5 +1,5 @@
 {
-  "checksum": "27cb9e8ae77b96e08698969dc9dc260c244ee990a455e92a4caa1981ab7e3e62",
+  "checksum": "9c28300f24262159fe83271dd14e5d43f719cfd63a11d1844d38d039c25d3366",
   "crates": {
     "adler 1.0.2": {
       "name": "adler",
@@ -586,9 +586,9 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "cargo-bazel 0.0.14": {
+    "cargo-bazel 0.0.15": {
       "name": "cargo-bazel",
-      "version": "0.0.14",
+      "version": "0.0.15",
       "repository": null,
       "targets": [
         {
@@ -705,7 +705,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.0.14"
+        "version": "0.0.15"
       },
       "license": null
     },
@@ -7144,7 +7144,7 @@
     "phf_generator 0.10.0"
   ],
   "workspace_members": {
-    "cargo-bazel 0.0.14": "tools/cargo_bazel",
+    "cargo-bazel 0.0.15": "tools/cargo_bazel",
     "cross_installer 0.1.0": "tools/cross_installer",
     "direct-cargo-bazel-deps 0.0.1": "",
     "examples-runner 0.0.1": "tools/examples_runner",

@@ -1,5 +1,5 @@
 {
-  "checksum": "f53c33360f3d2beb2be966e659ee35a0736decd845f6fde3b33d945fea07eab1",
+  "checksum": "503494367f47b6bc06cd3e5515a53a0c71034c27f13db894ac3f1fc86e1ebbc9",
   "crates": {
     "aho-corasick 0.7.18": {
       "name": "aho-corasick",
@@ -269,7 +269,7 @@
               "target": "concurrent_queue"
             },
             {
-              "id": "fastrand 1.5.0",
+              "id": "fastrand 1.6.0",
               "target": "fastrand"
             },
             {
@@ -1290,7 +1290,7 @@
               "target": "atomic_waker"
             },
             {
-              "id": "fastrand 1.5.0",
+              "id": "fastrand 1.6.0",
               "target": "fastrand"
             },
             {
@@ -1376,13 +1376,13 @@
       },
       "license": "MIT"
     },
-    "cache-padded 1.1.1": {
+    "cache-padded 1.2.0": {
       "name": "cache-padded",
-      "version": "1.1.1",
+      "version": "1.2.0",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/cache-padded/1.1.1/download",
-          "sha256": "631ae5198c9be5e753e5cc215e1bd73c2b466a3565173db433f52bb9d3e66dba"
+          "url": "https://crates.io/api/v1/crates/cache-padded/1.2.0/download",
+          "sha256": "c1db59621ec70f09c5e9b597b220c7a2b43611f4710dc03ceb8748637775692c"
         }
       },
       "targets": [
@@ -1402,7 +1402,7 @@
       "library_target_name": "cache_padded",
       "common_attrs": {
         "edition": "2018",
-        "version": "1.1.1"
+        "version": "1.2.0"
       },
       "license": "Apache-2.0 OR MIT"
     },
@@ -1536,7 +1536,7 @@
         "deps": {
           "common": [
             {
-              "id": "cache-padded 1.1.1",
+              "id": "cache-padded 1.2.0",
               "target": "cache_padded"
             }
           ],
@@ -2398,13 +2398,13 @@
       },
       "license": "Apache-2.0 OR MIT"
     },
-    "fastrand 1.5.0": {
+    "fastrand 1.6.0": {
       "name": "fastrand",
-      "version": "1.5.0",
+      "version": "1.6.0",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/fastrand/1.5.0/download",
-          "sha256": "b394ed3d285a429378d3b384b9eb1285267e7df4b166df24b7a6939a04dc392e"
+          "url": "https://crates.io/api/v1/crates/fastrand/1.6.0/download",
+          "sha256": "779d043b6a0b90cc4c0ed7ee380a6504394cee7efd7db050e3774eee387324b2"
         }
       },
       "targets": [
@@ -2435,7 +2435,7 @@
           }
         },
         "edition": "2018",
-        "version": "1.5.0"
+        "version": "1.6.0"
       },
       "license": "Apache-2.0 OR MIT"
     },
@@ -2813,7 +2813,7 @@
         "deps": {
           "common": [
             {
-              "id": "fastrand 1.5.0",
+              "id": "fastrand 1.6.0",
               "target": "fastrand"
             },
             {
