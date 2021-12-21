@@ -1,5 +1,5 @@
 {
-  "checksum": "09c1066a6ba5a10b236b90351d9cd814b875d47a097d9436b418a4fc84fa5f55",
+  "checksum": "4f6c9bfdd72aba020c06d10d8bceee9e9e2cec6c0796159415eeb5495af1da12",
   "crates": {
     "adler32 1.2.0": {
       "name": "adler32",
@@ -1417,13 +1417,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "num_cpus 1.13.0": {
+    "num_cpus 1.13.1": {
       "name": "num_cpus",
-      "version": "1.13.0",
+      "version": "1.13.1",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/num_cpus/1.13.0/download",
-          "sha256": "05499f3756671c15885fee9034446956fff3f243d6077b91e5767df161f766b3"
+          "url": "https://crates.io/api/v1/crates/num_cpus/1.13.1/download",
+          "sha256": "19e64526ebdee182341572e50e9ad03965aa510cd94427a4549448f285e957a1"
         }
       },
       "targets": [
@@ -1443,25 +1443,26 @@
       "library_target_name": "num_cpus",
       "common_attrs": {
         "deps": {
-          "common": [
-            {
-              "id": "libc 0.2.112",
-              "target": "libc"
-            }
-          ],
+          "common": [],
           "selects": {
             "cfg(all(any(target_arch = \"x86_64\", target_arch = \"aarch64\"), target_os = \"hermit\"))": [
               {
                 "id": "hermit-abi 0.1.19",
                 "target": "hermit_abi"
               }
+            ],
+            "cfg(not(windows))": [
+              {
+                "id": "libc 0.2.112",
+                "target": "libc"
+              }
             ]
           }
         },
         "edition": "2015",
-        "version": "1.13.0"
+        "version": "1.13.1"
       },
-      "license": "MIT/Apache-2.0"
+      "license": "MIT OR Apache-2.0"
     },
     "number_prefix 0.3.0": {
       "name": "number_prefix",
@@ -2477,7 +2478,7 @@
               "target": "image"
             },
             {
-              "id": "num_cpus 1.13.0",
+              "id": "num_cpus 1.13.1",
               "target": "num_cpus"
             },
             {
