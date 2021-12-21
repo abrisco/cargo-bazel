@@ -15,6 +15,7 @@ defaults:
 
 env:
   BAZEL_STARTUP_FLAGS: --bazelrc=${{ github.workspace }}/.github/github.bazelrc
+  CARGO_BAZEL_ISOLATED: true
 
 jobs:
   ci:

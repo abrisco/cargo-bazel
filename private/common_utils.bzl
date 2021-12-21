@@ -8,6 +8,8 @@ load(
 
 get_host_triple = _get_host_triple
 
+CARGO_BAZEL_ISOLATED = "CARGO_BAZEL_ISOLATED"
+
 _EXECUTE_ERROR_MESSAGE = """\
 Command {args} failed with exit code {exit_code}.
 STDOUT ------------------------------------------------------------------------
@@ -59,7 +61,7 @@ def get_rust_tools(repository_ctx, host_triple):
     # the `CARGO_HOME` path. This is done so here since fetching tools
     # is expected to always occur before any subcommands are run.
     if repository_ctx.attr.isolated and repository_ctx.attr.cargo_config:
-        cargo_home = cargo_home_path(repository_ctx)
+        cargo_home = _cargo_home_path(repository_ctx)
         cargo_home_config = repository_ctx.path("{}/config.toml".format(cargo_home))
         cargo_config = repository_ctx.path(repository_ctx.attr.cargo_config)
         repository_ctx.symlink(cargo_config, cargo_home_config)
@@ -72,7 +74,7 @@ def get_rust_tools(repository_ctx, host_triple):
         version = repository_ctx.attr.rust_version,
     )
 
-def cargo_home_path(repository_ctx):
+def _cargo_home_path(repository_ctx):
     """Define a path within the repository to use in place of `CARGO_HOME`
 
     Args:
@@ -82,3 +84,26 @@ def cargo_home_path(repository_ctx):
         path: The path to a directory to use as `CARGO_HOME`
     """
     return repository_ctx.path(".cargo_home")
+
+def cargo_environ(repository_ctx):
+    """Define Cargo environment varables for use with `cargo-bazel`
+
+    Args:
+        repository_ctx (repository_ctx): The rules context object
+
+    Returns:
+        dict: A set of environment variables for `cargo-bazel` executions
+    """
+    env = dict()
+
+    if CARGO_BAZEL_ISOLATED in repository_ctx.os.environ:
+        if repository_ctx.os.environ[CARGO_BAZEL_ISOLATED].lower() in ["true", "1", "yes", "on"]:
+            env.update({
+                "CARGO_HOME": str(_cargo_home_path(repository_ctx)),
+            })
+    elif repository_ctx.attr.isolated:
+        env.update({
+            "CARGO_HOME": str(_cargo_home_path(repository_ctx)),
+        })
+
+    return env
