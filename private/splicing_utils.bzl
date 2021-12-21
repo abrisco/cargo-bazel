@@ -1,6 +1,6 @@
 """Utilities directly related to the `splicing` step of `cargo-bazel`."""
 
-load(":common_utils.bzl", "cargo_home_path", "execute")
+load(":common_utils.bzl", "cargo_environ", "execute")
 
 def download_extra_workspace_members(repository_ctx, cache_dir, render_template_registry_url):
     """Download additional workspace members for use in splicing.
@@ -161,12 +161,8 @@ def splice_workspace_manifest(repository_ctx, generator, lockfile, splicing_mani
         "RUST_BACKTRACE": "full",
     }
 
-    # If isolated builds are enabled, restrict `CARGO_HOME` to a path
-    # within the generated repository rule.
-    if repository_ctx.attr.isolated:
-        env.update({
-            "CARGO_HOME": str(cargo_home_path(repository_ctx)),
-        })
+    # Add any Cargo environment variables to the `cargo-bazel` execution
+    env.update(cargo_environ(repository_ctx))
 
     result = execute(
         repository_ctx = repository_ctx,

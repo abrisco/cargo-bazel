@@ -1,9 +1,9 @@
 """Utilities directly related to the `generate` step of `cargo-bazel`."""
 
-load(":common_utils.bzl", "cargo_home_path", "execute")
+load(":common_utils.bzl", "CARGO_BAZEL_ISOLATED", "cargo_environ", "execute")
 
-CARGO_BAZEL_GENERATOR_URL = "CARGO_BAZEL_GENERATOR_URL"
 CARGO_BAZEL_GENERATOR_SHA256 = "CARGO_BAZEL_GENERATOR_SHA256"
+CARGO_BAZEL_GENERATOR_URL = "CARGO_BAZEL_GENERATOR_URL"
 CARGO_BAZEL_REPIN = "CARGO_BAZEL_REPIN"
 REPIN = "REPIN"
 
@@ -15,6 +15,10 @@ GENERATOR_ENV_VARS = [
 REPIN_ENV_VARS = [
     REPIN,
     CARGO_BAZEL_REPIN,
+]
+
+CRATES_REPOSITORY_ENVIRON = GENERATOR_ENV_VARS + REPIN_ENV_VARS + [
+    CARGO_BAZEL_ISOLATED,
 ]
 
 def get_generator(repository_ctx, host_triple):
@@ -271,12 +275,8 @@ def determine_repin(repository_ctx, generator, lockfile_path, lockfile_kind, con
         "RUST_BACKTRACE": "full",
     }
 
-    # If isolated builds are enabled, restrict `CARGO_HOME` to a path
-    # within the generated repository rule.
-    if repository_ctx.attr.isolated:
-        env.update({
-            "CARGO_HOME": str(cargo_home_path(repository_ctx)),
-        })
+    # Add any Cargo environment variables to the `cargo-bazel` execution
+    env.update(cargo_environ(repository_ctx))
 
     result = execute(
         repository_ctx = repository_ctx,
@@ -365,12 +365,8 @@ def execute_generator(
             "RUSTC": str(rustc),
         })
 
-    # If isolated builds are enabled, restrict `CARGO_HOME` to a path
-    # within the generated repository rule.
-    if repository_ctx.attr.isolated:
-        env.update({
-            "CARGO_HOME": str(cargo_home_path(repository_ctx)),
-        })
+    # Add any Cargo environment variables to the `cargo-bazel` execution
+    env.update(cargo_environ(repository_ctx))
 
     result = execute(
         repository_ctx = repository_ctx,

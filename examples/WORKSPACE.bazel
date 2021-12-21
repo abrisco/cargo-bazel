@@ -21,10 +21,6 @@ load("@cargo_bazel//:defs.bzl", "crate", "crates_repository")
 
 crates_repository(
     name = "cargo_aliases",
-    # Since there are multiple `crate_repository` instances in this WORKSPACE
-    # file, it saves a ton of time to avoid isolation and allow them to share
-    # `CARGO_HOME`. This is also generally good for users rapidly re-pinning.
-    isolated = False,
     lockfile = "//cargo_aliases:Cargo.Bazel.lock",
     manifests = ["//cargo_aliases:Cargo.toml"],
 )
@@ -42,10 +38,6 @@ cargo_aliases_crate_repositories()
 
 crates_repository(
     name = "crate_index_cargo_local",
-    # Since there are multiple `crate_repository` instances in this WORKSPACE
-    # file, it saves a ton of time to avoid isolation and allow them to share
-    # `CARGO_HOME`. This is also generally good for users rapidly re-pinning.
-    isolated = False,
     lockfile = "//cargo_local:Cargo.lock",
     lockfile_kind = "cargo",
     manifests = ["//cargo_local:Cargo.toml"],
@@ -74,10 +66,6 @@ http_archive(
 
 crates_repository(
     name = "crate_index_cargo_remote",
-    # Since there are multiple `crate_repository` instances in this WORKSPACE
-    # file, it saves a ton of time to avoid isolation and allow them to share
-    # `CARGO_HOME`. This is also generally good for users rapidly re-pinning.
-    isolated = False,
     lockfile = "@names//:Cargo.lock",
     lockfile_kind = "cargo",
     manifests = ["@names//:Cargo.toml"],
@@ -96,10 +84,6 @@ cargo_remote_crate_repositories()
 
 crates_repository(
     name = "crate_index_cargo_workspace",
-    # Since there are multiple `crate_repository` instances in this WORKSPACE
-    # file, it saves a ton of time to avoid isolation and allow them to share
-    # `CARGO_HOME`. This is also generally good for users rapidly re-pinning.
-    isolated = False,
     lockfile = "//cargo_workspace:Cargo.Bazel.lock",
     manifests = [
         "//cargo_workspace:Cargo.toml",
@@ -135,10 +119,6 @@ crates_repository(
         )],
     },
     generator = "@cargo_bazel_bootstrap//:cargo-bazel",
-    # Since there are multiple `crate_repository` instances in this WORKSPACE
-    # file, it saves a ton of time to avoid isolation and allow them to share
-    # `CARGO_HOME`. This is also generally good for users rapidly re-pinning.
-    isolated = False,
     lockfile = "//extra_workspace_members:Cargo.Bazel.lock",
     manifests = ["//extra_workspace_members:Cargo.toml"],
 )
@@ -197,10 +177,6 @@ crates_repository(
         )],
     },
     generator = "@cargo_bazel_bootstrap//:cargo-bazel",
-    # Since there are multiple `crate_repository` instances in this WORKSPACE
-    # file, it saves a ton of time to avoid isolation and allow them to share
-    # `CARGO_HOME`. This is also generally good for users rapidly re-pinning.
-    isolated = False,
     lockfile = "//multi_package:Cargo.Bazel.lock",
     manifests = [
         "//multi_package/pkg_a:Cargo.toml",
@@ -256,10 +232,6 @@ perl_register_toolchains()
 crates_repository(
     name = "no_cargo",
     generator = "@cargo_bazel_bootstrap//:cargo-bazel",
-    # Since there are multiple `crate_repository` instances in this WORKSPACE
-    # file, it saves a ton of time to avoid isolation and allow them to share
-    # `CARGO_HOME`. This is also generally good for users rapidly re-pinning.
-    isolated = False,
     lockfile = "//no_cargo_manifests:Cargo.Bazel.lock",
     packages = {
         "axum": crate.spec(

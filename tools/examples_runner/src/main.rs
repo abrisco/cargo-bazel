@@ -106,6 +106,7 @@ fn main() {
         "CARGO_BAZEL_GENERATOR_SHA256".to_owned(),
         cargo_bazel_sha256,
     );
+    envs.insert("CARGO_BAZEL_ISOLATED".to_owned(), "true".to_owned());
 
     let startup_args = parse_startup_args();
 
