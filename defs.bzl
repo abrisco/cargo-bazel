@@ -297,6 +297,9 @@ def _extras(
         data_glob = None,
         deps = None,
         gen_build_script = None,
+        patch_args = None,
+        patch_tool = None,
+        patches = None,
         proc_macro_deps = None,
         rustc_env = None,
         rustc_env_files = None,
@@ -327,6 +330,12 @@ def _extras(
         deps (list, optional): A list of labels to add to a crate's `rust_library::deps` attribute.
         gen_build_script (bool, optional): An authorative flag to determine whether or not to produce
             `cargo_build_script` targets for the current crate.
+        patch_args (list, optional): The `patch_args` attribute of a Bazel repository rule. See
+            [http_archive.patch_args](https://docs.bazel.build/versions/main/repo/http.html#http_archive-patch_args)
+        patch_tool (list, optional): The `patch_tool` attribute of a Bazel repository rule. See
+            [http_archive.patch_tool](https://docs.bazel.build/versions/main/repo/http.html#http_archive-patch_tool)
+        patches (list, optional): The `patches` attribute of a Bazel repository rule. See
+            [http_archive.patches](https://docs.bazel.build/versions/main/repo/http.html#http_archive-patches)
         proc_macro_deps (list, optional): A list of labels to add to a crate's `rust_library::proc_macro_deps`
             attribute.
         rustc_env (dict, optional): Additional variables to set on a crate's `rust_library::rustc_env` attribute.
@@ -356,6 +365,9 @@ def _extras(
             data_glob = data_glob,
             deps = deps,
             gen_build_script = gen_build_script,
+            patch_args = patch_args,
+            patch_tool = patch_tool,
+            patches = patches,
             proc_macro_deps = proc_macro_deps,
             rustc_env = rustc_env,
             rustc_env_files = rustc_env_files,

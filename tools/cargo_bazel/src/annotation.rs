@@ -95,12 +95,27 @@ pub enum SourceAnnotation {
     Git {
         remote: String,
         commitish: Commitish,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
         shallow_since: Option<String>,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
         strip_prefix: Option<String>,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        patch_args: Option<Vec<String>>,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        patch_tool: Option<String>,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        patches: Option<BTreeSet<String>>,
     },
     Http {
         url: String,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
         sha256: Option<String>,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        patch_args: Option<Vec<String>>,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        patch_tool: Option<String>,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        patches: Option<BTreeSet<String>>,
     },
 }
 
@@ -170,6 +185,9 @@ impl LockfileAnnotation {
                     return Ok(SourceAnnotation::Http {
                         url: info.url,
                         sha256: Some(info.sha256),
+                        patch_args: None,
+                        patch_tool: None,
+                        patches: None,
                     })
                 }
                 None => bail!(
@@ -189,6 +207,9 @@ impl LockfileAnnotation {
                 commitish: Commitish::from(git_ref.clone()),
                 shallow_since: None,
                 strip_prefix,
+                patch_args: None,
+                patch_tool: None,
+                patches: None,
             });
         }
 
@@ -198,6 +219,9 @@ impl LockfileAnnotation {
             return Ok(SourceAnnotation::Http {
                 url: info.url,
                 sha256: Some(info.sha256),
+                patch_args: None,
+                patch_tool: None,
+                patches: None,
             });
         }
 
@@ -222,6 +246,9 @@ impl LockfileAnnotation {
                         }
                     })
                     .map(|sum| sum.encode_hex::<String>()),
+                patch_args: None,
+                patch_tool: None,
+                patches: None,
             });
         }
 

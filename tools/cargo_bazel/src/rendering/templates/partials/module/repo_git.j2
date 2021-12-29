@@ -13,7 +13,24 @@
     {%- endif %}
     {%- endfor %}
         init_submodules = True,
-    {%- if attrs.shallow_since %}
+    {%- if attrs | get(key="patch_args", default=Null) %}
+        patch_args = [
+    {%- for arg in attrs.patch_args %}
+            "{{ arg }}",
+    {%- endfor %}
+        ],
+    {%- endif %}
+    {%- if attrs | get(key="patch_tool", default=Null) %}
+        patch_tool = "{{ attrs.patch_tool }}",
+    {%- endif %}
+    {%- if attrs | get(key="patches", default=Null) %}
+        patches = [
+    {%- for patch in attrs.patches %}
+            "{{ patch }}",
+    {%- endfor %}
+        ],
+    {%- endif %}
+    {%- if attrs | get(key="shallow_since", default=Null) %}
         shallow_since = "{{ attrs.shallow_since }}",
     {%- endif %}
         remote = "{{ attrs.remote }}",
