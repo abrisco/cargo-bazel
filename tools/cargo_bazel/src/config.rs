@@ -173,6 +173,18 @@ pub struct CrateExtras {
     /// For git sourced crates, this is a the
     /// [git_repository::shallow_since](https://docs.bazel.build/versions/main/repo/git.html#new_git_repository-shallow_since) attribute.
     pub shallow_since: Option<String>,
+
+    /// The `patch_args` attribute of a Bazel repository rule. See
+    /// [http_archive.patch_args](https://docs.bazel.build/versions/main/repo/http.html#http_archive-patch_args)
+    pub patch_args: Option<Vec<String>>,
+
+    /// The `patch_tool` attribute of a Bazel repository rule. See
+    /// [http_archive.patch_tool](https://docs.bazel.build/versions/main/repo/http.html#http_archive-patch_tool)
+    pub patch_tool: Option<String>,
+
+    /// The `patches` attribute of a Bazel repository rule. See
+    /// [http_archive.patches](https://docs.bazel.build/versions/main/repo/http.html#http_archive-patches)
+    pub patches: Option<BTreeSet<String>>,
 }
 
 macro_rules! joined_extra_member {
@@ -202,6 +214,14 @@ impl Add for CrateExtras {
             self.shallow_since
         } else if rhs.shallow_since.is_some() {
             rhs.shallow_since
+        } else {
+            None
+        };
+
+        let patch_tool = if self.patch_tool.is_some() {
+            self.patch_tool
+        } else if rhs.patch_tool.is_some() {
+            rhs.patch_tool
         } else {
             None
         };
@@ -240,6 +260,9 @@ impl Add for CrateExtras {
             build_script_rustc_env: joined_extra_member!(self.build_script_rustc_env, rhs.build_script_rustc_env, BTreeMap::new, BTreeMap::extend),
             build_content: joined_extra_member!(self.build_content, rhs.build_content, String::new, concat_string),
             shallow_since,
+            patch_args: joined_extra_member!(self.patch_args, rhs.patch_args, Vec::new, Vec::extend),
+            patch_tool,
+            patches: joined_extra_member!(self.patches, rhs.patches, BTreeSet::new, BTreeSet::extend),
         };
 
         output

@@ -1,5 +1,5 @@
 {
-  "checksum": "bf015999e5a553287d77f9e372d395a2a4657848a8300134d34e22c59198741d",
+  "checksum": "3e8080880ce83249ef57096fcf2be8fb71265b72761fc411d7ee462d2f56aa5b",
   "crates": {
     "aho-corasick 0.7.18": {
       "name": "aho-corasick",
@@ -207,11 +207,11 @@
         "deps": {
           "common": [
             {
-              "id": "quote 1.0.10",
+              "id": "quote 1.0.14",
               "target": "quote"
             },
             {
-              "id": "syn 1.0.82",
+              "id": "syn 1.0.84",
               "target": "syn"
             }
           ],
@@ -578,13 +578,13 @@
       },
       "license": "Unlicense/MIT"
     },
-    "proc-macro2 1.0.34": {
+    "proc-macro2 1.0.36": {
       "name": "proc-macro2",
-      "version": "1.0.34",
+      "version": "1.0.36",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/proc-macro2/1.0.34/download",
-          "sha256": "2f84e92c0f7c9d58328b85a78557813e4bd845130db68d7184635344399423b1"
+          "url": "https://crates.io/api/v1/crates/proc-macro2/1.0.36/download",
+          "sha256": "c7342d5883fbccae1cc37a2353b09c87c9b0f3afd73f5fb9bba687a1f733b029"
         }
       },
       "targets": [
@@ -621,7 +621,7 @@
         "deps": {
           "common": [
             {
-              "id": "proc-macro2 1.0.34",
+              "id": "proc-macro2 1.0.36",
               "target": "build_script_build"
             },
             {
@@ -632,7 +632,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.0.34"
+        "version": "1.0.36"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -641,13 +641,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "quote 1.0.10": {
+    "quote 1.0.14": {
       "name": "quote",
-      "version": "1.0.10",
+      "version": "1.0.14",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/quote/1.0.10/download",
-          "sha256": "38bc8cc6a5f2e3655e0899c1b848643b2562f853f114bfec7be120678e3ace05"
+          "url": "https://crates.io/api/v1/crates/quote/1.0.14/download",
+          "sha256": "47aa80447ce4daf1717500037052af176af5d38cc3e571d9ec1c7353fc10c87d"
         }
       },
       "targets": [
@@ -673,14 +673,14 @@
         "deps": {
           "common": [
             {
-              "id": "proc-macro2 1.0.34",
+              "id": "proc-macro2 1.0.36",
               "target": "proc_macro2"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.0.10"
+        "version": "1.0.14"
       },
       "license": "MIT OR Apache-2.0"
     },
@@ -771,13 +771,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "syn 1.0.82": {
+    "syn 1.0.84": {
       "name": "syn",
-      "version": "1.0.82",
+      "version": "1.0.84",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/syn/1.0.82/download",
-          "sha256": "8daf5dd0bb60cbd4137b1b587d2fc0ae729bc07cf01cd70b36a1ed5ade3b9d59"
+          "url": "https://crates.io/api/v1/crates/syn/1.0.84/download",
+          "sha256": "ecb2e6da8ee5eb9a61068762a32fa9619cc591ceb055b3687f4cd4051ec2e06b"
         }
       },
       "targets": [
@@ -818,15 +818,15 @@
         "deps": {
           "common": [
             {
-              "id": "proc-macro2 1.0.34",
+              "id": "proc-macro2 1.0.36",
               "target": "proc_macro2"
             },
             {
-              "id": "quote 1.0.10",
+              "id": "quote 1.0.14",
               "target": "quote"
             },
             {
-              "id": "syn 1.0.82",
+              "id": "syn 1.0.84",
               "target": "build_script_build"
             },
             {
@@ -837,7 +837,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.0.82"
+        "version": "1.0.84"
       },
       "build_script_attrs": {
         "data_glob": [
