@@ -6,23 +6,23 @@ use std::path::{Path, PathBuf};
 use std::process::Command;
 use std::{env, fs};
 
+use clap::Parser;
 use hex::ToHex;
 use sha2::{Digest, Sha256};
-use structopt::StructOpt;
 
-#[derive(StructOpt, Debug)]
+#[derive(Parser, Debug)]
 struct Options {
     /// The path to an artifacts directory expecting to contain directories
     /// named after platform tripes with binaries inside.
-    #[structopt(long)]
+    #[clap(long)]
     pub artifacts_dir: PathBuf,
 
     /// A url prefix where the artifacts can be found
-    #[structopt(long)]
+    #[clap(long)]
     pub url_prefix: String,
 
     /// The path to a buildifier binary. If set, it will be ran on the module
-    #[structopt(long)]
+    #[clap(long)]
     pub buildifier: Option<PathBuf>,
 }
 
@@ -161,7 +161,7 @@ fn run_buildifier(buildifier_path: &Path, module: &Path) {
 }
 
 fn main() {
-    let opt = Options::from_args();
+    let opt = Options::parse();
 
     let artifacts = locate_artifacts(&opt.artifacts_dir, &opt.url_prefix);
 

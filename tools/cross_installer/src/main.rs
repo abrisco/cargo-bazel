@@ -4,17 +4,17 @@ use std::path::{Path, PathBuf};
 use std::process::{self, Command};
 use std::{env, fs};
 
-use structopt::StructOpt;
+use clap::Parser;
 
-#[derive(StructOpt, Debug)]
+#[derive(Parser, Debug)]
 struct Options {
     /// The path to an artifacts directory expecting to contain directories
     /// named after platform tripes with binaries inside.
-    #[structopt(long)]
+    #[clap(long)]
     pub output: PathBuf,
 
     /// A url prefix where the artifacts can be found
-    #[structopt(long)]
+    #[clap(long)]
     pub target: String,
 }
 
@@ -80,7 +80,7 @@ fn install_outputs(working_dir: &Path, triple: &str, output_dir: &Path) {
 }
 
 fn main() {
-    let opt = Options::from_args();
+    let opt = Options::parse();
 
     // Locate the workspace root
     let workspace_root = PathBuf::from(

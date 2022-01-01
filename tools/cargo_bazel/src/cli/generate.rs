@@ -3,7 +3,7 @@
 use std::path::PathBuf;
 
 use anyhow::{bail, Result};
-use structopt::StructOpt;
+use clap::Parser;
 
 use crate::annotation::Annotations;
 use crate::config::Config;
@@ -14,51 +14,52 @@ use crate::rendering::{write_outputs, Renderer};
 use crate::splicing::SplicingManifest;
 
 /// Command line options for the `generate` subcommand
-#[derive(StructOpt, Debug)]
+#[derive(Parser, Debug)]
+#[clap(about, version)]
 pub struct GenerateOptions {
     /// The path to a Cargo binary to use for gathering metadata
-    #[structopt(long, env = "CARGO")]
+    #[clap(long, env = "CARGO")]
     pub cargo: Option<PathBuf>,
 
     /// The path to a rustc binary for use with Cargo
-    #[structopt(long, env = "RUSTC")]
+    #[clap(long, env = "RUSTC")]
     pub rustc: Option<PathBuf>,
 
     /// The config file with information about the Bazel and Cargo workspace
-    #[structopt(long)]
+    #[clap(long)]
     pub config: PathBuf,
 
     /// A generated manifest of splicing inputs
-    #[structopt(long)]
+    #[clap(long)]
     pub splicing_manifest: PathBuf,
 
     /// The path to either a Cargo or Bazel lockfile
-    #[structopt(long)]
+    #[clap(long)]
     pub lockfile: PathBuf,
 
     /// The type of lockfile
-    #[structopt(long)]
+    #[clap(long)]
     pub lockfile_kind: LockfileKind,
 
     /// The directory of the current repository rule
-    #[structopt(long)]
+    #[clap(long)]
     pub repository_dir: PathBuf,
 
     /// A [Cargo config](https://doc.rust-lang.org/cargo/reference/config.html#configuration)
     /// file to use when gathering metadata
-    #[structopt(long)]
+    #[clap(long)]
     pub cargo_config: Option<PathBuf>,
 
     /// Whether or not to ignore the provided lockfile and re-generate one
-    #[structopt(long)]
+    #[clap(long)]
     pub repin: bool,
 
     /// The path to a Cargo metadata `json` file.
-    #[structopt(long)]
+    #[clap(long)]
     pub metadata: Option<PathBuf>,
 
     /// If true, outputs will be printed instead of written to disk.
-    #[structopt(long)]
+    #[clap(long)]
     pub dry_run: bool,
 }
 

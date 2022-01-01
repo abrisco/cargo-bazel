@@ -4,7 +4,7 @@ use std::fs;
 use std::path::PathBuf;
 
 use anyhow::Result;
-use structopt::StructOpt;
+use clap::Parser;
 
 use crate::config::Config;
 use crate::context::Context;
@@ -12,26 +12,27 @@ use crate::lockfile::Digest;
 use crate::splicing::SplicingManifest;
 
 /// Command line options for the `query` subcommand
-#[derive(StructOpt, Debug)]
+#[derive(Parser, Debug)]
+#[clap(about, version)]
 pub struct QueryOptions {
     /// The lockfile path for reproducible Cargo->Bazel renderings
-    #[structopt(long)]
+    #[clap(long)]
     pub lockfile: PathBuf,
 
     /// The config file with information about the Bazel and Cargo workspace
-    #[structopt(long)]
+    #[clap(long)]
     pub config: PathBuf,
 
     /// A generated manifest of splicing inputs
-    #[structopt(long)]
+    #[clap(long)]
     pub splicing_manifest: PathBuf,
 
     /// The path to a Cargo binary to use for gathering metadata
-    #[structopt(long, env = "CARGO")]
+    #[clap(long, env = "CARGO")]
     pub cargo: PathBuf,
 
     /// The path to a rustc binary for use with Cargo
-    #[structopt(long, env = "RUSTC")]
+    #[clap(long, env = "RUSTC")]
     pub rustc: PathBuf,
 }
 
