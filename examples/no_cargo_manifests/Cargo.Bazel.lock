@@ -1,5 +1,5 @@
 {
-  "checksum": "b9e439bbcd746ce30fca6e664bf714f3a30d4e8cb5945bbc1b6c7c9d5f7d73f3",
+  "checksum": "5b61127ee339c7a8fa8b80ca39b099675d9089024b9251a285fa07b90b54e6ab",
   "crates": {
     "aho-corasick 0.7.18": {
       "name": "aho-corasick",
@@ -227,7 +227,7 @@
               "target": "futures_util"
             },
             {
-              "id": "http 0.2.5",
+              "id": "http 0.2.6",
               "target": "http"
             },
             {
@@ -239,7 +239,7 @@
               "target": "hyper"
             },
             {
-              "id": "pin-project-lite 0.2.7",
+              "id": "pin-project-lite 0.2.8",
               "target": "pin_project_lite"
             },
             {
@@ -874,7 +874,7 @@
               "target": "build_script_build"
             },
             {
-              "id": "pin-project-lite 0.2.7",
+              "id": "pin-project-lite 0.2.8",
               "target": "pin_project_lite"
             },
             {
@@ -942,7 +942,7 @@
               "target": "futures_util"
             },
             {
-              "id": "http 0.2.5",
+              "id": "http 0.2.6",
               "target": "http"
             },
             {
@@ -1048,13 +1048,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "http 0.2.5": {
+    "http 0.2.6": {
       "name": "http",
-      "version": "0.2.5",
+      "version": "0.2.6",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/http/0.2.5/download",
-          "sha256": "1323096b05d41827dadeaee54c9981958c0f94e670bc94ed80037d1a7b8b186b"
+          "url": "https://crates.io/api/v1/crates/http/0.2.6/download",
+          "sha256": "31f4c6746584866f0feabcc69893c5b51beef3831656a968ed7ae254cdc4fd03"
         }
       },
       "targets": [
@@ -1084,14 +1084,14 @@
               "target": "fnv"
             },
             {
-              "id": "itoa 0.4.8",
+              "id": "itoa 1.0.1",
               "target": "itoa"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.2.5"
+        "version": "0.2.6"
       },
       "license": "MIT/Apache-2.0"
     },
@@ -1127,11 +1127,11 @@
               "target": "bytes"
             },
             {
-              "id": "http 0.2.5",
+              "id": "http 0.2.6",
               "target": "http"
             },
             {
-              "id": "pin-project-lite 0.2.7",
+              "id": "pin-project-lite 0.2.8",
               "target": "pin_project_lite"
             }
           ],
@@ -1293,7 +1293,7 @@
               "target": "h2"
             },
             {
-              "id": "http 0.2.5",
+              "id": "http 0.2.6",
               "target": "http"
             },
             {
@@ -1313,7 +1313,7 @@
               "target": "itoa"
             },
             {
-              "id": "pin-project-lite 0.2.7",
+              "id": "pin-project-lite 0.2.8",
               "target": "pin_project_lite"
             },
             {
@@ -2397,13 +2397,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "pin-project 1.0.9": {
+    "pin-project 1.0.10": {
       "name": "pin-project",
-      "version": "1.0.9",
+      "version": "1.0.10",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/pin-project/1.0.9/download",
-          "sha256": "1622113ce508488160cff04e6abc60960e676d330e1ca0f77c0b8df17c81438f"
+          "url": "https://crates.io/api/v1/crates/pin-project/1.0.10/download",
+          "sha256": "58ad3879ad3baf4e44784bc6a718a8698867bb991f8ce24d1bcbe2cfb4c3a75e"
         }
       },
       "targets": [
@@ -2426,23 +2426,23 @@
         "proc_macro_deps": {
           "common": [
             {
-              "id": "pin-project-internal 1.0.9",
+              "id": "pin-project-internal 1.0.10",
               "target": "pin_project_internal"
             }
           ],
           "selects": {}
         },
-        "version": "1.0.9"
+        "version": "1.0.10"
       },
       "license": "Apache-2.0 OR MIT"
     },
-    "pin-project-internal 1.0.9": {
+    "pin-project-internal 1.0.10": {
       "name": "pin-project-internal",
-      "version": "1.0.9",
+      "version": "1.0.10",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/pin-project-internal/1.0.9/download",
-          "sha256": "b95af56fee93df76d721d356ac1ca41fccf168bc448eb14049234df764ba3e76"
+          "url": "https://crates.io/api/v1/crates/pin-project-internal/1.0.10/download",
+          "sha256": "744b6f092ba29c3650faf274db506afd39944f48420f6c86b17cfe0ee1cb36bb"
         }
       },
       "targets": [
@@ -2479,17 +2479,17 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.0.9"
+        "version": "1.0.10"
       },
       "license": "Apache-2.0 OR MIT"
     },
-    "pin-project-lite 0.2.7": {
+    "pin-project-lite 0.2.8": {
       "name": "pin-project-lite",
-      "version": "0.2.7",
+      "version": "0.2.8",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/pin-project-lite/0.2.7/download",
-          "sha256": "8d31d11c69a6b52a174b42bdc0c30e5e11670f90788b2c471c31c1d17d449443"
+          "url": "https://crates.io/api/v1/crates/pin-project-lite/0.2.8/download",
+          "sha256": "e280fbe77cc62c91527259e9442153f4688736748d24660126286329742b4c6c"
         }
       },
       "targets": [
@@ -2509,7 +2509,7 @@
       "library_target_name": "pin_project_lite",
       "common_attrs": {
         "edition": "2018",
-        "version": "0.2.7"
+        "version": "0.2.8"
       },
       "license": "Apache-2.0 OR MIT"
     },
@@ -3499,7 +3499,7 @@
               "target": "parking_lot"
             },
             {
-              "id": "pin-project-lite 0.2.7",
+              "id": "pin-project-lite 0.2.8",
               "target": "pin_project_lite"
             }
           ],
@@ -3631,7 +3631,7 @@
               "target": "log"
             },
             {
-              "id": "pin-project-lite 0.2.7",
+              "id": "pin-project-lite 0.2.8",
               "target": "pin_project_lite"
             },
             {
@@ -3693,11 +3693,11 @@
               "target": "futures_util"
             },
             {
-              "id": "pin-project 1.0.9",
+              "id": "pin-project 1.0.10",
               "target": "pin_project"
             },
             {
-              "id": "pin-project-lite 0.2.7",
+              "id": "pin-project-lite 0.2.8",
               "target": "pin_project_lite"
             },
             {
@@ -3775,7 +3775,7 @@
               "target": "futures_util"
             },
             {
-              "id": "http 0.2.5",
+              "id": "http 0.2.6",
               "target": "http"
             },
             {
@@ -3783,7 +3783,7 @@
               "target": "http_body"
             },
             {
-              "id": "pin-project 1.0.9",
+              "id": "pin-project 1.0.10",
               "target": "pin_project"
             },
             {
@@ -3909,7 +3909,7 @@
               "target": "log"
             },
             {
-              "id": "pin-project-lite 0.2.7",
+              "id": "pin-project-lite 0.2.8",
               "target": "pin_project_lite"
             },
             {
