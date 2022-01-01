@@ -3,8 +3,6 @@
 # Each source file is tracked as a target so the `cargo_bootstrap_repository`
 # rule will know to automatically rebuild if any of the sources changed.
 CARGO_BAZEL_SRCS = [
-    "@cargo_bazel//:tools/cargo_bazel/src/annotation.rs",
-    "@cargo_bazel//:tools/cargo_bazel/src/annotation/dependency.rs",
     "@cargo_bazel//:tools/cargo_bazel/src/cli.rs",
     "@cargo_bazel//:tools/cargo_bazel/src/cli/generate.rs",
     "@cargo_bazel//:tools/cargo_bazel/src/cli/query.rs",
@@ -17,6 +15,8 @@ CARGO_BAZEL_SRCS = [
     "@cargo_bazel//:tools/cargo_bazel/src/lockfile.rs",
     "@cargo_bazel//:tools/cargo_bazel/src/main.rs",
     "@cargo_bazel//:tools/cargo_bazel/src/metadata.rs",
+    "@cargo_bazel//:tools/cargo_bazel/src/metadata/dependency.rs",
+    "@cargo_bazel//:tools/cargo_bazel/src/metadata/metadata_annotation.rs",
     "@cargo_bazel//:tools/cargo_bazel/src/rendering.rs",
     "@cargo_bazel//:tools/cargo_bazel/src/rendering/template_engine.rs",
     "@cargo_bazel//:tools/cargo_bazel/src/rendering/templates/crate_build_file.j2",

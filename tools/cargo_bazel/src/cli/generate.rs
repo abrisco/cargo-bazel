@@ -1,15 +1,15 @@
-//! TODO
+//! The cli entrypoint for the `generate` subcommand
 
 use std::path::PathBuf;
 
 use anyhow::{bail, Result};
 use clap::Parser;
 
-use crate::annotation::Annotations;
 use crate::config::Config;
 use crate::context::Context;
 use crate::lockfile::{is_cargo_lockfile, lock_context, write_lockfile, LockfileKind};
 use crate::metadata::load_metadata;
+use crate::metadata::Annotations;
 use crate::rendering::{write_outputs, Renderer};
 use crate::splicing::SplicingManifest;
 

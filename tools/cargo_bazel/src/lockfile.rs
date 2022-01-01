@@ -213,7 +213,7 @@ impl PartialEq<String> for Digest {
 
 #[cfg(test)]
 mod test {
-    use crate::config::{CrateExtras, CrateId};
+    use crate::config::{CrateAnnotations, CrateId};
     use crate::splicing::cargo_config::{AdditionalRegistry, CargoConfig, Registry};
 
     use super::*;
@@ -246,11 +246,11 @@ mod test {
         let context = Context::default();
         let config = Config {
             generate_build_scripts: false,
-            extras: BTreeMap::from([(
+            annotations: BTreeMap::from([(
                 CrateId::new("rustonomicon".to_owned(), "1.0.0".to_owned()),
-                CrateExtras {
+                CrateAnnotations {
                     compile_data_glob: Some(BTreeSet::from(["arts/**".to_owned()])),
-                    ..CrateExtras::default()
+                    ..CrateAnnotations::default()
                 },
             )]),
             cargo_config: None,
@@ -279,7 +279,7 @@ mod test {
 
         assert_eq!(
             digest,
-            Digest("0902892caf6718160f6597212db6367fd73bd67e76474d3ffa4bff3a8ed88f96".to_owned())
+            Digest("d991e802fa4b3b694f9d9a0ba942e53f9d909c1b0e2b60b02ba1aea79c0121d2".to_owned())
         );
     }
 

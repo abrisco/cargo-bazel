@@ -1,4 +1,4 @@
-//! TODO
+//! The cli entrypoint for the `splice` subcommand
 
 use std::path::PathBuf;
 

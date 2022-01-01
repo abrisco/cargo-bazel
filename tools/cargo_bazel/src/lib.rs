@@ -1,6 +1,5 @@
 pub mod cli;
 
-mod annotation;
 mod config;
 mod context;
 mod lockfile;
