@@ -2,7 +2,7 @@
 
 use std::path::PathBuf;
 
-use structopt::StructOpt;
+use clap::Parser;
 
 use crate::cli::Result;
 use crate::metadata::{write_metadata, Generator, MetadataGenerator};
@@ -11,39 +11,40 @@ use crate::splicing::{
 };
 
 /// Command line options for the `splice` subcommand
-#[derive(StructOpt, Debug)]
+#[derive(Parser, Debug)]
+#[clap(about, version)]
 pub struct SpliceOptions {
     /// A generated manifest of splicing inputs
-    #[structopt(long)]
+    #[clap(long)]
     pub splicing_manifest: PathBuf,
 
     /// A generated manifest of "extra workspace members"
-    #[structopt(long)]
+    #[clap(long)]
     pub extra_manifests_manifest: PathBuf,
 
     /// A Cargo lockfile (Cargo.lock).
-    #[structopt(long)]
+    #[clap(long)]
     pub cargo_lockfile: Option<PathBuf>,
 
     /// The directory in which to build the workspace. A `Cargo.toml` file
     /// should always be produced within this directory.
-    #[structopt(long)]
+    #[clap(long)]
     pub workspace_dir: PathBuf,
 
     /// If true, outputs will be printed instead of written to disk.
-    #[structopt(long)]
+    #[clap(long)]
     pub dry_run: bool,
 
     /// The path to a Cargo configuration file.
-    #[structopt(long)]
+    #[clap(long)]
     pub cargo_config: Option<PathBuf>,
 
     /// The path to a Cargo binary to use for gathering metadata
-    #[structopt(long, env = "CARGO")]
+    #[clap(long, env = "CARGO")]
     pub cargo: PathBuf,
 
     /// The path to a rustc binary for use with Cargo
-    #[structopt(long, env = "RUSTC")]
+    #[clap(long, env = "RUSTC")]
     pub rustc: PathBuf,
 }
 

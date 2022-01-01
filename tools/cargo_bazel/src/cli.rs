@@ -4,7 +4,7 @@ mod generate;
 mod query;
 mod splice;
 
-use structopt::StructOpt;
+use clap::Parser;
 
 use self::generate::GenerateOptions;
 use self::query::QueryOptions;
@@ -15,8 +15,8 @@ pub use generate::generate;
 pub use query::query;
 pub use splice::splice;
 
-#[derive(StructOpt, Debug)]
-#[structopt(name = "cargo-bazel")]
+#[derive(Parser, Debug)]
+#[clap(name = "cargo-bazel", about, version)]
 pub enum Options {
     /// Generate Bazel Build files from a Cargo manifest.
     Generate(GenerateOptions),
@@ -32,5 +32,5 @@ pub enum Options {
 pub type Result<T> = anyhow::Result<T>;
 
 pub fn parse_args() -> Options {
-    Options::from_args()
+    Options::parse()
 }

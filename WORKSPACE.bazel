@@ -22,6 +22,12 @@ crates_repository(
         "chrono-tz": [crate.extras(
             build_script_data_glob = ["**/tz/**"],
         )],
+        "clap": [crate.extras(
+            compile_data_glob = ["**/*.md"],
+        )],
+        "clap_derive": [crate.extras(
+            compile_data_glob = ["**/*.md"],
+        )],
         "crossbeam-utils": [crate.extras(
             build_script_data_glob = ["**/*.rs"],
         )],
