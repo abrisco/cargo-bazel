@@ -18,43 +18,43 @@ load("//:defs.bzl", "crate", "crates_repository")
 
 crates_repository(
     name = "crate_index",
-    extras = {
-        "chrono-tz": [crate.extras(
+    annotations = {
+        "chrono-tz": [crate.annotation(
             build_script_data_glob = ["**/tz/**"],
         )],
-        "clap": [crate.extras(
+        "clap": [crate.annotation(
             compile_data_glob = ["**/*.md"],
         )],
-        "clap_derive": [crate.extras(
+        "clap_derive": [crate.annotation(
             compile_data_glob = ["**/*.md"],
         )],
-        "crossbeam-utils": [crate.extras(
+        "crossbeam-utils": [crate.annotation(
             build_script_data_glob = ["**/*.rs"],
         )],
-        "deunicode": [crate.extras(
+        "deunicode": [crate.annotation(
             compile_data_glob = [
                 "**/*.txt",
                 "**/*.bin",
             ],
         )],
-        "libgit2-sys": [crate.extras(
+        "libgit2-sys": [crate.annotation(
             gen_build_script = False,
             deps = ["@libgit2"],
         )],
-        "libz-sys": [crate.extras(
+        "libz-sys": [crate.annotation(
             gen_build_script = False,
             deps = ["@zlib"],
         )],
-        "tera": [crate.extras(
+        "tera": [crate.annotation(
             compile_data_glob = ["**/*.pest"],
         )],
-        "unic-ucd-segment": [crate.extras(
+        "unic-ucd-segment": [crate.annotation(
             compile_data_glob = ["**/*.rsv"],
         )],
-        "unic-ucd-version": [crate.extras(
+        "unic-ucd-version": [crate.annotation(
             compile_data_glob = ["**/*.rsv"],
         )],
-        "unicode-linebreak": [crate.extras(
+        "unicode-linebreak": [crate.annotation(
             build_script_data_glob = [
                 "**/*.rs",
                 "**/*.txt",

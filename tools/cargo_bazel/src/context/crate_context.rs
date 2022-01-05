@@ -5,9 +5,8 @@ use std::collections::{BTreeMap, BTreeSet};
 use cargo_metadata::{Node, Package, PackageId};
 use serde::{Deserialize, Serialize};
 
-use crate::annotation::dependency::Dependency;
-use crate::annotation::{CrateAnnotation, PairredExtras, SourceAnnotation};
 use crate::config::CrateId;
+use crate::metadata::{CrateAnnotation, Dependency, PairredExtras, SourceAnnotation};
 use crate::utils::sanitize_module_name;
 use crate::utils::starlark::{Glob, SelectList, SelectMap, SelectStringDict, SelectStringList};
 
@@ -589,8 +588,8 @@ impl CrateContext {
 mod test {
     use super::*;
 
-    use crate::annotation::Annotations;
-    use crate::config::CrateExtras;
+    use crate::config::CrateAnnotations;
+    use crate::metadata::Annotations;
 
     fn common_annotations() -> Annotations {
         Annotations::new(
@@ -650,9 +649,9 @@ mod test {
             CrateId::new("common".to_owned(), "0.1.0".to_owned()),
             PairredExtras {
                 package_id,
-                crate_extra: CrateExtras {
+                crate_extra: CrateAnnotations {
                     data_glob: Some(BTreeSet::from(["**/data_glob/**".to_owned()])),
-                    ..CrateExtras::default()
+                    ..CrateAnnotations::default()
                 },
             },
         );

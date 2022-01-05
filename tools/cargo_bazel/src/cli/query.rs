@@ -1,4 +1,4 @@
-//!
+//! The cli entrypoint for the `query` subcommand
 
 use std::fs;
 use std::path::PathBuf;

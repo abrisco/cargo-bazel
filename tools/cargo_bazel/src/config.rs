@@ -95,7 +95,7 @@ pub enum Checksumish {
 }
 
 #[derive(Debug, Default, Hash, Deserialize, Serialize, Clone)]
-pub struct CrateExtras {
+pub struct CrateAnnotations {
     /// Determins whether or not Cargo build scripts should be generated for the current package
     pub gen_build_script: Option<bool>,
 
@@ -206,8 +206,8 @@ macro_rules! joined_extra_member {
     };
 }
 
-impl Add for CrateExtras {
-    type Output = CrateExtras;
+impl Add for CrateAnnotations {
+    type Output = CrateAnnotations;
 
     fn add(self, rhs: Self) -> Self::Output {
         let shallow_since = if self.shallow_since.is_some() {
@@ -239,7 +239,7 @@ impl Add for CrateExtras {
         };
 
         #[rustfmt::skip]
-        let output = CrateExtras {
+        let output = CrateAnnotations {
             gen_build_script,
             deps: joined_extra_member!(self.deps, rhs.deps, BTreeSet::new, BTreeSet::extend),
             proc_macro_deps: joined_extra_member!(self.proc_macro_deps, rhs.proc_macro_deps, BTreeSet::new, BTreeSet::extend),
@@ -269,9 +269,9 @@ impl Add for CrateExtras {
     }
 }
 
-impl Sum for CrateExtras {
+impl Sum for CrateAnnotations {
     fn sum<I: Iterator<Item = Self>>(iter: I) -> Self {
-        iter.fold(CrateExtras::default(), |a, b| a + b)
+        iter.fold(CrateAnnotations::default(), |a, b| a + b)
     }
 }
 
@@ -377,7 +377,7 @@ pub struct Config {
 
     /// Additional settings to apply to generated crates
     #[serde(default, skip_serializing_if = "BTreeMap::is_empty")]
-    pub extras: BTreeMap<CrateId, CrateExtras>,
+    pub annotations: BTreeMap<CrateId, CrateAnnotations>,
 
     /// Settings used to determine various render info
     pub rendering: RenderConfig,

@@ -3,7 +3,7 @@
 - [crates_repository](#crates_repository)
 - [crate.spec](#cratespec)
 - [crate.workspace_member](#crateworkspace_member)
-- [crate.extras](#crateextras)
+- [crate.annotation](#crateannotation)
 - [render_config](#render_config)
 
 """
@@ -111,6 +111,9 @@ Environment Variables:
 """,
     implementation = _crates_repository_impl,
     attrs = {
+        "annotations": attr.string_list_dict(
+            doc = "Extra settings to apply to crates. See [crate.annotations](#crateannotations).",
+        ),
         "cargo_config": attr.label(
             doc = "A [Cargo configuration](https://doc.rust-lang.org/cargo/reference/config.html) file",
         ),
@@ -125,9 +128,6 @@ Environment Variables:
                 "it. [rust-lang/cargo#9096](https://github.com/rust-lang/cargo/issues/9096) tracks an RFC which may " +
                 "solve for this."
             ),
-        ),
-        "extras": attr.string_list_dict(
-            doc = "Extra settings to apply to crates. See [crate.extras](#crate.extras).",
         ),
         "generate_build_scripts": attr.bool(
             doc = (
@@ -281,7 +281,7 @@ def _spec(
         rev = rev,
     ))
 
-def _extras(
+def _annotation(
         version = "*",
         build_content = None,
         build_script_data = None,
@@ -378,6 +378,6 @@ def _extras(
 
 crate = struct(
     spec = _spec,
-    extras = _extras,
+    annotation = _annotation,
     workspace_member = _workspace_member,
 )

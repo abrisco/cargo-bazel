@@ -1,7 +1,5 @@
 //! Collect and store information from Cargo metadata specific to Bazel's needs
 
-pub mod dependency;
-
 use std::collections::{BTreeMap, BTreeSet};
 use std::convert::TryFrom;
 use std::path::PathBuf;
@@ -11,10 +9,9 @@ use cargo_metadata::{Node, Package, PackageId};
 use hex::ToHex;
 use serde::{Deserialize, Serialize};
 
-use crate::config::{Commitish, Config, CrateExtras, CrateId};
+use crate::config::{Commitish, Config, CrateAnnotations, CrateId};
+use crate::metadata::dependency::DependencySet;
 use crate::splicing::{SourceInfo, WorkspaceMetadata};
-
-use self::dependency::DependencySet;
 
 pub type CargoMetadata = cargo_metadata::Metadata;
 pub type CargoLockfile = cargo_lock::Lockfile;
@@ -299,7 +296,7 @@ impl LockfileAnnotation {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct PairredExtras {
     pub package_id: cargo_metadata::PackageId,
-    pub crate_extra: CrateExtras,
+    pub crate_extra: CrateAnnotations,
 }
 
 #[derive(Debug, Default, Serialize, Deserialize)]
@@ -328,8 +325,8 @@ impl Annotations {
             .packages
             .iter()
             .filter_map(|(pkg_id, pkg)| {
-                let extras: Vec<CrateExtras> = config
-                    .extras
+                let extras: Vec<CrateAnnotations> = config
+                    .annotations
                     .iter()
                     .filter(|(id, _)| id.matches(pkg))
                     .map(|(_, extra)| extra)

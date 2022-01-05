@@ -1,5 +1,5 @@
 {
-  "checksum": "e39807c90f21c4227d7b9c3e14ccd9761dd661f1a6eda0e05048c0bc8a962b4e",
+  "checksum": "0558bfd62df1312790147ccffa13af0b48c0559750a407f1f27e65d711d08ed1",
   "crates": {
     "aho-corasick 0.7.18": {
       "name": "aho-corasick",
@@ -985,7 +985,7 @@
         "deps": {
           "common": [
             {
-              "id": "version_check 0.9.3",
+              "id": "version_check 0.9.4",
               "target": "version_check",
               "alias": "rustc"
             }
@@ -995,13 +995,13 @@
       },
       "license": "Apache-2.0 OR MIT"
     },
-    "version_check 0.9.3": {
+    "version_check 0.9.4": {
       "name": "version_check",
-      "version": "0.9.3",
+      "version": "0.9.4",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/version_check/0.9.3/download",
-          "sha256": "5fecdca9a5291cc2b8dcf7dc02453fee791a280f3743cb0905f8822ae463b3fe"
+          "url": "https://crates.io/api/v1/crates/version_check/0.9.4/download",
+          "sha256": "49874b5167b65d7193b8aba1567f5c7d93d001cafc34600cee003eda787e483f"
         }
       },
       "targets": [
@@ -1021,7 +1021,7 @@
       "library_target_name": "version_check",
       "common_attrs": {
         "edition": "2015",
-        "version": "0.9.3"
+        "version": "0.9.4"
       },
       "license": "MIT/Apache-2.0"
     },

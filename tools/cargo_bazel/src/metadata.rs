@@ -1,5 +1,8 @@
 //! Tools for gathering various kinds of metadata (Cargo.lock, Cargo metadata, Crate Index info).
 
+mod dependency;
+mod metadata_annotation;
+
 use std::env;
 use std::fs;
 use std::path::{Path, PathBuf};
@@ -8,6 +11,9 @@ use std::process::Command;
 use anyhow::{bail, Context, Result};
 use cargo_lock::Lockfile as CargoLockfile;
 use cargo_metadata::{Metadata as CargoMetadata, MetadataCommand};
+
+pub use self::dependency::*;
+pub use self::metadata_annotation::*;
 
 // TODO: This should also return a set of [crate-index::IndexConfig]s for packages in metadata.packages
 pub trait MetadataGenerator {

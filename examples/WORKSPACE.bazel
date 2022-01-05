@@ -106,17 +106,17 @@ cargo_workspace_crate_repositories()
 
 crates_repository(
     name = "crate_index_extra_members",
+    annotations = {
+        "image": [crate.annotation(
+            compile_data_glob = ["**/*.md"],
+            version = "*",
+        )],
+    },
     extra_workspace_members = {
         "texture-synthesis-cli": crate.workspace_member(
             sha256 = "a7dbdf13f5e6f214750fce1073279b71ce3076157a8d337c9b0f0e14334e2aec",
             version = "0.8.2",
         ),
-    },
-    extras = {
-        "image": [crate.extras(
-            compile_data_glob = ["**/*.md"],
-            version = "*",
-        )],
     },
     generator = "@cargo_bazel_bootstrap//:cargo-bazel",
     lockfile = "//extra_workspace_members:Cargo.Bazel.lock",
@@ -138,28 +138,28 @@ crates_repository(
     # The name here needs to be short to avoid long path issues on windows
     # when running the `libnghttp2-sys` build script.
     name = "m_pkgs",
-    extras = {
-        "basic-cookies": [crate.extras(
+    annotations = {
+        "basic-cookies": [crate.annotation(
             build_script_data_glob = ["**/*.lalrpop"],
         )],
-        "curl-sys": [crate.extras(
+        "curl-sys": [crate.annotation(
             gen_build_script = False,
             deps = [
                 "@curl",
                 "@libssh2",
             ],
         )],
-        "lalrpop": [crate.extras(
+        "lalrpop": [crate.annotation(
             data_glob = ["**/*.lalrpop"],
         )],
-        "libnghttp2-sys": [crate.extras(
+        "libnghttp2-sys": [crate.annotation(
             build_script_data_glob = ["nghttp2/**"],
             data_glob = ["nghttp2/**"],
         )],
-        "libz-sys": [crate.extras(
+        "libz-sys": [crate.annotation(
             build_script_data_glob = ["src/**"],
         )],
-        "openssl-sys": [crate.extras(
+        "openssl-sys": [crate.annotation(
             build_script_data = [
                 "@openssl//:gen_dir",
                 "@openssl//:openssl",
@@ -172,7 +172,7 @@ crates_repository(
             data = ["@openssl"],
             deps = ["@openssl"],
         )],
-        "wepoll-ffi": [crate.extras(
+        "wepoll-ffi": [crate.annotation(
             build_script_data_glob = ["vendor/**"],
         )],
     },
