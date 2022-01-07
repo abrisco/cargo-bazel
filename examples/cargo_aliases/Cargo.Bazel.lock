@@ -1,5 +1,5 @@
 {
-  "checksum": "0558bfd62df1312790147ccffa13af0b48c0559750a407f1f27e65d711d08ed1",
+  "checksum": "5b9af02fdb08a69d66c15477bfc8bfe81d2715f90c87ab0d96d60db33082b074",
   "crates": {
     "aho-corasick 0.7.18": {
       "name": "aho-corasick",
@@ -211,7 +211,7 @@
               "target": "quote"
             },
             {
-              "id": "syn 1.0.84",
+              "id": "syn 1.0.85",
               "target": "syn"
             }
           ],
@@ -771,13 +771,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "syn 1.0.84": {
+    "syn 1.0.85": {
       "name": "syn",
-      "version": "1.0.84",
+      "version": "1.0.85",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/syn/1.0.84/download",
-          "sha256": "ecb2e6da8ee5eb9a61068762a32fa9619cc591ceb055b3687f4cd4051ec2e06b"
+          "url": "https://crates.io/api/v1/crates/syn/1.0.85/download",
+          "sha256": "a684ac3dcd8913827e18cd09a68384ee66c1de24157e3c556c9ab16d85695fb7"
         }
       },
       "targets": [
@@ -826,7 +826,7 @@
               "target": "quote"
             },
             {
-              "id": "syn 1.0.84",
+              "id": "syn 1.0.85",
               "target": "build_script_build"
             },
             {
@@ -837,7 +837,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.0.84"
+        "version": "1.0.85"
       },
       "build_script_attrs": {
         "data_glob": [
