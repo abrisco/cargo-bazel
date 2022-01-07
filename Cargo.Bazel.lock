@@ -1,5 +1,5 @@
 {
-  "checksum": "c52e7f399090860c2ceded61ae2935382c858e7e359fc8f657d460af53455907",
+  "checksum": "d5d72f834e0ee907a08985e68f3eb7080d4801aad82e83a32829a6cedb62dc4a",
   "crates": {
     "adler 1.0.2": {
       "name": "adler",
@@ -278,7 +278,7 @@
         "deps": {
           "common": [
             {
-              "id": "generic-array 0.14.4",
+              "id": "generic-array 0.14.5",
               "target": "generic_array"
             }
           ],
@@ -529,7 +529,7 @@
               "target": "build_script_build"
             },
             {
-              "id": "serde 1.0.132",
+              "id": "serde 1.0.133",
               "target": "serde"
             }
           ],
@@ -604,7 +604,7 @@
               "target": "cfg_expr"
             },
             {
-              "id": "clap 3.0.0",
+              "id": "clap 3.0.5",
               "target": "clap"
             },
             {
@@ -628,15 +628,15 @@
               "target": "semver"
             },
             {
-              "id": "serde 1.0.132",
+              "id": "serde 1.0.133",
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.73",
+              "id": "serde_json 1.0.74",
               "target": "serde_json"
             },
             {
-              "id": "sha2 0.10.0",
+              "id": "sha2 0.10.1",
               "target": "sha2"
             },
             {
@@ -712,7 +712,7 @@
               "target": "semver"
             },
             {
-              "id": "serde 1.0.132",
+              "id": "serde 1.0.133",
               "target": "serde"
             },
             {
@@ -759,7 +759,7 @@
         "deps": {
           "common": [
             {
-              "id": "serde 1.0.132",
+              "id": "serde 1.0.133",
               "target": "serde"
             }
           ],
@@ -813,11 +813,11 @@
               "target": "semver"
             },
             {
-              "id": "serde 1.0.132",
+              "id": "serde 1.0.133",
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.73",
+              "id": "serde_json 1.0.74",
               "target": "serde_json"
             }
           ],
@@ -856,7 +856,7 @@
         "deps": {
           "common": [
             {
-              "id": "serde 1.0.132",
+              "id": "serde 1.0.133",
               "target": "serde"
             },
             {
@@ -870,7 +870,7 @@
         "proc_macro_deps": {
           "common": [
             {
-              "id": "serde_derive 1.0.132",
+              "id": "serde_derive 1.0.133",
               "target": "serde_derive"
             }
           ],
@@ -1192,13 +1192,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "clap 3.0.0": {
+    "clap 3.0.5": {
       "name": "clap",
-      "version": "3.0.0",
+      "version": "3.0.5",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/clap/3.0.0/download",
-          "sha256": "d17bf219fcd37199b9a29e00ba65dfb8cd5b2688b7297ec14ff829c40ac50ca9"
+          "url": "https://crates.io/api/v1/crates/clap/3.0.5/download",
+          "sha256": "f6f34b09b9ee8c7c7b400fe2f8df39cafc9538b03d6ba7f4ae13e4cb90bfbb7d"
         }
       },
       "targets": [
@@ -1274,23 +1274,23 @@
         "proc_macro_deps": {
           "common": [
             {
-              "id": "clap_derive 3.0.0",
+              "id": "clap_derive 3.0.5",
               "target": "clap_derive"
             }
           ],
           "selects": {}
         },
-        "version": "3.0.0"
+        "version": "3.0.5"
       },
       "license": "MIT OR Apache-2.0"
     },
-    "clap_derive 3.0.0": {
+    "clap_derive 3.0.5": {
       "name": "clap_derive",
-      "version": "3.0.0",
+      "version": "3.0.5",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/clap_derive/3.0.0/download",
-          "sha256": "e1b9752c030a14235a0bd5ef3ad60a1dcac8468c30921327fc8af36b20c790b9"
+          "url": "https://crates.io/api/v1/crates/clap_derive/3.0.5/download",
+          "sha256": "41a0645a430ec9136d2d701e54a95d557de12649a9dd7109ced3187e648ac824"
         }
       },
       "targets": [
@@ -1318,7 +1318,7 @@
         "deps": {
           "common": [
             {
-              "id": "heck 0.3.3",
+              "id": "heck 0.4.0",
               "target": "heck"
             },
             {
@@ -1334,14 +1334,14 @@
               "target": "quote"
             },
             {
-              "id": "syn 1.0.84",
+              "id": "syn 1.0.85",
               "target": "syn"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
-        "version": "3.0.0"
+        "version": "3.0.5"
       },
       "license": "MIT OR Apache-2.0"
     },
@@ -1434,11 +1434,11 @@
               "target": "semver"
             },
             {
-              "id": "serde 1.0.132",
+              "id": "serde 1.0.133",
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.73",
+              "id": "serde_json 1.0.74",
               "target": "serde_json"
             },
             {
@@ -1452,7 +1452,7 @@
         "proc_macro_deps": {
           "common": [
             {
-              "id": "serde_derive 1.0.132",
+              "id": "serde_derive 1.0.133",
               "target": "serde_derive"
             }
           ],
@@ -1549,7 +1549,7 @@
         "deps": {
           "common": [
             {
-              "id": "clap 3.0.0",
+              "id": "clap 3.0.5",
               "target": "clap"
             }
           ],
@@ -1661,7 +1661,7 @@
         "deps": {
           "common": [
             {
-              "id": "generic-array 0.14.4",
+              "id": "generic-array 0.14.5",
               "target": "generic_array"
             }
           ],
@@ -1749,7 +1749,7 @@
               "target": "crypto_common"
             },
             {
-              "id": "generic-array 0.14.4",
+              "id": "generic-array 0.14.5",
               "target": "generic_array"
             }
           ],
@@ -1855,7 +1855,7 @@
               "target": "hex"
             },
             {
-              "id": "sha2 0.10.0",
+              "id": "sha2 0.10.1",
               "target": "sha2"
             },
             {
@@ -2138,13 +2138,13 @@
       },
       "license": "MIT"
     },
-    "generic-array 0.14.4": {
+    "generic-array 0.14.5": {
       "name": "generic-array",
-      "version": "0.14.4",
+      "version": "0.14.5",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/generic-array/0.14.4/download",
-          "sha256": "501466ecc8a30d1d3b7fc9229b122b2ce8ed6e9d9223f1138d4babb253e51817"
+          "url": "https://crates.io/api/v1/crates/generic-array/0.14.5/download",
+          "sha256": "fd48d33ec7f05fbfa152300fdad764757cbded343c1aa1cff2fbaf4134851803"
         }
       },
       "targets": [
@@ -2178,7 +2178,7 @@
         "deps": {
           "common": [
             {
-              "id": "generic-array 0.14.4",
+              "id": "generic-array 0.14.5",
               "target": "build_script_build"
             },
             {
@@ -2189,7 +2189,7 @@
           "selects": {}
         },
         "edition": "2015",
-        "version": "0.14.4"
+        "version": "0.14.5"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -2452,13 +2452,13 @@
       },
       "license": "Apache-2.0/MIT"
     },
-    "heck 0.3.3": {
+    "heck 0.4.0": {
       "name": "heck",
-      "version": "0.3.3",
+      "version": "0.4.0",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/heck/0.3.3/download",
-          "sha256": "6d621efb26863f0e9924c6ac577e8275e5e6b77455db64ffa6c65c904e9e132c"
+          "url": "https://crates.io/api/v1/crates/heck/0.4.0/download",
+          "sha256": "2540771e65fc8cb83cd6e8a237f70c319bd5c29f78ed1084ba5d50eeac86f7f9"
         }
       },
       "targets": [
@@ -2477,17 +2477,11 @@
       ],
       "library_target_name": "heck",
       "common_attrs": {
-        "deps": {
-          "common": [
-            {
-              "id": "unicode-segmentation 1.8.0",
-              "target": "unicode_segmentation"
-            }
-          ],
-          "selects": {}
-        },
+        "crate_features": [
+          "default"
+        ],
         "edition": "2018",
-        "version": "0.3.3"
+        "version": "0.4.0"
       },
       "license": "MIT OR Apache-2.0"
     },
@@ -2567,7 +2561,7 @@
         "deps": {
           "common": [
             {
-              "id": "serde 1.0.132",
+              "id": "serde 1.0.133",
               "target": "serde"
             }
           ],
@@ -3816,7 +3810,7 @@
               "target": "quote"
             },
             {
-              "id": "syn 1.0.84",
+              "id": "syn 1.0.85",
               "target": "syn"
             }
           ],
@@ -4179,7 +4173,7 @@
               "target": "quote"
             },
             {
-              "id": "syn 1.0.84",
+              "id": "syn 1.0.85",
               "target": "syn"
             }
           ],
@@ -4898,7 +4892,7 @@
               "target": "build_script_build"
             },
             {
-              "id": "serde 1.0.132",
+              "id": "serde 1.0.133",
               "target": "serde"
             }
           ],
@@ -4914,13 +4908,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "serde 1.0.132": {
+    "serde 1.0.133": {
       "name": "serde",
-      "version": "1.0.132",
+      "version": "1.0.133",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/serde/1.0.132/download",
-          "sha256": "8b9875c23cf305cd1fd7eb77234cbb705f21ea6a72c637a5c6db5fe4b8e7f008"
+          "url": "https://crates.io/api/v1/crates/serde/1.0.133/download",
+          "sha256": "97565067517b60e2d1ea8b268e59ce036de907ac523ad83a0475da04e818989a"
         }
       },
       "targets": [
@@ -4961,7 +4955,7 @@
         "deps": {
           "common": [
             {
-              "id": "serde 1.0.132",
+              "id": "serde 1.0.133",
               "target": "build_script_build"
             }
           ],
@@ -4971,13 +4965,13 @@
         "proc_macro_deps": {
           "common": [
             {
-              "id": "serde_derive 1.0.132",
+              "id": "serde_derive 1.0.133",
               "target": "serde_derive"
             }
           ],
           "selects": {}
         },
-        "version": "1.0.132"
+        "version": "1.0.133"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -4986,13 +4980,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "serde_derive 1.0.132": {
+    "serde_derive 1.0.133": {
       "name": "serde_derive",
-      "version": "1.0.132",
+      "version": "1.0.133",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/serde_derive/1.0.132/download",
-          "sha256": "ecc0db5cb2556c0e558887d9bbdcf6ac4471e83ff66cf696e5419024d1606276"
+          "url": "https://crates.io/api/v1/crates/serde_derive/1.0.133/download",
+          "sha256": "ed201699328568d8d08208fdd080e3ff594e6c422e438b6705905da01005d537"
         }
       },
       "targets": [
@@ -5037,18 +5031,18 @@
               "target": "quote"
             },
             {
-              "id": "serde_derive 1.0.132",
+              "id": "serde_derive 1.0.133",
               "target": "build_script_build"
             },
             {
-              "id": "syn 1.0.84",
+              "id": "syn 1.0.85",
               "target": "syn"
             }
           ],
           "selects": {}
         },
         "edition": "2015",
-        "version": "1.0.132"
+        "version": "1.0.133"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -5057,13 +5051,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "serde_json 1.0.73": {
+    "serde_json 1.0.74": {
       "name": "serde_json",
-      "version": "1.0.73",
+      "version": "1.0.74",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/serde_json/1.0.73/download",
-          "sha256": "bcbd0344bc6533bc7ec56df11d42fb70f1b912351c0825ccb7211b59d8af7cf5"
+          "url": "https://crates.io/api/v1/crates/serde_json/1.0.74/download",
+          "sha256": "ee2bb9cd061c5865d345bb02ca49fcef1391741b672b54a0bf7b679badec3142"
         }
       },
       "targets": [
@@ -5110,18 +5104,18 @@
               "target": "ryu"
             },
             {
-              "id": "serde 1.0.132",
+              "id": "serde 1.0.133",
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.73",
+              "id": "serde_json 1.0.74",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.0.73"
+        "version": "1.0.74"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -5181,13 +5175,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "sha2 0.10.0": {
+    "sha2 0.10.1": {
       "name": "sha2",
-      "version": "0.10.0",
+      "version": "0.10.1",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/sha2/0.10.0/download",
-          "sha256": "900d964dd36bb15bcf2f2b35694c072feab74969a54f2bbeec7a2d725d2bdcb6"
+          "url": "https://crates.io/api/v1/crates/sha2/0.10.1/download",
+          "sha256": "99c3bd8169c58782adad9290a9af5939994036b76187f7b4f0e6de91dbbfc0ec"
         }
       },
       "targets": [
@@ -5231,7 +5225,7 @@
           }
         },
         "edition": "2018",
-        "version": "0.10.0"
+        "version": "0.10.1"
       },
       "license": "MIT OR Apache-2.0"
     },
@@ -5371,7 +5365,7 @@
         "deps": {
           "common": [
             {
-              "id": "serde 1.0.132",
+              "id": "serde 1.0.133",
               "target": "serde"
             },
             {
@@ -5476,13 +5470,13 @@
       },
       "license": "MIT"
     },
-    "syn 1.0.84": {
+    "syn 1.0.85": {
       "name": "syn",
-      "version": "1.0.84",
+      "version": "1.0.85",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/syn/1.0.84/download",
-          "sha256": "ecb2e6da8ee5eb9a61068762a32fa9619cc591ceb055b3687f4cd4051ec2e06b"
+          "url": "https://crates.io/api/v1/crates/syn/1.0.85/download",
+          "sha256": "a684ac3dcd8913827e18cd09a68384ee66c1de24157e3c556c9ab16d85695fb7"
         }
       },
       "targets": [
@@ -5534,7 +5528,7 @@
               "target": "quote"
             },
             {
-              "id": "syn 1.0.84",
+              "id": "syn 1.0.85",
               "target": "build_script_build"
             },
             {
@@ -5545,7 +5539,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.0.84"
+        "version": "1.0.85"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -5751,11 +5745,11 @@
               "target": "regex"
             },
             {
-              "id": "serde 1.0.132",
+              "id": "serde 1.0.133",
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.73",
+              "id": "serde_json 1.0.74",
               "target": "serde_json"
             },
             {
@@ -6021,7 +6015,7 @@
         "deps": {
           "common": [
             {
-              "id": "serde 1.0.132",
+              "id": "serde 1.0.133",
               "target": "serde"
             }
           ],
@@ -6567,36 +6561,6 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "unicode-segmentation 1.8.0": {
-      "name": "unicode-segmentation",
-      "version": "1.8.0",
-      "repository": {
-        "Http": {
-          "url": "https://crates.io/api/v1/crates/unicode-segmentation/1.8.0/download",
-          "sha256": "8895849a949e7845e06bd6dc1aa51731a103c42707010a5b591c0038fb73385b"
-        }
-      },
-      "targets": [
-        {
-          "Library": {
-            "crate_name": "unicode_segmentation",
-            "crate_root": "src/lib.rs",
-            "srcs": {
-              "include": [
-                "**/*.rs"
-              ],
-              "exclude": []
-            }
-          }
-        }
-      ],
-      "library_target_name": "unicode_segmentation",
-      "common_attrs": {
-        "edition": "2018",
-        "version": "1.8.0"
-      },
-      "license": "MIT/Apache-2.0"
-    },
     "unicode-width 0.1.9": {
       "name": "unicode-width",
       "version": "0.1.9",
@@ -6737,7 +6701,7 @@
         "deps": {
           "common": [
             {
-              "id": "clap 3.0.0",
+              "id": "clap 3.0.5",
               "target": "clap"
             },
             {
@@ -6745,11 +6709,11 @@
               "target": "hex"
             },
             {
-              "id": "serde_json 1.0.73",
+              "id": "serde_json 1.0.74",
               "target": "serde_json"
             },
             {
-              "id": "sha2 0.10.0",
+              "id": "sha2 0.10.1",
               "target": "sha2"
             }
           ],
