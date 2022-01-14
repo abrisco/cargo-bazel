@@ -1,5 +1,5 @@
 {
-  "checksum": "76ee05b10be23e53c23300fc9a69c026b291eca34c4c4ae90a4fa5378ecb2d48",
+  "checksum": "bd5ef6b7e083866f2bc177a62a73a57b94642eca7620d0757707f1c7d01eda08",
   "crates": {
     "adler 1.0.2": {
       "name": "adler",
@@ -604,7 +604,7 @@
               "target": "cfg_expr"
             },
             {
-              "id": "clap 3.0.5",
+              "id": "clap 3.0.7",
               "target": "clap"
             },
             {
@@ -657,7 +657,7 @@
         "deps_dev": {
           "common": [
             {
-              "id": "tempfile 3.2.0",
+              "id": "tempfile 3.3.0",
               "target": "tempfile"
             }
           ],
@@ -966,7 +966,7 @@
         "deps": {
           "common": [
             {
-              "id": "smallvec 1.7.0",
+              "id": "smallvec 1.8.0",
               "target": "smallvec"
             }
           ],
@@ -1192,13 +1192,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "clap 3.0.5": {
+    "clap 3.0.7": {
       "name": "clap",
-      "version": "3.0.5",
+      "version": "3.0.7",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/clap/3.0.5/download",
-          "sha256": "f6f34b09b9ee8c7c7b400fe2f8df39cafc9538b03d6ba7f4ae13e4cb90bfbb7d"
+          "url": "https://crates.io/api/v1/crates/clap/3.0.7/download",
+          "sha256": "12e8611f9ae4e068fa3e56931fded356ff745e70987ff76924a6e0ab1c8ef2e3"
         }
       },
       "targets": [
@@ -1244,7 +1244,7 @@
               "target": "bitflags"
             },
             {
-              "id": "indexmap 1.7.0",
+              "id": "indexmap 1.8.0",
               "target": "indexmap"
             },
             {
@@ -1274,23 +1274,23 @@
         "proc_macro_deps": {
           "common": [
             {
-              "id": "clap_derive 3.0.5",
+              "id": "clap_derive 3.0.6",
               "target": "clap_derive"
             }
           ],
           "selects": {}
         },
-        "version": "3.0.5"
+        "version": "3.0.7"
       },
       "license": "MIT OR Apache-2.0"
     },
-    "clap_derive 3.0.5": {
+    "clap_derive 3.0.6": {
       "name": "clap_derive",
-      "version": "3.0.5",
+      "version": "3.0.6",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/clap_derive/3.0.5/download",
-          "sha256": "41a0645a430ec9136d2d701e54a95d557de12649a9dd7109ced3187e648ac824"
+          "url": "https://crates.io/api/v1/crates/clap_derive/3.0.6/download",
+          "sha256": "517358c28fcef6607bf6f76108e02afad7e82297d132a6b846dcc1fc3efcd153"
         }
       },
       "targets": [
@@ -1341,7 +1341,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "3.0.5"
+        "version": "3.0.6"
       },
       "license": "MIT OR Apache-2.0"
     },
@@ -1549,7 +1549,7 @@
         "deps": {
           "common": [
             {
-              "id": "clap 3.0.5",
+              "id": "clap 3.0.7",
               "target": "clap"
             }
           ],
@@ -1560,13 +1560,13 @@
       },
       "license": null
     },
-    "crossbeam-utils 0.8.5": {
+    "crossbeam-utils 0.8.6": {
       "name": "crossbeam-utils",
-      "version": "0.8.5",
+      "version": "0.8.6",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/crossbeam-utils/0.8.5/download",
-          "sha256": "d82cfc11ce7f2c3faef78d8a684447b40d503d9681acebed6cb728d45940c4db"
+          "url": "https://crates.io/api/v1/crates/crossbeam-utils/0.8.6/download",
+          "sha256": "cfcae03edb34f947e64acdb1c33ec169824e20657e9ecb61cef6c8c74dcb8120"
         }
       },
       "targets": [
@@ -1609,7 +1609,7 @@
               "target": "cfg_if"
             },
             {
-              "id": "crossbeam-utils 0.8.5",
+              "id": "crossbeam-utils 0.8.6",
               "target": "build_script_build"
             },
             {
@@ -1620,7 +1620,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.8.5"
+        "version": "0.8.6"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -1863,7 +1863,7 @@
               "target": "tar"
             },
             {
-              "id": "tempfile 3.2.0",
+              "id": "tempfile 3.3.0",
               "target": "tempfile"
             },
             {
@@ -1907,6 +1907,47 @@
         "version": "0.1.2"
       },
       "license": "MIT/Apache-2.0"
+    },
+    "fastrand 1.6.0": {
+      "name": "fastrand",
+      "version": "1.6.0",
+      "repository": {
+        "Http": {
+          "url": "https://crates.io/api/v1/crates/fastrand/1.6.0/download",
+          "sha256": "779d043b6a0b90cc4c0ed7ee380a6504394cee7efd7db050e3774eee387324b2"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "fastrand",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "library_target_name": "fastrand",
+      "common_attrs": {
+        "deps": {
+          "common": [],
+          "selects": {
+            "cfg(target_arch = \"wasm32\")": [
+              {
+                "id": "instant 0.1.12",
+                "target": "instant"
+              }
+            ]
+          }
+        },
+        "edition": "2018",
+        "version": "1.6.0"
+      },
+      "license": "Apache-2.0 OR MIT"
     },
     "filetime 0.2.15": {
       "name": "filetime",
@@ -2207,13 +2248,13 @@
       },
       "license": "MIT"
     },
-    "getrandom 0.2.3": {
+    "getrandom 0.2.4": {
       "name": "getrandom",
-      "version": "0.2.3",
+      "version": "0.2.4",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/getrandom/0.2.3/download",
-          "sha256": "7fcd999463524c52659517fe2cea98493cfe485d10565e7b0fb07dbba7ad2753"
+          "url": "https://crates.io/api/v1/crates/getrandom/0.2.4/download",
+          "sha256": "418d37c8b1d42553c93648be529cb70f920d3baf8ef469b74b9638df426e0b4c"
         }
       },
       "targets": [
@@ -2258,7 +2299,7 @@
           }
         },
         "edition": "2018",
-        "version": "0.2.3"
+        "version": "0.2.4"
       },
       "license": "MIT OR Apache-2.0"
     },
@@ -2718,7 +2759,7 @@
         "deps": {
           "common": [
             {
-              "id": "crossbeam-utils 0.8.5",
+              "id": "crossbeam-utils 0.8.6",
               "target": "crossbeam_utils"
             },
             {
@@ -2768,13 +2809,13 @@
       },
       "license": "Unlicense/MIT"
     },
-    "indexmap 1.7.0": {
+    "indexmap 1.8.0": {
       "name": "indexmap",
-      "version": "1.7.0",
+      "version": "1.8.0",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/indexmap/1.7.0/download",
-          "sha256": "bc633605454125dec4b66843673f01c7df2b89479b32e0ed634e43a91cff62a5"
+          "url": "https://crates.io/api/v1/crates/indexmap/1.8.0/download",
+          "sha256": "282a6247722caba404c065016bbfa522806e51714c34f5dfc3e4a3a46fcb4223"
         }
       },
       "targets": [
@@ -2815,14 +2856,14 @@
               "target": "hashbrown"
             },
             {
-              "id": "indexmap 1.7.0",
+              "id": "indexmap 1.8.0",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.7.0"
+        "version": "1.8.0"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -2839,6 +2880,45 @@
         }
       },
       "license": "Apache-2.0/MIT"
+    },
+    "instant 0.1.12": {
+      "name": "instant",
+      "version": "0.1.12",
+      "repository": {
+        "Http": {
+          "url": "https://crates.io/api/v1/crates/instant/0.1.12/download",
+          "sha256": "7a5bbe824c507c5da5956355e86a746d82e0e1464f65d862cc5e71da70e94b2c"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "instant",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "library_target_name": "instant",
+      "common_attrs": {
+        "deps": {
+          "common": [
+            {
+              "id": "cfg-if 1.0.0",
+              "target": "cfg_if"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "0.1.12"
+      },
+      "license": "BSD-3-Clause"
     },
     "itoa 1.0.1": {
       "name": "itoa",
@@ -4535,7 +4615,7 @@
         "deps": {
           "common": [
             {
-              "id": "getrandom 0.2.3",
+              "id": "getrandom 0.2.4",
               "target": "getrandom"
             }
           ],
@@ -5302,13 +5382,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "smallvec 1.7.0": {
+    "smallvec 1.8.0": {
       "name": "smallvec",
-      "version": "1.7.0",
+      "version": "1.8.0",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/smallvec/1.7.0/download",
-          "sha256": "1ecab6c735a6bb4139c0caafd0cc3635748bbb3acf4550e8138122099251f309"
+          "url": "https://crates.io/api/v1/crates/smallvec/1.8.0/download",
+          "sha256": "f2dd574626839106c320a323308629dcb1acfc96e32a8cba364ddc61ac23ee83"
         }
       },
       "targets": [
@@ -5328,7 +5408,7 @@
       "library_target_name": "smallvec",
       "common_attrs": {
         "edition": "2018",
-        "version": "1.7.0"
+        "version": "1.8.0"
       },
       "license": "MIT/Apache-2.0"
     },
@@ -5602,13 +5682,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "tempfile 3.2.0": {
+    "tempfile 3.3.0": {
       "name": "tempfile",
-      "version": "3.2.0",
+      "version": "3.3.0",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/tempfile/3.2.0/download",
-          "sha256": "dac1c663cfc93810f88aed9b8941d48cabf856a1b111c29a40439018d870eb22"
+          "url": "https://crates.io/api/v1/crates/tempfile/3.3.0/download",
+          "sha256": "5cdb1ef4eaeeaddc8fbd371e5017057064af0911902ef36b39801f67cc6d79e4"
         }
       },
       "targets": [
@@ -5634,8 +5714,8 @@
               "target": "cfg_if"
             },
             {
-              "id": "rand 0.8.4",
-              "target": "rand"
+              "id": "fastrand 1.6.0",
+              "target": "fastrand"
             },
             {
               "id": "remove_dir_all 0.5.3",
@@ -5643,16 +5723,16 @@
             }
           ],
           "selects": {
+            "cfg(any(unix, target_os = \"wasi\"))": [
+              {
+                "id": "libc 0.2.112",
+                "target": "libc"
+              }
+            ],
             "cfg(target_os = \"redox\")": [
               {
                 "id": "redox_syscall 0.2.10",
                 "target": "syscall"
-              }
-            ],
-            "cfg(unix)": [
-              {
-                "id": "libc 0.2.112",
-                "target": "libc"
               }
             ],
             "cfg(windows)": [
@@ -5664,7 +5744,7 @@
           }
         },
         "edition": "2018",
-        "version": "3.2.0"
+        "version": "3.3.0"
       },
       "license": "MIT OR Apache-2.0"
     },
@@ -6701,7 +6781,7 @@
         "deps": {
           "common": [
             {
-              "id": "clap 3.0.5",
+              "id": "clap 3.0.7",
               "target": "clap"
             },
             {
@@ -7180,6 +7260,25 @@
       "x86_64-unknown-freebsd",
       "x86_64-unknown-linux-gnu"
     ],
+    "cfg(any(unix, target_os = \"wasi\"))": [
+      "aarch64-apple-darwin",
+      "aarch64-apple-ios",
+      "aarch64-linux-android",
+      "aarch64-unknown-linux-gnu",
+      "arm-unknown-linux-gnueabi",
+      "i686-apple-darwin",
+      "i686-linux-android",
+      "i686-unknown-freebsd",
+      "i686-unknown-linux-gnu",
+      "powerpc-unknown-linux-gnu",
+      "s390x-unknown-linux-gnu",
+      "wasm32-wasi",
+      "x86_64-apple-darwin",
+      "x86_64-apple-ios",
+      "x86_64-linux-android",
+      "x86_64-unknown-freebsd",
+      "x86_64-unknown-linux-gnu"
+    ],
     "cfg(not(target_os = \"emscripten\"))": [
       "aarch64-apple-darwin",
       "aarch64-apple-ios",
@@ -7207,6 +7306,10 @@
     ],
     "cfg(target = \"i686-pc-windows-gnu\")": [],
     "cfg(target = \"x86_64-pc-windows-gnu\")": [],
+    "cfg(target_arch = \"wasm32\")": [
+      "wasm32-unknown-unknown",
+      "wasm32-wasi"
+    ],
     "cfg(target_os = \"emscripten\")": [],
     "cfg(target_os = \"hermit\")": [],
     "cfg(target_os = \"redox\")": [],

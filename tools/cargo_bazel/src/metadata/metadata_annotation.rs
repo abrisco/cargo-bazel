@@ -229,8 +229,7 @@ impl LockfileAnnotation {
             return Ok(SourceAnnotation::Http {
                 url: format!(
                     "https://crates.io/api/v1/crates/{}/{}/download",
-                    lock_pkg.name.to_string(),
-                    lock_pkg.version.to_string()
+                    lock_pkg.name, lock_pkg.version,
                 ),
                 sha256: lock_pkg
                     .checksum
