@@ -1,5 +1,5 @@
 {
-  "checksum": "6a2c79dcf613b232d92671c4ee655fa38f03189320dd9c4e233a069896254eff",
+  "checksum": "3294cf3d5bd443842f5327875de31bd8c0c49b94b321638133f397b7302f6992",
   "crates": {
     "aho-corasick 0.7.18": {
       "name": "aho-corasick",
@@ -946,7 +946,7 @@
               "target": "http"
             },
             {
-              "id": "indexmap 1.7.0",
+              "id": "indexmap 1.8.0",
               "target": "indexmap"
             },
             {
@@ -1344,13 +1344,13 @@
       },
       "license": "MIT"
     },
-    "indexmap 1.7.0": {
+    "indexmap 1.8.0": {
       "name": "indexmap",
-      "version": "1.7.0",
+      "version": "1.8.0",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/indexmap/1.7.0/download",
-          "sha256": "bc633605454125dec4b66843673f01c7df2b89479b32e0ed634e43a91cff62a5"
+          "url": "https://crates.io/api/v1/crates/indexmap/1.8.0/download",
+          "sha256": "282a6247722caba404c065016bbfa522806e51714c34f5dfc3e4a3a46fcb4223"
         }
       },
       "targets": [
@@ -1391,14 +1391,14 @@
               "target": "hashbrown"
             },
             {
-              "id": "indexmap 1.7.0",
+              "id": "indexmap 1.8.0",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.7.0"
+        "version": "1.8.0"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -2332,7 +2332,7 @@
               "target": "build_script_build"
             },
             {
-              "id": "smallvec 1.7.0",
+              "id": "smallvec 1.8.0",
               "target": "smallvec"
             }
           ],
@@ -3195,13 +3195,13 @@
       },
       "license": "MIT"
     },
-    "smallvec 1.7.0": {
+    "smallvec 1.8.0": {
       "name": "smallvec",
-      "version": "1.7.0",
+      "version": "1.8.0",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/smallvec/1.7.0/download",
-          "sha256": "1ecab6c735a6bb4139c0caafd0cc3635748bbb3acf4550e8138122099251f309"
+          "url": "https://crates.io/api/v1/crates/smallvec/1.8.0/download",
+          "sha256": "f2dd574626839106c320a323308629dcb1acfc96e32a8cba364ddc61ac23ee83"
         }
       },
       "targets": [
@@ -3221,7 +3221,7 @@
       "library_target_name": "smallvec",
       "common_attrs": {
         "edition": "2018",
-        "version": "1.7.0"
+        "version": "1.8.0"
       },
       "license": "MIT/Apache-2.0"
     },
@@ -4199,7 +4199,7 @@
               "target": "sharded_slab"
             },
             {
-              "id": "smallvec 1.7.0",
+              "id": "smallvec 1.8.0",
               "target": "smallvec"
             },
             {
