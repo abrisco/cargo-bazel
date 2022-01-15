@@ -1,0 +1,4 @@
+# AUTO GENERATED: DO NOT MODIFY
+
+build --deleted_packages=examples/cargo_workspace/printer,examples/cargo_workspace/num_printer,examples/cargo_workspace,examples/cargo_workspace/rng,examples/extra_workspace_members,examples/cargo_aliases,examples/cargo_local,examples/cargo_remote,examples/no_cargo_manifests,examples/multi_package/sub_pkgs/pkg_c,examples/multi_package/sub_pkgs/pkg_b,examples/multi_package/pkg_a,examples/multi_package,examples/multi_package/3rdparty
+query --deleted_packages=examples/cargo_workspace/printer,examples/cargo_workspace/num_printer,examples/cargo_workspace,examples/cargo_workspace/rng,examples/extra_workspace_members,examples/cargo_aliases,examples/cargo_local,examples/cargo_remote,examples/no_cargo_manifests,examples/multi_package/sub_pkgs/pkg_c,examples/multi_package/sub_pkgs/pkg_b,examples/multi_package/pkg_a,examples/multi_package,examples/multi_package/3rdparty

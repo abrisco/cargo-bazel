@@ -6,14 +6,12 @@ exports_files([
     "Cargo.toml",
     "Cargo.lock",
     "Cargo.Bazel.lock",
+    ".bazelversion",
 ])
 
 filegroup(
     name = "distro",
-    srcs = glob(
-        include = ["*.bzl"],
-        exclude = ["deps_bootstrap.bzl"],
-    ) + [
+    srcs = glob(["*.bzl"]) + [
         "README.md",
         "BUILD.bazel",
         "WORKSPACE.bazel",

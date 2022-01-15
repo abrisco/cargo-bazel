@@ -1,0 +1,49 @@
+workspace(name = "cargo_bazel_examples")
+
+local_repository(
+    name = "cargo_bazel",
+    path = "../../",
+)
+
+load("@cargo_bazel//:deps.bzl", "cargo_bazel_deps")
+
+cargo_bazel_deps()
+
+# Note: Bootstrapping is not necessary when using official releases. For the purposes
+# of this example, it's only here to allow the workspace to build successfully in CI
+# at an arbitrary commit.
+load("@cargo_bazel//:deps_bootstrap.bzl", "cargo_bazel_bootstrap")
+
+cargo_bazel_bootstrap()
+
+load("@rules_rust//rust:repositories.bzl", "rust_repositories")
+
+rust_repositories()
+
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+load("@cargo_bazel//:defs.bzl", "crates_repository")
+
+http_archive(
+    name = "names",
+    build_file = "//:BUILD.names.bazel",
+    sha256 = "9a143ae56c0f9bc375be22a6b25c959ad042e83e7d6be2392074e77ee8257d0e",
+    strip_prefix = "names-0.12.0",
+    urls = ["https://github.com/fnichol/names/archive/refs/tags/v0.12.0.zip"],
+)
+
+crates_repository(
+    name = "crate_index_cargo_remote",
+    # `generator` is not necessary in official releases.
+    # See load satement for `cargo_bazel_bootstrap`.
+    generator = "@cargo_bazel_bootstrap//:cargo-bazel",
+    lockfile = "@names//:Cargo.lock",
+    lockfile_kind = "cargo",
+    manifests = ["@names//:Cargo.toml"],
+)
+
+load(
+    "@crate_index_cargo_remote//:defs.bzl",
+    cargo_remote_crate_repositories = "crate_repositories",
+)
+
+cargo_remote_crate_repositories()

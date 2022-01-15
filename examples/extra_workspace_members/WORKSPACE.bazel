@@ -1,0 +1,51 @@
+workspace(name = "cargo_bazel_examples")
+
+local_repository(
+    name = "cargo_bazel",
+    path = "../../",
+)
+
+load("@cargo_bazel//:deps.bzl", "cargo_bazel_deps")
+
+cargo_bazel_deps()
+
+# Note: Bootstrapping is not necessary when using official releases. For the purposes
+# of this example, it's only here to allow the workspace to build successfully in CI
+# at an arbitrary commit.
+load("@cargo_bazel//:deps_bootstrap.bzl", "cargo_bazel_bootstrap")
+
+cargo_bazel_bootstrap()
+
+load("@rules_rust//rust:repositories.bzl", "rust_repositories")
+
+rust_repositories()
+
+load("@cargo_bazel//:defs.bzl", "crate", "crates_repository")
+
+crates_repository(
+    name = "crate_index_extra_members",
+    annotations = {
+        "image": [crate.annotation(
+            compile_data_glob = ["**/*.md"],
+            version = "*",
+        )],
+    },
+    extra_workspace_members = {
+        "texture-synthesis-cli": crate.workspace_member(
+            sha256 = "a7dbdf13f5e6f214750fce1073279b71ce3076157a8d337c9b0f0e14334e2aec",
+            version = "0.8.2",
+        ),
+    },
+    # `generator` is not necessary in official releases.
+    # See load satement for `cargo_bazel_bootstrap`.
+    generator = "@cargo_bazel_bootstrap//:cargo-bazel",
+    lockfile = "//:Cargo.Bazel.lock",
+    manifests = ["//:Cargo.toml"],
+)
+
+load(
+    "@crate_index_extra_members//:defs.bzl",
+    extra_workspace_members_crate_repositories = "crate_repositories",
+)
+
+extra_workspace_members_crate_repositories()

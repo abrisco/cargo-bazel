@@ -1,0 +1,71 @@
+workspace(name = "cargo_bazel_examples")
+
+local_repository(
+    name = "cargo_bazel",
+    path = "../../",
+)
+
+load("@cargo_bazel//:deps.bzl", "cargo_bazel_deps")
+
+cargo_bazel_deps()
+
+# Note: Bootstrapping is not necessary when using official releases. For the purposes
+# of this example, it's only here to allow the workspace to build successfully in CI
+# at an arbitrary commit.
+load("@cargo_bazel//:deps_bootstrap.bzl", "cargo_bazel_bootstrap")
+
+cargo_bazel_bootstrap()
+
+load("@rules_rust//rust:repositories.bzl", "rust_repositories")
+
+rust_repositories()
+
+load("@cargo_bazel//:defs.bzl", "crate", "crates_repository", "splicing_config")
+
+crates_repository(
+    name = "no_cargo",
+    # `generator` is not necessary in official releases.
+    # See load satement for `cargo_bazel_bootstrap`.
+    generator = "@cargo_bazel_bootstrap//:cargo-bazel",
+    lockfile = "//:Cargo.Bazel.lock",
+    packages = {
+        "axum": crate.spec(
+            version = "0.2.5",
+        ),
+        "hyper": crate.spec(
+            features = ["full"],
+            version = "0.14",
+        ),
+        "serde_json": crate.spec(
+            version = "1.0",
+        ),
+        "tokio": crate.spec(
+            features = ["full"],
+            version = "1.0",
+        ),
+        "tower": crate.spec(
+            features = ["util"],
+            version = "0.4",
+        ),
+        "tower-http": crate.spec(
+            features = ["trace"],
+            version = "0.1",
+        ),
+        "tracing": crate.spec(
+            version = "0.1",
+        ),
+        "tracing-subscriber": crate.spec(
+            version = "0.2",
+        ),
+    },
+    splicing_config = splicing_config(
+        resolver_version = "2",
+    ),
+)
+
+load(
+    "@no_cargo//:defs.bzl",
+    no_cargo_crate_repositories = "crate_repositories",
+)
+
+no_cargo_crate_repositories()

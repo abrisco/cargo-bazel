@@ -1,5 +1,5 @@
 {
-  "checksum": "4b436a0f2cd47cab84357468b068c736c28e626711829bc9aded12857ea0f775",
+  "checksum": "4acfdb159ac0e3ed0dac065772dba7c665538971d1b643d396750d9da0766c08",
   "crates": {
     "adler32 1.2.0": {
       "name": "adler32",
@@ -3007,7 +3007,7 @@
     "texture-synthesis-cli 0.8.2"
   ],
   "workspace_members": {
-    "extra_workspace_members 0.1.0": "extra_workspace_members"
+    "extra_workspace_members 0.1.0": ""
   },
   "conditions": {
     "cfg(all(any(target_arch = \"x86_64\", target_arch = \"aarch64\"), target_os = \"hermit\"))": [],

@@ -8,6 +8,9 @@ build:strict --output_groups=+rustfmt_checks
 build:strict --aspects=@rules_rust//rust:defs.bzl%rust_clippy_aspect
 build:strict --output_groups=+clippy_checks
 
+# Flags required to support the example integration tests
+import %workspace%/examples/deleted_packages.bazelrc
+
 # This import should always be last to allow users to override
 # settings for local development.
 try-import %workspace%/user.bazelrc

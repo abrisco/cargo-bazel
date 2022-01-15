@@ -1,5 +1,5 @@
 {
-  "checksum": "f36436add34fd2809ab36131ee8b1b092287ad97bdda47cc48eb2cd0a72096eb",
+  "checksum": "f99a67da4287e1aede988e08f42171a056c54375bc1849b45f9b9147a131fd7f",
   "crates": {
     "aho-corasick 0.7.18": {
       "name": "aho-corasick",
@@ -251,7 +251,7 @@
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.74",
+              "id": "serde_json 1.0.75",
               "target": "serde_json"
             },
             {
@@ -491,7 +491,7 @@
               "target": "hyper"
             },
             {
-              "id": "serde_json 1.0.74",
+              "id": "serde_json 1.0.75",
               "target": "serde_json"
             },
             {
@@ -2960,13 +2960,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "serde_json 1.0.74": {
+    "serde_json 1.0.75": {
       "name": "serde_json",
-      "version": "1.0.74",
+      "version": "1.0.75",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/serde_json/1.0.74/download",
-          "sha256": "ee2bb9cd061c5865d345bb02ca49fcef1391741b672b54a0bf7b679badec3142"
+          "url": "https://crates.io/api/v1/crates/serde_json/1.0.75/download",
+          "sha256": "c059c05b48c5c0067d4b4b2b4f0732dd65feb52daf7e0ea09cd87e7dadc1af79"
         }
       },
       "targets": [
@@ -3016,14 +3016,14 @@
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.74",
+              "id": "serde_json 1.0.75",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.0.74"
+        "version": "1.0.75"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -4191,7 +4191,7 @@
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.74",
+              "id": "serde_json 1.0.75",
               "target": "serde_json"
             },
             {

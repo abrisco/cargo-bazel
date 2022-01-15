@@ -1,0 +1,40 @@
+workspace(name = "cargo_bazel_examples")
+
+local_repository(
+    name = "cargo_bazel",
+    path = "../../",
+)
+
+load("@cargo_bazel//:deps.bzl", "cargo_bazel_deps")
+
+cargo_bazel_deps()
+
+# Note: Bootstrapping is not necessary when using official releases. For the purposes
+# of this example, it's only here to allow the workspace to build successfully in CI
+# at an arbitrary commit.
+load("@cargo_bazel//:deps_bootstrap.bzl", "cargo_bazel_bootstrap")
+
+cargo_bazel_bootstrap()
+
+load("@rules_rust//rust:repositories.bzl", "rust_repositories")
+
+rust_repositories()
+
+load("@cargo_bazel//:defs.bzl", "crates_repository")
+
+crates_repository(
+    name = "crate_index_cargo_local",
+    # `generator` is not necessary in official releases.
+    # See load satement for `cargo_bazel_bootstrap`.
+    generator = "@cargo_bazel_bootstrap//:cargo-bazel",
+    lockfile = "//:Cargo.lock",
+    lockfile_kind = "cargo",
+    manifests = ["//:Cargo.toml"],
+)
+
+load(
+    "@crate_index_cargo_local//:defs.bzl",
+    cargo_local_crate_repositories = "crate_repositories",
+)
+
+cargo_local_crate_repositories()

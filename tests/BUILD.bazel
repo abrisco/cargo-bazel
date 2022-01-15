@@ -1,25 +1,25 @@
-load("@rules_rust//rust:defs.bzl", "rust_test")
-load("//tools/examples_runner:examples_runner.bzl", "examples_runner")
+# load("@rules_rust//rust:defs.bzl", "rust_test")
+# load("//tools/examples_runner:examples_runner.bzl", "examples_runner")
 
-# Unfortunately there aren't really options for Bazel-in-Bazel testing.
-# This has to be a run target for now...
-examples_runner(
-    name = "examples",
-    cargo_bazel_bin = "//tools/cargo_bazel:bin",
-    distro_archive = "//distro",
-    examples_package = "examples",
-)
+# # Unfortunately there aren't really options for Bazel-in-Bazel testing.
+# # This has to be a run target for now...
+# examples_runner(
+#     name = "examples",
+#     cargo_bazel_bin = "//tools/cargo_bazel:bin",
+#     distro_archive = "//distro",
+#     examples_package = "examples",
+# )
 
-rust_test(
-    name = "versions_test",
-    srcs = ["version_test.rs"],
-    data = [
-        "//:version.bzl",
-        "//tools/cargo_bazel:Cargo.toml",
-    ],
-    rustc_env = {
-        "CARGO_TOML": "$(rootpath //tools/cargo_bazel:Cargo.toml)",
-        "VERSION_BZL": "$(rootpath //:version.bzl)",
-    },
-    use_libtest_harness = False,
-)
+# rust_test(
+#     name = "versions_test",
+#     srcs = ["version_test.rs"],
+#     data = [
+#         "//:version.bzl",
+#         "//tools/cargo_bazel:Cargo.toml",
+#     ],
+#     rustc_env = {
+#         "CARGO_TOML": "$(rootpath //tools/cargo_bazel:Cargo.toml)",
+#         "VERSION_BZL": "$(rootpath //:version.bzl)",
+#     },
+#     use_libtest_harness = False,
+# )

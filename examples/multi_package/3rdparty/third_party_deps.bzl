@@ -14,7 +14,7 @@ def third_party_deps(prefix = ""):
     maybe(
         http_archive,
         name = (prefix + "__" + "openssl").lstrip("_"),
-        build_file = Label("//multi_package/3rdparty:BUILD.openssl.bazel"),
+        build_file = Label("//3rdparty:BUILD.openssl.bazel"),
         sha256 = "892a0875b9872acd04a9fde79b1f943075d5ea162415de3047c327df33fbaee5",
         strip_prefix = "openssl-1.1.1k",
         urls = [
@@ -27,7 +27,7 @@ def third_party_deps(prefix = ""):
     maybe(
         http_archive,
         name = (prefix + "__" + "nasm").lstrip("_"),
-        build_file = Label("//multi_package/3rdparty:BUILD.nasm.bazel"),
+        build_file = Label("//3rdparty:BUILD.nasm.bazel"),
         sha256 = "f5c93c146f52b4f1664fa3ce6579f961a910e869ab0dae431bd871bdd2584ef2",
         strip_prefix = "nasm-2.15.05",
         urls = [
@@ -39,7 +39,7 @@ def third_party_deps(prefix = ""):
     maybe(
         http_archive,
         name = (prefix + "__" + "perl").lstrip("_"),
-        build_file = Label("//multi_package/3rdparty:BUILD.perl.bazel"),
+        build_file = Label("//3rdparty:BUILD.perl.bazel"),
         sha256 = "aeb973da474f14210d3e1a1f942dcf779e2ae7e71e4c535e6c53ebabe632cc98",
         urls = [
             "https://mirror.bazel.build/strawberryperl.com/download/5.32.1.1/strawberry-perl-5.32.1.1-64bit.zip",
@@ -50,7 +50,7 @@ def third_party_deps(prefix = ""):
     maybe(
         http_archive,
         name = (prefix + "__" + "curl").lstrip("_"),
-        build_file = Label("//multi_package/3rdparty:BUILD.curl.bazel"),
+        build_file = Label("//3rdparty:BUILD.curl.bazel"),
         sha256 = "e56b3921eeb7a2951959c02db0912b5fcd5fdba5aca071da819e1accf338bbd7",
         strip_prefix = "curl-7.74.0",
         type = "tar.gz",
@@ -75,7 +75,7 @@ def third_party_deps(prefix = ""):
     maybe(
         http_archive,
         name = (prefix + "__" + "libssh2").lstrip("_"),
-        build_file = Label("//multi_package/3rdparty:BUILD.libssh2.bazel"),
+        build_file = Label("//3rdparty:BUILD.libssh2.bazel"),
         sha256 = "d5fb8bd563305fd1074dda90bd053fb2d29fc4bce048d182f96eaa466dfadafd",
         strip_prefix = "libssh2-1.9.0",
         type = "tar.gz",

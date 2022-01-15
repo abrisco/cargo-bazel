@@ -87,14 +87,6 @@ jobs:
         if: startswith(matrix.os, 'Windows')
 
       # Build and Test the code
-      - name: Build
-        run: |
-          if [[ "${RUNNER_OS}" == "Windows" ]]; then
-            bazel ${BAZEL_STARTUP_FLAGS[@]} build ///...
-          else
-            bazel ${BAZEL_STARTUP_FLAGS[@]} build //...
-          fi
-
       - name: Test
         run: |
           if [[ "${RUNNER_OS}" == "Windows" ]]; then

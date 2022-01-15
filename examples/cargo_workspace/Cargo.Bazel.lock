@@ -1,5 +1,5 @@
 {
-  "checksum": "9015dcc05f99dc93b698fc9c2c52fdfeadaefac311680cb9c85b15c602a85460",
+  "checksum": "001ffc0266465c72d74fa831b96368fa1768819a6aa9d6d5719328e08fa4cd29",
   "crates": {
     "ansi_term 0.12.1": {
       "name": "ansi_term",
@@ -1287,10 +1287,10 @@
   },
   "binary_crates": [],
   "workspace_members": {
-    "direct-cargo-bazel-deps 0.0.1": "cargo_workspace",
-    "num_printer 0.1.0": "cargo_workspace/num_printer",
-    "printer 0.1.0": "cargo_workspace/printer",
-    "rng 0.1.0": "cargo_workspace/rng"
+    "direct-cargo-bazel-deps 0.0.1": "",
+    "num_printer 0.1.0": "num_printer",
+    "printer 0.1.0": "printer",
+    "rng 0.1.0": "rng"
   },
   "conditions": {
     "cfg(not(target_os = \"emscripten\"))": [

@@ -8,7 +8,7 @@ rust_library(
     srcs = ["src/lib.rs"],
     edition = "2018",
     deps = [
-        "//cargo_workspace/rng",
+        "//rng",
     ] + all_crate_deps(),
 )
 

@@ -68,6 +68,7 @@ crates_repository(
     lockfile = "//:Cargo.Bazel.lock",
     manifests = [
         "//:Cargo.toml",
+        "//tools/bazel_integration:Cargo.toml",
         "//tools/cargo_bazel:Cargo.toml",
         "//tools/cross_installer:Cargo.toml",
         "//tools/examples_runner:Cargo.toml",
@@ -109,6 +110,15 @@ http_archive(
 load("@rules_pkg//:deps.bzl", "rules_pkg_dependencies")
 
 rules_pkg_dependencies()
+
+# For integration testing
+load("//tools/bazel_integration:bazel_integration.bzl", "bazel_binary_repository")
+
+bazel_binary_repository(
+    name = "bazel_integration",
+    bazel_version_file = "//:.bazelversion",
+    sha256 = "288660a310193c492a38a0480c42c74789564c09511e6adc045b5b4b4f117f7d",
+)
 
 # For internal tooling
 http_archive(

@@ -1,0 +1,37 @@
+load(
+    "//tools/bazel_integration:bazel_integration.bzl",
+    "write_deleted_packages",
+)
+load(":example_test.bzl", "example_test")
+
+example_test(
+    name = "cargo_aliases",
+)
+
+example_test(
+    name = "cargo_local",
+)
+
+example_test(
+    name = "cargo_remote",
+)
+
+example_test(
+    name = "cargo_workspace",
+)
+
+example_test(
+    name = "extra_workspace_members",
+)
+
+example_test(
+    name = "multi_package",
+)
+
+example_test(
+    name = "no_cargo_manifests",
+)
+
+write_deleted_packages(
+    name = "deleted_packages",
+)

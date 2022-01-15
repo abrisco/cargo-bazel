@@ -1,5 +1,5 @@
 {
-  "checksum": "21e418ce83aed212e75b61246172203b68decb74923524ac411b7696b21c40dd",
+  "checksum": "926f9853af788490b9d7e257d8ad5aae9bdd01a3f4255e7b5777f3aa91bb9ad2",
   "crates": {
     "aho-corasick 0.7.18": {
       "name": "aho-corasick",
@@ -1263,7 +1263,7 @@
   },
   "binary_crates": [],
   "workspace_members": {
-    "aliases 0.1.0": "cargo_aliases"
+    "aliases 0.1.0": ""
   },
   "conditions": {
     "cfg(target = \"i686-pc-windows-gnu\")": [],
