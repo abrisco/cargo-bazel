@@ -2,6 +2,23 @@
 
 load(":common_utils.bzl", "cargo_environ", "execute")
 
+def splicing_config(resolver_version = "1"):
+    """arious settings used to configure Cargo manifest splicing behavior.
+
+    [rv]: https://doc.rust-lang.org/cargo/reference/resolver.html#resolver-versions
+
+    Args:
+        resolver_version (str, optional): The [resolver version][rv] to use in generated Cargo
+            manifests. This flag is **only** used when splicing a manifest from direct package
+            definitions. See `crates_repository::packages`.
+
+    Returns:
+        str: A json encoded string of the parameters provided
+    """
+    return json.encode(struct(
+        resolver_version = resolver_version,
+    ))
+
 def download_extra_workspace_members(repository_ctx, cache_dir, render_template_registry_url):
     """Download additional workspace members for use in splicing.
 
@@ -83,15 +100,24 @@ def create_splicing_manifest(repository_ctx):
     else:
         cargo_config = None
 
+    # Load user configurable splicing settings
+    config = json.decode(repository_ctx.attr.splicing_config or splicing_config())
+
+    # Auto-generated splicier manifest values
+    splicing_manifest_content = {
+        "cargo_config": cargo_config,
+        "direct_packages": direct_packages_info,
+        "manifests": manifests,
+    }
+
     # Serialize information required for splicing
     splicing_manifest = repository_ctx.path("{}/splicing_manifest.json".format(repo_dir))
     repository_ctx.file(
         splicing_manifest,
-        json.encode_indent(struct(
-            direct_packages = direct_packages_info,
-            manifests = manifests,
-            cargo_config = cargo_config,
-        ), indent = " " * 4),
+        json.encode_indent(
+            dict(dict(config).items() + splicing_manifest_content.items()),
+            indent = " " * 4,
+        ),
     )
 
     return splicing_manifest
