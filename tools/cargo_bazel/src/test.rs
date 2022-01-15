@@ -59,6 +59,14 @@ pub mod metadata {
         .unwrap()
     }
 
+    pub fn crate_types() -> cargo_metadata::Metadata {
+        serde_json::from_str(include_str!(concat!(
+            env!("CARGO_MANIFEST_DIR"),
+            "/test_data/metadata/crate_types/metadata.json"
+        )))
+        .unwrap()
+    }
+
     pub fn no_deps() -> cargo_metadata::Metadata {
         serde_json::from_str(include_str!(concat!(
             env!("CARGO_MANIFEST_DIR"),
@@ -99,6 +107,14 @@ pub mod lockfile {
         cargo_lock::Lockfile::from_str(include_str!(concat!(
             env!("CARGO_MANIFEST_DIR"),
             "/test_data/metadata/build_scripts/Cargo.lock"
+        )))
+        .unwrap()
+    }
+
+    pub fn crate_types() -> cargo_lock::Lockfile {
+        cargo_lock::Lockfile::from_str(include_str!(concat!(
+            env!("CARGO_MANIFEST_DIR"),
+            "/test_data/metadata/crate_types/Cargo.lock"
         )))
         .unwrap()
     }

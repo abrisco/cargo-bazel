@@ -559,7 +559,7 @@ impl CrateContext {
                         }
 
                         // Check to see if the dependencies is a library target
-                        if kind == "lib" {
+                        if ["lib", "rlib"].contains(&kind.as_str()) {
                             return Some(Rule::Library(TargetAttributes {
                                 crate_name,
                                 crate_root,
@@ -695,6 +695,15 @@ mod test {
         .unwrap()
     }
 
+    fn crate_type_annotations() -> Annotations {
+        Annotations::new(
+            crate::test::metadata::crate_types(),
+            crate::test::lockfile::crate_types(),
+            crate::config::Config::default(),
+        )
+        .unwrap()
+    }
+
     #[test]
     fn context_with_build_script() {
         let annotations = build_script_annotations();
@@ -761,6 +770,37 @@ mod test {
             context.targets,
             vec![Rule::Library(TargetAttributes {
                 crate_name: "openssl_sys".to_owned(),
+                crate_root: Some("src/lib.rs".to_owned()),
+                srcs: Glob::new_rust_srcs(),
+            })],
+        );
+    }
+
+    #[test]
+    fn context_rlib_crate_type() {
+        let annotations = crate_type_annotations();
+
+        let package_id = PackageId {
+            repr: "sysinfo 0.22.5 (registry+https://github.com/rust-lang/crates.io-index)"
+                .to_owned(),
+        };
+
+        let crate_annotation = &annotations.metadata.crates[&package_id];
+
+        let context = CrateContext::new(
+            crate_annotation,
+            &annotations.metadata.packages,
+            &annotations.lockfile.crates,
+            &annotations.pairred_extras,
+            false,
+        );
+
+        assert_eq!(context.name, "sysinfo");
+        assert!(context.build_script_attrs.is_none());
+        assert_eq!(
+            context.targets,
+            vec![Rule::Library(TargetAttributes {
+                crate_name: "sysinfo".to_owned(),
                 crate_root: Some("src/lib.rs".to_owned()),
                 srcs: Glob::new_rust_srcs(),
             })],
