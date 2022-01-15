@@ -46,6 +46,9 @@ pub struct SplicingManifest {
 
     /// The path of a Cargo config file
     pub cargo_config: Option<PathBuf>,
+
+    /// The Cargo resolver version to use for splicing
+    pub resolver_version: cargo_toml::Resolver,
 }
 
 impl FromStr for SplicingManifest {

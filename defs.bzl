@@ -5,6 +5,7 @@
 - [crate.workspace_member](#crateworkspace_member)
 - [crate.annotation](#crateannotation)
 - [render_config](#render_config)
+- [splicing_config](#splicing_config)
 
 """
 
@@ -25,11 +26,13 @@ load(
     "//private:splicing_utils.bzl",
     "create_splicing_manifest",
     "splice_workspace_manifest",
+    _splicing_config = "splicing_config",
 )
 load("//private:urls.bzl", "CARGO_BAZEL_SHA256S", "CARGO_BAZEL_URLS")
 
 # Reexport this symbol so users can easiliy access it from this file.
 render_config = _render_config
+splicing_config = _splicing_config
 
 def _crates_repository_impl(repository_ctx):
     # Determine the current host's platform triple
@@ -224,6 +227,12 @@ Environment Variables:
         "rust_version": attr.string(
             doc = "The version of Rust the currently registered toolchain is using. Eg. `1.56.0`, or `nightly-2021-09-08`",
             default = rust_common.default_version,
+        ),
+        "splicing_config": attr.string(
+            doc = (
+                "The configuration flags to use for splicing Cargo maniests. Use `@cargo_bazel//:defs.bzl\\%rsplicing_config` to " +
+                "generate the value for this field. If unset, the defaults defined there will be used."
+            ),
         ),
         "supported_platform_triples": attr.string_list(
             doc = "A set of all platform triples to consider when generating dependencies.",

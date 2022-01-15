@@ -244,7 +244,8 @@ impl<'a> SplicerKind<'a> {
         // Ensure the root package manifest has a populated `workspace` member
         let mut manifest = (*manifest).clone();
         if manifest.workspace.is_none() {
-            manifest.workspace = default_cargo_workspace_manifest().workspace
+            manifest.workspace =
+                default_cargo_workspace_manifest(&splicing_manifest.resolver_version).workspace
         }
 
         // Add additional workspace members to the new manifest
@@ -277,7 +278,7 @@ impl<'a> SplicerKind<'a> {
         splicing_manifest: &&SplicingManifest,
         extra_manifests_manifest: &&ExtraManifestsManifest,
     ) -> Result<SplicedManifest> {
-        let mut manifest = default_cargo_workspace_manifest();
+        let mut manifest = default_cargo_workspace_manifest(&splicing_manifest.resolver_version);
 
         // Optionally install a cargo config file into the workspace root.
         Self::setup_cargo_config(&splicing_manifest.cargo_config, workspace_dir)?;
@@ -527,16 +528,18 @@ pub fn default_cargo_package_manifest() -> cargo_toml::Manifest {
     manifest
 }
 
-pub fn default_cargo_workspace_manifest() -> cargo_toml::Manifest {
+pub fn default_cargo_workspace_manifest(
+    resolver_version: &cargo_toml::Resolver,
+) -> cargo_toml::Manifest {
     // A manifest is generated with a fake workspace member so the [cargo_toml::Manifest::Workspace]
     // member is deseralized and is not `None`.
-    let mut manifest = cargo_toml::Manifest::from_str(
-        &toml::toml! {
+    let mut manifest = cargo_toml::Manifest::from_str(&textwrap::dedent(&format!(
+        r#"
             [workspace]
-            members = ["TEMP"]
-        }
-        .to_string(),
-    )
+            resolver = "{}"
+        "#,
+        resolver_version.to_string()
+    )))
     .unwrap();
 
     // Drop the temp workspace member
@@ -1046,6 +1049,66 @@ mod test {
         .unwrap()
         .splice_workspace()
         .unwrap();
+
+        // Check the default resolver version
+        let cargo_manifest = cargo_toml::Manifest::from_str(
+            &fs::read_to_string(workspace_manifest.as_path_buf()).unwrap(),
+        )
+        .unwrap();
+        assert!(cargo_manifest.workspace.is_some());
+        assert_eq!(
+            cargo_manifest.workspace.unwrap().resolver,
+            Some(cargo_toml::Resolver::V1)
+        );
+
+        // Ensure metadata is valid
+        let metadata = generate_metadata(workspace_manifest.as_path_buf());
+        assert_sort_eq!(
+            metadata.workspace_members,
+            vec![
+                new_package_id("pkg_a", workspace_root.as_ref(), false),
+                new_package_id("pkg_b", workspace_root.as_ref(), false),
+                new_package_id("pkg_c", workspace_root.as_ref(), false),
+                // Multi package renderings always add a root package
+                new_package_id("direct-cargo-bazel-deps", workspace_root.as_ref(), true),
+            ]
+        );
+
+        // Ensure the workspace metadata annotations are populated
+        assert_eq!(metadata.workspace_metadata, mock_workspace_metadata(false));
+
+        // Ensure lockfile was successfully spliced
+        cargo_lock::Lockfile::load(workspace_root.as_ref().join("Cargo.lock")).unwrap();
+    }
+
+    #[test]
+    fn splice_multi_package_with_resolver() {
+        let (mut splicing_manifest, _cache_dir) = mock_splicing_manifest_with_multi_package();
+
+        // Update the resolver version
+        splicing_manifest.resolver_version = cargo_toml::Resolver::V2;
+
+        // Splice the workspace
+        let workspace_root = tempfile::tempdir().unwrap();
+        let workspace_manifest = Splicer::new(
+            workspace_root.as_ref().to_path_buf(),
+            splicing_manifest,
+            ExtraManifestsManifest::default(),
+        )
+        .unwrap()
+        .splice_workspace()
+        .unwrap();
+
+        // Check the specified resolver version
+        let cargo_manifest = cargo_toml::Manifest::from_str(
+            &fs::read_to_string(workspace_manifest.as_path_buf()).unwrap(),
+        )
+        .unwrap();
+        assert!(cargo_manifest.workspace.is_some());
+        assert_eq!(
+            cargo_manifest.workspace.unwrap().resolver,
+            Some(cargo_toml::Resolver::V2)
+        );
 
         // Ensure metadata is valid
         let metadata = generate_metadata(workspace_manifest.as_path_buf());

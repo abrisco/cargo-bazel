@@ -13,7 +13,7 @@ load("@rules_rust//rust:repositories.bzl", "rust_repositories")
 
 rust_repositories()
 
-load("@cargo_bazel//:defs.bzl", "crate", "crates_repository")
+load("@cargo_bazel//:defs.bzl", "crate", "crates_repository", "splicing_config")
 
 ###############################################################################
 # C A R G O   A L I A S E S
@@ -263,6 +263,9 @@ crates_repository(
             version = "0.2",
         ),
     },
+    splicing_config = splicing_config(
+        resolver_version = "2",
+    ),
 )
 
 load(
