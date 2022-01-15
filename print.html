@@ -277,6 +277,7 @@ rust_test(
 <li><a href="rules.html#crateworkspace_member">crate.workspace_member</a></li>
 <li><a href="rules.html#crateannotation">crate.annotation</a></li>
 <li><a href="rules.html#render_config">render_config</a></li>
+<li><a href="rules.html#splicing_config">splicing_config</a></li>
 </ul>
 <p><a id="#crates_repository"></a></p>
 <h2 id="crates_repository"><a class="header" href="#crates_repository">crates_repository</a></h2>
@@ -285,7 +286,8 @@ crates_repository(<a href="rules.html#crates_repository-name">name</a>, <a href=
                   <a href="rules.html#crates_repository-extra_workspace_members">extra_workspace_members</a>, <a href="rules.html#crates_repository-generate_build_scripts">generate_build_scripts</a>, <a href="rules.html#crates_repository-generator">generator</a>, <a href="rules.html#crates_repository-generator_sha256s">generator_sha256s</a>,
                   <a href="rules.html#crates_repository-generator_urls">generator_urls</a>, <a href="rules.html#crates_repository-isolated">isolated</a>, <a href="rules.html#crates_repository-lockfile">lockfile</a>, <a href="rules.html#crates_repository-lockfile_kind">lockfile_kind</a>, <a href="rules.html#crates_repository-manifests">manifests</a>, <a href="rules.html#crates_repository-packages">packages</a>, <a href="rules.html#crates_repository-quiet">quiet</a>,
                   <a href="rules.html#crates_repository-render_config">render_config</a>, <a href="rules.html#crates_repository-repo_mapping">repo_mapping</a>, <a href="rules.html#crates_repository-rust_toolchain_cargo_template">rust_toolchain_cargo_template</a>,
-                  <a href="rules.html#crates_repository-rust_toolchain_rustc_template">rust_toolchain_rustc_template</a>, <a href="rules.html#crates_repository-rust_version">rust_version</a>, <a href="rules.html#crates_repository-supported_platform_triples">supported_platform_triples</a>)
+                  <a href="rules.html#crates_repository-rust_toolchain_rustc_template">rust_toolchain_rustc_template</a>, <a href="rules.html#crates_repository-rust_version">rust_version</a>, <a href="rules.html#crates_repository-splicing_config">splicing_config</a>,
+                  <a href="rules.html#crates_repository-supported_platform_triples">supported_platform_triples</a>)
 </pre>
 <p>A rule for defining and downloading Rust dependencies (crates).</p>
 <p>Environment Variables:</p>
@@ -317,6 +319,7 @@ crates_repository(<a href="rules.html#crates_repository-name">name</a>, <a href=
 <tr><td align="left"><a id="crates_repository-rust_toolchain_cargo_template"></a>rust_toolchain_cargo_template</td><td align="left">The template to use for finding the host <code>cargo</code> binary. <code>{version}</code> (eg. '1.53.0'), <code>{triple}</code> (eg. 'x86_64-unknown-linux-gnu'), <code>{arch}</code> (eg. 'aarch64'), <code>{vendor}</code> (eg. 'unknown'), <code>{system}</code> (eg. 'darwin'), <code>{cfg}</code> (eg. 'exec'), and <code>{tool}</code> (eg. 'rustc.exe') will be replaced in the string if present.</td><td align="left">String</td><td align="left">optional</td><td align="left">&quot;@rust_{system}_{arch}//:bin/{tool}&quot;</td></tr>
 <tr><td align="left"><a id="crates_repository-rust_toolchain_rustc_template"></a>rust_toolchain_rustc_template</td><td align="left">The template to use for finding the host <code>rustc</code> binary. <code>{version}</code> (eg. '1.53.0'), <code>{triple}</code> (eg. 'x86_64-unknown-linux-gnu'), <code>{arch}</code> (eg. 'aarch64'), <code>{vendor}</code> (eg. 'unknown'), <code>{system}</code> (eg. 'darwin'), <code>{cfg}</code> (eg. 'exec'), and <code>{tool}</code> (eg. 'cargo.exe') will be replaced in the string if present.</td><td align="left">String</td><td align="left">optional</td><td align="left">&quot;@rust_{system}_{arch}//:bin/{tool}&quot;</td></tr>
 <tr><td align="left"><a id="crates_repository-rust_version"></a>rust_version</td><td align="left">The version of Rust the currently registered toolchain is using. Eg. <code>1.56.0</code>, or <code>nightly-2021-09-08</code></td><td align="left">String</td><td align="left">optional</td><td align="left">&quot;1.58.0&quot;</td></tr>
+<tr><td align="left"><a id="crates_repository-splicing_config"></a>splicing_config</td><td align="left">The configuration flags to use for splicing Cargo maniests. Use <code>@cargo_bazel//:defs.bzl%rsplicing_config</code> to generate the value for this field. If unset, the defaults defined there will be used.</td><td align="left">String</td><td align="left">optional</td><td align="left">&quot;&quot;</td></tr>
 <tr><td align="left"><a id="crates_repository-supported_platform_triples"></a>supported_platform_triples</td><td align="left">A set of all platform triples to consider when generating dependencies.</td><td align="left">List of strings</td><td align="left">optional</td><td align="left">[&quot;i686-apple-darwin&quot;, &quot;i686-pc-windows-msvc&quot;, &quot;i686-unknown-linux-gnu&quot;, &quot;x86_64-apple-darwin&quot;, &quot;x86_64-pc-windows-msvc&quot;, &quot;x86_64-unknown-linux-gnu&quot;, &quot;aarch64-apple-darwin&quot;, &quot;aarch64-apple-ios&quot;, &quot;aarch64-linux-android&quot;, &quot;aarch64-unknown-linux-gnu&quot;, &quot;arm-unknown-linux-gnueabi&quot;, &quot;i686-linux-android&quot;, &quot;i686-unknown-freebsd&quot;, &quot;powerpc-unknown-linux-gnu&quot;, &quot;s390x-unknown-linux-gnu&quot;, &quot;wasm32-unknown-unknown&quot;, &quot;wasm32-wasi&quot;, &quot;x86_64-apple-ios&quot;, &quot;x86_64-linux-android&quot;, &quot;x86_64-unknown-freebsd&quot;]</td></tr>
 </tbody></table>
 <p><a id="#crate.spec"></a></p>
@@ -414,6 +417,18 @@ can be found below where the supported keys for each template can be found in th
 </tbody></table>
 <p><strong>RETURNS</strong></p>
 <p>string: A json encoded struct to match the Rust <code>config::RenderConfig</code> struct</p>
+<p><a id="#splicing_config"></a></p>
+<h2 id="splicing_config"><a class="header" href="#splicing_config">splicing_config</a></h2>
+<pre>
+splicing_config(<a href="rules.html#splicing_config-resolver_version">resolver_version</a>)
+</pre>
+<p>arious settings used to configure Cargo manifest splicing behavior.</p>
+<p><strong>PARAMETERS</strong></p>
+<table><thead><tr><th align="left">Name</th><th align="left">Description</th><th align="left">Default Value</th></tr></thead><tbody>
+<tr><td align="left"><a id="splicing_config-resolver_version"></a>resolver_version</td><td align="left">The <a href="https://doc.rust-lang.org/cargo/reference/resolver.html#resolver-versions">resolver version</a> to use in generated Cargo manifests. This flag is <strong>only</strong> used when splicing a manifest from direct package definitions. See <code>crates_repository::packages</code>.</td><td align="left"><code>&quot;1&quot;</code></td></tr>
+</tbody></table>
+<p><strong>RETURNS</strong></p>
+<p>str: A json encoded string of the parameters provided</p>
 <div style="break-before: page; page-break-before: always;"></div><!-- Generated with Stardoc: http://skydoc.bazel.build -->
 <h1 id="crates_repository-api"><a class="header" href="#crates_repository-api"><code>crates_repository</code> API</a></h1>
 <ul>
