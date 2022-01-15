@@ -700,7 +700,7 @@ mod test {
         let annotations = build_script_annotations();
 
         let package_id = PackageId {
-            repr: "openssl-sys 0.9.71 (registry+https://github.com/rust-lang/crates.io-index)"
+            repr: "openssl-sys 0.9.72 (registry+https://github.com/rust-lang/crates.io-index)"
                 .to_owned(),
         };
 
@@ -741,7 +741,7 @@ mod test {
         let annotations = build_script_annotations();
 
         let package_id = PackageId {
-            repr: "openssl-sys 0.9.71 (registry+https://github.com/rust-lang/crates.io-index)"
+            repr: "openssl-sys 0.9.72 (registry+https://github.com/rust-lang/crates.io-index)"
                 .to_owned(),
         };
 
