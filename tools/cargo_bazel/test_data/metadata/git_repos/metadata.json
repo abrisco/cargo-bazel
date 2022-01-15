@@ -84,7 +84,8 @@
             "documentation": "https://docs.rs/cfg-if",
             "edition": "2018",
             "links": null,
-            "default_run": null
+            "default_run": null,
+            "rust_version": null
         },
         {
             "name": "git-repos",
@@ -137,7 +138,8 @@
             "documentation": null,
             "edition": "2018",
             "links": null,
-            "default_run": null
+            "default_run": null,
+            "rust_version": null
         },
         {
             "name": "lazy_static",
@@ -244,12 +246,13 @@
             "documentation": "https://docs.rs/lazy_static",
             "edition": "2015",
             "links": null,
-            "default_run": null
+            "default_run": null,
+            "rust_version": null
         },
         {
             "name": "pin-project-lite",
-            "version": "0.2.7",
-            "id": "pin-project-lite 0.2.7 (registry+https://github.com/rust-lang/crates.io-index)",
+            "version": "0.2.8",
+            "id": "pin-project-lite 0.2.8 (registry+https://github.com/rust-lang/crates.io-index)",
             "license": "Apache-2.0 OR MIT",
             "license_file": null,
             "description": "A lightweight version of pin-project written with declarative macros.\n",
@@ -294,7 +297,7 @@
                 {
                     "name": "trybuild",
                     "source": "registry+https://github.com/rust-lang/crates.io-index",
-                    "req": "^1",
+                    "req": "^1.0.49",
                     "kind": "dev",
                     "rename": null,
                     "optional": false,
@@ -313,7 +316,7 @@
                         "lib"
                     ],
                     "name": "pin-project-lite",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/pin-project-lite-0.2.7/src/lib.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/pin-project-lite-0.2.8/src/lib.rs",
                     "edition": "2018",
                     "doc": true,
                     "doctest": true,
@@ -327,7 +330,7 @@
                         "bin"
                     ],
                     "name": "proper_unpin",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/pin-project-lite-0.2.7/tests/proper_unpin.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/pin-project-lite-0.2.8/tests/proper_unpin.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -341,7 +344,7 @@
                         "bin"
                     ],
                     "name": "drop_order",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/pin-project-lite-0.2.7/tests/drop_order.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/pin-project-lite-0.2.8/tests/drop_order.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -355,7 +358,7 @@
                         "bin"
                     ],
                     "name": "test",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/pin-project-lite-0.2.7/tests/test.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/pin-project-lite-0.2.8/tests/test.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -369,7 +372,7 @@
                         "bin"
                     ],
                     "name": "expandtest",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/pin-project-lite-0.2.7/tests/expandtest.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/pin-project-lite-0.2.8/tests/expandtest.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -383,7 +386,7 @@
                         "bin"
                     ],
                     "name": "lint",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/pin-project-lite-0.2.7/tests/lint.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/pin-project-lite-0.2.8/tests/lint.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -397,7 +400,7 @@
                         "bin"
                     ],
                     "name": "compiletest",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/pin-project-lite-0.2.7/tests/compiletest.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/pin-project-lite-0.2.8/tests/compiletest.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -405,7 +408,7 @@
                 }
             ],
             "features": {},
-            "manifest_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/pin-project-lite-0.2.7/Cargo.toml",
+            "manifest_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/pin-project-lite-0.2.8/Cargo.toml",
             "metadata": {
                 "docs": {
                     "rs": {
@@ -416,9 +419,7 @@
                 }
             },
             "publish": null,
-            "authors": [
-                "Taiki Endo <te316e89@gmail.com>"
-            ],
+            "authors": [],
             "categories": [
                 "no-std",
                 "rust-patterns"
@@ -430,15 +431,16 @@
             "readme": "README.md",
             "repository": "https://github.com/taiki-e/pin-project-lite",
             "homepage": null,
-            "documentation": "https://docs.rs/pin-project-lite",
+            "documentation": null,
             "edition": "2018",
             "links": null,
-            "default_run": null
+            "default_run": null,
+            "rust_version": "1.37"
         },
         {
             "name": "proc-macro2",
-            "version": "1.0.33",
-            "id": "proc-macro2 1.0.33 (registry+https://github.com/rust-lang/crates.io-index)",
+            "version": "1.0.36",
+            "id": "proc-macro2 1.0.36 (registry+https://github.com/rust-lang/crates.io-index)",
             "license": "MIT OR Apache-2.0",
             "license_file": null,
             "description": "A substitute implementation of the compiler's `proc_macro` API to decouple\ntoken-based libraries from the procedural macro use case.\n",
@@ -478,7 +480,7 @@
                         "lib"
                     ],
                     "name": "proc-macro2",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.33/src/lib.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/lib.rs",
                     "edition": "2018",
                     "doc": true,
                     "doctest": true,
@@ -492,7 +494,7 @@
                         "bin"
                     ],
                     "name": "features",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.33/tests/features.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/tests/features.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -506,7 +508,7 @@
                         "bin"
                     ],
                     "name": "test",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.33/tests/test.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/tests/test.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -520,7 +522,7 @@
                         "bin"
                     ],
                     "name": "test_fmt",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.33/tests/test_fmt.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/tests/test_fmt.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -534,7 +536,7 @@
                         "bin"
                     ],
                     "name": "comments",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.33/tests/comments.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/tests/comments.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -548,7 +550,7 @@
                         "bin"
                     ],
                     "name": "marker",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.33/tests/marker.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/tests/marker.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -562,7 +564,7 @@
                         "bin"
                     ],
                     "name": "build-script-build",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.33/build.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/build.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -577,7 +579,7 @@
                 "proc-macro": [],
                 "span-locations": []
             },
-            "manifest_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.33/Cargo.toml",
+            "manifest_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/Cargo.toml",
             "metadata": {
                 "docs": {
                     "rs": {
@@ -619,12 +621,13 @@
             "documentation": "https://docs.rs/proc-macro2",
             "edition": "2018",
             "links": null,
-            "default_run": null
+            "default_run": null,
+            "rust_version": "1.31"
         },
         {
             "name": "quote",
-            "version": "1.0.10",
-            "id": "quote 1.0.10 (registry+https://github.com/rust-lang/crates.io-index)",
+            "version": "1.0.14",
+            "id": "quote 1.0.14 (registry+https://github.com/rust-lang/crates.io-index)",
             "license": "MIT OR Apache-2.0",
             "license_file": null,
             "description": "Quasi-quoting macro quote!(...)",
@@ -633,7 +636,7 @@
                 {
                     "name": "proc-macro2",
                     "source": "registry+https://github.com/rust-lang/crates.io-index",
-                    "req": "^1.0.20",
+                    "req": "^1.0.36",
                     "kind": null,
                     "rename": null,
                     "optional": false,
@@ -657,7 +660,7 @@
                 {
                     "name": "trybuild",
                     "source": "registry+https://github.com/rust-lang/crates.io-index",
-                    "req": "^1.0.19",
+                    "req": "^1.0.52",
                     "kind": "dev",
                     "rename": null,
                     "optional": false,
@@ -678,7 +681,7 @@
                         "lib"
                     ],
                     "name": "quote",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/quote-1.0.10/src/lib.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/quote-1.0.14/src/lib.rs",
                     "edition": "2018",
                     "doc": true,
                     "doctest": true,
@@ -692,7 +695,7 @@
                         "bin"
                     ],
                     "name": "test",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/quote-1.0.10/tests/test.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/quote-1.0.14/tests/test.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -706,25 +709,11 @@
                         "bin"
                     ],
                     "name": "compiletest",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/quote-1.0.10/tests/compiletest.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/quote-1.0.14/tests/compiletest.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
                     "test": true
-                },
-                {
-                    "kind": [
-                        "bench"
-                    ],
-                    "crate_types": [
-                        "bin"
-                    ],
-                    "name": "bench",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/quote-1.0.10/benches/bench.rs",
-                    "edition": "2018",
-                    "doc": false,
-                    "doctest": false,
-                    "test": false
                 }
             ],
             "features": {
@@ -735,7 +724,7 @@
                     "proc-macro2/proc-macro"
                 ]
             },
-            "manifest_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/quote-1.0.10/Cargo.toml",
+            "manifest_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/quote-1.0.14/Cargo.toml",
             "metadata": {
                 "docs": {
                     "rs": {
@@ -761,12 +750,13 @@
             "documentation": "https://docs.rs/quote/",
             "edition": "2018",
             "links": null,
-            "default_run": null
+            "default_run": null,
+            "rust_version": "1.31"
         },
         {
             "name": "syn",
-            "version": "1.0.82",
-            "id": "syn 1.0.82 (registry+https://github.com/rust-lang/crates.io-index)",
+            "version": "1.0.85",
+            "id": "syn 1.0.85 (registry+https://github.com/rust-lang/crates.io-index)",
             "license": "MIT OR Apache-2.0",
             "license_file": null,
             "description": "Parser for Rust source code",
@@ -810,6 +800,18 @@
                 },
                 {
                     "name": "anyhow",
+                    "source": "registry+https://github.com/rust-lang/crates.io-index",
+                    "req": "^1.0",
+                    "kind": "dev",
+                    "rename": null,
+                    "optional": false,
+                    "uses_default_features": true,
+                    "features": [],
+                    "target": null,
+                    "registry": null
+                },
+                {
+                    "name": "automod",
                     "source": "registry+https://github.com/rust-lang/crates.io-index",
                     "req": "^1.0",
                     "kind": "dev",
@@ -952,7 +954,7 @@
                         "lib"
                     ],
                     "name": "syn",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/src/lib.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.85/src/lib.rs",
                     "edition": "2018",
                     "doc": true,
                     "doctest": true,
@@ -966,7 +968,7 @@
                         "bin"
                     ],
                     "name": "test_should_parse",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_should_parse.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.85/tests/test_should_parse.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -980,7 +982,7 @@
                         "bin"
                     ],
                     "name": "test_visibility",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_visibility.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.85/tests/test_visibility.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -994,7 +996,7 @@
                         "bin"
                     ],
                     "name": "test_stmt",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_stmt.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.85/tests/test_stmt.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1008,7 +1010,7 @@
                         "bin"
                     ],
                     "name": "test_round_trip",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_round_trip.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.85/tests/test_round_trip.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1022,7 +1024,7 @@
                         "bin"
                     ],
                     "name": "test_size",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_size.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.85/tests/test_size.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1036,7 +1038,7 @@
                         "bin"
                     ],
                     "name": "test_shebang",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_shebang.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.85/tests/test_shebang.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1050,7 +1052,7 @@
                         "bin"
                     ],
                     "name": "test_pat",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_pat.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.85/tests/test_pat.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1064,7 +1066,7 @@
                         "bin"
                     ],
                     "name": "test_receiver",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_receiver.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.85/tests/test_receiver.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1078,7 +1080,7 @@
                         "bin"
                     ],
                     "name": "test_precedence",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_precedence.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.85/tests/test_precedence.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1092,7 +1094,21 @@
                         "bin"
                     ],
                     "name": "test_lit",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_lit.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.85/tests/test_lit.rs",
+                    "edition": "2018",
+                    "doc": false,
+                    "doctest": false,
+                    "test": true
+                },
+                {
+                    "kind": [
+                        "test"
+                    ],
+                    "crate_types": [
+                        "bin"
+                    ],
+                    "name": "regression",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.85/tests/regression.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1106,7 +1122,7 @@
                         "bin"
                     ],
                     "name": "test_parse_stream",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_parse_stream.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.85/tests/test_parse_stream.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1120,7 +1136,7 @@
                         "bin"
                     ],
                     "name": "test_grouping",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_grouping.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.85/tests/test_grouping.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1134,7 +1150,7 @@
                         "bin"
                     ],
                     "name": "test_ident",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_ident.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.85/tests/test_ident.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1148,7 +1164,7 @@
                         "bin"
                     ],
                     "name": "test_iterators",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_iterators.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.85/tests/test_iterators.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1162,7 +1178,7 @@
                         "bin"
                     ],
                     "name": "test_parse_buffer",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_parse_buffer.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.85/tests/test_parse_buffer.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1176,7 +1192,7 @@
                         "bin"
                     ],
                     "name": "test_asyncness",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_asyncness.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.85/tests/test_asyncness.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1190,7 +1206,7 @@
                         "bin"
                     ],
                     "name": "test_token_trees",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_token_trees.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.85/tests/test_token_trees.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1204,7 +1220,7 @@
                         "bin"
                     ],
                     "name": "test_ty",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_ty.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.85/tests/test_ty.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1218,7 +1234,7 @@
                         "bin"
                     ],
                     "name": "zzz_stable",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/zzz_stable.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.85/tests/zzz_stable.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1232,7 +1248,7 @@
                         "bin"
                     ],
                     "name": "test_meta",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_meta.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.85/tests/test_meta.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1246,7 +1262,7 @@
                         "bin"
                     ],
                     "name": "test_expr",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_expr.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.85/tests/test_expr.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1260,7 +1276,7 @@
                         "bin"
                     ],
                     "name": "test_item",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_item.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.85/tests/test_item.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1274,7 +1290,7 @@
                         "bin"
                     ],
                     "name": "test_path",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_path.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.85/tests/test_path.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1288,7 +1304,7 @@
                         "bin"
                     ],
                     "name": "test_derive_input",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_derive_input.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.85/tests/test_derive_input.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1302,7 +1318,7 @@
                         "bin"
                     ],
                     "name": "test_generics",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_generics.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.85/tests/test_generics.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1316,7 +1332,7 @@
                         "bin"
                     ],
                     "name": "test_attribute",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/tests/test_attribute.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.85/tests/test_attribute.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1330,7 +1346,7 @@
                         "bin"
                     ],
                     "name": "rust",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/benches/rust.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.85/benches/rust.rs",
                     "edition": "2018",
                     "required-features": [
                         "full",
@@ -1348,7 +1364,7 @@
                         "bin"
                     ],
                     "name": "file",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/benches/file.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.85/benches/file.rs",
                     "edition": "2018",
                     "required-features": [
                         "full",
@@ -1366,7 +1382,7 @@
                         "bin"
                     ],
                     "name": "build-script-build",
-                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/build.rs",
+                    "src_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.85/build.rs",
                     "edition": "2018",
                     "doc": false,
                     "doctest": false,
@@ -1400,7 +1416,7 @@
                 "visit": [],
                 "visit-mut": []
             },
-            "manifest_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.82/Cargo.toml",
+            "manifest_path": "{CARGO_HOME}/registry/src/github.com-1ecc6299db9ec823/syn-1.0.85/Cargo.toml",
             "metadata": {
                 "docs": {
                     "rs": {
@@ -1438,7 +1454,8 @@
             "documentation": "https://docs.rs/syn",
             "edition": "2018",
             "links": null,
-            "default_run": null
+            "default_run": null,
+            "rust_version": "1.31"
         },
         {
             "name": "tracing",
@@ -1850,7 +1867,8 @@
             "documentation": null,
             "edition": "2018",
             "links": null,
-            "default_run": null
+            "default_run": null,
+            "rust_version": null
         },
         {
             "name": "tracing-attributes",
@@ -2124,7 +2142,8 @@
             "documentation": null,
             "edition": "2018",
             "links": null,
-            "default_run": null
+            "default_run": null,
+            "rust_version": null
         },
         {
             "name": "tracing-core",
@@ -2248,7 +2267,8 @@
             "documentation": null,
             "edition": "2018",
             "links": null,
-            "default_run": null
+            "default_run": null,
+            "rust_version": null
         },
         {
             "name": "unicode-xid",
@@ -2341,7 +2361,8 @@
             "documentation": "https://unicode-rs.github.io/unicode-xid",
             "edition": "2015",
             "links": null,
-            "default_run": null
+            "default_run": null,
+            "rust_version": null
         }
     ],
     "workspace_members": [
@@ -2381,13 +2402,13 @@
                 "features": []
             },
             {
-                "id": "pin-project-lite 0.2.7 (registry+https://github.com/rust-lang/crates.io-index)",
+                "id": "pin-project-lite 0.2.8 (registry+https://github.com/rust-lang/crates.io-index)",
                 "dependencies": [],
                 "deps": [],
                 "features": []
             },
             {
-                "id": "proc-macro2 1.0.33 (registry+https://github.com/rust-lang/crates.io-index)",
+                "id": "proc-macro2 1.0.36 (registry+https://github.com/rust-lang/crates.io-index)",
                 "dependencies": [
                     "unicode-xid 0.2.2 (registry+https://github.com/rust-lang/crates.io-index)"
                 ],
@@ -2409,14 +2430,14 @@
                 ]
             },
             {
-                "id": "quote 1.0.10 (registry+https://github.com/rust-lang/crates.io-index)",
+                "id": "quote 1.0.14 (registry+https://github.com/rust-lang/crates.io-index)",
                 "dependencies": [
-                    "proc-macro2 1.0.33 (registry+https://github.com/rust-lang/crates.io-index)"
+                    "proc-macro2 1.0.36 (registry+https://github.com/rust-lang/crates.io-index)"
                 ],
                 "deps": [
                     {
                         "name": "proc_macro2",
-                        "pkg": "proc-macro2 1.0.33 (registry+https://github.com/rust-lang/crates.io-index)",
+                        "pkg": "proc-macro2 1.0.36 (registry+https://github.com/rust-lang/crates.io-index)",
                         "dep_kinds": [
                             {
                                 "kind": null,
@@ -2431,16 +2452,16 @@
                 ]
             },
             {
-                "id": "syn 1.0.82 (registry+https://github.com/rust-lang/crates.io-index)",
+                "id": "syn 1.0.85 (registry+https://github.com/rust-lang/crates.io-index)",
                 "dependencies": [
-                    "proc-macro2 1.0.33 (registry+https://github.com/rust-lang/crates.io-index)",
-                    "quote 1.0.10 (registry+https://github.com/rust-lang/crates.io-index)",
+                    "proc-macro2 1.0.36 (registry+https://github.com/rust-lang/crates.io-index)",
+                    "quote 1.0.14 (registry+https://github.com/rust-lang/crates.io-index)",
                     "unicode-xid 0.2.2 (registry+https://github.com/rust-lang/crates.io-index)"
                 ],
                 "deps": [
                     {
                         "name": "proc_macro2",
-                        "pkg": "proc-macro2 1.0.33 (registry+https://github.com/rust-lang/crates.io-index)",
+                        "pkg": "proc-macro2 1.0.36 (registry+https://github.com/rust-lang/crates.io-index)",
                         "dep_kinds": [
                             {
                                 "kind": null,
@@ -2450,7 +2471,7 @@
                     },
                     {
                         "name": "quote",
-                        "pkg": "quote 1.0.10 (registry+https://github.com/rust-lang/crates.io-index)",
+                        "pkg": "quote 1.0.14 (registry+https://github.com/rust-lang/crates.io-index)",
                         "dep_kinds": [
                             {
                                 "kind": null,
@@ -2485,7 +2506,7 @@
                 "id": "tracing 0.2.0 (git+https://github.com/tokio-rs/tracing.git?rev=1e09e50e8d15580b5929adbade9c782a6833e4a0#1e09e50e8d15580b5929adbade9c782a6833e4a0)",
                 "dependencies": [
                     "cfg-if 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
-                    "pin-project-lite 0.2.7 (registry+https://github.com/rust-lang/crates.io-index)",
+                    "pin-project-lite 0.2.8 (registry+https://github.com/rust-lang/crates.io-index)",
                     "tracing-attributes 0.2.0 (git+https://github.com/tokio-rs/tracing.git?rev=1e09e50e8d15580b5929adbade9c782a6833e4a0#1e09e50e8d15580b5929adbade9c782a6833e4a0)",
                     "tracing-core 0.2.0 (git+https://github.com/tokio-rs/tracing.git?rev=1e09e50e8d15580b5929adbade9c782a6833e4a0#1e09e50e8d15580b5929adbade9c782a6833e4a0)"
                 ],
@@ -2502,7 +2523,7 @@
                     },
                     {
                         "name": "pin_project_lite",
-                        "pkg": "pin-project-lite 0.2.7 (registry+https://github.com/rust-lang/crates.io-index)",
+                        "pkg": "pin-project-lite 0.2.8 (registry+https://github.com/rust-lang/crates.io-index)",
                         "dep_kinds": [
                             {
                                 "kind": null,
@@ -2542,14 +2563,14 @@
             {
                 "id": "tracing-attributes 0.2.0 (git+https://github.com/tokio-rs/tracing.git?rev=1e09e50e8d15580b5929adbade9c782a6833e4a0#1e09e50e8d15580b5929adbade9c782a6833e4a0)",
                 "dependencies": [
-                    "proc-macro2 1.0.33 (registry+https://github.com/rust-lang/crates.io-index)",
-                    "quote 1.0.10 (registry+https://github.com/rust-lang/crates.io-index)",
-                    "syn 1.0.82 (registry+https://github.com/rust-lang/crates.io-index)"
+                    "proc-macro2 1.0.36 (registry+https://github.com/rust-lang/crates.io-index)",
+                    "quote 1.0.14 (registry+https://github.com/rust-lang/crates.io-index)",
+                    "syn 1.0.85 (registry+https://github.com/rust-lang/crates.io-index)"
                 ],
                 "deps": [
                     {
                         "name": "proc_macro2",
-                        "pkg": "proc-macro2 1.0.33 (registry+https://github.com/rust-lang/crates.io-index)",
+                        "pkg": "proc-macro2 1.0.36 (registry+https://github.com/rust-lang/crates.io-index)",
                         "dep_kinds": [
                             {
                                 "kind": null,
@@ -2559,7 +2580,7 @@
                     },
                     {
                         "name": "quote",
-                        "pkg": "quote 1.0.10 (registry+https://github.com/rust-lang/crates.io-index)",
+                        "pkg": "quote 1.0.14 (registry+https://github.com/rust-lang/crates.io-index)",
                         "dep_kinds": [
                             {
                                 "kind": null,
@@ -2569,7 +2590,7 @@
                     },
                     {
                         "name": "syn",
-                        "pkg": "syn 1.0.82 (registry+https://github.com/rust-lang/crates.io-index)",
+                        "pkg": "syn 1.0.85 (registry+https://github.com/rust-lang/crates.io-index)",
                         "dep_kinds": [
                             {
                                 "kind": null,

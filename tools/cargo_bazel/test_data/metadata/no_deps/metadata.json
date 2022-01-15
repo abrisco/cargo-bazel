@@ -38,7 +38,8 @@
             "documentation": null,
             "edition": "2018",
             "links": null,
-            "default_run": null
+            "default_run": null,
+            "rust_version": null
         }
     ],
     "workspace_members": [

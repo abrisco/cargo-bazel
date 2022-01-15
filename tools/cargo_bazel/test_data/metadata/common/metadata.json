@@ -187,7 +187,8 @@
             "documentation": "https://docs.rs/bitflags",
             "edition": "2018",
             "links": null,
-            "default_run": null
+            "default_run": null,
+            "rust_version": null
         },
         {
             "name": "cfg-if",
@@ -273,7 +274,8 @@
             "documentation": "https://docs.rs/cfg-if",
             "edition": "2018",
             "links": null,
-            "default_run": null
+            "default_run": null,
+            "rust_version": null
         },
         {
             "name": "common",
@@ -366,7 +368,8 @@
             "documentation": null,
             "edition": "2018",
             "links": null,
-            "default_run": null
+            "default_run": null,
+            "rust_version": null
         }
     ],
     "workspace_members": [
