@@ -110,15 +110,7 @@ fn main() {
 
     let startup_args = parse_startup_args();
 
-    // Build all targets
-    execute_bazel(
-        &startup_args,
-        &["build", "//...", override_repo.as_str()],
-        &examples_dir,
-        &envs,
-    );
-
-    // Test all targets
+    // Build and test all targets
     execute_bazel(
         &startup_args,
         &["test", "//...", override_repo.as_str()],
@@ -129,15 +121,7 @@ fn main() {
     // Update the environment
     envs.insert("CARGO_BAZEL_REPIN".to_owned(), "true".to_owned());
 
-    // Build all targets while repinning
-    execute_bazel(
-        &startup_args,
-        &["build", "//...", override_repo.as_str()],
-        &examples_dir,
-        &envs,
-    );
-
-    // Test all targets
+    // Build and test all targets while repinning
     execute_bazel(
         &startup_args,
         &["test", "//...", override_repo.as_str()],
