@@ -143,10 +143,12 @@ fn collect_deps_selectable(
 }
 
 fn is_lib_package(package: &Package) -> bool {
-    package
-        .targets
-        .iter()
-        .any(|target| target.crate_types.iter().any(|t| t == "lib"))
+    package.targets.iter().any(|target| {
+        target
+            .crate_types
+            .iter()
+            .any(|t| ["lib", "rlib"].contains(&t.as_str()))
+    })
 }
 
 fn is_proc_macro_package(package: &Package) -> bool {
@@ -232,6 +234,7 @@ mod test {
 
     use crate::test::*;
 
+    /// Locate the [cargo_metadata::Node] for the crate matching the given name
     fn find_metadata_node<'a>(
         name: &str,
         metadata: &'a cargo_metadata::Metadata,
@@ -289,5 +292,31 @@ mod test {
 
         let log_alias = aliases.iter().last().unwrap();
         assert_eq!(log_alias.alias.as_ref().unwrap(), "pinned_log");
+    }
+
+    #[test]
+    fn matched_rlib() {
+        let metadata = metadata::crate_types();
+
+        let node = find_metadata_node("crate-types", &metadata);
+        let dependencies = DependencySet::new_for_node(node, &metadata);
+
+        let rlib_deps: Vec<&Dependency> = dependencies
+            .normal_deps
+            .get_iter(None)
+            .unwrap()
+            .filter(|dep| {
+                let pkg = &metadata[&dep.package_id];
+                pkg.targets
+                    .iter()
+                    .any(|t| t.crate_types.contains(&"rlib".to_owned()))
+            })
+            .collect();
+
+        // Currently the only expected __explicitly__ "rlib" target in this metadata is `sysinfo`.
+        assert_eq!(rlib_deps.len(), 1);
+
+        let sysinfo_dep = rlib_deps.iter().last().unwrap();
+        assert_eq!(sysinfo_dep.target_name, "sysinfo");
     }
 }
