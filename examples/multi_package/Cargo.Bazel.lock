@@ -1,5 +1,5 @@
 {
-  "checksum": "aa8f5653bcc3332551db3c2b47ae2db9a1590fbd7445d77892c777e724e26fc9",
+  "checksum": "8fe6b165aed23072dd4f39923da2e628bbbeec2a6e15ad246a3d4952e6c70f44",
   "crates": {
     "aho-corasick 0.7.18": {
       "name": "aho-corasick",
@@ -175,7 +175,7 @@
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.74",
+              "id": "serde_json 1.0.75",
               "target": "serde_json"
             }
           ],
@@ -3704,7 +3704,7 @@
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.74",
+              "id": "serde_json 1.0.75",
               "target": "serde_json"
             },
             {
@@ -5299,11 +5299,11 @@
                 "target": "libc"
               },
               {
-                "id": "security-framework 2.4.2",
+                "id": "security-framework 2.5.0",
                 "target": "security_framework"
               },
               {
-                "id": "security-framework-sys 2.4.2",
+                "id": "security-framework-sys 2.5.0",
                 "target": "security_framework_sys"
               },
               {
@@ -6056,7 +6056,7 @@
         "deps": {
           "common": [
             {
-              "id": "siphasher 0.3.7",
+              "id": "siphasher 0.3.9",
               "target": "siphasher"
             }
           ],
@@ -6879,11 +6879,11 @@
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.74",
+              "id": "serde_json 1.0.75",
               "target": "serde_json"
             },
             {
-              "id": "serde_urlencoded 0.7.0",
+              "id": "serde_urlencoded 0.7.1",
               "target": "serde_urlencoded"
             },
             {
@@ -7153,13 +7153,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "security-framework 2.4.2": {
+    "security-framework 2.5.0": {
       "name": "security-framework",
-      "version": "2.4.2",
+      "version": "2.5.0",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/security-framework/2.4.2/download",
-          "sha256": "525bc1abfda2e1998d152c45cf13e696f76d0a4972310b22fac1658b05df7c87"
+          "url": "https://crates.io/api/v1/crates/security-framework/2.5.0/download",
+          "sha256": "d09d3c15d814eda1d6a836f2f2b56a6abc1446c8a34351cb3180d3db92ffe4ce"
         }
       },
       "targets": [
@@ -7201,24 +7201,24 @@
               "target": "libc"
             },
             {
-              "id": "security-framework-sys 2.4.2",
+              "id": "security-framework-sys 2.5.0",
               "target": "security_framework_sys"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
-        "version": "2.4.2"
+        "version": "2.5.0"
       },
       "license": "MIT OR Apache-2.0"
     },
-    "security-framework-sys 2.4.2": {
+    "security-framework-sys 2.5.0": {
       "name": "security-framework-sys",
-      "version": "2.4.2",
+      "version": "2.5.0",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/security-framework-sys/2.4.2/download",
-          "sha256": "a9dd14d83160b528b7bfd66439110573efcfbe281b17fc2ca9f39f550d619c7e"
+          "url": "https://crates.io/api/v1/crates/security-framework-sys/2.5.0/download",
+          "sha256": "e90dd10c41c6bfc633da6e0c659bd25d31e0791e5974ac42970267d59eba87f7"
         }
       },
       "targets": [
@@ -7255,7 +7255,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "2.4.2"
+        "version": "2.5.0"
       },
       "license": "MIT OR Apache-2.0"
     },
@@ -7401,13 +7401,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "serde_json 1.0.74": {
+    "serde_json 1.0.75": {
       "name": "serde_json",
-      "version": "1.0.74",
+      "version": "1.0.75",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/serde_json/1.0.74/download",
-          "sha256": "ee2bb9cd061c5865d345bb02ca49fcef1391741b672b54a0bf7b679badec3142"
+          "url": "https://crates.io/api/v1/crates/serde_json/1.0.75/download",
+          "sha256": "c059c05b48c5c0067d4b4b2b4f0732dd65feb52daf7e0ea09cd87e7dadc1af79"
         }
       },
       "targets": [
@@ -7457,14 +7457,14 @@
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.74",
+              "id": "serde_json 1.0.75",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.0.74"
+        "version": "1.0.75"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -7516,13 +7516,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "serde_urlencoded 0.7.0": {
+    "serde_urlencoded 0.7.1": {
       "name": "serde_urlencoded",
-      "version": "0.7.0",
+      "version": "0.7.1",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/serde_urlencoded/0.7.0/download",
-          "sha256": "edfa57a7f8d9c1d260a549e7224100f6c43d43f9103e06dd8b4095a9b2b43ce9"
+          "url": "https://crates.io/api/v1/crates/serde_urlencoded/0.7.1/download",
+          "sha256": "d3491c14715ca2294c4d6a88f15e84739788c1d030eed8c110436aafdaa2f3fd"
         }
       },
       "targets": [
@@ -7548,7 +7548,7 @@
               "target": "form_urlencoded"
             },
             {
-              "id": "itoa 0.4.8",
+              "id": "itoa 1.0.1",
               "target": "itoa"
             },
             {
@@ -7563,7 +7563,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.7.0"
+        "version": "0.7.1"
       },
       "license": "MIT/Apache-2.0"
     },
@@ -7708,13 +7708,13 @@
       },
       "license": "Apache-2.0"
     },
-    "siphasher 0.3.7": {
+    "siphasher 0.3.9": {
       "name": "siphasher",
-      "version": "0.3.7",
+      "version": "0.3.9",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/siphasher/0.3.7/download",
-          "sha256": "533494a8f9b724d33625ab53c6c4800f7cc445895924a8ef649222dcb76e938b"
+          "url": "https://crates.io/api/v1/crates/siphasher/0.3.9/download",
+          "sha256": "a86232ab60fa71287d7f2ddae4a7073f6b7aac33631c3015abb556f08c6d0a3e"
         }
       },
       "targets": [
@@ -7738,7 +7738,7 @@
           "std"
         ],
         "edition": "2018",
-        "version": "0.3.7"
+        "version": "0.3.9"
       },
       "license": "MIT/Apache-2.0"
     },

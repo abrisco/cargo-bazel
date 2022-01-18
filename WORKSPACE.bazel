@@ -20,7 +20,7 @@ crates_repository(
     name = "crate_index",
     annotations = {
         "cargo_toml": [crate.annotation(
-            shallow_since = "1642277669 -0800",
+            shallow_since = "1642478894 +0000",
         )],
         "chrono-tz": [crate.annotation(
             build_script_data_glob = ["**/tz/**"],

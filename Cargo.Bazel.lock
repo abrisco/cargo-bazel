@@ -1,5 +1,5 @@
 {
-  "checksum": "113717910f9178f1a0b2031f6cb6e2646a15a3528b2dfed0f87a6dbf60c0c4fc",
+  "checksum": "69576f4578154ca337e60a956d618ce51a7bd3b7ae923c1aa61eef6f19daee0e",
   "crates": {
     "adler 1.0.2": {
       "name": "adler",
@@ -481,13 +481,13 @@
       },
       "license": "Unlicense OR MIT"
     },
-    "camino 1.0.5": {
+    "camino 1.0.7": {
       "name": "camino",
-      "version": "1.0.5",
+      "version": "1.0.7",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/camino/1.0.5/download",
-          "sha256": "52d74260d9bf6944e2208aa46841b4b8f0d7ffc0849a06837b2f510337f86b2b"
+          "url": "https://crates.io/api/v1/crates/camino/1.0.7/download",
+          "sha256": "6f3132262930b0522068049f5870a856ab8affc80c70d08b6ecb785771a6fc23"
         }
       },
       "targets": [
@@ -525,7 +525,7 @@
         "deps": {
           "common": [
             {
-              "id": "camino 1.0.5",
+              "id": "camino 1.0.7",
               "target": "build_script_build"
             },
             {
@@ -536,7 +536,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.0.5"
+        "version": "1.0.7"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -596,7 +596,7 @@
               "target": "cargo_metadata"
             },
             {
-              "id": "cargo_toml 0.10.0",
+              "id": "cargo_toml 0.10.3",
               "target": "cargo_toml"
             },
             {
@@ -604,7 +604,7 @@
               "target": "cfg_expr"
             },
             {
-              "id": "clap 3.0.7",
+              "id": "clap 3.0.9",
               "target": "clap"
             },
             {
@@ -632,7 +632,7 @@
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.74",
+              "id": "serde_json 1.0.75",
               "target": "serde_json"
             },
             {
@@ -801,7 +801,7 @@
         "deps": {
           "common": [
             {
-              "id": "camino 1.0.5",
+              "id": "camino 1.0.7",
               "target": "camino"
             },
             {
@@ -817,7 +817,7 @@
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.74",
+              "id": "serde_json 1.0.75",
               "target": "serde_json"
             }
           ],
@@ -828,16 +828,16 @@
       },
       "license": "MIT"
     },
-    "cargo_toml 0.10.0": {
+    "cargo_toml 0.10.3": {
       "name": "cargo_toml",
-      "version": "0.10.0",
+      "version": "0.10.3",
       "repository": {
         "Git": {
           "remote": "https://gitlab.com/UebelAndre/cargo_toml.git",
           "commitish": {
-            "Rev": "6fb3bbcafdf80ce3ad3c4d65a2b80c16f70f1ca7"
+            "Rev": "91cf5b82a4cd8ac762b43cc77f4116e64d15386b"
           },
-          "shallow_since": "1642277669 -0800"
+          "shallow_since": "1642478894 +0000"
         }
       },
       "targets": [
@@ -879,7 +879,7 @@
           ],
           "selects": {}
         },
-        "version": "0.10.0"
+        "version": "0.10.3"
       },
       "license": "Apache-2.0 OR MIT"
     },
@@ -1195,13 +1195,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "clap 3.0.7": {
+    "clap 3.0.9": {
       "name": "clap",
-      "version": "3.0.7",
+      "version": "3.0.9",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/clap/3.0.7/download",
-          "sha256": "12e8611f9ae4e068fa3e56931fded356ff745e70987ff76924a6e0ab1c8ef2e3"
+          "url": "https://crates.io/api/v1/crates/clap/3.0.9/download",
+          "sha256": "8c506244a13c87262f84bf16369740d0b7c3850901b6a642aa41b031a710c473"
         }
       },
       "targets": [
@@ -1283,7 +1283,7 @@
           ],
           "selects": {}
         },
-        "version": "3.0.7"
+        "version": "3.0.9"
       },
       "license": "MIT OR Apache-2.0"
     },
@@ -1441,7 +1441,7 @@
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.74",
+              "id": "serde_json 1.0.75",
               "target": "serde_json"
             },
             {
@@ -1552,7 +1552,7 @@
         "deps": {
           "common": [
             {
-              "id": "clap 3.0.7",
+              "id": "clap 3.0.9",
               "target": "clap"
             }
           ],
@@ -4120,7 +4120,7 @@
         "deps": {
           "common": [
             {
-              "id": "siphasher 0.3.7",
+              "id": "siphasher 0.3.9",
               "target": "siphasher"
             },
             {
@@ -5134,13 +5134,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "serde_json 1.0.74": {
+    "serde_json 1.0.75": {
       "name": "serde_json",
-      "version": "1.0.74",
+      "version": "1.0.75",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/serde_json/1.0.74/download",
-          "sha256": "ee2bb9cd061c5865d345bb02ca49fcef1391741b672b54a0bf7b679badec3142"
+          "url": "https://crates.io/api/v1/crates/serde_json/1.0.75/download",
+          "sha256": "c059c05b48c5c0067d4b4b2b4f0732dd65feb52daf7e0ea09cd87e7dadc1af79"
         }
       },
       "targets": [
@@ -5191,14 +5191,14 @@
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.74",
+              "id": "serde_json 1.0.75",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.0.74"
+        "version": "1.0.75"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -5312,13 +5312,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "siphasher 0.3.7": {
+    "siphasher 0.3.9": {
       "name": "siphasher",
-      "version": "0.3.7",
+      "version": "0.3.9",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/siphasher/0.3.7/download",
-          "sha256": "533494a8f9b724d33625ab53c6c4800f7cc445895924a8ef649222dcb76e938b"
+          "url": "https://crates.io/api/v1/crates/siphasher/0.3.9/download",
+          "sha256": "a86232ab60fa71287d7f2ddae4a7073f6b7aac33631c3015abb556f08c6d0a3e"
         }
       },
       "targets": [
@@ -5342,7 +5342,7 @@
           "std"
         ],
         "edition": "2018",
-        "version": "0.3.7"
+        "version": "0.3.9"
       },
       "license": "MIT/Apache-2.0"
     },
@@ -5832,7 +5832,7 @@
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.74",
+              "id": "serde_json 1.0.75",
               "target": "serde_json"
             },
             {
@@ -6784,7 +6784,7 @@
         "deps": {
           "common": [
             {
-              "id": "clap 3.0.7",
+              "id": "clap 3.0.9",
               "target": "clap"
             },
             {
@@ -6792,7 +6792,7 @@
               "target": "hex"
             },
             {
-              "id": "serde_json 1.0.74",
+              "id": "serde_json 1.0.75",
               "target": "serde_json"
             },
             {

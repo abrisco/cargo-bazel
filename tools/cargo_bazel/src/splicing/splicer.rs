@@ -538,7 +538,7 @@ pub fn default_cargo_workspace_manifest(
             [workspace]
             resolver = "{}"
         "#,
-        resolver_version.to_string()
+        resolver_version,
     )))
     .unwrap();
 
