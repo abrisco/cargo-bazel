@@ -1,5 +1,5 @@
 {
-  "checksum": "f36436add34fd2809ab36131ee8b1b092287ad97bdda47cc48eb2cd0a72096eb",
+  "checksum": "f9779d676d7793794919bddf01fa3a4fe03e2d50ae6da6141ba7e6eb9d7fa2e2",
   "crates": {
     "aho-corasick 0.7.18": {
       "name": "aho-corasick",
@@ -251,11 +251,11 @@
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.74",
+              "id": "serde_json 1.0.75",
               "target": "serde_json"
             },
             {
-              "id": "serde_urlencoded 0.7.0",
+              "id": "serde_urlencoded 0.7.1",
               "target": "serde_urlencoded"
             },
             {
@@ -491,7 +491,7 @@
               "target": "hyper"
             },
             {
-              "id": "serde_json 1.0.74",
+              "id": "serde_json 1.0.75",
               "target": "serde_json"
             },
             {
@@ -2960,13 +2960,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "serde_json 1.0.74": {
+    "serde_json 1.0.75": {
       "name": "serde_json",
-      "version": "1.0.74",
+      "version": "1.0.75",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/serde_json/1.0.74/download",
-          "sha256": "ee2bb9cd061c5865d345bb02ca49fcef1391741b672b54a0bf7b679badec3142"
+          "url": "https://crates.io/api/v1/crates/serde_json/1.0.75/download",
+          "sha256": "c059c05b48c5c0067d4b4b2b4f0732dd65feb52daf7e0ea09cd87e7dadc1af79"
         }
       },
       "targets": [
@@ -3016,14 +3016,14 @@
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.74",
+              "id": "serde_json 1.0.75",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.0.74"
+        "version": "1.0.75"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -3032,13 +3032,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "serde_urlencoded 0.7.0": {
+    "serde_urlencoded 0.7.1": {
       "name": "serde_urlencoded",
-      "version": "0.7.0",
+      "version": "0.7.1",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/serde_urlencoded/0.7.0/download",
-          "sha256": "edfa57a7f8d9c1d260a549e7224100f6c43d43f9103e06dd8b4095a9b2b43ce9"
+          "url": "https://crates.io/api/v1/crates/serde_urlencoded/0.7.1/download",
+          "sha256": "d3491c14715ca2294c4d6a88f15e84739788c1d030eed8c110436aafdaa2f3fd"
         }
       },
       "targets": [
@@ -3064,7 +3064,7 @@
               "target": "form_urlencoded"
             },
             {
-              "id": "itoa 0.4.8",
+              "id": "itoa 1.0.1",
               "target": "itoa"
             },
             {
@@ -3079,7 +3079,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.7.0"
+        "version": "0.7.1"
       },
       "license": "MIT/Apache-2.0"
     },
@@ -4191,7 +4191,7 @@
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.74",
+              "id": "serde_json 1.0.75",
               "target": "serde_json"
             },
             {
