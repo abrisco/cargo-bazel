@@ -1,4 +1,4 @@
-use std::fmt;
+use std::fmt::{self, Display};
 use std::str::FromStr;
 
 use anyhow::{bail, Context, Result};
@@ -47,8 +47,8 @@ impl FromStr for Label {
     }
 }
 
-impl ToString for Label {
-    fn to_string(&self) -> String {
+impl Display for Label {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         let mut label = String::new();
 
         // Add the repository
@@ -61,7 +61,7 @@ impl ToString for Label {
             label = format!("{}//{}", label, pkg);
         }
 
-        format!("{}:{}", &label, &self.target)
+        write!(f, "{}:{}", &label, &self.target,)
     }
 }
 
