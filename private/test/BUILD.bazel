@@ -2,7 +2,7 @@ load("@bazel_skylib//rules:diff_test.bzl", "diff_test")
 
 diff_test(
     name = "srcs_diff_test",
-    failure_message = "Please run `bazel run @cargo_bazel//private:srcs_module.install`",
+    failure_message = "Please run 'bazel run @cargo_bazel//private:srcs_module.install'",
     file1 = "//private:srcs_module",
     file2 = "//private:srcs.bzl",
     # TODO: The diff_test here fails on Windows. As does the
