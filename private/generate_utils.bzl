@@ -227,7 +227,7 @@ def get_lockfile(repository_ctx):
         kind = kind,
     )
 
-def determine_repin(repository_ctx, generator, lockfile_path, lockfile_kind, config, splicing_manifest, cargo_path, rustc_path):
+def determine_repin(repository_ctx, generator, lockfile_path, lockfile_kind, config, splicing_manifest, cargo, rustc):
     """Use the `cargo-bazel` binary to determine whether or not dpeendencies need to be re-pinned
 
     Args:
@@ -237,8 +237,8 @@ def determine_repin(repository_ctx, generator, lockfile_path, lockfile_kind, con
         splicing_manifest (path): The path to a `cargo-bazel` splicing manifest. See `create_splicing_manifest`
         lockfile_path (path): The path to a "lock" file for reproducible outputs.
         lockfile_kind (str): The type of lock file represented by `lockfile_path`
-        cargo_path (path): The path to a Cargo binary.
-        rustc_path (path): The path to a Rustc binary.
+        cargo (path): The path to a Cargo binary.
+        rustc (path): The path to a Rustc binary.
 
     Returns:
         bool: True if dependencies need to be re-pinned
@@ -264,14 +264,14 @@ def determine_repin(repository_ctx, generator, lockfile_path, lockfile_kind, con
         "--splicing-manifest",
         splicing_manifest,
         "--cargo",
-        cargo_path,
+        cargo,
         "--rustc",
-        rustc_path,
+        rustc,
     ]
 
     env = {
-        "CARGO": str(cargo_path),
-        "RUSTC": str(rustc_path),
+        "CARGO": str(cargo),
+        "RUSTC": str(rustc),
         "RUST_BACKTRACE": "full",
     }
 
