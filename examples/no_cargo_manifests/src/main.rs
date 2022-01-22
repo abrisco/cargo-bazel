@@ -1,8 +1,7 @@
 //! Copied from https://github.com/tokio-rs/axum/blob/v0.2.5/examples/testing/src/main.rs
 
 use axum::{
-    handler::{get, post},
-    routing::BoxRoute,
+    routing::{get, post},
     Json, Router,
 };
 use tower_http::trace::TraceLayer;
@@ -28,7 +27,7 @@ async fn main() {
 /// Having a function that produces our app makes it easy to call it from tests
 /// without having to create an HTTP server.
 #[allow(dead_code)]
-fn app() -> Router<BoxRoute> {
+fn app() -> Router {
     Router::new()
         .route("/", get(|| async { "Hello, World!" }))
         .route(
@@ -39,14 +38,19 @@ fn app() -> Router<BoxRoute> {
         )
         // We can still add middleware
         .layer(TraceLayer::new_for_http())
-        .boxed()
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
-    use axum::body::Body;
-    use axum::http::{self, Request, StatusCode};
+
+    #[cfg(not(target_os = "windows"))]
+    use std::net::{SocketAddr, TcpListener};
+
+    use axum::{
+        body::Body,
+        http::{self, Request, StatusCode},
+    };
     use serde_json::{json, Value};
     use tower::ServiceExt; // for `app.oneshot()`
 
@@ -54,7 +58,7 @@ mod tests {
     async fn hello_world() {
         let app = app();
 
-        // `BoxRoute<Body>` implements `tower::Service<Request<Body>>` so we can
+        // `Router` implements `tower::Service<Request<Body>>` so we can
         // call it like any tower service, no need to run an HTTP server.
         let response = app
             .oneshot(Request::builder().uri("/").body(Body::empty()).unwrap())
@@ -76,9 +80,9 @@ mod tests {
                 Request::builder()
                     .method(http::Method::POST)
                     .uri("/json")
-                    .header(http::header::CONTENT_TYPE, "application/json")
+                    .header(http::header::CONTENT_TYPE, mime::APPLICATION_JSON.as_ref())
                     .body(Body::from(
-                        serde_json::to_vec(&json!([1, 2, 3, 4])).unwrap(),
+                        serde_json::to_vec(&json!([1_i8, 2_i8, 3_i8, 4_i8])).unwrap(),
                     ))
                     .unwrap(),
             )
@@ -89,7 +93,7 @@ mod tests {
 
         let body = hyper::body::to_bytes(response.into_body()).await.unwrap();
         let body: Value = serde_json::from_slice(&body).unwrap();
-        assert_eq!(body, json!({ "data": [1, 2, 3, 4] }));
+        assert_eq!(body, json!({ "data": [1_i8, 2_i8, 3_i8, 4_i8] }));
     }
 
     #[tokio::test]
@@ -117,9 +121,7 @@ mod tests {
     // You can also spawn a server and talk to it like any other HTTP server:
     #[tokio::test]
     async fn the_real_deal() {
-        let listener =
-            std::net::TcpListener::bind("0.0.0.0:0".parse::<std::net::SocketAddr>().unwrap())
-                .unwrap();
+        let listener = TcpListener::bind("0.0.0.0:0".parse::<SocketAddr>().unwrap()).unwrap();
         let addr = listener.local_addr().unwrap();
 
         tokio::spawn(async move {
