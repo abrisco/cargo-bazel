@@ -4,7 +4,7 @@ load("//:deps.bzl", "cargo_bazel_deps")
 
 cargo_bazel_deps()
 
-RUST_VERSION = "1.58.0"
+RUST_VERSION = "1.58.1"
 
 load("@rules_rust//rust:repositories.bzl", "rust_repositories")
 
@@ -20,7 +20,7 @@ crates_repository(
     name = "crate_index",
     annotations = {
         "cargo_toml": [crate.annotation(
-            shallow_since = "1642478894 +0000",
+            shallow_since = "1642953712 +0000",
         )],
         "chrono-tz": [crate.annotation(
             build_script_data_glob = ["**/tz/**"],

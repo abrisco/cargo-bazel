@@ -231,15 +231,23 @@ perl_register_toolchains()
 
 crates_repository(
     name = "no_cargo",
+    annotations = {
+        "axum": [crate.annotation(
+            compile_data_glob = ["**/*.md"],
+        )],
+    },
     generator = "@cargo_bazel_bootstrap//:cargo-bazel",
     lockfile = "//no_cargo_manifests:Cargo.Bazel.lock",
     packages = {
         "axum": crate.spec(
-            version = "0.2.5",
+            version = "0.4.0",
         ),
         "hyper": crate.spec(
             features = ["full"],
             version = "0.14",
+        ),
+        "mime": crate.spec(
+            version = "0.3",
         ),
         "serde_json": crate.spec(
             version = "1.0",
@@ -254,13 +262,13 @@ crates_repository(
         ),
         "tower-http": crate.spec(
             features = ["trace"],
-            version = "0.1",
+            version = "0.2.1",
         ),
         "tracing": crate.spec(
             version = "0.1",
         ),
         "tracing-subscriber": crate.spec(
-            version = "0.2",
+            version = "0.3",
         ),
     },
     splicing_config = splicing_config(
