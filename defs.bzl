@@ -49,6 +49,8 @@ def _crates_repository_impl(repository_ctx):
 
     # Locate Rust tools (cargo, rustc)
     tools = get_rust_tools(repository_ctx, host_triple)
+    cargo_path = repository_ctx.path(tools.cargo)
+    rustc_path = repository_ctx.path(tools.rustc)
 
     # Create a manifest of all dependency inputs
     splicing_manifest = create_splicing_manifest(repository_ctx)
@@ -61,8 +63,8 @@ def _crates_repository_impl(repository_ctx):
         lockfile_kind = lockfile.kind,
         config = config.path,
         splicing_manifest = splicing_manifest,
-        cargo_path = tools.cargo,
-        rustc_path = tools.rustc,
+        cargo = cargo_path,
+        rustc = rustc_path,
     )
 
     # If re-pinning is enabled, gather additional inputs for the generator
@@ -74,8 +76,8 @@ def _crates_repository_impl(repository_ctx):
             generator = generator,
             lockfile = lockfile,
             splicing_manifest = splicing_manifest,
-            cargo = tools.cargo,
-            rustc = tools.rustc,
+            cargo = cargo_path,
+            rustc = rustc_path,
         )
 
         kwargs.update({
@@ -92,8 +94,8 @@ def _crates_repository_impl(repository_ctx):
         lockfile_path = lockfile.path,
         lockfile_kind = lockfile.kind,
         repository_dir = repository_ctx.path("."),
-        cargo = tools.cargo,
-        rustc = tools.rustc,
+        cargo = cargo_path,
+        rustc = rustc_path,
         # sysroot = tools.sysroot,
         **kwargs
     )

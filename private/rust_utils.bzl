@@ -20,7 +20,7 @@ def _query_cpu_architecture(repository_ctx, expected_archs, is_windows = False):
         is_windows (bool, optional): If true, the cpu lookup will use the windows method (`wmic` vs `uname`)
 
     Returns:
-        string: The host's CPU architecture
+        str: The host's CPU architecture
     """
     if is_windows:
         arguments = ["wmic", "os", "get", "osarchitecture"]
@@ -104,7 +104,7 @@ def get_host_triple(repository_ctx, abi = None):
 
     fail("Unhandled host os: {}", repository_ctx.os.name)
 
-def resolve_repository_template(
+def _resolve_repository_template(
         template,
         version = None,
         triple = None,
@@ -157,28 +157,22 @@ def resolve_repository_template(
 
     return template
 
-def get_rust_tools(
-        repository_ctx,
-        cargo_template,
-        rustc_template,
-        host_triple,
-        version):
-    """Retrieve a cargo and rustc binary based on the host triple.
+def get_rust_tools(repository_ctx, cargo_template, rustc_template, host_triple, version):
+    """Retrieve `cargo` and `rustc` labels based on the host triple.
 
     Args:
         repository_ctx (repository_ctx): The rule's context object
-        cargo_template (str): A template used to identify the host `cargo` binary.
-        rustc_template (str): A template used to identify the host `cargo` binary.
+        cargo_template (str): A template used to identify the label of the host `cargo` binary.
+        rustc_template (str): A template used to identify the label of the host `rustc` binary.
         host_triple (struct): The host's triple. See `@rules_rust//rust/platform:triple.bzl`.
         version (str): The version of Cargo+Rustc to use.
 
     Returns:
-        struct: A struct containing the expected tools
+        struct: A struct containing the labels of expected tools
     """
-
     extension = system_to_binary_ext(host_triple.system)
 
-    cargo_label = Label(resolve_repository_template(
+    cargo_label = Label(_resolve_repository_template(
         template = cargo_template,
         version = version,
         triple = host_triple.triple,
@@ -190,7 +184,7 @@ def get_rust_tools(
         cfg = "exec",
     ))
 
-    rustc_label = Label(resolve_repository_template(
+    rustc_label = Label(_resolve_repository_template(
         template = rustc_template,
         version = version,
         triple = host_triple.triple,
@@ -202,10 +196,7 @@ def get_rust_tools(
         cfg = "exec",
     ))
 
-    cargo_path = repository_ctx.path(cargo_label)
-    rustc_path = repository_ctx.path(rustc_label)
-
     return struct(
-        cargo = cargo_path,
-        rustc = rustc_path,
+        cargo = cargo_label,
+        rustc = rustc_label,
     )
