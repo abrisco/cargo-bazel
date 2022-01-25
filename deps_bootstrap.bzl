@@ -17,4 +17,6 @@ def cargo_bazel_bootstrap(name = "cargo_bazel_bootstrap", rust_version = None):
         cargo_lockfile = "@cargo_bazel//:Cargo.lock",
         cargo_toml = "@cargo_bazel//:Cargo.toml",
         version = rust_version,
+        # The increased timeout helps avoid flakes in CI
+        timeout = 900,
     )
