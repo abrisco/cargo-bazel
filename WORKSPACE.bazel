@@ -19,9 +19,6 @@ load("//:defs.bzl", "crate", "crates_repository")
 crates_repository(
     name = "crate_index",
     annotations = {
-        "cargo_toml": [crate.annotation(
-            shallow_since = "1642953712 +0000",
-        )],
         "chrono-tz": [crate.annotation(
             build_script_data_glob = ["**/tz/**"],
         )],

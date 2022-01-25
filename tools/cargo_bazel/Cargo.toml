@@ -11,8 +11,7 @@ edition = "2018"
 [dependencies]
 anyhow = "1.0.51"
 cargo_metadata = "0.14.1"
-# https://gitlab.com/crates.rs/cargo_toml/-/merge_requests/9
-cargo_toml = { git = "https://gitlab.com/crates.rs/cargo_toml.git", rev = "78b84638c89dc699923802a9b414b01b69b3417e" }
+cargo_toml = "0.11.1"
 cargo-lock = "7.0.1"
 cargo-platform = "0.1.2"
 cfg-expr = "0.9.0"

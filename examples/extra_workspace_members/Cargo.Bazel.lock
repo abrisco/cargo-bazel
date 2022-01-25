@@ -1,5 +1,5 @@
 {
-  "checksum": "5b043ce2f27a861020daef2d67db6c7faeb61c8e1d10f3a84e69921e1c991b4f",
+  "checksum": "2e3ce382a6448ec4496dfa08b4898991b06442fb3d735b264f64ed47becbc793",
   "crates": {
     "adler32 1.2.0": {
       "name": "adler32",
@@ -112,7 +112,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.113",
+                "id": "libc 0.2.114",
                 "target": "libc"
               }
             ],
@@ -425,7 +425,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.113",
+              "id": "libc 0.2.114",
               "target": "libc"
             },
             {
@@ -824,7 +824,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.113",
+              "id": "libc 0.2.114",
               "target": "libc"
             }
           ],
@@ -1025,13 +1025,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "libc 0.2.113": {
+    "libc 0.2.114": {
       "name": "libc",
-      "version": "0.2.113",
+      "version": "0.2.114",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/libc/0.2.113/download",
-          "sha256": "eef78b64d87775463c549fbd80e19249ef436ea3bf1de2a1eb7e717ec7fab1e9"
+          "url": "https://crates.io/api/v1/crates/libc/0.2.114/download",
+          "sha256": "b0005d08a8f7b65fb8073cb697aa0b12b631ed251ce73d862ce50eeb52ce3b50"
         }
       },
       "targets": [
@@ -1069,14 +1069,14 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.113",
+              "id": "libc 0.2.114",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2015",
-        "version": "0.2.113"
+        "version": "0.2.114"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -1453,7 +1453,7 @@
             ],
             "cfg(not(windows))": [
               {
-                "id": "libc 0.2.113",
+                "id": "libc 0.2.114",
                 "target": "libc"
               }
             ]
@@ -2429,7 +2429,7 @@
           "selects": {
             "cfg(not(windows))": [
               {
-                "id": "libc 0.2.113",
+                "id": "libc 0.2.114",
                 "target": "libc"
               }
             ],
