@@ -11,7 +11,7 @@ edition = "2018"
 [dependencies]
 anyhow = "1.0.51"
 cargo_metadata = "0.14.1"
-cargo_toml = "0.11.1"
+cargo_toml = "0.11.3"
 cargo-lock = "7.0.1"
 cargo-platform = "0.1.2"
 cfg-expr = "0.9.0"

@@ -1,5 +1,5 @@
 {
-  "checksum": "dfb0f862f35d99e6b0725026326cc52549aa0b1fa4ae39fd4546db454fb34a76",
+  "checksum": "910d518a630e34bdcf113dfdc2d82fbf1d08023692e23e2868c2ca031baf0b77",
   "crates": {
     "aho-corasick 0.7.18": {
       "name": "aho-corasick",
@@ -261,7 +261,7 @@
         "deps": {
           "common": [
             {
-              "id": "async-task 4.0.3",
+              "id": "async-task 4.1.0",
               "target": "async_task"
             },
             {
@@ -786,13 +786,13 @@
       },
       "license": "Apache-2.0/MIT"
     },
-    "async-task 4.0.3": {
+    "async-task 4.1.0": {
       "name": "async-task",
-      "version": "4.0.3",
+      "version": "4.1.0",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/async-task/4.0.3/download",
-          "sha256": "e91831deabf0d6d7ec49552e489aed63b7456a7a3c46cff62adad428110b0af0"
+          "url": "https://crates.io/api/v1/crates/async-task/4.1.0/download",
+          "sha256": "677d306121baf53310a3fd342d88dc0824f6bbeace68347593658525565abee8"
         }
       },
       "targets": [
@@ -816,9 +816,9 @@
           "std"
         ],
         "edition": "2018",
-        "version": "4.0.3"
+        "version": "4.1.0"
       },
-      "license": "Apache-2.0/MIT"
+      "license": "Apache-2.0 OR MIT"
     },
     "async-trait 0.1.52": {
       "name": "async-trait",
@@ -1282,7 +1282,7 @@
               "target": "async_channel"
             },
             {
-              "id": "async-task 4.0.3",
+              "id": "async-task 4.1.0",
               "target": "async_task"
             },
             {
