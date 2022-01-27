@@ -1,5 +1,5 @@
 {
-  "checksum": "f2f041710ee37102c7b23374c66bf1d3ff576809e2cf692d7ef2fefa7ce19154",
+  "checksum": "09572aca61f65b6386d7128713bce6fbf681a8520c724be649b70f72ea07989f",
   "crates": {
     "aho-corasick 0.7.18": {
       "name": "aho-corasick",
@@ -132,7 +132,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.114",
+                "id": "libc 0.2.115",
                 "target": "libc"
               }
             ],
@@ -315,7 +315,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.114",
+              "id": "libc 0.2.115",
               "target": "libc"
             }
           ],
@@ -356,13 +356,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "libc 0.2.114": {
+    "libc 0.2.115": {
       "name": "libc",
-      "version": "0.2.114",
+      "version": "0.2.115",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/libc/0.2.114/download",
-          "sha256": "b0005d08a8f7b65fb8073cb697aa0b12b631ed251ce73d862ce50eeb52ce3b50"
+          "url": "https://crates.io/api/v1/crates/libc/0.2.115/download",
+          "sha256": "0a8d982fa7a96a000f6ec4cfe966de9703eccde29750df2bb8949da91b0e818d"
         }
       },
       "targets": [
@@ -396,14 +396,14 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.114",
+              "id": "libc 0.2.115",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2015",
-        "version": "0.2.114"
+        "version": "0.2.115"
       },
       "build_script_attrs": {
         "data_glob": [

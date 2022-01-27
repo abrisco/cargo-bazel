@@ -1,5 +1,5 @@
 {
-  "checksum": "e6e42078bac006636a7b069d9dc9cda9d3f3ac7db039a2f61df7e2045c62cbc7",
+  "checksum": "f6ae11db98ee2419a0568aa5bd8b66f3317a1b3fc4ec3380e6db85707d44c37a",
   "crates": {
     "ansi_term 0.12.1": {
       "name": "ansi_term",
@@ -881,13 +881,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "h2 0.3.10": {
+    "h2 0.3.11": {
       "name": "h2",
-      "version": "0.3.10",
+      "version": "0.3.11",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/h2/0.3.10/download",
-          "sha256": "0c9de88456263e249e241fcd211d3954e2c9b0ef7ccfc235a444eb367cae3689"
+          "url": "https://crates.io/api/v1/crates/h2/0.3.11/download",
+          "sha256": "d9f1f717ddc7b2ba36df7e871fd88db79326551d3d6f1fc406fbfd28b582ff8e"
         }
       },
       "targets": [
@@ -956,7 +956,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.3.10"
+        "version": "0.3.11"
       },
       "license": "MIT"
     },
@@ -1024,7 +1024,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.114",
+              "id": "libc 0.2.115",
               "target": "libc"
             }
           ],
@@ -1306,7 +1306,7 @@
               "target": "futures_util"
             },
             {
-              "id": "h2 0.3.10",
+              "id": "h2 0.3.11",
               "target": "h2"
             },
             {
@@ -1334,7 +1334,7 @@
               "target": "pin_project_lite"
             },
             {
-              "id": "socket2 0.4.3",
+              "id": "socket2 0.4.4",
               "target": "socket2"
             },
             {
@@ -1566,13 +1566,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "libc 0.2.114": {
+    "libc 0.2.115": {
       "name": "libc",
-      "version": "0.2.114",
+      "version": "0.2.115",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/libc/0.2.114/download",
-          "sha256": "b0005d08a8f7b65fb8073cb697aa0b12b631ed251ce73d862ce50eeb52ce3b50"
+          "url": "https://crates.io/api/v1/crates/libc/0.2.115/download",
+          "sha256": "0a8d982fa7a96a000f6ec4cfe966de9703eccde29750df2bb8949da91b0e818d"
         }
       },
       "targets": [
@@ -1610,14 +1610,14 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.114",
+              "id": "libc 0.2.115",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2015",
-        "version": "0.2.114"
+        "version": "0.2.115"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -1926,7 +1926,7 @@
           "selects": {
             "cfg(unix)": [
               {
-                "id": "libc 0.2.114",
+                "id": "libc 0.2.115",
                 "target": "libc"
               }
             ],
@@ -2090,7 +2090,7 @@
             ],
             "cfg(not(windows))": [
               {
-                "id": "libc 0.2.114",
+                "id": "libc 0.2.115",
                 "target": "libc"
               }
             ]
@@ -2252,7 +2252,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.114",
+                "id": "libc 0.2.115",
                 "target": "libc"
               }
             ],
@@ -2907,7 +2907,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.114",
+              "id": "libc 0.2.115",
               "target": "libc"
             }
           ],
@@ -2982,13 +2982,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "socket2 0.4.3": {
+    "socket2 0.4.4": {
       "name": "socket2",
-      "version": "0.4.3",
+      "version": "0.4.4",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/socket2/0.4.3/download",
-          "sha256": "0f82496b90c36d70af5fcd482edaa2e0bd16fade569de1330405fecbbdac736b"
+          "url": "https://crates.io/api/v1/crates/socket2/0.4.4/download",
+          "sha256": "66d72b759436ae32898a2af0a14218dbf55efde3feeb170eb623637db85ee1e0"
         }
       },
       "targets": [
@@ -3012,7 +3012,7 @@
           "selects": {
             "cfg(unix)": [
               {
-                "id": "libc 0.2.114",
+                "id": "libc 0.2.115",
                 "target": "libc"
               }
             ],
@@ -3025,9 +3025,9 @@
           }
         },
         "edition": "2018",
-        "version": "0.4.3"
+        "version": "0.4.4"
       },
-      "license": "MIT/Apache-2.0"
+      "license": "MIT OR Apache-2.0"
     },
     "syn 1.0.86": {
       "name": "syn",
@@ -3263,7 +3263,7 @@
           "selects": {
             "cfg(unix)": [
               {
-                "id": "libc 0.2.114",
+                "id": "libc 0.2.115",
                 "target": "libc"
               },
               {
