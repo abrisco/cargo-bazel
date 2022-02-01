@@ -304,7 +304,11 @@ impl WorkspaceMetadata {
                     let index_url = if let Some(config) = &cargo_config {
                         if let Some(source) = config.get_source_from_url(&url) {
                             if let Some(replace_with) = &source.replace_with {
-                                &config.registries[replace_with].index
+                                if let Some(replacement) = config.get_registry_index_url_by_name(replace_with) {
+                                    replacement
+                                } else {
+                                    bail!("Tried to replace registry {} with registry named {} but didn't have metadata about the replacement", url, replace_with);
+                                }
                             } else {
                                 &url
                             }
