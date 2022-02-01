@@ -124,6 +124,16 @@ impl CargoConfig {
     pub fn get_source_from_url(&self, url: &str) -> Option<&Source> {
         self.source.values().find(|v| v.registry == url)
     }
+
+    pub fn get_registry_index_url_by_name(&self, name: &str) -> Option<&str> {
+        if let Some(registry) = self.registries.get(name) {
+            Some(&registry.index)
+        } else if let Some(source) = self.source.get(name) {
+            Some(&source.registry)
+        } else {
+            None
+        }
+    }
 }
 
 #[cfg(test)]
@@ -183,5 +193,52 @@ mod test {
                 source: BTreeMap::new(),
             },
         )
+    }
+
+    #[test]
+    fn registry_settings_get_index_url_by_name_from_source() {
+        let temp_dir = tempfile::tempdir().unwrap();
+        let config = temp_dir.as_ref().join("config.toml");
+
+        fs::write(&config, textwrap::dedent(
+            r##"
+                [registries]
+                art-crates-remote = { index = "https://artprod.mycompany/artifactory/git/cargo-remote.git" }
+
+                [source.crates-io]
+                replace-with = "some-mirror"
+
+                [source.some-mirror]
+                registry = "https://artmirror.mycompany/artifactory/cargo-mirror.git"
+            "##,
+        )).unwrap();
+
+        let config = CargoConfig::try_from_path(&config).unwrap();
+        assert_eq!(
+            config.get_registry_index_url_by_name("some-mirror"),
+            Some("https://artmirror.mycompany/artifactory/cargo-mirror.git"),
+        );
+    }
+
+    #[test]
+    fn registry_settings_get_index_url_by_name_from_registry() {
+        let temp_dir = tempfile::tempdir().unwrap();
+        let config = temp_dir.as_ref().join("config.toml");
+
+        fs::write(&config, textwrap::dedent(
+            r##"
+                [registries]
+                art-crates-remote = { index = "https://artprod.mycompany/artifactory/git/cargo-remote.git" }
+
+                [source.crates-io]
+                replace-with = "art-crates-remote"
+            "##,
+        )).unwrap();
+
+        let config = CargoConfig::try_from_path(&config).unwrap();
+        assert_eq!(
+            config.get_registry_index_url_by_name("art-crates-remote"),
+            Some("https://artprod.mycompany/artifactory/git/cargo-remote.git"),
+        );
     }
 }
