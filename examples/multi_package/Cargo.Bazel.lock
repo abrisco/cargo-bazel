@@ -1,5 +1,5 @@
 {
-  "checksum": "e1d1ebb4572b0d901de84d3d2e405a94c0146c0acda61353b9e962cbf0472a0c",
+  "checksum": "200385f0e9957aa24cf7ae6f329b279bae9da511255a5b8463f97b3f0d3f1f75",
   "crates": {
     "aho-corasick 0.7.18": {
       "name": "aho-corasick",
@@ -430,7 +430,7 @@
           "selects": {
             "cfg(unix)": [
               {
-                "id": "libc 0.2.115",
+                "id": "libc 0.2.116",
                 "target": "libc"
               }
             ],
@@ -615,7 +615,7 @@
                 "target": "async_io"
               },
               {
-                "id": "libc 0.2.115",
+                "id": "libc 0.2.116",
                 "target": "libc"
               },
               {
@@ -771,7 +771,7 @@
                 "target": "futures_channel"
               },
               {
-                "id": "gloo-timers 0.2.2",
+                "id": "gloo-timers 0.2.3",
                 "target": "gloo_timers"
               },
               {
@@ -954,7 +954,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.115",
+                "id": "libc 0.2.116",
                 "target": "libc"
               }
             ],
@@ -1579,7 +1579,7 @@
               "target": "core_foundation_sys"
             },
             {
-              "id": "libc 0.2.115",
+              "id": "libc 0.2.116",
               "target": "libc"
             }
           ],
@@ -1874,7 +1874,7 @@
               "target": "curl_sys"
             },
             {
-              "id": "libc 0.2.115",
+              "id": "libc 0.2.116",
               "target": "libc"
             },
             {
@@ -1960,7 +1960,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.115",
+              "id": "libc 0.2.116",
               "target": "libc"
             },
             {
@@ -2173,7 +2173,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.115",
+                "id": "libc 0.2.116",
                 "target": "libc"
               }
             ],
@@ -3163,7 +3163,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.115",
+                "id": "libc 0.2.116",
                 "target": "libc"
               }
             ]
@@ -3174,13 +3174,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "gloo-timers 0.2.2": {
+    "gloo-timers 0.2.3": {
       "name": "gloo-timers",
-      "version": "0.2.2",
+      "version": "0.2.3",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/gloo-timers/0.2.2/download",
-          "sha256": "6f16c88aa13d2656ef20d1c042086b8767bbe2bdb62526894275a1b062161b2e"
+          "url": "https://crates.io/api/v1/crates/gloo-timers/0.2.3/download",
+          "sha256": "4d12a7f4e95cfe710f1d624fb1210b7d961a5fb05c4fd942f4feab06e61f590e"
         }
       },
       "targets": [
@@ -3222,16 +3222,12 @@
             {
               "id": "wasm-bindgen 0.2.79",
               "target": "wasm_bindgen"
-            },
-            {
-              "id": "web-sys 0.3.56",
-              "target": "web_sys"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.2.2"
+        "version": "0.2.3"
       },
       "license": "MIT/Apache-2.0"
     },
@@ -3295,7 +3291,7 @@
               "target": "slab"
             },
             {
-              "id": "tokio 1.15.0",
+              "id": "tokio 1.16.1",
               "target": "tokio"
             },
             {
@@ -3378,7 +3374,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.115",
+              "id": "libc 0.2.116",
               "target": "libc"
             }
           ],
@@ -3716,7 +3712,7 @@
               "target": "similar"
             },
             {
-              "id": "tokio 1.15.0",
+              "id": "tokio 1.16.1",
               "target": "tokio"
             },
             {
@@ -3827,7 +3823,7 @@
               "target": "socket2"
             },
             {
-              "id": "tokio 1.15.0",
+              "id": "tokio 1.16.1",
               "target": "tokio"
             },
             {
@@ -3890,7 +3886,7 @@
               "target": "native_tls"
             },
             {
-              "id": "tokio 1.15.0",
+              "id": "tokio 1.16.1",
               "target": "tokio"
             },
             {
@@ -4638,13 +4634,13 @@
       },
       "license": "MIT"
     },
-    "libc 0.2.115": {
+    "libc 0.2.116": {
       "name": "libc",
-      "version": "0.2.115",
+      "version": "0.2.116",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/libc/0.2.115/download",
-          "sha256": "0a8d982fa7a96a000f6ec4cfe966de9703eccde29750df2bb8949da91b0e818d"
+          "url": "https://crates.io/api/v1/crates/libc/0.2.116/download",
+          "sha256": "565dbd88872dbe4cc8a46e527f26483c1d1f7afa6b884a3bd6cd893d4f98da74"
         }
       },
       "targets": [
@@ -4682,14 +4678,14 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.115",
+              "id": "libc 0.2.116",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2015",
-        "version": "0.2.115"
+        "version": "0.2.116"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -4741,7 +4737,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.115",
+              "id": "libc 0.2.116",
               "target": "libc"
             },
             {
@@ -4815,7 +4811,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.115",
+              "id": "libc 0.2.116",
               "target": "libc"
             },
             {
@@ -4857,13 +4853,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "lock_api 0.4.5": {
+    "lock_api 0.4.6": {
       "name": "lock_api",
-      "version": "0.4.5",
+      "version": "0.4.6",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/lock_api/0.4.5/download",
-          "sha256": "712a4d093c9976e24e7dbca41db895dabcbac38eb5f4045393d17a95bdfb1109"
+          "url": "https://crates.io/api/v1/crates/lock_api/0.4.6/download",
+          "sha256": "88943dd7ef4a2e5a4bfa2753aaab3013e34ce2533d1996fb18ef591e315e2b3b"
         }
       },
       "targets": [
@@ -4892,7 +4888,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.4.5"
+        "version": "0.4.6"
       },
       "license": "Apache-2.0/MIT"
     },
@@ -5180,7 +5176,7 @@
           "selects": {
             "cfg(unix)": [
               {
-                "id": "libc 0.2.115",
+                "id": "libc 0.2.116",
                 "target": "libc"
               }
             ],
@@ -5295,15 +5291,15 @@
                 "target": "lazy_static"
               },
               {
-                "id": "libc 0.2.115",
+                "id": "libc 0.2.116",
                 "target": "libc"
               },
               {
-                "id": "security-framework 2.5.0",
+                "id": "security-framework 2.6.0",
                 "target": "security_framework"
               },
               {
-                "id": "security-framework-sys 2.5.0",
+                "id": "security-framework-sys 2.6.0",
                 "target": "security_framework_sys"
               },
               {
@@ -5477,7 +5473,7 @@
             ],
             "cfg(not(windows))": [
               {
-                "id": "libc 0.2.115",
+                "id": "libc 0.2.116",
                 "target": "libc"
               }
             ]
@@ -5606,7 +5602,7 @@
               "target": "foreign_types"
             },
             {
-              "id": "libc 0.2.115",
+              "id": "libc 0.2.116",
               "target": "libc"
             },
             {
@@ -5721,7 +5717,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.115",
+              "id": "libc 0.2.116",
               "target": "libc"
             },
             {
@@ -5849,7 +5845,7 @@
               "target": "instant"
             },
             {
-              "id": "lock_api 0.4.5",
+              "id": "lock_api 0.4.6",
               "target": "lock_api"
             },
             {
@@ -5929,7 +5925,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.115",
+                "id": "libc 0.2.116",
                 "target": "libc"
               }
             ],
@@ -6440,7 +6436,7 @@
           "selects": {
             "cfg(any(unix, target_os = \"fuchsia\", target_os = \"vxworks\"))": [
               {
-                "id": "libc 0.2.115",
+                "id": "libc 0.2.116",
                 "target": "libc"
               }
             ],
@@ -6955,7 +6951,7 @@
                 "target": "pin_project_lite"
               },
               {
-                "id": "tokio 1.15.0",
+                "id": "tokio 1.16.1",
                 "target": "tokio"
               },
               {
@@ -7153,13 +7149,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "security-framework 2.5.0": {
+    "security-framework 2.6.0": {
       "name": "security-framework",
-      "version": "2.5.0",
+      "version": "2.6.0",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/security-framework/2.5.0/download",
-          "sha256": "d09d3c15d814eda1d6a836f2f2b56a6abc1446c8a34351cb3180d3db92ffe4ce"
+          "url": "https://crates.io/api/v1/crates/security-framework/2.6.0/download",
+          "sha256": "3fed7948b6c68acbb6e20c334f55ad635dc0f75506963de4464289fbd3b051ac"
         }
       },
       "targets": [
@@ -7197,28 +7193,28 @@
               "target": "core_foundation_sys"
             },
             {
-              "id": "libc 0.2.115",
+              "id": "libc 0.2.116",
               "target": "libc"
             },
             {
-              "id": "security-framework-sys 2.5.0",
+              "id": "security-framework-sys 2.6.0",
               "target": "security_framework_sys"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
-        "version": "2.5.0"
+        "version": "2.6.0"
       },
       "license": "MIT OR Apache-2.0"
     },
-    "security-framework-sys 2.5.0": {
+    "security-framework-sys 2.6.0": {
       "name": "security-framework-sys",
-      "version": "2.5.0",
+      "version": "2.6.0",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/security-framework-sys/2.5.0/download",
-          "sha256": "e90dd10c41c6bfc633da6e0c659bd25d31e0791e5974ac42970267d59eba87f7"
+          "url": "https://crates.io/api/v1/crates/security-framework-sys/2.6.0/download",
+          "sha256": "a57321bf8bc2362081b2599912d2961fe899c0efadf1b4b2f8d48b3e253bb96c"
         }
       },
       "targets": [
@@ -7248,14 +7244,14 @@
               "target": "core_foundation_sys"
             },
             {
-              "id": "libc 0.2.115",
+              "id": "libc 0.2.116",
               "target": "libc"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
-        "version": "2.5.0"
+        "version": "2.6.0"
       },
       "license": "MIT OR Apache-2.0"
     },
@@ -7611,7 +7607,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.115",
+              "id": "libc 0.2.116",
               "target": "libc"
             },
             {
@@ -7663,7 +7659,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.115",
+              "id": "libc 0.2.116",
               "target": "libc"
             }
           ],
@@ -7886,7 +7882,7 @@
           "selects": {
             "cfg(unix)": [
               {
-                "id": "libc 0.2.115",
+                "id": "libc 0.2.116",
                 "target": "libc"
               }
             ],
@@ -8082,7 +8078,7 @@
           "selects": {
             "cfg(any(unix, target_os = \"wasi\"))": [
               {
-                "id": "libc 0.2.115",
+                "id": "libc 0.2.116",
                 "target": "libc"
               }
             ],
@@ -8303,13 +8299,13 @@
       },
       "license": "MIT OR Apache-2.0 OR Zlib"
     },
-    "tokio 1.15.0": {
+    "tokio 1.16.1": {
       "name": "tokio",
-      "version": "1.15.0",
+      "version": "1.16.1",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/tokio/1.15.0/download",
-          "sha256": "fbbf1c778ec206785635ce8ad57fe52b3009ae9e0c9f574a728f3049d3e55838"
+          "url": "https://crates.io/api/v1/crates/tokio/1.16.1/download",
+          "sha256": "0c27a64b625de6d309e8c57716ba93021dccf1b3b5c97edd6d3dd2d2135afc0a"
         }
       },
       "targets": [
@@ -8378,7 +8374,7 @@
           "selects": {
             "cfg(unix)": [
               {
-                "id": "libc 0.2.115",
+                "id": "libc 0.2.116",
                 "target": "libc"
               },
               {
@@ -8404,7 +8400,7 @@
           ],
           "selects": {}
         },
-        "version": "1.15.0"
+        "version": "1.16.1"
       },
       "license": "MIT"
     },
@@ -8487,7 +8483,7 @@
               "target": "native_tls"
             },
             {
-              "id": "tokio 1.15.0",
+              "id": "tokio 1.16.1",
               "target": "tokio"
             }
           ],
@@ -8550,7 +8546,7 @@
               "target": "pin_project_lite"
             },
             {
-              "id": "tokio 1.15.0",
+              "id": "tokio 1.16.1",
               "target": "tokio"
             }
           ],
