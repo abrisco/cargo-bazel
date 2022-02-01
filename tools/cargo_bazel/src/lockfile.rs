@@ -122,6 +122,7 @@ impl Digest {
         let splicing_metadata = SplicingMetadata::try_from((*splicing_manifest).clone())?;
         let cargo_version = Self::bin_version(cargo_bin)?;
         let rustc_version = Self::bin_version(rustc_bin)?;
+        let cargo_bazel_version = env!("CARGO_PKG_VERSION");
 
         // Ensure the checksum of a digest is not present before computing one
         Ok(match context.checksum {
@@ -132,6 +133,7 @@ impl Digest {
                 },
                 config,
                 &splicing_metadata,
+                cargo_bazel_version,
                 &cargo_version,
                 &rustc_version,
             ),
@@ -139,6 +141,7 @@ impl Digest {
                 context,
                 config,
                 &splicing_metadata,
+                cargo_bazel_version,
                 &cargo_version,
                 &rustc_version,
             ),
@@ -149,6 +152,7 @@ impl Digest {
         context: &Context,
         config: &Config,
         splicing_metadata: &SplicingMetadata,
+        cargo_bazel_version: &str,
         cargo_version: &str,
         rustc_version: &str,
     ) -> Self {
@@ -159,7 +163,7 @@ impl Digest {
 
         let mut hasher = Sha256::new();
 
-        hasher.update(env!("CARGO_PKG_VERSION").as_bytes());
+        hasher.update(cargo_bazel_version.as_bytes());
         hasher.update(b"\0");
 
         hasher.update(serde_json::to_string(context).unwrap().as_bytes());
@@ -231,13 +235,14 @@ mod test {
             &context,
             &config,
             &splicing_metadata,
+            "0.1.0",
             "cargo 1.57.0 (b2e52d7ca 2021-10-21)",
             "rustc 1.57.0 (f1edd0429 2021-11-29)",
         );
 
         assert_eq!(
             digest,
-            Digest("13349c2b271570dfbd84085fe540e6ede18be4ffc39011c87139e6fcf77036dd".to_owned())
+            Digest("077759caedca4ca666e93c88908f1f135fbeb954b1f84937a427db20ef629a8e".to_owned())
         );
     }
 
@@ -273,13 +278,14 @@ mod test {
             &context,
             &config,
             &splicing_metadata,
+            "0.1.0",
             "cargo 1.57.0 (b2e52d7ca 2021-10-21)",
             "rustc 1.57.0 (f1edd0429 2021-11-29)",
         );
 
         assert_eq!(
             digest,
-            Digest("d991e802fa4b3b694f9d9a0ba942e53f9d909c1b0e2b60b02ba1aea79c0121d2".to_owned())
+            Digest("34046dacd22ab4ed4bc66d50da5239d762927d5285342f3b570e74a5344dc674".to_owned())
         );
     }
 
@@ -303,13 +309,14 @@ mod test {
             &context,
             &config,
             &splicing_metadata,
+            "0.1.0",
             "cargo 1.57.0 (b2e52d7ca 2021-10-21)",
             "rustc 1.57.0 (f1edd0429 2021-11-29)",
         );
 
         assert_eq!(
             digest,
-            Digest("950c2270cfa2dd16cc0cf6b0950a3562ca889d64bc1b2311f4ad6a78d31de4c2".to_owned())
+            Digest("4e95d38a36ef530fb824cefa521fe5ca44297ece0e2ed64ce084ac50ae751c90".to_owned())
         );
     }
 
@@ -351,13 +358,14 @@ mod test {
             &context,
             &config,
             &splicing_metadata,
+            "0.1.0",
             "cargo 1.57.0 (b2e52d7ca 2021-10-21)",
             "rustc 1.57.0 (f1edd0429 2021-11-29)",
         );
 
         assert_eq!(
             digest,
-            Digest("4afa9e04a7964de2219e4900b32dbd65580b0caaa6710b79123423007b7579ac".to_owned())
+            Digest("b887f7220fb757be21edd02f46cab629a5851ee2ef31d576ef593714e3d9602e".to_owned())
         );
     }
 
