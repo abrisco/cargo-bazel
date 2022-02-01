@@ -1,5 +1,5 @@
 {
-  "checksum": "a568542017702981d6ad8832f4ac306212f87f55a997c09f2c4977fd5ba2c1e3",
+  "checksum": "03a66104f0c8deba30dca1b8160eb12cd85005881fd368f53f5b9f4f4adecf45",
   "crates": {
     "ansi_term 0.12.1": {
       "name": "ansi_term",
@@ -26,6 +26,9 @@
       ],
       "library_target_name": "ansi_term",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [],
           "selects": {
@@ -67,6 +70,9 @@
       ],
       "library_target_name": "atty",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [],
           "selects": {
@@ -120,6 +126,9 @@
       ],
       "library_target_name": "bitflags",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default"
         ],
@@ -153,6 +162,9 @@
       ],
       "library_target_name": "cfg_if",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2018",
         "version": "1.0.0"
       },
@@ -183,6 +195,9 @@
       ],
       "library_target_name": "clap",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "ansi_term",
           "atty",
@@ -253,6 +268,9 @@
       ],
       "library_target_name": "direct_cargo_bazel_deps",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2018",
         "version": "0.0.1"
       },
@@ -283,6 +301,9 @@
       ],
       "library_target_name": "ferris_says",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -342,6 +363,9 @@
       ],
       "library_target_name": "getrandom",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "std"
         ],
@@ -406,6 +430,9 @@
       ],
       "library_target_name": "hermit_abi",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default"
         ],
@@ -460,6 +487,9 @@
       ],
       "library_target_name": "libc",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -499,6 +529,9 @@
       ],
       "library_target_name": null,
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -538,6 +571,9 @@
       ],
       "library_target_name": "ppv_lite86",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "simd",
           "std"
@@ -567,6 +603,9 @@
       ],
       "library_target_name": "printer",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -606,6 +645,9 @@
       ],
       "library_target_name": "rand",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "alloc",
           "default",
@@ -677,6 +719,9 @@
       ],
       "library_target_name": "rand_chacha",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "std"
         ],
@@ -723,6 +768,9 @@
       ],
       "library_target_name": "rand_core",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "alloc",
           "getrandom",
@@ -767,6 +815,9 @@
       ],
       "library_target_name": "rand_hc",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -801,6 +852,9 @@
       ],
       "library_target_name": "rng",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -840,6 +894,9 @@
       ],
       "library_target_name": "smallvec",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std"
@@ -874,6 +931,9 @@
       ],
       "library_target_name": "smawk",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2018",
         "version": "0.3.1"
       },
@@ -904,6 +964,9 @@
       ],
       "library_target_name": "strsim",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2015",
         "version": "0.8.0"
       },
@@ -934,6 +997,9 @@
       ],
       "library_target_name": "textwrap",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -973,6 +1039,9 @@
       ],
       "library_target_name": "textwrap",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "smawk",
@@ -1021,6 +1090,9 @@
       ],
       "library_target_name": "unicode_width",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default"
         ],
@@ -1054,6 +1126,9 @@
       ],
       "library_target_name": "vec_map",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2015",
         "version": "0.8.2"
       },
@@ -1084,6 +1159,9 @@
       ],
       "library_target_name": "wasi",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std"
@@ -1130,6 +1208,9 @@
       ],
       "library_target_name": "winapi",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "consoleapi",
           "errhandlingapi",
@@ -1209,6 +1290,9 @@
       ],
       "library_target_name": "winapi_i686_pc_windows_gnu",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -1265,6 +1349,9 @@
       ],
       "library_target_name": "winapi_x86_64_pc_windows_gnu",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
