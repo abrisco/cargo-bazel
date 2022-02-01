@@ -17,7 +17,7 @@ impl FromStr for Label {
     type Err = anyhow::Error;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        let re = Regex::new(r"^(@[\w\d\-_\.]*)?/{0,2}([\w\d\-_\./]+)?:?([\w\d\-_\.]+)$")?;
+        let re = Regex::new(r"^(@[\w\d\-_\.]*)?/{0,2}([\w\d\-_\./]+)?:?([\w\d\-_\./]+)$")?;
         let cap = re.captures(s).context("Failed to parse string as label")?;
 
         let repository = cap
@@ -155,6 +155,14 @@ mod test {
         assert_eq!(label.repository, None);
         assert_eq!(label.package, None);
         assert_eq!(label.target, "target");
+    }
+
+    #[test]
+    fn full_label_with_slash_after_colon() {
+        let label = Label::from_str("@repo//package/sub_package:subdir/target").unwrap();
+        assert_eq!(label.repository.unwrap(), "repo");
+        assert_eq!(label.package.unwrap(), "package/sub_package");
+        assert_eq!(label.target, "subdir/target");
     }
 
     #[test]
