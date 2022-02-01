@@ -1,5 +1,5 @@
 {
-  "checksum": "16a7354959a1b46149ca2fc4cde1b7952f56de83f7c5759c9155878b44dac071",
+  "checksum": "70b06804edc48edb95630f1ceb4899e277df5d22932e8cf6185b3c6697ac8a43",
   "crates": {
     "aho-corasick 0.7.18": {
       "name": "aho-corasick",
@@ -26,6 +26,9 @@
       ],
       "library_target_name": "aho_corasick",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std"
@@ -64,6 +67,9 @@
       ],
       "library_target_name": "aliases",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -121,6 +127,9 @@
       ],
       "library_target_name": "atty",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [],
           "selects": {
@@ -174,6 +183,9 @@
       ],
       "library_target_name": "cfg_if",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2018",
         "version": "1.0.0"
       },
@@ -204,6 +216,9 @@
       ],
       "library_target_name": "ctor",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -247,6 +262,9 @@
       ],
       "library_target_name": "env_logger",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "atty",
           "default",
@@ -309,6 +327,9 @@
       ],
       "library_target_name": "hermit_abi",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default"
         ],
@@ -351,6 +372,9 @@
       ],
       "library_target_name": "humantime",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2018",
         "version": "2.1.0"
       },
@@ -393,6 +417,9 @@
       ],
       "library_target_name": "libc",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -437,6 +464,9 @@
       ],
       "library_target_name": "log",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "use_std"
@@ -492,6 +522,9 @@
       ],
       "library_target_name": "log",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "std"
         ],
@@ -555,6 +588,9 @@
       ],
       "library_target_name": "memchr",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std"
@@ -615,6 +651,9 @@
       ],
       "library_target_name": "proc_macro2",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "proc-macro"
         ],
@@ -666,6 +705,9 @@
       ],
       "library_target_name": "quote",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "proc-macro"
@@ -709,6 +751,9 @@
       ],
       "library_target_name": "regex",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "aho-corasick",
           "memchr",
@@ -766,6 +811,9 @@
       ],
       "library_target_name": "regex_syntax",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2018",
         "version": "0.6.25"
       },
@@ -808,6 +856,9 @@
       ],
       "library_target_name": "syn",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "full",
           "parsing",
@@ -871,6 +922,9 @@
       ],
       "library_target_name": "termcolor",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [],
           "selects": {
@@ -912,6 +966,9 @@
       ],
       "library_target_name": "unicode_xid",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default"
         ],
@@ -957,6 +1014,9 @@
       ],
       "library_target_name": "value_bag",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -1020,6 +1080,9 @@
       ],
       "library_target_name": "version_check",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2015",
         "version": "0.9.4"
       },
@@ -1062,6 +1125,9 @@
       ],
       "library_target_name": "winapi",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "consoleapi",
           "errhandlingapi",
@@ -1144,6 +1210,9 @@
       ],
       "library_target_name": "winapi_i686_pc_windows_gnu",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -1188,6 +1257,9 @@
       ],
       "library_target_name": "winapi_util",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [],
           "selects": {
@@ -1241,6 +1313,9 @@
       ],
       "library_target_name": "winapi_x86_64_pc_windows_gnu",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {

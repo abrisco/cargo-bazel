@@ -1,5 +1,5 @@
 {
-  "checksum": "35731b79f5423c18626ae4579661a18c1101245293ae80e14a42db5c8942d672",
+  "checksum": "c79ebb3d14a30b43805aba392dc9d7fb795791ea1c051076e9d1562144c5bb69",
   "crates": {
     "adler 1.0.2": {
       "name": "adler",
@@ -26,6 +26,9 @@
       ],
       "library_target_name": "adler",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2015",
         "version": "1.0.2"
       },
@@ -56,6 +59,9 @@
       ],
       "library_target_name": "aho_corasick",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std"
@@ -111,6 +117,9 @@
       ],
       "library_target_name": "anyhow",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std"
@@ -159,6 +168,9 @@
       ],
       "library_target_name": "atty",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [],
           "selects": {
@@ -212,6 +224,9 @@
       ],
       "library_target_name": "autocfg",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2015",
         "version": "1.0.1"
       },
@@ -242,6 +257,9 @@
       ],
       "library_target_name": "bitflags",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default"
         ],
@@ -275,6 +293,9 @@
       ],
       "library_target_name": "block_buffer",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -314,6 +335,9 @@
       ],
       "library_target_name": "block_buffer",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -365,6 +389,9 @@
       ],
       "library_target_name": "block_padding",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -404,6 +431,9 @@
       ],
       "library_target_name": "bstr",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "std"
         ],
@@ -446,6 +476,9 @@
       ],
       "library_target_name": "byte_tools",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2015",
         "version": "0.3.1"
       },
@@ -476,6 +509,9 @@
       ],
       "library_target_name": "byteorder",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2018",
         "version": "1.4.3"
       },
@@ -518,6 +554,9 @@
       ],
       "library_target_name": "camino",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "serde",
           "serde1"
@@ -577,6 +616,9 @@
       ],
       "library_target_name": "cargo_bazel",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -705,6 +747,9 @@
       ],
       "library_target_name": "cargo_lock",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -756,6 +801,9 @@
       ],
       "library_target_name": "cargo_platform",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -795,6 +843,9 @@
       ],
       "library_target_name": "cargo_metadata",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default"
         ],
@@ -856,6 +907,9 @@
       ],
       "library_target_name": "cargo_toml",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -920,6 +974,9 @@
       ],
       "library_target_name": "cc",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "jobserver",
           "parallel"
@@ -963,6 +1020,9 @@
       ],
       "library_target_name": "cfg_expr",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default"
         ],
@@ -1005,6 +1065,9 @@
       ],
       "library_target_name": "cfg_if",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2018",
         "version": "1.0.0"
       },
@@ -1035,6 +1098,9 @@
       ],
       "library_target_name": "chrono",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "clock",
           "libc",
@@ -1107,6 +1173,9 @@
       ],
       "library_target_name": "chrono_tz",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std"
@@ -1133,8 +1202,7 @@
       },
       "build_script_attrs": {
         "data_glob": [
-          "**",
-          "**/tz/**"
+          "**"
         ],
         "deps": {
           "common": [
@@ -1173,6 +1241,9 @@
       ],
       "library_target_name": "chrono_tz_build",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -1221,7 +1292,7 @@
       "library_target_name": "clap",
       "common_attrs": {
         "compile_data_glob": [
-          "**/*.md"
+          "**"
         ],
         "crate_features": [
           "atty",
@@ -1313,7 +1384,7 @@
       "library_target_name": "clap_derive",
       "common_attrs": {
         "compile_data_glob": [
-          "**/*.md"
+          "**"
         ],
         "crate_features": [
           "default"
@@ -1373,6 +1444,9 @@
       ],
       "library_target_name": "cpufeatures",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [],
           "selects": {
@@ -1414,6 +1488,9 @@
       ],
       "library_target_name": "crates_index",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -1502,6 +1579,9 @@
       ],
       "library_target_name": "crc32fast",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std"
@@ -1549,6 +1629,9 @@
       ],
       "library_target_name": null,
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -1600,6 +1683,9 @@
       ],
       "library_target_name": "crossbeam_utils",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "lazy_static",
@@ -1627,8 +1713,7 @@
       },
       "build_script_attrs": {
         "data_glob": [
-          "**",
-          "**/*.rs"
+          "**"
         ]
       },
       "license": "MIT OR Apache-2.0"
@@ -1658,6 +1743,9 @@
       ],
       "library_target_name": "crypto_common",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "std"
         ],
@@ -1701,8 +1789,7 @@
       "library_target_name": "deunicode",
       "common_attrs": {
         "compile_data_glob": [
-          "**/*.bin",
-          "**/*.txt"
+          "**"
         ],
         "edition": "2015",
         "version": "0.4.3"
@@ -1734,6 +1821,9 @@
       ],
       "library_target_name": "digest",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "alloc",
           "block-buffer",
@@ -1788,6 +1878,9 @@
       ],
       "library_target_name": "digest",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -1822,6 +1915,9 @@
       ],
       "library_target_name": "direct_cargo_bazel_deps",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2018",
         "version": "0.0.1"
       },
@@ -1847,6 +1943,9 @@
       ],
       "library_target_name": null,
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -1906,6 +2005,9 @@
       ],
       "library_target_name": "fake_simd",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2015",
         "version": "0.1.2"
       },
@@ -1936,6 +2038,9 @@
       ],
       "library_target_name": "fastrand",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [],
           "selects": {
@@ -1977,6 +2082,9 @@
       ],
       "library_target_name": "filetime",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -2035,6 +2143,9 @@
       ],
       "library_target_name": "flate2",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "miniz_oxide",
@@ -2091,6 +2202,9 @@
       ],
       "library_target_name": "fnv",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std"
@@ -2125,6 +2239,9 @@
       ],
       "library_target_name": "form_urlencoded",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -2168,6 +2285,9 @@
       ],
       "library_target_name": "generic_array",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -2219,6 +2339,9 @@
       ],
       "library_target_name": "generic_array",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -2276,6 +2399,9 @@
       ],
       "library_target_name": "getrandom",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "std"
         ],
@@ -2331,6 +2457,9 @@
       ],
       "library_target_name": "git2",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -2386,6 +2515,9 @@
       ],
       "library_target_name": "globset",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -2441,6 +2573,9 @@
       ],
       "library_target_name": "globwalk",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -2488,6 +2623,9 @@
       ],
       "library_target_name": "hashbrown",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "raw"
         ],
@@ -2521,6 +2659,9 @@
       ],
       "library_target_name": "heck",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default"
         ],
@@ -2554,6 +2695,9 @@
       ],
       "library_target_name": "hermit_abi",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default"
         ],
@@ -2596,6 +2740,9 @@
       ],
       "library_target_name": "hex",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "alloc",
           "default",
@@ -2641,6 +2788,9 @@
       ],
       "library_target_name": "home",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [],
           "selects": {
@@ -2682,6 +2832,9 @@
       ],
       "library_target_name": "humansize",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2015",
         "version": "1.1.1"
       },
@@ -2712,6 +2865,9 @@
       ],
       "library_target_name": "idna",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -2759,6 +2915,9 @@
       ],
       "library_target_name": "ignore",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -2849,6 +3008,9 @@
       ],
       "library_target_name": "indexmap",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "std"
         ],
@@ -2909,6 +3071,9 @@
       ],
       "library_target_name": "instant",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -2948,6 +3113,9 @@
       ],
       "library_target_name": "itoa",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2018",
         "version": "1.0.1"
       },
@@ -2978,6 +3146,9 @@
       ],
       "library_target_name": "jobserver",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [],
           "selects": {
@@ -3019,6 +3190,9 @@
       ],
       "library_target_name": "lazy_static",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2015",
         "version": "1.4.0"
       },
@@ -3061,6 +3235,9 @@
       ],
       "library_target_name": "libc",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std"
@@ -3109,6 +3286,9 @@
       ],
       "library_target_name": "libgit2_sys",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -3155,6 +3335,9 @@
       ],
       "library_target_name": "libz_sys",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "libc"
         ],
@@ -3212,6 +3395,9 @@
       ],
       "library_target_name": "log",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -3260,6 +3446,9 @@
       ],
       "library_target_name": "maplit",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2015",
         "version": "1.0.2"
       },
@@ -3290,6 +3479,9 @@
       ],
       "library_target_name": "matches",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2015",
         "version": "0.1.9"
       },
@@ -3332,6 +3524,9 @@
       ],
       "library_target_name": "memchr",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std"
@@ -3392,6 +3587,9 @@
       ],
       "library_target_name": "miniz_oxide",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -3461,6 +3659,9 @@
       ],
       "library_target_name": "num_integer",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -3530,6 +3731,9 @@
       ],
       "library_target_name": "num_traits",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -3583,6 +3787,9 @@
       ],
       "library_target_name": "once_cell",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "alloc",
           "default",
@@ -3619,6 +3826,9 @@
       ],
       "library_target_name": "opaque_debug",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2015",
         "version": "0.2.3"
       },
@@ -3649,6 +3859,9 @@
       ],
       "library_target_name": "os_str_bytes",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "memchr",
@@ -3693,6 +3906,9 @@
       ],
       "library_target_name": "parse_zoneinfo",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -3732,6 +3948,9 @@
       ],
       "library_target_name": "pathdiff",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2018",
         "version": "0.2.1"
       },
@@ -3762,6 +3981,9 @@
       ],
       "library_target_name": "percent_encoding",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2015",
         "version": "2.1.0"
       },
@@ -3792,6 +4014,9 @@
       ],
       "library_target_name": "pest",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -3831,6 +4056,9 @@
       ],
       "library_target_name": "pest_derive",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -3874,6 +4102,9 @@
       ],
       "library_target_name": "pest_generator",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -3929,6 +4160,9 @@
       ],
       "library_target_name": "pest_meta",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -3972,6 +4206,9 @@
       ],
       "library_target_name": "phf",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "uncased"
         ],
@@ -4014,6 +4251,9 @@
       ],
       "library_target_name": "phf_codegen",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -4069,6 +4309,9 @@
       ],
       "library_target_name": "phf_generator",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -4112,6 +4355,9 @@
       ],
       "library_target_name": "phf_shared",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std",
@@ -4160,6 +4406,9 @@
       ],
       "library_target_name": "pkg_config",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2015",
         "version": "0.3.24"
       },
@@ -4190,6 +4439,9 @@
       ],
       "library_target_name": "ppv_lite86",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "simd",
           "std"
@@ -4236,6 +4488,9 @@
       ],
       "library_target_name": "proc_macro_error",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "syn",
@@ -4327,6 +4582,9 @@
       ],
       "library_target_name": "proc_macro_error_attr",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -4400,6 +4658,9 @@
       ],
       "library_target_name": "proc_macro2",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "proc-macro"
@@ -4452,6 +4713,9 @@
       ],
       "library_target_name": "quote",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "proc-macro"
@@ -4495,6 +4759,9 @@
       ],
       "library_target_name": "rand",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "alloc",
           "default",
@@ -4564,6 +4831,9 @@
       ],
       "library_target_name": "rand_chacha",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "std"
         ],
@@ -4610,6 +4880,9 @@
       ],
       "library_target_name": "rand_core",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "alloc",
           "getrandom",
@@ -4654,6 +4927,9 @@
       ],
       "library_target_name": "rand_hc",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -4693,6 +4969,9 @@
       ],
       "library_target_name": "syscall",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -4732,6 +5011,9 @@
       ],
       "library_target_name": "regex",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "aho-corasick",
           "default",
@@ -4798,6 +5080,9 @@
       ],
       "library_target_name": "regex_syntax",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "unicode",
@@ -4839,6 +5124,9 @@
       ],
       "library_target_name": "remove_dir_all",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [],
           "selects": {
@@ -4880,6 +5168,9 @@
       ],
       "library_target_name": "ryu",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2018",
         "version": "1.0.9"
       },
@@ -4910,6 +5201,9 @@
       ],
       "library_target_name": "same_file",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [],
           "selects": {
@@ -4963,6 +5257,9 @@
       ],
       "library_target_name": "semver",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "serde",
@@ -5028,6 +5325,9 @@
       ],
       "library_target_name": "serde",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "derive",
@@ -5100,6 +5400,9 @@
       ],
       "library_target_name": "serde_derive",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default"
         ],
@@ -5171,6 +5474,9 @@
       ],
       "library_target_name": "serde_json",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std",
@@ -5232,6 +5538,9 @@
       ],
       "library_target_name": "sha1",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -5283,6 +5592,9 @@
       ],
       "library_target_name": "sha2",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std"
@@ -5337,6 +5649,9 @@
       ],
       "library_target_name": "siphasher",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std"
@@ -5371,6 +5686,9 @@
       ],
       "library_target_name": "slug",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -5410,6 +5728,9 @@
       ],
       "library_target_name": "smallvec",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2018",
         "version": "1.8.0"
       },
@@ -5440,6 +5761,9 @@
       ],
       "library_target_name": "smartstring",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "serde",
@@ -5488,6 +5812,9 @@
       ],
       "library_target_name": "smawk",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2018",
         "version": "0.3.1"
       },
@@ -5518,6 +5845,9 @@
       ],
       "library_target_name": "static_assertions",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2015",
         "version": "1.1.0"
       },
@@ -5548,6 +5878,9 @@
       ],
       "library_target_name": "strsim",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2015",
         "version": "0.10.0"
       },
@@ -5590,6 +5923,9 @@
       ],
       "library_target_name": "syn",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "clone-impls",
           "default",
@@ -5656,6 +5992,9 @@
       ],
       "library_target_name": "tar",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "xattr"
@@ -5710,6 +6049,9 @@
       ],
       "library_target_name": "tempfile",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -5777,7 +6119,7 @@
       "library_target_name": "tera",
       "common_attrs": {
         "compile_data_glob": [
-          "**/*.pest"
+          "**"
         ],
         "crate_features": [
           "builtins",
@@ -5885,6 +6227,9 @@
       ],
       "library_target_name": "termcolor",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [],
           "selects": {
@@ -5926,6 +6271,9 @@
       ],
       "library_target_name": "textwrap",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "smawk",
@@ -5979,6 +6327,9 @@
       ],
       "library_target_name": "thread_local",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -6018,6 +6369,9 @@
       ],
       "library_target_name": "tinyvec",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "alloc",
           "default",
@@ -6062,6 +6416,9 @@
       ],
       "library_target_name": "tinyvec_macros",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2018",
         "version": "0.1.0"
       },
@@ -6092,6 +6449,9 @@
       ],
       "library_target_name": "toml",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default"
         ],
@@ -6146,6 +6506,9 @@
       ],
       "library_target_name": "typenum",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -6190,6 +6553,9 @@
       ],
       "library_target_name": "ucd_trie",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std"
@@ -6236,6 +6602,9 @@
       ],
       "library_target_name": "uncased",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -6289,6 +6658,9 @@
       ],
       "library_target_name": "unic_char_property",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -6328,6 +6700,9 @@
       ],
       "library_target_name": "unic_char_range",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default"
         ],
@@ -6361,6 +6736,9 @@
       ],
       "library_target_name": "unic_common",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default"
         ],
@@ -6394,6 +6772,9 @@
       ],
       "library_target_name": "unic_segment",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -6434,7 +6815,7 @@
       "library_target_name": "unic_ucd_segment",
       "common_attrs": {
         "compile_data_glob": [
-          "**/*.rsv"
+          "**"
         ],
         "deps": {
           "common": [
@@ -6484,7 +6865,7 @@
       "library_target_name": "unic_ucd_version",
       "common_attrs": {
         "compile_data_glob": [
-          "**/*.rsv"
+          "**"
         ],
         "deps": {
           "common": [
@@ -6525,6 +6906,9 @@
       ],
       "library_target_name": "unicode_bidi",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std"
@@ -6571,6 +6955,9 @@
       ],
       "library_target_name": "unicode_linebreak",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -6585,9 +6972,7 @@
       },
       "build_script_attrs": {
         "data_glob": [
-          "**",
-          "**/*.rs",
-          "**/*.txt"
+          "**"
         ],
         "deps": {
           "common": [
@@ -6626,6 +7011,9 @@
       ],
       "library_target_name": "unicode_normalization",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std"
@@ -6669,6 +7057,9 @@
       ],
       "library_target_name": "unicode_width",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default"
         ],
@@ -6702,6 +7093,9 @@
       ],
       "library_target_name": "unicode_xid",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default"
         ],
@@ -6735,6 +7129,9 @@
       ],
       "library_target_name": "url",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -6781,6 +7178,9 @@
       ],
       "library_target_name": null,
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -6832,6 +7232,9 @@
       ],
       "library_target_name": "vcpkg",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2015",
         "version": "0.2.15"
       },
@@ -6862,6 +7265,9 @@
       ],
       "library_target_name": "version_check",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2015",
         "version": "0.9.4"
       },
@@ -6892,6 +7298,9 @@
       ],
       "library_target_name": "walkdir",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -6942,6 +7351,9 @@
       ],
       "library_target_name": "wasi",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std"
@@ -6988,6 +7400,9 @@
       ],
       "library_target_name": "winapi",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "consoleapi",
           "errhandlingapi",
@@ -7073,6 +7488,9 @@
       ],
       "library_target_name": "winapi_i686_pc_windows_gnu",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -7117,6 +7535,9 @@
       ],
       "library_target_name": "winapi_util",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [],
           "selects": {
@@ -7170,6 +7591,9 @@
       ],
       "library_target_name": "winapi_x86_64_pc_windows_gnu",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -7214,6 +7638,9 @@
       ],
       "library_target_name": "xattr",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "unsupported"

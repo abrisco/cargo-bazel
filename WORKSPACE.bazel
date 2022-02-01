@@ -24,24 +24,6 @@ crates_repository(
         "cargo_toml": [crate.annotation(
             shallow_since = "1643746537 -0800",
         )],
-        "chrono-tz": [crate.annotation(
-            build_script_data_glob = ["**/tz/**"],
-        )],
-        "clap": [crate.annotation(
-            compile_data_glob = ["**/*.md"],
-        )],
-        "clap_derive": [crate.annotation(
-            compile_data_glob = ["**/*.md"],
-        )],
-        "crossbeam-utils": [crate.annotation(
-            build_script_data_glob = ["**/*.rs"],
-        )],
-        "deunicode": [crate.annotation(
-            compile_data_glob = [
-                "**/*.txt",
-                "**/*.bin",
-            ],
-        )],
         "libgit2-sys": [crate.annotation(
             gen_build_script = False,
             deps = ["@libgit2"],
@@ -49,21 +31,6 @@ crates_repository(
         "libz-sys": [crate.annotation(
             gen_build_script = False,
             deps = ["@zlib"],
-        )],
-        "tera": [crate.annotation(
-            compile_data_glob = ["**/*.pest"],
-        )],
-        "unic-ucd-segment": [crate.annotation(
-            compile_data_glob = ["**/*.rsv"],
-        )],
-        "unic-ucd-version": [crate.annotation(
-            compile_data_glob = ["**/*.rsv"],
-        )],
-        "unicode-linebreak": [crate.annotation(
-            build_script_data_glob = [
-                "**/*.rs",
-                "**/*.txt",
-            ],
         )],
     },
     generator = "@cargo_bazel_bootstrap//:cargo-bazel",

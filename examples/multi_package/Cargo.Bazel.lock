@@ -1,5 +1,5 @@
 {
-  "checksum": "200385f0e9957aa24cf7ae6f329b279bae9da511255a5b8463f97b3f0d3f1f75",
+  "checksum": "df36f594f057e5974ef36651e114a211b3af624df743c071d3949358e8748320",
   "crates": {
     "aho-corasick 0.7.18": {
       "name": "aho-corasick",
@@ -26,6 +26,9 @@
       ],
       "library_target_name": "aho_corasick",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std"
@@ -81,6 +84,9 @@
       ],
       "library_target_name": "anyhow",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std"
@@ -129,6 +135,9 @@
       ],
       "library_target_name": "ascii_canvas",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -168,6 +177,9 @@
       ],
       "library_target_name": "assert_json_diff",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -211,6 +223,9 @@
       ],
       "library_target_name": "async_channel",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -258,6 +273,9 @@
       ],
       "library_target_name": "async_executor",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -317,6 +335,9 @@
       ],
       "library_target_name": "async_global_executor",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "async-io",
           "default"
@@ -388,6 +409,9 @@
       ],
       "library_target_name": "async_io",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -472,6 +496,9 @@
       ],
       "library_target_name": "async_lock",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -511,6 +538,9 @@
       ],
       "library_target_name": "async_mutex",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -550,6 +580,9 @@
       ],
       "library_target_name": "async_object_pool",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -589,6 +622,9 @@
       ],
       "library_target_name": "async_process",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -665,6 +701,9 @@
       ],
       "library_target_name": "async_std",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "alloc",
           "async-channel",
@@ -811,6 +850,9 @@
       ],
       "library_target_name": "async_task",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std"
@@ -857,6 +899,9 @@
       ],
       "library_target_name": "async_trait",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -913,6 +958,9 @@
       ],
       "library_target_name": "atomic_waker",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2018",
         "version": "1.0.0"
       },
@@ -943,6 +991,9 @@
       ],
       "library_target_name": "atty",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [],
           "selects": {
@@ -996,6 +1047,9 @@
       ],
       "library_target_name": "autocfg",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2015",
         "version": "1.0.1"
       },
@@ -1026,6 +1080,9 @@
       ],
       "library_target_name": "base64",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std"
@@ -1072,6 +1129,9 @@
       ],
       "library_target_name": "basic_cookies",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -1094,8 +1154,7 @@
       },
       "build_script_attrs": {
         "data_glob": [
-          "**",
-          "**/*.lalrpop"
+          "**"
         ],
         "deps": {
           "common": [
@@ -1134,6 +1193,9 @@
       ],
       "library_target_name": "bit_set",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -1173,6 +1235,9 @@
       ],
       "library_target_name": "bit_vec",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2015",
         "version": "0.6.3"
       },
@@ -1203,6 +1268,9 @@
       ],
       "library_target_name": "bitflags",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default"
         ],
@@ -1236,6 +1304,9 @@
       ],
       "library_target_name": "block_buffer",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -1275,6 +1346,9 @@
       ],
       "library_target_name": "blocking",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -1334,6 +1408,9 @@
       ],
       "library_target_name": "bumpalo",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default"
         ],
@@ -1367,6 +1444,9 @@
       ],
       "library_target_name": "bytes",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std"
@@ -1401,6 +1481,9 @@
       ],
       "library_target_name": "cache_padded",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2018",
         "version": "1.2.0"
       },
@@ -1431,6 +1514,9 @@
       ],
       "library_target_name": "castaway",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2018",
         "version": "0.1.2"
       },
@@ -1473,6 +1559,9 @@
       ],
       "library_target_name": "cc",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2018",
         "version": "1.0.72"
       },
@@ -1503,6 +1592,9 @@
       ],
       "library_target_name": "cfg_if",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2018",
         "version": "1.0.0"
       },
@@ -1533,6 +1625,9 @@
       ],
       "library_target_name": "concurrent_queue",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -1572,6 +1667,9 @@
       ],
       "library_target_name": "core_foundation",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -1627,6 +1725,9 @@
       ],
       "library_target_name": "core_foundation_sys",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -1683,6 +1784,9 @@
       ],
       "library_target_name": "crossbeam_utils",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "lazy_static",
@@ -1752,6 +1856,9 @@
       ],
       "library_target_name": "crunchy",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "limit_128"
@@ -1800,6 +1907,9 @@
       ],
       "library_target_name": "ctor",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -1855,6 +1965,9 @@
       ],
       "library_target_name": "curl",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "http2",
@@ -1949,6 +2062,9 @@
       ],
       "library_target_name": "curl_sys",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "http2",
@@ -2021,6 +2137,9 @@
       ],
       "library_target_name": "diff",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2015",
         "version": "0.1.12"
       },
@@ -2051,6 +2170,9 @@
       ],
       "library_target_name": "digest",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "alloc",
           "std"
@@ -2089,6 +2211,9 @@
       ],
       "library_target_name": "direct_cargo_bazel_deps",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2018",
         "version": "0.0.1"
       },
@@ -2119,6 +2244,9 @@
       ],
       "library_target_name": "dirs_next",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -2162,6 +2290,9 @@
       ],
       "library_target_name": "dirs_sys_next",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [],
           "selects": {
@@ -2215,6 +2346,9 @@
       ],
       "library_target_name": "either",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2015",
         "version": "1.6.1"
       },
@@ -2245,6 +2379,9 @@
       ],
       "library_target_name": "ena",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -2296,6 +2433,9 @@
       ],
       "library_target_name": "encoding_rs",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "alloc",
           "default"
@@ -2348,6 +2488,9 @@
       ],
       "library_target_name": "event_listener",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2018",
         "version": "2.5.2"
       },
@@ -2378,6 +2521,9 @@
       ],
       "library_target_name": "fastrand",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [],
           "selects": {
@@ -2419,6 +2565,9 @@
       ],
       "library_target_name": "fixedbitset",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2015",
         "version": "0.2.0"
       },
@@ -2449,6 +2598,9 @@
       ],
       "library_target_name": "fnv",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std"
@@ -2483,6 +2635,9 @@
       ],
       "library_target_name": "foreign_types",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -2522,6 +2677,9 @@
       ],
       "library_target_name": "foreign_types_shared",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2015",
         "version": "0.1.1"
       },
@@ -2552,6 +2710,9 @@
       ],
       "library_target_name": "form_urlencoded",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -2607,6 +2768,9 @@
       ],
       "library_target_name": "futures_channel",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "alloc",
           "default",
@@ -2672,6 +2836,9 @@
       ],
       "library_target_name": "futures_core",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "alloc",
           "default",
@@ -2721,6 +2888,9 @@
       ],
       "library_target_name": "futures_io",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std"
@@ -2755,6 +2925,9 @@
       ],
       "library_target_name": "futures_lite",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "alloc",
           "default",
@@ -2828,6 +3001,9 @@
       ],
       "library_target_name": "futures_macro",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -2875,6 +3051,9 @@
       ],
       "library_target_name": "futures_sink",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "alloc",
           "default",
@@ -2922,6 +3101,9 @@
       ],
       "library_target_name": "futures_task",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "alloc",
           "std"
@@ -2982,6 +3164,9 @@
       ],
       "library_target_name": "futures_util",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "alloc",
           "async-await",
@@ -3087,6 +3272,9 @@
       ],
       "library_target_name": "generic_array",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -3144,6 +3332,9 @@
       ],
       "library_target_name": "getrandom",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "std"
         ],
@@ -3199,6 +3390,9 @@
       ],
       "library_target_name": "gloo_timers",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "futures",
@@ -3256,6 +3450,9 @@
       ],
       "library_target_name": "h2",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -3335,6 +3532,9 @@
       ],
       "library_target_name": "hashbrown",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "raw"
         ],
@@ -3368,6 +3568,9 @@
       ],
       "library_target_name": "hermit_abi",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default"
         ],
@@ -3410,6 +3613,9 @@
       ],
       "library_target_name": "hex_literal",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2018",
         "version": "0.3.4"
       },
@@ -3440,6 +3646,9 @@
       ],
       "library_target_name": "http",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -3487,6 +3696,9 @@
       ],
       "library_target_name": "http_body",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -3546,6 +3758,9 @@
       ],
       "library_target_name": "httparse",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std"
@@ -3594,6 +3809,9 @@
       ],
       "library_target_name": "httpdate",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2018",
         "version": "1.0.2"
       },
@@ -3636,6 +3854,9 @@
       ],
       "library_target_name": "httpmock",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "basic-cookies",
           "cookies",
@@ -3761,6 +3982,9 @@
       ],
       "library_target_name": "hyper",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "client",
           "default",
@@ -3871,6 +4095,9 @@
       ],
       "library_target_name": "hyper_tls",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -3926,6 +4153,9 @@
       ],
       "library_target_name": "idna",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -3985,6 +4215,9 @@
       ],
       "library_target_name": "indexmap",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "std"
         ],
@@ -4045,6 +4278,9 @@
       ],
       "library_target_name": "instant",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -4084,6 +4320,9 @@
       ],
       "library_target_name": "ipnet",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2015",
         "version": "2.3.1"
       },
@@ -4126,6 +4365,9 @@
       ],
       "library_target_name": "isahc",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "encoding_rs",
@@ -4254,6 +4496,9 @@
       ],
       "library_target_name": "itertools",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "use_alloc",
           "use_std"
@@ -4297,6 +4542,9 @@
       ],
       "library_target_name": "itoa",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std"
@@ -4331,6 +4579,9 @@
       ],
       "library_target_name": "itoa",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2018",
         "version": "1.0.1"
       },
@@ -4361,6 +4612,9 @@
       ],
       "library_target_name": "js_sys",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -4400,6 +4654,9 @@
       ],
       "library_target_name": "kv_log_macro",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -4451,6 +4708,9 @@
       ],
       "library_target_name": "lalrpop",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "lexer",
@@ -4554,6 +4814,9 @@
       ],
       "library_target_name": "lalrpop_util",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "lexer",
@@ -4599,6 +4862,9 @@
       ],
       "library_target_name": "lazy_static",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2015",
         "version": "1.4.0"
       },
@@ -4629,6 +4895,9 @@
       ],
       "library_target_name": "levenshtein",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2015",
         "version": "1.0.5"
       },
@@ -4671,6 +4940,9 @@
       ],
       "library_target_name": "libc",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std"
@@ -4731,6 +5003,9 @@
       ],
       "library_target_name": "libnghttp2_sys",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "data_glob": [
           "nghttp2/**"
         ],
@@ -4805,6 +5080,9 @@
       ],
       "library_target_name": "libz_sys",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "libc"
         ],
@@ -4826,8 +5104,7 @@
       },
       "build_script_attrs": {
         "data_glob": [
-          "**",
-          "src/**"
+          "**"
         ],
         "deps": {
           "common": [
@@ -4878,6 +5155,9 @@
       ],
       "library_target_name": "lock_api",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -4929,6 +5209,9 @@
       ],
       "library_target_name": "log",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "kv_unstable",
           "value-bag"
@@ -4985,6 +5268,9 @@
       ],
       "library_target_name": "matches",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2015",
         "version": "0.1.9"
       },
@@ -5015,6 +5301,9 @@
       ],
       "library_target_name": "md5",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std"
@@ -5078,6 +5367,9 @@
       ],
       "library_target_name": "memchr",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std"
@@ -5126,6 +5418,9 @@
       ],
       "library_target_name": "mime",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2015",
         "version": "0.3.16"
       },
@@ -5156,6 +5451,9 @@
       ],
       "library_target_name": "mio",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "net",
@@ -5226,6 +5524,9 @@
       ],
       "library_target_name": "miow",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -5277,6 +5578,9 @@
       ],
       "library_target_name": "native_tls",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -5368,6 +5672,9 @@
       ],
       "library_target_name": "debug_unreachable",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2018",
         "version": "1.0.4"
       },
@@ -5410,6 +5717,9 @@
       ],
       "library_target_name": "ntapi",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "user"
@@ -5462,6 +5772,9 @@
       ],
       "library_target_name": "num_cpus",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [],
           "selects": {
@@ -5509,6 +5822,9 @@
       ],
       "library_target_name": "once_cell",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "alloc",
           "default",
@@ -5545,6 +5861,9 @@
       ],
       "library_target_name": "opaque_debug",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2018",
         "version": "0.3.0"
       },
@@ -5587,6 +5906,9 @@
       ],
       "library_target_name": "openssl",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -5666,6 +5988,9 @@
       ],
       "library_target_name": "openssl_probe",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2015",
         "version": "0.1.5"
       },
@@ -5708,6 +6033,9 @@
       ],
       "library_target_name": "openssl_sys",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "data": {
           "common": [
             "@openssl"
@@ -5805,6 +6133,9 @@
       ],
       "library_target_name": "parking",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2018",
         "version": "2.0.0"
       },
@@ -5835,6 +6166,9 @@
       ],
       "library_target_name": "parking_lot",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default"
         ],
@@ -5897,6 +6231,9 @@
       ],
       "library_target_name": "parking_lot_core",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -5972,6 +6309,9 @@
       ],
       "library_target_name": "percent_encoding",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2015",
         "version": "2.1.0"
       },
@@ -6002,6 +6342,9 @@
       ],
       "library_target_name": "petgraph",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -6045,6 +6388,9 @@
       ],
       "library_target_name": "phf_shared",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std"
@@ -6088,6 +6434,9 @@
       ],
       "library_target_name": "pico_args",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2018",
         "version": "0.4.2"
       },
@@ -6118,6 +6467,9 @@
       ],
       "library_target_name": "pin_project",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2018",
         "proc_macro_deps": {
           "common": [
@@ -6157,6 +6509,9 @@
       ],
       "library_target_name": "pin_project_internal",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -6204,6 +6559,9 @@
       ],
       "library_target_name": "pin_project_lite",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2018",
         "version": "0.2.8"
       },
@@ -6234,6 +6592,9 @@
       ],
       "library_target_name": "pin_utils",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2018",
         "version": "0.1.0"
       },
@@ -6264,6 +6625,9 @@
       ],
       "library_target_name": "pkg_config",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2015",
         "version": "0.3.24"
       },
@@ -6289,6 +6653,9 @@
       ],
       "library_target_name": "pkg_a",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -6336,6 +6703,9 @@
       ],
       "library_target_name": "pkg_b",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -6370,6 +6740,9 @@
       ],
       "library_target_name": "pkg_c",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -6418,6 +6791,9 @@
       ],
       "library_target_name": "polling",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std"
@@ -6482,6 +6858,9 @@
       ],
       "library_target_name": "precomputed_hash",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2015",
         "version": "0.1.1"
       },
@@ -6524,6 +6903,9 @@
       ],
       "library_target_name": "proc_macro2",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "proc-macro"
@@ -6576,6 +6958,9 @@
       ],
       "library_target_name": "quote",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "proc-macro"
@@ -6619,6 +7004,9 @@
       ],
       "library_target_name": "syscall",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -6658,6 +7046,9 @@
       ],
       "library_target_name": "redox_users",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -6701,6 +7092,9 @@
       ],
       "library_target_name": "regex",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "aho-corasick",
           "default",
@@ -6767,6 +7161,9 @@
       ],
       "library_target_name": "regex_syntax",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "unicode",
@@ -6808,6 +7205,9 @@
       ],
       "library_target_name": "remove_dir_all",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [],
           "selects": {
@@ -6849,6 +7249,9 @@
       ],
       "library_target_name": "reqwest",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "__tls",
           "blocking",
@@ -7027,6 +7430,9 @@
       ],
       "library_target_name": "rustversion",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -7071,6 +7477,9 @@
       ],
       "library_target_name": "ryu",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2018",
         "version": "1.0.9"
       },
@@ -7101,6 +7510,9 @@
       ],
       "library_target_name": "schannel",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -7144,6 +7556,9 @@
       ],
       "library_target_name": "scopeguard",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2015",
         "version": "1.1.0"
       },
@@ -7174,6 +7589,9 @@
       ],
       "library_target_name": "security_framework",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "OSX_10_9",
           "default"
@@ -7233,6 +7651,9 @@
       ],
       "library_target_name": "security_framework_sys",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "OSX_10_9",
           "default"
@@ -7292,6 +7713,9 @@
       ],
       "library_target_name": "serde",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "derive",
@@ -7363,6 +7787,9 @@
       ],
       "library_target_name": "serde_derive",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default"
         ],
@@ -7434,6 +7861,9 @@
       ],
       "library_target_name": "serde_json",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std"
@@ -7494,6 +7924,9 @@
       ],
       "library_target_name": "serde_regex",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -7537,6 +7970,9 @@
       ],
       "library_target_name": "serde_urlencoded",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -7600,6 +8036,9 @@
       ],
       "library_target_name": "signal_hook",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "channel",
           "iterator"
@@ -7656,6 +8095,9 @@
       ],
       "library_target_name": "signal_hook_registry",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -7695,6 +8137,9 @@
       ],
       "library_target_name": "similar",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "text"
@@ -7729,6 +8174,9 @@
       ],
       "library_target_name": "siphasher",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std"
@@ -7763,6 +8211,9 @@
       ],
       "library_target_name": "slab",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std"
@@ -7797,6 +8248,9 @@
       ],
       "library_target_name": "sluice",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -7844,6 +8298,9 @@
       ],
       "library_target_name": "smallvec",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2018",
         "version": "1.8.0"
       },
@@ -7874,6 +8331,9 @@
       ],
       "library_target_name": "socket2",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "all"
         ],
@@ -7924,6 +8384,9 @@
       ],
       "library_target_name": "string_cache",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -7991,6 +8454,9 @@
       ],
       "library_target_name": "syn",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "clone-impls",
           "default",
@@ -8060,6 +8526,9 @@
       ],
       "library_target_name": "tempfile",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -8126,6 +8595,9 @@
       ],
       "library_target_name": "term",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default"
         ],
@@ -8198,6 +8670,9 @@
       ],
       "library_target_name": "tiny_keccak",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "sha3"
@@ -8250,6 +8725,9 @@
       ],
       "library_target_name": "tinyvec",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "alloc",
           "default",
@@ -8294,6 +8772,9 @@
       ],
       "library_target_name": "tinyvec_macros",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2018",
         "version": "0.1.0"
       },
@@ -8324,6 +8805,9 @@
       ],
       "library_target_name": "tokio",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "bytes",
           "default",
@@ -8429,6 +8913,9 @@
       ],
       "library_target_name": "tokio_macros",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -8476,6 +8963,9 @@
       ],
       "library_target_name": "tokio_native_tls",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -8519,6 +9009,9 @@
       ],
       "library_target_name": "tokio_util",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "codec",
           "default"
@@ -8582,6 +9075,9 @@
       ],
       "library_target_name": "tower_service",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2018",
         "version": "0.3.1"
       },
@@ -8612,6 +9108,9 @@
       ],
       "library_target_name": "tracing",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "attributes",
           "default",
@@ -8679,6 +9178,9 @@
       ],
       "library_target_name": "tracing_attributes",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -8726,6 +9228,9 @@
       ],
       "library_target_name": "tracing_core",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "lazy_static",
           "std"
@@ -8769,6 +9274,9 @@
       ],
       "library_target_name": "tracing_futures",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "pin-project",
           "std",
@@ -8817,6 +9325,9 @@
       ],
       "library_target_name": "try_lock",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2015",
         "version": "0.2.3"
       },
@@ -8859,6 +9370,9 @@
       ],
       "library_target_name": "typenum",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -8903,6 +9417,9 @@
       ],
       "library_target_name": "unicode_bidi",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std"
@@ -8937,6 +9454,9 @@
       ],
       "library_target_name": "unicode_normalization",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std"
@@ -8980,6 +9500,9 @@
       ],
       "library_target_name": "unicode_xid",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default"
         ],
@@ -9013,6 +9536,9 @@
       ],
       "library_target_name": "url",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -9076,6 +9602,9 @@
       ],
       "library_target_name": "value_bag",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -9139,6 +9668,9 @@
       ],
       "library_target_name": "vcpkg",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2015",
         "version": "0.2.15"
       },
@@ -9169,6 +9701,9 @@
       ],
       "library_target_name": "version_check",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2015",
         "version": "0.9.4"
       },
@@ -9199,6 +9734,9 @@
       ],
       "library_target_name": "waker_fn",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "edition": "2018",
         "version": "1.1.0"
       },
@@ -9229,6 +9767,9 @@
       ],
       "library_target_name": "want",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -9272,6 +9813,9 @@
       ],
       "library_target_name": "wasi",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "std"
@@ -9318,6 +9862,9 @@
       ],
       "library_target_name": "wasm_bindgen",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "default",
           "spans",
@@ -9380,6 +9927,9 @@
       ],
       "library_target_name": "wasm_bindgen_backend",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "spans"
         ],
@@ -9446,6 +9996,9 @@
       ],
       "library_target_name": "wasm_bindgen_futures",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -9500,6 +10053,9 @@
       ],
       "library_target_name": "wasm_bindgen_macro",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "spans"
         ],
@@ -9546,6 +10102,9 @@
       ],
       "library_target_name": "wasm_bindgen_macro_support",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "spans"
         ],
@@ -9616,6 +10175,9 @@
       ],
       "library_target_name": "wasm_bindgen_shared",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -9661,6 +10223,9 @@
       ],
       "library_target_name": "web_sys",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "Blob",
           "BlobPropertyBag",
@@ -9735,6 +10300,9 @@
       ],
       "library_target_name": "wepoll_ffi",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "null-overlapped-wakeups-patch"
         ],
@@ -9804,6 +10372,9 @@
       ],
       "library_target_name": "winapi",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "crate_features": [
           "cfg",
           "consoleapi",
@@ -9920,6 +10491,9 @@
       ],
       "library_target_name": "winapi_i686_pc_windows_gnu",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -9976,6 +10550,9 @@
       ],
       "library_target_name": "winapi_x86_64_pc_windows_gnu",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
@@ -10020,6 +10597,9 @@
       ],
       "library_target_name": "winreg",
       "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
         "deps": {
           "common": [
             {
