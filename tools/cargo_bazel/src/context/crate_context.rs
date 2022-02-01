@@ -54,7 +54,7 @@ pub enum Rule {
 
 /// A set of attributes common to most `rust_library`, `rust_proc_macro`, and other
 /// [core rules of `rules_rust`](https://bazelbuild.github.io/rules_rust/defs.html).
-#[derive(Debug, Default, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize, Clone)]
+#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize, Clone)]
 #[serde(default)]
 pub struct CommonAttributes {
     #[serde(skip_serializing_if = "SelectStringList::should_skip_serializing")]
@@ -108,6 +108,32 @@ pub struct CommonAttributes {
 
     #[serde(skip_serializing_if = "Vec::is_empty")]
     pub tags: Vec<String>,
+}
+
+impl Default for CommonAttributes {
+    fn default() -> Self {
+        Self {
+            compile_data: Default::default(),
+            // Generated targets include all files in their package by default
+            compile_data_glob: BTreeSet::from(["**".to_owned()]),
+            crate_features: Default::default(),
+            data: Default::default(),
+            data_glob: Default::default(),
+            deps: Default::default(),
+            extra_deps: Default::default(),
+            deps_dev: Default::default(),
+            edition: Default::default(),
+            linker_script: Default::default(),
+            proc_macro_deps: Default::default(),
+            extra_proc_macro_deps: Default::default(),
+            proc_macro_deps_dev: Default::default(),
+            rustc_env: Default::default(),
+            rustc_env_files: Default::default(),
+            rustc_flags: Default::default(),
+            version: Default::default(),
+            tags: Default::default(),
+        }
+    }
 }
 
 // Build script attributes. See
