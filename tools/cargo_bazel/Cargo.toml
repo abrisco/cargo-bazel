@@ -30,4 +30,5 @@ textwrap = "0.14.2"
 toml = "0.5.8"
 
 [dev-dependencies]
+spectral = "0.6"
 tempfile = "3.2.0"
