@@ -168,7 +168,7 @@ pub struct CrateAnnotations {
     pub build_script_rustc_env: Option<BTreeMap<String, String>>,
 
     /// A scratch pad used to write arbitrary text to target BUILD files.
-    pub build_content: Option<String>,
+    pub additive_build_file_content: Option<String>,
 
     /// For git sourced crates, this is a the
     /// [git_repository::shallow_since](https://docs.bazel.build/versions/main/repo/git.html#new_git_repository-shallow_since) attribute.
@@ -258,7 +258,7 @@ impl Add for CrateAnnotations {
             build_script_data_glob: joined_extra_member!(self.build_script_data_glob, rhs.build_script_data_glob, BTreeSet::new, BTreeSet::extend),
             build_script_env: joined_extra_member!(self.build_script_env, rhs.build_script_env, BTreeMap::new, BTreeMap::extend),
             build_script_rustc_env: joined_extra_member!(self.build_script_rustc_env, rhs.build_script_rustc_env, BTreeMap::new, BTreeMap::extend),
-            build_content: joined_extra_member!(self.build_content, rhs.build_content, String::new, concat_string),
+            additive_build_file_content: joined_extra_member!(self.additive_build_file_content, rhs.additive_build_file_content, String::new, concat_string),
             shallow_since,
             patch_args: joined_extra_member!(self.patch_args, rhs.patch_args, Vec::new, Vec::extend),
             patch_tool,
