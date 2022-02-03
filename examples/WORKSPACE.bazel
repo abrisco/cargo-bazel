@@ -137,10 +137,11 @@ crates_repository(
     annotations = {
         "curl-sys": [crate.annotation(
             gen_build_script = False,
-            deps = [
-                "@curl",
-                "@libssh2",
-            ],
+            additive_build_file = "//multi_package/3rdparty:BUILD.curl-sys.extra.bazel",
+        )],
+        "ring": [crate.annotation(
+            gen_build_script = False,
+            additive_build_file = "//multi_package/3rdparty:BUILD.ring.extra.bazel",
         )],
         "lalrpop": [crate.annotation(
             data_glob = ["**/*.lalrpop"],
@@ -148,22 +149,6 @@ crates_repository(
         "libnghttp2-sys": [crate.annotation(
             build_script_data_glob = ["nghttp2/**"],
             data_glob = ["nghttp2/**"],
-        )],
-        "openssl-sys": [crate.annotation(
-            build_script_data = [
-                "@openssl//:gen_dir",
-                "@openssl//:openssl",
-            ],
-            build_script_data_glob = ["build/**/*.c"],
-            build_script_env = {
-                "OPENSSL_DIR": "$(execpath @openssl//:gen_dir)",
-                "OPENSSL_STATIC": "1",
-            },
-            data = ["@openssl"],
-            deps = ["@openssl"],
-        )],
-        "wepoll-ffi": [crate.annotation(
-            build_script_data_glob = ["vendor/**"],
         )],
     },
     generator = "@cargo_bazel_bootstrap//:cargo-bazel",
