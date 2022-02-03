@@ -1,5 +1,5 @@
 {
-  "checksum": "a8c2e72ef33feb3f4545d7eab0c2c86fbef90ee77940a18e7f14d0e9b2196c4f",
+  "checksum": "5c8f52136cc4ccb0e8284ba52bfe800074bc9c2604541ffe09508bbd09d2c035",
   "crates": {
     "adler 1.0.2": {
       "name": "adler",
@@ -888,11 +888,11 @@
       "version": "0.11.3",
       "repository": {
         "Git": {
-          "remote": "https://gitlab.com/UebelAndre/cargo_toml.git",
+          "remote": "https://gitlab.com/crates.rs/cargo_toml.git",
           "commitish": {
-            "Rev": "bcb72088defc99192566a04f71e9569551386d5a"
+            "Rev": "83e5a7094470acf434ab73f3931530547f549a02"
           },
-          "shallow_since": "1643746537 -0800"
+          "shallow_since": "1643802651 +0000"
         }
       },
       "targets": [
