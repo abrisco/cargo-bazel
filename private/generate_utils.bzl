@@ -129,7 +129,7 @@ def render_config(
 def _crate_id(name, version):
     return "{} {}".format(name, version)
 
-def _collect_crate_annotations(annotations, repository_name):
+def _collect_crate_annotations(repository_ctx, annotations, repository_name):
     annotations = {name: [json.decode(a) for a in annotation] for name, annotation in annotations.items()}
     crate_annotations = {}
     for name, annotation in annotations.items():
@@ -144,6 +144,18 @@ def _collect_crate_annotations(annotations, repository_name):
             id = _crate_id(name, version)
             if id in crate_annotations:
                 fail("Found duplicate entries for {}".format(id))
+
+            # Load additive build files if any have been provided.
+            content = list()
+            additive_build_file_content = data.pop("additive_build_file_content", None)
+            if additive_build_file_content:
+                content.append(additive_build_file_content)
+            additive_build_file = data.pop("additive_build_file", None)
+            if additive_build_file:
+                file_path = repository_ctx.path(Label(additive_build_file))
+                content.append(repository_ctx.read(file_path))
+            data.update({"additive_build_file_content": "\n".join(content) if content else None})
+
             crate_annotations.update({id: data})
     return crate_annotations
 
@@ -185,7 +197,7 @@ def generate_config(repository_ctx):
     """
     config = struct(
         generate_build_scripts = repository_ctx.attr.generate_build_scripts,
-        annotations = _collect_crate_annotations(repository_ctx.attr.annotations, repository_ctx.name),
+        annotations = _collect_crate_annotations(repository_ctx, repository_ctx.attr.annotations, repository_ctx.name),
         cargo_config = _read_cargo_config(repository_ctx),
         rendering = _get_render_config(repository_ctx),
         supported_platform_triples = repository_ctx.attr.supported_platform_triples,

@@ -1,5 +1,5 @@
 {
-  "checksum": "ee9a5e0c573f0aaa9b047ecd0a9421c68bac5f2235567b306da9931cfc0e5daf",
+  "checksum": "f04a8b927849ca899178faa953e5039f32596d2b23300ca33a467ae6e3e998a9",
   "crates": {
     "adler 1.0.2": {
       "name": "adler",
@@ -268,13 +268,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "block-buffer 0.10.0": {
+    "block-buffer 0.10.1": {
       "name": "block-buffer",
-      "version": "0.10.0",
+      "version": "0.10.1",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/block-buffer/0.10.0/download",
-          "sha256": "f1d36a02058e76b040de25a4464ba1c80935655595b661505c8b39b664828b95"
+          "url": "https://crates.io/api/v1/crates/block-buffer/0.10.1/download",
+          "sha256": "03588e54c62ae6d763e2a80090d50353b785795361b4ff5b3bf0a5097fc31c0b"
         }
       },
       "targets": [
@@ -306,7 +306,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.10.0"
+        "version": "0.10.1"
       },
       "license": "MIT OR Apache-2.0"
     },
@@ -650,7 +650,7 @@
               "target": "clap"
             },
             {
-              "id": "crates-index 0.18.4",
+              "id": "crates-index 0.18.5",
               "target": "crates_index"
             },
             {
@@ -666,7 +666,7 @@
               "target": "regex"
             },
             {
-              "id": "semver 1.0.4",
+              "id": "semver 1.0.5",
               "target": "semver"
             },
             {
@@ -757,7 +757,7 @@
         "deps": {
           "common": [
             {
-              "id": "semver 1.0.4",
+              "id": "semver 1.0.5",
               "target": "semver"
             },
             {
@@ -864,7 +864,7 @@
               "target": "cargo_platform"
             },
             {
-              "id": "semver 1.0.4",
+              "id": "semver 1.0.5",
               "target": "semver"
             },
             {
@@ -1467,13 +1467,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "crates-index 0.18.4": {
+    "crates-index 0.18.5": {
       "name": "crates-index",
-      "version": "0.18.4",
+      "version": "0.18.5",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/crates-index/0.18.4/download",
-          "sha256": "2679f1aadf9fc356f8233e82d048bf3fc048f68de3d95a1e40c29bb0a012e9bf"
+          "url": "https://crates.io/api/v1/crates/crates-index/0.18.5/download",
+          "sha256": "00c338c128681bf06772e2a188f7937293620478bb7781e453e996266686e806"
         }
       },
       "targets": [
@@ -1514,7 +1514,15 @@
               "target": "memchr"
             },
             {
-              "id": "semver 1.0.4",
+              "id": "num_cpus 1.13.1",
+              "target": "num_cpus"
+            },
+            {
+              "id": "rustc-hash 1.1.0",
+              "target": "rustc_hash"
+            },
+            {
+              "id": "semver 1.0.5",
               "target": "semver"
             },
             {
@@ -1542,7 +1550,7 @@
           ],
           "selects": {}
         },
-        "version": "0.18.4"
+        "version": "0.18.5"
       },
       "license": "Apache-2.0"
     },
@@ -1650,13 +1658,13 @@
       },
       "license": null
     },
-    "crossbeam-utils 0.8.6": {
+    "crossbeam-utils 0.8.7": {
       "name": "crossbeam-utils",
-      "version": "0.8.6",
+      "version": "0.8.7",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/crossbeam-utils/0.8.6/download",
-          "sha256": "cfcae03edb34f947e64acdb1c33ec169824e20657e9ecb61cef6c8c74dcb8120"
+          "url": "https://crates.io/api/v1/crates/crossbeam-utils/0.8.7/download",
+          "sha256": "b5e5bed1f1c269533fa816a0a5492b3545209a205ca1a54842be180eb63a16a6"
         }
       },
       "targets": [
@@ -1702,7 +1710,7 @@
               "target": "cfg_if"
             },
             {
-              "id": "crossbeam-utils 0.8.6",
+              "id": "crossbeam-utils 0.8.7",
               "target": "build_script_build"
             },
             {
@@ -1713,7 +1721,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.8.6"
+        "version": "0.8.7"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -1838,7 +1846,7 @@
         "deps": {
           "common": [
             {
-              "id": "block-buffer 0.10.0",
+              "id": "block-buffer 0.10.1",
               "target": "block_buffer"
             },
             {
@@ -2958,7 +2966,7 @@
         "deps": {
           "common": [
             {
-              "id": "crossbeam-utils 0.8.6",
+              "id": "crossbeam-utils 0.8.7",
               "target": "crossbeam_utils"
             },
             {
@@ -4125,6 +4133,56 @@
           ],
           "selects": {}
         }
+      },
+      "license": "MIT OR Apache-2.0"
+    },
+    "num_cpus 1.13.1": {
+      "name": "num_cpus",
+      "version": "1.13.1",
+      "repository": {
+        "Http": {
+          "url": "https://crates.io/api/v1/crates/num_cpus/1.13.1/download",
+          "sha256": "19e64526ebdee182341572e50e9ad03965aa510cd94427a4549448f285e957a1"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "num_cpus",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "library_target_name": "num_cpus",
+      "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
+        "deps": {
+          "common": [],
+          "selects": {
+            "cfg(all(any(target_arch = \"x86_64\", target_arch = \"aarch64\"), target_os = \"hermit\"))": [
+              {
+                "id": "hermit-abi 0.1.19",
+                "target": "hermit_abi"
+              }
+            ],
+            "cfg(not(windows))": [
+              {
+                "id": "libc 0.2.117",
+                "target": "libc"
+              }
+            ]
+          }
+        },
+        "edition": "2015",
+        "version": "1.13.1"
       },
       "license": "MIT OR Apache-2.0"
     },
@@ -5701,6 +5759,43 @@
       },
       "license": "MIT/Apache-2.0"
     },
+    "rustc-hash 1.1.0": {
+      "name": "rustc-hash",
+      "version": "1.1.0",
+      "repository": {
+        "Http": {
+          "url": "https://crates.io/api/v1/crates/rustc-hash/1.1.0/download",
+          "sha256": "08d43f7aa6b08d49f382cde6a7982047c3426db949b1424bc4b7ec9ae12c6ce2"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "rustc_hash",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "library_target_name": "rustc_hash",
+      "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
+        "crate_features": [
+          "default",
+          "std"
+        ],
+        "edition": "2015",
+        "version": "1.1.0"
+      },
+      "license": "Apache-2.0/MIT"
+    },
     "rustc-serialize 0.3.24": {
       "name": "rustc-serialize",
       "version": "0.3.24",
@@ -5811,13 +5906,13 @@
       },
       "license": "Unlicense/MIT"
     },
-    "semver 1.0.4": {
+    "semver 1.0.5": {
       "name": "semver",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/semver/1.0.4/download",
-          "sha256": "568a8e6258aa33c13358f81fd834adb854c6f7c9468520910a9b1e8fac068012"
+          "url": "https://crates.io/api/v1/crates/semver/1.0.5/download",
+          "sha256": "0486718e92ec9a68fbed73bb5ef687d71103b142595b406835649bebd33f72c7"
         }
       },
       "targets": [
@@ -5859,7 +5954,7 @@
         "deps": {
           "common": [
             {
-              "id": "semver 1.0.4",
+              "id": "semver 1.0.5",
               "target": "build_script_build"
             },
             {
@@ -5870,7 +5965,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.0.4"
+        "version": "1.0.5"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -8312,6 +8407,7 @@
     "urls_generator 0.1.0": "tools/urls_generator"
   },
   "conditions": {
+    "cfg(all(any(target_arch = \"x86_64\", target_arch = \"aarch64\"), target_os = \"hermit\"))": [],
     "cfg(any(target_arch = \"aarch64\", target_arch = \"x86_64\", target_arch = \"x86\"))": [
       "aarch64-apple-darwin",
       "aarch64-apple-ios",
@@ -8367,6 +8463,26 @@
       "x86_64-apple-ios",
       "x86_64-linux-android",
       "x86_64-pc-windows-msvc",
+      "x86_64-unknown-freebsd",
+      "x86_64-unknown-linux-gnu"
+    ],
+    "cfg(not(windows))": [
+      "aarch64-apple-darwin",
+      "aarch64-apple-ios",
+      "aarch64-linux-android",
+      "aarch64-unknown-linux-gnu",
+      "arm-unknown-linux-gnueabi",
+      "i686-apple-darwin",
+      "i686-linux-android",
+      "i686-unknown-freebsd",
+      "i686-unknown-linux-gnu",
+      "powerpc-unknown-linux-gnu",
+      "s390x-unknown-linux-gnu",
+      "wasm32-unknown-unknown",
+      "wasm32-wasi",
+      "x86_64-apple-darwin",
+      "x86_64-apple-ios",
+      "x86_64-linux-android",
       "x86_64-unknown-freebsd",
       "x86_64-unknown-linux-gnu"
     ],
