@@ -8,6 +8,7 @@ use anyhow::{bail, Context, Result};
 use cargo_toml::{Dependency, Manifest};
 
 use crate::splicing::{SplicedManifest, SplicingManifest};
+use crate::utils::starlark::Label;
 
 use super::{
     read_manifest, DirectPackageManifest, ExtraManifestInfo, ExtraManifestsManifest,
@@ -99,9 +100,19 @@ impl<'a> SplicerKind<'a> {
                         path_str.trim_end_matches("/Cargo.toml").ends_with(member)
                     })
                 })
-                .map(|member| {
-                    // Covert the path to a label
-                    format!("//{}:Cargo.toml", member)
+                .filter_map(|path_str| {
+                    // UNWRAP: Safe because a Cargo.toml file must have a parent directory.
+                    let cargo_manifest_dir = root_manifest_path.parent().unwrap();
+                    let label = Label::from_absolute_path(
+                        &cargo_manifest_dir.join(path_str).join("Cargo.toml"),
+                    );
+                    match label {
+                        Ok(label) => Some(label.to_string()),
+                        Err(err) => {
+                            eprintln!("Failed to identify label for missing manifest: {}", err);
+                            None
+                        }
+                    }
                 })
                 .collect();
 
@@ -692,6 +703,7 @@ mod test {
     use super::*;
 
     use std::fs;
+    use std::fs::File;
     use std::str::FromStr;
 
     use cargo_metadata::{MetadataCommand, PackageId};
@@ -766,8 +778,11 @@ mod test {
     }
 
     /// This json object is tightly coupled to [mock_extra_manifest_digest]
-    fn mock_workspace_metadata(include_extra_member: bool) -> serde_json::Value {
-        if include_extra_member {
+    fn mock_workspace_metadata(
+        include_extra_member: bool,
+        workspace_prefix: Option<&str>,
+    ) -> serde_json::Value {
+        let mut obj = if include_extra_member {
             serde_json::json!({
                 "cargo-bazel": {
                     "package_prefixes": {},
@@ -786,7 +801,14 @@ mod test {
                     "sources": {}
                 }
             })
+        };
+        if let Some(workspace_prefix) = workspace_prefix {
+            obj.as_object_mut().unwrap()["cargo-bazel"]
+                .as_object_mut()
+                .unwrap()
+                .insert("workspace_prefix".to_owned(), workspace_prefix.into());
         }
+        obj
     }
 
     fn mock_splicing_manifest_with_workspace() -> (SplicingManifest, tempfile::TempDir) {
@@ -825,9 +847,82 @@ mod test {
         .try_into()
         .unwrap();
 
-        let manifest_path = cache_dir.as_ref().join("root_pkg").join("Cargo.toml");
+        let workspace_root = cache_dir.as_ref();
+        {
+            File::create(workspace_root.join("WORKSPACE.bazel")).unwrap();
+        }
+        let root_pkg = workspace_root.join("root_pkg");
+        let manifest_path = root_pkg.join("Cargo.toml");
         fs::create_dir_all(&manifest_path.parent().unwrap()).unwrap();
         fs::write(&manifest_path, toml::to_string(&manifest).unwrap()).unwrap();
+
+        let sub_pkg_a = root_pkg.join("sub_pkg_a");
+        let sub_pkg_b = root_pkg.join("sub_pkg_b");
+        {
+            fs::create_dir_all(&sub_pkg_a).unwrap();
+            File::create(sub_pkg_a.join("BUILD.bazel")).unwrap();
+
+            fs::create_dir_all(&sub_pkg_b).unwrap();
+            File::create(sub_pkg_b.join("BUILD.bazel")).unwrap();
+        }
+
+        splicing_manifest.manifests.insert(
+            manifest_path,
+            Label::from_str("//pkg_root:Cargo.toml").unwrap(),
+        );
+
+        (splicing_manifest, cache_dir)
+    }
+
+    fn mock_splicing_manifest_with_workspace_in_root() -> (SplicingManifest, tempfile::TempDir) {
+        let mut splicing_manifest = SplicingManifest::default();
+        let cache_dir = tempfile::tempdir().unwrap();
+
+        // Write workspace members
+        for pkg in &["sub_pkg_a", "sub_pkg_b"] {
+            let manifest_path = cache_dir.as_ref().join(pkg).join("Cargo.toml");
+            mock_cargo_toml(&manifest_path, pkg);
+
+            splicing_manifest.manifests.insert(
+                manifest_path,
+                Label::from_str(&format!("//{}:Cargo.toml", pkg)).unwrap(),
+            );
+        }
+
+        // Create the root package with a workspace definition
+        let manifest: cargo_toml::Manifest = toml::toml! {
+            [workspace]
+            members = [
+                "sub_pkg_a",
+                "sub_pkg_b",
+            ]
+            [package]
+            name = "root_pkg"
+            version = "0.0.1"
+
+            [lib]
+            path = "lib.rs"
+        }
+        .try_into()
+        .unwrap();
+
+        let workspace_root = cache_dir.as_ref();
+        {
+            File::create(workspace_root.join("WORKSPACE.bazel")).unwrap();
+        }
+        let manifest_path = workspace_root.join("Cargo.toml");
+        fs::create_dir_all(&manifest_path.parent().unwrap()).unwrap();
+        fs::write(&manifest_path, toml::to_string(&manifest).unwrap()).unwrap();
+
+        let sub_pkg_a = workspace_root.join("sub_pkg_a");
+        let sub_pkg_b = workspace_root.join("sub_pkg_b");
+        {
+            fs::create_dir_all(&sub_pkg_a).unwrap();
+            File::create(sub_pkg_a.join("BUILD.bazel")).unwrap();
+
+            fs::create_dir_all(&sub_pkg_b).unwrap();
+            File::create(sub_pkg_b.join("BUILD.bazel")).unwrap();
+        }
 
         splicing_manifest
             .manifests
@@ -888,7 +983,7 @@ mod test {
 
     #[test]
     fn splice_workspace() {
-        let (splicing_manifest, _cache_dir) = mock_splicing_manifest_with_workspace();
+        let (splicing_manifest, _cache_dir) = mock_splicing_manifest_with_workspace_in_root();
 
         // Splice the workspace
         let workspace_root = tempfile::tempdir().unwrap();
@@ -913,7 +1008,46 @@ mod test {
         );
 
         // Ensure the workspace metadata annotations are populated
-        assert_eq!(metadata.workspace_metadata, mock_workspace_metadata(false));
+        assert_eq!(
+            metadata.workspace_metadata,
+            mock_workspace_metadata(false, None)
+        );
+
+        // Ensure lockfile was successfully spliced
+        cargo_lock::Lockfile::load(workspace_root.as_ref().join("Cargo.lock")).unwrap();
+    }
+
+    #[test]
+    fn splice_workspace_in_root() {
+        let (splicing_manifest, _cache_dir) = mock_splicing_manifest_with_workspace_in_root();
+
+        // Splice the workspace
+        let workspace_root = tempfile::tempdir().unwrap();
+        let workspace_manifest = Splicer::new(
+            workspace_root.as_ref().to_path_buf(),
+            splicing_manifest,
+            ExtraManifestsManifest::default(),
+        )
+        .unwrap()
+        .splice_workspace()
+        .unwrap();
+
+        // Ensure metadata is valid
+        let metadata = generate_metadata(workspace_manifest.as_path_buf());
+        assert_sort_eq!(
+            metadata.workspace_members,
+            vec![
+                new_package_id("sub_pkg_a", workspace_root.as_ref(), false),
+                new_package_id("sub_pkg_b", workspace_root.as_ref(), false),
+                new_package_id("root_pkg", workspace_root.as_ref(), true),
+            ]
+        );
+
+        // Ensure the workspace metadata annotations are populated
+        assert_eq!(
+            metadata.workspace_metadata,
+            mock_workspace_metadata(false, None)
+        );
 
         // Ensure lockfile was successfully spliced
         cargo_lock::Lockfile::load(workspace_root.as_ref().join("Cargo.lock")).unwrap();
@@ -926,7 +1060,7 @@ mod test {
         // Remove everything but the root manifest
         splicing_manifest
             .manifests
-            .retain(|_, label| *label == Label::from_str("//:Cargo.toml").unwrap());
+            .retain(|_, label| *label == Label::from_str("//pkg_root:Cargo.toml").unwrap());
         assert_eq!(splicing_manifest.manifests.len(), 1);
 
         // Splice the workspace
@@ -945,8 +1079,8 @@ mod test {
         let err_str = format!("{:?}", &workspace_manifest);
         assert!(
             err_str.contains("Some manifests are not being tracked")
-                && err_str.contains("//sub_pkg_a:Cargo.toml")
-                && err_str.contains("//sub_pkg_b:Cargo.toml")
+                && err_str.contains("//root_pkg/sub_pkg_a:Cargo.toml")
+                && err_str.contains("//root_pkg/sub_pkg_b:Cargo.toml")
         );
     }
 
@@ -1029,7 +1163,10 @@ mod test {
         );
 
         // Ensure the workspace metadata annotations are not populated
-        assert_eq!(metadata.workspace_metadata, mock_workspace_metadata(false));
+        assert_eq!(
+            metadata.workspace_metadata,
+            mock_workspace_metadata(false, None)
+        );
 
         // Ensure lockfile was successfully spliced
         cargo_lock::Lockfile::load(workspace_root.as_ref().join("Cargo.lock")).unwrap();
@@ -1075,7 +1212,10 @@ mod test {
         );
 
         // Ensure the workspace metadata annotations are populated
-        assert_eq!(metadata.workspace_metadata, mock_workspace_metadata(false));
+        assert_eq!(
+            metadata.workspace_metadata,
+            mock_workspace_metadata(false, None)
+        );
 
         // Ensure lockfile was successfully spliced
         cargo_lock::Lockfile::load(workspace_root.as_ref().join("Cargo.lock")).unwrap();
@@ -1124,7 +1264,10 @@ mod test {
         );
 
         // Ensure the workspace metadata annotations are populated
-        assert_eq!(metadata.workspace_metadata, mock_workspace_metadata(false));
+        assert_eq!(
+            metadata.workspace_metadata,
+            mock_workspace_metadata(false, None)
+        );
 
         // Ensure lockfile was successfully spliced
         cargo_lock::Lockfile::load(workspace_root.as_ref().join("Cargo.lock")).unwrap();
@@ -1159,7 +1302,10 @@ mod test {
         );
 
         // Ensure the workspace metadata annotations are populated
-        assert_eq!(metadata.workspace_metadata, mock_workspace_metadata(true));
+        assert_eq!(
+            metadata.workspace_metadata,
+            mock_workspace_metadata(true, None)
+        );
 
         // Ensure lockfile was successfully spliced
         cargo_lock::Lockfile::load(workspace_root.as_ref().join("Cargo.lock")).unwrap();
@@ -1196,7 +1342,10 @@ mod test {
         );
 
         // Ensure the workspace metadata annotations are populated
-        assert_eq!(metadata.workspace_metadata, mock_workspace_metadata(true));
+        assert_eq!(
+            metadata.workspace_metadata,
+            mock_workspace_metadata(true, Some("pkg_root"))
+        );
 
         // Ensure lockfile was successfully spliced
         cargo_lock::Lockfile::load(workspace_root.as_ref().join("Cargo.lock")).unwrap();
@@ -1235,7 +1384,10 @@ mod test {
         );
 
         // Ensure the workspace metadata annotations are populated
-        assert_eq!(metadata.workspace_metadata, mock_workspace_metadata(true));
+        assert_eq!(
+            metadata.workspace_metadata,
+            mock_workspace_metadata(true, None)
+        );
 
         // Ensure lockfile was successfully spliced
         cargo_lock::Lockfile::load(workspace_root.as_ref().join("Cargo.lock")).unwrap();
