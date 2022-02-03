@@ -22,7 +22,7 @@ crates_repository(
     name = "crate_index",
     annotations = {
         "cargo_toml": [crate.annotation(
-            shallow_since = "1643746537 -0800",
+            shallow_since = "1643802651 +0000",
         )],
         "libgit2-sys": [crate.annotation(
             gen_build_script = False,

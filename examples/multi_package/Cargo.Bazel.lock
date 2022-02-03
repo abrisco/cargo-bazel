@@ -1,5 +1,5 @@
 {
-  "checksum": "df36f594f057e5974ef36651e114a211b3af624df743c071d3949358e8748320",
+  "checksum": "e5f34d0cd8fafb66a239be71efb0aafbaffc3e61464ae001577404b286e99bbc",
   "crates": {
     "aho-corasick 0.7.18": {
       "name": "aho-corasick",
@@ -454,7 +454,7 @@
           "selects": {
             "cfg(unix)": [
               {
-                "id": "libc 0.2.116",
+                "id": "libc 0.2.117",
                 "target": "libc"
               }
             ],
@@ -651,7 +651,7 @@
                 "target": "async_io"
               },
               {
-                "id": "libc 0.2.116",
+                "id": "libc 0.2.117",
                 "target": "libc"
               },
               {
@@ -1005,7 +1005,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.116",
+                "id": "libc 0.2.117",
                 "target": "libc"
               }
             ],
@@ -1677,7 +1677,7 @@
               "target": "core_foundation_sys"
             },
             {
-              "id": "libc 0.2.116",
+              "id": "libc 0.2.117",
               "target": "libc"
             }
           ],
@@ -1987,7 +1987,7 @@
               "target": "curl_sys"
             },
             {
-              "id": "libc 0.2.116",
+              "id": "libc 0.2.117",
               "target": "libc"
             },
             {
@@ -2076,7 +2076,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.116",
+              "id": "libc 0.2.117",
               "target": "libc"
             },
             {
@@ -2304,7 +2304,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.116",
+                "id": "libc 0.2.117",
                 "target": "libc"
               }
             ],
@@ -3354,7 +3354,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.116",
+                "id": "libc 0.2.117",
                 "target": "libc"
               }
             ]
@@ -3577,7 +3577,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.116",
+              "id": "libc 0.2.117",
               "target": "libc"
             }
           ],
@@ -4903,13 +4903,13 @@
       },
       "license": "MIT"
     },
-    "libc 0.2.116": {
+    "libc 0.2.117": {
       "name": "libc",
-      "version": "0.2.116",
+      "version": "0.2.117",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/libc/0.2.116/download",
-          "sha256": "565dbd88872dbe4cc8a46e527f26483c1d1f7afa6b884a3bd6cd893d4f98da74"
+          "url": "https://crates.io/api/v1/crates/libc/0.2.117/download",
+          "sha256": "e74d72e0f9b65b5b4ca49a346af3976df0f9c61d550727f349ecd559f251a26c"
         }
       },
       "targets": [
@@ -4950,14 +4950,14 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.116",
+              "id": "libc 0.2.117",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2015",
-        "version": "0.2.116"
+        "version": "0.2.117"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -5012,7 +5012,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.116",
+              "id": "libc 0.2.117",
               "target": "libc"
             },
             {
@@ -5089,7 +5089,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.116",
+              "id": "libc 0.2.117",
               "target": "libc"
             },
             {
@@ -5474,7 +5474,7 @@
           "selects": {
             "cfg(unix)": [
               {
-                "id": "libc 0.2.116",
+                "id": "libc 0.2.117",
                 "target": "libc"
               }
             ],
@@ -5595,7 +5595,7 @@
                 "target": "lazy_static"
               },
               {
-                "id": "libc 0.2.116",
+                "id": "libc 0.2.117",
                 "target": "libc"
               },
               {
@@ -5786,7 +5786,7 @@
             ],
             "cfg(not(windows))": [
               {
-                "id": "libc 0.2.116",
+                "id": "libc 0.2.117",
                 "target": "libc"
               }
             ]
@@ -5924,7 +5924,7 @@
               "target": "foreign_types"
             },
             {
-              "id": "libc 0.2.116",
+              "id": "libc 0.2.117",
               "target": "libc"
             },
             {
@@ -6045,7 +6045,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.116",
+              "id": "libc 0.2.117",
               "target": "libc"
             },
             {
@@ -6262,7 +6262,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.116",
+                "id": "libc 0.2.117",
                 "target": "libc"
               }
             ],
@@ -6812,7 +6812,7 @@
           "selects": {
             "cfg(any(unix, target_os = \"fuchsia\", target_os = \"vxworks\"))": [
               {
-                "id": "libc 0.2.116",
+                "id": "libc 0.2.117",
                 "target": "libc"
               }
             ],
@@ -7611,7 +7611,7 @@
               "target": "core_foundation_sys"
             },
             {
-              "id": "libc 0.2.116",
+              "id": "libc 0.2.117",
               "target": "libc"
             },
             {
@@ -7665,7 +7665,7 @@
               "target": "core_foundation_sys"
             },
             {
-              "id": "libc 0.2.116",
+              "id": "libc 0.2.117",
               "target": "libc"
             }
           ],
@@ -8046,7 +8046,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.116",
+              "id": "libc 0.2.117",
               "target": "libc"
             },
             {
@@ -8101,7 +8101,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.116",
+              "id": "libc 0.2.117",
               "target": "libc"
             }
           ],
@@ -8342,7 +8342,7 @@
           "selects": {
             "cfg(unix)": [
               {
-                "id": "libc 0.2.116",
+                "id": "libc 0.2.117",
                 "target": "libc"
               }
             ],
@@ -8547,7 +8547,7 @@
           "selects": {
             "cfg(any(unix, target_os = \"wasi\"))": [
               {
-                "id": "libc 0.2.116",
+                "id": "libc 0.2.117",
                 "target": "libc"
               }
             ],
@@ -8858,7 +8858,7 @@
           "selects": {
             "cfg(unix)": [
               {
-                "id": "libc 0.2.116",
+                "id": "libc 0.2.117",
                 "target": "libc"
               },
               {
