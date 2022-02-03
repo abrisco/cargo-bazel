@@ -19,14 +19,14 @@ mod test {
         let hello_mock = server.mock(|when, then| {
             when.method(GET)
                 .path("/translate")
-                .query_param("word", "hello");
+                .query_param("word", "excellent");
             then.status(200)
                 .header("content-type", "text/html; charset=UTF-8")
-                .body("Hallo");
+                .body("Ausgezeichnet");
         });
 
         // Send an HTTP request to the mock server. This simulates your code.
-        let response = request(&server.url("/translate?word=hello")).unwrap();
+        let response = request(&server.url("/translate?word=excellent")).unwrap();
 
         // Ensure the specified mock was called exactly one time (or fail with a detailed error description).
         hello_mock.assert();
@@ -35,6 +35,6 @@ mod test {
         assert_eq!(response.status(), 200);
 
         // Ensure the body contains the results we expect
-        assert_eq!(response.text().unwrap(), "Hallo")
+        assert_eq!(response.text().unwrap(), "Ausgezeichnet")
     }
 }
