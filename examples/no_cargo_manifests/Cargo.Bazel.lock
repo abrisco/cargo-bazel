@@ -1,5 +1,5 @@
 {
-  "checksum": "4c89ffa81109db881a007775d9dd1969705402d550672f570bed548874829a1d",
+  "checksum": "9108e6befed99657572404f077c33b36da679cc113f083b6454a0eda0badae47",
   "crates": {
     "ansi_term 0.12.1": {
       "name": "ansi_term",
@@ -519,11 +519,11 @@
               "target": "tower_http"
             },
             {
-              "id": "tracing 0.1.29",
+              "id": "tracing 0.1.30",
               "target": "tracing"
             },
             {
-              "id": "tracing-subscriber 0.3.7",
+              "id": "tracing-subscriber 0.3.8",
               "target": "tracing_subscriber"
             }
           ],
@@ -998,7 +998,7 @@
               "target": "tokio_util"
             },
             {
-              "id": "tracing 0.1.29",
+              "id": "tracing 0.1.30",
               "target": "tracing"
             }
           ],
@@ -1419,7 +1419,7 @@
               "target": "tower_service"
             },
             {
-              "id": "tracing 0.1.29",
+              "id": "tracing 0.1.30",
               "target": "tracing"
             },
             {
@@ -3679,7 +3679,7 @@
               "target": "tower_service"
             },
             {
-              "id": "tracing 0.1.29",
+              "id": "tracing 0.1.30",
               "target": "tracing"
             }
           ],
@@ -3767,7 +3767,7 @@
               "target": "tower_service"
             },
             {
-              "id": "tracing 0.1.29",
+              "id": "tracing 0.1.30",
               "target": "tracing"
             }
           ],
@@ -3844,13 +3844,13 @@
       },
       "license": "MIT"
     },
-    "tracing 0.1.29": {
+    "tracing 0.1.30": {
       "name": "tracing",
-      "version": "0.1.29",
+      "version": "0.1.30",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/tracing/0.1.29/download",
-          "sha256": "375a639232caf30edfc78e8d89b2d4c375515393e7af7e16f01cd96917fb2105"
+          "url": "https://crates.io/api/v1/crates/tracing/0.1.30/download",
+          "sha256": "2d8d93354fe2a8e50d5953f5ae2e47a3fc2ef03292e7ea46e3cc38f549525fb9"
         }
       },
       "targets": [
@@ -3894,7 +3894,7 @@
               "target": "pin_project_lite"
             },
             {
-              "id": "tracing-core 0.1.21",
+              "id": "tracing-core 0.1.22",
               "target": "tracing_core"
             }
           ],
@@ -3904,23 +3904,23 @@
         "proc_macro_deps": {
           "common": [
             {
-              "id": "tracing-attributes 0.1.18",
+              "id": "tracing-attributes 0.1.19",
               "target": "tracing_attributes"
             }
           ],
           "selects": {}
         },
-        "version": "0.1.29"
+        "version": "0.1.30"
       },
       "license": "MIT"
     },
-    "tracing-attributes 0.1.18": {
+    "tracing-attributes 0.1.19": {
       "name": "tracing-attributes",
-      "version": "0.1.18",
+      "version": "0.1.19",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/tracing-attributes/0.1.18/download",
-          "sha256": "f4f480b8f81512e825f337ad51e94c1eb5d3bbdf2b363dcd01e2b19a9ffe3f8e"
+          "url": "https://crates.io/api/v1/crates/tracing-attributes/0.1.19/download",
+          "sha256": "8276d9a4a3a558d7b7ad5303ad50b53d58264641b82914b7ada36bd762e7a716"
         }
       },
       "targets": [
@@ -3960,17 +3960,17 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.1.18"
+        "version": "0.1.19"
       },
       "license": "MIT"
     },
-    "tracing-core 0.1.21": {
+    "tracing-core 0.1.22": {
       "name": "tracing-core",
-      "version": "0.1.21",
+      "version": "0.1.22",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/tracing-core/0.1.21/download",
-          "sha256": "1f4ed65637b8390770814083d20756f87bfa2c21bf2f110babdc5438351746e4"
+          "url": "https://crates.io/api/v1/crates/tracing-core/0.1.22/download",
+          "sha256": "03cfcb51380632a72d3111cb8d3447a8d908e577d31beeac006f836383d29a23"
         }
       },
       "targets": [
@@ -3995,7 +3995,8 @@
         "crate_features": [
           "default",
           "lazy_static",
-          "std"
+          "std",
+          "valuable"
         ],
         "deps": {
           "common": [
@@ -4004,10 +4005,17 @@
               "target": "lazy_static"
             }
           ],
-          "selects": {}
+          "selects": {
+            "cfg(tracing_unstable)": [
+              {
+                "id": "valuable 0.1.0",
+                "target": "valuable"
+              }
+            ]
+          }
         },
         "edition": "2018",
-        "version": "0.1.21"
+        "version": "0.1.22"
       },
       "license": "MIT"
     },
@@ -4054,7 +4062,7 @@
               "target": "log"
             },
             {
-              "id": "tracing-core 0.1.21",
+              "id": "tracing-core 0.1.22",
               "target": "tracing_core"
             }
           ],
@@ -4065,13 +4073,13 @@
       },
       "license": "MIT"
     },
-    "tracing-subscriber 0.3.7": {
+    "tracing-subscriber 0.3.8": {
       "name": "tracing-subscriber",
-      "version": "0.3.7",
+      "version": "0.3.8",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/tracing-subscriber/0.3.7/download",
-          "sha256": "5312f325fe3588e277415f5a6cca1f4ccad0f248c4cd5a4bd33032d7286abc22"
+          "url": "https://crates.io/api/v1/crates/tracing-subscriber/0.3.8/download",
+          "sha256": "74786ce43333fcf51efe947aed9718fbe46d5c7328ec3f1029e818083966d9aa"
         }
       },
       "targets": [
@@ -4125,7 +4133,7 @@
               "target": "thread_local"
             },
             {
-              "id": "tracing-core 0.1.21",
+              "id": "tracing-core 0.1.22",
               "target": "tracing_core"
             },
             {
@@ -4136,7 +4144,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.3.7"
+        "version": "0.3.8"
       },
       "license": "MIT"
     },
@@ -4208,6 +4216,69 @@
         "version": "0.2.2"
       },
       "license": "MIT OR Apache-2.0"
+    },
+    "valuable 0.1.0": {
+      "name": "valuable",
+      "version": "0.1.0",
+      "repository": {
+        "Http": {
+          "url": "https://crates.io/api/v1/crates/valuable/0.1.0/download",
+          "sha256": "830b7e5d4d90034032940e4ace0d9a9a057e7a45cd94e6c007832e39edb82f6d"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "valuable",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        },
+        {
+          "BuildScript": {
+            "crate_name": "build_script_build",
+            "crate_root": "build.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "library_target_name": "valuable",
+      "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
+        "crate_features": [
+          "alloc",
+          "std"
+        ],
+        "deps": {
+          "common": [
+            {
+              "id": "valuable 0.1.0",
+              "target": "build_script_build"
+            }
+          ],
+          "selects": {}
+        },
+        "edition": "2018",
+        "version": "0.1.0"
+      },
+      "build_script_attrs": {
+        "data_glob": [
+          "**"
+        ]
+      },
+      "license": "MIT"
     },
     "want 0.3.0": {
       "name": "want",
@@ -4511,6 +4582,7 @@
       "i686-pc-windows-msvc",
       "x86_64-pc-windows-msvc"
     ],
+    "cfg(tracing_unstable)": [],
     "cfg(unix)": [
       "aarch64-apple-darwin",
       "aarch64-apple-ios",

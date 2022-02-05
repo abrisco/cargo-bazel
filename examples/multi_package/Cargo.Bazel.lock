@@ -1,5 +1,5 @@
 {
-  "checksum": "8c02d9c1beaefeedef2e1ac159bdd85973a85ba32a80f7ef50046b260d0f855c",
+  "checksum": "0327535caaa8aead5fe05487033967307825aa3a92c02a9c94c8e8a928e96a2e",
   "crates": {
     "aho-corasick 0.7.18": {
       "name": "aho-corasick",
@@ -741,7 +741,7 @@
               "target": "async_lock"
             },
             {
-              "id": "crossbeam-utils 0.8.6",
+              "id": "crossbeam-utils 0.8.7",
               "target": "crossbeam_utils"
             },
             {
@@ -1747,13 +1747,13 @@
       },
       "license": "MIT / Apache-2.0"
     },
-    "crossbeam-utils 0.8.6": {
+    "crossbeam-utils 0.8.7": {
       "name": "crossbeam-utils",
-      "version": "0.8.6",
+      "version": "0.8.7",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/crossbeam-utils/0.8.6/download",
-          "sha256": "cfcae03edb34f947e64acdb1c33ec169824e20657e9ecb61cef6c8c74dcb8120"
+          "url": "https://crates.io/api/v1/crates/crossbeam-utils/0.8.7/download",
+          "sha256": "b5e5bed1f1c269533fa816a0a5492b3545209a205ca1a54842be180eb63a16a6"
         }
       },
       "targets": [
@@ -1799,7 +1799,7 @@
               "target": "cfg_if"
             },
             {
-              "id": "crossbeam-utils 0.8.6",
+              "id": "crossbeam-utils 0.8.7",
               "target": "build_script_build"
             },
             {
@@ -1810,7 +1810,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.8.6"
+        "version": "0.8.7"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -3496,7 +3496,7 @@
               "target": "tokio_util"
             },
             {
-              "id": "tracing 0.1.29",
+              "id": "tracing 0.1.30",
               "target": "tracing"
             }
           ],
@@ -3881,7 +3881,7 @@
               "target": "basic_cookies"
             },
             {
-              "id": "crossbeam-utils 0.8.6",
+              "id": "crossbeam-utils 0.8.7",
               "target": "crossbeam_utils"
             },
             {
@@ -4055,7 +4055,7 @@
               "target": "tower_service"
             },
             {
-              "id": "tracing 0.1.29",
+              "id": "tracing 0.1.30",
               "target": "tracing"
             },
             {
@@ -4387,7 +4387,7 @@
               "target": "castaway"
             },
             {
-              "id": "crossbeam-utils 0.8.6",
+              "id": "crossbeam-utils 0.8.7",
               "target": "crossbeam_utils"
             },
             {
@@ -4443,7 +4443,7 @@
               "target": "sluice"
             },
             {
-              "id": "tracing 0.1.29",
+              "id": "tracing 0.1.30",
               "target": "tracing"
             },
             {
@@ -4766,7 +4766,7 @@
               "target": "regex_syntax"
             },
             {
-              "id": "string_cache 0.8.2",
+              "id": "string_cache 0.8.3",
               "target": "string_cache"
             },
             {
@@ -5599,11 +5599,11 @@
                 "target": "libc"
               },
               {
-                "id": "security-framework 2.6.0",
+                "id": "security-framework 2.6.1",
                 "target": "security_framework"
               },
               {
-                "id": "security-framework-sys 2.6.0",
+                "id": "security-framework-sys 2.6.1",
                 "target": "security_framework_sys"
               },
               {
@@ -6363,13 +6363,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "phf_shared 0.8.0": {
+    "phf_shared 0.10.0": {
       "name": "phf_shared",
-      "version": "0.8.0",
+      "version": "0.10.0",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/phf_shared/0.8.0/download",
-          "sha256": "c00cf8b9eafe68dde5e9eaa2cef8ee84a9336a47d566ec55ca16589633b65af7"
+          "url": "https://crates.io/api/v1/crates/phf_shared/0.10.0/download",
+          "sha256": "b6796ad771acdc0123d2a88dc428b5e38ef24456743ddb1744ed628f9815c096"
         }
       },
       "targets": [
@@ -6405,7 +6405,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.8.0"
+        "version": "0.10.0"
       },
       "license": "MIT"
     },
@@ -7564,13 +7564,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "security-framework 2.6.0": {
+    "security-framework 2.6.1": {
       "name": "security-framework",
-      "version": "2.6.0",
+      "version": "2.6.1",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/security-framework/2.6.0/download",
-          "sha256": "3fed7948b6c68acbb6e20c334f55ad635dc0f75506963de4464289fbd3b051ac"
+          "url": "https://crates.io/api/v1/crates/security-framework/2.6.1/download",
+          "sha256": "2dc14f172faf8a0194a3aded622712b0de276821addc574fa54fc0a1167e10dc"
         }
       },
       "targets": [
@@ -7615,24 +7615,24 @@
               "target": "libc"
             },
             {
-              "id": "security-framework-sys 2.6.0",
+              "id": "security-framework-sys 2.6.1",
               "target": "security_framework_sys"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
-        "version": "2.6.0"
+        "version": "2.6.1"
       },
       "license": "MIT OR Apache-2.0"
     },
-    "security-framework-sys 2.6.0": {
+    "security-framework-sys 2.6.1": {
       "name": "security-framework-sys",
-      "version": "2.6.0",
+      "version": "2.6.1",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/security-framework-sys/2.6.0/download",
-          "sha256": "a57321bf8bc2362081b2599912d2961fe899c0efadf1b4b2f8d48b3e253bb96c"
+          "url": "https://crates.io/api/v1/crates/security-framework-sys/2.6.1/download",
+          "sha256": "0160a13a177a45bfb43ce71c01580998474f556ad854dcbca936dd2841a5c556"
         }
       },
       "targets": [
@@ -7672,7 +7672,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "2.6.0"
+        "version": "2.6.1"
       },
       "license": "MIT OR Apache-2.0"
     },
@@ -8359,13 +8359,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "string_cache 0.8.2": {
+    "string_cache 0.8.3": {
       "name": "string_cache",
-      "version": "0.8.2",
+      "version": "0.8.3",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/string_cache/0.8.2/download",
-          "sha256": "923f0f39b6267d37d23ce71ae7235602134b250ace715dd2c90421998ddac0c6"
+          "url": "https://crates.io/api/v1/crates/string_cache/0.8.3/download",
+          "sha256": "33994d0838dc2d152d17a62adf608a869b5e846b65b389af7f3dbc1de45c5b26"
         }
       },
       "targets": [
@@ -8402,7 +8402,7 @@
               "target": "parking_lot"
             },
             {
-              "id": "phf_shared 0.8.0",
+              "id": "phf_shared 0.10.0",
               "target": "phf_shared"
             },
             {
@@ -8413,7 +8413,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.8.2"
+        "version": "0.8.3"
       },
       "license": "MIT / Apache-2.0"
     },
@@ -9083,13 +9083,13 @@
       },
       "license": "MIT"
     },
-    "tracing 0.1.29": {
+    "tracing 0.1.30": {
       "name": "tracing",
-      "version": "0.1.29",
+      "version": "0.1.30",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/tracing/0.1.29/download",
-          "sha256": "375a639232caf30edfc78e8d89b2d4c375515393e7af7e16f01cd96917fb2105"
+          "url": "https://crates.io/api/v1/crates/tracing/0.1.30/download",
+          "sha256": "2d8d93354fe2a8e50d5953f5ae2e47a3fc2ef03292e7ea46e3cc38f549525fb9"
         }
       },
       "targets": [
@@ -9133,7 +9133,7 @@
               "target": "pin_project_lite"
             },
             {
-              "id": "tracing-core 0.1.21",
+              "id": "tracing-core 0.1.22",
               "target": "tracing_core"
             }
           ],
@@ -9143,23 +9143,23 @@
         "proc_macro_deps": {
           "common": [
             {
-              "id": "tracing-attributes 0.1.18",
+              "id": "tracing-attributes 0.1.19",
               "target": "tracing_attributes"
             }
           ],
           "selects": {}
         },
-        "version": "0.1.29"
+        "version": "0.1.30"
       },
       "license": "MIT"
     },
-    "tracing-attributes 0.1.18": {
+    "tracing-attributes 0.1.19": {
       "name": "tracing-attributes",
-      "version": "0.1.18",
+      "version": "0.1.19",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/tracing-attributes/0.1.18/download",
-          "sha256": "f4f480b8f81512e825f337ad51e94c1eb5d3bbdf2b363dcd01e2b19a9ffe3f8e"
+          "url": "https://crates.io/api/v1/crates/tracing-attributes/0.1.19/download",
+          "sha256": "8276d9a4a3a558d7b7ad5303ad50b53d58264641b82914b7ada36bd762e7a716"
         }
       },
       "targets": [
@@ -9199,17 +9199,17 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.1.18"
+        "version": "0.1.19"
       },
       "license": "MIT"
     },
-    "tracing-core 0.1.21": {
+    "tracing-core 0.1.22": {
       "name": "tracing-core",
-      "version": "0.1.21",
+      "version": "0.1.22",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/tracing-core/0.1.21/download",
-          "sha256": "1f4ed65637b8390770814083d20756f87bfa2c21bf2f110babdc5438351746e4"
+          "url": "https://crates.io/api/v1/crates/tracing-core/0.1.22/download",
+          "sha256": "03cfcb51380632a72d3111cb8d3447a8d908e577d31beeac006f836383d29a23"
         }
       },
       "targets": [
@@ -9245,7 +9245,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.1.21"
+        "version": "0.1.22"
       },
       "license": "MIT"
     },
@@ -9289,7 +9289,7 @@
               "target": "pin_project"
             },
             {
-              "id": "tracing 0.1.29",
+              "id": "tracing 0.1.30",
               "target": "tracing"
             }
           ],
