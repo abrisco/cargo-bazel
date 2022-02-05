@@ -136,12 +136,12 @@ crates_repository(
     name = "m_pkgs",
     annotations = {
         "curl-sys": [crate.annotation(
-            gen_build_script = False,
-            additive_build_file = "//multi_package/3rdparty:BUILD.curl-sys.extra.bazel",
+            # gen_build_script = False,
+            additive_build_file = "@cargo_bazel_examples//multi_package/3rdparty:BUILD.curl-sys.extra.bazel",
         )],
         "ring": [crate.annotation(
             gen_build_script = False,
-            additive_build_file = "//multi_package/3rdparty:BUILD.ring.extra.bazel",
+            additive_build_file = "@cargo_bazel_examples//multi_package/3rdparty:BUILD.ring.extra.bazel",
         )],
         "lalrpop": [crate.annotation(
             data_glob = ["**/*.lalrpop"],
