@@ -1,5 +1,5 @@
 {
-  "checksum": "431cb8fc1e6470cc10ed3862c518b16823042f1146c6f42d4fb7e0e785bdab74",
+  "checksum": "b5f7ddbb115ce0dac2dee09e355c63071a3028a5c80e75258f7910b696e5fbed",
   "crates": {
     "adler32 1.2.0": {
       "name": "adler32",
@@ -563,13 +563,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "crossbeam-utils 0.8.6": {
+    "crossbeam-utils 0.8.7": {
       "name": "crossbeam-utils",
-      "version": "0.8.6",
+      "version": "0.8.7",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/crossbeam-utils/0.8.6/download",
-          "sha256": "cfcae03edb34f947e64acdb1c33ec169824e20657e9ecb61cef6c8c74dcb8120"
+          "url": "https://crates.io/api/v1/crates/crossbeam-utils/0.8.7/download",
+          "sha256": "b5e5bed1f1c269533fa816a0a5492b3545209a205ca1a54842be180eb63a16a6"
         }
       },
       "targets": [
@@ -615,7 +615,7 @@
               "target": "cfg_if"
             },
             {
-              "id": "crossbeam-utils 0.8.6",
+              "id": "crossbeam-utils 0.8.7",
               "target": "build_script_build"
             },
             {
@@ -626,7 +626,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.8.6"
+        "version": "0.8.7"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -2650,7 +2650,7 @@
           "selects": {
             "cfg(not(target_arch = \"wasm32\"))": [
               {
-                "id": "crossbeam-utils 0.8.6",
+                "id": "crossbeam-utils 0.8.7",
                 "target": "crossbeam_utils"
               }
             ]
