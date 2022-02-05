@@ -292,6 +292,18 @@ def _spec(
         rev = rev,
     ))
 
+def _assert_absolute(label):
+    """Ensure a given label is an absolute label
+
+    Args:
+        label (Label): The label to check
+    """
+    label_str = str(label)
+    if not label.startswith("@"):
+        fail("The labels must be absolute. Please update '{}'".format(
+            label_str
+        ))
+
 def _annotation(
         version = "*",
         additive_build_file = None,
@@ -362,6 +374,12 @@ def _annotation(
     Returns:
         string: A json encoded string containing the specified version and separately all other inputs.
     """
+    if additive_build_file:
+        _assert_absolute(additive_build_file)
+    if patches:
+        for patch in patches:
+            _assert_absolute(patch)
+
     return json.encode((
         version,
         struct(
