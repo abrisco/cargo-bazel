@@ -1,5 +1,5 @@
 {
-  "checksum": "3cc5053fdaa5b9d33a5cce0e4b6b9b74e40d61efbf01deb02d7393f9c11cbec1",
+  "checksum": "a336da597c6798cee8a1f95a3b4dca1f902ccf624fcc229c5b2a6b077c7bf0d6",
   "crates": {
     "adler 1.0.2": {
       "name": "adler",
@@ -642,7 +642,7 @@
               "target": "cargo_toml"
             },
             {
-              "id": "cfg-expr 0.9.1",
+              "id": "cfg-expr 0.10.0",
               "target": "cfg_expr"
             },
             {
@@ -996,13 +996,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "cfg-expr 0.9.1": {
+    "cfg-expr 0.10.0": {
       "name": "cfg-expr",
-      "version": "0.9.1",
+      "version": "0.10.0",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/cfg-expr/0.9.1/download",
-          "sha256": "3431df59f28accaf4cb4eed4a9acc66bea3f3c3753aa6cdc2f024174ef232af7"
+          "url": "https://crates.io/api/v1/crates/cfg-expr/0.10.0/download",
+          "sha256": "ea2d13135dfe0068874088e92b5ab74bdd1942e8f6c567006dbdc23a9b27a9b0"
         }
       },
       "targets": [
@@ -1037,7 +1037,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.9.1"
+        "version": "0.10.0"
       },
       "license": "MIT OR Apache-2.0"
     },
