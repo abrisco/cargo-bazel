@@ -35,7 +35,7 @@ package(default_visibility = ["//visibility:public"])
 {%- endif %}
 {%- endfor %}
 {%- endfor %}
-{%- if crate.extra_build_contents %}
-# Extra Build Contents
-{{ crate.extra_build_contents }}
+{%- if crate.additive_build_file_content %}
+# Additive BUILD file content
+{{ crate.additive_build_file_content }}
 {%- endif %}

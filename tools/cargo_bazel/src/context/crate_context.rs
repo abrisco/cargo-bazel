@@ -236,7 +236,7 @@ pub struct CrateContext {
 
     /// Additional text to add to the generated BUILD file.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub extra_build_contents: Option<String>,
+    pub additive_build_file_content: Option<String>,
 }
 
 impl CrateContext {
@@ -363,7 +363,7 @@ impl CrateContext {
             common_attrs,
             build_script_attrs,
             license,
-            extra_build_contents: None,
+            additive_build_file_content: None,
         }
         .with_overrides(extras)
     }
@@ -473,10 +473,13 @@ impl CrateContext {
             }
 
             // Extra build contents
-            self.extra_build_contents = crate_extra.build_content.as_ref().map(|content| {
-                // For prettier rendering, dedent the build contents
-                textwrap::dedent(content)
-            });
+            self.additive_build_file_content = crate_extra
+                .additive_build_file_content
+                .as_ref()
+                .map(|content| {
+                    // For prettier rendering, dedent the build contents
+                    textwrap::dedent(content)
+                });
 
             // Git shallow_since
             if let Some(SourceAnnotation::Git { shallow_since, .. }) = &mut self.repository {

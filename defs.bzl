@@ -292,9 +292,22 @@ def _spec(
         rev = rev,
     ))
 
+def _assert_absolute(label):
+    """Ensure a given label is an absolute label
+
+    Args:
+        label (Label): The label to check
+    """
+    label_str = str(label)
+    if not label.startswith("@"):
+        fail("The labels must be absolute. Please update '{}'".format(
+            label_str,
+        ))
+
 def _annotation(
         version = "*",
-        build_content = None,
+        additive_build_file = None,
+        additive_build_file_content = None,
         build_script_data = None,
         build_script_data_glob = None,
         build_script_deps = None,
@@ -320,7 +333,9 @@ def _annotation(
 
     Args:
         version (str, optional): The version or semver-conditions to match with a crate.
-        build_content (str, optional): Extra contents to write to the bottom of generated BUILD files.
+        additive_build_file_content (str, optional): Extra contents to write to the bottom of generated BUILD files.
+        additive_build_file (str, optional): A file containing extra contents to write to the bottom of
+            generated BUILD files.
         build_script_data (list, optional): A list of labels to add to a crate's `cargo_build_script::data` attribute.
         build_script_data_glob (list, optional): A list of glob patterns to add to a crate's `cargo_build_script::data`
             attribute.
@@ -359,10 +374,17 @@ def _annotation(
     Returns:
         string: A json encoded string containing the specified version and separately all other inputs.
     """
+    if additive_build_file:
+        _assert_absolute(additive_build_file)
+    if patches:
+        for patch in patches:
+            _assert_absolute(patch)
+
     return json.encode((
         version,
         struct(
-            build_content = build_content,
+            additive_build_file = additive_build_file,
+            additive_build_file_content = additive_build_file_content,
             build_script_data = build_script_data,
             build_script_data_glob = build_script_data_glob,
             build_script_deps = build_script_deps,
