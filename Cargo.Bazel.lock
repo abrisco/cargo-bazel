@@ -1,5 +1,5 @@
 {
-  "checksum": "f04a8b927849ca899178faa953e5039f32596d2b23300ca33a467ae6e3e998a9",
+  "checksum": "3cc5053fdaa5b9d33a5cce0e4b6b9b74e40d61efbf01deb02d7393f9c11cbec1",
   "crates": {
     "adler 1.0.2": {
       "name": "adler",
@@ -638,7 +638,7 @@
               "target": "cargo_metadata"
             },
             {
-              "id": "cargo_toml 0.11.3",
+              "id": "cargo_toml 0.11.4",
               "target": "cargo_toml"
             },
             {
@@ -883,16 +883,13 @@
       },
       "license": "MIT"
     },
-    "cargo_toml 0.11.3": {
+    "cargo_toml 0.11.4": {
       "name": "cargo_toml",
-      "version": "0.11.3",
+      "version": "0.11.4",
       "repository": {
-        "Git": {
-          "remote": "https://gitlab.com/crates.rs/cargo_toml.git",
-          "commitish": {
-            "Rev": "83e5a7094470acf434ab73f3931530547f549a02"
-          },
-          "shallow_since": "1643802651 +0000"
+        "Http": {
+          "url": "https://crates.io/api/v1/crates/cargo_toml/0.11.4/download",
+          "sha256": "4e270ef0cd868745878982f7ce470aa898d0d4bb248af67f0cf66f54617913ef"
         }
       },
       "targets": [
@@ -937,7 +934,7 @@
           ],
           "selects": {}
         },
-        "version": "0.11.3"
+        "version": "0.11.4"
       },
       "license": "Apache-2.0 OR MIT"
     },
