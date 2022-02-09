@@ -1,5 +1,5 @@
 {
-  "checksum": "f8333a6ac7254310afe2ff15cf4f017ac34d2bd18fa21587a291604cd2519fd6",
+  "checksum": "0f9d285c4ac725a5d51ad2d16a80e1c284103565631c2e49824e72aada3e3aab",
   "crates": {
     "adler 1.0.2": {
       "name": "adler",
@@ -1456,6 +1456,12 @@
                 "id": "libc 0.2.117",
                 "target": "libc"
               }
+            ],
+            "cfg(all(target_arch = \"aarch64\", target_os = \"linux\"))": [
+              {
+                "id": "libc 0.2.117",
+                "target": "libc"
+              }
             ]
           }
         },
@@ -2179,7 +2185,14 @@
               "target": "miniz_oxide"
             }
           ],
-          "selects": {}
+          "selects": {
+            "cfg(all(target_arch = \"wasm32\", not(target_os = \"emscripten\")))": [
+              {
+                "id": "miniz_oxide 0.4.4",
+                "target": "miniz_oxide"
+              }
+            ]
+          }
         },
         "edition": "2018",
         "version": "1.0.22"
@@ -8405,6 +8418,13 @@
   },
   "conditions": {
     "cfg(all(any(target_arch = \"x86_64\", target_arch = \"aarch64\"), target_os = \"hermit\"))": [],
+    "cfg(all(target_arch = \"aarch64\", target_os = \"linux\"))": [
+      "aarch64-unknown-linux-gnu"
+    ],
+    "cfg(all(target_arch = \"wasm32\", not(target_os = \"emscripten\")))": [
+      "wasm32-unknown-unknown",
+      "wasm32-wasi"
+    ],
     "cfg(any(target_arch = \"aarch64\", target_arch = \"x86_64\", target_arch = \"x86\"))": [
       "aarch64-apple-darwin",
       "aarch64-apple-ios",
