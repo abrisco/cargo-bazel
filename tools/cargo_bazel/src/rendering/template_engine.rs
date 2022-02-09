@@ -181,6 +181,7 @@ impl TemplateEngine {
         let mut context = tera::Context::new();
         context.insert("default_select_list", &SelectStringList::default());
         context.insert("default_select_dict", &SelectStringDict::default());
+        context.insert("repository_name", &render_config.repository_name);
         context.insert("Null", &tera::Value::Null);
         context.insert(
             "default_package_name",
