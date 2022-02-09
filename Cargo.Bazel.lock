@@ -1,5 +1,5 @@
 {
-  "checksum": "a336da597c6798cee8a1f95a3b4dca1f902ccf624fcc229c5b2a6b077c7bf0d6",
+  "checksum": "f8333a6ac7254310afe2ff15cf4f017ac34d2bd18fa21587a291604cd2519fd6",
   "crates": {
     "adler 1.0.2": {
       "name": "adler",
@@ -199,13 +199,13 @@
       },
       "license": "MIT"
     },
-    "autocfg 1.0.1": {
+    "autocfg 1.1.0": {
       "name": "autocfg",
-      "version": "1.0.1",
+      "version": "1.1.0",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/autocfg/1.0.1/download",
-          "sha256": "cdb031dd78e28731d87d56cc8ffef4a8f36ca26c38fe2de700543e627f8a464a"
+          "url": "https://crates.io/api/v1/crates/autocfg/1.1.0/download",
+          "sha256": "d468802bab17cbc0cc575e9b053f41e72aa36bfa6b7f55e3529ffa43161b97fa"
         }
       },
       "targets": [
@@ -228,7 +228,7 @@
           "**"
         ],
         "edition": "2015",
-        "version": "1.0.1"
+        "version": "1.1.0"
       },
       "license": "Apache-2.0 OR MIT"
     },
@@ -268,13 +268,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "block-buffer 0.10.1": {
+    "block-buffer 0.10.2": {
       "name": "block-buffer",
-      "version": "0.10.1",
+      "version": "0.10.2",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/block-buffer/0.10.1/download",
-          "sha256": "03588e54c62ae6d763e2a80090d50353b785795361b4ff5b3bf0a5097fc31c0b"
+          "url": "https://crates.io/api/v1/crates/block-buffer/0.10.2/download",
+          "sha256": "0bf7fe51849ea569fd452f37822f606a5cabb684dc918707a0193fd4664ff324"
         }
       },
       "targets": [
@@ -306,7 +306,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.10.1"
+        "version": "0.10.2"
       },
       "license": "MIT OR Apache-2.0"
     },
@@ -584,9 +584,9 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "cargo-bazel 0.0.22": {
+    "cargo-bazel 0.0.23": {
       "name": "cargo-bazel",
-      "version": "0.0.22",
+      "version": "0.0.23",
       "repository": null,
       "targets": [
         {
@@ -642,7 +642,7 @@
               "target": "cargo_toml"
             },
             {
-              "id": "cfg-expr 0.10.0",
+              "id": "cfg-expr 0.10.1",
               "target": "cfg_expr"
             },
             {
@@ -710,7 +710,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.0.22"
+        "version": "0.0.23"
       },
       "license": null
     },
@@ -996,13 +996,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "cfg-expr 0.10.0": {
+    "cfg-expr 0.10.1": {
       "name": "cfg-expr",
-      "version": "0.10.0",
+      "version": "0.10.1",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/cfg-expr/0.10.0/download",
-          "sha256": "ea2d13135dfe0068874088e92b5ab74bdd1942e8f6c567006dbdc23a9b27a9b0"
+          "url": "https://crates.io/api/v1/crates/cfg-expr/0.10.1/download",
+          "sha256": "295b6eb918a60a25fec0b23a5e633e74fddbaf7bb04411e65a10c366aca4b5cd"
         }
       },
       "targets": [
@@ -1037,7 +1037,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.10.0"
+        "version": "0.10.1"
       },
       "license": "MIT OR Apache-2.0"
     },
@@ -1551,13 +1551,13 @@
       },
       "license": "Apache-2.0"
     },
-    "crc32fast 1.3.1": {
+    "crc32fast 1.3.2": {
       "name": "crc32fast",
-      "version": "1.3.1",
+      "version": "1.3.2",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/crc32fast/1.3.1/download",
-          "sha256": "a2209c310e29876f7f0b2721e7e26b84aff178aa3da5d091f9bfbf47669e60e3"
+          "url": "https://crates.io/api/v1/crates/crc32fast/1.3.2/download",
+          "sha256": "b540bd8bc810d3885c6ea91e2018302f68baba2129ab3e88f32389ee9370880d"
         }
       },
       "targets": [
@@ -1602,14 +1602,14 @@
               "target": "cfg_if"
             },
             {
-              "id": "crc32fast 1.3.1",
+              "id": "crc32fast 1.3.2",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2015",
-        "version": "1.3.1"
+        "version": "1.3.2"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -1843,7 +1843,7 @@
         "deps": {
           "common": [
             {
-              "id": "block-buffer 0.10.1",
+              "id": "block-buffer 0.10.2",
               "target": "block_buffer"
             },
             {
@@ -2167,7 +2167,7 @@
               "target": "cfg_if"
             },
             {
-              "id": "crc32fast 1.3.1",
+              "id": "crc32fast 1.3.2",
               "target": "crc32fast"
             },
             {
@@ -3079,7 +3079,7 @@
         "deps": {
           "common": [
             {
-              "id": "autocfg 1.0.1",
+              "id": "autocfg 1.1.0",
               "target": "autocfg"
             }
           ],
@@ -3655,7 +3655,7 @@
         "deps": {
           "common": [
             {
-              "id": "autocfg 1.0.1",
+              "id": "autocfg 1.1.0",
               "target": "autocfg"
             }
           ],
@@ -3912,7 +3912,7 @@
         "deps": {
           "common": [
             {
-              "id": "autocfg 1.0.1",
+              "id": "autocfg 1.1.0",
               "target": "autocfg"
             }
           ],
@@ -3992,7 +3992,7 @@
         "deps": {
           "common": [
             {
-              "id": "autocfg 1.0.1",
+              "id": "autocfg 1.1.0",
               "target": "autocfg"
             }
           ],
@@ -4124,7 +4124,7 @@
         "deps": {
           "common": [
             {
-              "id": "autocfg 1.0.1",
+              "id": "autocfg 1.1.0",
               "target": "autocfg"
             }
           ],
@@ -8397,7 +8397,7 @@
     "phf_generator 0.10.0"
   ],
   "workspace_members": {
-    "cargo-bazel 0.0.22": "tools/cargo_bazel",
+    "cargo-bazel 0.0.23": "tools/cargo_bazel",
     "cross_installer 0.1.0": "tools/cross_installer",
     "direct-cargo-bazel-deps 0.0.1": "",
     "examples-runner 0.0.1": "tools/examples_runner",

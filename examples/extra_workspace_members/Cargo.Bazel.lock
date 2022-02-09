@@ -1,5 +1,5 @@
 {
-  "checksum": "b5f7ddbb115ce0dac2dee09e355c63071a3028a5c80e75258f7910b696e5fbed",
+  "checksum": "60ad0076bf09709a71fe686759bb94c0835842562ce16422982bf962e421463d",
   "crates": {
     "adler32 1.2.0": {
       "name": "adler32",
@@ -138,13 +138,13 @@
       },
       "license": "MIT"
     },
-    "autocfg 1.0.1": {
+    "autocfg 1.1.0": {
       "name": "autocfg",
-      "version": "1.0.1",
+      "version": "1.1.0",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/autocfg/1.0.1/download",
-          "sha256": "cdb031dd78e28731d87d56cc8ffef4a8f36ca26c38fe2de700543e627f8a464a"
+          "url": "https://crates.io/api/v1/crates/autocfg/1.1.0/download",
+          "sha256": "d468802bab17cbc0cc575e9b053f41e72aa36bfa6b7f55e3529ffa43161b97fa"
         }
       },
       "targets": [
@@ -167,7 +167,7 @@
           "**"
         ],
         "edition": "2015",
-        "version": "1.0.1"
+        "version": "1.1.0"
       },
       "license": "Apache-2.0 OR MIT"
     },
@@ -496,13 +496,13 @@
       },
       "license": "MIT"
     },
-    "crc32fast 1.3.1": {
+    "crc32fast 1.3.2": {
       "name": "crc32fast",
-      "version": "1.3.1",
+      "version": "1.3.2",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/crc32fast/1.3.1/download",
-          "sha256": "a2209c310e29876f7f0b2721e7e26b84aff178aa3da5d091f9bfbf47669e60e3"
+          "url": "https://crates.io/api/v1/crates/crc32fast/1.3.2/download",
+          "sha256": "b540bd8bc810d3885c6ea91e2018302f68baba2129ab3e88f32389ee9370880d"
         }
       },
       "targets": [
@@ -547,14 +547,14 @@
               "target": "cfg_if"
             },
             {
-              "id": "crc32fast 1.3.1",
+              "id": "crc32fast 1.3.2",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2015",
-        "version": "1.3.1"
+        "version": "1.3.2"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -836,7 +836,7 @@
         "deps": {
           "common": [
             {
-              "id": "unicode-segmentation 1.8.0",
+              "id": "unicode-segmentation 1.9.0",
               "target": "unicode_segmentation"
             }
           ],
@@ -1263,7 +1263,7 @@
         "deps": {
           "common": [
             {
-              "id": "autocfg 1.0.1",
+              "id": "autocfg 1.1.0",
               "target": "autocfg"
             }
           ],
@@ -1343,7 +1343,7 @@
         "deps": {
           "common": [
             {
-              "id": "autocfg 1.0.1",
+              "id": "autocfg 1.1.0",
               "target": "autocfg"
             }
           ],
@@ -1419,7 +1419,7 @@
         "deps": {
           "common": [
             {
-              "id": "autocfg 1.0.1",
+              "id": "autocfg 1.1.0",
               "target": "autocfg"
             }
           ],
@@ -1492,7 +1492,7 @@
         "deps": {
           "common": [
             {
-              "id": "autocfg 1.0.1",
+              "id": "autocfg 1.1.0",
               "target": "autocfg"
             }
           ],
@@ -1700,7 +1700,7 @@
               "target": "bitflags"
             },
             {
-              "id": "crc32fast 1.3.1",
+              "id": "crc32fast 1.3.2",
               "target": "crc32fast"
             },
             {
@@ -2596,13 +2596,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "texture-synthesis 0.8.1": {
+    "texture-synthesis 0.8.2": {
       "name": "texture-synthesis",
-      "version": "0.8.1",
+      "version": "0.8.2",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/texture-synthesis/0.8.1/download",
-          "sha256": "7e315cf67a0da5d4f24e954ab96481b233fec0efffc748b1e8f829e9470c9295"
+          "url": "https://crates.io/api/v1/crates/texture-synthesis/0.8.2/download",
+          "sha256": "62ff62ae485126fec4f3685ced13a1700afb6f6ea12a1a0dec410ebc5dc9378b"
         }
       },
       "targets": [
@@ -2657,7 +2657,7 @@
           }
         },
         "edition": "2018",
-        "version": "0.8.1"
+        "version": "0.8.2"
       },
       "license": "MIT OR Apache-2.0"
     },
@@ -2699,7 +2699,7 @@
               "target": "structopt"
             },
             {
-              "id": "texture-synthesis 0.8.1",
+              "id": "texture-synthesis 0.8.2",
               "target": "texture_synthesis"
             }
           ],
@@ -2814,13 +2814,13 @@
       },
       "license": "MIT"
     },
-    "unicode-segmentation 1.8.0": {
+    "unicode-segmentation 1.9.0": {
       "name": "unicode-segmentation",
-      "version": "1.8.0",
+      "version": "1.9.0",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/unicode-segmentation/1.8.0/download",
-          "sha256": "8895849a949e7845e06bd6dc1aa51731a103c42707010a5b591c0038fb73385b"
+          "url": "https://crates.io/api/v1/crates/unicode-segmentation/1.9.0/download",
+          "sha256": "7e8820f5d777f6224dc4be3632222971ac30164d4a258d595640799554ebfd99"
         }
       },
       "targets": [
@@ -2843,7 +2843,7 @@
           "**"
         ],
         "edition": "2018",
-        "version": "1.8.0"
+        "version": "1.9.0"
       },
       "license": "MIT/Apache-2.0"
     },
