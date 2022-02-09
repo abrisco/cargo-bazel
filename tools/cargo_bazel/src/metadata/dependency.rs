@@ -117,26 +117,23 @@ fn collect_deps_selectable(
     let mut selectable = SelectList::default();
 
     for dep in deps.into_iter() {
-        let kind_info = dep
-            .dep_kinds
-            .first()
-            .expect("Each dependency should have at least 1 kind");
-
         let dep_pkg = &metadata[&dep.pkg];
         let target_name = get_library_target_name(dep_pkg, &dep.name);
         let alias = get_target_alias(&dep.name, dep_pkg);
 
-        selectable.insert(
-            Dependency {
-                package_id: dep.pkg.clone(),
-                target_name,
-                alias,
-            },
-            kind_info
-                .target
-                .as_ref()
-                .map(|platform| platform.to_string()),
-        );
+        for kind_info in &dep.dep_kinds {
+            selectable.insert(
+                Dependency {
+                    package_id: dep.pkg.clone(),
+                    target_name: target_name.clone(),
+                    alias: alias.clone(),
+                },
+                kind_info
+                    .target
+                    .as_ref()
+                    .map(|platform| platform.to_string()),
+            );
+        }
     }
 
     selectable
@@ -230,6 +227,8 @@ fn get_target_alias(target_name: &str, package: &Package) -> Option<String> {
 
 #[cfg(test)]
 mod test {
+    use std::collections::BTreeSet;
+
     use super::*;
 
     use crate::test::*;
@@ -318,5 +317,38 @@ mod test {
 
         let sysinfo_dep = rlib_deps.iter().last().unwrap();
         assert_eq!(sysinfo_dep.target_name, "sysinfo");
+    }
+
+    #[test]
+    fn multiple_dep_kinds() {
+        let metadata = metadata::multi_cfg_dep();
+
+        let node = find_metadata_node("cpufeatures", &metadata);
+        let dependencies = DependencySet::new_for_node(node, &metadata);
+
+        let libc_cfgs: Vec<Option<String>> = dependencies
+            .normal_deps
+            .configurations()
+            .into_iter()
+            .flat_map(|conf| {
+                dependencies
+                    .normal_deps
+                    .get_iter(conf)
+                    .expect("Iterating over known keys should never panic")
+                    .filter(|dep| dep.target_name == "libc")
+                    .map(move |_| conf.cloned())
+            })
+            .collect();
+
+        assert_eq!(libc_cfgs.len(), 2);
+
+        let cfg_strs: BTreeSet<String> = libc_cfgs.into_iter().flatten().collect();
+        assert_eq!(
+            cfg_strs,
+            BTreeSet::from([
+                "aarch64-apple-darwin".to_owned(),
+                "cfg(all(target_arch = \"aarch64\", target_os = \"linux\"))".to_owned(),
+            ])
+        );
     }
 }

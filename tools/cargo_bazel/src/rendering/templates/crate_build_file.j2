@@ -1,5 +1,5 @@
 {%- set crate = context.crates | get(key=crate_id) %}
-{% include "partials/header.j2" %}
+{%- include "partials/header.j2" %}
 
 load(
     "@bazel_skylib//lib:selects.bzl", 
