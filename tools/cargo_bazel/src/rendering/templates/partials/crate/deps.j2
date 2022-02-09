@@ -10,7 +10,7 @@
         # {{ cfg }}
         (
             {%- for triple in context.conditions[cfg] %}
-            "@rules_rust//rust/platform:{{ triple }}",
+            "{{ platform_label(triple = triple) }}",
             {%- endfor %}
         ): [
             {%- for dep in values %}
