@@ -1,5 +1,5 @@
 {
-  "checksum": "b7f87bb30d55eb480d58ddb526500c078a75b5d4ea62026f4c8cf17961c2a3cc",
+  "checksum": "41359f41eaf87658326cca8ca9129e125307b55a05fe604d8dc65893727eddbb",
   "crates": {
     "aho-corasick 0.7.18": {
       "name": "aho-corasick",
@@ -7366,6 +7366,10 @@
               {
                 "id": "js-sys 0.3.56",
                 "target": "js_sys"
+              },
+              {
+                "id": "serde_json 1.0.78",
+                "target": "serde_json"
               },
               {
                 "id": "wasm-bindgen 0.2.79",
