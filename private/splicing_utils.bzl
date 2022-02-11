@@ -190,7 +190,7 @@ def splice_workspace_manifest(repository_ctx, generator, lockfile, splicing_mani
     # Add any Cargo environment variables to the `cargo-bazel` execution
     env.update(cargo_environ(repository_ctx))
 
-    result = execute(
+    execute(
         repository_ctx = repository_ctx,
         args = arguments,
         env = env,

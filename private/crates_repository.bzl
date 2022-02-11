@@ -30,7 +30,7 @@ def _crates_repository_impl(repository_ctx):
     host_triple = get_host_triple(repository_ctx)
 
     # Locate the generator to use
-    generator = get_generator(repository_ctx, host_triple.triple)
+    generator, generator_sha256 = get_generator(repository_ctx, host_triple.triple)
 
     # Generate a config file for all settings
     config = generate_config(repository_ctx)
@@ -90,6 +90,20 @@ def _crates_repository_impl(repository_ctx):
         # sysroot = tools.sysroot,
         **kwargs
     )
+
+    # Determine the set of reproducible values
+    attrs = {attr: getattr(repository_ctx.attr, attr) for attr in dir(repository_ctx.attr)}
+    exclude = ["to_json", "to_proto"]
+    for attr in exclude:
+        attrs.pop(attr, None)
+
+    # Note that this is only scoped to the current host platform. Users should
+    # ensure they provide all the values necessary for the host environments
+    # they support
+    if generator_sha256:
+        attrs.update({"generator_sha256s": generator_sha256})
+
+    return attrs
 
 crates_repository = repository_rule(
     doc = """\

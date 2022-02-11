@@ -29,7 +29,8 @@ def get_generator(repository_ctx, host_triple):
         host_triple (string): A string representing the host triple
 
     Returns:
-        path: The path to a `cargo-bazel` binary
+        tuple(path, dict): The path to a `cargo-bazel` binary and the host sha256 pairing.
+            The pairing (dict) may be `None` if there is no need to update the attribute
     """
     use_environ = False
     for var in GENERATOR_ENV_VARS:
@@ -45,12 +46,12 @@ def get_generator(repository_ctx, host_triple):
         generator = repository_ctx.path(Label(repository_ctx.attr.generator))
 
         # Resolve a few levels of symlinks to ensure we're accessing the direct binary
-        for i in range(1, 100):
+        for _ in range(1, 100):
             real_generator = generator.realpath
             if real_generator == generator:
                 break
             generator = real_generator
-        return generator
+        return generator, None
 
     # The environment variable will take precedence if set
     if use_environ:
@@ -68,20 +69,21 @@ def get_generator(repository_ctx, host_triple):
 
     # Download the file into place
     if generator_sha256:
-        result = repository_ctx.download(
+        repository_ctx.download(
             output = output,
             url = generator_url,
             sha256 = generator_sha256,
             executable = True,
         )
-    else:
-        result = repository_ctx.download(
-            output = output,
-            url = generator_url,
-            executable = True,
-        )
+        return output, None
 
-    return output
+    result = repository_ctx.download(
+        output = output,
+        url = generator_url,
+        executable = True,
+    )
+
+    return output, {host_triple: result.sha256}
 
 def render_config(
         build_file_template = "BUILD.{name}-{version}.bazel",
@@ -158,16 +160,6 @@ def _collect_crate_annotations(repository_ctx, annotations, repository_name):
 
             crate_annotations.update({id: data})
     return crate_annotations
-
-def _collect_checksums(checksums):
-    checksums = [json.decode(c) for c in checksums]
-    checksums = {c[0].strip(): struct(**c[1]) for c in checksums}
-    return checksums
-
-def _collect_extra_workspace_members(members):
-    members = {name: struct(**json.decode(m)) for name, m in members.items()}
-    members = {_crate_id(name, m.version): m.sha256 for name, m in members.items()}
-    return members
 
 def _read_cargo_config(repository_ctx):
     if repository_ctx.attr.cargo_config:
