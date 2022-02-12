@@ -317,9 +317,9 @@ impl Annotations {
         // Annotate the cargo metadata
         let metadata_annotation = MetadataAnnotation::new(cargo_metadata);
 
+        let mut unused_extra_annotations = config.annotations.clone();
+
         // Ensure each override matches a particular package
-        // TODO: There should probably be a warning here about 'extras'
-        // that were not matched with anything
         let pairred_extras = metadata_annotation
             .packages
             .iter()
@@ -328,7 +328,13 @@ impl Annotations {
                     .annotations
                     .iter()
                     .filter(|(id, _)| id.matches(pkg))
-                    .map(|(_, extra)| extra)
+                    .map(|(id, extra)| {
+                        // Mark that an annotation has been consumed
+                        unused_extra_annotations.remove(id);
+
+                        // Fitler out the annotation
+                        extra
+                    })
                     .cloned()
                     .collect();
 
@@ -345,6 +351,14 @@ impl Annotations {
                 }
             })
             .collect();
+
+        // Alert on any unused annotations
+        if !unused_extra_annotations.is_empty() {
+            bail!(
+                "Unused annotations were provided. Please remove them: {:?}",
+                unused_extra_annotations.keys()
+            );
+        }
 
         // Annotate metadata
         Ok(Annotations {
@@ -437,9 +451,7 @@ mod test {
     }
 
     #[test]
-    fn annotate_metadata_with_no_deps() {
-        MetadataAnnotation::new(test::metadata::no_deps());
-    }
+    fn annotate_metadata_with_no_deps() {}
 
     #[test]
     fn annotate_lockfile_with_no_deps() {
@@ -468,5 +480,22 @@ mod test {
                 panic!("Wanted SourceAnnotation::Git with strip_prefix == Some(\"tracing-core\"), got: {:?}", other);
             }
         }
+    }
+
+    #[test]
+    fn detect_unused_annotation() {
+        // Create a config with some random annotation
+        let mut config = Config::default();
+        config.annotations.insert(
+            CrateId::new("mock-crate".to_owned(), "0.1.0".to_owned()),
+            CrateAnnotations::default(),
+        );
+
+        let result = Annotations::new(test::metadata::no_deps(), test::lockfile::no_deps(), config);
+        assert!(result.is_err());
+
+        let result_str = format!("{:?}", result);
+        assert!(result_str.contains("Unused annotations were provided. Please remove them"));
+        assert!(result_str.contains("mock-crate"));
     }
 }
