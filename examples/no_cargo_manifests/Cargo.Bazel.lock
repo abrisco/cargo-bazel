@@ -1,5 +1,5 @@
 {
-  "checksum": "bbd084825fd7053c90c5fc1c43c888b0ce3dc276838818e098f1af24e5893d4a",
+  "checksum": "9632248c8eba2362861e3c7c37c250e803746ed2b6b35294fc19ec08dd418e73",
   "crates": {
     "ansi_term 0.12.1": {
       "name": "ansi_term",
@@ -212,7 +212,7 @@
               "target": "http_body"
             },
             {
-              "id": "hyper 0.14.16",
+              "id": "hyper 0.14.17",
               "target": "hyper"
             },
             {
@@ -240,7 +240,7 @@
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.78",
+              "id": "serde_json 1.0.79",
               "target": "serde_json"
             },
             {
@@ -495,7 +495,7 @@
               "target": "axum"
             },
             {
-              "id": "hyper 0.14.16",
+              "id": "hyper 0.14.17",
               "target": "hyper"
             },
             {
@@ -503,7 +503,7 @@
               "target": "mime"
             },
             {
-              "id": "serde_json 1.0.78",
+              "id": "serde_json 1.0.79",
               "target": "serde_json"
             },
             {
@@ -1319,13 +1319,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "hyper 0.14.16": {
+    "hyper 0.14.17": {
       "name": "hyper",
-      "version": "0.14.16",
+      "version": "0.14.17",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/hyper/0.14.16/download",
-          "sha256": "b7ec3e62bdc98a2f0393a5048e4c30ef659440ea6e0e572965103e72bd836f55"
+          "url": "https://crates.io/api/v1/crates/hyper/0.14.17/download",
+          "sha256": "043f0e083e9901b6cc658a77d1eb86f4fc650bbb977a4337dd63192826aa85dd"
         }
       },
       "targets": [
@@ -1399,7 +1399,7 @@
               "target": "httpdate"
             },
             {
-              "id": "itoa 0.4.8",
+              "id": "itoa 1.0.1",
               "target": "itoa"
             },
             {
@@ -1430,7 +1430,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.14.16"
+        "version": "0.14.17"
       },
       "license": "MIT"
     },
@@ -1550,43 +1550,6 @@
         "version": "0.1.12"
       },
       "license": "BSD-3-Clause"
-    },
-    "itoa 0.4.8": {
-      "name": "itoa",
-      "version": "0.4.8",
-      "repository": {
-        "Http": {
-          "url": "https://crates.io/api/v1/crates/itoa/0.4.8/download",
-          "sha256": "b71991ff56294aa922b450139ee08b3bfc70982c6b2c7562771375cf73542dd4"
-        }
-      },
-      "targets": [
-        {
-          "Library": {
-            "crate_name": "itoa",
-            "crate_root": "src/lib.rs",
-            "srcs": {
-              "include": [
-                "**/*.rs"
-              ],
-              "exclude": []
-            }
-          }
-        }
-      ],
-      "library_target_name": "itoa",
-      "common_attrs": {
-        "compile_data_glob": [
-          "**"
-        ],
-        "crate_features": [
-          "default",
-          "std"
-        ],
-        "edition": "2015",
-        "version": "0.4.8"
-      },
-      "license": "MIT OR Apache-2.0"
     },
     "itoa 1.0.1": {
       "name": "itoa",
@@ -2048,7 +2011,7 @@
                 "target": "miow"
               },
               {
-                "id": "ntapi 0.3.6",
+                "id": "ntapi 0.3.7",
                 "target": "ntapi"
               },
               {
@@ -2105,13 +2068,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "ntapi 0.3.6": {
+    "ntapi 0.3.7": {
       "name": "ntapi",
-      "version": "0.3.6",
+      "version": "0.3.7",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/ntapi/0.3.6/download",
-          "sha256": "3f6bb902e437b6d86e03cce10a7e2af662292c5dfef23b65899ea3ac9354ad44"
+          "url": "https://crates.io/api/v1/crates/ntapi/0.3.7/download",
+          "sha256": "c28774a7fd2fbb4f0babd8237ce554b73af68021b5f695a3cebd6c59bac0980f"
         }
       },
       "targets": [
@@ -2152,7 +2115,7 @@
         "deps": {
           "common": [
             {
-              "id": "ntapi 0.3.6",
+              "id": "ntapi 0.3.7",
               "target": "build_script_build"
             },
             {
@@ -2163,7 +2126,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.3.6"
+        "version": "0.3.7"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -2879,13 +2842,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "serde_json 1.0.78": {
+    "serde_json 1.0.79": {
       "name": "serde_json",
-      "version": "1.0.78",
+      "version": "1.0.79",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/serde_json/1.0.78/download",
-          "sha256": "d23c1ba4cf0efd44be32017709280b32d1cea5c3f1275c3b6d9e8bc54f758085"
+          "url": "https://crates.io/api/v1/crates/serde_json/1.0.79/download",
+          "sha256": "8e8d9fa5c3b304765ce1fd9c4c8a3de2c8db365a5b91be52f186efc675681d95"
         }
       },
       "targets": [
@@ -2939,14 +2902,14 @@
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.78",
+              "id": "serde_json 1.0.79",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.0.78"
+        "version": "1.0.79"
       },
       "build_script_attrs": {
         "data_glob": [

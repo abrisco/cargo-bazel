@@ -1,5 +1,5 @@
 {
-  "checksum": "f16c3bef578df2b96ff0f189e027d13299165554819793ffc12bb238cd89b866",
+  "checksum": "3caa6036eeadbe05614415e7e29588f276576137e8580457b7f27dbe0e6f9f27",
   "crates": {
     "adler 1.0.2": {
       "name": "adler",
@@ -1905,34 +1905,6 @@
         "version": "0.8.1"
       },
       "license": "MIT OR Apache-2.0"
-    },
-    "direct-cargo-bazel-deps 0.0.1": {
-      "name": "direct-cargo-bazel-deps",
-      "version": "0.0.1",
-      "repository": null,
-      "targets": [
-        {
-          "Library": {
-            "crate_name": "direct_cargo_bazel_deps",
-            "crate_root": ".direct_cargo_bazel_deps.rs",
-            "srcs": {
-              "include": [
-                "**/*.rs"
-              ],
-              "exclude": []
-            }
-          }
-        }
-      ],
-      "library_target_name": "direct_cargo_bazel_deps",
-      "common_attrs": {
-        "compile_data_glob": [
-          "**"
-        ],
-        "edition": "2018",
-        "version": "0.0.1"
-      },
-      "license": null
     },
     "examples-runner 0.0.1": {
       "name": "examples-runner",
@@ -8409,9 +8381,8 @@
     "phf_generator 0.10.0"
   ],
   "workspace_members": {
-    "cargo-bazel 0.0.24": "tools/cargo_bazel",
+    "cargo-bazel 0.0.24": "",
     "cross_installer 0.1.0": "tools/cross_installer",
-    "direct-cargo-bazel-deps 0.0.1": "",
     "examples-runner 0.0.1": "tools/examples_runner",
     "urls_generator 0.1.0": "tools/urls_generator"
   },

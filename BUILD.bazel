@@ -1,12 +1,17 @@
 load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
+load("@crate_index//:defs.bzl", "aliases", "all_crate_deps")
+load("@rules_rust//rust:defs.bzl", "rust_binary", "rust_doc", "rust_library", "rust_test")
+load("//:version.bzl", "VERSION")
 
 package(default_visibility = ["//visibility:public"])
 
-exports_files([
-    "Cargo.toml",
-    "Cargo.lock",
-    "Cargo.Bazel.lock",
-])
+exports_files(
+    glob(["src/**"]) + [
+        "Cargo.toml",
+        "Cargo.lock",
+        "Cargo.Bazel.lock",
+    ],
+)
 
 filegroup(
     name = "distro",
@@ -36,7 +41,69 @@ bzl_library(
     visibility = ["//visibility:public"],
 )
 
-alias(
-    name = "cargo_bazel",
-    actual = "//tools/cargo_bazel:bin",
+filegroup(
+    name = "rust_srcs",
+    srcs = glob(["src/**/*"]),
+    visibility = ["//:__subpackages__"],
 )
+
+rust_library(
+    name = "cargo_bazel",
+    srcs = glob(
+        include = ["src/**/*.rs"],
+        exclude = ["src/main.rs"],
+    ),
+    aliases = aliases(),
+    compile_data = glob(
+        include = ["src/**"],
+        exclude = ["src/**/*.rs"],
+    ),
+    proc_macro_deps = all_crate_deps(proc_macro = True),
+    version = VERSION,
+    deps = all_crate_deps(normal = True),
+)
+
+rust_binary(
+    name = "cargo_bazel_bin",
+    srcs = ["src/main.rs"],
+    version = VERSION,
+    deps = [":cargo_bazel"],
+)
+
+alias(
+    name = "bin",
+    actual = ":cargo_bazel_bin",
+)
+
+rust_test(
+    name = "unit_test",
+    aliases = aliases(),
+    crate = ":cargo_bazel",
+    data = glob(["test_data/**"]) + [
+        "@rules_rust//rust/toolchain:current_exec_cargo_files",
+        "@rules_rust//rust/toolchain:current_exec_rustc_files",
+    ],
+    proc_macro_deps = all_crate_deps(
+        proc_macro_dev = True,
+    ),
+    rustc_env = {
+        "CARGO": "$(rootpath @rules_rust//rust/toolchain:current_exec_cargo_files)",
+        "RUSTC": "$(rootpath @rules_rust//rust/toolchain:current_exec_rustc_files)",
+    },
+    deps = all_crate_deps(
+        normal_dev = True,
+    ),
+)
+
+rust_doc(
+    name = "rustdoc",
+    crate = ":cargo_bazel",
+)
+
+# `rust_doc_test` does not currently work. See:
+# https://github.com/bazelbuild/rules_rust/issues/980
+#
+# rust_doc_test(
+#     name = "rustdoc_test",
+#     crate = ":cargo_bazel",
+# )

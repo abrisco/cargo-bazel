@@ -4,7 +4,7 @@
 # to compile. The targets built are expected to run under Bazel so
 # they many not function as expected based on the values here.
 [env]
-CARGO_BAZEL_BIN = "bazel-bin/tools/cargo_bazel/cargo_bazel"
+CARGO_BAZEL_BIN = "bazel-bin/cargo_bazel"
 CROSS_BIN = "cross"
 CROSS_CONFIG = "tools/cross_installer/Cross.toml"
 DISTRO_ARCHIVE = "bazel-bin/distro/distro.tar.gz"

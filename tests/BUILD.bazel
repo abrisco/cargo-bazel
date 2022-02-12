@@ -5,7 +5,7 @@ load("//tools/examples_runner:examples_runner.bzl", "examples_runner")
 # This has to be a run target for now...
 examples_runner(
     name = "examples",
-    cargo_bazel_bin = "//tools/cargo_bazel:bin",
+    cargo_bazel_bin = "//:cargo_bazel_bin",
     distro_archive = "//distro",
     examples_package = "examples",
 )
@@ -14,11 +14,11 @@ rust_test(
     name = "versions_test",
     srcs = ["version_test.rs"],
     data = [
+        "//:Cargo.toml",
         "//:version.bzl",
-        "//tools/cargo_bazel:Cargo.toml",
     ],
     rustc_env = {
-        "CARGO_TOML": "$(rootpath //tools/cargo_bazel:Cargo.toml)",
+        "CARGO_TOML": "$(rootpath //:Cargo.toml)",
         "VERSION_BZL": "$(rootpath //:version.bzl)",
     },
     use_libtest_harness = False,

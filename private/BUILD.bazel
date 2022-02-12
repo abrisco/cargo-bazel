@@ -6,7 +6,7 @@ exports_files(glob(["**"]))
 
 srcs_module(
     name = "srcs_module",
-    srcs = "//tools/cargo_bazel:srcs",
+    srcs = "//:rust_srcs",
     dest = ":srcs.bzl",
 )
 
