@@ -21,9 +21,6 @@ load("//:defs.bzl", "crate", "crates_repository")
 crates_repository(
     name = "crate_index",
     annotations = {
-        "cargo_toml": [crate.annotation(
-            shallow_since = "1643802651 +0000",
-        )],
         "libgit2-sys": [crate.annotation(
             gen_build_script = False,
             deps = ["@libgit2"],
@@ -34,13 +31,13 @@ crates_repository(
         )],
     },
     generator = "@cargo_bazel_bootstrap//:cargo-bazel",
-    lockfile = "//:Cargo.Bazel.lock",
+    lockfile = "@cargo_bazel//:Cargo.Bazel.lock",
     manifests = [
-        "//:Cargo.toml",
-        "//tools/cargo_bazel:Cargo.toml",
-        "//tools/cross_installer:Cargo.toml",
-        "//tools/examples_runner:Cargo.toml",
-        "//tools/urls_generator:Cargo.toml",
+        "@cargo_bazel//:Cargo.toml",
+        "@cargo_bazel//tools/cargo_bazel:Cargo.toml",
+        "@cargo_bazel//tools/cross_installer:Cargo.toml",
+        "@cargo_bazel//tools/examples_runner:Cargo.toml",
+        "@cargo_bazel//tools/urls_generator:Cargo.toml",
     ],
 )
 
