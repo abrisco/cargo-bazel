@@ -97,5 +97,5 @@ sh_binary(
 
 alias(
     name = "cargo_bazel_rustdoc",
-    actual = "//tools/cargo_bazel:rustdoc",
+    actual = "//:rustdoc",
 )

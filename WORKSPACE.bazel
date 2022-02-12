@@ -34,7 +34,6 @@ crates_repository(
     lockfile = "@cargo_bazel//:Cargo.Bazel.lock",
     manifests = [
         "@cargo_bazel//:Cargo.toml",
-        "@cargo_bazel//tools/cargo_bazel:Cargo.toml",
         "@cargo_bazel//tools/cross_installer:Cargo.toml",
         "@cargo_bazel//tools/examples_runner:Cargo.toml",
         "@cargo_bazel//tools/urls_generator:Cargo.toml",
