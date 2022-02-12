@@ -1,5 +1,5 @@
 {
-  "checksum": "2142a3c64893453302e5b01c954023743bbf56c3d7e32ae556813130043d8ecd",
+  "checksum": "f16c3bef578df2b96ff0f189e027d13299165554819793ffc12bb238cd89b866",
   "crates": {
     "adler 1.0.2": {
       "name": "adler",
@@ -674,7 +674,7 @@
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.78",
+              "id": "serde_json 1.0.79",
               "target": "serde_json"
             },
             {
@@ -872,7 +872,7 @@
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.78",
+              "id": "serde_json 1.0.79",
               "target": "serde_json"
             }
           ],
@@ -1533,7 +1533,7 @@
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.78",
+              "id": "serde_json 1.0.79",
               "target": "serde_json"
             },
             {
@@ -1733,13 +1733,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "crypto-common 0.1.1": {
+    "crypto-common 0.1.2": {
       "name": "crypto-common",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/crypto-common/0.1.1/download",
-          "sha256": "683d6b536309245c849479fba3da410962a43ed8e51c26b729208ec0ac2798d0"
+          "url": "https://crates.io/api/v1/crates/crypto-common/0.1.2/download",
+          "sha256": "a4600d695eb3f6ce1cd44e6e291adceb2cc3ab12f20a33777ecd0bf6eba34e06"
         }
       },
       "targets": [
@@ -1774,7 +1774,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.1.1"
+        "version": "0.1.2"
       },
       "license": "MIT OR Apache-2.0"
     },
@@ -1811,13 +1811,13 @@
       },
       "license": "BSD-3-Clause"
     },
-    "digest 0.10.1": {
+    "digest 0.10.2": {
       "name": "digest",
-      "version": "0.10.1",
+      "version": "0.10.2",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/digest/0.10.1/download",
-          "sha256": "b697d66081d42af4fba142d56918a3cb21dc8eb63372c6b85d14f44fb9c5979b"
+          "url": "https://crates.io/api/v1/crates/digest/0.10.2/download",
+          "sha256": "8cb780dce4f9a8f5c087362b3a4595936b2019e7c8b30f2c3e9a7e94e6ae9837"
         }
       },
       "targets": [
@@ -1853,18 +1853,14 @@
               "target": "block_buffer"
             },
             {
-              "id": "crypto-common 0.1.1",
+              "id": "crypto-common 0.1.2",
               "target": "crypto_common"
-            },
-            {
-              "id": "generic-array 0.14.5",
-              "target": "generic_array"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.10.1"
+        "version": "0.10.2"
       },
       "license": "MIT OR Apache-2.0"
     },
@@ -2396,6 +2392,9 @@
       "common_attrs": {
         "compile_data_glob": [
           "**"
+        ],
+        "crate_features": [
+          "more_lengths"
         ],
         "deps": {
           "common": [
@@ -6133,13 +6132,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "serde_json 1.0.78": {
+    "serde_json 1.0.79": {
       "name": "serde_json",
-      "version": "1.0.78",
+      "version": "1.0.79",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/serde_json/1.0.78/download",
-          "sha256": "d23c1ba4cf0efd44be32017709280b32d1cea5c3f1275c3b6d9e8bc54f758085"
+          "url": "https://crates.io/api/v1/crates/serde_json/1.0.79/download",
+          "sha256": "8e8d9fa5c3b304765ce1fd9c4c8a3de2c8db365a5b91be52f186efc675681d95"
         }
       },
       "targets": [
@@ -6193,14 +6192,14 @@
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.78",
+              "id": "serde_json 1.0.79",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2018",
-        "version": "1.0.78"
+        "version": "1.0.79"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -6302,7 +6301,7 @@
               "target": "cfg_if"
             },
             {
-              "id": "digest 0.10.1",
+              "id": "digest 0.10.2",
               "target": "digest"
             }
           ],
@@ -6916,7 +6915,7 @@
               "target": "serde"
             },
             {
-              "id": "serde_json 1.0.78",
+              "id": "serde_json 1.0.79",
               "target": "serde_json"
             },
             {
@@ -7934,7 +7933,7 @@
               "target": "hex"
             },
             {
-              "id": "serde_json 1.0.78",
+              "id": "serde_json 1.0.79",
               "target": "serde_json"
             },
             {
