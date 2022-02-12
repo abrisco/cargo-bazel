@@ -11,6 +11,14 @@ exports_files(
     ]),
 )
 
+filegroup(
+    name = "srcs",
+    srcs = glob([
+        "*.bazel",
+        "*.bzl",
+    ]),
+)
+
 # Workspace Member Dependencies
 {%- for dep, rename in workspace_member_dependencies %}
 {%- set crate = context.crates | get(key=dep) %}
