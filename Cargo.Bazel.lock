@@ -1,5 +1,5 @@
 {
-  "checksum": "3caa6036eeadbe05614415e7e29588f276576137e8580457b7f27dbe0e6f9f27",
+  "checksum": "57d3538cb3f27cea93658cd0724cbc62cb777108177c25827c7b5e54a1a52d2d",
   "crates": {
     "adler 1.0.2": {
       "name": "adler",
@@ -8418,6 +8418,7 @@
       "aarch64-linux-android",
       "aarch64-unknown-linux-gnu",
       "arm-unknown-linux-gnueabi",
+      "armv7-unknown-linux-gnueabi",
       "i686-apple-darwin",
       "i686-linux-android",
       "i686-unknown-freebsd",
@@ -8437,6 +8438,7 @@
       "aarch64-linux-android",
       "aarch64-unknown-linux-gnu",
       "arm-unknown-linux-gnueabi",
+      "armv7-unknown-linux-gnueabi",
       "i686-apple-darwin",
       "i686-linux-android",
       "i686-pc-windows-msvc",
@@ -8459,6 +8461,7 @@
       "aarch64-linux-android",
       "aarch64-unknown-linux-gnu",
       "arm-unknown-linux-gnueabi",
+      "armv7-unknown-linux-gnueabi",
       "i686-apple-darwin",
       "i686-linux-android",
       "i686-unknown-freebsd",
@@ -8496,6 +8499,7 @@
       "aarch64-linux-android",
       "aarch64-unknown-linux-gnu",
       "arm-unknown-linux-gnueabi",
+      "armv7-unknown-linux-gnueabi",
       "i686-apple-darwin",
       "i686-linux-android",
       "i686-unknown-freebsd",

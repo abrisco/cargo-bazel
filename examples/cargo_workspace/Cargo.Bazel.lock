@@ -1,5 +1,5 @@
 {
-  "checksum": "41a7e52fefb4cd6f508c48d63773c52341246a6ee4150865797f4062f03ff530",
+  "checksum": "ffb03072e18879fc48f8b0a0f2d140ca6886ca80c68b4e3de920429311a1955c",
   "crates": {
     "ansi_term 0.12.1": {
       "name": "ansi_term",
@@ -1386,6 +1386,7 @@
       "aarch64-linux-android",
       "aarch64-unknown-linux-gnu",
       "arm-unknown-linux-gnueabi",
+      "armv7-unknown-linux-gnueabi",
       "i686-apple-darwin",
       "i686-linux-android",
       "i686-pc-windows-msvc",
@@ -1408,6 +1409,7 @@
       "aarch64-linux-android",
       "aarch64-unknown-linux-gnu",
       "arm-unknown-linux-gnueabi",
+      "armv7-unknown-linux-gnueabi",
       "i686-apple-darwin",
       "i686-linux-android",
       "i686-unknown-freebsd",
@@ -1439,6 +1441,7 @@
       "aarch64-linux-android",
       "aarch64-unknown-linux-gnu",
       "arm-unknown-linux-gnueabi",
+      "armv7-unknown-linux-gnueabi",
       "i686-apple-darwin",
       "i686-linux-android",
       "i686-unknown-freebsd",
