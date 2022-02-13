@@ -67,9 +67,10 @@ impl Context {
             .collect();
 
         // Filter for any crate that contains a binary
-        let binary_crates = crates
+        let binary_crates: BTreeSet<CrateId> = crates
             .iter()
             .filter(|(_, ctx)| ctx.targets.iter().any(|t| matches!(t, Rule::Binary(..))))
+            // Only consider remote repositories (so non-workspace members).
             .filter(|(_, ctx)| ctx.repository.is_some())
             .map(|(id, _)| id.clone())
             .collect();
@@ -336,6 +337,7 @@ impl Context {
             .cloned()
             .collect();
 
+        // Search for any duplicate workspace member definitions
         let duplicate_deps: Vec<CrateDependency> = workspace_member_dependencies
             .iter()
             .filter(|dep| {
@@ -386,6 +388,29 @@ impl Context {
                     }
                 } else {
                     (dep.id, dep.alias)
+                }
+            })
+            .collect()
+    }
+
+    /// Produce a list of binary dependencies with optional aliases which prevent duplicate
+    /// targets from being generated.
+    pub fn flat_binary_deps(&self) -> BTreeMap<CrateId, Option<String>> {
+        // Check for any duplicate binary crate names. If one exists provide an alias to differentiate them
+        self.binary_crates
+            .iter()
+            .map(|crate_id| {
+                let dupe_count = self
+                    .binary_crates
+                    .iter()
+                    .filter(|id| crate_id.name == id.name)
+                    .count();
+                // For targets that appear twice (which can happen if one crate aliases a binary dependency)
+                if dupe_count >= 2 {
+                    let rename = format!("{}-{}", crate_id.name, crate_id.version);
+                    (crate_id.clone(), Some(rename))
+                } else {
+                    (crate_id.clone(), None)
                 }
             })
             .collect()
@@ -446,12 +471,38 @@ mod test {
             workspace_member_deps,
             BTreeMap::from([
                 (
-                    CrateId::new("log".to_owned(), "0.3.9".to_owned()),
+                    CrateId {
+                        name: "log".to_owned(),
+                        version: "0.3.9".to_owned(),
+                    },
                     Some("pinned_log".to_owned())
                 ),
-                (CrateId::new("log".to_owned(), "0.4.14".to_owned()), None),
                 (
-                    CrateId::new("value-bag".to_owned(), "1.0.0-alpha.7".to_owned()),
+                    CrateId {
+                        name: "log".to_owned(),
+                        version: "0.4.14".to_owned(),
+                    },
+                    None
+                ),
+                (
+                    CrateId {
+                        name: "names".to_owned(),
+                        version: "0.11.1-dev".to_owned(),
+                    },
+                    Some("pinned_names".to_owned())
+                ),
+                (
+                    CrateId {
+                        name: "names".to_owned(),
+                        version: "0.12.0".to_owned(),
+                    },
+                    None
+                ),
+                (
+                    CrateId {
+                        name: "value-bag".to_owned(),
+                        version: "1.0.0-alpha.7".to_owned(),
+                    },
                     None
                 ),
             ])
