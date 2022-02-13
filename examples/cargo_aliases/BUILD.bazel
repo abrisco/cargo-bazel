@@ -1,3 +1,4 @@
+load("@bazel_skylib//rules:build_test.bzl", "build_test")
 load("@cargo_aliases//:defs.bzl", "aliases", "all_crate_deps")
 load("@rules_rust//rust:defs.bzl", "rust_library", "rust_test")
 
@@ -16,4 +17,10 @@ rust_test(
     crate = ":aliases",
     proc_macro_deps = all_crate_deps(proc_macro_dev = True),
     deps = all_crate_deps(normal_dev = True),
+)
+
+# Ensures that Bazel aliases from the crates_repository are actually usable.
+build_test(
+    name = "names_build_test",
+    targets = ["@cargo_aliases//:names"],
 )

@@ -287,10 +287,17 @@ mod test {
             .filter(|dep| dep.alias.is_some())
             .collect();
 
-        assert_eq!(aliases.len(), 1);
+        assert_eq!(aliases.len(), 2);
 
-        let log_alias = aliases.iter().last().unwrap();
-        assert_eq!(log_alias.alias.as_ref().unwrap(), "pinned_log");
+        let expected: BTreeSet<String> = aliases
+            .into_iter()
+            .map(|dep| dep.alias.as_ref().unwrap().clone())
+            .collect();
+
+        assert_eq!(
+            expected,
+            BTreeSet::from(["pinned_log".to_owned(), "pinned_names".to_owned()])
+        );
     }
 
     #[test]

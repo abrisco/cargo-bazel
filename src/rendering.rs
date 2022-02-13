@@ -142,9 +142,11 @@ pub fn render_build_file_template(template: &str, name: &str, version: &str) -> 
 mod test {
     use super::*;
 
-    use crate::config::CrateId;
+    use crate::config::{Config, CrateId};
     use crate::context::crate_context::{CrateContext, Rule};
     use crate::context::{BuildScriptAttributes, Context, TargetAttributes};
+    use crate::metadata::Annotations;
+    use crate::test;
 
     fn mock_render_config() -> RenderConfig {
         serde_json::from_value(serde_json::json!({
@@ -295,5 +297,24 @@ mod test {
             .unwrap();
 
         assert!(build_file_content.contains("# Hello World from additive section!"));
+    }
+
+    #[test]
+    fn render_aliases() {
+        let annotations = Annotations::new(
+            test::metadata::alias(),
+            test::lockfile::alias(),
+            Config::default(),
+        )
+        .unwrap();
+        let context = Context::new(annotations).unwrap();
+
+        let renderer = Renderer::new(mock_render_config());
+        let output = renderer.render(&context).unwrap();
+
+        let build_file_content = output.get(&PathBuf::from("BUILD.bazel")).unwrap();
+
+        assert!(build_file_content.contains(r#"name = "names-0.11.1-dev__names","#));
+        assert!(build_file_content.contains(r#"name = "names-0.12.0__names","#));
     }
 }

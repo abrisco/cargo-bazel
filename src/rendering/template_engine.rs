@@ -237,6 +237,9 @@ impl TemplateEngine {
         let workspace_member_deps = data.flat_workspace_member_deps();
         context.insert("workspace_member_dependencies", &workspace_member_deps);
 
+        let binary_crates_map = data.flat_binary_deps();
+        context.insert("binary_crates_map", &binary_crates_map);
+
         self.engine
             .render("module_build_file.j2", &context)
             .context("Failed to render crates module")

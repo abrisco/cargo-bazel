@@ -31,13 +31,13 @@ alias(
 {%- endfor %}
 
 # Binaries
-{%- for id in context.binary_crates | sort %}
+{%- for id, rename in binary_crates_map %}
 {%- set crate = context.crates | get(key=id) %}
 {%- for rule in crate.targets %}
 {%- for rule_type, target in rule %}
 {%- if rule_type in ["Binary"] %}
 alias(
-    name = "{{ crate.name }}__{{ target.crate_name }}",
+    name = "{{ rename | default(value=crate.name) }}__{{ target.crate_name }}",
     actual = "{{ crate_label(name = crate.name, version = crate.version, target = target.crate_name ~ '__bin') }}",
 )
 {%- endif %}
