@@ -1,5 +1,5 @@
 {
-  "checksum": "e81834d1bc46326853feaa98861a3b98458b11cddf49a7392f4ab3c3af4cbb4d",
+  "checksum": "eff0f54db8a1e9a9553f07e09c936a864151b2cf6c43912921bd37491b4ce84e",
   "crates": {
     "adler32 1.2.0": {
       "name": "adler32",
@@ -3203,6 +3203,7 @@
       "aarch64-linux-android",
       "aarch64-unknown-linux-gnu",
       "arm-unknown-linux-gnueabi",
+      "armv7-unknown-linux-gnueabi",
       "i686-apple-darwin",
       "i686-linux-android",
       "i686-pc-windows-msvc",
@@ -3223,6 +3224,7 @@
       "aarch64-linux-android",
       "aarch64-unknown-linux-gnu",
       "arm-unknown-linux-gnueabi",
+      "armv7-unknown-linux-gnueabi",
       "i686-apple-darwin",
       "i686-linux-android",
       "i686-unknown-freebsd",
@@ -3250,6 +3252,7 @@
       "aarch64-linux-android",
       "aarch64-unknown-linux-gnu",
       "arm-unknown-linux-gnueabi",
+      "armv7-unknown-linux-gnueabi",
       "i686-apple-darwin",
       "i686-linux-android",
       "i686-unknown-freebsd",
