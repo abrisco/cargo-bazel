@@ -39,6 +39,6 @@ fn main() {
             .expect("The version.bzl file should have a line with `VERSION = `")
     };
 
-    eprintln!("If this test fails, make sure `//:version.bzl` and `//tools/cargo_bazel:Cargo.toml` have matching versions");
+    eprintln!("If this test fails, make sure `//:version.bzl` and `//:Cargo.toml` have matching versions");
     assert_eq!(cargo_version, bazel_version)
 }
