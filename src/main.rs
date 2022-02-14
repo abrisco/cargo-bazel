@@ -10,5 +10,6 @@ fn main() -> cli::Result<()> {
         cli::Options::Generate(opt) => cli::generate(opt),
         cli::Options::Splice(opt) => cli::splice(opt),
         cli::Options::Query(opt) => cli::query(opt),
+        cli::Options::Vendor(opt) => cli::vendor(opt),
     }
 }

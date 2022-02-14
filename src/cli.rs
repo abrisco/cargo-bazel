@@ -3,17 +3,20 @@
 mod generate;
 mod query;
 mod splice;
+mod vendor;
 
 use clap::Parser;
 
 use self::generate::GenerateOptions;
 use self::query::QueryOptions;
 use self::splice::SpliceOptions;
+use self::vendor::VendorOptions;
 
 // Entrypoints
 pub use generate::generate;
 pub use query::query;
 pub use splice::splice;
+pub use vendor::vendor;
 
 #[derive(Parser, Debug)]
 #[clap(name = "cargo-bazel", about, version)]
@@ -26,6 +29,9 @@ pub enum Options {
 
     /// Query workspace info to determine whether or not a repin is needed.
     Query(QueryOptions),
+
+    /// Vendor BUILD files to the workspace with either repository definitions or `cargo vendor` generated sources.
+    Vendor(VendorOptions),
 }
 
 // Convenience wrappers to avoid dependencies in the binary
