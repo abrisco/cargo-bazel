@@ -15,23 +15,24 @@ exports_files(
 
 filegroup(
     name = "distro",
-    srcs = glob(
-        include = ["*.bzl"],
-        exclude = ["deps_bootstrap.bzl"],
-    ) + [
-        "README.md",
-        "BUILD.bazel",
-        "WORKSPACE.bazel",
+    srcs = glob(["*.bzl"]) + [
+        ":rust_srcs",
         "//3rdparty:distro",
         "//private:distro",
+        "//tools:distro",
+        "BUILD.bazel",
+        "Cargo.lock",
+        "Cargo.toml",
+        "README.md",
+        "WORKSPACE.bazel",
     ],
 )
 
 filegroup(
     name = "bzl_srcs",
     srcs = glob(["*.bzl"]) + [
-        "//private:bzl_srcs",
         "//3rdparty:bzl_srcs",
+        "//private:bzl_srcs",
     ],
 )
 

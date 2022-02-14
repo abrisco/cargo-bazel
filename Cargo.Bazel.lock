@@ -1,5 +1,5 @@
 {
-  "checksum": "8bdae2170454e34ed67034143c9b89c702f03ba7a3dcb643cdac8ca172f4da83",
+  "checksum": "fb7567ce76a2fb9e6f75797150ab89f395bcbeeb983a7b46f0f8425c1df5e1b8",
   "crates": {
     "adler 1.0.2": {
       "name": "adler",
@@ -182,7 +182,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.117",
+                "id": "libc 0.2.118",
                 "target": "libc"
               }
             ],
@@ -1111,7 +1111,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.117",
+              "id": "libc 0.2.118",
               "target": "libc"
             },
             {
@@ -1453,13 +1453,13 @@
           "selects": {
             "aarch64-apple-darwin": [
               {
-                "id": "libc 0.2.117",
+                "id": "libc 0.2.118",
                 "target": "libc"
               }
             ],
             "cfg(all(target_arch = \"aarch64\", target_os = \"linux\"))": [
               {
-                "id": "libc 0.2.117",
+                "id": "libc 0.2.118",
                 "target": "libc"
               }
             ]
@@ -2084,7 +2084,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.117",
+                "id": "libc 0.2.118",
                 "target": "libc"
               }
             ],
@@ -2145,7 +2145,7 @@
               "target": "crc32fast"
             },
             {
-              "id": "libc 0.2.117",
+              "id": "libc 0.2.118",
               "target": "libc"
             },
             {
@@ -2447,7 +2447,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.117",
+                "id": "libc 0.2.118",
                 "target": "libc"
               }
             ]
@@ -2493,7 +2493,7 @@
               "target": "bitflags"
             },
             {
-              "id": "libc 0.2.117",
+              "id": "libc 0.2.118",
               "target": "libc"
             },
             {
@@ -2730,7 +2730,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.117",
+              "id": "libc 0.2.118",
               "target": "libc"
             }
           ],
@@ -3180,7 +3180,7 @@
           "selects": {
             "cfg(unix)": [
               {
-                "id": "libc 0.2.117",
+                "id": "libc 0.2.118",
                 "target": "libc"
               }
             ]
@@ -3224,13 +3224,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "libc 0.2.117": {
+    "libc 0.2.118": {
       "name": "libc",
-      "version": "0.2.117",
+      "version": "0.2.118",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/libc/0.2.117/download",
-          "sha256": "e74d72e0f9b65b5b4ca49a346af3976df0f9c61d550727f349ecd559f251a26c"
+          "url": "https://crates.io/api/v1/crates/libc/0.2.118/download",
+          "sha256": "06e509672465a0504304aa87f9f176f2b2b716ed8fb105ebe5c02dc6dce96a94"
         }
       },
       "targets": [
@@ -3271,14 +3271,14 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.117",
+              "id": "libc 0.2.118",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2015",
-        "version": "0.2.117"
+        "version": "0.2.118"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -3318,7 +3318,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.117",
+              "id": "libc 0.2.118",
               "target": "libc"
             },
             {
@@ -3370,7 +3370,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.117",
+              "id": "libc 0.2.118",
               "target": "libc"
             }
           ],
@@ -4156,7 +4156,7 @@
             ],
             "cfg(not(windows))": [
               {
-                "id": "libc 0.2.117",
+                "id": "libc 0.2.118",
                 "target": "libc"
               }
             ]
@@ -4724,7 +4724,7 @@
               "target": "phf_shared"
             },
             {
-              "id": "rand 0.8.4",
+              "id": "rand 0.8.5",
               "target": "rand"
             }
           ],
@@ -5193,7 +5193,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.117",
+                "id": "libc 0.2.118",
                 "target": "libc"
               }
             ],
@@ -5210,13 +5210,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "rand 0.8.4": {
+    "rand 0.8.5": {
       "name": "rand",
-      "version": "0.8.4",
+      "version": "0.8.5",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/rand/0.8.4/download",
-          "sha256": "2e7573632e6454cf6b99d7aac4ccca54be06da05aca2ef7423d22d27d4d4bcd8"
+          "url": "https://crates.io/api/v1/crates/rand/0.8.5/download",
+          "sha256": "34af8d1a0e25924bc5b7c43c079c942339d8f0a8b57c39049bef581b46327404"
         }
       },
       "targets": [
@@ -5244,7 +5244,6 @@
           "getrandom",
           "libc",
           "rand_chacha",
-          "rand_hc",
           "small_rng",
           "std",
           "std_rng"
@@ -5252,33 +5251,25 @@
         "deps": {
           "common": [
             {
+              "id": "rand_chacha 0.3.1",
+              "target": "rand_chacha"
+            },
+            {
               "id": "rand_core 0.6.3",
               "target": "rand_core"
             }
           ],
           "selects": {
-            "cfg(not(target_os = \"emscripten\"))": [
-              {
-                "id": "rand_chacha 0.3.1",
-                "target": "rand_chacha"
-              }
-            ],
-            "cfg(target_os = \"emscripten\")": [
-              {
-                "id": "rand_hc 0.3.1",
-                "target": "rand_hc"
-              }
-            ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.117",
+                "id": "libc 0.2.118",
                 "target": "libc"
               }
             ]
           }
         },
         "edition": "2018",
-        "version": "0.8.4"
+        "version": "0.8.5"
       },
       "license": "MIT OR Apache-2.0"
     },
@@ -5450,48 +5441,6 @@
         },
         "edition": "2018",
         "version": "0.6.3"
-      },
-      "license": "MIT OR Apache-2.0"
-    },
-    "rand_hc 0.3.1": {
-      "name": "rand_hc",
-      "version": "0.3.1",
-      "repository": {
-        "Http": {
-          "url": "https://crates.io/api/v1/crates/rand_hc/0.3.1/download",
-          "sha256": "d51e9f596de227fda2ea6c84607f5558e196eeaf43c986b724ba4fb8fdf497e7"
-        }
-      },
-      "targets": [
-        {
-          "Library": {
-            "crate_name": "rand_hc",
-            "crate_root": "src/lib.rs",
-            "srcs": {
-              "include": [
-                "**/*.rs"
-              ],
-              "exclude": []
-            }
-          }
-        }
-      ],
-      "library_target_name": "rand_hc",
-      "common_attrs": {
-        "compile_data_glob": [
-          "**"
-        ],
-        "deps": {
-          "common": [
-            {
-              "id": "rand_core 0.6.3",
-              "target": "rand_core"
-            }
-          ],
-          "selects": {}
-        },
-        "edition": "2018",
-        "version": "0.3.1"
       },
       "license": "MIT OR Apache-2.0"
     },
@@ -6722,7 +6671,7 @@
           "selects": {
             "cfg(unix)": [
               {
-                "id": "libc 0.2.117",
+                "id": "libc 0.2.118",
                 "target": "libc"
               },
               {
@@ -6783,7 +6732,7 @@
           "selects": {
             "cfg(any(unix, target_os = \"wasi\"))": [
               {
-                "id": "libc 0.2.117",
+                "id": "libc 0.2.118",
                 "target": "libc"
               }
             ],
@@ -6875,7 +6824,7 @@
               "target": "pest"
             },
             {
-              "id": "rand 0.8.4",
+              "id": "rand 0.8.5",
               "target": "rand"
             },
             {
@@ -8363,7 +8312,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.117",
+              "id": "libc 0.2.118",
               "target": "libc"
             }
           ],
@@ -8432,29 +8381,6 @@
       "x86_64-unknown-freebsd",
       "x86_64-unknown-linux-gnu"
     ],
-    "cfg(not(target_os = \"emscripten\"))": [
-      "aarch64-apple-darwin",
-      "aarch64-apple-ios",
-      "aarch64-linux-android",
-      "aarch64-unknown-linux-gnu",
-      "arm-unknown-linux-gnueabi",
-      "armv7-unknown-linux-gnueabi",
-      "i686-apple-darwin",
-      "i686-linux-android",
-      "i686-pc-windows-msvc",
-      "i686-unknown-freebsd",
-      "i686-unknown-linux-gnu",
-      "powerpc-unknown-linux-gnu",
-      "s390x-unknown-linux-gnu",
-      "wasm32-unknown-unknown",
-      "wasm32-wasi",
-      "x86_64-apple-darwin",
-      "x86_64-apple-ios",
-      "x86_64-linux-android",
-      "x86_64-pc-windows-msvc",
-      "x86_64-unknown-freebsd",
-      "x86_64-unknown-linux-gnu"
-    ],
     "cfg(not(windows))": [
       "aarch64-apple-darwin",
       "aarch64-apple-ios",
@@ -8486,7 +8412,6 @@
       "wasm32-wasi"
     ],
     "cfg(target_env = \"sgx\")": [],
-    "cfg(target_os = \"emscripten\")": [],
     "cfg(target_os = \"fuchsia\")": [],
     "cfg(target_os = \"hermit\")": [],
     "cfg(target_os = \"redox\")": [],
