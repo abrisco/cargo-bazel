@@ -7,6 +7,7 @@ CARGO_BAZEL_SRCS = [
     "@cargo_bazel//:src/cli/generate.rs",
     "@cargo_bazel//:src/cli/query.rs",
     "@cargo_bazel//:src/cli/splice.rs",
+    "@cargo_bazel//:src/cli/vendor.rs",
     "@cargo_bazel//:src/config.rs",
     "@cargo_bazel//:src/context.rs",
     "@cargo_bazel//:src/context/crate_context.rs",
