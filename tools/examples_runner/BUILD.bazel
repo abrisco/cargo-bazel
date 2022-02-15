@@ -1,4 +1,12 @@
 filegroup(
+    name = "distro",
+    srcs = [
+        "Cargo.toml",
+    ],
+    visibility = ["//tools:__pkg__"],
+)
+
+filegroup(
     name = "srcs",
     srcs = glob(["src/**/*.rs"]),
     visibility = ["//:__subpackages__"],

@@ -21,3 +21,11 @@ rust_binary(
 )
 
 cross_binary(name = "cross")
+
+filegroup(
+    name = "distro",
+    srcs = [
+        "Cargo.toml",
+    ],
+    visibility = ["//tools:__pkg__"],
+)

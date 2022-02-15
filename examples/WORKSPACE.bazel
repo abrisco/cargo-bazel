@@ -15,6 +15,13 @@ rules_rust_dependencies()
 
 rust_register_toolchains()
 
+load("@cargo_bazel//:deps_bootstrap.bzl", "cargo_bazel_bootstrap")
+
+# Note: Bootstrapping is not necessary when using official releases. For the purposes
+# of this example, it's only here to allow the workspace to build successfully in CI
+# at an arbitrary commit.
+cargo_bazel_bootstrap()
+
 load("@cargo_bazel//:defs.bzl", "crate", "crates_repository", "splicing_config")
 
 ###############################################################################
@@ -23,6 +30,9 @@ load("@cargo_bazel//:defs.bzl", "crate", "crates_repository", "splicing_config")
 
 crates_repository(
     name = "cargo_aliases",
+    # `generator` is not necessary in official releases.
+    # See load satement for `cargo_bazel_bootstrap`.
+    generator = "@cargo_bazel_bootstrap//:cargo-bazel",
     lockfile = "//cargo_aliases:Cargo.Bazel.lock",
     manifests = ["//cargo_aliases:Cargo.toml"],
 )
@@ -68,6 +78,9 @@ http_archive(
 
 crates_repository(
     name = "crate_index_cargo_remote",
+    # `generator` is not necessary in official releases.
+    # See load satement for `cargo_bazel_bootstrap`.
+    generator = "@cargo_bazel_bootstrap//:cargo-bazel",
     lockfile = "@names//:Cargo.lock",
     lockfile_kind = "cargo",
     manifests = ["@names//:Cargo.toml"],
@@ -86,6 +99,9 @@ cargo_remote_crate_repositories()
 
 crates_repository(
     name = "crate_index_cargo_workspace",
+    # `generator` is not necessary in official releases.
+    # See load satement for `cargo_bazel_bootstrap`.
+    generator = "@cargo_bazel_bootstrap//:cargo-bazel",
     lockfile = "//cargo_workspace:Cargo.Bazel.lock",
     manifests = [
         "//cargo_workspace:Cargo.toml",
@@ -114,6 +130,8 @@ crates_repository(
             version = "0.8.2",
         ),
     },
+    # `generator` is not necessary in official releases.
+    # See load satement for `cargo_bazel_bootstrap`.
     generator = "@cargo_bazel_bootstrap//:cargo-bazel",
     lockfile = "//extra_workspace_members:Cargo.Bazel.lock",
     manifests = ["//extra_workspace_members:Cargo.toml"],
@@ -166,6 +184,8 @@ crates_repository(
             build_script_data_glob = ["vendor/**"],
         )],
     },
+    # `generator` is not necessary in official releases.
+    # See load satement for `cargo_bazel_bootstrap`.
     generator = "@cargo_bazel_bootstrap//:cargo-bazel",
     lockfile = "//multi_package:Cargo.Bazel.lock",
     manifests = [
@@ -226,6 +246,8 @@ crates_repository(
             compile_data_glob = ["**/*.md"],
         )],
     },
+    # `generator` is not necessary in official releases.
+    # See load satement for `cargo_bazel_bootstrap`.
     generator = "@cargo_bazel_bootstrap//:cargo-bazel",
     lockfile = "//no_cargo_manifests:Cargo.Bazel.lock",
     packages = {
