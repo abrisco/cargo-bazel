@@ -140,7 +140,9 @@ impl LockGenerator {
         };
 
         if !output.status.success() {
-            bail!(format!("Failed to generate lockfile: {:?}", output))
+            eprintln!("{}", String::from_utf8_lossy(&output.stdout));
+            eprintln!("{}", String::from_utf8_lossy(&output.stderr));
+            bail!(format!("Failed to generate lockfile: {}", output.status))
         }
 
         cargo_lock::Lockfile::load(&generated_lockfile_path).context(format!(
