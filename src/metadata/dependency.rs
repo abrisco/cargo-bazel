@@ -5,6 +5,7 @@ use serde::{Deserialize, Serialize};
 use crate::utils::sanitize_module_name;
 use crate::utils::starlark::{Select, SelectList};
 
+/// A representation of a crate dependency
 #[derive(Debug, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord, Clone)]
 pub struct Dependency {
     /// The PackageId of the target
@@ -17,6 +18,7 @@ pub struct Dependency {
     pub alias: Option<String>,
 }
 
+/// A collection of [Dependency]s sorted by dependency kind.
 #[derive(Debug, Default, Serialize, Deserialize)]
 pub struct DependencySet {
     pub normal_deps: SelectList<Dependency>,

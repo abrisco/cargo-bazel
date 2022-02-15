@@ -61,6 +61,7 @@ fn default_platforms_template() -> String {
     "@rules_rust//rust/platform:{triple}".to_owned()
 }
 
+/// A representation of some Git identifier used to represent the "revision" or "pin" of a checkout.
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq, PartialOrd, Ord)]
 pub enum Commitish {
     /// From a tag.
@@ -83,13 +84,20 @@ impl From<GitReference> for Commitish {
     }
 }
 
+/// Information representing deterministic identifiers for some remote asset.
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub enum Checksumish {
     Http {
+        /// The sha256 digest of an http archive
         sha256: Option<String>,
     },
     Git {
+        /// The revision of the git repository
         commitsh: Commitish,
+
+        /// An optional date, not after the specified commit; the argument is
+        /// not allowed if a tag is specified (which allows cloning with depth
+        /// 1).
         shallow_since: Option<String>,
     },
 }
@@ -369,6 +377,7 @@ impl std::fmt::Display for CrateId {
     }
 }
 
+/// Workspace specific settings to control how targets are generated
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
 #[serde(deny_unknown_fields)]
 pub struct Config {

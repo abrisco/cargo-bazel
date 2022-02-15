@@ -16,18 +16,32 @@ use crate::splicing::{SourceInfo, WorkspaceMetadata};
 pub type CargoMetadata = cargo_metadata::Metadata;
 pub type CargoLockfile = cargo_lock::Lockfile;
 
+/// Additional information about a crate relative to other crates in a dependency graph.
 #[derive(Debug, Serialize, Deserialize)]
 pub struct CrateAnnotation {
+    /// The crate's node in the Cargo "resolve" graph.
     pub node: Node,
+
+    /// The crate's sorted dependencies.
     pub deps: DependencySet,
 }
 
+/// Additional information about a Cargo workspace's metadata.
 #[derive(Debug, Default, Serialize, Deserialize)]
 pub struct MetadataAnnotation {
+    /// All packages found within the Cargo metadata
     pub packages: BTreeMap<PackageId, Package>,
+
+    /// All [CrateAnnotation]s for all packages
     pub crates: BTreeMap<PackageId, CrateAnnotation>,
+
+    /// All packages that are workspace members
     pub workspace_members: BTreeSet<PackageId>,
+
+    /// The path to the directory containing the Cargo workspace that produced the metadata.
     pub workspace_root: PathBuf,
+
+    /// Information on the Cargo workspace.
     pub workspace_metadata: WorkspaceMetadata,
 }
 
@@ -87,37 +101,65 @@ impl MetadataAnnotation {
     }
 }
 
+/// Additional information about how and where to acquire a crate's source code from.
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub enum SourceAnnotation {
     Git {
+        /// The Git url where to clone the source from.
         remote: String,
+
+        /// The revision information for the git repository. This is used for
+        /// [git_repository::commit](https://docs.bazel.build/versions/main/repo/git.html#git_repository-commit),
+        /// [git_repository::tag](https://docs.bazel.build/versions/main/repo/git.html#git_repository-tag), or
+        /// [git_repository::branch](https://docs.bazel.build/versions/main/repo/git.html#git_repository-branch).
         commitish: Commitish,
+
+        /// See [git_repository::shallow_since](https://docs.bazel.build/versions/main/repo/git.html#git_repository-shallow_since)
         #[serde(default, skip_serializing_if = "Option::is_none")]
         shallow_since: Option<String>,
+
+        /// See [git_repository::strip_prefix](https://docs.bazel.build/versions/main/repo/git.html#git_repository-strip_prefix)
         #[serde(default, skip_serializing_if = "Option::is_none")]
         strip_prefix: Option<String>,
+
+        /// See [git_repository::patch_args](https://docs.bazel.build/versions/main/repo/git.html#git_repository-patch_args)
         #[serde(default, skip_serializing_if = "Option::is_none")]
         patch_args: Option<Vec<String>>,
+
+        /// See [git_repository::patch_tool](https://docs.bazel.build/versions/main/repo/git.html#git_repository-patch_tool)
         #[serde(default, skip_serializing_if = "Option::is_none")]
         patch_tool: Option<String>,
+
+        /// See [git_repository::patches](https://docs.bazel.build/versions/main/repo/git.html#git_repository-patches)
         #[serde(default, skip_serializing_if = "Option::is_none")]
         patches: Option<BTreeSet<String>>,
     },
     Http {
+        /// See [http_archive::url](https://docs.bazel.build/versions/main/repo/http.html#http_archive-url)
         url: String,
+
+        /// See [http_archive::sha256](https://docs.bazel.build/versions/main/repo/http.html#http_archive-sha256)
         #[serde(default, skip_serializing_if = "Option::is_none")]
         sha256: Option<String>,
+
+        /// See [http_archive::patch_args](https://docs.bazel.build/versions/main/repo/http.html#http_archive-patch_args)
         #[serde(default, skip_serializing_if = "Option::is_none")]
         patch_args: Option<Vec<String>>,
+
+        /// See [http_archive::patch_tool](https://docs.bazel.build/versions/main/repo/http.html#http_archive-patch_tool)
         #[serde(default, skip_serializing_if = "Option::is_none")]
         patch_tool: Option<String>,
+
+        /// See [http_archive::patches](https://docs.bazel.build/versions/main/repo/http.html#http_archive-patches)
         #[serde(default, skip_serializing_if = "Option::is_none")]
         patches: Option<BTreeSet<String>>,
     },
 }
 
+/// TODO
 #[derive(Debug, Default, PartialEq, Eq, PartialOrd, Ord, Deserialize, Serialize)]
 pub struct LockfileAnnotation {
+    /// TODO
     pub crates: BTreeMap<PackageId, SourceAnnotation>,
 }
 
@@ -292,17 +334,29 @@ impl LockfileAnnotation {
     }
 }
 
+/// A pairring of a crate's package identifier to it's annotations.
 #[derive(Debug, Serialize, Deserialize)]
 pub struct PairredExtras {
+    /// The crate's package identifier
     pub package_id: cargo_metadata::PackageId,
+
+    /// The crate's annotations
     pub crate_extra: CrateAnnotations,
 }
 
+/// A collection of data which has been processed for optimal use in generating Bazel targets.
 #[derive(Debug, Default, Serialize, Deserialize)]
 pub struct Annotations {
+    /// Annotated Cargo metadata
     pub metadata: MetadataAnnotation,
+
+    /// Annotated Cargo lockfile
     pub lockfile: LockfileAnnotation,
+
+    /// The current workspace's configuration settings
     pub config: Config,
+
+    /// Pairred crate annotations
     pub pairred_extras: BTreeMap<CrateId, PairredExtras>,
 }
 
