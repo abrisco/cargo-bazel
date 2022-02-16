@@ -16,12 +16,17 @@ pub use self::dependency::*;
 pub use self::metadata_annotation::*;
 
 // TODO: This should also return a set of [crate-index::IndexConfig]s for packages in metadata.packages
+/// A Trait for generating metadata (`cargo metadata` output and a lock file) from a Cargo manifest.
 pub trait MetadataGenerator {
     fn generate<T: AsRef<Path>>(&self, manifest_path: T) -> Result<(CargoMetadata, CargoLockfile)>;
 }
 
+/// Generates Cargo metadata and a lockfile from a provided manifest.
 pub struct Generator {
+    /// The path to a `cargo` binary
     cargo_bin: PathBuf,
+
+    /// The path to a `rustc` binary
     rustc_bin: PathBuf,
 }
 
@@ -70,7 +75,10 @@ impl MetadataGenerator for Generator {
 }
 
 pub struct LockGenerator {
+    /// The path to a `cargo` binary
     cargo_bin: PathBuf,
+
+    /// The path to a `rustc` binary
     rustc_bin: PathBuf,
 }
 
@@ -152,6 +160,7 @@ impl LockGenerator {
     }
 }
 
+/// A helper function for writing Cargo metadata to a file.
 pub fn write_metadata(path: &Path, metadata: &cargo_metadata::Metadata) -> Result<()> {
     let content =
         serde_json::to_string_pretty(metadata).context("Failed to serialize Cargo Metadata")?;
@@ -159,6 +168,7 @@ pub fn write_metadata(path: &Path, metadata: &cargo_metadata::Metadata) -> Resul
     fs::write(path, content).context("Failed to write metadata to disk")
 }
 
+/// A helper function for deserializing Cargo metadata and lockfiles
 pub fn load_metadata(
     metadata_path: &Path,
     lockfile_path: Option<&Path>,

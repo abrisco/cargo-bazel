@@ -142,13 +142,17 @@ pub struct SourceInfo {
     pub sha256: String,
 }
 
+/// Information about the Cargo workspace relative to the Bazel workspace
 #[derive(Debug, Default, Serialize, Deserialize)]
 pub struct WorkspaceMetadata {
+    /// A mapping of crates to information about where their source can be downloaded
     #[serde(serialize_with = "toml::ser::tables_last")]
     pub sources: BTreeMap<CrateId, SourceInfo>,
 
+    /// The path from the root of a Bazel workspace to the root of the Cargo workspace
     pub workspace_prefix: Option<String>,
 
+    /// Paths from the root of a Bazel workspace to a Cargo package
     #[serde(serialize_with = "toml::ser::tables_last")]
     pub package_prefixes: BTreeMap<String, String>,
 }
