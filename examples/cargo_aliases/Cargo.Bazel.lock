@@ -1,5 +1,5 @@
 {
-  "checksum": "ae5dc6817820464c4f2336fd2dc634f20e9adbf46e2522e082cdf5ce63a13800",
+  "checksum": "9210355b6b7c60df5ba4d617a76048fc6078ad7480004cf6947ad5f3e7442548",
   "crates": {
     "aho-corasick 0.7.18": {
       "name": "aho-corasick",
@@ -150,7 +150,7 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.118",
+                "id": "libc 0.2.119",
                 "target": "libc"
               }
             ],
@@ -359,7 +359,7 @@
         "proc_macro_deps": {
           "common": [
             {
-              "id": "clap_derive 3.0.14",
+              "id": "clap_derive 3.1.2",
               "target": "clap_derive"
             }
           ],
@@ -369,13 +369,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "clap_derive 3.0.14": {
+    "clap_derive 3.1.2": {
       "name": "clap_derive",
-      "version": "3.0.14",
+      "version": "3.1.2",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/clap_derive/3.0.14/download",
-          "sha256": "9a1132dc3944b31c20dd8b906b3a9f0a5d0243e092d59171414969657ac6aa85"
+          "url": "https://crates.io/api/v1/crates/clap_derive/3.1.2/download",
+          "sha256": "01d42c94ce7c2252681b5fed4d3627cc807b13dfc033246bd05d5b252399000e"
         }
       },
       "targets": [
@@ -426,7 +426,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "3.0.14"
+        "version": "3.1.2"
       },
       "license": "MIT OR Apache-2.0"
     },
@@ -541,13 +541,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "getrandom 0.2.4": {
+    "getrandom 0.2.5": {
       "name": "getrandom",
-      "version": "0.2.4",
+      "version": "0.2.5",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/getrandom/0.2.4/download",
-          "sha256": "418d37c8b1d42553c93648be529cb70f920d3baf8ef469b74b9638df426e0b4c"
+          "url": "https://crates.io/api/v1/crates/getrandom/0.2.5/download",
+          "sha256": "d39cd93900197114fa1fcb7ae84ca742095eed9442088988ae74fa744e930e77"
         }
       },
       "targets": [
@@ -588,14 +588,14 @@
             ],
             "cfg(unix)": [
               {
-                "id": "libc 0.2.118",
+                "id": "libc 0.2.119",
                 "target": "libc"
               }
             ]
           }
         },
         "edition": "2018",
-        "version": "0.2.4"
+        "version": "0.2.5"
       },
       "license": "MIT OR Apache-2.0"
     },
@@ -705,7 +705,7 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.118",
+              "id": "libc 0.2.119",
               "target": "libc"
             }
           ],
@@ -854,13 +854,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "libc 0.2.118": {
+    "libc 0.2.119": {
       "name": "libc",
-      "version": "0.2.118",
+      "version": "0.2.119",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/libc/0.2.118/download",
-          "sha256": "06e509672465a0504304aa87f9f176f2b2b716ed8fb105ebe5c02dc6dce96a94"
+          "url": "https://crates.io/api/v1/crates/libc/0.2.119/download",
+          "sha256": "1bf2e165bb3457c8e098ea76f3e3bc9db55f87aa90d52d0e6be741470916aaa4"
         }
       },
       "targets": [
@@ -897,14 +897,14 @@
         "deps": {
           "common": [
             {
-              "id": "libc 0.2.118",
+              "id": "libc 0.2.119",
               "target": "build_script_build"
             }
           ],
           "selects": {}
         },
         "edition": "2015",
-        "version": "0.2.118"
+        "version": "0.2.119"
       },
       "build_script_attrs": {
         "data_glob": [
@@ -1665,7 +1665,7 @@
           "selects": {
             "cfg(unix)": [
               {
-                "id": "libc 0.2.118",
+                "id": "libc 0.2.119",
                 "target": "libc"
               }
             ]
@@ -1761,7 +1761,7 @@
         "deps": {
           "common": [
             {
-              "id": "getrandom 0.2.4",
+              "id": "getrandom 0.2.5",
               "target": "getrandom"
             }
           ],
