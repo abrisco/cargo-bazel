@@ -129,9 +129,27 @@ def render_config(
     ))
 
 def _crate_id(name, version):
+    """Creates a `cargo_bazel::config::CrateId`.
+
+    Args:
+        name (str): The name of the crate
+        version (str): The crate's version
+
+    Returns:
+        str: A serialized representation of a CrateId
+    """
     return "{} {}".format(name, version)
 
-def _collect_crate_annotations(repository_ctx, annotations, repository_name):
+def collect_crate_annotations(annotations, repository_name):
+    """Deserialize and sanitize crate annotations.
+
+    Args:
+        annotations (dict): A mapping of crate names to lists of serialized annotations
+        repository_name (str): The name of the repository that owns the annotations
+
+    Returns:
+        dict: A mapping of cargo_bazel::config::CrateId to sets of annotations
+    """
     annotations = {name: [json.decode(a) for a in annotation] for name, annotation in annotations.items()}
     crate_annotations = {}
     for name, annotation in annotations.items():
@@ -146,17 +164,6 @@ def _collect_crate_annotations(repository_ctx, annotations, repository_name):
             id = _crate_id(name, version)
             if id in crate_annotations:
                 fail("Found duplicate entries for {}".format(id))
-
-            # Load additive build files if any have been provided.
-            content = list()
-            additive_build_file_content = data.pop("additive_build_file_content", None)
-            if additive_build_file_content:
-                content.append(additive_build_file_content)
-            additive_build_file = data.pop("additive_build_file", None)
-            if additive_build_file:
-                file_path = repository_ctx.path(Label(additive_build_file))
-                content.append(repository_ctx.read(file_path))
-            data.update({"additive_build_file_content": "\n".join(content) if content else None})
 
             crate_annotations.update({id: data})
     return crate_annotations
@@ -187,9 +194,23 @@ def generate_config(repository_ctx):
     Returns:
         struct: A struct containing the path to a config and it's contents
     """
+    annotations = collect_crate_annotations(repository_ctx.attr.annotations, repository_ctx.name)
+
+    # Load additive build files if any have been provided.
+    content = list()
+    for data in annotations.values():
+        additive_build_file_content = data.pop("additive_build_file_content", None)
+        if additive_build_file_content:
+            content.append(additive_build_file_content)
+        additive_build_file = data.pop("additive_build_file", None)
+        if additive_build_file:
+            file_path = repository_ctx.path(Label(additive_build_file))
+            content.append(repository_ctx.read(file_path))
+        data.update({"additive_build_file_content": "\n".join(content) if content else None})
+
     config = struct(
         generate_build_scripts = repository_ctx.attr.generate_build_scripts,
-        annotations = _collect_crate_annotations(repository_ctx, repository_ctx.attr.annotations, repository_ctx.name),
+        annotations = annotations,
         cargo_config = _read_cargo_config(repository_ctx),
         rendering = _get_render_config(repository_ctx),
         supported_platform_triples = repository_ctx.attr.supported_platform_triples,
@@ -294,11 +315,11 @@ def determine_repin(repository_ctx, generator, lockfile_path, lockfile_kind, con
     if result.stdout.strip().lower() == "repin":
         # buildifier: disable=print
         print(result.stderr)
-        fail(
-            "The current `lockfile` is out of date. Please re-run " +
+        fail((
+            "The current `lockfile` is out of date for '{}'. Please re-run " +
             "bazel using `CARGO_BAZEL_REPIN=true` if this is expected " +
-            "and the lockfile should be updated.",
-        )
+            "and the lockfile should be updated."
+        ).format(repository_ctx.name))
 
     return False
 

@@ -12,8 +12,3 @@ filegroup(
     name = "bzl_srcs",
     srcs = glob(["*.bzl"]),
 )
-
-config_setting(
-    name = "linux",
-    constraint_values = ["@platforms//os:linux"],
-)

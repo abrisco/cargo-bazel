@@ -18,8 +18,10 @@ impl FromStr for Label {
     type Err = anyhow::Error;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        let re = Regex::new(r"^(@[\w\d\-_\.]*)?/{0,2}([\w\d\-_\./]+)?:?([\w\d\-_\./]+)$")?;
-        let cap = re.captures(s).context("Failed to parse string as label")?;
+        let re = Regex::new(r"^(@[\w\d\-_\.]*)?/{0,2}([\w\d\-_\./]+)?:?([\+\w\d\-_\./]+)$")?;
+        let cap = re
+            .captures(s)
+            .with_context(|| format!("Failed to parse label from string: {}", s))?;
 
         let repository = cap
             .get(1)

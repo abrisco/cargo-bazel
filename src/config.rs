@@ -283,17 +283,23 @@ impl Sum for CrateAnnotations {
     }
 }
 
+/// A unique identifier for Crates
 #[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Hash, Clone)]
 pub struct CrateId {
+    /// The name of the crate
     pub name: String,
+
+    /// The crate's semantic version
     pub version: String,
 }
 
 impl CrateId {
+    /// Construct a new [CrateId]
     pub fn new(name: String, version: String) -> Self {
         Self { name, version }
     }
 
+    /// Compares a [CrateId] against a [cargo_metadata::Package].
     pub fn matches(&self, package: &Package) -> bool {
         // If the package name does not match, it's obviously
         // not the right package
