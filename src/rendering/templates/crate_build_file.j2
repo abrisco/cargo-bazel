@@ -15,7 +15,9 @@ load(
     "rust_library",
     "rust_proc_macro",
 )
-load("@{{ repository_name }}//:defs.bzl", "select_with_or")
+
+# buildifier: disable=bzl-visibility
+load("@cargo_bazel//private:selects.bzl", "select_with_or")
 
 package(default_visibility = ["//visibility:public"])
 
