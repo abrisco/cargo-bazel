@@ -49,8 +49,10 @@ cargo_build_script(
         "{{ tag }}",
         {%- endfor %}
         {%- endif %}
-        "manual",
         "cargo-bazel",
+        "manual",
+        "noclippy",
+        "norustfmt",
     ],
     visibility = ["//visibility:private"],
 )
@@ -64,6 +66,5 @@ alias(
     actual = "{{ crate.name }}_build_script",
     tags = [
         "manual",
-        "cargo-bazel",
     ],
 )

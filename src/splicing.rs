@@ -64,6 +64,42 @@ impl SplicingManifest {
         let content = fs::read_to_string(path.as_ref())?;
         Self::from_str(&content).context("Failed to load SplicingManifest")
     }
+
+    pub fn absoulutize(self, relative_to: &Path) -> Self {
+        let Self {
+            manifests,
+            cargo_config,
+            ..
+        } = self;
+
+        // Ensure manifests all have absolute paths
+        let manifests = manifests
+            .into_iter()
+            .map(|(path, label)| {
+                if !path.is_absolute() {
+                    let path = relative_to.join(path);
+                    (path, label)
+                } else {
+                    (path, label)
+                }
+            })
+            .collect();
+
+        // Ensure the cargo config is located at an absolute path
+        let cargo_config = cargo_config.map(|path| {
+            if !path.is_absolute() {
+                relative_to.join(path)
+            } else {
+                path
+            }
+        });
+
+        Self {
+            manifests,
+            cargo_config,
+            ..self
+        }
+    }
 }
 
 #[derive(Debug, Serialize, Default)]
@@ -130,6 +166,10 @@ impl ExtraManifestsManifest {
     pub fn try_from_path<T: AsRef<Path>>(path: T) -> Result<Self> {
         let content = fs::read_to_string(path.as_ref())?;
         Self::from_str(&content).context("Failed to load ExtraManifestsManifest")
+    }
+
+    pub fn absoulutize(self) -> Self {
+        self
     }
 }
 

@@ -1,5 +1,5 @@
 {
-  "checksum": "8cb1be9138433e2d9dcfb29164d523af1bfe8714b16def02d435accbd24a2f64",
+  "checksum": "d8a60ec22eef1b206ef8ef1229fdb25c20c6611680654dc8569b4b52455ff14b",
   "crates": {
     "adler 1.0.2": {
       "name": "adler",
@@ -682,6 +682,10 @@
               "target": "sha2"
             },
             {
+              "id": "tempfile 3.3.0",
+              "target": "tempfile"
+            },
+            {
               "id": "tera 1.15.0",
               "target": "tera"
             },
@@ -701,10 +705,6 @@
             {
               "id": "spectral 0.6.0",
               "target": "spectral"
-            },
-            {
-              "id": "tempfile 3.3.0",
-              "target": "tempfile"
             }
           ],
           "selects": {}

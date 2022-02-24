@@ -3,6 +3,7 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
 load("//3rdparty:third_party_deps.bzl", "third_party_deps")
+load("//private:vendor_utils.bzl", "crates_vendor_deps")
 
 def cargo_bazel_deps():
     maybe(
@@ -27,3 +28,5 @@ def cargo_bazel_deps():
     )
 
     third_party_deps()
+
+    crates_vendor_deps()

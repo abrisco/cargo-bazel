@@ -1,4 +1,8 @@
+load("//:crates.bzl", "crate_deps_target")
+
 package(default_visibility = ["//visibility:public"])
+
+crate_deps_target()
 
 filegroup(
     name = "distro",

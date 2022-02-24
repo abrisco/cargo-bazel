@@ -19,5 +19,6 @@ filegroup(
     name = "distro",
     srcs = glob(["*.bzl"]) + [
         "BUILD.bazel",
+        "//private/vendor:distro",
     ],
 )

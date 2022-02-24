@@ -5,13 +5,15 @@ mod template_engine;
 use std::collections::BTreeMap;
 use std::fs;
 use std::path::{Path, PathBuf};
+use std::str::FromStr;
 
-use anyhow::{Context as AnyhowContext, Result};
+use anyhow::{bail, Context as AnyhowContext, Result};
 
 use crate::config::RenderConfig;
 use crate::context::Context;
 use crate::rendering::template_engine::TemplateEngine;
 use crate::splicing::default_splicing_package_crate_id;
+use crate::utils::starlark::Label;
 
 pub struct Renderer {
     config: RenderConfig,
@@ -30,17 +32,34 @@ impl Renderer {
         output.extend(self.render_build_files(context)?);
         output.extend(self.render_crates_module(context)?);
 
+        if let Some(vendor_mode) = &self.config.vendor_mode {
+            match vendor_mode {
+                crate::config::VendorMode::Local => {
+                    // Nothing to do for local vendor crate
+                }
+                crate::config::VendorMode::Remote => {
+                    output.extend(self.render_vendor_support_files(context)?);
+                }
+            }
+        }
+
         Ok(output)
     }
 
     fn render_crates_module(&self, context: &Context) -> Result<BTreeMap<PathBuf, String>> {
+        let module_label = render_module_label(&self.config.crates_module_template, "defs.bzl")
+            .context("Failed to resolve string to module file label")?;
+        let module_build_label =
+            render_module_label(&self.config.crates_module_template, "BUILD.bazel")
+                .context("Failed to resolve string to module file label")?;
+
         let mut map = BTreeMap::new();
         map.insert(
-            PathBuf::from("defs.bzl"),
+            Renderer::label_to_path(&module_label),
             self.engine.render_module_bzl(context)?,
         );
         map.insert(
-            PathBuf::from("BUILD.bazel"),
+            Renderer::label_to_path(&module_build_label),
             self.engine.render_module_build_file(context)?,
         );
 
@@ -49,8 +68,7 @@ impl Renderer {
 
     fn render_build_files(&self, context: &Context) -> Result<BTreeMap<PathBuf, String>> {
         let default_splicing_package_id = default_splicing_package_crate_id();
-        Ok(self
-            .engine
+        self.engine
             .render_crate_build_files(context)?
             .into_iter()
             // Do not render the default splicing package
@@ -59,14 +77,40 @@ impl Renderer {
             .filter(|(id, _)| !context.workspace_members.contains_key(id))
             .map(|(id, content)| {
                 let ctx = &context.crates[id];
-                let filename = render_build_file_template(
+                let label = match render_build_file_template(
                     &self.config.build_file_template,
                     &ctx.name,
                     &ctx.version,
-                );
-                (filename, content)
+                ) {
+                    Ok(label) => label,
+                    Err(e) => bail!(e),
+                };
+
+                let filename = Renderer::label_to_path(&label);
+
+                Ok((filename, content))
             })
-            .collect())
+            .collect()
+    }
+
+    fn render_vendor_support_files(&self, context: &Context) -> Result<BTreeMap<PathBuf, String>> {
+        let module_label = render_module_label(&self.config.crates_module_template, "crates.bzl")
+            .context("Failed to resolve string to module file label")?;
+
+        let mut map = BTreeMap::new();
+        map.insert(
+            Renderer::label_to_path(&module_label),
+            self.engine.render_vendor_module_file(context)?,
+        );
+
+        Ok(map)
+    }
+
+    fn label_to_path(label: &Label) -> PathBuf {
+        match &label.package {
+            Some(package) => PathBuf::from(format!("{}/{}", package, label.target)),
+            None => PathBuf::from(&label.target),
+        }
     }
 }
 
@@ -93,10 +137,13 @@ pub fn write_outputs(
             println!("{}\n", content);
         }
     } else {
-        // Ensure the output directory exists
-        fs::create_dir_all(out_dir)?;
-
         for (path, content) in outputs {
+            // Ensure the output directory exists
+            fs::create_dir_all(
+                path.parent()
+                    .expect("All file paths should have valid directories"),
+            )?;
+
             fs::write(&path, content.as_bytes())
                 .context(format!("Failed to write file to disk: {}", path.display()))?;
         }
@@ -140,14 +187,19 @@ pub fn render_crate_build_file(template: &str, name: &str, version: &str) -> Str
         .replace("{version}", version)
 }
 
+/// Render the Bazel label of a vendor module label
+pub fn render_module_label(template: &str, name: &str) -> Result<Label> {
+    Label::from_str(&template.replace("{file}", name))
+}
+
 /// Render the Bazel label of a platform triple
 pub fn render_platform_constraint_label(template: &str, triple: &str) -> String {
     template.replace("{triple}", triple)
 }
 
-pub fn render_build_file_template(template: &str, name: &str, version: &str) -> PathBuf {
-    PathBuf::from(
-        template
+fn render_build_file_template(template: &str, name: &str, version: &str) -> Result<Label> {
+    Label::from_str(
+        &template
             .replace("{name}", name)
             .replace("{version}", version),
     )
@@ -157,7 +209,7 @@ pub fn render_build_file_template(template: &str, name: &str, version: &str) -> 
 mod test {
     use super::*;
 
-    use crate::config::{Config, CrateId};
+    use crate::config::{Config, CrateId, VendorMode};
     use crate::context::crate_context::{CrateContext, Rule};
     use crate::context::{BuildScriptAttributes, Context, TargetAttributes};
     use crate::metadata::Annotations;
@@ -331,5 +383,88 @@ mod test {
 
         assert!(build_file_content.contains(r#"name = "names-0.11.1-dev__names","#));
         assert!(build_file_content.contains(r#"name = "names-0.12.0__names","#));
+    }
+
+    #[test]
+    fn render_crate_repositories() {
+        let mut context = Context::default();
+        let crate_id = CrateId::new("mock_crate".to_owned(), "0.1.0".to_owned());
+        context.crates.insert(
+            crate_id.clone(),
+            CrateContext {
+                name: crate_id.name,
+                version: crate_id.version,
+                targets: vec![Rule::Library(mock_target_attributes())],
+                ..CrateContext::default()
+            },
+        );
+
+        let renderer = Renderer::new(mock_render_config());
+        let output = renderer.render(&context).unwrap();
+
+        let defs_module = output.get(&PathBuf::from("defs.bzl")).unwrap();
+
+        assert!(defs_module.contains("def crate_repositories():"));
+    }
+
+    #[test]
+    fn remote_remote_vendor_mode() {
+        let mut context = Context::default();
+        let crate_id = CrateId::new("mock_crate".to_owned(), "0.1.0".to_owned());
+        context.crates.insert(
+            crate_id.clone(),
+            CrateContext {
+                name: crate_id.name,
+                version: crate_id.version,
+                targets: vec![Rule::Library(mock_target_attributes())],
+                ..CrateContext::default()
+            },
+        );
+
+        // Enable remote vendor mode
+        let config = RenderConfig {
+            vendor_mode: Some(VendorMode::Remote),
+            ..mock_render_config()
+        };
+
+        let renderer = Renderer::new(config);
+        let output = renderer.render(&context).unwrap();
+
+        let defs_module = output.get(&PathBuf::from("defs.bzl")).unwrap();
+        assert!(defs_module.contains("def crate_repositories():"));
+
+        let crates_module = output.get(&PathBuf::from("crates.bzl")).unwrap();
+        assert!(crates_module.contains("def crate_repositories():"));
+    }
+
+    #[test]
+    fn remote_local_vendor_mode() {
+        let mut context = Context::default();
+        let crate_id = CrateId::new("mock_crate".to_owned(), "0.1.0".to_owned());
+        context.crates.insert(
+            crate_id.clone(),
+            CrateContext {
+                name: crate_id.name,
+                version: crate_id.version,
+                targets: vec![Rule::Library(mock_target_attributes())],
+                ..CrateContext::default()
+            },
+        );
+
+        // Enable local vendor mode
+        let config = RenderConfig {
+            vendor_mode: Some(VendorMode::Local),
+            ..mock_render_config()
+        };
+
+        let renderer = Renderer::new(config);
+        let output = renderer.render(&context).unwrap();
+
+        // Local vendoring does not produce a `crate_repositories` macro
+        let defs_module = output.get(&PathBuf::from("defs.bzl")).unwrap();
+        assert!(!defs_module.contains("def crate_repositories():"));
+
+        // Local vendoring does not produce a `crates.bzl` file.
+        assert!(output.get(&PathBuf::from("crates.bzl")).is_none());
     }
 }

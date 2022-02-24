@@ -12,35 +12,14 @@ rules_rust_dependencies()
 
 rust_register_toolchains(version = RUST_VERSION)
 
-load("//:deps_bootstrap.bzl", "cargo_bazel_bootstrap")
+load("//:crates.bzl", "crate_deps_repository")
 
-cargo_bazel_bootstrap(rust_version = RUST_VERSION)
-
-load("//:defs.bzl", "crate", "crates_repository")
-
-crates_repository(
-    name = "crate_index",
-    annotations = {
-        "libgit2-sys": [crate.annotation(
-            gen_build_script = False,
-            deps = ["@libgit2"],
-        )],
-        "libz-sys": [crate.annotation(
-            gen_build_script = False,
-            deps = ["@zlib"],
-        )],
-    },
-    generator = "@cargo_bazel_bootstrap//:cargo-bazel",
-    lockfile = "@cargo_bazel//:Cargo.Bazel.lock",
-    manifests = [
-        "@cargo_bazel//:Cargo.toml",
-        "@cargo_bazel//tools/cross_installer:Cargo.toml",
-        "@cargo_bazel//tools/examples_runner:Cargo.toml",
-        "@cargo_bazel//tools/urls_generator:Cargo.toml",
-    ],
+crate_deps_repository(
+    bootstrap = True,
+    rust_version = RUST_VERSION,
 )
 
-load("@crate_index//:defs.bzl", "crate_repositories")
+load("//:crates_deps.bzl", "crate_repositories")
 
 crate_repositories()
 

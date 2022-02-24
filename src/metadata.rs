@@ -160,6 +160,57 @@ impl LockGenerator {
     }
 }
 
+/// A generator which runs `cargo vendor` on a given manifest
+pub struct VendorGenerator {
+    /// The path to a `cargo` binary
+    cargo_bin: PathBuf,
+
+    /// The path to a `rustc` binary
+    rustc_bin: PathBuf,
+}
+
+impl VendorGenerator {
+    pub fn new(cargo_bin: PathBuf, rustc_bin: PathBuf) -> Self {
+        Self {
+            cargo_bin,
+            rustc_bin,
+        }
+    }
+
+    pub fn generate(&self, manifest_path: &Path, output_dir: &Path) -> Result<()> {
+        let manifest_dir = manifest_path.parent().unwrap();
+
+        // Simply invoke `cargo generate-lockfile`
+        let output = Command::new(&self.cargo_bin)
+            // Cargo detects config files based on `pwd` when running so
+            // to ensure user provided Cargo config files are used, it's
+            // critical to set the working directory to the manifest dir.
+            .current_dir(manifest_dir)
+            .arg("vendor")
+            .arg("--manifest-path")
+            .arg(manifest_path)
+            .arg("--locked")
+            .arg("--versioned-dirs")
+            .arg(output_dir)
+            .env("RUSTC", &self.rustc_bin)
+            .output()
+            .with_context(|| {
+                format!(
+                    "Error running cargo to vendor sources for manifest '{}'",
+                    manifest_path.display()
+                )
+            })?;
+
+        if !output.status.success() {
+            eprintln!("{}", String::from_utf8_lossy(&output.stdout));
+            eprintln!("{}", String::from_utf8_lossy(&output.stderr));
+            bail!(format!("Failed to vendor sources with: {}", output.status))
+        }
+
+        Ok(())
+    }
+}
+
 /// A helper function for writing Cargo metadata to a file.
 pub fn write_metadata(path: &Path, metadata: &cargo_metadata::Metadata) -> Result<()> {
     let content =
