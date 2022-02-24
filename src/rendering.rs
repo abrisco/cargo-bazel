@@ -11,6 +11,7 @@ use anyhow::{Context as AnyhowContext, Result};
 use crate::config::RenderConfig;
 use crate::context::Context;
 use crate::rendering::template_engine::TemplateEngine;
+use crate::splicing::default_splicing_package_crate_id;
 
 pub struct Renderer {
     config: RenderConfig,
@@ -47,10 +48,15 @@ impl Renderer {
     }
 
     fn render_build_files(&self, context: &Context) -> Result<BTreeMap<PathBuf, String>> {
+        let default_splicing_package_id = default_splicing_package_crate_id();
         Ok(self
             .engine
             .render_crate_build_files(context)?
             .into_iter()
+            // Do not render the default splicing package
+            .filter(|(id, _)| *id != &default_splicing_package_id)
+            // Do not render local packages
+            .filter(|(id, _)| !context.workspace_members.contains_key(id))
             .map(|(id, content)| {
                 let ctx = &context.crates[id];
                 let filename = render_build_file_template(

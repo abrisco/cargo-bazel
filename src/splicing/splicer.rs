@@ -7,6 +7,7 @@ use std::path::{Path, PathBuf};
 use anyhow::{bail, Context, Result};
 use cargo_toml::{Dependency, Manifest};
 
+use crate::config::CrateId;
 use crate::splicing::{SplicedManifest, SplicingManifest};
 use crate::utils::starlark::Label;
 
@@ -518,14 +519,17 @@ impl Splicer {
     }
 }
 
+const DEFAULT_SPLICING_PACKAGE_NAME: &str = "direct-cargo-bazel-deps";
+const DEFAULT_SPLICING_PACKAGE_VERSION: &str = "0.0.1";
+
 pub fn default_cargo_package_manifest() -> cargo_toml::Manifest {
     // A manifest is generated with a fake workspace member so the [cargo_toml::Manifest::Workspace]
     // member is deseralized and is not `None`.
     let manifest = cargo_toml::Manifest::from_str(
         &toml::toml! {
             [package]
-            name = "direct-cargo-bazel-deps"
-            version = "0.0.1"
+            name = DEFAULT_SPLICING_PACKAGE_NAME
+            version = DEFAULT_SPLICING_PACKAGE_VERSION
             edition = "2018"
 
             // A fake target used to satisfy requirements of Cargo.
@@ -538,6 +542,13 @@ pub fn default_cargo_package_manifest() -> cargo_toml::Manifest {
     .unwrap();
 
     manifest
+}
+
+pub fn default_splicing_package_crate_id() -> CrateId {
+    CrateId::new(
+        DEFAULT_SPLICING_PACKAGE_NAME.to_string(),
+        DEFAULT_SPLICING_PACKAGE_VERSION.to_string(),
+    )
 }
 
 pub fn default_cargo_workspace_manifest(
