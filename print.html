@@ -499,35 +499,6 @@ crate_deps(<a href="crates_repository.html#crate_deps-deps">deps</a>, <a href="c
 crate_repositories()
 </pre>
 <p>A macro for defining repositories for all generated crates</p>
-<p><a id="#select_with_or"></a></p>
-<h2 id="select_with_or"><a class="header" href="#select_with_or">select_with_or</a></h2>
-<pre>
-select_with_or(<a href="crates_repository.html#select_with_or-input_dict">input_dict</a>, <a href="crates_repository.html#select_with_or-no_match_error">no_match_error</a>)
-</pre>
-<p>Drop-in replacement for <code>select()</code> that supports ORed keys.</p>
-<p>This is notably different from <a href="https://github.com/bazelbuild/bazel-skylib/blob/1.1.1/docs/selects_doc.md#selectswith_or">@bazel_skylib//lib:selects.bzl%selects.with_or</a> in that
-the input dict must have a list as it's values and they keys will continue to expand for each
-entry instead of failing on duplicates.</p>
-<p>Example:</p>
-<pre><code class="language-starlark">deps = selects.with_or({
-    &quot;//configs:one&quot;: [&quot;:dep1&quot;],
-    (&quot;//configs:two&quot;, &quot;//configs:three&quot;): [&quot;:dep2or3&quot;],
-    &quot;//configs:four&quot;: [&quot;:dep4&quot;],
-    &quot;//conditions:default&quot;: [&quot;:default&quot;]
-})
-</code></pre>
-<p>Key labels may appear at most once anywhere in the input.</p>
-<p>This macro eturns a native <code>select</code> that expands <code>(&quot;//configs:two&quot;, &quot;//configs:three&quot;): [&quot;:dep2or3&quot;]</code> to</p>
-<pre><code class="language-starlark">&quot;//configs:two&quot;: [&quot;:dep2or3&quot;],
-&quot;//configs:three&quot;: [&quot;:dep2or3&quot;],
-</code></pre>
-<p><strong>PARAMETERS</strong></p>
-<table><thead><tr><th align="left">Name</th><th align="left">Description</th><th align="left">Default Value</th></tr></thead><tbody>
-<tr><td align="left"><a id="select_with_or-input_dict"></a>input_dict</td><td align="left">The same dictionary <code>select()</code> takes, except keys may take either the usual form <code>&quot;//foo:config1&quot;</code> or <code>(&quot;//foo:config1&quot;, &quot;//foo:config2&quot;, ...)</code> to signify <code>//foo:config1</code> OR <code>//foo:config2</code> OR <code>...</code>.</td><td align="left">none</td></tr>
-<tr><td align="left"><a id="select_with_or-no_match_error"></a>no_match_error</td><td align="left">Optional custom error to report if no condition matches.</td><td align="left"><code>&quot;&quot;</code></td></tr>
-</tbody></table>
-<p><strong>RETURNS</strong></p>
-<p>A native <code>select()</code></p>
 
                     </main>
 
