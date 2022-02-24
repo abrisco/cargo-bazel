@@ -26,6 +26,7 @@ filegroup(
 alias(
     name = "{{ rename | default(value=crate.name) }}",
     actual = "{{ crate_label(name = crate.name, version = crate.version, target = crate.library_target_name) }}",
+    tags = ["manual"],
 )
 {%- endif %}
 {%- endfor %}
@@ -39,6 +40,7 @@ alias(
 alias(
     name = "{{ rename | default(value=crate.name) }}__{{ target.crate_name }}",
     actual = "{{ crate_label(name = crate.name, version = crate.version, target = target.crate_name ~ '__bin') }}",
+    tags = ["manual"],
 )
 {%- endif %}
 {%- endfor %}
