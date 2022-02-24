@@ -493,7 +493,8 @@ impl Splicer {
             .manifests
             .iter()
             .map(|(path, _)| {
-                let m = read_manifest(path)?;
+                let m = read_manifest(path)
+                    .with_context(|| format!("Failed to read manifest at {}", path.display()))?;
                 Ok((path.clone(), m))
             })
             .collect::<Result<HashMap<PathBuf, Manifest>>>()?;

@@ -76,7 +76,16 @@ pub fn write_outputs(
         .collect();
 
     if dry_run {
-        println!("{:#?}", outputs);
+        for (path, content) in outputs {
+            println!(
+                "==============================================================================="
+            );
+            println!("{}", path.display());
+            println!(
+                "==============================================================================="
+            );
+            println!("{}\n", content);
+        }
     } else {
         // Ensure the output directory exists
         fs::create_dir_all(out_dir)?;
