@@ -1,5 +1,5 @@
 {
-  "checksum": "78d2d44f1875c8cafb7eed64aaa8b7ddb1f07557e8787dcdb9de6dd54e5ac0ba",
+  "checksum": "41fd9aadc922120dbc294273bbd84954158fd348abb2e994d8bb3e839f44bd97",
   "crates": {
     "adler 1.0.2": {
       "name": "adler",
@@ -584,9 +584,9 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "cargo-bazel 0.0.26": {
+    "cargo-bazel 0.0.27": {
       "name": "cargo-bazel",
-      "version": "0.0.26",
+      "version": "0.0.27",
       "repository": null,
       "targets": [
         {
@@ -642,7 +642,7 @@
               "target": "cargo_toml"
             },
             {
-              "id": "cfg-expr 0.10.1",
+              "id": "cfg-expr 0.10.2",
               "target": "cfg_expr"
             },
             {
@@ -710,7 +710,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.0.26"
+        "version": "0.0.27"
       },
       "license": null
     },
@@ -996,13 +996,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "cfg-expr 0.10.1": {
+    "cfg-expr 0.10.2": {
       "name": "cfg-expr",
-      "version": "0.10.1",
+      "version": "0.10.2",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/cfg-expr/0.10.1/download",
-          "sha256": "295b6eb918a60a25fec0b23a5e633e74fddbaf7bb04411e65a10c366aca4b5cd"
+          "url": "https://crates.io/api/v1/crates/cfg-expr/0.10.2/download",
+          "sha256": "5e068cb2806bbc15b439846dc16c5f89f8599f2c3e4d73d4449d38f9b2f0b6c5"
         }
       },
       "targets": [
@@ -1037,7 +1037,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.10.1"
+        "version": "0.10.2"
       },
       "license": "MIT OR Apache-2.0"
     },
@@ -8334,7 +8334,7 @@
     "phf_generator 0.10.0"
   ],
   "workspace_members": {
-    "cargo-bazel 0.0.26": "",
+    "cargo-bazel 0.0.27": "",
     "cross_installer 0.1.0": "tools/cross_installer",
     "examples-runner 0.0.1": "tools/examples_runner",
     "urls_generator 0.1.0": "tools/urls_generator"
