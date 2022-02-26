@@ -8,11 +8,11 @@ def cargo_bazel_deps():
     maybe(
         http_archive,
         name = "rules_rust",
-        sha256 = "7240a4865b11427cc58cd00b3e89c805825bfd3cc4c225b7e992a58622bec859",
-        strip_prefix = "rules_rust-a619e1a30bb274639b6d2ccb76c820a02b9f94be",
+        sha256 = "8e55060b70991ae9d36cb6501365b30bb6c7a08f886c882a0222f446e0091900",
+        strip_prefix = "rules_rust-adf2790f3ff063d909acd70aacdd2832756113a5",
         urls = [
-            # `main` branch as of 2022-02-23
-            "https://github.com/bazelbuild/rules_rust/archive/a619e1a30bb274639b6d2ccb76c820a02b9f94be.tar.gz",
+            # `main` branch as of 2022-02-25
+            "https://github.com/bazelbuild/rules_rust/archive/adf2790f3ff063d909acd70aacdd2832756113a5.tar.gz",
         ],
     )
 
