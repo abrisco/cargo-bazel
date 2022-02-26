@@ -1,5 +1,5 @@
 {
-  "checksum": "41fd9aadc922120dbc294273bbd84954158fd348abb2e994d8bb3e839f44bd97",
+  "checksum": "8cb1be9138433e2d9dcfb29164d523af1bfe8714b16def02d435accbd24a2f64",
   "crates": {
     "adler 1.0.2": {
       "name": "adler",
@@ -650,7 +650,7 @@
               "target": "clap"
             },
             {
-              "id": "crates-index 0.18.5",
+              "id": "crates-index 0.18.6",
               "target": "crates_index"
             },
             {
@@ -1470,13 +1470,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "crates-index 0.18.5": {
+    "crates-index 0.18.6": {
       "name": "crates-index",
-      "version": "0.18.5",
+      "version": "0.18.6",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/crates-index/0.18.5/download",
-          "sha256": "00c338c128681bf06772e2a188f7937293620478bb7781e453e996266686e806"
+          "url": "https://crates.io/api/v1/crates/crates-index/0.18.6/download",
+          "sha256": "6ba2fe731913e3d6341220d711fb8f62b1d1c98d7b46c7fb9d72a7dea0a22bdf"
         }
       },
       "targets": [
@@ -1501,7 +1501,7 @@
         "deps": {
           "common": [
             {
-              "id": "git2 0.13.25",
+              "id": "git2 0.14.0",
               "target": "git2"
             },
             {
@@ -1537,7 +1537,7 @@
               "target": "serde_json"
             },
             {
-              "id": "smartstring 0.2.10",
+              "id": "smartstring 1.0.0",
               "target": "smartstring"
             }
           ],
@@ -1553,7 +1553,7 @@
           ],
           "selects": {}
         },
-        "version": "0.18.5"
+        "version": "0.18.6"
       },
       "license": "Apache-2.0"
     },
@@ -2462,13 +2462,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "git2 0.13.25": {
+    "git2 0.14.0": {
       "name": "git2",
-      "version": "0.13.25",
+      "version": "0.14.0",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/git2/0.13.25/download",
-          "sha256": "f29229cc1b24c0e6062f6e742aa3e256492a5323365e5ed3413599f8a5eff7d6"
+          "url": "https://crates.io/api/v1/crates/git2/0.14.0/download",
+          "sha256": "94781080dd1a6b55dea7c46540d5bac87742a22f6dc2d84e54a5071ad6f0e387"
         }
       },
       "targets": [
@@ -2501,7 +2501,7 @@
               "target": "libc"
             },
             {
-              "id": "libgit2-sys 0.12.26+1.3.0",
+              "id": "libgit2-sys 0.13.0+1.4.1",
               "target": "libgit2_sys"
             },
             {
@@ -2516,7 +2516,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.13.25"
+        "version": "0.14.0"
       },
       "license": "MIT/Apache-2.0"
     },
@@ -3291,13 +3291,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "libgit2-sys 0.12.26+1.3.0": {
+    "libgit2-sys 0.13.0+1.4.1": {
       "name": "libgit2-sys",
-      "version": "0.12.26+1.3.0",
+      "version": "0.13.0+1.4.1",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/libgit2-sys/0.12.26+1.3.0/download",
-          "sha256": "19e1c899248e606fbfe68dcb31d8b0176ebab833b103824af31bddf4b7457494"
+          "url": "https://crates.io/api/v1/crates/libgit2-sys/0.13.0+1.4.1/download",
+          "sha256": "864e22fc06cae62860398cd854c93d5867f11c02ec916aa1417b440f170df23a"
         }
       },
       "targets": [
@@ -3336,7 +3336,7 @@
           "@libgit2"
         ],
         "edition": "2018",
-        "version": "0.12.26+1.3.0"
+        "version": "0.13.0+1.4.1"
       },
       "license": "MIT/Apache-2.0"
     },
@@ -6356,13 +6356,13 @@
       },
       "license": "MIT/Apache-2.0"
     },
-    "smartstring 0.2.10": {
+    "smartstring 1.0.0": {
       "name": "smartstring",
-      "version": "0.2.10",
+      "version": "1.0.0",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/smartstring/0.2.10/download",
-          "sha256": "e714dff2b33f2321fdcd475b71cec79781a692d846f37f415fb395a1d2bcd48e"
+          "url": "https://crates.io/api/v1/crates/smartstring/1.0.0/download",
+          "sha256": "ea958ad90cacc8ece7f238fde3671e1b350ee1741964edf2a22fd16f60224163"
         }
       },
       "targets": [
@@ -6403,7 +6403,7 @@
           "selects": {}
         },
         "edition": "2021",
-        "version": "0.2.10"
+        "version": "1.0.0"
       },
       "license": "MPL-2.0+"
     },
