@@ -30,6 +30,12 @@ load("@cargo_bazel//:defs.bzl", "crate", "crates_repository", "splicing_config")
 
 crates_repository(
     name = "cargo_aliases",
+    annotations = {
+        "names": [crate.annotation(
+            shallow_since = "1631486371 -0600",
+            version = "0.11.1-dev",
+        )],
+    },
     # `generator` is not necessary in official releases.
     # See load satement for `cargo_bazel_bootstrap`.
     generator = "@cargo_bazel_bootstrap//:cargo-bazel",
