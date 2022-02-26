@@ -9,7 +9,9 @@ filegroup(
     srcs = glob([
         "*.bzl",
         "*.bazel",
-    ]),
+    ]) + [
+        "//3rdparty/crates:srcs",
+    ],
 )
 
 filegroup(

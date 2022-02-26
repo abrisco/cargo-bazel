@@ -1,5 +1,5 @@
 {
-  "checksum": "36e85c6ffd64ca0e4be16ff8c65b533baa0c8a19c449379052a9daeadbabd3d4",
+  "checksum": "1085e1456db0ff82d8efb2a055d2fbb7e43c8de52b4906fc320d1b5d368509de",
   "crates": {
     "aho-corasick 0.7.18": {
       "name": "aho-corasick",
@@ -1096,7 +1096,8 @@
           "remote": "https://github.com/fnichol/names.git",
           "commitish": {
             "Rev": "534b1cd239fb57933616f3d25ae258bdf708811d"
-          }
+          },
+          "shallow_since": "1631486371 -0600"
         }
       },
       "targets": [

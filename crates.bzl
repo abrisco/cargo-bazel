@@ -4,9 +4,9 @@ load("@rules_rust//rust:defs.bzl", "rust_common")
 load("//:defs.bzl", "crate", "crates_repository", "crates_vendor")
 load("//:deps_bootstrap.bzl", "cargo_bazel_bootstrap")
 load("//3rdparty:third_party_deps.bzl", "third_party_deps")
-# load("//3rdparty/crates:crates.bzl", _vendor_crate_repositories = "crate_repositories")
+load("//3rdparty/crates:crates.bzl", _vendor_crate_repositories = "crate_repositories")
 
-USE_CRATES_REPOSITORY = True
+USE_CRATES_REPOSITORY = False
 
 _REPOSITORY_NAME = "crate_index"
 
@@ -50,8 +50,8 @@ def crate_deps_repository(rust_version = rust_common.default_version, bootstrap 
             rust_version = rust_version,
         )
 
-    # else:
-    #     _vendor_crate_repositories()
+    else:
+        _vendor_crate_repositories()
 
 def crate_deps_target(name = "crates_vendor", vendor_path = "crates"):
     crates_vendor(
