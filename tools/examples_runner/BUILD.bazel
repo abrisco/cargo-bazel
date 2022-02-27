@@ -1,6 +1,12 @@
+exports_files(
+    ["Cargo.toml"],
+    visibility = ["//visibility:public"],
+)
+
 filegroup(
     name = "distro",
     srcs = [
+        "BUILD.bazel",
         "Cargo.toml",
     ],
     visibility = ["//tools:__pkg__"],

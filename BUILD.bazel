@@ -3,14 +3,18 @@ load("@crate_index//:defs.bzl", "aliases", "all_crate_deps")
 load("@rules_rust//rust:defs.bzl", "rust_binary", "rust_doc", "rust_library", "rust_test")
 load("//:version.bzl", "VERSION")
 
-package(default_visibility = ["//visibility:public"])
-
 exports_files(
     glob(["src/**"]) + [
         "Cargo.toml",
         "Cargo.lock",
         "Cargo.Bazel.lock",
     ],
+    visibility = ["//visibility:public"],
+)
+
+exports_files(
+    glob(["*.bzl"]),
+    visibility = ["//:__subpackages__"],
 )
 
 filegroup(
@@ -21,11 +25,13 @@ filegroup(
         "//private:distro",
         "//tools:distro",
         "BUILD.bazel",
+        "Cargo.Bazel.lock",
         "Cargo.lock",
         "Cargo.toml",
         "README.md",
         "WORKSPACE.bazel",
     ],
+    visibility = ["//:__subpackages__"],
 )
 
 filegroup(
@@ -34,6 +40,7 @@ filegroup(
         "//3rdparty:bzl_srcs",
         "//private:bzl_srcs",
     ],
+    visibility = ["//visibility:public"],
 )
 
 bzl_library(
@@ -61,6 +68,7 @@ rust_library(
     ),
     proc_macro_deps = all_crate_deps(proc_macro = True),
     version = VERSION,
+    visibility = ["//visibility:public"],
     deps = all_crate_deps(normal = True),
 )
 
@@ -68,12 +76,14 @@ rust_binary(
     name = "cargo_bazel_bin",
     srcs = ["src/main.rs"],
     version = VERSION,
+    visibility = ["//visibility:public"],
     deps = [":cargo_bazel"],
 )
 
 alias(
     name = "bin",
     actual = ":cargo_bazel_bin",
+    visibility = ["//visibility:public"],
 )
 
 rust_test(
@@ -99,6 +109,7 @@ rust_test(
 rust_doc(
     name = "rustdoc",
     crate = ":cargo_bazel",
+    visibility = ["//visibility:public"],
 )
 
 # `rust_doc_test` does not currently work. See:

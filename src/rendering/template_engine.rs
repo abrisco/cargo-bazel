@@ -10,7 +10,7 @@ use crate::config::{CrateId, RenderConfig};
 use crate::context::Context;
 use crate::rendering::{
     render_crate_bazel_label, render_crate_bazel_repository, render_crate_build_file,
-    render_platform_constraint_label,
+    render_module_label, render_platform_constraint_label,
 };
 use crate::utils::sanitize_module_name;
 use crate::utils::sanitize_repository_name;
@@ -151,6 +151,13 @@ impl TemplateEngine {
                     "/src/rendering/templates/module_bzl.j2"
                 )),
             ),
+            (
+                "vendor_module.j2",
+                include_str!(concat!(
+                    env!("CARGO_MANIFEST_DIR"),
+                    "/src/rendering/templates/vendor_module.j2"
+                )),
+            ),
         ])
         .unwrap();
 
@@ -177,11 +184,16 @@ impl TemplateEngine {
             platform_label_fn_generator(render_config.platforms_template.clone()),
         );
         tera.register_function("sanitize_module_name", sanitize_module_name_fn);
+        tera.register_function(
+            "crates_module_label",
+            module_label_fn_generator(render_config.crates_module_template.clone()),
+        );
 
         let mut context = tera::Context::new();
         context.insert("default_select_list", &SelectStringList::default());
         context.insert("default_select_dict", &SelectStringDict::default());
         context.insert("repository_name", &render_config.repository_name);
+        context.insert("vendor_mode", &render_config.vendor_mode);
         context.insert("Null", &tera::Value::Null);
         context.insert(
             "default_package_name",
@@ -253,6 +265,15 @@ impl TemplateEngine {
             .render("module_bzl.j2", &context)
             .context("Failed to render crates module")
     }
+
+    pub fn render_vendor_module_file(&self, data: &Context) -> Result<String> {
+        let mut context = self.new_tera_ctx();
+        context.insert("context", data);
+
+        self.engine
+            .render("vendor_module.j2", &context)
+            .context("Failed to render vendor module")
+    }
 }
 
 /// A convienience wrapper for parsing parameters to tera functions
@@ -309,6 +330,25 @@ fn crate_build_file_fn_generator(template: String) -> impl tera::Function {
             let version = parse_tera_param!("version", String, args);
 
             match to_value(render_crate_build_file(&template, &name, &version)) {
+                Ok(v) => Ok(v),
+                Err(_) => Err(tera::Error::msg("Failed to generate crate's BUILD file")),
+            }
+        },
+    )
+}
+
+/// Convert a file name to a Bazel label
+fn module_label_fn_generator(template: String) -> impl tera::Function {
+    Box::new(
+        move |args: &HashMap<String, Value>| -> tera::Result<Value> {
+            let file = parse_tera_param!("file", String, args);
+
+            let label = match render_module_label(&template, &file) {
+                Ok(v) => v,
+                Err(e) => return Err(tera::Error::msg(e)),
+            };
+
+            match to_value(label.to_string()) {
                 Ok(v) => Ok(v),
                 Err(_) => Err(tera::Error::msg("Failed to generate crate's BUILD file")),
             }

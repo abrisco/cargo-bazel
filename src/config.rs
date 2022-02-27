@@ -14,6 +14,29 @@ use semver::VersionReq;
 use serde::de::Visitor;
 use serde::{Deserialize, Serialize, Serializer};
 
+/// Representations of different kinds of crate vendoring into workspaces.
+#[derive(Debug, Serialize, Deserialize, Hash, Clone)]
+#[serde(rename_all = "lowercase")]
+pub enum VendorMode {
+    /// Crates having full source being vendored into a workspace
+    Local,
+
+    /// Crates having only BUILD files with repository rules vendored into a workspace
+    Remote,
+}
+
+impl std::fmt::Display for VendorMode {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        fmt::Display::fmt(
+            match self {
+                VendorMode::Local => "local",
+                VendorMode::Remote => "remote",
+            },
+            f,
+        )
+    }
+}
+
 #[derive(Debug, Default, Hash, Serialize, Deserialize, Clone)]
 #[serde(deny_unknown_fields)]
 pub struct RenderConfig {
@@ -21,7 +44,7 @@ pub struct RenderConfig {
     pub repository_name: String,
 
     /// The pattern to use for BUILD file names.
-    /// Eg. `BUILD.{name}-{version}.bazel`
+    /// Eg. `//:BUILD.{name}-{version}.bazel`
     #[serde(default = "default_build_file_template")]
     pub build_file_template: String,
 
@@ -29,6 +52,12 @@ pub struct RenderConfig {
     /// Eg. `@{repository}__{name}-{version}//:{target}`
     #[serde(default = "default_crate_label_template")]
     pub crate_label_template: String,
+
+    /// The pattern to use for the `defs.bzl` and `BUILD.bazel`
+    /// file names used for the crates module.
+    /// Eg. `//:{file}`
+    #[serde(default = "default_crates_module_template")]
+    pub crates_module_template: String,
 
     /// The pattern used for a crate's repository name.
     /// Eg. `{repository}__{name}-{version}`
@@ -43,10 +72,17 @@ pub struct RenderConfig {
     /// Eg. `@rules_rust//rust/platform:{triple}`.
     #[serde(default = "default_platforms_template")]
     pub platforms_template: String,
+
+    /// An optional configuration for rendirng content to be rendered into repositories.
+    pub vendor_mode: Option<VendorMode>,
 }
 
 fn default_build_file_template() -> String {
-    "BUILD.{name}-{version}.bazel".to_owned()
+    "//:BUILD.{name}-{version}.bazel".to_owned()
+}
+
+fn default_crates_module_template() -> String {
+    "//:{file}".to_owned()
 }
 
 fn default_crate_label_template() -> String {

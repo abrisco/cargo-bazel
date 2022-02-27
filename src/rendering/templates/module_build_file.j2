@@ -5,9 +5,10 @@ package(default_visibility = ["//visibility:public"])
 exports_files(
     [
         "cargo-bazel.json",
-        "defs.bzl"
+        "defs.bzl",
+        {%- set current_vendor_mode = vendor_mode | default(value="") %}{%- if current_vendor_mode == "remote" %}"crates.bzl",{%- endif %}
     ] + glob([
-        "*.bazel"
+        "*.bazel",
     ]),
 )
 

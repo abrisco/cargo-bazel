@@ -1,4 +1,4 @@
-workspace(name = "cargo_bazel_examples")
+workspace(name = "examples")
 
 local_repository(
     name = "cargo_bazel",
@@ -21,6 +21,14 @@ load("@cargo_bazel//:deps_bootstrap.bzl", "cargo_bazel_bootstrap")
 # of this example, it's only here to allow the workspace to build successfully in CI
 # at an arbitrary commit.
 cargo_bazel_bootstrap()
+
+load("@cargo_bazel//:crates.bzl", "crate_deps_repository")
+
+crate_deps_repository()
+
+load("@cargo_bazel//:crates_deps.bzl", "crate_repositories")
+
+crate_repositories()
 
 load("@cargo_bazel//:defs.bzl", "crate", "crates_repository", "splicing_config")
 
@@ -303,3 +311,27 @@ load(
 )
 
 no_cargo_crate_repositories()
+
+###############################################################################
+# V E N D O R   R E M O T E   M A N I F E S T S
+###############################################################################
+
+load(
+    "//vendor_remote_manifests/crates:crates.bzl",
+    crates_vendor_manifests_repositories = "crate_repositories",
+)
+
+crates_vendor_manifests_repositories()
+
+###############################################################################
+# V E N D O R   R E M O T E   P A C K A G E S
+###############################################################################
+
+load(
+    "//vendor_remote_pkgs/crates:crates.bzl",
+    crates_vendor_packages_repositories = "crate_repositories",
+)
+
+crates_vendor_packages_repositories()
+
+###############################################################################

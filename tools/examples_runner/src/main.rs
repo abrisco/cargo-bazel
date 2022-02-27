@@ -72,6 +72,53 @@ fn execute_bazel(
     }
 }
 
+fn vendor_dependencies(
+    workspace_root: &Path,
+    startup_args: &[String],
+    args: &[&str],
+    envs: &HashMap<String, String>,
+) {
+    // Query for a list of vendor targets
+    println!("Determining vendor targets");
+    let output = process::Command::new("bazel")
+        .current_dir(workspace_root)
+        .envs(envs)
+        .args(startup_args)
+        .arg("query")
+        .arg("kind(crates_vendor, //...)")
+        .args(args)
+        .output()
+        .unwrap();
+
+    if !output.status.success() {
+        eprintln!("{}", String::from_utf8_lossy(&output.stderr));
+        process::exit(output.status.code().unwrap_or(1));
+    }
+
+    // Run all the vendor targets
+    String::from_utf8_lossy(&output.stdout)
+        .split_whitespace()
+        .for_each(|target| {
+            if target.is_empty() {
+                return;
+            }
+            println!("Vendoring {}", target);
+            let status = process::Command::new("bazel")
+                .current_dir(workspace_root)
+                .envs(envs)
+                .args(startup_args)
+                .arg("run")
+                .arg(target)
+                .args(args)
+                .status()
+                .unwrap();
+
+            if !status.success() {
+                process::exit(status.code().unwrap_or(1));
+            }
+        })
+}
+
 fn main() {
     let current_dir = env::current_dir().unwrap();
 
@@ -110,6 +157,14 @@ fn main() {
 
     let startup_args = parse_startup_args();
 
+    // Vendor all targets
+    vendor_dependencies(
+        &examples_dir,
+        &startup_args,
+        &[override_repo.as_str()],
+        &envs,
+    );
+
     // Build and test all targets
     execute_bazel(
         &startup_args,
@@ -120,6 +175,7 @@ fn main() {
 
     // Update the environment
     envs.insert("CARGO_BAZEL_REPIN".to_owned(), "true".to_owned());
+    envs.remove("CARGO_BAZEL_ISOLATED");
 
     // Build and test all targets while repinning
     execute_bazel(

@@ -86,11 +86,13 @@ def get_generator(repository_ctx, host_triple):
     return output, {host_triple: result.sha256}
 
 def render_config(
-        build_file_template = "BUILD.{name}-{version}.bazel",
+        build_file_template = "//:BUILD.{name}-{version}.bazel",
         crate_label_template = "@{repository}__{name}-{version}//:{target}",
         crate_repository_template = "{repository}__{name}-{version}",
+        crates_module_template = "//:{file}",
         default_package_name = None,
-        platforms_template = "@rules_rust//rust/platform:{triple}"):
+        platforms_template = "@rules_rust//rust/platform:{triple}",
+        vendor_mode = None):
     """Various settings used to configure rendered outputs
 
     The template parameters each support a select number of format keys. A description of each key
@@ -103,6 +105,7 @@ def render_config(
     | `triple` | A platform triple. Eg `x86_64-unknown-linux-gnu` |
     | `version` | The crate version. Eg `1.2.3` |
     | `target` | The library or binary target of the crate |
+    | `file` | The basename of a file |
 
     Args:
         build_file_template (str, optional): The base template to use for BUILD file names. The available format keys
@@ -111,11 +114,14 @@ def render_config(
             are [`{repository}`, `{name}`, `{version}`, `{target}`].
         crate_repository_template (str, optional): The base template to use for Crate label repository names. The
             available format keys are [`{repository}`, `{name}`, `{version}`].
+        crates_module_template (str, optional): The pattern to use for the `defs.bzl` and `BUILD.bazel`
+            file names used for the crates module. The available format keys are [`{file}`].
         default_package_name (str, optional): The default package name to in the rendered macros. This affects the
             auto package detection of things like `all_crate_deps`.
         platforms_template (str, optional): The base template to use for platform names.
             See [platforms documentation](https://docs.bazel.build/versions/main/platforms.html). The available format
             keys are [`{triple}`].
+        vendor_mode (str, optional): An optional configuration for rendirng content to be rendered into repositories.
 
     Returns:
         string: A json encoded struct to match the Rust `config::RenderConfig` struct
@@ -124,8 +130,10 @@ def render_config(
         build_file_template = build_file_template,
         crate_label_template = crate_label_template,
         crate_repository_template = crate_repository_template,
+        crates_module_template = crates_module_template,
         default_package_name = default_package_name,
         platforms_template = platforms_template,
+        vendor_mode = vendor_mode,
     ))
 
 def _crate_id(name, version):
@@ -148,7 +156,7 @@ def collect_crate_annotations(annotations, repository_name):
         repository_name (str): The name of the repository that owns the annotations
 
     Returns:
-        dict: A mapping of cargo_bazel::config::CrateId to sets of annotations
+        dict: A mapping of `cargo_bazel::config::CrateId` to sets of annotations
     """
     annotations = {name: [json.decode(a) for a in annotation] for name, annotation in annotations.items()}
     crate_annotations = {}

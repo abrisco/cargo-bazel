@@ -2,6 +2,11 @@ load("@crate_index//:defs.bzl", "aliases", "all_crate_deps")
 load("@rules_rust//rust:defs.bzl", "rust_binary")
 load(":cross_installer_deps.bzl", "cross_binary")
 
+exports_files(
+    ["Cargo.toml"],
+    visibility = ["//visibility:public"],
+)
+
 rust_binary(
     name = "cross_installer",
     srcs = glob(["src/**/*.rs"]),
@@ -25,6 +30,7 @@ cross_binary(name = "cross")
 filegroup(
     name = "distro",
     srcs = [
+        "BUILD.bazel",
         "Cargo.toml",
     ],
     visibility = ["//tools:__pkg__"],
