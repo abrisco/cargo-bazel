@@ -141,6 +141,7 @@
 <h1 id="rules"><a class="header" href="#rules">Rules</a></h1>
 <ul>
 <li><a href="#crates_repository">crates_repository</a></li>
+<li><a href="#crates_vendor">crates_vendor</a></li>
 <li><a href="#cratespec">crate.spec</a></li>
 <li><a href="#crateworkspace_member">crate.workspace_member</a></li>
 <li><a href="#crateannotation">crate.annotation</a></li>
@@ -189,6 +190,27 @@ crates_repository(<a href="#crates_repository-name">name</a>, <a href="#crates_r
 <tr><td align="left"><a id="crates_repository-rust_version"></a>rust_version</td><td align="left">The version of Rust the currently registered toolchain is using. Eg. <code>1.56.0</code>, or <code>nightly-2021-09-08</code></td><td align="left">String</td><td align="left">optional</td><td align="left">&quot;1.59.0&quot;</td></tr>
 <tr><td align="left"><a id="crates_repository-splicing_config"></a>splicing_config</td><td align="left">The configuration flags to use for splicing Cargo maniests. Use <code>@cargo_bazel//:defs.bzl%rsplicing_config</code> to generate the value for this field. If unset, the defaults defined there will be used.</td><td align="left">String</td><td align="left">optional</td><td align="left">&quot;&quot;</td></tr>
 <tr><td align="left"><a id="crates_repository-supported_platform_triples"></a>supported_platform_triples</td><td align="left">A set of all platform triples to consider when generating dependencies.</td><td align="left">List of strings</td><td align="left">optional</td><td align="left">[&quot;i686-apple-darwin&quot;, &quot;i686-pc-windows-msvc&quot;, &quot;i686-unknown-linux-gnu&quot;, &quot;x86_64-apple-darwin&quot;, &quot;x86_64-pc-windows-msvc&quot;, &quot;x86_64-unknown-linux-gnu&quot;, &quot;aarch64-apple-darwin&quot;, &quot;aarch64-apple-ios&quot;, &quot;aarch64-linux-android&quot;, &quot;aarch64-unknown-linux-gnu&quot;, &quot;arm-unknown-linux-gnueabi&quot;, &quot;armv7-unknown-linux-gnueabi&quot;, &quot;i686-linux-android&quot;, &quot;i686-unknown-freebsd&quot;, &quot;powerpc-unknown-linux-gnu&quot;, &quot;s390x-unknown-linux-gnu&quot;, &quot;wasm32-unknown-unknown&quot;, &quot;wasm32-wasi&quot;, &quot;x86_64-apple-ios&quot;, &quot;x86_64-linux-android&quot;, &quot;x86_64-unknown-freebsd&quot;]</td></tr>
+</tbody></table>
+<p><a id="#crates_vendor"></a></p>
+<h2 id="crates_vendor"><a class="header" href="#crates_vendor">crates_vendor</a></h2>
+<pre>
+crates_vendor(<a href="#crates_vendor-name">name</a>, <a href="#crates_vendor-annotations">annotations</a>, <a href="#crates_vendor-buildifier">buildifier</a>, <a href="#crates_vendor-generate_build_scripts">generate_build_scripts</a>, <a href="#crates_vendor-manifests">manifests</a>, <a href="#crates_vendor-mode">mode</a>, <a href="#crates_vendor-packages">packages</a>,
+              <a href="#crates_vendor-repository_name">repository_name</a>, <a href="#crates_vendor-splicing_config">splicing_config</a>, <a href="#crates_vendor-supported_platform_triples">supported_platform_triples</a>, <a href="#crates_vendor-vendor_path">vendor_path</a>)
+</pre>
+<p>A rule for defining Rust dependencies (crates) and writing targets for them to the current workspace</p>
+<p><strong>ATTRIBUTES</strong></p>
+<table><thead><tr><th align="left">Name</th><th align="left">Description</th><th align="left">Type</th><th align="left">Mandatory</th><th align="left">Default</th></tr></thead><tbody>
+<tr><td align="left"><a id="crates_vendor-name"></a>name</td><td align="left">A unique name for this target.</td><td align="left"><a href="https://bazel.build/docs/build-ref.html#name">Name</a></td><td align="left">required</td><td align="left"></td></tr>
+<tr><td align="left"><a id="crates_vendor-annotations"></a>annotations</td><td align="left">Extra settings to apply to crates. See <a href="#crateannotations">crate.annotations</a>.</td><td align="left"><a href="https://bazel.build/docs/skylark/lib/dict.html">Dictionary: String -&gt; List of strings</a></td><td align="left">optional</td><td align="left">{}</td></tr>
+<tr><td align="left"><a id="crates_vendor-buildifier"></a>buildifier</td><td align="left">The path to a <a href="https://github.com/bazelbuild/buildtools/blob/5.0.1/buildifier/README.md">buildifier</a> binary used to format generated BUILD files.</td><td align="left"><a href="https://bazel.build/docs/build-ref.html#labels">Label</a></td><td align="left">optional</td><td align="left">//private/vendor:buildifier</td></tr>
+<tr><td align="left"><a id="crates_vendor-generate_build_scripts"></a>generate_build_scripts</td><td align="left">Whether or not to generate <a href="https://doc.rust-lang.org/cargo/reference/build-scripts.html">cargo build scripts</a> by default.</td><td align="left">Boolean</td><td align="left">optional</td><td align="left">True</td></tr>
+<tr><td align="left"><a id="crates_vendor-manifests"></a>manifests</td><td align="left">A list of Cargo manifests (<code>Cargo.toml</code> files).</td><td align="left"><a href="https://bazel.build/docs/build-ref.html#labels">List of labels</a></td><td align="left">optional</td><td align="left">[]</td></tr>
+<tr><td align="left"><a id="crates_vendor-mode"></a>mode</td><td align="left">Flags determining how crates should be vendored. <code>local</code> is where crate source and BUILD files are written to the repository. <code>remote</code> is where only BUILD files are written and repository rules used to fetch source code.</td><td align="left">String</td><td align="left">optional</td><td align="left">&quot;remote&quot;</td></tr>
+<tr><td align="left"><a id="crates_vendor-packages"></a>packages</td><td align="left">A set of crates (packages) specifications to depend on. See <a href="#crate.spec">crate.spec</a>.</td><td align="left"><a href="https://bazel.build/docs/skylark/lib/dict.html">Dictionary: String -&gt; String</a></td><td align="left">optional</td><td align="left">{}</td></tr>
+<tr><td align="left"><a id="crates_vendor-repository_name"></a>repository_name</td><td align="left">The name of the repository to generate for <code>remote</code> vendor modes. If unset, the label name will be used</td><td align="left">String</td><td align="left">optional</td><td align="left">&quot;&quot;</td></tr>
+<tr><td align="left"><a id="crates_vendor-splicing_config"></a>splicing_config</td><td align="left">The configuration flags to use for splicing Cargo maniests. Use <code>@cargo_bazel//:defs.bzl%rsplicing_config</code> to generate the value for this field. If unset, the defaults defined there will be used.</td><td align="left">String</td><td align="left">optional</td><td align="left">&quot;&quot;</td></tr>
+<tr><td align="left"><a id="crates_vendor-supported_platform_triples"></a>supported_platform_triples</td><td align="left">A set of all platform triples to consider when generating dependencies.</td><td align="left">List of strings</td><td align="left">optional</td><td align="left">[&quot;i686-apple-darwin&quot;, &quot;i686-pc-windows-msvc&quot;, &quot;i686-unknown-linux-gnu&quot;, &quot;x86_64-apple-darwin&quot;, &quot;x86_64-pc-windows-msvc&quot;, &quot;x86_64-unknown-linux-gnu&quot;, &quot;aarch64-apple-darwin&quot;, &quot;aarch64-apple-ios&quot;, &quot;aarch64-linux-android&quot;, &quot;aarch64-unknown-linux-gnu&quot;, &quot;arm-unknown-linux-gnueabi&quot;, &quot;armv7-unknown-linux-gnueabi&quot;, &quot;i686-linux-android&quot;, &quot;i686-unknown-freebsd&quot;, &quot;powerpc-unknown-linux-gnu&quot;, &quot;s390x-unknown-linux-gnu&quot;, &quot;wasm32-unknown-unknown&quot;, &quot;wasm32-wasi&quot;, &quot;x86_64-apple-ios&quot;, &quot;x86_64-linux-android&quot;, &quot;x86_64-unknown-freebsd&quot;]</td></tr>
+<tr><td align="left"><a id="crates_vendor-vendor_path"></a>vendor_path</td><td align="left">The path to a directory to write files into. Absolute paths will be treated as relative to the workspace root</td><td align="left">String</td><td align="left">optional</td><td align="left">&quot;crates&quot;</td></tr>
 </tbody></table>
 <p><a id="#crate.spec"></a></p>
 <h2 id="cratespec"><a class="header" href="#cratespec">crate.spec</a></h2>
@@ -265,7 +287,7 @@ crate.workspace_member(<a href="#crate.workspace_member-version">version</a>, <a
 <h2 id="render_config"><a class="header" href="#render_config">render_config</a></h2>
 <pre>
 render_config(<a href="#render_config-build_file_template">build_file_template</a>, <a href="#render_config-crate_label_template">crate_label_template</a>, <a href="#render_config-crate_repository_template">crate_repository_template</a>,
-              <a href="#render_config-default_package_name">default_package_name</a>, <a href="#render_config-platforms_template">platforms_template</a>)
+              <a href="#render_config-crates_module_template">crates_module_template</a>, <a href="#render_config-default_package_name">default_package_name</a>, <a href="#render_config-platforms_template">platforms_template</a>, <a href="#render_config-vendor_mode">vendor_mode</a>)
 </pre>
 <p>Various settings used to configure rendered outputs</p>
 <p>The template parameters each support a select number of format keys. A description of each key
@@ -276,14 +298,17 @@ can be found below where the supported keys for each template can be found in th
 <tr><td><code>triple</code></td><td>A platform triple. Eg <code>x86_64-unknown-linux-gnu</code></td></tr>
 <tr><td><code>version</code></td><td>The crate version. Eg <code>1.2.3</code></td></tr>
 <tr><td><code>target</code></td><td>The library or binary target of the crate</td></tr>
+<tr><td><code>file</code></td><td>The basename of a file</td></tr>
 </tbody></table>
 <p><strong>PARAMETERS</strong></p>
 <table><thead><tr><th align="left">Name</th><th align="left">Description</th><th align="left">Default Value</th></tr></thead><tbody>
-<tr><td align="left"><a id="render_config-build_file_template"></a>build_file_template</td><td align="left">The base template to use for BUILD file names. The available format keys are [<code>{name}</code>, {version}<code>].</td><td align="left"><code>&quot;BUILD.{name}-{version}.bazel&quot;</code></td></tr>
+<tr><td align="left"><a id="render_config-build_file_template"></a>build_file_template</td><td align="left">The base template to use for BUILD file names. The available format keys are [<code>{name}</code>, {version}<code>].</td><td align="left"><code>&quot;//:BUILD.{name}-{version}.bazel&quot;</code></td></tr>
 <tr><td align="left"><a id="render_config-crate_label_template"></a>crate_label_template</td><td align="left">The base template to use for crate labels. The available format keys are [<code>{repository}</code>, <code>{name}</code>, <code>{version}</code>, <code>{target}</code>].</td><td align="left"><code>&quot;@{repository}__{name}-{version}//:{target}&quot;</code></td></tr>
 <tr><td align="left"><a id="render_config-crate_repository_template"></a>crate_repository_template</td><td align="left">The base template to use for Crate label repository names. The available format keys are [<code>{repository}</code>, <code>{name}</code>, <code>{version}</code>].</td><td align="left"><code>&quot;{repository}__{name}-{version}&quot;</code></td></tr>
+<tr><td align="left"><a id="render_config-crates_module_template"></a>crates_module_template</td><td align="left">The pattern to use for the <code>defs.bzl</code> and <code>BUILD.bazel</code> file names used for the crates module. The available format keys are [<code>{file}</code>].</td><td align="left"><code>&quot;//:{file}&quot;</code></td></tr>
 <tr><td align="left"><a id="render_config-default_package_name"></a>default_package_name</td><td align="left">The default package name to in the rendered macros. This affects the auto package detection of things like <code>all_crate_deps</code>.</td><td align="left"><code>None</code></td></tr>
 <tr><td align="left"><a id="render_config-platforms_template"></a>platforms_template</td><td align="left">The base template to use for platform names. See <a href="https://docs.bazel.build/versions/main/platforms.html">platforms documentation</a>. The available format keys are [<code>{triple}</code>].</td><td align="left"><code>&quot;@rules_rust//rust/platform:{triple}&quot;</code></td></tr>
+<tr><td align="left"><a id="render_config-vendor_mode"></a>vendor_mode</td><td align="left">An optional configuration for rendirng content to be rendered into repositories.</td><td align="left"><code>None</code></td></tr>
 </tbody></table>
 <p><strong>RETURNS</strong></p>
 <p>string: A json encoded struct to match the Rust <code>config::RenderConfig</code> struct</p>
