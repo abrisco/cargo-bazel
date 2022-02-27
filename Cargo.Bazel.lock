@@ -1,5 +1,5 @@
 {
-  "checksum": "d8a60ec22eef1b206ef8ef1229fdb25c20c6611680654dc8569b4b52455ff14b",
+  "checksum": "f6e2e2a02ab6ca937deb6dceaec144c957a28e0092e4bcf898339f45b1c1205f",
   "crates": {
     "adler 1.0.2": {
       "name": "adler",
@@ -650,7 +650,7 @@
               "target": "clap"
             },
             {
-              "id": "crates-index 0.18.6",
+              "id": "crates-index 0.18.7",
               "target": "crates_index"
             },
             {
@@ -1470,13 +1470,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "crates-index 0.18.6": {
+    "crates-index 0.18.7": {
       "name": "crates-index",
-      "version": "0.18.6",
+      "version": "0.18.7",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/crates-index/0.18.6/download",
-          "sha256": "6ba2fe731913e3d6341220d711fb8f62b1d1c98d7b46c7fb9d72a7dea0a22bdf"
+          "url": "https://crates.io/api/v1/crates/crates-index/0.18.7/download",
+          "sha256": "0044896374c388ccbf1497dad6384bf6111dbcad9d7069506df7450ce9b62ea3"
         }
       },
       "targets": [
@@ -1553,7 +1553,7 @@
           ],
           "selects": {}
         },
-        "version": "0.18.6"
+        "version": "0.18.7"
       },
       "license": "Apache-2.0"
     },

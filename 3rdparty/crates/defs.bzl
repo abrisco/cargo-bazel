@@ -294,7 +294,7 @@ _NORMAL_DEPENDENCIES = {
             "cargo_toml": "@crate_index__cargo_toml-0.11.4//:cargo_toml",
             "cfg-expr": "@crate_index__cfg-expr-0.10.2//:cfg_expr",
             "clap": "@crate_index__clap-3.1.2//:clap",
-            "crates-index": "@crate_index__crates-index-0.18.6//:crates_index",
+            "crates-index": "@crate_index__crates-index-0.18.7//:crates_index",
             "hex": "@crate_index__hex-0.4.3//:hex",
             "pathdiff": "@crate_index__pathdiff-0.2.1//:pathdiff",
             "regex": "@crate_index__regex-1.5.4//:regex",
@@ -755,12 +755,12 @@ def crate_repositories():
 
     maybe(
         http_archive,
-        name = "crate_index__crates-index-0.18.6",
-        sha256 = "6ba2fe731913e3d6341220d711fb8f62b1d1c98d7b46c7fb9d72a7dea0a22bdf",
+        name = "crate_index__crates-index-0.18.7",
+        sha256 = "0044896374c388ccbf1497dad6384bf6111dbcad9d7069506df7450ce9b62ea3",
         type = "tar.gz",
-        urls = ["https://crates.io/api/v1/crates/crates-index/0.18.6/download"],
-        strip_prefix = "crates-index-0.18.6",
-        build_file = Label("@cargo_bazel//3rdparty/crates:BUILD.crates-index-0.18.6.bazel"),
+        urls = ["https://crates.io/api/v1/crates/crates-index/0.18.7/download"],
+        strip_prefix = "crates-index-0.18.7",
+        build_file = Label("@cargo_bazel//3rdparty/crates:BUILD.crates-index-0.18.7.bazel"),
     )
 
     maybe(

@@ -72,6 +72,8 @@ rust_proc_macro(
     tags = [
         "cargo-bazel",
         "manual",
+        "noclippy",
+        "norustfmt",
     ],
     version = "2.1.0",
     deps = [

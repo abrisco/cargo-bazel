@@ -78,6 +78,8 @@ rust_library(
     tags = [
         "cargo-bazel",
         "manual",
+        "noclippy",
+        "norustfmt",
     ],
     version = "1.0.7",
     deps = [
@@ -144,6 +146,8 @@ cargo_build_script(
     tags = [
         "cargo-bazel",
         "manual",
+        "noclippy",
+        "norustfmt",
     ],
     tools = select_with_or({
         "//conditions:default": [
@@ -167,7 +171,6 @@ alias(
     name = "build_script_build",
     actual = "camino_build_script",
     tags = [
-        "cargo-bazel",
         "manual",
     ],
 )

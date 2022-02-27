@@ -76,6 +76,8 @@ rust_library(
     tags = [
         "cargo-bazel",
         "manual",
+        "noclippy",
+        "norustfmt",
     ],
     version = "1.9.0",
     deps = [
