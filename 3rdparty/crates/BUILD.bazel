@@ -70,7 +70,7 @@ alias(
 
 alias(
     name = "crates-index",
-    actual = "@crate_index__crates-index-0.18.6//:crates_index",
+    actual = "@crate_index__crates-index-0.18.7//:crates_index",
     tags = ["manual"],
 )
 

@@ -76,6 +76,8 @@ rust_proc_macro(
     tags = [
         "cargo-bazel",
         "manual",
+        "noclippy",
+        "norustfmt",
     ],
     version = "1.0.4",
     deps = [
@@ -141,6 +143,8 @@ cargo_build_script(
     tags = [
         "cargo-bazel",
         "manual",
+        "noclippy",
+        "norustfmt",
     ],
     tools = select_with_or({
         "//conditions:default": [
@@ -165,7 +169,6 @@ alias(
     name = "build_script_build",
     actual = "proc-macro-error-attr_build_script",
     tags = [
-        "cargo-bazel",
         "manual",
     ],
 )
