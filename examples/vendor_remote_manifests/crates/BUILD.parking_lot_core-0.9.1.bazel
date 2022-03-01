@@ -24,11 +24,11 @@ load(
 package(default_visibility = ["//visibility:public"])
 
 # licenses([
-#     "TODO",  # MIT/Apache-2.0
+#     "TODO",  # Apache-2.0/MIT
 # ])
 
 rust_library(
-    name = "winapi",
+    name = "parking_lot_core",
     srcs = glob(
         include = [
             "**/*.rs",
@@ -45,39 +45,13 @@ rust_library(
         ],
     }),
     crate_features = [
-        "cfg",
-        "consoleapi",
-        "errhandlingapi",
-        "evntrace",
-        "fileapi",
-        "handleapi",
-        "in6addr",
-        "inaddr",
-        "ioapiset",
-        "minwinbase",
-        "minwindef",
-        "mswsock",
-        "namedpipeapi",
-        "ntdef",
-        "ntsecapi",
-        "std",
-        "synchapi",
-        "threadpoollegacyapiset",
-        "winbase",
-        "windef",
-        "winerror",
-        "winioctl",
-        "winsock2",
-        "ws2def",
-        "ws2ipdef",
-        "ws2tcpip",
     ],
     crate_root = "src/lib.rs",
     data = select_with_or({
         "//conditions:default": [
         ],
     }),
-    edition = "2015",
+    edition = "2018",
     proc_macro_deps = [
     ] + select_with_or({
         "//conditions:default": [
@@ -105,28 +79,66 @@ rust_library(
         "noclippy",
         "norustfmt",
     ],
-    version = "0.3.9",
+    version = "0.9.1",
     deps = [
     ] + select_with_or({
-        # i686-pc-windows-gnu
+        # cfg(target_os = "redox")
         #
-        # No supported platform triples for cfg: 'i686-pc-windows-gnu'
-        # Skipped dependencies: [{"id":"winapi-i686-pc-windows-gnu 0.4.0","target":"winapi_i686_pc_windows_gnu"}]
+        # No supported platform triples for cfg: 'cfg(target_os = "redox")'
+        # Skipped dependencies: [{"id":"redox_syscall 0.2.11","target":"syscall"}]
         #
-        # x86_64-pc-windows-gnu
-        #
-        # No supported platform triples for cfg: 'x86_64-pc-windows-gnu'
-        # Skipped dependencies: [{"id":"winapi-x86_64-pc-windows-gnu 0.4.0","target":"winapi_x86_64_pc_windows_gnu"}]
-        #
+        # cfg(unix)
+        (
+            "@rules_rust//rust/platform:aarch64-apple-darwin",
+            "@rules_rust//rust/platform:aarch64-apple-ios",
+            "@rules_rust//rust/platform:aarch64-linux-android",
+            "@rules_rust//rust/platform:aarch64-unknown-linux-gnu",
+            "@rules_rust//rust/platform:arm-unknown-linux-gnueabi",
+            "@rules_rust//rust/platform:armv7-unknown-linux-gnueabi",
+            "@rules_rust//rust/platform:i686-apple-darwin",
+            "@rules_rust//rust/platform:i686-linux-android",
+            "@rules_rust//rust/platform:i686-unknown-freebsd",
+            "@rules_rust//rust/platform:i686-unknown-linux-gnu",
+            "@rules_rust//rust/platform:powerpc-unknown-linux-gnu",
+            "@rules_rust//rust/platform:s390x-unknown-linux-gnu",
+            "@rules_rust//rust/platform:x86_64-apple-darwin",
+            "@rules_rust//rust/platform:x86_64-apple-ios",
+            "@rules_rust//rust/platform:x86_64-linux-android",
+            "@rules_rust//rust/platform:x86_64-unknown-freebsd",
+            "@rules_rust//rust/platform:x86_64-unknown-linux-gnu",
+        ): [
+            # Target Deps
+            "@crates_vendor_manifests__libc-0.2.119//:libc",
+
+            # Common Deps
+            "@crates_vendor_manifests__cfg-if-1.0.0//:cfg_if",
+            "@crates_vendor_manifests__parking_lot_core-0.9.1//:build_script_build",
+            "@crates_vendor_manifests__smallvec-1.8.0//:smallvec",
+        ],
+        # cfg(windows)
+        (
+            "@rules_rust//rust/platform:i686-pc-windows-msvc",
+            "@rules_rust//rust/platform:x86_64-pc-windows-msvc",
+        ): [
+            # Target Deps
+            "@crates_vendor_manifests__windows-sys-0.32.0//:windows_sys",
+
+            # Common Deps
+            "@crates_vendor_manifests__cfg-if-1.0.0//:cfg_if",
+            "@crates_vendor_manifests__parking_lot_core-0.9.1//:build_script_build",
+            "@crates_vendor_manifests__smallvec-1.8.0//:smallvec",
+        ],
         "//conditions:default": [
-            "@crates_vendor_manifests__winapi-0.3.9//:build_script_build",
+            "@crates_vendor_manifests__cfg-if-1.0.0//:cfg_if",
+            "@crates_vendor_manifests__parking_lot_core-0.9.1//:build_script_build",
+            "@crates_vendor_manifests__smallvec-1.8.0//:smallvec",
         ],
     }),
 )
 
 cargo_build_script(
     # See comment associated with alias. Do not change this name
-    name = "winapi_build_script",
+    name = "parking_lot_core_build_script",
     srcs = glob(
         include = [
             "**/*.rs",
@@ -145,32 +157,6 @@ cargo_build_script(
         ],
     }),
     crate_features = [
-        "cfg",
-        "consoleapi",
-        "errhandlingapi",
-        "evntrace",
-        "fileapi",
-        "handleapi",
-        "in6addr",
-        "inaddr",
-        "ioapiset",
-        "minwinbase",
-        "minwindef",
-        "mswsock",
-        "namedpipeapi",
-        "ntdef",
-        "ntsecapi",
-        "std",
-        "synchapi",
-        "threadpoollegacyapiset",
-        "winbase",
-        "windef",
-        "winerror",
-        "winioctl",
-        "winsock2",
-        "ws2def",
-        "ws2ipdef",
-        "ws2tcpip",
     ],
     crate_name = "build_script_build",
     crate_root = "build.rs",
@@ -178,7 +164,7 @@ cargo_build_script(
         "//conditions:default": [
         ],
     }),
-    edition = "2015",
+    edition = "2018",
     proc_macro_deps = [
     ] + select_with_or({
         "//conditions:default": [
@@ -210,7 +196,7 @@ cargo_build_script(
         "//conditions:default": [
         ],
     }),
-    version = "0.3.9",
+    version = "0.9.1",
     visibility = ["//visibility:private"],
     deps = [
     ] + select_with_or({
@@ -226,7 +212,7 @@ alias(
     # of `build_script_build` without losing out on having certain Cargo
     # environment variables set.
     name = "build_script_build",
-    actual = "winapi_build_script",
+    actual = "parking_lot_core_build_script",
     tags = [
         "manual",
     ],
