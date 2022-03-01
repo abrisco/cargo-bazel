@@ -51,7 +51,10 @@ bzl_library(
 
 filegroup(
     name = "rust_srcs",
-    srcs = glob(["src/**/*"]),
+    srcs = glob([
+        "src/**/*.rs",
+        "src/**/*.j2",
+    ]),
     visibility = ["//:__subpackages__"],
 )
 
