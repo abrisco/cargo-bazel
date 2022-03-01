@@ -19,3 +19,7 @@ CARGO_BAZEL_URLS = {}
 #     "x86_64-pc-windows-msvc": "f5647261d989f63dafb2c3cb8e131b225338a790386c06cf7112e43dd9805882",
 # }
 CARGO_BAZEL_SHA256S = {}
+
+# Example:
+# Label("//crate_universe:cargo_bazel_bin")
+CARGO_BAZEL_LABEL = None

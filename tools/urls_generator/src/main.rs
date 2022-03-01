@@ -109,6 +109,10 @@ CARGO_BAZEL_URLS = {}
 #     "x86_64-pc-windows-msvc": "f5647261d989f63dafb2c3cb8e131b225338a790386c06cf7112e43dd9805882",
 # }
 CARGO_BAZEL_SHA256S = {}
+
+# Example:
+# Label("//crate_universe:cargo_bazel_bin")
+CARGO_BAZEL_LABEL = None
 "#;
 
 fn render_module(artifacts: &[Artifact]) -> String {
@@ -136,6 +140,10 @@ fn render_module(artifacts: &[Artifact]) -> String {
                 "CARGO_BAZEL_SHA256S = {}",
                 serde_json::to_string_pretty(&sha256s).unwrap()
             ),
+        )
+        .replace(
+            "CARGO_BAZEL_LABEL = None",
+            "CARGO_BAZEL_LABEL = Label(\"//crate_universe:cargo_bazel_bin\")",
         )
 }
 
