@@ -3,6 +3,7 @@
 load("@rules_rust//rust/platform:triple_mappings.bzl", "SUPPORTED_PLATFORM_TRIPLES")
 load("//private:generate_utils.bzl", "collect_crate_annotations", "render_config")
 load("//private:splicing_utils.bzl", "splicing_config")
+load("//private:urls.bzl", "CARGO_BAZEL_LABEL")
 
 _UNIX_WRAPPER = """\
 #!/usr/bin/env bash
@@ -174,10 +175,15 @@ def _crates_vendor_impl(ctx):
 
     # Allow action envs to override the use of the cargo-bazel target.
     if CARGO_BAZEL_GENERATOR_PATH in ctx.var:
-        bin_path = ctx.vars[CARGO_BAZEL_GENERATOR_PATH]
+        bin_path = ctx.var[CARGO_BAZEL_GENERATOR_PATH]
+    elif ctx.executable.cargo_bazel:
+        bin_path = _runfiles_path(ctx.executable.cargo_bazel.short_path, is_windows)
+        cargo_bazel_runfiles.append(ctx.executable.cargo_bazel)
     else:
-        bin_path = _runfiles_path(ctx.executable._cargo_bazel.short_path, is_windows)
-        cargo_bazel_runfiles.append(ctx.executable._cargo_bazel)
+        fail("{} is missing either the `cargo_bazel` attribute or the '{}' action env".format(
+            ctx.label,
+            CARGO_BAZEL_GENERATOR_PATH,
+        ))
 
     # Generate config file
     config_args, config_runfiles = _write_config_file(ctx)
@@ -243,6 +249,16 @@ crates_vendor = rule(
             executable = True,
             default = Label("//private/vendor:buildifier"),
         ),
+        "cargo_bazel": attr.label(
+            doc = (
+                "The cargo-bazel binary to use for vendoring. If this attribute is not set, then a " +
+                "`{}` action env will be used.".format(CARGO_BAZEL_GENERATOR_PATH)
+            ),
+            cfg = "exec",
+            executable = True,
+            allow_files = True,
+            default = CARGO_BAZEL_LABEL,
+        ),
         "generate_build_scripts": attr.bool(
             doc = (
                 "Whether or not to generate " +
@@ -285,12 +301,6 @@ crates_vendor = rule(
         "vendor_path": attr.string(
             doc = "The path to a directory to write files into. Absolute paths will be treated as relative to the workspace root",
             default = "crates",
-        ),
-        "_cargo_bazel": attr.label(
-            doc = "The cargo-bazel vendor binary",
-            cfg = "exec",
-            executable = True,
-            default = Label("//:cargo_bazel_bin"),
         ),
     },
     executable = True,
