@@ -287,7 +287,7 @@ def aliases(
 _NORMAL_DEPENDENCIES = {
     "": {
         _COMMON_CONDITION: {
-            "axum": "@crates_vendor_pkgs__axum-0.4.6//:axum",
+            "axum": "@crates_vendor_pkgs__axum-0.4.7//:axum",
             "hyper": "@crates_vendor_pkgs__hyper-0.14.17//:hyper",
             "mime": "@crates_vendor_pkgs__mime-0.3.16//:mime",
             "serde_json": "@crates_vendor_pkgs__serde_json-1.0.79//:serde_json",
@@ -360,13 +360,13 @@ _BUILD_PROC_MACRO_ALIASES = {
 _CONDITIONS = {
     "cfg(all(any(target_arch = \"x86_64\", target_arch = \"aarch64\"), target_os = \"hermit\"))": [],
     "cfg(not(windows))": ["aarch64-apple-darwin", "aarch64-apple-ios", "aarch64-linux-android", "aarch64-unknown-linux-gnu", "arm-unknown-linux-gnueabi", "armv7-unknown-linux-gnueabi", "i686-apple-darwin", "i686-linux-android", "i686-unknown-freebsd", "i686-unknown-linux-gnu", "powerpc-unknown-linux-gnu", "s390x-unknown-linux-gnu", "wasm32-unknown-unknown", "wasm32-wasi", "x86_64-apple-darwin", "x86_64-apple-ios", "x86_64-linux-android", "x86_64-unknown-freebsd", "x86_64-unknown-linux-gnu"],
-    "cfg(target = \"i686-pc-windows-gnu\")": [],
-    "cfg(target = \"x86_64-pc-windows-gnu\")": [],
     "cfg(target_os = \"redox\")": [],
     "cfg(target_os = \"windows\")": ["i686-pc-windows-msvc", "x86_64-pc-windows-msvc"],
     "cfg(tracing_unstable)": [],
     "cfg(unix)": ["aarch64-apple-darwin", "aarch64-apple-ios", "aarch64-linux-android", "aarch64-unknown-linux-gnu", "arm-unknown-linux-gnueabi", "armv7-unknown-linux-gnueabi", "i686-apple-darwin", "i686-linux-android", "i686-unknown-freebsd", "i686-unknown-linux-gnu", "powerpc-unknown-linux-gnu", "s390x-unknown-linux-gnu", "x86_64-apple-darwin", "x86_64-apple-ios", "x86_64-linux-android", "x86_64-unknown-freebsd", "x86_64-unknown-linux-gnu"],
     "cfg(windows)": ["i686-pc-windows-msvc", "x86_64-pc-windows-msvc"],
+    "i686-pc-windows-gnu": [],
+    "x86_64-pc-windows-gnu": [],
 }
 
 ###############################################################################
@@ -405,12 +405,12 @@ def crate_repositories():
 
     maybe(
         http_archive,
-        name = "crates_vendor_pkgs__axum-0.4.6",
-        sha256 = "157d3c6bef9a248ecf0492f05bb91019ced3c5b0f4cd9ec09b16d06596e1e743",
+        name = "crates_vendor_pkgs__axum-0.4.7",
+        sha256 = "fdfba8d55076d367807d4ada89bb689a3e2c0ce0e01bc977a61df03f9f705dcf",
         type = "tar.gz",
-        urls = ["https://crates.io/api/v1/crates/axum/0.4.6/download"],
-        strip_prefix = "axum-0.4.6",
-        build_file = Label("@examples//vendor_remote_pkgs/crates:BUILD.axum-0.4.6.bazel"),
+        urls = ["https://crates.io/api/v1/crates/axum/0.4.7/download"],
+        strip_prefix = "axum-0.4.7",
+        build_file = Label("@examples//vendor_remote_pkgs/crates:BUILD.axum-0.4.7.bazel"),
     )
 
     maybe(
@@ -865,12 +865,12 @@ def crate_repositories():
 
     maybe(
         http_archive,
-        name = "crates_vendor_pkgs__redox_syscall-0.2.10",
-        sha256 = "8383f39639269cde97d255a32bdb68c047337295414940c68bdd30c2e13203ff",
+        name = "crates_vendor_pkgs__redox_syscall-0.2.11",
+        sha256 = "8380fe0152551244f0747b1bf41737e0f8a74f97a14ccefd1148187271634f3c",
         type = "tar.gz",
-        urls = ["https://crates.io/api/v1/crates/redox_syscall/0.2.10/download"],
-        strip_prefix = "redox_syscall-0.2.10",
-        build_file = Label("@examples//vendor_remote_pkgs/crates:BUILD.redox_syscall-0.2.10.bazel"),
+        urls = ["https://crates.io/api/v1/crates/redox_syscall/0.2.11/download"],
+        strip_prefix = "redox_syscall-0.2.11",
+        build_file = Label("@examples//vendor_remote_pkgs/crates:BUILD.redox_syscall-0.2.11.bazel"),
     )
 
     maybe(

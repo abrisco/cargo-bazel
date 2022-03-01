@@ -293,7 +293,7 @@ _NORMAL_DEPENDENCIES = {
             "cargo_metadata": "@crate_index__cargo_metadata-0.14.2//:cargo_metadata",
             "cargo_toml": "@crate_index__cargo_toml-0.11.4//:cargo_toml",
             "cfg-expr": "@crate_index__cfg-expr-0.10.2//:cfg_expr",
-            "clap": "@crate_index__clap-3.1.2//:clap",
+            "clap": "@crate_index__clap-3.1.3//:clap",
             "crates-index": "@crate_index__crates-index-0.18.7//:crates_index",
             "hex": "@crate_index__hex-0.4.3//:hex",
             "pathdiff": "@crate_index__pathdiff-0.2.1//:pathdiff",
@@ -310,7 +310,7 @@ _NORMAL_DEPENDENCIES = {
     },
     "tools/cross_installer": {
         _COMMON_CONDITION: {
-            "clap": "@crate_index__clap-3.1.2//:clap",
+            "clap": "@crate_index__clap-3.1.3//:clap",
         },
     },
     "tools/examples_runner": {
@@ -325,7 +325,7 @@ _NORMAL_DEPENDENCIES = {
     },
     "tools/urls_generator": {
         _COMMON_CONDITION: {
-            "clap": "@crate_index__clap-3.1.2//:clap",
+            "clap": "@crate_index__clap-3.1.3//:clap",
             "hex": "@crate_index__hex-0.4.3//:hex",
             "serde_json": "@crate_index__serde_json-1.0.79//:serde_json",
             "sha2": "@crate_index__sha2-0.10.2//:sha2",
@@ -470,15 +470,13 @@ _BUILD_PROC_MACRO_ALIASES = {
 }
 
 _CONDITIONS = {
+    "aarch64-apple-darwin": ["aarch64-apple-darwin"],
     "cfg(all(any(target_arch = \"x86_64\", target_arch = \"aarch64\"), target_os = \"hermit\"))": [],
     "cfg(all(target_arch = \"aarch64\", target_os = \"linux\"))": ["aarch64-unknown-linux-gnu"],
     "cfg(all(target_arch = \"wasm32\", not(target_os = \"emscripten\")))": ["wasm32-unknown-unknown", "wasm32-wasi"],
     "cfg(any(target_arch = \"aarch64\", target_arch = \"x86_64\", target_arch = \"x86\"))": ["aarch64-apple-darwin", "aarch64-apple-ios", "aarch64-linux-android", "aarch64-unknown-linux-gnu", "i686-apple-darwin", "i686-linux-android", "i686-pc-windows-msvc", "i686-unknown-freebsd", "i686-unknown-linux-gnu", "x86_64-apple-darwin", "x86_64-apple-ios", "x86_64-linux-android", "x86_64-pc-windows-msvc", "x86_64-unknown-freebsd", "x86_64-unknown-linux-gnu"],
     "cfg(any(unix, target_os = \"wasi\"))": ["aarch64-apple-darwin", "aarch64-apple-ios", "aarch64-linux-android", "aarch64-unknown-linux-gnu", "arm-unknown-linux-gnueabi", "armv7-unknown-linux-gnueabi", "i686-apple-darwin", "i686-linux-android", "i686-unknown-freebsd", "i686-unknown-linux-gnu", "powerpc-unknown-linux-gnu", "s390x-unknown-linux-gnu", "wasm32-wasi", "x86_64-apple-darwin", "x86_64-apple-ios", "x86_64-linux-android", "x86_64-unknown-freebsd", "x86_64-unknown-linux-gnu"],
     "cfg(not(windows))": ["aarch64-apple-darwin", "aarch64-apple-ios", "aarch64-linux-android", "aarch64-unknown-linux-gnu", "arm-unknown-linux-gnueabi", "armv7-unknown-linux-gnueabi", "i686-apple-darwin", "i686-linux-android", "i686-unknown-freebsd", "i686-unknown-linux-gnu", "powerpc-unknown-linux-gnu", "s390x-unknown-linux-gnu", "wasm32-unknown-unknown", "wasm32-wasi", "x86_64-apple-darwin", "x86_64-apple-ios", "x86_64-linux-android", "x86_64-unknown-freebsd", "x86_64-unknown-linux-gnu"],
-    "cfg(target = \"aarch64-apple-darwin\")": ["aarch64-apple-darwin"],
-    "cfg(target = \"i686-pc-windows-gnu\")": [],
-    "cfg(target = \"x86_64-pc-windows-gnu\")": [],
     "cfg(target_arch = \"wasm32\")": ["wasm32-unknown-unknown", "wasm32-wasi"],
     "cfg(target_env = \"sgx\")": [],
     "cfg(target_os = \"fuchsia\")": [],
@@ -487,6 +485,8 @@ _CONDITIONS = {
     "cfg(target_os = \"wasi\")": ["wasm32-wasi"],
     "cfg(unix)": ["aarch64-apple-darwin", "aarch64-apple-ios", "aarch64-linux-android", "aarch64-unknown-linux-gnu", "arm-unknown-linux-gnueabi", "armv7-unknown-linux-gnueabi", "i686-apple-darwin", "i686-linux-android", "i686-unknown-freebsd", "i686-unknown-linux-gnu", "powerpc-unknown-linux-gnu", "s390x-unknown-linux-gnu", "x86_64-apple-darwin", "x86_64-apple-ios", "x86_64-linux-android", "x86_64-unknown-freebsd", "x86_64-unknown-linux-gnu"],
     "cfg(windows)": ["i686-pc-windows-msvc", "x86_64-pc-windows-msvc"],
+    "i686-pc-windows-gnu": [],
+    "x86_64-pc-windows-gnu": [],
 }
 
 ###############################################################################
@@ -725,12 +725,12 @@ def crate_repositories():
 
     maybe(
         http_archive,
-        name = "crate_index__clap-3.1.2",
-        sha256 = "5177fac1ab67102d8989464efd043c6ff44191b1557ec1ddd489b4f7e1447e77",
+        name = "crate_index__clap-3.1.3",
+        sha256 = "86f8c0e2a6b902acc18214e24a6935cdaf8a8e34231913d4404dcaee659f65a1",
         type = "tar.gz",
-        urls = ["https://crates.io/api/v1/crates/clap/3.1.2/download"],
-        strip_prefix = "clap-3.1.2",
-        build_file = Label("@cargo_bazel//3rdparty/crates:BUILD.clap-3.1.2.bazel"),
+        urls = ["https://crates.io/api/v1/crates/clap/3.1.3/download"],
+        strip_prefix = "clap-3.1.3",
+        build_file = Label("@cargo_bazel//3rdparty/crates:BUILD.clap-3.1.3.bazel"),
     )
 
     maybe(
@@ -925,12 +925,12 @@ def crate_repositories():
 
     maybe(
         http_archive,
-        name = "crate_index__git2-0.14.0",
-        sha256 = "94781080dd1a6b55dea7c46540d5bac87742a22f6dc2d84e54a5071ad6f0e387",
+        name = "crate_index__git2-0.14.1",
+        sha256 = "6e7d3b96ec1fcaa8431cf04a4f1ef5caafe58d5cf7bcc31f09c1626adddb0ffe",
         type = "tar.gz",
-        urls = ["https://crates.io/api/v1/crates/git2/0.14.0/download"],
-        strip_prefix = "git2-0.14.0",
-        build_file = Label("@cargo_bazel//3rdparty/crates:BUILD.git2-0.14.0.bazel"),
+        urls = ["https://crates.io/api/v1/crates/git2/0.14.1/download"],
+        strip_prefix = "git2-0.14.1",
+        build_file = Label("@cargo_bazel//3rdparty/crates:BUILD.git2-0.14.1.bazel"),
     )
 
     maybe(
@@ -1095,12 +1095,12 @@ def crate_repositories():
 
     maybe(
         http_archive,
-        name = "crate_index__libgit2-sys-0.13.0-1.4.1",
-        sha256 = "864e22fc06cae62860398cd854c93d5867f11c02ec916aa1417b440f170df23a",
+        name = "crate_index__libgit2-sys-0.13.1-1.4.2",
+        sha256 = "43e598aa7a4faedf1ea1b4608f582b06f0f40211eec551b7ef36019ae3f62def",
         type = "tar.gz",
-        urls = ["https://crates.io/api/v1/crates/libgit2-sys/0.13.0+1.4.1/download"],
-        strip_prefix = "libgit2-sys-0.13.0+1.4.1",
-        build_file = Label("@cargo_bazel//3rdparty/crates:BUILD.libgit2-sys-0.13.0+1.4.1.bazel"),
+        urls = ["https://crates.io/api/v1/crates/libgit2-sys/0.13.1+1.4.2/download"],
+        strip_prefix = "libgit2-sys-0.13.1+1.4.2",
+        build_file = Label("@cargo_bazel//3rdparty/crates:BUILD.libgit2-sys-0.13.1+1.4.2.bazel"),
     )
 
     maybe(
@@ -1515,12 +1515,12 @@ def crate_repositories():
 
     maybe(
         http_archive,
-        name = "crate_index__redox_syscall-0.2.10",
-        sha256 = "8383f39639269cde97d255a32bdb68c047337295414940c68bdd30c2e13203ff",
+        name = "crate_index__redox_syscall-0.2.11",
+        sha256 = "8380fe0152551244f0747b1bf41737e0f8a74f97a14ccefd1148187271634f3c",
         type = "tar.gz",
-        urls = ["https://crates.io/api/v1/crates/redox_syscall/0.2.10/download"],
-        strip_prefix = "redox_syscall-0.2.10",
-        build_file = Label("@cargo_bazel//3rdparty/crates:BUILD.redox_syscall-0.2.10.bazel"),
+        urls = ["https://crates.io/api/v1/crates/redox_syscall/0.2.11/download"],
+        strip_prefix = "redox_syscall-0.2.11",
+        build_file = Label("@cargo_bazel//3rdparty/crates:BUILD.redox_syscall-0.2.11.bazel"),
     )
 
     maybe(

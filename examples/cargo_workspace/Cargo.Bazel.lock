@@ -1,5 +1,5 @@
 {
-  "checksum": "66c1f7ee24af927f771bde585522dc116b9ad43cd6db5355da4a662b12ec7834",
+  "checksum": "0116dced5bffc719d9e8c3a9fc34b13d9f97c61125722f5bcb4079df12465f56",
   "crates": {
     "ansi_term 0.12.1": {
       "name": "ansi_term",
@@ -1424,8 +1424,6 @@
       "x86_64-unknown-freebsd",
       "x86_64-unknown-linux-gnu"
     ],
-    "cfg(target = \"i686-pc-windows-gnu\")": [],
-    "cfg(target = \"x86_64-pc-windows-gnu\")": [],
     "cfg(target_os = \"emscripten\")": [],
     "cfg(target_os = \"hermit\")": [],
     "cfg(target_os = \"wasi\")": [
@@ -1457,6 +1455,8 @@
     "cfg(windows)": [
       "i686-pc-windows-msvc",
       "x86_64-pc-windows-msvc"
-    ]
+    ],
+    "i686-pc-windows-gnu": [],
+    "x86_64-pc-windows-gnu": []
   }
 }

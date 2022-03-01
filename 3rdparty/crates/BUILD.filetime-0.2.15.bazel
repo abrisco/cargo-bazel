@@ -81,7 +81,7 @@ rust_library(
         # cfg(target_os = "redox")
         #
         # No supported platform triples for cfg: 'cfg(target_os = "redox")'
-        # Skipped dependencies: [{"id":"redox_syscall 0.2.10","target":"syscall"}]
+        # Skipped dependencies: [{"id":"redox_syscall 0.2.11","target":"syscall"}]
         #
         # cfg(unix)
         (

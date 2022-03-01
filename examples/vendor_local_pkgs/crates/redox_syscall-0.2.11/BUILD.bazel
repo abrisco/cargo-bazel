@@ -75,11 +75,11 @@ rust_library(
         "noclippy",
         "norustfmt",
     ],
-    version = "0.2.10",
+    version = "0.2.11",
     deps = [
     ] + select_with_or({
         "//conditions:default": [
-            "@crates_vendor_manifests__bitflags-1.3.2//:bitflags",
+            "//vendor_local_pkgs/crates/bitflags-1.3.2:bitflags",
         ],
     }),
 )

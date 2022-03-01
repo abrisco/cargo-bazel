@@ -1,4 +1,4 @@
-use std::collections::{BTreeMap, BTreeSet};
+use std::collections::{BTreeMap, BTreeSet, HashMap};
 
 use anyhow::{anyhow, Context, Result};
 use cfg_expr::targets::{get_builtin_target_by_triple, TargetInfo};
@@ -7,6 +7,8 @@ use cfg_expr::{Expression, Predicate};
 use crate::context::CrateContext;
 use crate::utils::starlark::Select;
 
+/// Walk through all dependencies in a [CrateContext] list for all configuration specific
+/// dependencies to produce a mapping of configuration to compatible platform triples.
 pub fn resolve_cfg_platforms(
     crates: Vec<&CrateContext>,
     supported_platform_triples: &BTreeSet<String>,
@@ -50,13 +52,24 @@ pub fn resolve_cfg_platforms(
         })
         .collect::<Result<Vec<&'static TargetInfo>>>()?;
 
+    // `cfg-expr` does not understand configurations that are simply platform triples
+    // (`x86_64-unknown-linux-gun` vs `cfg(target = "x86_64-unkonwn-linux-gnu")`). So
+    // in order to parse configurations, the text is renamed for the check but the
+    // original is retained for comaptibility with the manifest.
+    let rename = |cfg: &str| -> String { format!("cfg(target = \"{}\")", cfg) };
+    let original_cfgs: HashMap<String, String> = configurations
+        .iter()
+        .filter(|cfg| !cfg.starts_with("cfg("))
+        .map(|cfg| (rename(cfg), cfg.clone()))
+        .collect();
+
     configurations
         .into_iter()
         // `cfg-expr` requires that the expressions be actual `cfg` expressions. Any time
         // there's a target triple (which is a valid constraint), convert it to a cfg expression.
         .map(|cfg| match cfg.starts_with("cfg(") {
             true => cfg.to_string(),
-            false => format!("cfg(target = \"{}\")", cfg),
+            false => rename(&cfg),
         })
         // Check the current configuration with against each supported triple
         .map(|cfg| {
@@ -78,7 +91,179 @@ pub fn resolve_cfg_platforms(
                 .map(|info| info.triple.to_string())
                 .collect();
 
+            // Map any renamed configurations back to their original IDs
+            let cfg = match original_cfgs.get(&cfg) {
+                Some(orig) => orig.clone(),
+                None => cfg,
+            };
+
             Ok((cfg, triples))
         })
         .collect()
+}
+
+#[cfg(test)]
+mod test {
+    use crate::config::CrateId;
+    use crate::context::crate_context::CrateDependency;
+    use crate::context::CommonAttributes;
+    use crate::utils::starlark::SelectList;
+
+    use super::*;
+
+    fn supported_platform_triples() -> BTreeSet<String> {
+        BTreeSet::from([
+            "aarch64-apple-darwin".to_owned(),
+            "aarch64-apple-ios".to_owned(),
+            "aarch64-linux-android".to_owned(),
+            "aarch64-unknown-linux-gnu".to_owned(),
+            "arm-unknown-linux-gnueabi".to_owned(),
+            "armv7-unknown-linux-gnueabi".to_owned(),
+            "i686-apple-darwin".to_owned(),
+            "i686-linux-android".to_owned(),
+            "i686-pc-windows-msvc".to_owned(),
+            "i686-unknown-freebsd".to_owned(),
+            "i686-unknown-linux-gnu".to_owned(),
+            "powerpc-unknown-linux-gnu".to_owned(),
+            "s390x-unknown-linux-gnu".to_owned(),
+            "wasm32-unknown-unknown".to_owned(),
+            "wasm32-wasi".to_owned(),
+            "x86_64-apple-darwin".to_owned(),
+            "x86_64-apple-ios".to_owned(),
+            "x86_64-linux-android".to_owned(),
+            "x86_64-pc-windows-msvc".to_owned(),
+            "x86_64-unknown-freebsd".to_owned(),
+            "x86_64-unknown-linux-gnu".to_owned(),
+        ])
+    }
+
+    #[test]
+    fn resolve_no_targeted() {
+        let mut deps = SelectList::default();
+        deps.insert(
+            CrateDependency {
+                id: CrateId::new("mock_crate_b".to_owned(), "0.1.0".to_owned()),
+                target: "mock_crate_b".to_owned(),
+                alias: None,
+            },
+            None,
+        );
+
+        let context = CrateContext {
+            name: "mock_crate_a".to_owned(),
+            version: "0.1.0".to_owned(),
+            common_attrs: CommonAttributes {
+                deps,
+                ..CommonAttributes::default()
+            },
+            ..CrateContext::default()
+        };
+
+        let configurations =
+            resolve_cfg_platforms(vec![&context], &supported_platform_triples()).unwrap();
+
+        assert_eq!(configurations, BTreeMap::new(),)
+    }
+
+    #[test]
+    fn resolve_targeted() {
+        let configuration = r#"cfg(target = "x86_64-unknown-linux-gnu")"#.to_owned();
+        let mut deps = SelectList::default();
+        deps.insert(
+            CrateDependency {
+                id: CrateId::new("mock_crate_b".to_owned(), "0.1.0".to_owned()),
+                target: "mock_crate_b".to_owned(),
+                alias: None,
+            },
+            Some(configuration.clone()),
+        );
+
+        let context = CrateContext {
+            name: "mock_crate_a".to_owned(),
+            version: "0.1.0".to_owned(),
+            common_attrs: CommonAttributes {
+                deps,
+                ..CommonAttributes::default()
+            },
+            ..CrateContext::default()
+        };
+
+        let configurations =
+            resolve_cfg_platforms(vec![&context], &supported_platform_triples()).unwrap();
+
+        assert_eq!(
+            configurations,
+            BTreeMap::from([(
+                configuration,
+                BTreeSet::from(["x86_64-unknown-linux-gnu".to_owned()])
+            )])
+        );
+    }
+
+    #[test]
+    fn resolve_platforms() {
+        let configuration = r#"x86_64-unknown-linux-gnu"#.to_owned();
+        let mut deps = SelectList::default();
+        deps.insert(
+            CrateDependency {
+                id: CrateId::new("mock_crate_b".to_owned(), "0.1.0".to_owned()),
+                target: "mock_crate_b".to_owned(),
+                alias: None,
+            },
+            Some(configuration.clone()),
+        );
+
+        let context = CrateContext {
+            name: "mock_crate_a".to_owned(),
+            version: "0.1.0".to_owned(),
+            common_attrs: CommonAttributes {
+                deps,
+                ..CommonAttributes::default()
+            },
+            ..CrateContext::default()
+        };
+
+        let configurations =
+            resolve_cfg_platforms(vec![&context], &supported_platform_triples()).unwrap();
+
+        assert_eq!(
+            configurations,
+            BTreeMap::from([(
+                configuration,
+                BTreeSet::from(["x86_64-unknown-linux-gnu".to_owned()])
+            )])
+        );
+    }
+
+    #[test]
+    fn resolve_unsupported_targeted() {
+        let configuration = r#"cfg(target = "x86_64-unknown-unknown")"#.to_owned();
+        let mut deps = SelectList::default();
+        deps.insert(
+            CrateDependency {
+                id: CrateId::new("mock_crate_b".to_owned(), "0.1.0".to_owned()),
+                target: "mock_crate_b".to_owned(),
+                alias: None,
+            },
+            Some(configuration.clone()),
+        );
+
+        let context = CrateContext {
+            name: "mock_crate_a".to_owned(),
+            version: "0.1.0".to_owned(),
+            common_attrs: CommonAttributes {
+                deps,
+                ..CommonAttributes::default()
+            },
+            ..CrateContext::default()
+        };
+
+        let configurations =
+            resolve_cfg_platforms(vec![&context], &supported_platform_triples()).unwrap();
+
+        assert_eq!(
+            configurations,
+            BTreeMap::from([(configuration, BTreeSet::new())])
+        );
+    }
 }

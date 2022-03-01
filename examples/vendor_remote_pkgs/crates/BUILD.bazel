@@ -28,7 +28,7 @@ filegroup(
 # Workspace Member Dependencies
 alias(
     name = "axum",
-    actual = "@crates_vendor_pkgs__axum-0.4.6//:axum",
+    actual = "@crates_vendor_pkgs__axum-0.4.7//:axum",
     tags = ["manual"],
 )
 
