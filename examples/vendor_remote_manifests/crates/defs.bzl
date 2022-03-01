@@ -361,12 +361,12 @@ _CONDITIONS = {
     "cfg(all(any(target_arch = \"x86_64\", target_arch = \"aarch64\"), target_os = \"hermit\"))": [],
     "cfg(any(unix, target_os = \"wasi\"))": ["aarch64-apple-darwin", "aarch64-apple-ios", "aarch64-linux-android", "aarch64-unknown-linux-gnu", "arm-unknown-linux-gnueabi", "armv7-unknown-linux-gnueabi", "i686-apple-darwin", "i686-linux-android", "i686-unknown-freebsd", "i686-unknown-linux-gnu", "powerpc-unknown-linux-gnu", "s390x-unknown-linux-gnu", "wasm32-wasi", "x86_64-apple-darwin", "x86_64-apple-ios", "x86_64-linux-android", "x86_64-unknown-freebsd", "x86_64-unknown-linux-gnu"],
     "cfg(not(windows))": ["aarch64-apple-darwin", "aarch64-apple-ios", "aarch64-linux-android", "aarch64-unknown-linux-gnu", "arm-unknown-linux-gnueabi", "armv7-unknown-linux-gnueabi", "i686-apple-darwin", "i686-linux-android", "i686-unknown-freebsd", "i686-unknown-linux-gnu", "powerpc-unknown-linux-gnu", "s390x-unknown-linux-gnu", "wasm32-unknown-unknown", "wasm32-wasi", "x86_64-apple-darwin", "x86_64-apple-ios", "x86_64-linux-android", "x86_64-unknown-freebsd", "x86_64-unknown-linux-gnu"],
-    "cfg(target = \"i686-pc-windows-gnu\")": [],
-    "cfg(target = \"x86_64-pc-windows-gnu\")": [],
     "cfg(target_arch = \"wasm32\")": ["wasm32-unknown-unknown", "wasm32-wasi"],
     "cfg(target_os = \"redox\")": [],
     "cfg(unix)": ["aarch64-apple-darwin", "aarch64-apple-ios", "aarch64-linux-android", "aarch64-unknown-linux-gnu", "arm-unknown-linux-gnueabi", "armv7-unknown-linux-gnueabi", "i686-apple-darwin", "i686-linux-android", "i686-unknown-freebsd", "i686-unknown-linux-gnu", "powerpc-unknown-linux-gnu", "s390x-unknown-linux-gnu", "x86_64-apple-darwin", "x86_64-apple-ios", "x86_64-linux-android", "x86_64-unknown-freebsd", "x86_64-unknown-linux-gnu"],
     "cfg(windows)": ["i686-pc-windows-msvc", "x86_64-pc-windows-msvc"],
+    "i686-pc-windows-gnu": [],
+    "x86_64-pc-windows-gnu": [],
 }
 
 ###############################################################################
@@ -605,12 +605,12 @@ def crate_repositories():
 
     maybe(
         http_archive,
-        name = "crates_vendor_manifests__redox_syscall-0.2.10",
-        sha256 = "8383f39639269cde97d255a32bdb68c047337295414940c68bdd30c2e13203ff",
+        name = "crates_vendor_manifests__redox_syscall-0.2.11",
+        sha256 = "8380fe0152551244f0747b1bf41737e0f8a74f97a14ccefd1148187271634f3c",
         type = "tar.gz",
-        urls = ["https://crates.io/api/v1/crates/redox_syscall/0.2.10/download"],
-        strip_prefix = "redox_syscall-0.2.10",
-        build_file = Label("@examples//vendor_remote_manifests/crates:BUILD.redox_syscall-0.2.10.bazel"),
+        urls = ["https://crates.io/api/v1/crates/redox_syscall/0.2.11/download"],
+        strip_prefix = "redox_syscall-0.2.11",
+        build_file = Label("@examples//vendor_remote_manifests/crates:BUILD.redox_syscall-0.2.11.bazel"),
     )
 
     maybe(

@@ -1,5 +1,5 @@
 {
-  "checksum": "581db25f1480672ecd90cda8b77be0f1c895aae73dc6b87a0802dfb8b4a3388c",
+  "checksum": "b52e3679173a427dfe2c470a2bb505ac4a4221bcfa5f05e5e6f8978e9464f7f7",
   "crates": {
     "aho-corasick 0.7.18": {
       "name": "aho-corasick",
@@ -6215,7 +6215,7 @@
           "selects": {
             "cfg(target_os = \"redox\")": [
               {
-                "id": "redox_syscall 0.2.10",
+                "id": "redox_syscall 0.2.11",
                 "target": "syscall"
               }
             ],
@@ -6938,13 +6938,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "redox_syscall 0.2.10": {
+    "redox_syscall 0.2.11": {
       "name": "redox_syscall",
-      "version": "0.2.10",
+      "version": "0.2.11",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/redox_syscall/0.2.10/download",
-          "sha256": "8383f39639269cde97d255a32bdb68c047337295414940c68bdd30c2e13203ff"
+          "url": "https://crates.io/api/v1/crates/redox_syscall/0.2.11/download",
+          "sha256": "8380fe0152551244f0747b1bf41737e0f8a74f97a14ccefd1148187271634f3c"
         }
       },
       "targets": [
@@ -6976,7 +6976,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.2.10"
+        "version": "0.2.11"
       },
       "license": "MIT"
     },
@@ -7015,7 +7015,7 @@
               "target": "getrandom"
             },
             {
-              "id": "redox_syscall 0.2.10",
+              "id": "redox_syscall 0.2.11",
               "target": "syscall"
             }
           ],
@@ -8516,7 +8516,7 @@
             ],
             "cfg(target_os = \"redox\")": [
               {
-                "id": "redox_syscall 0.2.10",
+                "id": "redox_syscall 0.2.11",
                 "target": "syscall"
               }
             ],
@@ -10737,8 +10737,6 @@
       "x86_64-unknown-freebsd",
       "x86_64-unknown-linux-gnu"
     ],
-    "cfg(target = \"i686-pc-windows-gnu\")": [],
-    "cfg(target = \"x86_64-pc-windows-gnu\")": [],
     "cfg(target_arch = \"wasm32\")": [
       "wasm32-unknown-unknown",
       "wasm32-wasi"
@@ -10779,6 +10777,8 @@
     "cfg(windows)": [
       "i686-pc-windows-msvc",
       "x86_64-pc-windows-msvc"
-    ]
+    ],
+    "i686-pc-windows-gnu": [],
+    "x86_64-pc-windows-gnu": []
   }
 }

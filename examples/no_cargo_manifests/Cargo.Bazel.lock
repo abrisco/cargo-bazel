@@ -1,5 +1,5 @@
 {
-  "checksum": "59d195de7dd01ff3435fa0187b07b15e80387ff125fc294a426770d538a5dad9",
+  "checksum": "36b074c94b4d194e93d84a0fb8775ee42d34a4c3855ca11cd806d1d38c8a824a",
   "crates": {
     "ansi_term 0.12.1": {
       "name": "ansi_term",
@@ -149,13 +149,13 @@
       },
       "license": "Apache-2.0 OR MIT"
     },
-    "axum 0.4.6": {
+    "axum 0.4.7": {
       "name": "axum",
-      "version": "0.4.6",
+      "version": "0.4.7",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/axum/0.4.6/download",
-          "sha256": "157d3c6bef9a248ecf0492f05bb91019ced3c5b0f4cd9ec09b16d06596e1e743"
+          "url": "https://crates.io/api/v1/crates/axum/0.4.7/download",
+          "sha256": "fdfba8d55076d367807d4ada89bb689a3e2c0ce0e01bc977a61df03f9f705dcf"
         }
       },
       "targets": [
@@ -284,7 +284,7 @@
           ],
           "selects": {}
         },
-        "version": "0.4.6"
+        "version": "0.4.7"
       },
       "license": "MIT"
     },
@@ -487,7 +487,7 @@
         "deps": {
           "common": [
             {
-              "id": "axum 0.4.6",
+              "id": "axum 0.4.7",
               "target": "axum"
             },
             {
@@ -2335,7 +2335,7 @@
           "selects": {
             "cfg(target_os = \"redox\")": [
               {
-                "id": "redox_syscall 0.2.10",
+                "id": "redox_syscall 0.2.11",
                 "target": "syscall"
               }
             ],
@@ -2667,13 +2667,13 @@
       },
       "license": "MIT OR Apache-2.0"
     },
-    "redox_syscall 0.2.10": {
+    "redox_syscall 0.2.11": {
       "name": "redox_syscall",
-      "version": "0.2.10",
+      "version": "0.2.11",
       "repository": {
         "Http": {
-          "url": "https://crates.io/api/v1/crates/redox_syscall/0.2.10/download",
-          "sha256": "8383f39639269cde97d255a32bdb68c047337295414940c68bdd30c2e13203ff"
+          "url": "https://crates.io/api/v1/crates/redox_syscall/0.2.11/download",
+          "sha256": "8380fe0152551244f0747b1bf41737e0f8a74f97a14ccefd1148187271634f3c"
         }
       },
       "targets": [
@@ -2705,7 +2705,7 @@
           "selects": {}
         },
         "edition": "2018",
-        "version": "0.2.10"
+        "version": "0.2.11"
       },
       "license": "MIT"
     },
@@ -4607,8 +4607,6 @@
       "x86_64-unknown-freebsd",
       "x86_64-unknown-linux-gnu"
     ],
-    "cfg(target = \"i686-pc-windows-gnu\")": [],
-    "cfg(target = \"x86_64-pc-windows-gnu\")": [],
     "cfg(target_os = \"redox\")": [],
     "cfg(target_os = \"windows\")": [
       "i686-pc-windows-msvc",
@@ -4637,6 +4635,8 @@
     "cfg(windows)": [
       "i686-pc-windows-msvc",
       "x86_64-pc-windows-msvc"
-    ]
+    ],
+    "i686-pc-windows-gnu": [],
+    "x86_64-pc-windows-gnu": []
   }
 }

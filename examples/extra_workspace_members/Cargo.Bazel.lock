@@ -1,5 +1,5 @@
 {
-  "checksum": "2ce185ce9b35f2aacdf547324b47cb834c6e789156adcaa7ce94765dc1ace50b",
+  "checksum": "88ae84c97c2e8c452718adf7be45f107fb90b070277b9941d1bce8add0d0434b",
   "crates": {
     "adler32 1.2.0": {
       "name": "adler32",
@@ -3239,8 +3239,6 @@
       "x86_64-unknown-freebsd",
       "x86_64-unknown-linux-gnu"
     ],
-    "cfg(target = \"i686-pc-windows-gnu\")": [],
-    "cfg(target = \"x86_64-pc-windows-gnu\")": [],
     "cfg(target_os = \"hermit\")": [],
     "cfg(target_os = \"windows\")": [
       "i686-pc-windows-msvc",
@@ -3268,6 +3266,8 @@
     "cfg(windows)": [
       "i686-pc-windows-msvc",
       "x86_64-pc-windows-msvc"
-    ]
+    ],
+    "i686-pc-windows-gnu": [],
+    "x86_64-pc-windows-gnu": []
   }
 }

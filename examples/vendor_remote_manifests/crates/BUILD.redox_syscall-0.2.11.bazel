@@ -20,11 +20,11 @@ load(
 package(default_visibility = ["//visibility:public"])
 
 # licenses([
-#     "TODO",  # MIT/Apache-2.0
+#     "TODO",  # MIT
 # ])
 
 rust_library(
-    name = "git2",
+    name = "syscall",
     srcs = glob(
         include = [
             "**/*.rs",
@@ -75,15 +75,11 @@ rust_library(
         "noclippy",
         "norustfmt",
     ],
-    version = "0.14.0",
+    version = "0.2.11",
     deps = [
     ] + select_with_or({
         "//conditions:default": [
-            "@crate_index__bitflags-1.3.2//:bitflags",
-            "@crate_index__libc-0.2.119//:libc",
-            "@crate_index__libgit2-sys-0.13.0-1.4.1//:libgit2_sys",
-            "@crate_index__log-0.4.14//:log",
-            "@crate_index__url-2.2.2//:url",
+            "@crates_vendor_manifests__bitflags-1.3.2//:bitflags",
         ],
     }),
 )

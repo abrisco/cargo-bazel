@@ -1,5 +1,5 @@
 {
-  "checksum": "537093748c79e672e8f8bcfc62e025a45f727c90b585d0b72f9c181bf9831f6d",
+  "checksum": "1e781aeb3bb3ed716032160e6d688c1e2e625c55ad54ecdd0442529001ea6944",
   "crates": {
     "aho-corasick 0.7.18": {
       "name": "aho-corasick",
@@ -2575,8 +2575,6 @@
     "aliases 0.1.0": "cargo_aliases"
   },
   "conditions": {
-    "cfg(target = \"i686-pc-windows-gnu\")": [],
-    "cfg(target = \"x86_64-pc-windows-gnu\")": [],
     "cfg(target_os = \"hermit\")": [],
     "cfg(target_os = \"wasi\")": [
       "wasm32-wasi"
@@ -2603,6 +2601,8 @@
     "cfg(windows)": [
       "i686-pc-windows-msvc",
       "x86_64-pc-windows-msvc"
-    ]
+    ],
+    "i686-pc-windows-gnu": [],
+    "x86_64-pc-windows-gnu": []
   }
 }
