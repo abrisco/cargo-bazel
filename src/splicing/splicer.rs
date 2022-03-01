@@ -734,6 +734,22 @@ mod test {
         };
     }
 
+    /// Get cargo and rustc binaries the Bazel way
+    #[cfg(not(feature = "cargo"))]
+    fn get_cargo_and_rustc_paths() -> (PathBuf, PathBuf) {
+        let runfiles = runfiles::Runfiles::create().unwrap();
+        let cargo_path = runfiles.rlocation(concat!("cargo_bazel/", env!("CARGO")));
+        let rustc_path = runfiles.rlocation(concat!("cargo_bazel/", env!("RUSTC")));
+
+        (cargo_path, rustc_path)
+    }
+
+    /// Get cargo and rustc binaries the Cargo way
+    #[cfg(feature = "cargo")]
+    fn get_cargo_and_rustc_paths() -> (PathBuf, PathBuf) {
+        (PathBuf::from("cargo"), PathBuf::from("rustc"))
+    }
+
     fn generate_metadata(manifest_path: &Path) -> cargo_metadata::Metadata {
         let manifest_dir = manifest_path.parent().unwrap_or_else(|| {
             panic!(
@@ -742,15 +758,35 @@ mod test {
             )
         });
 
-        MetadataCommand::new()
+        let (cargo_path, rustc_path) = get_cargo_and_rustc_paths();
+
+        let output = MetadataCommand::new()
+            .cargo_path(cargo_path)
             // Cargo detects config files based on `pwd` when running so
             // to ensure user provided Cargo config files are used, it's
             // critical to set the working directory to the manifest dir.
             .current_dir(manifest_dir)
             .manifest_path(manifest_path)
             .other_options(["--offline".to_owned()])
-            .exec()
-            .unwrap()
+            .cargo_command()
+            .env("RUSTC", rustc_path)
+            .output()
+            .unwrap();
+
+        if !output.status.success() {
+            eprintln!("{}", String::from_utf8_lossy(&output.stderr));
+            assert!(output.status.success());
+        }
+
+        let stdout = String::from_utf8(output.stdout).unwrap();
+
+        assert!(stdout
+            .lines()
+            .find(|line| line.starts_with('{'))
+            .ok_or(cargo_metadata::Error::NoJson)
+            .is_ok());
+
+        MetadataCommand::parse(stdout).unwrap()
     }
 
     fn mock_cargo_toml(path: &Path, name: &str) -> cargo_toml::Manifest {
