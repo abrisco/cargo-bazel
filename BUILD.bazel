@@ -101,7 +101,9 @@ rust_test(
         "CARGO": "$(rootpath @rules_rust//rust/toolchain:current_exec_cargo_files)",
         "RUSTC": "$(rootpath @rules_rust//rust/toolchain:current_exec_rustc_files)",
     },
-    deps = all_crate_deps(
+    deps = [
+        "@rules_rust//tools/runfiles",
+    ] + all_crate_deps(
         normal_dev = True,
     ),
 )
