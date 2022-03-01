@@ -37,10 +37,9 @@ def crate_deps_repository(rust_version = rust_common.default_version, bootstrap 
     """
     third_party_deps()
 
-    if USE_CRATES_REPOSITORY:
-        if bootstrap:
-            cargo_bazel_bootstrap(rust_version = rust_version)
+    cargo_bazel_bootstrap(rust_version = rust_version)
 
+    if USE_CRATES_REPOSITORY:
         crates_repository(
             name = _REPOSITORY_NAME,
             annotations = _ANNOTATIONS,

@@ -15,13 +15,6 @@ rules_rust_dependencies()
 
 rust_register_toolchains()
 
-load("@cargo_bazel//:deps_bootstrap.bzl", "cargo_bazel_bootstrap")
-
-# Note: Bootstrapping is not necessary when using official releases. For the purposes
-# of this example, it's only here to allow the workspace to build successfully in CI
-# at an arbitrary commit.
-cargo_bazel_bootstrap()
-
 load("@cargo_bazel//:crates.bzl", "crate_deps_repository")
 
 crate_deps_repository()
